@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Relocation 2</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Bonjour,
+
+Nous avons le plaisir de vous informer que votre demande de transfert de contrat de la société « à renseigner » vers la société « à renseigner » a été acceptée.
+La date de prise d’effet est validée est au « à renseigner ».
+
+Nous vous prions de bien vouloir trouver ci-joint :
+
+2 exemplaires du contrat incluant des conditions générales et particulières  à compléter et à signer en bonne et due forme par une personne habilitée (ne pas omettre d’apposer votre cachet commercial).
+Un procès-verbal de réception à signer, y apposer également votre cachet commercial et votre nom et prénom.
+Une attestation d’assurance à compléter par votre compagnie d’assurance (vous pouvez également nous joindre la copie de votre contrat d’assurance si celui-ci détaille bien les prestations souscrites pour ce véhicule)
+Un mandat Sepa à compléter et à signer, il doit impérativement être accompagné de votre RIB.
+
+Merci de nous retourner l’intégralité de ces documents par courrier à l’adresse suivante :
+Volvo Financial Services
+Gestion des Services
+97 Allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 Saint Priest Cedex
+
+
+A réception de l’ensemble de ces documents originaux dûment complétés, nous procéderons à la mise en place du transfert de contrat et nous vous adresserons par retour de courrier :
+
+la copie du contrat signé par nos soins
+le mandat d’immatriculation
+le calendrier des loyers
+l’attestation de financement
+
+
+Nous restons évidemment à votre entière disposition pour tous renseignements complémentaires, et vous prions d’agréer nos salutations les plus distinguées.
+
+Cordialement,
+
+_____________________________________________
+{!User.Name}
+Gestion des Services
+
+Volvo Financial Services
+97 allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+Mail : vfs_services@vfsco.com
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,56 @@
+<template>
+    <div class="slds-card slds-card_boundary block_display">
+        <!--not using lightning card / header slot because of issues with z-index for combobox-->
+        <span class="slds-grid slds-no-flex headerSection slds-p-around_small">
+            <span class="slds-size_1-of-8">
+                <lightning-icon icon-name="standard:email" size="small"></lightning-icon>
+            </span>
+            <span class="slds-size_5-of-8 slds-text-heading_small slds-text-title_bold slds-p-top_xx-small">
+                Attachments ({totalAttachments})
+            </span>
+            <span class="slds-size_2-of-8">
+                <lightning-combobox
+                    name="minSize"
+                    value={selectedMinSize}
+                    options={sizeOptions}
+                    onchange={onSizeChange}
+                    variant="label-hidden">
+                </lightning-combobox>
+            </span>
+        </span>
+    <template if:true={filteredAttachments} class="slds-p-around_small">
+        <div class="tableContainer block_display">
+            <lightning-datatable
+                key-field="fileRef"
+                data={filteredAttachments}
+                columns={columns}
+                onrowaction={handleRowAction}
+                hide-checkbox-column
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={onHandleSort}
+                class="slds-m-around_small"
+                >
+            </lightning-datatable>
+        </div>
+    </template>
+    <template if:false={filteredAttachments} >
+        <span class="slds-p-around_small slds-align_absolute-center slds-form-element__label "> No attachments </span>
+    </template>
+    <template if:true={error}>
+        <p>{error}</p>
+    </template>
+    <span class="slds-p-around_large slds-align_absolute-center"> 
+        <lightning-file-upload
+            label=" "
+            name="fileUploader"
+            record-id={recordId}
+            multiple
+            slot="footer"
+            onuploadfinished={handleUploadFinished}
+            >
+        </lightning-file-upload>
+    </span>
+    </div>
+</template>

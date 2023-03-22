@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <entryStartDateField>Case.CreatedDate</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Pickup</milestoneName>
+        <minutesToComplete>1440</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Cost / NBV Settlement, Early termination, Password Reset</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>1440</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Amendment Extended Term, CH /OL less than 6 months remaining, Extension request, Novation - Finance Novation Completion, Novation - Finance Novation Process, Novation - Maintenance Novation Completion, Novation - Maintenance Novation Proces</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>64800</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Amendment Agreement Unwind, Amendment Dealer Error, Amendment OLIs / kms, Amendment Other, Amendment Payment Date Change, Amendment Start date change, Amortization Schedule, ASM Query, Back Up Information Query, Balloons, Change address / c</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Change address / contact details, Change Bank Details, Change Business Name, Close Client ID, Commercial Information, Company details, Complaint, Contract Information Required, Copy Contract</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Amend Contract, Amendment Restructure</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>43200</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Copy Credit Note, Copy Invoice, Credit Request, Customer to Purchase, Customised Impact online, Direct Debit/SEPA Problems, Email Address for Invoicing, End of Term query, End of Term start</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Excess meterage query, Explanation of Invoices, Insurance GAP, Insurance Information, Invalid PO, Invoice Query, Invoices to go onto Multiheader, Loading/Order Error</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>SEPA Problems, Settlement Query, Tax Statement, Techtool &amp; Customised Impact Online, Termination Collections Non Payment, Termination Insurance, Termination Process, Termination Query, Vehicle information, VGUK Ltd Query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>contains</operation>
+            <value>Other, Other questions, Overdue Information, Payment Information, Payment Query, Problems with Web Portal, Rebate of rentals, Return Inspection, Sale of Vehicle (SOV), Secondary Rental Query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Sub_Type__c</field>
+            <operation>equals</operation>
+            <value>Maintenance Query Account on Stop, Maintenance Query Change of Responsible Dealer, Maintenance Query Contract not Loaded, Maintenance Query Loading Error, Maintenance Query Other, Maintenance Query Third Party, New Users, Novation Request</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+</EntitlementProcess>

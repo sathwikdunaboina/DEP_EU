@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Reassign_Country_Restriction_Queue</fullName>
+    <active>true</active>
+    <description>This makes sure, user doesn&apos;t reassign cases to unallowed countries.
+UK can reassign to Ireland, but not to Italy.</description>
+    <errorConditionFormula>AND (
+    /* If owner is Changed */
+    ISCHANGED(OwnerId),
+    /* If the owner is a queue and not a user */
+    LEFT(OwnerId,3) = &apos;00G&apos;,
+    OR(
+        NOT (
+            /* New Queue should be present in allowed queues for the country */
+            CONTAINS (
+                /* fetch allowed queues */
+                VLOOKUP(
+                    $ObjectType.CountryGroup__c.Fields.Queues_Allowed__c,
+                    $ObjectType.CountryGroup__c.Fields.Name,
+                    $User.Country
+                ),
+                Owner:Queue.Name
+            )|| 
+CONTAINS (
+                /* fetch allowed queues */
+                VLOOKUP(
+                    $ObjectType.CountryGroup__c.Fields.Queues_Allowed_Ext__c,
+                    $ObjectType.CountryGroup__c.Fields.Name,
+                    $User.Country
+                ),
+                Owner:Queue.Name
+            )
+			
+        )
+    )
+)</errorConditionFormula>
+    <errorMessage>Cannot reassign to a queue from a different country.</errorMessage>
+</ValidationRule>

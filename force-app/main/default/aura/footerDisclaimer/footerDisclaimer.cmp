@@ -1,0 +1,27 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" controller="complianceFooter" >
+    
+    <!--aura:attribute name="resize" type="Boolean" default="false"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="publicLinks" type="List" default=""/-->
+    <aura:attribute name="localDisclaimer" type="String" default="" />
+    <aura:attribute name="gdprDisclaimer" type="String" default="" />
+    <aura:attribute name="currentUser" type="Object" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData fields="FirstName,Account.Name,Account.Branding__c"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+    <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Renault'}">
+        <div class="renault">
+            <a href="{!v.localDisclaimer}" target="_blank"  style="color:white !important;">{!$Label.c.GDPR_Disclaimer}</a>&nbsp; | &nbsp;
+            <a href="{!v.gdprDisclaimer}" target="_blank"  style="color:white !important;">{!$Label.c.Local_Disclaimer}</a>
+        </div>
+        <aura:set attribute="else">
+            <div class="volvo">
+                <a href="{!v.localDisclaimer}" target="_blank"  style="color:black !important;">{!$Label.c.GDPR_Disclaimer}</a>&nbsp; | &nbsp;
+                <a href="{!v.gdprDisclaimer}" target="_blank"  style="color:black !important;">{!$Label.c.Local_Disclaimer}</a>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

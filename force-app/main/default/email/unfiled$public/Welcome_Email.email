@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Welcome to VFS Portal, Italy" recipientType="User" relatedToType="Community">
+  <messaging:htmlEmailBody >
+        
+        <c:NewCommunityUser recipientUser="{!recipient.Id}" />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

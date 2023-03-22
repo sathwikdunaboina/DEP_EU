@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Relocation 1</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Bonjour,
+
+Nous faisons suite à votre demande de transfert de contrat « à renseigner  » de la société « à renseigner  » vers la société« à renseigner  »:
+Nous vous remercions par avance de nous transmettre les documents ci-dessous par e-mail à : vfs_services@vfsco.com ou par courrier à : VFS - Gestion des Services - 97 allée Alexandre Borodine- Bât Sequoia 1-69794 ST PRIEST Cedex.
+
+Ancien locataire :
+
+Demande écrite du locataire d’origine et la raison du transfert
+
+Nouveau locataire :
+
+Demande écrite du repreneur spécifiant qu’il reprend le financement et la date d’effet souhaitée.
+Copie des statuts de la nouvelle société
+2 pièces d’identité différentes (passeport + cni, ou permis de conduire) du signataire.
+Kbis de moins de 3 mois
+Eléments financiers :  le dernier bilan comptable ou en cas de création récente de moins d’un an,  un prévisionnel.
+
+A réception des éléments mentionnés ci-dessus, nous serons en mesure de soumettre votre demande à notre service Crédit et ne manquerons pas de revenir à vous au plus vite.
+Nous restons à votre disposition pour toute information complémentaire.
+
+Cordialement,
+_____________________________________________
+{!User.Name}
+Gestion des Services
+
+Volvo Financial Services
+97 allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+Mail : vfs_services@vfsco.com
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

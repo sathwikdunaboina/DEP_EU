@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>CallInvoiceAPI</name>
+        <label>CallInvoiceAPI</label>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
+        <actionName>CMSAPI_InvoiceHandler</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Is_success</targetReference>
+        </connector>
+        <inputParameters>
+            <name>accountIds</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <name>Is_success</name>
+        <label>Is success?</label>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>Partial_Success</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Somethings wrong</defaultConnectorLabel>
+        <rules>
+            <name>API_Success</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CallInvoiceAPI.isSuccess</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invoice_Call_Result</targetReference>
+            </connector>
+            <label>API Success</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>ResultText</name>
+        <dataType>String</dataType>
+        <expression>IF ( {!CallInvoiceAPI.isSuccess} , &apos;Invoices fetched successfully&apos; , &apos;Invoices fetched with errors. CMS returned &apos; + TEXT({!CallInvoiceAPI.totalInvoicesFromAPI})  + &apos; invoices but only &apos; + TEXT({!CallInvoiceAPI.totalInvoicesSaved}) +  &apos; are saved.&apos; )</expression>
+    </formulas>
+    <interviewLabel>Invoke Invoice API {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Invoke Invoice API</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Invoice_Call_Result</name>
+        <label>Invoice Call Result</label>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>InvoiceResultText</name>
+            <fieldText>&lt;p&gt;Invoices fetched successfully.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Partial_Success</name>
+        <label>Partial Success</label>
+        <locationX>314</locationX>
+        <locationY>398</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>ErrorText</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;Invoices fetched with errors. CMS returned {!CallInvoiceAPI.totalInvoicesFromAPI}&amp;nbsp; invoices but only {!CallInvoiceAPI.totalInvoicesSaved}  invoices are saved.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CallInvoiceAPI</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

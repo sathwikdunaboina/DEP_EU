@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Relocation 3</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Madame, Monsieur,
+
+Nous faisons suite à votre demande de relocation concernant votre contrat de financement VFS N° Numéro du contrat de financement VFS en date du Date de la demande de relocation.
+
+Votre demande est actuellement en cours d’étude au sein de nos services.
+
+Nous vous informons que vous restez tenu au complet paiement de vos loyers tels que définis dans les conditions particulières de votre contrat de financement initial pendant la durée du traitement de votre demande.
+
+En cas d’issue favorable à votre demande, une régularisation rétroactive pourra être envisagée sur la période s’étendant entre la date de la demande de relocation et la date de son acception par nos services.
+
+Nous nous tenons à votre disposition pour répondre à vos interrogations.
+
+Veuillez agréer, Madame, Monsieur, nos respectueuses salutations.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

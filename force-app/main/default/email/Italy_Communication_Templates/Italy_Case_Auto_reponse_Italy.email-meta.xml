@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is case auto response Email template.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Italy - Case Auto reponse Italy</name>
+    <style>none</style>
+    <subject>Risposta automatica: grazie per aver contattato l&apos;assistenza!</subject>
+    <textOnly>Buongiorno {!Contact.FirstName}
+
+La ringraziamo per averci contatto.
+Il ticket numero : {!Case.CaseNumber} : {!Case.Subject} è stato creato e un referente del Servizio Clienti di VFS risponderà alla Sua richiesta.
+
+Per assistenza immediata, potete contattare il numero 035-889111
+
+
+Cordiali saluti,
+
+VFS Servizi Finanziari Spa
+
+www.volvofinancialservices.com
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

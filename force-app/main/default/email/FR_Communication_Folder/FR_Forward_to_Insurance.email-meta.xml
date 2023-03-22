@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Forward to Insurance</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Madame, Monsieur,
+
+nous faisons  suite à votre e-mail ci-dessous, nous le transmettons au service en charge de votre demande qui nous lit en copie et qui ne manquera pas de revenir à vous au plus vite.
+
+Service Assurances
+Volvo Financial Services
+97 Allée Alexandre Borodine –
+Bâtiment Sequoia
+CS70800 –
+69794 ST PRIEST CEDEX
+Téléphone: 04.72.80.16.59.
+Email: vfs.assurances@vsfco.com
+
+Vous souhaitant bonne réception
+
+Cordialement
+{!User.Name}
+
+Gestion des Services
+
+Volvo Financial Services
+97 allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+Mail : vfs_services@vfsco.com
+
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

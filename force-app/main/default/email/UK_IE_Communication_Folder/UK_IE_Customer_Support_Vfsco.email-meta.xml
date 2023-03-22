@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>UK/IE-Customer Support Vfsco</name>
+    <style>none</style>
+    <subject>Thanks for contacting Irish support!</subject>
+    <textOnly>Hello Irish Customer,
+
+Thank you for contacting our Customer Service Team at VFS Financial Services.
+Your case number is: {!Case.CaseNumber} {!Case.Subject}
+We endeavour to respond to your query as quickly as possible, if the query is urgent please do not hesitate to contact us by telephone on +44 (0)1926 401203.
+
+Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)
+
+customerservice.ie@vfsco.com will disappear on 30/06/2022, please contact us in the future on the following email addresses:   vfs.customerservices.ie@volvo.com  – Volvo Trucks UK  rtfs.customerservices.ie@renault-trucks.com  – Renault Trucks UK ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VFS_Federation_Id</fullName>
+    <active>false</active>
+    <description>The vfs employee id in Ping for SSO is in lowercase. If the user enters otherwise, the SSO login of new user will fail.</description>
+    <errorConditionFormula>FederationIdentifier != null
+&amp;&amp; NOT(REGEX(FederationIdentifier , &quot;[a-z]{1,2}[0-9]{4,6}&quot;))</errorConditionFormula>
+    <errorMessage>Please enter Federation Identifier in the below format a12345 or ab1234.
+All alphabets should be in lower case.</errorMessage>
+</ValidationRule>

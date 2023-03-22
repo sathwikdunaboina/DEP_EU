@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Case Assignments</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>Italy_CS_Sales_Team</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Italy</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Sub_Type__c</field>
+                <operation>contains</operation>
+                <value>Commercial Information</value>
+            </criteriaItems>
+            <template>unfiled$public/SUPPORTNewassignmentnotificationSAMPLE</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Italy_CS_Collections_Team</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Italy</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Sub_Type__c</field>
+                <operation>equals</operation>
+                <value>SEPA Problems,Amendment Extended Term,Amendment Restructure,Amendment Payment Date Change,Amend Contract,Relocation Contract,Termination Collections Non Payment,Early termination</value>
+            </criteriaItems>
+            <template>unfiled$public/SUPPORTNewassignmentnotificationSAMPLE</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Italy_CS_Credit_Team</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Italy</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Sub_Type__c</field>
+                <operation>equals</operation>
+                <value>Overdue Information</value>
+            </criteriaItems>
+            <template>unfiled$public/SUPPORTNewassignmentnotificationSAMPLE</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Italy_CS_Operations</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Italy</value>
+            </criteriaItems>
+            <template>unfiled$public/SUPPORTNewassignmentnotificationSAMPLE</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>UK_IE_CS_Operations</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>United Kingdom</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Ireland</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRoleId</field>
+                <operation>notEqual</operation>
+                <value>UK/IE - Service Representative - Service Contracts</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>FR_CS_Administration</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>France</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>UK_IE_CS_tech_Tool</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2 ) AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>United Kingdom</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Ireland</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRoleId</field>
+                <operation>equals</operation>
+                <value>UK/IE - Service Representative - Service Contracts</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CH_CS_Operations</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Switzerland</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>ES_End_of_term</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Spain</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>End of term query</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>DE_Contract_Performance</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Germany</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>Change my details,Contact with Sales rep,Financial Contract query,General query / Miscellaneous,Invoice or payment or tax query,Request Copy Document</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>DE_End_of_Term</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Germany</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>contains</operation>
+                <value>End of term query,Settlement Query</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

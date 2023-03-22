@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>UK/IE - Tech Tool - Case Autoreponse English</name>
+    <style>none</style>
+    <subject>Thanks for contacting support!</subject>
+    <textOnly>Thank you for your email.,
+
+Your case number is: {!Case.CaseNumber}
+
+We are currently experiencing a large number of incoming queries, but we will respond to your query as quickly as possible.
+
+For further help with technical or functional issues, please contact:
+
+Tech Tool:  technical.team@volvo.com
+
+Customised Impact Online:  support.dbs.uk@volvo.com
+
+Please note that our opening hours are 08:30 – 16:30 Monday to Friday (excluding Bank Holidays).
+
+Thanks.
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

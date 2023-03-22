@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LeadCountryRestriction</fullName>
+    <active>false</active>
+    <description>The country is now not defaulted, so when the user selects the country, its checked against users country</description>
+    <errorConditionFormula>$Permission.GoldenCopy = false
+&amp;&amp;
+$Profile.Name != &apos;System Administrator&apos;
+&amp;&amp;
+$Profile.Name != &apos;API Only&apos;
+&amp;&amp;
+Country != $User.Country</errorConditionFormula>
+    <errorDisplayField>Country</errorDisplayField>
+    <errorMessage>Please verify the country	.</errorMessage>
+</ValidationRule>

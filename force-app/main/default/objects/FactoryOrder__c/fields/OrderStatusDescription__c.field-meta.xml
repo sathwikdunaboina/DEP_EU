@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderStatusDescription__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Order Status Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Confirmed</fullName>
+                <default>false</default>
+                <label>Confirmed</label>
+            </value>
+            <value>
+                <fullName>Created</fullName>
+                <default>false</default>
+                <label>Created</label>
+            </value>
+            <value>
+                <fullName>Firm Planned</fullName>
+                <default>false</default>
+                <label>Firm Planned</label>
+            </value>
+            <value>
+                <fullName>Produced</fullName>
+                <default>false</default>
+                <label>Produced</label>
+            </value>
+            <value>
+                <fullName>To Be Firm Planned Next Def Run</fullName>
+                <default>false</default>
+                <label>To Be Firm Planned Next Def Run</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

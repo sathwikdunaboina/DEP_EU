@@ -1,0 +1,92 @@
+<aura:component access="global" implements="forceCommunity:searchInterface,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable">
+    <aura:attribute name="selectedItem" type="String" default=""/>
+    <aura:attribute name="contractId" type="String" default="{!v.recordId}"/>
+    <aura:attribute name="assetId" type="String"/>
+    <!--aura:attribute name="showPaymentHistory" type="Boolean" default="{!true}"/>
+    <aura:attribute name="showMakePayment" type="Boolean" default="{!true}"/-->
+    <aura:handler event="c:VerticalSideNavEvt" action="{!c.handleApplicationEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="currentUser" type="Object" />
+    <force:recordData
+                      fields="FirstName,Account.Name,Account.Branding__c"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+    
+    <div>
+        <div class="" >
+            <aura:if isTrue="{!v.currentUser.Account.Branding__c == 'Renault'}">
+                <lightning:verticalNavigation class="renault" selectedItem="{!v.selectedItem}" onselect="{!c.doNavigate}" aura:id="navMenu">
+                    <lightning:verticalNavigationItemIcon
+                                                          label="{!$Label.c.Home}"
+                                                          name="Home"
+                                                          />
+                    
+                    <lightning:verticalNavigationItemIcon
+                                                          label="{!$Label.c.Contracts}"
+                                                          name="contracts"
+                                                          />
+                    
+                    <!--lightning:verticalNavigationItemIcon
+                                                          label="{!$Label.c.Assets}"
+                                                          name="equipment_list"
+                                                          />
+                    
+                    
+                    <lightning:verticalNavigationItemIcon
+                                                          label="{!$Label.c.Payment_History}"
+                                                          name="payment_history"
+                                                          />
+                    
+                    <lightning:verticalNavigationItemIcon
+                                                          label="{!$Label.c.Make_a_Payment}"
+                                                          name="make_a_payment"
+                                                          /-->
+                    
+                    <lightning:verticalNavigationItemIcon
+                                                          label="{!$Label.c.Support}"
+                                                          name="support"
+                                                          />
+                </lightning:verticalNavigation>
+                
+                <aura:set attribute="else">
+                    <lightning:verticalNavigation class="volvo" selectedItem="{!v.selectedItem}" onselect="{!c.doNavigat}" aura:id="navMen">
+                        <lightning:verticalNavigationItemIcon
+                                                              label="{!$Label.c.Home}"
+                                                              name="Home"
+                                                              />
+                        
+                        <lightning:verticalNavigationItemIcon
+                                                              label="{!$Label.c.Contracts}"
+                                                              name="contracts"
+                                                              />
+                        
+                        <!--lightning:verticalNavigationItemIcon
+                                                              label="{!$Label.c.Assets}"
+                                                              name="equipment_list"
+                                                              />
+                        
+                        <lightning:verticalNavigationItemIcon
+                                                              label="{!$Label.c.Payment_History}"
+                                                              name="payment_history"
+                                                              />
+                        
+                        <lightning:verticalNavigationItemIcon
+                                                              label="{!$Label.c.Make_a_Payment}"
+                                                              name="make_a_payment"
+                                                              /-->
+                        
+                        <lightning:verticalNavigationItemIcon
+                                                              label="{!$Label.c.Support}"
+                                                              name="support"
+                                                              />
+                    </lightning:verticalNavigation>  
+                </aura:set>
+            </aura:if>
+            
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandatory_parent_if_casetype_Duplicate</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Status, &apos;Duplicate&apos;), ISBLANK(ParentId))</errorConditionFormula>
+    <errorMessage>Please fill parent case when status is duplicate</errorMessage>
+</ValidationRule>

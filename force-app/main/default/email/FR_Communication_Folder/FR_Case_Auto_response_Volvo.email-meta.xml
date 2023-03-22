@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response for FR- Volvo Merci d&apos;avoir contacté le support!</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Case Auto response Volvo</name>
+    <style>none</style>
+    <subject>Merci d&apos;avoir contacté le support!</subject>
+    <textOnly>Cher (e) Client (e)
+
+Nous vous remercions d’avoir contacté notre équipe gestion des services VFS/RTFS.
+
+Nous prenons en charge votre demande et nous nous efforçons de revenir à vous le plus rapidement possible.
+
+Un numéro de requête a été attribué à votre demande il s’agit du :  {!Case.CaseNumber} : {!Case.Subject}
+
+Ce numéro de requête permet le suivi de votre demande,  nous vous remercions par avance de le rappeler dans tous les mails relatifs à celle – ci.
+
+Enfin pour un suivi optimal, il est préférable de nous contacter en répondant toujours au dernier e-mail relatif à celle-ci à commencer par cet mail.
+
+En cas d’urgence, nous restons disponibles par téléphone  au 04 72 80 58 92.
+
+Veuillez noter que nos heures d&apos;ouverture sont de 8h30 à 17h30 du lundi au vendredi.
+
+Notre temps de traitement des dossiers est actuellement plus long qu’à l’accoutumée, nous vous prions de nous excuser de ce désagrément temporaire.
+
+
+Cordialement
+
+Gestion des Services
+
+Volvo Financial Services
+97 allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

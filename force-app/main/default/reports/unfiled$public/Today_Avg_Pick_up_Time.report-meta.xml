@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>CDF1:AVG*60</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Avg Completion Time (H)</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_10701725</developerName>
+        <masterLabel>Customer Service</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam King</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ben Townsend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Harry Ashman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Molly White</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rumeysa Belibagli</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK/IE - CS Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IE - CS Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Molloy</sourceValue>
+            </sourceValues>
+            <value>Customer Service</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>CM.START_DATE</field>
+    </columns>
+    <columns>
+        <field>CM.COMPLETION_DATE</field>
+    </columns>
+    <currency>GBP</currency>
+    <customDetailFormulas>
+        <calculatedFormula>8.5*(
+(5*FLOOR((DATEVALUE(CM.COMPLETION_DATE) -DATE(1996,01,01))/7) +
+MIN(5,
+MOD(DATEVALUE(CM.COMPLETION_DATE) -DATE(1996,01,01), 7) +
+MIN(1, 24/8.5*(MAX(0,MOD(CM.COMPLETION_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CM.COMPLETION_DATE))&amp;&apos; 08:30:00&apos;), 1))))
+))
+-
+(5*FLOOR((DATEVALUE(CM.START_DATE)-DATE(1996,01,01))/7) +
+MIN(5,
+MOD(DATEVALUE(CM.START_DATE)-DATE(1996,01,01), 7) +
+MIN(1, 24/8.5*(MAX(0,MOD(CM.START_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CM.START_DATE))&amp;&apos; 08:30:00&apos;), 1))))
+))
+)*60</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Average Completion Time</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>CLOSED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Spam/Junk</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_10701725</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer Service</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>IS_COMPLETED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>TYPE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Today Avg. Pick-up Time</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseMilestone</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_TODAY</interval>
+    </timeFrameFilter>
+</Report>

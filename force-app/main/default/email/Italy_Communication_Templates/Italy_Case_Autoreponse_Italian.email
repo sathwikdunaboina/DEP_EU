@@ -1,0 +1,24 @@
+<style>
+div {
+font-family:calibri;
+font-size:medium;
+}
+</style>
+
+<div>
+Buongiorno {!Contact.FirstName}
+
+<p >La ringraziamo per averci contatto. <br>
+Il ticket numero :<b><u> {!Case.CaseNumber} : {!Case.Subject}</u></b>  è stato creato e <b>un referente del Servizio Clienti di VFS risponderà alla Sua richiesta.</b><br></p>
+
+<p>Se invece avesse bisogno di assistenza immediata, Le  chiediamo di contattare direttamente: <br>
+<b>Monica Achenza</b><br>
+<b>Customer Service Representative</b><br>
+VFS Servizi Finanziari S.p.A<br>
+o rispondi a questa mail al seguente indirizzo email id :clienti@vfsco.com<br>
+
+<a href="https://www.vfsco.it">www.vfsco.it</a></b></p></div>
+
+<p>Cordiali saluti,</p>
+<p><b>VFS Servizi Finanziari Spa</b></p>
+<small>ref: {!Case.Thread_Id}</small>

@@ -1,0 +1,19 @@
+<aura:component controller="PaginationCntrlr">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:PaginationEvt" action="{!c.handle}"/>
+    <aura:attribute name="pageCounterInfo" type="PageInfo" />
+    <aura:attribute name="sname" type="String"/>
+    <aura:attribute name="contractId" type="String"/>
+    <aura:attribute name="total" type="Integer"/>
+    <aura:handler event="c:PageChangeEvt" action="{!c.pageChange}" />
+    
+    <div>
+        <div class="slds-button-group" role="group" >
+            <lightning:buttonIcon iconName="utility:chevronleft" disabled="{!v.pageCounterInfo.currentPageNumber == 1}" alternativeText="Left" iconClass="dark" onclick="{!c.goPreviousPage}" />
+            <aura:iteration items="{!v.pageCounterInfo.pageCounter}" var="pgn">
+                <c:PageCount pageNumber="{!pgn}" currentPageNumber="{!v.pageCounterInfo.currentPageNumber}" totalpage="{!v.pageCounterInfo.totalPages}" currnetPagesCount="5" />
+            </aura:iteration>
+            <lightning:buttonIcon iconName="utility:chevronright" alternativeText="Right" iconClass="dark" onclick="{!c.goNextPage}" disabled="{!v.pageCounterInfo.currentPageNumber == v.pageCounterInfo.totalPages}" />
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>CH - Service Support - Case Auto response Italian</name>
+    <style>none</style>
+    <subject>Thanks for contacting support!</subject>
+    <textOnly>Buongiorno,
+
+Grazie per aver contattato il nostro team di supporto. Ci occuperemo della sua richiesta e la contatteremo il prima possibile.
+
+La sua richiesta ha ricevuto il seguente numero di caso :  {!Case.CaseNumber}  {!Case.Subject}
+
+Si prega di fare riferimento a questo numero la prossima volta che ci contatta.
+
+Cordiali saluti
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

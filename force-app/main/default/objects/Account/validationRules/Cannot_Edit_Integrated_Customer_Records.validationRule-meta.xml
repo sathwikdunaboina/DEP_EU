@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Edit_Integrated_Customer_Records</fullName>
+    <active>true</active>
+    <description>Because the changes from Salesforce doesnt flow through to CMS, once its integrated with CustomerId, Sales team is not allowed to edit the customer records</description>
+    <errorConditionFormula>$Permission.GoldenCopy = false
+&amp;&amp; 
+$Profile.Name != &apos;System Administrator&apos;
+&amp;&amp;
+$Profile.Name != &apos;API Only&apos;
+&amp;&amp;
+CustomerID__c != &apos;&apos;
+&amp;&amp;
+( ISChanged( Name ) || ISChanged (BillingAddress) || IsChanged(VATNumber__c) || IsChanged(CustomerID__c) || IsChanged(ParentId) || IsChanged(Customer_Number__c) || IsChanged(CompanyRegistrationNumber__c) || IsChanged(Phone) )</errorConditionFormula>
+    <errorMessage>Cannot edit a customer once its integrated with CMS. Any changes has to be done in CMS, and it will reflect the next day.</errorMessage>
+</ValidationRule>

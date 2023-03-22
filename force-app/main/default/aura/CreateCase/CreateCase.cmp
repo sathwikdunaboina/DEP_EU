@@ -1,0 +1,92 @@
+<aura:component access="global" controller="PortalCreateCaseController" extends="c:AuraUtilities" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="currentUser" type="Object" />
+    <force:recordData
+                      fields="LanguageLocaleKey,Account.BillingState,Country,FirstName"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+    <aura:attribute name="caseObj" type="Case" default="{}"/>
+    <aura:attribute name="createCaseSuccessMessage" type="String" />
+    <aura:attribute name="optionsList" type="List"/>
+    <aura:attribute name="quoteOptionsList" type="List"/>
+    <aura:attribute name="contractId" type="String"/>
+    <aura:attribute name="contractName" type="String"/>
+    <aura:attribute name="caseType" type="String"/>
+    <aura:attribute name="requestContract" type="Boolean" default="false"/>
+    <aura:attribute name="saveDisabled" type="Boolean"/>
+    <aura:attribute name="showSelection" type="Boolean" default="false"/>
+    <aura:attribute name="showScreen" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    
+    <aura:if isTrue="{!v.showSelection}">
+        <div class="slds-border_bottom slds-align_absolute-center">
+            <div class="Arial-Bold" >
+                {!$Label.c.Submit_a_Case_to_Customer_Service}
+            </div>
+        </div>
+        <div class="slds-p-around_small">
+            <lightning:select name="select" label="{!$Label.c.Please_Select_Case_Type}" value="{!v.caseObj.Type}" onchange="{!c.selectCaseType}">
+                <option value="" text="--None--"></option>
+                <aura:iteration items="{!v.optionsList}" var="item">
+                    <option value="{!item.value}" text="{!item.label}"></option>
+                </aura:iteration>
+            </lightning:select>
+        </div>   
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showScreen}">
+        <div class="no-background" aura:id="caseDetails">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-border_bottom slds-align_absolute-center">
+                        <div class="Arial-Bold" >
+                            {!v.caseObj.Type}
+                        </div>
+                    </div>
+                </div>
+                <!-- The subtypes are not to be shown in portal, but only to be used by internal vfs users in Service Desk.
+				aura:if isTrue="{!v.caseObj.Type == 'Commercial Information'}">
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-p-around_x-small">
+                            <lightning:select name="select" label="{!$Label.c.Select_Quote_Type}" value="{!v.caseObj.Sub_Type__c}">
+                                <aura:iteration items="{!v.quoteOptionsList}" var="item">
+                                    <option value="{!item.value}" text="{!item.label}"></option>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                    </div>
+                </aura:if-->
+                
+                <aura:if isTrue="{!v.requestContract}">
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-p-around_x-small">
+                            {!$Label.c.Contract_Number}:&nbsp;{!v.contractName}
+                        </div>
+                    </div>
+                </aura:if>
+                
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-p-around_x-small">
+                        <lightning:input value="{!v.caseObj.Subject}" label="{!$Label.c.Case_Subject}"/>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-p-around_x-small">
+                        <ui:inputTextArea value="{!v.caseObj.Description}" label="{!$Label.c.Case_Description}"/>
+                    </div>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-border_top">
+                    <div class="slds-p-top_medium">
+                        <div class="slds-float_right">
+                            <lightning:button  label="{!$Label.c.Cancel}" onclick="{!c.closePopup}" />&nbsp;&nbsp;<lightning:button disabled="{!v.saveDisabled}" label="{!$Label.c.Save}" onclick="{!c.createCase}" />
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </aura:if>
+    
+</aura:component>

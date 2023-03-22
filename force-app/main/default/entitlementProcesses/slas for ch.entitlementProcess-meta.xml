@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <entryStartDateField>Case.CreatedDate</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Pickup</milestoneName>
+        <minutesToComplete>1440</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <criteriaBooleanFilter>1 AND 2</criteriaBooleanFilter>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Request Copy Document</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Invoice or payment or tax query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Insurance query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>General query / Miscellaneous</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>End of term query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>4320</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Change my details</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Additional Services query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Financial Contract query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Contact with Sales rep</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours Europe</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Settlement Query</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Resolution</milestoneName>
+        <minutesToComplete>2880</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+</EntitlementProcess>

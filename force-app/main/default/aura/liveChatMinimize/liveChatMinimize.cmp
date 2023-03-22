@@ -1,0 +1,11 @@
+<aura:component implements="lightningsnapin:minimizedUI">
+    <lightningsnapin:minimizedAPI aura:id="minimizedAPI"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+     <aura:attribute name="message" type="String" default="CHAT WITH AN EXPERT"/>
+	<lightningsnapin:settingsAPI aura:id="settingsAPI"/>
+    <button onclick="{!c.handleMaximize}"  class="minimizedContainer">
+       <lightning:icon class="help x-small embeddedServiceIcon"  iconName="utility:chat" />&nbsp;&nbsp; {!v.message}
+    </button>
+    
+    <lightning:overlayLibrary aura:id="modal"/>
+</aura:component>

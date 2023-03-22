@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <recordTypes>
+        <description>type d&apos;enregistrement pour les données du compte client</description>
+        <label>compte client</label>
+        <name>Customer_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description>type d&apos;enregistrement pour les données du compte vendeur / concessionnaire</description>
+        <label>compte vendeur / concessionnaire ?</label>
+        <name>Dealer_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Customer Account Data --></description>
+        <label><!-- Customer --></label>
+        <name>GCAccountCustomer</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Dealer Account Data --></description>
+        <label><!-- Dealer --></label>
+        <name>GCAccountDealer</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Cannot edit a customer once its integrated with CMS. Any changes has to be done in CMS, and it will reflect the next day. --></errorMessage>
+        <name>Cannot_Edit_Integrated_Customer_Records</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>L&apos;identifiant client est utilisé pour l&apos;intégration. Une fois rempli, il ne peut pas être édité.</errorMessage>
+        <name>Cannot_change_CustomerId</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label>Actualités de ggogle</label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label>recherche google</label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

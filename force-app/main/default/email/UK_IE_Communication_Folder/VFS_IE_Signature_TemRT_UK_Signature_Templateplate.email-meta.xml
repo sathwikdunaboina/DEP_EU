@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RT UK Signature Template</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>{!User.Name}
+Customer Services
+VFS Financial Services Ireland Ltd
+Suite G
+Building 2100
+Avenue 2000
+Cork Airport Business Park
+Cork
+
+Telephone: +441926 401203
+E-mail:  vfs.customerservice.ie@volvo.com
+Web Address:   http://www.vfsco.co.uk
+
+HOW DID WE DO?     We welcome your feedback -     adm.customerfeedback@vfsco.com
+
+VFS Financial Services Ireland Ltd registered in Ireland, no 657590, registered office is 6th Floor, South Bank House, Barrow Street, Dublin 4
+
+This e-mail and any attachments transmitted with it, contain information which is Volvo Group proprietary and, when sent within the Volvo Group, shall be classified, handled and protected as Internal information unless clearly marked, labelled or expressed differently (i.e. Open, Confidential or Strictly Confidential). Proprietary information sent outside the Volvo Group is, unless clearly marked, labelled or expressed Strictly Confidential, deemed Confidential and shall by its recipient be handled and protected accordingly. This e-mail is intended solely for the addressee(s) and may contain legally privileged or otherwise protected information. If you are not the addressee, or have received this e-mail in error, please notify the sender immediately, delete it from your system and do not copy, print, disclose or use any part of it or its attachments.
+
+Before printing I think about the environment.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <description>Assignment element to assign Error Log values</description>
+        <name>AssignErrorLogValues</name>
+        <label>Assign Error Log Values</label>
+        <locationX>770</locationX>
+        <locationY>1010</locationY>
+        <assignmentItems>
+            <assignToReference>ErrorLogEvent.AssociatedRecord__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ErrorLogEvent.ClassName__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Flow: GC Lead Assignment Flow</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ErrorLogEvent.ErrorMessage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FaultMessageTrimmed</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ErrorLogEvent.StackTrace__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CurrentStageTrimmed</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CreateErrorLogPlatformEvent</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Element that assigns the Territory Manager from the Dealer Account</description>
+        <name>SetOwnerToTerritoryManager</name>
+        <label>Set Owner To Territory Manager</label>
+        <locationX>242</locationX>
+        <locationY>554</locationY>
+        <assignmentItems>
+            <assignToReference>recLeadToUpdate.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetDealerAccount.TerritoryManager__r.User__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recLeadToUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateLead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>SetOwnerToUnallocatedLeadsQueue</name>
+        <label>Set Owner To Unallocated Leads Queue</label>
+        <locationX>506</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>recLeadToUpdate.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetUnallocatedLeadsQueueId.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recLeadToUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateLead</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>DetermineLeadOwner</name>
+        <label>Determine Lead Owner</label>
+        <locationX>374</locationX>
+        <locationY>434</locationY>
+        <defaultConnector>
+            <targetReference>GetUnallocatedLeadsQueueId</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Unallocated Leads</defaultConnectorLabel>
+        <rules>
+            <name>TerritoryManager</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.DealerId__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>GetDealerAccount.TerritoryManager__r.User__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetOwnerToTerritoryManager</targetReference>
+            </connector>
+            <label>Territory Manager</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SkipAutomation</name>
+        <label>Skip Automation?</label>
+        <locationX>176</locationX>
+        <locationY>194</locationY>
+        <defaultConnector>
+            <targetReference>GetDealerAccount</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Execute</defaultConnectorLabel>
+        <rules>
+            <name>Skip</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.VFSAdminCustomSettings__c.SkipAutomation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Skip</label>
+        </rules>
+    </decisions>
+    <description>Platform-Event Triggered Flow that listens for the creation of the Lead Assignment Platform event. It will then assign the correct owner to the Lead.
+v0.1: Included Lead Id in the Assignment elements to prevent errors in the Lead Update element
+v1: Corrected error in Get Dealer Account element
+v2: Removed Golden Copy Permission from Skip Automation conditions to allow for Integration User
+v3: Updated Customer ID to Golden Copy field
+v4: Included null condition in Get Dealer Account lookup</description>
+    <formulas>
+        <name>CurrentStageTrimmed</name>
+        <dataType>String</dataType>
+        <expression>LEFT( {!$Flow.CurrentStage}, 32768)</expression>
+    </formulas>
+    <formulas>
+        <name>FaultMessageTrimmed</name>
+        <dataType>String</dataType>
+        <expression>LEFT( {!$Flow.FaultMessage}, 32768)</expression>
+    </formulas>
+    <interviewLabel>GC Lead Assignment Handler Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>GC Lead Assignment Platform Event Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>This element asynchronously creates the Error Log Platform Event based on the previous assignment element.</description>
+        <name>CreateErrorLogPlatformEvent</name>
+        <label>Create Error Log Platform Event</label>
+        <locationX>770</locationX>
+        <locationY>1130</locationY>
+        <inputReference>ErrorLogEvent</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <description>Retrieve DealerAccount Record based on the Dealer Id passed by the Lead Assignment Platform Event. Will be matched to the Customer ID on the Account. 
+
+The second filter is that the Account should have a Salesforce User as a Territory Manager. If not, the Lead Owner will be set to the Unallocated Leads Queue</description>
+        <name>GetDealerAccount</name>
+        <label>Get Dealer Account</label>
+        <locationX>374</locationX>
+        <locationY>314</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>DetermineLeadOwner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GCCustomerID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.DealerId__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>GCCustomerID__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>The Unallocated Leads Queue Name is stored in the Golden Copy Custom Settings. This element retrieves the corresponding Queue based on that name by querying the Group object.</description>
+        <name>GetUnallocatedLeadsQueueId</name>
+        <label>Get Unallocated Leads Queue Id</label>
+        <locationX>506</locationX>
+        <locationY>554</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SetOwnerToUnallocatedLeadsQueue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Setup.VFSAdminCustomSettings__c.UnallocatedLeadsQueue__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>UpdateLead</name>
+        <label>Update Lead</label>
+        <locationX>374</locationX>
+        <locationY>890</locationY>
+        <faultConnector>
+            <targetReference>AssignErrorLogValues</targetReference>
+        </faultConnector>
+        <inputReference>recLeadToUpdate</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SkipAutomation</targetReference>
+        </connector>
+        <object>LeadAssignment__e</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ErrorLogEvent</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>ErrorLogInsert__e</objectType>
+    </variables>
+    <variables>
+        <name>recLeadToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <description>Assignment of values to pass into the Lead Source Upsert Platform Event</description>
+        <name>AssignLeadSourceInsertPlatformEventValues</name>
+        <label>Assign Lead Source Insert Platform Event Values</label>
+        <locationX>209</locationX>
+        <locationY>575</locationY>
+        <assignmentItems>
+            <assignToReference>peLeadSourceUpsert.ChangeType__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>I</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>peLeadSourceUpsert.LeadSourceId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CreateLeadSourceChangedPlatformEvent</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assignment of values to pass into the Lead Source Upsert Platform Event</description>
+        <name>AssignLeadSourceUpdatePlatformEventValues</name>
+        <label>Assign Lead Source Update Platform Event Values</label>
+        <locationX>473</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>peLeadSourceUpsert.ChangeType__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>U</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>peLeadSourceUpsert.LeadSourceId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CreateLeadSourceChangedPlatformEvent</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Whenever the Contact Details on a Lead Source record change, this impacts the related Lead/Opportunity record. A platform event will be launched to reflect these changes.</description>
+        <name>ContactDetailsChanged</name>
+        <label>Contact Details Changed?</label>
+        <locationX>605</locationX>
+        <locationY>575</locationY>
+        <defaultConnectorLabel>No Change</defaultConnectorLabel>
+        <rules>
+            <name>Changed</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.EndCustomerCity__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Country__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.EndCustomerPostalCode__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.EndCustomerName__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactLastName__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.EndCustomerPhone__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignLeadSourceUpdatePlatformEventValues</targetReference>
+            </connector>
+            <label>Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decision element to check whether the record is being inserted or updated</description>
+        <name>IsNew</name>
+        <label>Is New?</label>
+        <locationX>407</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>ContactDetailsChanged</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Update</defaultConnectorLabel>
+        <rules>
+            <name>Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignLeadSourceInsertPlatformEventValues</targetReference>
+            </connector>
+            <label>Insert</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Element that evaluates if this Flow should be skipped based on:
+- Skip Validation Custom Setting
+- Golden Copy Custom Permission</description>
+        <name>SkipAutomation</name>
+        <label>Skip Automation?</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>IsNew</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Execute</defaultConnectorLabel>
+        <rules>
+            <name>Skip</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.VFSAdminCustomSettings__c.SkipAutomation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Skip</label>
+        </rules>
+    </decisions>
+    <description>Flow on Factory Order object that runs on insert and update.
+v2 Removed Golden Copy Permission from Skip Automation conditions to allow for Integration User</description>
+    <interviewLabel>Factory Order After insert &amp; Update Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Factory Order After Insert &amp; Update Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Element that creates the Lead Source Changed Platform Event</description>
+        <name>CreateLeadSourceChangedPlatformEvent</name>
+        <label>Create Lead Source Changed Platform Event</label>
+        <locationX>407</locationX>
+        <locationY>1007</locationY>
+        <inputReference>peLeadSourceUpsert</inputReference>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SkipAutomation</targetReference>
+        </connector>
+        <object>FactoryOrder__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>peLeadSourceUpsert</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>LeadSourceUpsert__e</objectType>
+    </variables>
+</Flow>

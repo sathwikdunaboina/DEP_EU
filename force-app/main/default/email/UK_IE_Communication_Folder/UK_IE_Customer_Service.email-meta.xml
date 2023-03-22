@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>UK/IE Customer Service</name>
+    <style>none</style>
+    <subject>Thanks for contacting support!</subject>
+    <textOnly>Hello Customer,
+
+Thank you for contacting our Customer Service Team at Volvo Financial Services.
+Your case number is: {!Case.CaseNumber} : {!Case.Subject}
+We will aim to respond to your enquiry within 48 working hours, if the query is urgent please do not hesitate to contact us by telephone on +44 (0)1926 401203.
+
+Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)
+
+Adm.vfs.uk@vfsco.com email address will be out of service 06/12/2022.
+It will be replaced with the following
+
+Vfs.customerservice.uk@volvo.com
+Rtfs.customerservice.uk@renault-trucks.com
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

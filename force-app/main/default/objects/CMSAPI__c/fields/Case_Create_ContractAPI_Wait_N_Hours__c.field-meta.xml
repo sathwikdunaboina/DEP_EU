@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Create_ContractAPI_Wait_N_Hours__c</fullName>
+    <defaultValue>24</defaultValue>
+    <description>When a new Case is created, system will call the CMS Contract List API to fetch the contracts. When another Case is created immediately for the same account, its not necessary to Call the API again, as the contracts are already present in Salesforce. This field value in hours denotes the time after which the system will start calling the API again on Case creation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When a new Case is created, system will call the Contract List API. When another Case is created immediately for the same account, its not necessary to Call the API again.  This value denotes the time (hours) to call the API again on case creation.</inlineHelpText>
+    <label>Case Create - ContractAPI - Wait N Hours</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

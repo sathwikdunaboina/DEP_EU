@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>TerritoryManagerPoland</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing Rule for Polish Territory Manager records</description>
+        <label>TerritoryManagerPoland</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>VFSPoland</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Poland</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Remaniement Apply</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Bonjour,
+
+Je reviens vers vous concernant votre demande,
+
+Notre département crédit a donné une suite favorable au remaniement de votre contrat.
+
+Nous vous prions de bien vouloir trouver ci-joint l’avenant correspondant.
+
+Nous vous remercions de bien vouloir en prendre connaissance et si vous en acceptez les termes, nous vous invitons à nous retourner :
+
+Cet avenant paraphé et signé par une personne dûment habilitée en deux exemplaires originaux
+Une copie de la pièce d’identité du signataire devant figuré au KBIS de la société (à défaut nous joindre également les pouvoirs et pièce d’identité du gérant/président)
+
+
+Conformément aux tarifs et frais de gestion en vigueur, ce remaniement vous sera facturé 275€ HT.
+
+Ces documents doivent nous être adressés par courrier à l’adresse indiquée ci-dessous s’il vous plait :
+VFS Finance France
+Service Après-vente
+97 Allée Alexandre Borodine
+Bâtiment Sequoia 1
+C70800
+69794 ST PRIEST Cedex
+
+Dès réception des originaux par voie postale, nous serons en mesure d’appliquer les modifications sur vos contrats.
+
+Vous en souhaitant une bonne réception,
+
+Nous restons à votre disposition pour toute information complémentaire.
+
+
+Cordialement,
+_____________________________________________
+{!User.Name}
+Gestion des Services
+
+Volvo Financial Services
+97 allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+Mail : vfs_services@vfsco.com
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

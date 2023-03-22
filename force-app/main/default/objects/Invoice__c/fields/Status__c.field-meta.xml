@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <description>o Raised - no invoice clearance record and not due date yet
+o Partially cleared - invoice payments received but not completed and not due date
+o Paid - fully paid (regardless of due date)
+o Overdue - no full payment and due date past
+o Overpaid - amount to be refunded</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Raised - no invoice clearance record and not due date yet
+Partially cleared - invoice payments received but not completed and not due date
+Paid - fully paid (regardless of due date)
+Overdue - no full payment and due date past
+Overpaid - To be refunded</inlineHelpText>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>RAISED</fullName>
+                <default>false</default>
+                <label>RAISED</label>
+            </value>
+            <value>
+                <fullName>PARTIALLY_CLEARED</fullName>
+                <default>false</default>
+                <label>PARTIALLY_CLEARED</label>
+            </value>
+            <value>
+                <fullName>PAID</fullName>
+                <default>false</default>
+                <label>PAID</label>
+            </value>
+            <value>
+                <fullName>OVERDUE</fullName>
+                <default>false</default>
+                <label>OVERDUE</label>
+            </value>
+            <value>
+                <fullName>OVERPAID</fullName>
+                <default>false</default>
+                <label>OVERPAID</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

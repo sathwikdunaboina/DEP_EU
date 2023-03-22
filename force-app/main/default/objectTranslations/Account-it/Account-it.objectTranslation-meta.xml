@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cliente</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cliente</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <recordTypes>
+        <description><!-- Record type for Customer Account Data --></description>
+        <label><!-- Customer Account --></label>
+        <name>Customer_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Dealer Account Data --></description>
+        <label><!-- Dealer Account --></label>
+        <name>Dealer_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Customer Account Data --></description>
+        <label><!-- Customer --></label>
+        <name>GCAccountCustomer</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Dealer Account Data --></description>
+        <label><!-- Dealer --></label>
+        <name>GCAccountDealer</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot edit a customer once its integrated with CMS. Any changes has to be done in CMS, and it will reflect the next day. --></errorMessage>
+        <name>Cannot_Edit_Integrated_Customer_Records</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The customerId field is used for integration. So, once filled, it cannot be edited. --></errorMessage>
+        <name>Cannot_change_CustomerId</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

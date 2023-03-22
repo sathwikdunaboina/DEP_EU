@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_Mandatory_on_Closure</fullName>
+    <active>true</active>
+    <description>Case type is mandatory when closing a case.</description>
+    <errorConditionFormula>&apos;Closed&apos; == text(Status) &amp;&amp; isBlank(text(Type)) &amp;&amp;  text(Status_Reason__c) != &apos;Auto Closed&apos;</errorConditionFormula>
+    <errorDisplayField>Type</errorDisplayField>
+    <errorMessage>Case type is mandatory when closing a case.</errorMessage>
+</ValidationRule>

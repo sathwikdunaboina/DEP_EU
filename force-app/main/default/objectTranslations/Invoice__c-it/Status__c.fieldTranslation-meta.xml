@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Raised - no invoice clearance record and not due date yet
+Partially cleared - invoice payments received but not completed and not due date
+Paid - fully paid (regardless of due date)
+Overdue - no full payment and due date past
+Overpaid - To be refunded --></help>
+    <label>Stato</label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>OVERDUE</masterLabel>
+        <translation><!-- OVERDUE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OVERPAID</masterLabel>
+        <translation><!-- OVERPAID --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PAID</masterLabel>
+        <translation><!-- PAID --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PARTIALLY_CLEARED</masterLabel>
+        <translation><!-- PARTIALLY_CLEARED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RAISED</masterLabel>
+        <translation><!-- RAISED --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is case auto response Email template.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Italy - Case Autoreponse Italian</name>
+    <style>none</style>
+    <subject>Risposta automatica: grazie per aver contattato l&apos;assistenza!</subject>
+    <textOnly>Buongiorno {!Contact.FirstName}
+
+La ringraziamo per averci contatto.
+Il ticket numero : {!Case.CaseNumber} : {!Case.Subject} è stato creato e un referente del Servizio Clienti di VFS risponderà alla Sua richiesta.
+
+Se invece avesse bisogno di assistenza immediata, Le  chiediamo di contattare direttamente:
+Monica Achenza
+Customer Service Representative
+VFS Servizi Finanziari S.p.A
+o rispondi a questa mail al seguente indirizzo mail id  :clienti@vfsco.com
+www.vfsco.it
+
+Cordiali saluti,
+
+VFS Servizi Finanziari Spa
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <name>Mark_Case_as_Closed</name>
+        <label>Mark Case as Closed</label>
+        <locationX>50</locationX>
+        <locationY>518</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case_Details.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case_Details.Status_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case_Details.IsClosedOnCreate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>We doesn&apos;t have split function. So we check along with comma to make the logic is correct.</description>
+        <name>Check_From_Address</name>
+        <label>Check From Address</label>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>AutoClose_From_Address</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>VerifyEmailIsConfigured</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_Case_as_Closed</targetReference>
+            </connector>
+            <label>AutoClose From Address</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>EmailsWithoutSpace</name>
+        <dataType>String</dataType>
+        <expression> SUBSTITUTE({!Get_AutoClose_Settings.From_Email_Address__c}, &quot; &quot;, &quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <description>Because salesforce doesnt have split function, this logic does a detailed check to avoid errors of contains function. eg: abcd@gmail.com contains bcd@gmail.com. So we cant use contains function.</description>
+        <name>VerifyEmailIsConfigured</name>
+        <dataType>Boolean</dataType>
+        <expression>{!Get_Case_Details.SuppliedEmail} != null 
+&amp;&amp; {!EmailsWithoutSpace} != null 
+&amp;&amp;(BEGINS ( {!EmailsWithoutSpace} , {!Get_Case_Details.SuppliedEmail}) 
+|| CONTAINS (    {!EmailsWithoutSpace} , &quot;,&quot; &amp; {!Get_Case_Details.SuppliedEmail} ))</expression>
+    </formulas>
+    <interviewLabel>Case Auto Closure {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case Auto Closure</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_AutoClose_Settings</name>
+        <label>Get AutoClose Settings</label>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_From_Address</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Case_Details.Country__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case_Auto_Close_Cofig__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Case_Details</name>
+        <label>Get Case Details</label>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_AutoClose_Settings</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IN_CaseId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>50</locationX>
+        <locationY>638</locationY>
+        <inputReference>Get_Case_Details</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Case_Details</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>IN_CaseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

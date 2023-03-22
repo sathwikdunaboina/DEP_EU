@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR- Relance Relocation</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Monsieur ,
+
+Nous faisons suite à votre demande de transfert de votre/vos contrat(s) que vous nous avez transmise en date du  ../../…..
+
+
+Afin de la soumettre  à notre service en charge des études, nous vous avons informés de la nécessité d’obtenir des informations, documents complémentaires. A ce jour et sauf erreur de notre part, nous ne les avons pas reçus et ne sommes donc pas en mesure de vous apporter de réponse.
+
+-  -  -
+Sans réponse de votre part sous un délai de 10 jours, nous considérerons que votre demande de transfert est caduque et nous la clôturerons.
+
+Nous restons bien évidemment à votre disposition pour tout renseignement complémentaire.
+
+Cordialement,
+
+_____________________________________________
+{!User.Name}
+Gestion des Services
+
+Volvo Financial Services
+97 allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+Mail : vfs_services@vfsco.com
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

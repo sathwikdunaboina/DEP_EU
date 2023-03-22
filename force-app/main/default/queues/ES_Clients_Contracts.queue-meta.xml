@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>ES-Clientes-Contratos</name>
+    <queueMembers>
+        <roles>
+            <role>ES_Operations_Manager</role>
+            <role>ES_Service_Representative_Customer_Services</role>
+        </roles>
+    </queueMembers>
+    <queueRoutingConfig>Default_Config</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

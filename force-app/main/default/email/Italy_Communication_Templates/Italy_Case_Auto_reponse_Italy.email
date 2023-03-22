@@ -1,0 +1,26 @@
+<style>
+div {
+font-family:calibri;
+font-size:medium;
+}
+</style>
+
+<div>
+Buongiorno {!Contact.FirstName}
+
+<p >La ringraziamo per averci contatto. <br>
+Il ticket numero :<b><u> {!Case.CaseNumber} : {!Case.Subject}</u></b>  è stato creato e <b>un referente del Servizio Clienti di VFS risponderà alla Sua richiesta.</b><br></p>
+
+<p><b>
+Per assistenza immediata, potete contattare il numero 035-889111
+</b></p> <br>
+
+
+
+<p>Cordiali saluti,</p>
+<p><b>VFS Servizi Finanziari Spa</b></p>
+
+<a href="
+www.volvofinancialservices.com">
+www.volvofinancialservices.com</a></b></p></div>
+<small>ref: {!Case.Thread_Id}</small>

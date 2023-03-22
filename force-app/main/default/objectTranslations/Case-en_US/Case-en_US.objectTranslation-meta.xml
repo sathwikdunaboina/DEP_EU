@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <recordTypes>
+        <label><!-- All Case --></label>
+        <name>All_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Tech Tool --></label>
+        <name>Tech_Tool</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Cannot create cases for this country. --></errorMessage>
+        <name>Case_Country_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot reassign to a queue from a different country. --></errorMessage>
+        <name>Case_Reassign_Country_Restriction_Queue</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot reassign case to user from a different country. --></errorMessage>
+        <name>Case_Reassign_Country_Restriction_User</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid type. --></errorMessage>
+        <name>Invalid_Case_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill parent case when status is duplicate --></errorMessage>
+        <name>Mandatory_parent_if_casetype_Duplicate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case type is mandatory when closing a case. --></errorMessage>
+        <name>SubType_Mandatory_on_Closure</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case type is mandatory when closing a case. --></errorMessage>
+        <name>Type_Mandatory_on_Closure</name>
+    </validationRules>
+</CustomObjectTranslation>

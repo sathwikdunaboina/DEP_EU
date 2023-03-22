@@ -1,0 +1,33 @@
+<apex:component access="global" controller="NewCommunityUserController" >
+    <apex:attribute name="recipientUser" assignTo="{!newUserId}" type="String" description="New Community User"  />
+    <apex:outputText value="{!$Label.Portal_Welcome_Hello}"/> {!newUserName},<br/>
+    <br/>
+    <apex:outputText value="{!$Label.WelcomeTest}"/>
+    <a href="{!$Network.NetworkUrlForUserEmails}"><apex:outputText value="{!$Label.Click_Here}"/></a><br />
+    <p>
+        <apex:outputText value="{!$Label.Portal_Welcome_Body2}"/><br/>
+        <ul style="list-style-type:disc;">
+            <li><b> <apex:outputText value="{!$Label.User_Name}"/>:</b> {!newUserUsername}</li>
+    	</ul>
+</p>
+
+<p>
+    <apex:outputText value="{!$Label.Portal_Welcome_Body3}"/>
+    <ul style="list-style-type:disc;">
+        <li><b> <apex:outputText value="{!$Label.Phone}"/>:</b> {!newUserPhone}</li>
+        <li><b> <apex:outputText value="{!$Label.Email}"/>:</b> {!newUserEmail}</li>
+	</ul>
+</p>
+
+<apex:outputText value="{!$Label.Thank_You}"/>,<br/>
+<apex:outputText value="{!$Label.Volvo_Financial_Services}"/><br/>
+<br/>
+
+
+
+
+
+
+
+
+</apex:component>

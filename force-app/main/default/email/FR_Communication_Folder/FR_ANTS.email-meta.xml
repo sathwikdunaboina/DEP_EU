@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - ANTS</name>
+    <style>none</style>
+    <subject>{!&apos;RE:&apos; + BLANKVALUE(EmailMessage.Subject, Case.Subject ) }</subject>
+    <textOnly>Bonjour,
+
+Nous vous prions de bien vouloir trouver ci-dessous la procédure pour le changement de titulaire de votre carte grise accompagnée du code de cession :
+
+
+Véhicule immatriculé : &lt;&lt;CZ-475-ER (à modifier)&gt;&gt;
+
+· Code déclaration de cession : &lt;&lt;UYL1GPCBQD (à modifier)&gt;&gt;
+·         Certificat de Situation Administrative (en pièce jointe)
+
+
+Afin de finaliser la procédure et le paiement du changement de locataire, vous devez dans un premier temps vous connecter au site dont le lien est indiqué ci-dessous :
+
+https://ants.gouv.fr/monespace/s-inscrire
+
+Puis dans un second temps vous devrez vous créer un compte pour une authentification (en tant que particulier).
+Sans cette création de compte vous ne pourrez accéder à la démarche en cours et la finaliser.
+Et/ ou il faudra également créer un compte avec FranceConnect pour générer une authentification de votre identité.
+
+
+
+Pour finaliser votre demande cliquer sur « J’achète ou je reçois un véhicule d’occasion »
+
+
+
+Puis finaliser votre dossier en cliquant sur « je fais la démarche Pour Moi-Même » et en rentrant votre code de cession fourni dans le mail ci –dessus sur la page « Demande de changement de titulaire »
+
+
+
+Puis renseigner les éléments demandés pour la finalisation de votre dossier.
+
+N’hésitez pas à revenir vers moi pour toutes questions concernant le code de cession en cas de disfonctionnement du site ANTS merci de contacter le 3400.
+
+Cordialement,
+__________________
+{!User.Name}
+Département Gestion des Services
+
+Volvo Financial Services
+97 Allée Alexandre Borodine
+Bâtiment Sequoia 1
+CS70800
+69794 ST PRIEST Cedex
+Tél: 04 72 80 58 92
+Email: vfs_services@vfsco.com
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
