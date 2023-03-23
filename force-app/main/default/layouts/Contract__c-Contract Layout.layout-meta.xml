@@ -30,10 +30,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Salesprice_incl_TAX_minus_down_payment__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Financed_Amount__c</field>
             </layoutItems>
             <layoutItems>
@@ -72,7 +68,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Contract_Status__c</field>
+                <field>Legal_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -93,10 +89,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Dealer__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Dealer_City__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -179,6 +171,14 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Balance__c</fields>
+        <fields>Due_Date__c</fields>
+        <relatedList>Payment_Plan__c.Contract__c</relatedList>
+        <sortField>Due_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>

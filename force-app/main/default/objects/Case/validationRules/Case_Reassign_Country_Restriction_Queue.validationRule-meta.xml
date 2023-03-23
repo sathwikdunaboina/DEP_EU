@@ -20,17 +20,7 @@ UK can reassign to Ireland, but not to Italy.</description>
                     $User.Country
                 ),
                 Owner:Queue.Name
-            )|| 
-CONTAINS (
-                /* fetch allowed queues */
-                VLOOKUP(
-                    $ObjectType.CountryGroup__c.Fields.Queues_Allowed_Ext__c,
-                    $ObjectType.CountryGroup__c.Fields.Name,
-                    $User.Country
-                ),
-                Owner:Queue.Name
             )
-			
         )
     )
 )</errorConditionFormula>

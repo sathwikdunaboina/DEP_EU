@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER</groupingColumn>
+        <groupingColumn>ALIAS</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -28,19 +28,10 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>CASE_NUMBER</field>
+        <field>SUBJECT</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <field>Case.Indicator__c</field>
-    </columns>
-    <columns>
-        <field>SUBJECT</field>
     </columns>
     <columns>
         <field>TYPE</field>
@@ -53,9 +44,6 @@
     </columns>
     <columns>
         <field>OPEN</field>
-    </columns>
-    <columns>
-        <field>STATUS</field>
     </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
@@ -72,21 +60,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>ext,waring,eot,billing,collections</value>
+            <value>ext</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Truslove,james,jayne</value>
+            <value>Truslove</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech,Jenny</value>
+            <value>Paul James</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>tech</value>
         </criteriaItems>
         <criteriaItems>
             <column>ALIAS</column>
@@ -109,58 +104,14 @@
             <operator>notContain</operator>
             <value>thay</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>service</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>helen</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Claire</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>lovepreet</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>XSM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>purchase order,PO</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ALIAS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>

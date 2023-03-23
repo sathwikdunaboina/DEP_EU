@@ -99,8 +99,8 @@ public class BulkLeadSearchControllerTest {
             Test.stopTest();
             //Assert
             
-            List<String> allAccounts = BulkLeadSearchController.fetchAccountsOfLeads ('Bulk', false);
-            List<String> myAccounts = BulkLeadSearchController.fetchAccountsOfLeads ('Bulk', true);
+            List<String> allAccounts = BulkLeadSearchController.fetchAccountsOfLeads ('Bulk',  false);
+            List<String> myAccounts = BulkLeadSearchController.fetchAccountsOfLeads ('Bulk',  true);
 
             system.assert(allAccounts != null && allAccounts.size() > 0);
             system.assert(myAccounts == null || myAccounts.size() == 0);

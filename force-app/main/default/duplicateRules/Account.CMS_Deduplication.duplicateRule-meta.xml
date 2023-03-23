@@ -7,9 +7,9 @@
     <duplicateRuleFilter>
         <booleanFilter xsi:nil="true"/>
         <duplicateRuleFilterItems>
-            <field>Golden_Copy_User__c</field>
-            <operation>equals</operation>
-            <value>false</value>
+            <field>CountryCode</field>
+            <operation>contains</operation>
+            <value>BE, GB, NL, IT, FI, DK, DE</value>
             <sortOrder>1</sortOrder>
             <table>User</table>
         </duplicateRuleFilterItems>
@@ -19,7 +19,7 @@
         <matchingRule>CMS_Deduplication</matchingRule>
         <objectMapping xsi:nil="true"/>
     </duplicateRuleMatchRules>
-    <isActive>true</isActive>
+    <isActive>false</isActive>
     <masterLabel>CMS Deduplication</masterLabel>
     <operationsOnInsert>Report</operationsOnInsert>
     <operationsOnUpdate>Report</operationsOnUpdate>

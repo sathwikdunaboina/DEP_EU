@@ -116,14 +116,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>LAST_N_DAYS:2</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
+            <value>LAST_N_DAYS:7</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -138,7 +131,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Processing Queue &gt; 48 hours</name>
+    <name>Processing Queue &gt;7 Days</name>
     <params>
         <name>units</name>
         <value>d</value>

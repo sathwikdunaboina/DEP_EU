@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <recordTypes>
-        <description>type d&apos;enregistrement pour les données du compte client</description>
-        <label>compte client</label>
+        <description>Type d&apos;enregistrement pour les données de compte client</description>
+        <label>Compte Client</label>
         <name>Customer_Account</name>
     </recordTypes>
     <recordTypes>
-        <description>type d&apos;enregistrement pour les données du compte vendeur / concessionnaire</description>
-        <label>compte vendeur / concessionnaire ?</label>
+        <description>Type d&apos;enregistrement pour les données de compte concessionaire</description>
+        <label>Compte Concessionaire</label>
         <name>Dealer_Account</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Customer Account Data --></description>
-        <label><!-- Customer --></label>
-        <name>GCAccountCustomer</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Dealer Account Data --></description>
-        <label><!-- Dealer --></label>
-        <name>GCAccountDealer</name>
     </recordTypes>
     <validationRules>
         <errorMessage><!-- Cannot edit a customer once its integrated with CMS. Any changes has to be done in CMS, and it will reflect the next day. --></errorMessage>
@@ -33,11 +23,11 @@
         <name>GoogleMaps</name>
     </webLinks>
     <webLinks>
-        <label>Actualités de ggogle</label>
+        <label><!-- GoogleNews --></label>
         <name>GoogleNews</name>
     </webLinks>
     <webLinks>
-        <label>recherche google</label>
+        <label><!-- GoogleSearch --></label>
         <name>GoogleSearch</name>
     </webLinks>
 </CustomObjectTranslation>

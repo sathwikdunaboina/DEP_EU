@@ -14,7 +14,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>GetLeadRecordType</targetReference>
+            <targetReference>AssignRemainingLeadValues</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -30,14 +30,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>GetLeadRecordType</targetReference>
+            <targetReference>AssignRemainingLeadValues</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>AssignErrorLogValues</name>
         <label>Assign Error Log Values</label>
         <locationX>578</locationX>
-        <locationY>1490</locationY>
+        <locationY>1370</locationY>
         <assignmentItems>
             <assignToReference>ErrorLogEvent.AssociatedRecord__c</assignToReference>
             <operator>Assign</operator>
@@ -75,7 +75,7 @@
         <name>AssignLeadAssignmentPlatformEventValues</name>
         <label>Assign Lead Assignment Platform Event Values</label>
         <locationX>182</locationX>
-        <locationY>1250</locationY>
+        <locationY>1130</locationY>
         <assignmentItems>
             <assignToReference>peLeadAssignment.LeadId__c</assignToReference>
             <operator>Assign</operator>
@@ -99,9 +99,9 @@
         <name>AssignRemainingLeadValues</name>
         <label>Assign Remaining Lead Values</label>
         <locationX>182</locationX>
-        <locationY>1010</locationY>
+        <locationY>890</locationY>
         <assignmentItems>
-            <assignToReference>recLead.GCBrand__c</assignToReference>
+            <assignToReference>recLead.Brand__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>GetLeadSourceRecord.Brand__c</elementReference>
@@ -119,6 +119,20 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>GetLeadSourceRecord.EndCustomerName__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recLead.CountryCode</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetLeadSourceRecord.Country__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recLead.End_Customer_Postal_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetLeadSourceRecord.EndCustomerPostalCode__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -153,28 +167,7 @@
             <assignToReference>recLead.Street</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>GetLeadSourceRecord.EndCustomerAddress__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>recLead.EndCustomerPostalCode__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>GetLeadSourceRecord.EndCustomerPostalCode__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>recLead.CountryCode</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>GetLeadSourceRecord.Country__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>recLead.RecordTypeId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>GetLeadRecordType.Id</elementReference>
+                <elementReference>GetLeadSourceRecord.EndCustomerAddress1__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -243,6 +236,13 @@
             <name>Skip</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
+                <leftValueReference>$Permission.GoldenCopy</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
                 <leftValueReference>$Setup.VFSAdminCustomSettings__c.SkipAutomation__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
@@ -253,9 +253,8 @@
         </rules>
     </decisions>
     <description>Platform-Event Triggered Flows that is subscribed to the Lead Source Upsert Platform Event. Creates a Lead based on Factory Order information
-v1: Automatically Store All Fields on Factory Order Get Records
-v2: Removed Golden Copy Permission from Skip Automation conditions to allow for Integration User
-v3: Add Golden Copy Record Type to Lead Assignment</description>
+v2: Automatically Store All Fields on Factory Order Get Records</description>
+    <environments>Default</environments>
     <formulas>
         <name>CurrentStageTrimmed</name>
         <dataType>String</dataType>
@@ -291,14 +290,14 @@ v3: Add Golden Copy Record Type to Lead Assignment</description>
         <name>CreateErrorLogPlatformEvent</name>
         <label>Create Error Log Platform Event</label>
         <locationX>578</locationX>
-        <locationY>1610</locationY>
+        <locationY>1490</locationY>
         <inputReference>ErrorLogEvent</inputReference>
     </recordCreates>
     <recordCreates>
         <name>CreateLead</name>
         <label>Create Lead</label>
         <locationX>182</locationX>
-        <locationY>1130</locationY>
+        <locationY>1010</locationY>
         <connector>
             <targetReference>AssignLeadAssignmentPlatformEventValues</targetReference>
         </connector>
@@ -313,34 +312,12 @@ v3: Add Golden Copy Record Type to Lead Assignment</description>
         <name>FireLeadAssignmentPlatformEvent</name>
         <label>Fire Lead Assignment Platform Event</label>
         <locationX>182</locationX>
-        <locationY>1370</locationY>
+        <locationY>1250</locationY>
         <faultConnector>
             <targetReference>AssignErrorLogValues</targetReference>
         </faultConnector>
         <inputReference>peLeadAssignment</inputReference>
     </recordCreates>
-    <recordLookups>
-        <description>Element that retrieves the golden Lead Record Type so that the users will be able to view the Leads. Sharing rules and Lightning Page Assignments are set up based on Record Type.</description>
-        <name>GetLeadRecordType</name>
-        <label>Get Lead Record Type</label>
-        <locationX>182</locationX>
-        <locationY>890</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>AssignRemainingLeadValues</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Lead</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordLookups>
         <description>Based on the Lead Source Record Id that is set in the Lead Source Upsert Platform Event, the corresponding Lead Source record is retrieved</description>
         <name>GetLeadSourceRecord</name>

@@ -4,16 +4,7 @@
     <actionOnUpdate>Allow</actionOnUpdate>
     <alertText>You are creating a duplicate record. We recommend you use an existing record instead.</alertText>
     <description>Duplicate Rule for Accounts using the Standard Account Matching Rule</description>
-    <duplicateRuleFilter>
-        <booleanFilter xsi:nil="true"/>
-        <duplicateRuleFilterItems>
-            <field>Golden_Copy_User__c</field>
-            <operation>equals</operation>
-            <value>false</value>
-            <sortOrder>1</sortOrder>
-            <table>User</table>
-        </duplicateRuleFilterItems>
-    </duplicateRuleFilter>
+    <duplicateRuleFilter xsi:nil="true"/>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Account</matchRuleSObjectType>
         <matchingRule>VFS_CMS_Account_Matching</matchingRule>

@@ -3,15 +3,16 @@
     <fullName>Unallocated_Leads_Lead</fullName>
     <columns>LEAD.COMPANY</columns>
     <columns>FULL_NAME</columns>
-    <columns>Sales_Person_Name__c</columns>
-    <columns>Product_Name__c</columns>
-    <columns>Axle_Config__c</columns>
-    <columns>Chassis_Type__c</columns>
-    <columns>Dealer_Name__c</columns>
-    <columns>Vehicle_Status__c</columns>
     <columns>LEAD.STATUS</columns>
+    <columns>LEAD.COUNTRY_CODE</columns>
     <columns>Owner_Name__c</columns>
+    <columns>LEAD.CREATED_DATE</columns>
     <filterScope>Queue</filterScope>
+    <filters>
+        <field>LEAD.CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
     <label>Unallocated Leads</label>
     <queue>Unallocated_Leads</queue>
     <sharedTo>

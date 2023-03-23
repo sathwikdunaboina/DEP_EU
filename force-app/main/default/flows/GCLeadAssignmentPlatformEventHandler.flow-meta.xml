@@ -131,6 +131,13 @@
             <name>Skip</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
+                <leftValueReference>$Permission.GoldenCopy</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
                 <leftValueReference>$Setup.VFSAdminCustomSettings__c.SkipAutomation__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
@@ -141,11 +148,9 @@
         </rules>
     </decisions>
     <description>Platform-Event Triggered Flow that listens for the creation of the Lead Assignment Platform event. It will then assign the correct owner to the Lead.
-v0.1: Included Lead Id in the Assignment elements to prevent errors in the Lead Update element
-v1: Corrected error in Get Dealer Account element
-v2: Removed Golden Copy Permission from Skip Automation conditions to allow for Integration User
-v3: Updated Customer ID to Golden Copy field
-v4: Included null condition in Get Dealer Account lookup</description>
+v2: Included Lead Id in the Assignment elements to prevent errors in the Lead Update element
+v3: Corrected error in Get Dealer Account element</description>
+    <environments>Default</environments>
     <formulas>
         <name>CurrentStageTrimmed</name>
         <dataType>String</dataType>
@@ -199,17 +204,10 @@ The second filter is that the Account should have a Salesforce User as a Territo
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>GCCustomerID__c</field>
+            <field>CustomerID__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>$Record.DealerId__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>GCCustomerID__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>

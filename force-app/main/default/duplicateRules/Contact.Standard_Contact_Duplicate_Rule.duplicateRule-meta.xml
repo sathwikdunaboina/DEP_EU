@@ -4,16 +4,7 @@
     <actionOnUpdate>Allow</actionOnUpdate>
     <alertText>You&apos;re creating a duplicate record. We recommend you use an existing record instead.</alertText>
     <description>Duplicate Rule for Contacts using the Standard Contact Matching Rule</description>
-    <duplicateRuleFilter>
-        <booleanFilter xsi:nil="true"/>
-        <duplicateRuleFilterItems>
-            <field>Golden_Copy_User__c</field>
-            <operation>equals</operation>
-            <value>false</value>
-            <sortOrder>1</sortOrder>
-            <table>User</table>
-        </duplicateRuleFilterItems>
-    </duplicateRuleFilter>
+    <duplicateRuleFilter xsi:nil="true"/>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Contact</matchRuleSObjectType>
         <matchingRule>Standard_Contact_Match_Rule_v1_1</matchingRule>
@@ -24,6 +15,22 @@
         <matchingRule>Standard_Lead_Match_Rule_v1_0</matchingRule>
         <objectMapping>
             <inputObject>Contact</inputObject>
+            <mappingFields>
+                <inputField>MailingCity</inputField>
+                <outputField>City</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>AccountId</inputField>
+                <outputField>Company</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>Email</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>FirstName</inputField>
+                <outputField>FirstName</outputField>
+            </mappingFields>
             <mappingFields>
                 <inputField>LastName</inputField>
                 <outputField>LastName</outputField>
@@ -43,22 +50,6 @@
             <mappingFields>
                 <inputField>MailingPostalCode</inputField>
                 <outputField>PostalCode</outputField>
-            </mappingFields>
-            <mappingFields>
-                <inputField>MailingCity</inputField>
-                <outputField>City</outputField>
-            </mappingFields>
-            <mappingFields>
-                <inputField>FirstName</inputField>
-                <outputField>FirstName</outputField>
-            </mappingFields>
-            <mappingFields>
-                <inputField>AccountId</inputField>
-                <outputField>Company</outputField>
-            </mappingFields>
-            <mappingFields>
-                <inputField>Email</inputField>
-                <outputField>Email</outputField>
             </mappingFields>
             <outputObject>Lead</outputObject>
         </objectMapping>

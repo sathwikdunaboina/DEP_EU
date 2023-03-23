@@ -29,20 +29,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Austria_User</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Austria User</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country</field>
-            <operation>equals</operation>
-            <value>Austria</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>BE_NL_User</fullName>
         <accessLevel>Read</accessLevel>
         <label>BE-NL_User</label>
@@ -141,20 +127,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Germany_User</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Germany User</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Germany</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country</field>
-            <operation>equals</operation>
-            <value>Germany</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Italy_Users</fullName>
         <accessLevel>Read</accessLevel>
         <label>Italy Users</label>
@@ -183,35 +155,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Spain_Users</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Spain Users</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Spain</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country</field>
-            <operation>equals</operation>
-            <value>Spain</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>UserPoland</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>Sharing Rule for Polish Users</description>
-        <label>UserPoland</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>VFSPoland</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country</field>
-            <operation>equals</operation>
-            <value>Poland</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Users_UK_IE</fullName>
         <accessLevel>Read</accessLevel>
         <label>Users UK/IE</label>
@@ -225,4 +168,15 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>PL_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PL_User</label>
+        <sharedTo>
+            <group>PL_Training</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>PL_Training</group>
+        </sharedFrom>
+    </sharingOwnerRules>
 </SharingRules>

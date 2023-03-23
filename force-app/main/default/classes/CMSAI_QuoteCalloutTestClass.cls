@@ -2,7 +2,7 @@
 private class CMSAI_QuoteCalloutTestClass {
      @isTest(SeeAllData=true) static void testCallout() {
         // Set mock callout class 
-        Test.setMock(HttpCalloutMock.class, new CMSAPI_QuoteCalloutMock());
+        //Test.setMock(HttpCalloutMock.class, new CMSAPI_QuoteCalloutMock());
         
         // Call method to test.
         // This causes a fake response to be sent

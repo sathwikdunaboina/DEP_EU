@@ -7,7 +7,32 @@
     <enableCoepHeader>false</enableCoepHeader>
     <enableCoopHeader>false</enableCoopHeader>
     <enableRequireHttpsConnection>true</enableRequireHttpsConnection>
-    <networkAccess/>
+    <networkAccess>
+        <ipRanges>
+            <end>35.234.89.246</end>
+            <start>35.234.89.246</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.141.10.40</end>
+            <start>34.141.10.40</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.107.90.223</end>
+            <start>34.107.90.223</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.91.173.111</end>
+            <start>34.91.173.111</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.91.55.187</end>
+            <start>34.91.55.187</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.90.11.138</end>
+            <start>34.90.11.138</start>
+        </ipRanges>
+    </networkAccess>
     <passwordPolicies>
         <complexity>SpecialCharacters</complexity>
         <expiration>NinetyDays</expiration>
@@ -52,12 +77,12 @@
         <forceRelogin>true</forceRelogin>
         <hasRetainedLoginHints>false</hasRetainedLoginHints>
         <hasUserSwitching>true</hasUserSwitching>
-        <identityConfirmationOnEmailChange>true</identityConfirmationOnEmailChange>
+        <identityConfirmationOnEmailChange>false</identityConfirmationOnEmailChange>
         <identityConfirmationOnTwoFactorRegistrationEnabled>true</identityConfirmationOnTwoFactorRegistrationEnabled>
         <lockSessionsToDomain>true</lockSessionsToDomain>
         <lockSessionsToIp>false</lockSessionsToIp>
         <lockerServiceCSP>false</lockerServiceCSP>
-        <lockerServiceNext>true</lockerServiceNext>
+        <lockerServiceNext>false</lockerServiceNext>
         <lockerServiceNextControl>false</lockerServiceNextControl>
         <redirectBlockModeEnabled>false</redirectBlockModeEnabled>
         <redirectionWarning>true</redirectionWarning>
@@ -71,7 +96,7 @@
         <enableCaseInsensitiveFederationID>false</enableCaseInsensitiveFederationID>
         <enableMultipleSamlConfigs>true</enableMultipleSamlConfigs>
         <enableSamlJitProvisioning>false</enableSamlJitProvisioning>
-        <enableSamlLogin>true</enableSamlLogin>
+        <enableSamlLogin>false</enableSamlLogin>
         <isLoginWithSalesforceCredentialsDisabled>false</isLoginWithSalesforceCredentialsDisabled>
     </singleSignOnSettings>
 </SecuritySettings>

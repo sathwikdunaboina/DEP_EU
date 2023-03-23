@@ -3,7 +3,7 @@ global  class CMSAPI_QuoteCalloutMock implements HttpCalloutMock  {
      global HTTPResponse respond(HTTPRequest req) {
         // Optionally, only send a mock response for a specific endpoint
         // and method.
-        System.assertEquals('callout:VFS_Global_APIs1/vfsconnect/quotation/v1.0/draft', req.getEndpoint());
+        System.assertEquals('callout:VFS_Global_APIs', req.getEndpoint());
         System.assertEquals('POST', req.getMethod());
         
         // Create a fake response

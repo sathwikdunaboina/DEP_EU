@@ -4,9 +4,9 @@
     <externalId>false</externalId>
     <label>Contract Amendments In Progress</label>
     <summaryFilterItems>
-        <field>Contract__c.Contract_Status__c</field>
+        <field>Contract__c.Legal_Status__c</field>
         <operation>equals</operation>
-        <value>ACTIVE-INCHANGE</value>
+        <value>AG_AMEND_PROGRESS,AG_PENDING_CANCELLATION,AG_PENDING_CLOSURE,AG_PROPOSAL_REVIEW_1,AG_PROPOSAL_REVIEW_2,Amendment in progress</value>
     </summaryFilterItems>
     <summaryForeignKey>Contract__c.Account__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>

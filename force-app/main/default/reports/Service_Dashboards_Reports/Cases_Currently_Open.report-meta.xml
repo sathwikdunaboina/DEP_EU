@@ -9,6 +9,9 @@
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
     <currency>GBP</currency>
     <filter>
         <criteriaItems>
@@ -31,11 +34,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STATUS</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
-        <field>CREATED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Cases Currently Open</name>

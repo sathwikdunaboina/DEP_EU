@@ -5,10 +5,9 @@
     <label>Unqualified Reason</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>true</trackHistory>
     <type>Picklist</type>
     <valueSet>
-        <controllingField>Status</controllingField>
+        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
@@ -27,17 +26,5 @@
                 <label>Other</label>
             </value>
         </valueSetDefinition>
-        <valueSettings>
-            <controllingFieldValue>Unqualified</controllingFieldValue>
-            <valueName>Incorrect country</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Unqualified</controllingFieldValue>
-            <valueName>Historic delivery</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Unqualified</controllingFieldValue>
-            <valueName>Other</valueName>
-        </valueSettings>
     </valueSet>
 </CustomField>

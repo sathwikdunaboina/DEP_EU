@@ -2,9 +2,6 @@
 * Created: Prabha
 * Data container. Contains methods to parse response into SF Standard objects.
 * 
-*                          Update
-* Date       Developer name Tag Description 
-* 14/7/2022  Lovely         T01 Commented legalStatus field as field is no longer in use
 * */
 public class CMSAPI_ContractDetail {
     
@@ -50,7 +47,7 @@ public class CMSAPI_ContractDetail {
             contract.CurrencyIsoCode = this.currencyCode; // Added by Sumit. For currency mapping.
         }
         contract.VIN_Number__c = this.VINNumber;
-        //contract.Legal_Status__c = this.legalStatus; // T01
+        contract.Legal_Status__c = this.legalStatus;
         contract.Start_Date__c = parse(this.startDate);
         contract.End_Date__c = parse(this.endDate);
         contract.Name = this.id; // Added by Rupal to populate the contract number to name field.
@@ -69,7 +66,7 @@ public class CMSAPI_ContractDetail {
     public String id; //Contract number
     public String type;//Type of Contract
     public String VINNumber;//VIN Number
-   // public String legalStatus;//Status of contract //T01
+    public String legalStatus;//Status of contract
     public String startDate;//Start date of contract
     public String endDate;//End date of contract
     public String term;//Duration of contract

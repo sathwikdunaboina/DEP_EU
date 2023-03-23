@@ -17,7 +17,7 @@
         <label>Do Nothing</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>Do_Nothing</actionName>
+        <actionName>DoNothing</actionName>
         <actionType>flow</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
     </actionCalls>
@@ -339,7 +339,7 @@ ISCHANGED({!myVariable_current.End_Customer_Phone__c})</expression>
         <object>Lead_Source_Changed__e</object>
     </recordCreates>
     <startElementReference>myDecision</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

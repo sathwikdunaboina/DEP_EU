@@ -5,7 +5,8 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>DisablePartnerPortalAccount</excludeButtons>
@@ -38,7 +39,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Territory_Manager__c</field>
+                <field>TerritoryManager__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Amount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>No_Of_Opportunities__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -171,6 +180,11 @@
             <sortOrder>7</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>RecordShareHierarchy</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>8</sortOrder>
@@ -228,12 +242,11 @@
         <relatedList>Account_Note__c.Account__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>CONTACT.FULL_NAME</fields>
-        <fields>ACCCONRELATION.IS_DIRECT</fields>
-        <fields>CONTACT.ACCOUNT_NAME</fields>
+        <fields>FULL_NAME</fields>
         <fields>CONTACT.TITLE</fields>
         <fields>CONTACT.EMAIL</fields>
-        <relatedList>RelatedAccountContactRelationList</relatedList>
+        <fields>CONTACT.PHONE1</fields>
+        <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -245,7 +258,7 @@
         <fields>Business_Area__c</fields>
         <fields>On_Balance_Sheet__c</fields>
         <fields>Regulated__c</fields>
-        <fields>Contract_Status__c</fields>
+        <fields>Legal_Status__c</fields>
         <relatedList>Contract__c.Account__c</relatedList>
         <sortField>Start_Date__c</sortField>
         <sortOrder>Desc</sortOrder>

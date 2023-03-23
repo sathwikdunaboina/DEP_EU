@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <help>Levé : aucun enregistrement d&apos;apurement de facture et pas encore de date d&apos;échéance
-Partiellement apuré : paiements de facture reçus mais non terminés et sans date d&apos;échéance
-Payé : entièrement payé (quelle que soit la date d&apos;échéance)
-En retard : aucun paiement intégral et date d&apos;échéance dépassée
-Surpayé : à être remboursé</help>
+    <help><!-- Raised - no invoice clearance record and not due date yet
+Partially cleared - invoice payments received but not completed and not due date
+Paid - fully paid (regardless of due date)
+Overdue - no full payment and due date past
+Overpaid - To be refunded --></help>
     <label>Statut</label>
     <name>Status__c</name>
     <picklistValues>

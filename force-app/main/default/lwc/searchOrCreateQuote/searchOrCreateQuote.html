@@ -1,0 +1,146 @@
+<template>
+    <lightning-quick-action-panel header="Search Quote">
+        <template if:true={opportunities.length}>
+            <div style="background-color:white;overflow-x:scroll;" class="slds-p-around_x-small">
+                <table class="slds-table  slds-table_bordered slds-table_col-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div title="Quote ID" class="text-align-center-css">
+                                    Quote ID
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Account Name" class="text-align-center-css">
+                                    Account Name
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="BusinessArea" class="text-align-center-css">
+                                    Business Area
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Factory Order Opprotunity" class="text-align-center-css">
+                                    Factory Order Opprotunity
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Dealer Name" class="text-align-center-css">
+                                    Dealer Name
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Qoute Amount" class="text-align-center-css">
+                                    Qoute Amount
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Quote Status" class="text-align-center-css">
+                                    Quote Status
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Creation Date" class="text-align-center-css">
+                                    Creation Date
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Action" class="text-align-center-css">
+                                    Action
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={opportunities} for:item="opp" for:index="rowIdx">
+                            <tr key={opp.Id} id={rowIdx}>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.quotename}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.accountName}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.businessArea}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.factoryOrder}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.dealerName}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.quoteAmmount}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.status}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        {opp.creationDate}
+                                    </div>
+                                </td>
+                                <td data-label="">
+                                    <div class="slds-truncate slds-cell-wrap">
+                                        <lightning-button-icon icon-name="utility:save" variant="brand"
+                                            alternative-text="Update" class="slds-m-left_xx-small" title="Update"
+                                            onclick={handleupdatedValue} data-id={opp.quotename}>
+                                        </lightning-button-icon>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+  
+                <!--footer class="slds-card__footer">
+                    <div style="text-align: center;">
+                        <lightning-button class="slds-align_absolute-center slds-var-m-around_x-small" variant="brand"
+                            label="Create Quote" onclick={closePopup}></lightning-button>
+                    </div>
+                </footer-->
+                
+            </div>
+        </template>
+        <div style="text-align: center;">
+            <template if:false={opportunities.length}>
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                      </svg>
+                    </span>
+                    <h2>No Quote Found
+                      
+                    </h2>
+                    <div class="slds-notify__close">
+                        <svg class="slds-button__icon" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </div>
+                  </div>
+                  
+            </template>
+            <lightning-button class="slds-align_absolute-center slds-var-m-around_x-small" variant="brand"
+            label="Create Quote" onclick={closePopup}></lightning-button>
+            
+        </div>
+    </lightning-quick-action-panel>
+  </template>

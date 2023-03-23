@@ -3,11 +3,7 @@
     <fullName>Country_Restrictions</fullName>
     <active>true</active>
     <description>Restricts Users from creating Contacts</description>
-    <errorConditionFormula>$Permission.GoldenCopy = false 
-&amp;&amp;
-$Permission.Allow_Lead_conversion = false
-&amp;&amp;
-AND (
+    <errorConditionFormula>AND (
 $Profile.Name != &apos;System Administrator&apos;,
 $Profile.Name != &apos;API Only&apos;,
 $User.Country != MailingCountry,

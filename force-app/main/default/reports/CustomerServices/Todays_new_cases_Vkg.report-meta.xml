@@ -49,6 +49,13 @@
     <description>To show all current open cases within the in-life team</description>
     <filter>
         <criteriaItems>
+            <column>OPEN</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -98,25 +105,11 @@
             <value>thay</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER</column>
+            <column>CREATED_DATEONLY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Operations</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>TYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>spam</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
+            <operator>equals</operator>
+            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -131,7 +124,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Today new cases</name>
+    <name>Todays new cases</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -147,6 +140,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_TODAY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

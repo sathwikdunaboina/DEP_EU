@@ -4,13 +4,13 @@ public with sharing class BulkLeadConvertControllerTest {
     @IsTest
     static void testLeadConvert_happy(){
         
-        /*insert new Lead_Assignment_Settings__c(Unallocated_Queue__c = 'Unallocated_Leads');
+        insert new Lead_Assignment_Settings__c(Unallocated_Queue__c = 'Unallocated_Leads');
         Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
         User u = new User(alias = 'standt', email='searchLeadsTest_Positive@testorg.com',
             			 emailencodingkey='UTF-8', firstname='assignLeadsTest_Positive', lastname='Testing', languagelocalekey='en_US',
             			 localesidkey='en_US', profileid = profileObj.Id,CountryCode = 'NL',
             			 timezonesidkey='America/Los_Angeles', username='assignLeadsTest_Positive@testorg.com');        
-        System.runAs(u){*/
+        System.runAs(u){
             
             Test.startTest();
             insertTestFactoryOrders();
@@ -22,19 +22,19 @@ public with sharing class BulkLeadConvertControllerTest {
             Boolean success = BulkLeadConvertController.convert(allLeads, null, null);
             
             system.assert(success);
-        //}
+        }
     }
     
     @IsTest
     static void testLeadConvert_ExistingAccount(){
         
-        /*insert new Lead_Assignment_Settings__c(Unallocated_Queue__c = 'Unallocated_Leads');
+        insert new Lead_Assignment_Settings__c(Unallocated_Queue__c = 'Unallocated_Leads');
         Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
         User u = new User(alias = 'standt', email='searchLeadsTest_Positive@testorg.com',
             			 emailencodingkey='UTF-8', firstname='assignLeadsTest_Positive', lastname='Testing', languagelocalekey='en_US',
             			 localesidkey='en_US', profileid = profileObj.Id,CountryCode = 'NL',
             			 timezonesidkey='America/Los_Angeles', username='assignLeadsTest_Positive@testorg.com');        
-        System.runAs(u){*/
+        System.runAs(u){
             
             Test.startTest();
             insertTestFactoryOrders();
@@ -48,7 +48,7 @@ public with sharing class BulkLeadConvertControllerTest {
             List<Lead> leadList = BulkLeadConvertController.getLeadList(allLeads);
             Boolean success = BulkLeadConvertController.convert(allLeads, accountId, contactId);
             system.assert(success);
-        //}
+        }
     }
     
     
@@ -74,8 +74,7 @@ public with sharing class BulkLeadConvertControllerTest {
                 End_Customer_Phone__c = '12345',
                 End_Customer_City__c = 'Utrecht',
                 Name = '09876543',
-                Main_Dealer_Name__c = 'Bulk X Transport',
-                OwnerId = UserInfo.getUserId()
+                Main_Dealer_Name__c = 'Bulk X Transport'
             );
             //Insert Factory Orders. This will create Leads
             Factory_Order__c fo2 = new Factory_Order__c (
@@ -89,8 +88,7 @@ public with sharing class BulkLeadConvertControllerTest {
                 End_Customer_Phone__c = '12345',
                 End_Customer_City__c = 'Utrecht',
                 Name = '098765432',
-                Main_Dealer_Name__c = 'Bulk X Transport',
-                OwnerId = UserInfo.getUserId()
+                Main_Dealer_Name__c = 'Bulk X Transport'
             );
             insert new List<Factory_Order__c> {fo1, fo2};
     }
@@ -113,4 +111,5 @@ public with sharing class BulkLeadConvertControllerTest {
         insert cont;
         return cont.Id;
     }
+
 }

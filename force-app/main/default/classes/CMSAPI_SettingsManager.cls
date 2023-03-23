@@ -20,6 +20,7 @@ public class CMSAPI_SettingsManager {
                 cmsApiSettings.X_Ibm_Client_Secret__c ='dummyXSecret';
                 cmsApiSettings.Content_ID__c = 'dummyContentId';
                 cmsApiSettings.Invoice_Resource__c = '/InvoiceManagement/v1/';
+                cmsApiSettings.Calculator_Resource__c = '/SimplePaymentCalculation/v2.0';
             } else {
                 cmsApiSettings = CMSAPI__c.getOrgDefaults();    
             }

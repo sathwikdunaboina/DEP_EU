@@ -116,47 +116,5 @@
                 <value>Switzerland</value>
             </criteriaItems>
         </ruleEntry>
-        <ruleEntry>
-            <assignedTo>ES_End_of_term</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Country__c</field>
-                <operation>equals</operation>
-                <value>Spain</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Type</field>
-                <operation>equals</operation>
-                <value>End of term query</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>DE_Contract_Performance</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Country__c</field>
-                <operation>equals</operation>
-                <value>Germany</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Type</field>
-                <operation>equals</operation>
-                <value>Change my details,Contact with Sales rep,Financial Contract query,General query / Miscellaneous,Invoice or payment or tax query,Request Copy Document</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>DE_End_of_Term</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Country__c</field>
-                <operation>equals</operation>
-                <value>Germany</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Type</field>
-                <operation>contains</operation>
-                <value>End of term query,Settlement Query</value>
-            </criteriaItems>
-        </ruleEntry>
     </assignmentRule>
 </AssignmentRules>

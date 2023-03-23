@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER</groupingColumn>
+        <groupingColumn>ALIAS</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -26,9 +26,6 @@
     </chart>
     <columns>
         <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>CASE_NUMBER</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
@@ -101,14 +98,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>barber,lovepreet,jenny</value>
+            <value>barber</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>thay,helen,xsm,jenny</value>
+            <value>thay</value>
         </criteriaItems>
         <criteriaItems>
             <column>STATUS</column>
@@ -120,6 +117,11 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ALIAS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>

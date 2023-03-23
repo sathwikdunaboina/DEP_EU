@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GoldenCopySkip</fullName>
+    <active>true</active>
+    <description>Test for Rowan</description>
+    <errorConditionFormula>$Permission.GoldenCopy = false</errorConditionFormula>
+    <errorMessage>You shall not pass</errorMessage>
+</ValidationRule>

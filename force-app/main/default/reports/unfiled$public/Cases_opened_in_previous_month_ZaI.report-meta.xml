@@ -63,6 +63,13 @@
             <operator>notContain</operator>
             <value>Paul James</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Case.Status_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Paperwork pending,To be checked,To be processed,To be sent out,Waiting filing,Waiting on Customer,Waiting on dealer,Waiting on market company,No Action,No Response</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>

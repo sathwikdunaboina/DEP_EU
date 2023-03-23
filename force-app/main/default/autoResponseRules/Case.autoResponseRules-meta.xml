@@ -5,275 +5,27 @@
         <active>true</active>
         <ruleEntry>
             <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>UK/IE - CS tech Tool</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.techtool@volvo.com</replyToEmail>
-            <senderEmail>pav.dhaliwal@volvo.com</senderEmail>
-            <senderName>UK/IE CS Tech Tool</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Tech_Tool_Case_Auto_Response_Volvo</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>CH - CS Operations</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.info.ch@volvo.com</replyToEmail>
-            <senderEmail>josefine.lacour@volvo.com</senderEmail>
-            <senderName>CH Support Volvo</senderName>
-            <template>CH_Communication_Folder/CH_Service_Support_Case_Auto_response</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>UK/IE-Contract Ext VCE</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.extensions.vce@volvo.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
-            <senderName>UK/IE Contract Extensions VCE Volvo</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Contract_Extensions_VCE</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>UK/IE-Contract Ext RT</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.extensions.rt@renault-trucks.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
-            <senderName>UK/IE Contract Extensions RT Renault</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Contract_Extensions_RT</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
                 <value>UK/IE-Contract Ext BRS</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.extensions.brs@renault-trucks.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
-            <senderName>UK/IE Contract Extensions BRS Renult</senderName>
+            <replyToEmail>adm.brs.eot@vfsco.com</replyToEmail>
+            <senderEmail>linda.tromans@vfsco.com</senderEmail>
+            <senderName>UK/IE Contract Extensions BRS</senderName>
             <template>UK_IE_Communication_Folder/BRS_Extensions</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
-                <value>Volvo XSM</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>volvo.xsmadmin@volvo.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
-            <senderName>UK/IE - Volvo XSM Support</senderName>
-            <template>UK_IE_Communication_Folder/Volvo_Renault_XSM</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>Renault XSM</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.xsmadmin@renault-trucks.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
-            <senderName>UK/IE - Renault XSM Support</senderName>
-            <template>UK_IE_Communication_Folder/Volvo_Renault_XSM</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>UK/IE - CS Operations</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.customerservice.uk@renault-trucks.com</replyToEmail>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
-            <senderName>UK/IE Customer Services Support Renault</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo_Renault</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>UK/IE - CS Operations</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.customerservice.uk@volvo.com</replyToEmail>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
-            <senderName>UK/IE Customer Services Support Volvo</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo_Renault</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>IE - CS Operations</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.customerservice.ie@renault-trucks.com</replyToEmail>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
-            <senderName>IE Customer Service Support Renault</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo_Renault</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>IE - CS Operations</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.customerservice.ie@volvo.com</replyToEmail>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
-            <senderName>IE Customer Service Support Volvo</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo_Renault</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>FR - CS Administration</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Volvo</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs_services@volvo.com</replyToEmail>
-            <senderEmail>laure.coupas@volvo.com</senderEmail>
-            <senderName>FR Support</senderName>
-            <template>FR_Communication_Folder/FR_Case_Auto_response_Volvo</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>FR - CS Administration</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs_services@renault-trucks.com</replyToEmail>
-            <senderEmail>laure.coupas@volvo.com</senderEmail>
-            <senderName>FR Support</senderName>
-            <template>FR_Communication_Folder/FR_Case_Auto_response_Renault</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email - Renault</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>startsWith</operation>
-                <value>Italy</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.clienti.it@renault-trucks.com</replyToEmail>
-            <senderEmail>monica.achenza@vfsco.com</senderEmail>
-            <senderName>Italy Support Renault</senderName>
-            <template>Italy_Communication_Templates/Italy_Case_Auto_reponse_Italy</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>UK/IE-Contract Ext BRS</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>adm.brs.eot@vfsco.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
-            <senderName>UK/IE Contract Extensions BRS</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Contract_Extensions_BRS_Vfsco</template>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
                 <value>UK/IE-Contract Ext RT</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>adm.rtfs.eot@vfsco.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
+            <senderEmail>linda.tromans@vfsco.com</senderEmail>
             <senderName>UK/IE Contract Extensions RT</senderName>
-            <template>UK_IE_Communication_Folder/UK_IEContract_Extension_RT_Vfsco</template>
+            <template>UK_IE_Communication_Folder/UK_IE_Contract_Extensions_RT</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
@@ -281,16 +33,11 @@
                 <operation>equals</operation>
                 <value>UK/IE-Contract Ext VCE</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
-            </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>adm.vce.eot@vfsco.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
+            <senderEmail>linda.tromans@vfsco.com</senderEmail>
             <senderName>UK/IE Contract Extensions VCE</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Contract_Extension_VCE_Vfsco</template>
+            <template>UK_IE_Communication_Folder/UK_IE_Contract_Extensions_VCE</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>(1 AND 2 ) OR ( 3 AND 4 )</booleanFilter>
@@ -318,7 +65,7 @@
             <replyToEmail>clienti@vfsco.com</replyToEmail>
             <senderEmail>monica.achenza@vfsco.com</senderEmail>
             <senderName>Italy Support</senderName>
-            <template>Italy_Communication_Templates/Italy_Case_Auto_reponse_Italy</template>
+            <template>Italy_Communication_Templates/Italy_Case_Autoreponse_Italian</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>(1 AND 2 ) OR ( 3 AND 4 )</booleanFilter>
@@ -344,9 +91,9 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>customerservice.ie@vfsco.com</replyToEmail>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
+            <senderEmail>linda.tromans@vfsco.com</senderEmail>
             <senderName>IE Support</senderName>
-            <template>UK_IE_Communication_Folder/IE_Customer_Service</template>
+            <template>UK_IE_Communication_Folder/UK_IE_Case_Autoreponse_English</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>(( (1 AND 2 ) OR( ( 3 AND 4 ) AND 5) ) AND 6)</booleanFilter>
@@ -382,9 +129,9 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>adm.vfs.uk@vfsco.com</replyToEmail>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
+            <senderEmail>linda.tromans@vfsco.com</senderEmail>
             <senderName>UK Support</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service</template>
+            <template>UK_IE_Communication_Folder/UK_IE_Case_Autoreponse_English</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>(1 OR 2 ) AND  ( 3 )</booleanFilter>
@@ -404,9 +151,9 @@
                 <value>UK/IE - CS tech Tool</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
-            <senderEmail>pav.dhaliwal@volvo.com</senderEmail>
+            <senderEmail>pav.dhaliwal@vfsco.com</senderEmail>
             <senderName>UK - Tech Tool</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Tech_Tool_Case_Auto_Response_vfsco</template>
+            <template>UK_IE_Communication_Folder/UK_IE_Tech_Tool_Case_Autoreponse_English</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>( 1 AND 2 ) OR ( 3 AND 4 )</booleanFilter>
@@ -432,9 +179,9 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs_services@vfsco.com</replyToEmail>
-            <senderEmail>laure.coupas@volvo.com</senderEmail>
+            <senderEmail>laure.coupas@vfsco.com</senderEmail>
             <senderName>FR Support</senderName>
-            <template>FR_Communication_Folder/FR_Auto_Response_Vfsco</template>
+            <template>FR_Communication_Folder/FR_Case_Autoreponse_French</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>(1 OR  2) AND 3</booleanFilter>
@@ -454,7 +201,7 @@
                 <value>CH - CS Operations</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
-            <senderEmail>josefine.lacour@volvo.com</senderEmail>
+            <senderEmail>stefanie.senn@vfsco.com</senderEmail>
             <senderName>CH -SUPPORT</senderName>
             <template>CH_Communication_Folder/CH_Service_Support_Case_Auto_response</template>
         </ruleEntry>
@@ -472,81 +219,9 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>support.utextensions@volvo.com</replyToEmail>
-            <senderEmail>jennifer.jackson@volvo.com</senderEmail>
+            <senderEmail>linda.tromans@vfsco.com</senderEmail>
             <senderName>Support UTExtentions</senderName>
             <template>UK_IE_Communication_Folder/UK_IE_Contract_Extensions</template>
-        </ruleEntry>
-        <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>ES-Clientes-Volvo</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.clientes.es@volvo.com</replyToEmail>
-            <senderEmail>vfs.no-reply.es@volvo.com</senderEmail>
-            <senderName>DO NOT REPLY-ES Support</senderName>
-            <template>Spain_Communication_Folder/Client_Volvo</template>
-        </ruleEntry>
-        <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>ES-Clientes-RT</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>rtfs.clientes.es@renault-trucks.com</replyToEmail>
-            <senderEmail>rtfs.no-reply.es@renault-trucks.com</senderEmail>
-            <senderName>DO NOT REPLY-ES Support</senderName>
-            <template>Spain_Communication_Folder/Client_Renault</template>
-        </ruleEntry>
-        <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>DE - Contract Performance</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.operations.de@volvo.com</replyToEmail>
-            <senderEmail>vfs.info.de@volvo.com</senderEmail>
-            <senderName>DE Support</senderName>
-            <template>DE_AT_Communication_Folder/DE_Contract_Performace</template>
-        </ruleEntry>
-        <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>DE - End of Term</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <replyToEmail>vfs.eot.de@volvo.com</replyToEmail>
-            <senderEmail>vfs.info.de@volvo.com</senderEmail>
-            <senderName>DE Support</senderName>
-            <template>DE_AT_Communication_Folder/DE_EOT</template>
         </ruleEntry>
     </autoResponseRule>
 </AutoResponseRules>

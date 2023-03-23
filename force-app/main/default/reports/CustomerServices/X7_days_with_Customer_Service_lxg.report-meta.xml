@@ -25,9 +25,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>CASE_NUMBER</field>
-    </columns>
-    <columns>
         <field>OWNER</field>
     </columns>
     <columns>
@@ -76,13 +73,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>LAST_N_DAYS:7</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

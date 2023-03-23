@@ -1,0 +1,95 @@
+<template>
+  <template if:true={isdisplaySearchQuote}>
+  <!--div class="slds-theme_error slds-theme_alert-texture" if:false={isQuoteAvailable} > 
+    No quotes available for this Customer
+  </div-->
+  <div if:true={isQuoteAvailable}>
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+      aria-label="" >
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col">
+            <div class="slds-truncate" title={columns.label1} onclick={handleSortToggle}>{columns.label1}
+              <!--lightning-icon icon-name="utility:arrowup" size="xx-small" if:true={nameUpBool}></lightning-icon>
+              <lightning-icon icon-name="utility:arrowdown" size="xx-small" if:true={nameDWBool}></lightning-icon-->
+            </div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title={columns.label2}>{columns.label2}</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title={columns.label3}>{columns.label3}</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title={columns.label4}>{columns.label4}</div>
+          </th>
+          <!--th class="" scope="col">
+            <div class="slds-truncate" title={columns.label5}>{columns.label5}</div>
+          </th>
+          <th class="" scope="col">
+              <div class="slds-truncate" title={columns.label6}>{columns.label6}</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title={columns.label7}>{columns.label7}</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title={columns.label8}>{columns.label8}</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title={columns.label9}>{columns.label9}</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title={columns.label10}>{columns.label10}</div>
+            </th-->
+        </tr>
+      </thead>
+      <tbody>
+        <template for:each={records} for:item="rec" for:index="index">
+
+          <tr key={rec.Quote_Id} class="slds-hint-parent">
+            <!--class="slds-hint-parent" ondblclick={onDoubleClickEdit}-->
+            <th scope="row" class="slds-size_3-of-10">
+              <div class="slds-truncate" title={rec.Quote_Id}>{rec.Quote_Id}</div>
+            </th>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Account_Name}>{rec.Account_Name}</div>
+            </td>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Business_Area}>{rec.Business_Area}</div>
+            </td>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Asset_Information}>{rec.Asset_Information}</div>
+            </td>
+            <!--td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Facotry_Order_Opportunity}>{rec.Facotry_Order_Opportunity}</div>
+            </td>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Dealer_Name}>{rec.Dealer_Name}</div>
+            </td>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Amount}>{rec.Amount}</div>
+            </td>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Status}>{rec.Status}</div>
+            </td>
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <div class="slds-truncate" title={rec.Creation_Date}>{rec.Creation_Date}</div>
+            </td-->
+            <!--button-->
+            <td class="slds-size_3-of-10 slds-has-focus">
+              <lightning-button label="Update Quote" title="Update Quote" onclick={updateQuote} data-id={rec.Quote_Id} id={index} class="slds-m-left_x-small"></lightning-button>
+            </td>
+               </tr>
+        </template>
+      </tbody>
+      </table>
+      <div slot="footer">
+      <lightning-button variant="neutral" label="Create Quote" class="slds-m-left_x-small" onclick={onClickCreateQuote}></lightning-button>
+      </div> 
+    </div>
+    <div if:false= {isQuoteAvailable} class="slds-text-title_caps" style="color: rgb(255, 0, 0);margin-top: 45px;margin-bottom: 45px;text-align: center;font-weight: bolder; text-align: center; font-weight: bolder;">No Quotes available for this Customer</div>
+</template>
+<template if:true={isdisplaycreatequote}>
+<c-single-quote-to-multiple-opportunites record-id={recordId} object-api-name={objectApiName}></c-single-quote-to-multiple-opportunites>
+</template>
+</template>

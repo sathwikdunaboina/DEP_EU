@@ -11,12 +11,12 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER</groupingColumn>
+        <groupingColumn>ALIAS</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -24,9 +24,6 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <field>CASE_NUMBER</field>
-    </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
@@ -48,9 +45,6 @@
     <columns>
         <field>OPEN</field>
     </columns>
-    <columns>
-        <field>ORIGIN</field>
-    </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
     <filter>
@@ -66,7 +60,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Truslove,claire</value>
+            <value>Truslove</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -87,14 +81,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>credit,lovepreet</value>
+            <value>credit</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>barber,helen</value>
+            <value>barber</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -122,14 +116,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>annette,collections</value>
+            <value>annette</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>operations,jenny,XSM,singh</value>
+            <value>operations</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Status_Reason__c</column>
@@ -138,58 +132,14 @@
             <operator>notEqual</operator>
             <value>No Action,No Response,Spam/Housekeeping</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT to be checked</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ORIGIN</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Email,Web,VFS - CMS,Email - Renault,Email - Volvo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>TYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Spam/Junk</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Unable to Process &amp; Pay Invoice</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>purchase order,PO</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ALIAS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>

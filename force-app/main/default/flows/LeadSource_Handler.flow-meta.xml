@@ -82,7 +82,6 @@
         </rules>
     </decisions>
     <description>End Customer Postal Code Field is populated on Leads</description>
-    <environments>Default</environments>
     <interviewLabel>LeadSource Handler {!$Flow.CurrentDateTime}
 {!LeadSource_Number}</interviewLabel>
     <label>LeadSource Handler</label>
@@ -170,7 +169,7 @@
         <inputAssignments>
             <field>Status</field>
             <value>
-                <stringValue>Qualified</stringValue>
+                <stringValue>New</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>

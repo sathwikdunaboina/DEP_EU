@@ -85,7 +85,6 @@ public without sharing  class quoteCallout {
         newObj.put('asset',objAsse);
         Map<String,String> objFin=new Map<String,String>();
         
-        //objFin.put('amount', String.valueOf(oppList[0].Amount.longValue()));
         objFin.put('amount', String.valueOf(oppList[0].Amount));
         objFin.put('currencyCode', foList[0].CurrencyIsoCode);
         newObj.put('financials',objFin);
@@ -95,7 +94,7 @@ public without sharing  class quoteCallout {
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:VFS_Global_APIs1'+'/vfsconnect/quotation/v1.0/draft');
+        request.setEndpoint('callout:VFS_Global_APIs');
         request.setMethod('POST');
         request.setHeader( 'X-Ibm-Client-Id',settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret' , settings.X_Ibm_Client_Secret__c);
@@ -109,7 +108,7 @@ public without sharing  class quoteCallout {
         request.setBody(finalJson);
         System.debug('The rquest body is'+request.getBody());
         System.debug('This is request'+request);
-        request.setTimeout(120000);
+        request.setTimeout(20000);
         List<String> listStr=new List<String> ();
                 //listStr.add('false');
                 //return listStr;

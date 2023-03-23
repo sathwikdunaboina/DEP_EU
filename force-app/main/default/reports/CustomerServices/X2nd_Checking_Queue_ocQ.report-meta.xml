@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER</groupingColumn>
+        <groupingColumn>ALIAS</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -29,9 +29,6 @@
     </columns>
     <columns>
         <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
@@ -84,7 +81,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech,EOT</value>
+            <value>tech</value>
         </criteriaItems>
         <criteriaItems>
             <column>ALIAS</column>
@@ -114,29 +111,17 @@
             <operator>contains</operator>
             <value>2nd</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>ALIAS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>LAST_UPDATE_BY</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>CASE_NUMBER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>2nd Checking Queue</name>

@@ -1,12 +1,43 @@
-/*
-* Created: Rupal
-* This is invoked by 'Lead Assignment' process builder
-* On basis of dealer number mapped to account, it allocates lead owner as Territory manager user/unallocated lead queue
-* */
-Public class LeadAssignmentController {
+/**
+ * Invoked by 'Lead Assignment' process builder
+ * On basis of dealer number mapped to account, it allocates
+ * lead owner as Territory manager user/unallocated lead queue.
+ * 
+ * @author original VFS - Rupal
+ * @author name@fluidogroup.com date change
+ */
+public class LeadAssignmentController {
     
+	/**
+	 * Main invocable method. 
+	 * <ul>
+	 * <li>
+	 * Queries all Dealer Ids from any Factory Orders related to the Leads.
+	 * </li>
+	 * <li>
+	 * Then, queries Accounts related to these Dealer Ids, that do not have a Territory Manager.
+	 * </li>
+	 * <li>
+	 * Then, assign the Territory Manager User Id (separate fields) from the Account
+	 * as the owner of each Lead if it exists.
+	 * Else, assign the Unallocated Queue from the Lead Assignment Settings as owner.
+	 * </li>
+	 * </ul>
+	 * @param leadId List of Strings containint Lead Ids
+	 * 
+	 * <ul>
+	 * <li>
+	 * TODO refactor FO logic to wrapper obj: Dealer_Id__c etc.
+	 * </li>
+	 * <li>
+	 * TODO improve global try-catch with situational Exception handling
+	 * </li>
+	 * </ul>
+	 */
     @InvocableMethod
     Public static void assignLeads(List<String> leadId){
+        
+        if(ProcessRouter.useVFSPackageProcess()) return;
         
         List<Lead> listLead = New List<Lead>();
         List<Lead> updateLead = New List<Lead>();
@@ -23,7 +54,7 @@ Public class LeadAssignmentController {
                         WHERE Id IN : leadId];
             system.debug('Incoming Leads are -> '+ listLead);
             
-            //Collecting dealer identifier (eg: 12345) . 
+            //Collect dealer identifier (eg: 12345) . 
             for(Lead ld  : listLead){
                 if (ld.Factory_Order__c != null && !String.isEmpty(ld.Factory_Order__r.Dealer_Id__c)){
                 	listDealerIds.add(ld.Factory_Order__r.Dealer_Id__c);  

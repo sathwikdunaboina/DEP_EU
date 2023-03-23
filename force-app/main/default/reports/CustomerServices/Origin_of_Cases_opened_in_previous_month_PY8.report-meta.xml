@@ -46,46 +46,11 @@
     <description>How cases were received in the previous month</description>
     <filter>
         <criteriaItems>
-            <column>OWNER</column>
+            <column>Case.Sub_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>VFS - CMS</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>EXT</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>barber,Tracy,Thay</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>tech tool</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Paul james</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ORIGIN</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>CMS</value>
+            <operator>equals</operator>
+            <value>,Agency Funded Settlement,Amendment Agreement Unwind,Amendment Dealer Error,Amendment European Authorisation,Amendment Extended Term,Amendment OLIs / kms,Amendment Other,Amendment Payment Date Change,Amendment Restructure,Amendment Start date change,CH /OL less than 6 months remaining,Change address / contact details,Change Bank Details,Change Business Name,Company details,Complaint,Contract Information Required,Copy Contract,Copy Credit Note,Copy Invoice,Cost / NBV Settlement,Early termination,Email Address for Invoicing,Excess meterage query,HPI Query,Insurance GAP,Invoice Query,Invoices to go onto Multiheader,Maintenance Query Account on Stop,Maintenance Query Change of Responsible Dealer,Maintenance Query Contract not Loaded,Maintenance Query Loading Error,Maintenance Query Other,Maintenance Query Third Party,Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process,Novation Request,Payment Query,Problems with Web Portal,Rebate of rentals,Road Fund Licence Query,Sale of Vehicle (SOV),Secondary Rental Query,Settlement Query,Termination Collections Non Payment,Termination Insurance,Termination Process,Termination Query,Vehicle information</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

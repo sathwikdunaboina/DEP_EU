@@ -2,7 +2,6 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>My_Open_Cases_TechTool</fullName>
     <columns>CASES.CASE_NUMBER</columns>
-    <columns>Indicator__c</columns>
     <columns>NAME</columns>
     <columns>CASES.SUBJECT</columns>
     <columns>CASES.STATUS</columns>
@@ -21,6 +20,7 @@
         <value>Case.Tech_Tool</value>
     </filters>
     <label>My Open Cases</label>
+    <language>en_US</language>
     <sharedTo>
         <roleAndSubordinates>UK_IE_Service_Representative_Service_Contracts</roleAndSubordinates>
     </sharedTo>

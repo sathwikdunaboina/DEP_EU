@@ -155,11 +155,20 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Permission.GoldenCopy</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <label>Skip</label>
         </rules>
     </decisions>
     <description>Flow on Factory Order object that runs on insert and update.
-v2 Removed Golden Copy Permission from Skip Automation conditions to allow for Integration User</description>
+v2 Migrated to new object
+v3 Added Skip Automation</description>
+    <environments>Default</environments>
     <interviewLabel>Factory Order After insert &amp; Update Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Factory Order After Insert &amp; Update Flow</label>
     <processMetadataValues>
@@ -199,7 +208,7 @@ v2 Removed Golden Copy Permission from Skip Automation conditions to allow for I
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>peLeadSourceUpsert</name>
         <dataType>SObject</dataType>

@@ -1,0 +1,77 @@
+<template>
+     <lightning-card>
+        <h2 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Search Leads
+        </h2>
+        <div class="slds-grid slds-wrap slds-gutters slds-m-around_medium slds-box">
+            <div class="slds-size_1-of-4 slds-p-around_medium">
+                <lightning-input class="slds-p-right_large" type="text" name="dealerName" label="Dealer Name" value={dealerName} onchange={handleSearchLeads}></lightning-input>
+            </div>
+            <div class="slds-size_1-of-4 slds-p-around_medium">
+                <lightning-combobox  name="accountName" label="Account" value={selectedAccount} options={accountsOfDealer} onchange={handleAccountSelection} required="true"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-6 slds-p-around_medium">
+                <lightning-radio-group name="scope"
+                        class="slds-m-top_medium"
+                        label=""
+                        options={leadOwnerOptions}
+                        value={scope}
+                        type="button"
+                        onchange={handleScopeSelection}>
+                </lightning-radio-group>  
+                <button name="clearFilterCriteriaButton" class="slds-button slds-button_brand slds-m-top_medium" onclick={handleClearFilterCriteria}>Clear Filter Criteria</button>           
+            </div>
+            <div class="slds-size_1-of-6 slds-p-around_medium">
+                <lightning-combobox  name="rowSize" label="Rows" value={rowSize} options={rowSizeOptions} onchange={handleRowSizeSelection} ></lightning-combobox>
+            </div>
+        </div>
+        <div class="slds-align_absolute-center">
+            <template if:true={isProcessing}>
+                <div class="spinnerHolder slds-size_1-of-1 slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+                </div>
+            </template>
+        </div>
+        <template if:false={isProcessing}>
+            <div class="slds-grid slds-wrap slds-m-around_medium slds-box searchResultsBox">
+                <div class="slds-grid slds-wrap slds-size_1-of-1 slds-float_right">
+                    <div class="slds-size_4-of-8 slds-p-around_medium">
+                        <h3>Please select the leads and click Convert.</h3>
+                    </div>
+                    <div class="slds-size_1-of-8 slds-p-around_medium" >
+                        <button name="convertButton" class="slds-button slds-button_brand slds-button_stretch" onclick={convertSelected} disabled={disableConvertButton}>Convert Selected</button>
+                    </div>
+                    <div class="slds-size_1-of-8 slds-p-around_medium">
+                        <lightning-button name="clear" label="Clear Selected" onclick={clearSelected}></lightning-button>
+                    </div>
+                </div>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={data}
+                        columns={columns}
+                        class="leadDataTable">
+                    </lightning-datatable>
+            </div>    
+            <template if:true={showModal}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Bulk Convert to Opportunities</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <c-bulk-Lead-Convert-Poland> leads-to-convert={selectedIds} onclose={close}></c-bulk-Lead-Convert-Poland>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

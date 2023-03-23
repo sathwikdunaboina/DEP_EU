@@ -3,7 +3,6 @@
     <fullName>CH_CS_Operations_Case</fullName>
     <booleanFilter>1 AND 2</booleanFilter>
     <columns>CASES.CASE_NUMBER</columns>
-    <columns>Indicator__c</columns>
     <columns>NAME</columns>
     <columns>ACCOUNT.NAME</columns>
     <columns>CASES.SUBJECT</columns>
@@ -14,6 +13,7 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>CASES.EMAIL</columns>
     <columns>CORE.USERS.ALIAS</columns>
+    <columns>Indicator__c</columns>
     <filterScope>Queue</filterScope>
     <filters>
         <field>CASES.RECORDTYPE</field>
@@ -26,6 +26,7 @@
         <value>New,In Progress,On Hold,Escalated</value>
     </filters>
     <label>CH - CS Operations</label>
+    <language>en_US</language>
     <queue>CH_CS_Operations</queue>
     <sharedTo>
         <roleAndSubordinatesInternal>CH_Service_Representative_Customer_Services</roleAndSubordinatesInternal>

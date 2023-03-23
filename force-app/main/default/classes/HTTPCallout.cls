@@ -6,11 +6,11 @@
 public class HTTPCallout {
     
     public static HttpResponse send(String endpoint, String method){
-        return send (endpoint, method, null, null);
+        return send(endpoint, method, null, null);
     }
     
     public static HttpResponse send(String endpoint, String method, Map<String, String> headers){
-        return send (endpoint, method, headers, null);
+        return send(endpoint, method, headers, null);
     }
     
     public static HttpResponse send(String endpoint, String method, Map<String, String> headers, String body){
@@ -18,7 +18,7 @@ public class HTTPCallout {
         request.setEndpoint(endpoint);
         request.setMethod(method);
         request.setTimeout(100000);//100 seconds
-        if (headers!= null){
+        if (headers != null){
             for (String key: headers.keySet()){
         		request.setHeader(key, headers.get(key));
             }

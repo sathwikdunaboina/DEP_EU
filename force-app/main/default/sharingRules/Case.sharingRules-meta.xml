@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>AT_Cases</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>AT Cases</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Austria</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>CH_Users</fullName>
         <accessLevel>Edit</accessLevel>
         <label>CH Users</label>
@@ -25,20 +11,6 @@
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Switzerland</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>DE_Case</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>DE_Case</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Germany</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Germany</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -57,20 +29,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>France_Service_Connect_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>France Service Connect Access</label>
-        <sharedTo>
-            <group>France_Service_Connect_Access</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>France</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Italy_Case</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Italy Case</label>
@@ -83,34 +41,6 @@
             <value>Italy</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Spain_Case</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Spain Case</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Spain</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Spain</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Swiss_Case_Sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Swiss Case Sharing</label>
-        <sharedTo>
-            <group>Swiss_Case_Sharing</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Switzerland</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>UK_IE_Case</fullName>

@@ -3,8 +3,8 @@
     <actionCalls>
         <name>getQuoteFromBackend</name>
         <label>getQuoteFromBackend</label>
-        <locationX>878</locationX>
-        <locationY>269</locationY>
+        <locationX>1106</locationX>
+        <locationY>398</locationY>
         <actionName>quoteCallout</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -26,8 +26,8 @@
     <decisions>
         <name>checkSuccess</name>
         <label>checkSuccess</label>
-        <locationX>870</locationX>
-        <locationY>421</locationY>
+        <locationX>1106</locationX>
+        <locationY>518</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>successful</name>
@@ -63,8 +63,8 @@
     <decisions>
         <name>Quote_Data_Validation</name>
         <label>Quote Data Validation</label>
-        <locationX>625</locationX>
-        <locationY>265</locationY>
+        <locationX>842</locationX>
+        <locationY>278</locationY>
         <defaultConnector>
             <targetReference>Error</targetReference>
         </defaultConnector>
@@ -142,7 +142,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -155,8 +155,8 @@
     <recordLookups>
         <name>Opportunity</name>
         <label>Opportunity</label>
-        <locationX>927</locationX>
-        <locationY>164</locationY>
+        <locationX>842</locationX>
+        <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Quote_Data_Validation</targetReference>
@@ -176,14 +176,14 @@
     <screens>
         <name>Add_Factory_Order</name>
         <label>Add Factory Order</label>
-        <locationX>502</locationX>
-        <locationY>433</locationY>
+        <locationX>314</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>FactoryOrderCheck</name>
-            <fieldText>&lt;p&gt;Please link this opportunity to a factory order&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Please link this opportunity to a factory order and the Factory order should be linked to a dealer (Dealer ID should be filled)&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -192,8 +192,8 @@
     <screens>
         <name>DraftQuoteCreate_Error</name>
         <label>DraftQuoteCreate Error</label>
-        <locationX>761</locationX>
-        <locationY>579</locationY>
+        <locationX>1106</locationX>
+        <locationY>638</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -208,8 +208,8 @@
     <screens>
         <name>DraftQuoteCreate_Succes</name>
         <label>DraftQuoteCreate Succes</label>
-        <locationX>1003</locationX>
-        <locationY>578</locationY>
+        <locationX>842</locationX>
+        <locationY>638</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -224,14 +224,14 @@
     <screens>
         <name>Error</name>
         <label>Error</label>
-        <locationX>1303</locationX>
-        <locationY>259</locationY>
+        <locationX>1634</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>ErrorText</name>
-            <fieldText>&lt;p&gt;Please enter value for the below fields&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Amount&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
+            <fieldText>&lt;p&gt;Please enter value for the below fields&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;&lt;em&gt;Amount&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -241,14 +241,14 @@
         <description>The Factory Order doesn&apos;t contain a Dealer ID, it&apos;s not linked to a dealer.</description>
         <name>MissingDealer_c</name>
         <label>MissingDealer</label>
-        <locationX>144</locationX>
-        <locationY>254</locationY>
+        <locationX>578</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>MissingDealerText</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;The Factory Order doesn&apos;t contain a &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Dealer ID&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;, it&apos;s not linked to a dealer.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;The Factory Order doesn&apos;t contain a &lt;strong&gt;Dealer ID&lt;/strong&gt;, it&apos;s not linked to a dealer.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -257,8 +257,8 @@
     <screens>
         <name>Quote_Exists</name>
         <label>Quote Exists</label>
-        <locationX>177</locationX>
-        <locationY>445</locationY>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -271,13 +271,13 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>415</locationX>
-        <locationY>32</locationY>
+        <locationX>716</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Opportunity</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>QuoteReq</name>
         <apexClass>ExternalService__CreateQuote_CreateDraftQuotationRequest</apexClass>

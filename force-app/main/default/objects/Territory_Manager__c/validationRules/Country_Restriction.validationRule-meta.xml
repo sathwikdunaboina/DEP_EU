@@ -3,8 +3,7 @@
     <fullName>Country_Restriction</fullName>
     <active>true</active>
     <description>Please create TMs only for your country</description>
-    <errorConditionFormula>$Permission.GoldenCopy = false &amp;&amp;
-AND (
+    <errorConditionFormula>AND (
 $Profile.Name != &apos;System Administrator&apos;,
 $Profile.Name != &apos;API Only&apos;,
 $User.Country != TEXT (Country__c),

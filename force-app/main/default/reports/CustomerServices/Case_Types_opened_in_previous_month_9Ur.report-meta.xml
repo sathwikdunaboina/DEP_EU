@@ -11,9 +11,9 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER</groupingColumn>
+        <groupingColumn>Case.Sub_Type__c</groupingColumn>
         <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
+        <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
         <showValues>false</showValues>
@@ -25,7 +25,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Case.Sub_Type__c</field>
+        <field>OWNER</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
@@ -46,35 +46,21 @@
     <description>Cases types opened in previous month (Month End Report)</description>
     <filter>
         <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>jenny,2nd,harry,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,Laura,Operations</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Case.Sub_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Amend Contract,Amendment Agreement Unwind,Amendment Dealer Error,Amendment European Authorisation,Amendment OLIs / kms,Amendment Other,Amendment Restructure,Excess meterage query,Extension request,Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process,Novation Request</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ORIGIN</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Email,Web,VFS - CMS,Email - Renault,Email - Volvo</value>
+            <value>Amendment Agreement Unwind,Amendment Dealer Error,Amendment Extended Term,Amendment OLIs / kms,Amendment Other,Amendment Payment Date Change,Amendment Restructure,Amendment Start date change,Loading/Order Error,Maintenance Query Loading Error,Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER</field>
+        <field>Case.Sub_Type__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Opened Addendums YTD</name>
+    <name>Case Types opened in previous month</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -90,6 +76,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_LASTMONTH</interval>
     </timeFrameFilter>
 </Report>
