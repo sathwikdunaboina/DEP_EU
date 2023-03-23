@@ -292,6 +292,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>South_West_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>South West Access</label>
+        <sharedTo>
+            <group>South_West_Region_access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>United Kingdom,Spain,Italy,France</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Swiss_Leads_Sharing</fullName>
         <accessLevel>Read</accessLevel>
         <label>Swiss Leads Sharing</label>

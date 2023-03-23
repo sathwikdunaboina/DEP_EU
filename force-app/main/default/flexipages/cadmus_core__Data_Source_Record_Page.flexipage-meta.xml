@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>collapsed</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>force:highlightsPanel</componentName>
+                <identifier>force_highlightsPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>force:relatedListQuickLinksContainer</componentName>
+                <identifier>force_relatedListQuickLinksContainer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>header</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>cadmus_core:LC_StaticValuesComponent</componentName>
+                <identifier>cadmus_core_LC_StaticValuesComponent</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;strong&gt;&lt;span style=&quot;font-size:16px&quot;&gt;Tips and tricks&lt;/span&gt;&lt;/strong&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;&lt;span style=&quot;font-size:14px&quot;&gt;Your starting Data Source should include the &amp;#39;:recordId&amp;#39; notation in the WHERE clause.&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;span style=&quot;font-size:14px&quot;&gt;When your WHERE clause :variable can contains multiple values, use the &amp;#39;IN&amp;#39; notation.&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;span style=&quot;font-size:14px&quot;&gt;Inner queries are not supported.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>sidebar</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Data Source Record Page</masterLabel>
+    <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
+    <sobjectType>cadmus_core__Data_Source__c</sobjectType>
+    <template>
+        <name>flexipage:recordHomeTemplateDesktop</name>
+    </template>
+    <type>RecordPage</type>
+</FlexiPage>

@@ -1,0 +1,139 @@
+<apex:page controller="cadmus_core.ConvertInterfaceController" applyBodyTag="false" showHeader="false">
+    <apex:includeScript value="/support/console/45.0/integration.js"/>
+    <apex:includeScript value="/soap/ajax/45.0/connection.js"/>
+    <script language="javascript">
+
+        function initNoPost() {
+            let dlnk = document.querySelectorAll("[id$=cmdLink]");
+            dlnk.item(0).click();
+        }
+
+    	function init() {
+            //When this page is embedded in Lightning, the download goes via a popup or something and it is impossible to controle the filename
+            console.log('downloaded - {!docTitle }');
+            let skipPopupBlocker = true; //might be no action required => still go to
+            //alert('downloaded - {!docTitle }');
+            let hidePreview = "{!JSENCODE(HTMLENCODE($CurrentPage.parameters.hidePreview))}" === "1";
+            let newWin = null;
+            if( "{!uiAction}" !== "" ) {
+                skipPopupBlocker = false;
+            	newWin = window.open('{!uiAction}');
+            } else if( "{!attachmentId}" !== "" && !hidePreview ) {
+                skipPopupBlocker = false;
+                newWin = window.open('/servlet/servlet.FileDownload?file={!attachmentId }');
+                
+            } else if( "{!contentDocumentId}" !== "" && !hidePreview ) {
+                skipPopupBlocker = false;
+            	newWin = window.open('/{!contentDocumentId }');
+            } else {
+                if("{!JSENCODE(HTMLENCODE($CurrentPage.parameters.openRaw))}" === "1") {
+                    openWindowWithPost("/apex/PdfViewer", {"base64": mypdf});
+                } else if("{!JSENCODE(HTMLENCODE($CurrentPage.parameters.openMobile))}" === "1") {
+                    skipPopupBlocker = false;
+                    document.getElementById('pdfFrame').style.display="inline";
+                    setTimeout(loadpdf, 500);
+                    
+                }
+            }
+                
+            	
+            if("{!JSENCODE(HTMLENCODE($CurrentPage.parameters.download))}" === "1") {
+                let dlnk = document.getElementById('fileDownload');
+                dlnk.href = "data:application/octet-stream;base64," + mypdf;  // Adds the pdf to the html anchor
+                dlnk.download = '{!docTitle }'; //  Sets the title (filename) of the document to download
+                dlnk.click();  //  initiates the download automatically when the document is generated, no user has to click 
+            }
+            //Forward back to object
+            //check if popups are disabled, otherwise no forward
+            if( skipPopupBlocker || !popupBlocker2(newWin) ) {
+                //setTimeout(() => window.location.href = '/{!objectId }', 1000);
+                if (sforce.console.isInConsole()) {
+                    //This was opened in a SFDC Console. This means that the console-tab will keep open... not nice
+                    sforce.console.getEnclosingTabId(callCloseTab);                 
+                } else {
+                    //when in classic, do not do this forward
+                    if( "{!$User.UIThemeDisplayed}" !== "Theme3" ) {
+                        //let dlnk = document.getElementById('returnToRecord');
+                        //dlnk.click();
+                        sforce.one.navigateToSObject('{!objectId }','detail');
+                    }
+                }
+            }
+		}
+
+        //The callback function that closeTab will call once it has the ID for its console tab (not browser tab)
+        var callCloseTab= function callCloseTab(result) {
+            sforce.console.closeTab(result.id);
+        };
+    
+    	function popupBlocker2(pw) {
+            try {
+                pw.focus();   
+                return false;
+            } catch (e) {
+                return true;
+            }    
+        }
+    
+        function openWindowWithPost(url, data) {
+            
+            let form = document.getElementById('goToViewer');
+            if("{!JSENCODE(HTMLENCODE($CurrentPage.parameters.sameWindow))}" === "0" || "{!JSENCODE(HTMLENCODE($CurrentPage.parameters.sameWindow))}" === "") {
+                //The default is that it will open in a new window. Or we open it in the same window
+                // we check for 0 or empty (not supplied)
+                form.target = "_blank";
+            } else {
+                form.target = "_self";
+            }
+            if(isSafari) {
+                if( "{!JSENCODE(HTMLENCODE($CurrentPage.parameters.safariSameWindow))}" === "0" ) {
+                    //For Safari, this will always open in a new window ... so lets use that screen to show the doc
+                    form.target = "_blank";
+                } else {
+                	form.target = "_self";
+                }
+            }
+            let hdnInput = document.getElementById('base64');
+            hdnInput.value = mypdf;
+            form.submit();
+
+            if(isSafari) {
+                //if we generate an error here ... guess what Safari does ... the submit. Otherwise it will block it
+                data[key];
+            }
+        }
+    
+        function loadpdf() {
+            var pdfjsframe = document.getElementById('pdfFrame')
+            if(typeof mypdf != 'undefined'){
+                pdfjsframe.contentWindow.postMessage(mypdf,"*");	
+            }
+        }
+    
+    	var mypdf = "{!pdfAsBase64}";
+    	var isSafari = navigator.vendor.search('Apple Computer') >= 0;
+    </script>
+    <body onload="{!IF(showPostClick,'initNoPost()', 'init()')}">
+        <apex:form id="changeStatusForm">
+            <apex:commandLink value="Generate Doc" action="{!convertAndRedirect}" id="cmdLink">
+            </apex:commandLink>
+        </apex:form>
+
+        <h1>
+            {!$Label.butler_notice_popup_blocker}
+        </h1>
+        <br/>
+        <a name="fileDownload" id="fileDownload" download="" target="_blank"></a>
+        <br/>
+        <a href="/{!objectId }" id="returnToRecord">Return to record</a>
+        <form id="goToViewer" style="display:none" action="/apex/PdfViewer" method="POST">
+            <input type="hidden" name="base64" id="base64"/>
+            <button type="submit" id="goToViewerButton"/>
+        </form>
+
+        
+        <iframe id="pdfFrame" src="{! URLFOR($Resource.PdfButlerPdfPreviewer, '/web/viewer.html#zoom=page-fit')}" class="pdfFrame" 
+        width="100%" height="100%" style="height: 600px; border: none;display:none"></iframe>
+                    
+    </body>
+</apex:page>

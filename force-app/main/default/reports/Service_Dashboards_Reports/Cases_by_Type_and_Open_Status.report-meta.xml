@@ -16,12 +16,11 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Nombre de cas ouverts (instantané)</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -40,22 +39,29 @@
     <currency>EUR</currency>
     <filter>
         <criteriaItems>
-            <column>STATUS</column>
+            <column>TYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Closed,Duplicate</value>
+            <operator>equals</operator>
+            <value>Additional Services query,Change my details,Contact with Sales rep,End of term query,Financial Contract query,General query / Miscellaneous,Insurance query,Invoice or payment or tax query,Problems with Web Portal,Request Copy Document,Settlement Query</value>
         </criteriaItems>
         <language>fr</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPEN</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Case.Sub_Type__c</field>
-        <sortByName>RowCount</sortByName>
-        <sortOrder>Desc</sortOrder>
-        <sortType>Aggregate</sortType>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>TYPE</field>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Cases by Type and Open Status</name>
     <params>
@@ -71,10 +77,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>STATUS</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_LASTMONTH</interval>
     </timeFrameFilter>
 </Report>

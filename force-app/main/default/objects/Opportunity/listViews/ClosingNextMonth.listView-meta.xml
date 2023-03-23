@@ -21,5 +21,10 @@
         <operation>equals</operation>
         <value>NEXT_MONTH</value>
     </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>notEqual</operation>
+        <value>Opportunity.CalculatorAPI__Easy_Finance_Opportunity</value>
+    </filters>
     <label>Closing Next Month</label>
 </ListView>

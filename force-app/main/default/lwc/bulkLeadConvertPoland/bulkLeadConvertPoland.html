@@ -1,0 +1,43 @@
+<template>
+    
+    <template if:true={leadListToConvert}>    
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-float_right">
+            <div class="slds-size_5-of-8 slds-p-around_large">
+                <h3>Optionally please select an existing account, to map opportunities to existing Account.<br/>
+                Please review the leads below before converting.</h3>
+            </div>
+            <div class="slds-size_2-of-8 slds-p-around_large">
+                <button class="slds-button slds-button_brand slds-button_stretch" onclick={convertSelected} >Convert To Opportunities</button>
+            </div>
+            <div class="slds-size_1-of-8 slds-p-around_large">
+                <lightning-button name="clear" label="Cancel" onclick={close}></lightning-button>
+            </div>
+        </div>
+        <!-- Since there is no explicit lookup option, 
+        we use recordEdit component to choose account/contact.
+        Using Asset because lookup filters are not supported.
+        https://trailblazer.salesforce.com/ideaView?id=0873A000000E9xzQAC
+        -->
+        <lightning-record-edit-form object-api-name="Opportunity" >
+            <div class="slds-grid slds-wrap slds-gutters slds-m-around_large slds-box">
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+                <lightning-input-field field-name="AccountId" value={accountId} name="accountId" onchange={handleChange}> </lightning-input-field>
+            </div>
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+                <lightning-input-field field-name="ContactId" data-name="" value={contactId}  name="contactId" onchange={handleChange}> </lightning-input-field>
+            </div>
+            </div>
+        </lightning-record-edit-form>
+        <lightning-datatable
+            key-field="Id"
+            data={leadListToConvert}
+            columns={columns}
+            hide-checkbox-column>
+        </lightning-datatable>
+        <template if:true={isProcessing}>
+            <div class="spinnerHolder slds-size_1-of-1 slds-align_absolute-center">
+                <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+            </div>
+        </template>                 
+    </template>
+</template>

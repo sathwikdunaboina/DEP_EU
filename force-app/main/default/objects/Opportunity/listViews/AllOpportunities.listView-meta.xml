@@ -13,5 +13,10 @@
     <columns>CORE.USERS.FULL_NAME</columns>
     <columns>OPPORTUNITY.LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>notEqual</operation>
+        <value>Opportunity.CalculatorAPI__Easy_Finance_Opportunity</value>
+    </filters>
     <label>All Opportunities</label>
 </ListView>

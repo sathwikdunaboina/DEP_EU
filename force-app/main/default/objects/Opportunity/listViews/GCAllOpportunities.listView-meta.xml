@@ -12,6 +12,11 @@
     <columns>OPPORTUNITY.LEAD_SOURCE</columns>
     <columns>CORE.USERS.FULL_NAME</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>notEqual</operation>
+        <value>Opportunity.CalculatorAPI__Easy_Finance_Opportunity</value>
+    </filters>
     <label>All Opportunities (PL)</label>
     <sharedTo>
         <roleAndSubordinatesInternal>VFSPoland</roleAndSubordinatesInternal>

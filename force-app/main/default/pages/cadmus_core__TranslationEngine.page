@@ -1,0 +1,14 @@
+<apex:page language="{!$CurrentPage.parameters.lan}" controller="cadmus_core.TranslationEngineController" applyBodyTag="false" 
+           applyHtmlTag="false" showHeader="false" sidebar="false" contentType="application/json">
+	
+    	<apex:repeat value="{!entries}" var="entryKey">
+            &amp;&amp;
+        	"{!entryKey}": {
+        		<apex:repeat value="{!entries[entryKey]}" var="entry">
+                    {!IF(entries[entryKey][0].value == entry.value, "", ",")}
+    				"{!entry.value}":"{!entry.label}"
+    			</apex:repeat>
+        	}
+    	</apex:repeat>
+	
+</apex:page>

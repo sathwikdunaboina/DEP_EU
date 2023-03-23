@@ -1,0 +1,16 @@
+<apex:page >
+    <apex:includeLightning />
+    
+    <div id="cadmusGetStarted"></div>
+    
+    <script>
+        $Lightning.use("cadmus_core:LA_Get_Started", function() {
+        $Lightning.createComponent("cadmus_core:LC_GetStarted",
+            { /* No parameters */ },
+            "cadmusGetStarted",
+            function(cmp) {
+            	// Do Nothing
+            });
+        });
+     </script>
+</apex:page>

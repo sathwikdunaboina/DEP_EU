@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>France_List_View</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CustomerID__c</columns>
+    <columns>Customer_Number__c</columns>
+    <columns>ACCOUNT.ADDRESS1_COUNTRY_CODE</columns>
+    <columns>Territory_Manager__c</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
+        <operation>equals</operation>
+        <value>FR</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Dealer_Account</value>
+    </filters>
+    <filters>
+        <field>Territory_Manager__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>France List View</label>
+    <sharedTo>
+        <group>Test_Dealer_Account</group>
+    </sharedTo>
+</ListView>

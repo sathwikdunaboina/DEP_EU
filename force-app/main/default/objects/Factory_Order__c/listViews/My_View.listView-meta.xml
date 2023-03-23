@@ -6,28 +6,18 @@
     <columns>Country__c</columns>
     <columns>CURRENCY_ISO_CODE</columns>
     <columns>Dealer_Id__c</columns>
+    <columns>Sales_Person_Name__c</columns>
     <columns>Main_Dealer_Name__c</columns>
     <columns>Order_Status_Description__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Brand__c</field>
-        <operation>equals</operation>
-        <value>RT</value>
-    </filters>
-    <filters>
-        <field>Country__c</field>
-        <operation>equals</operation>
-        <value>DE</value>
-    </filters>
-    <filters>
-        <field>Dealer_Id__c</field>
-        <operation>equals</operation>
+        <field>Sales_Person_Name__c</field>
+        <operation>notEqual</operation>
     </filters>
     <label>My View</label>
     <sharedTo>
         <group>Admin_Public_Group</group>
-        <group>Swiss_Sales_Connect</group>
     </sharedTo>
 </ListView>

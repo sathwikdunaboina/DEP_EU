@@ -13,21 +13,33 @@
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
+                    <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>Metric</componentType>
+                <componentType>Bar</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
                 <header>Volvo Austria - Premstätten</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>Premst_tten/Volvo_Austria_Premst_tten</report>
-                <showRange>false</showRange>
+                <legendPosition>Bottom</legendPosition>
+                <report>SalesConnectAT/Volvo_Austria_Premst_tten</report>
+                <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -60,7 +72,7 @@
                 <header>Volvo Austria - Premstätten Top Kunden</header>
                 <legendPosition>Bottom</legendPosition>
                 <maxValuesDisplayed>25</maxValuesDisplayed>
-                <report>Premst_tten/Volvo_Austria_Premst_tten_Top_Kunden</report>
+                <report>SalesConnectAT/Volvo_Austria_Premst_tten_Top_Kunden</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
@@ -96,7 +108,7 @@
                 </groupingSortProperties>
                 <header>Volvo Austria - Premstätten Lost Deals</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>Premst_tten/Volvo_Austria_Premst_tten_Lost_Deals</report>
+                <report>SalesConnectAT/Volvo_Austria_Premst_tten_Lost_Deals</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
@@ -116,26 +128,30 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>Bar</componentType>
+                <componentType>BarStacked</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
+                <groupingColumn>Opportunity.Sales_Person_Name__c</groupingColumn>
                 <groupingColumn>STAGE_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
                 </groupingSortProperties>
-                <header>Volvo Austria - Premstätten</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>Premst_tten/Volvo_Austria_Premst_tten</report>
+                <header>Volvo Austria - Premstätten Verkäufer</header>
+                <legendPosition>Right</legendPosition>
+                <report>SalesConnectAT/Volvo_Austria_Premst_tten_Verk_ufer</report>
                 <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
-                <showValues>true</showValues>
+                <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
@@ -173,7 +189,7 @@
                 </groupingSortProperties>
                 <header>Volvo Austria - Premstätten Lieferdatum</header>
                 <legendPosition>Right</legendPosition>
-                <report>Premst_tten/Volvo_Austria_Premst_tten_Lieferdatum</report>
+                <report>SalesConnectAT/Volvo_Austria_Premst_tten_Lieferdatum</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -185,86 +201,6 @@
         <dashboardGridComponents>
             <colSpan>4</colSpan>
             <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Opportunity.Finance_Houses__c</groupingColumn>
-                <groupingColumn>Opportunity.Interest_Rate__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Volvo AT - Premstätten: Lost Interest</header>
-                <legendPosition>Right</legendPosition>
-                <report>Premst_tten/Volvo_AT_Premst_tten_Lost_Interest</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Opportunity.Sales_Person_Name__c</groupingColumn>
-                <groupingColumn>STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Volvo Austria - Premstätten Verkäufer</header>
-                <legendPosition>Right</legendPosition>
-                <report>Premst_tten/Volvo_Austria_Premst_tten_Verk_ufer</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>16</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>4</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -293,13 +229,13 @@
                 </groupingSortProperties>
                 <header>Volvo Austria - Premstätten FactoryOrder</header>
                 <legendPosition>Right</legendPosition>
-                <report>Premst_tten/Volvo_Austria_Premst_tten_FactoryOrder</report>
+                <report>SalesConnectAT/Volvo_Austria_Premst_tten_FactoryOrder</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
+            <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
@@ -309,7 +245,7 @@
     <isGridLayout>true</isGridLayout>
     <runningUser>pierre.josten@volvo.com</runningUser>
     <textColor>#000000</textColor>
-    <title>SalesConnectAT Premstätten</title>
+    <title>SalesConnectAT</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

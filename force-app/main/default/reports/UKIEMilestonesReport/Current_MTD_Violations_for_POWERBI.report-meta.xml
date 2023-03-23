@@ -1,40 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_77895212</developerName>
-        <masterLabel>Case Owner</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>OWNER</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Rumeysa Belibagli</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>UK/IE - CS Operations</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Adam King</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Ben Townsend</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Heather Molloy</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Molly White</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Sareena Jordamovic</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>IE - CS Operations</sourceValue>
-            </sourceValues>
-            <value>Customer Service</value>
-        </values>
-    </buckets>
     <columns>
         <field>OWNER</field>
     </columns>
@@ -58,18 +23,18 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>EXT,XSM,Helen,EOT,Credit</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Case.Sub_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Spam</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>BucketField_77895212</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Customer Service</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -90,8 +55,8 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2023-03-31</endDate>
+        <endDate>2023-01-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-03-01</startDate>
+        <startDate>2023-01-01</startDate>
     </timeFrameFilter>
 </Report>

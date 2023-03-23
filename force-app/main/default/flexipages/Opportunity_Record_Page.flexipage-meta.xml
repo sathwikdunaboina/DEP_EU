@@ -361,6 +361,16 @@
                 <identifier>RecordLastModifiedByIdField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.RecordTypeId</fieldItem>
+                <identifier>RecordRecordTypeIdField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-4387348c-702d-4107-a5ec-2ba2c6611a40</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -492,6 +502,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>

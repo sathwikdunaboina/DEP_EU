@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CalculatorAPI__All</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CompanyRegistrationNr__c</columns>
+    <columns>CompanyRegistrationNumber__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_Deleted_From_Backbone__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>All</label>
+</ListView>

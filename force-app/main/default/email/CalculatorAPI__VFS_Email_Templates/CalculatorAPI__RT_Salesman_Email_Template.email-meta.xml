@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RT Salesman Email Template</name>
+    <style>none</style>
+    <subject>Generated Quote PDF-{!Opportunity.Id}</subject>
+    <textOnly>Cher(e) {!User.FirstName} {!User.LastName},
+
+Pour faire suite à votre demande de financement pour votre client {!ContactFirstName} {!ContactLastName} ,
+
+vous trouverez ci-joint la remise de prix liée à votre demande.
+
+Cordialement,
+
+RTFS</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

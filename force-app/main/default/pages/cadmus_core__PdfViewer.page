@@ -1,0 +1,108 @@
+<apex:page controller="cadmus_core.ConvertInterfaceController" applyBodyTag="false" showHeader="false" showQuickActionVfHeader="false" sidebar="false" showChat="false">
+    <style>
+        .pdf-viewer {
+            position: absolute;
+            top: 0;
+            height: 100vh;
+            border: none;
+        }
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 50px;
+            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            border: 2px solid #F05F40;
+            border-radius: 32px;
+            padding: 8px;
+            background: bisque;
+            opacity: 0.8;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+    
+    <script>    
+        function b64toBlob(b64Data, contentType) {
+            var byteCharacters = atob(b64Data)
+            
+            var byteArrays = []
+            
+            for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+                var slice = byteCharacters.slice(offset, offset + 512),
+                    byteNumbers = new Array(slice.length)
+                for (let i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i)
+                }
+                var byteArray = new Uint8Array(byteNumbers)
+            
+                byteArrays.push(byteArray)
+            }
+            
+            var blob = new Blob(byteArrays, { type: contentType })
+            return blob
+        }
+        function updateObject (evt) {
+            if (typeof evt.data === 'string' && evt.data !== '') {
+                //document.getElementById("pdfObject").setAttribute('data', "data:application/pdf;base64," + evt.data);
+                //var url = URL.createObjectURL(b64toBlob(evt.data, 'application/pdf')) + '#toolbar=0';
+                //document.getElementById("pdfObject").setAttribute('data', url);
+                
+                showDocument(evt.data);
+            }
+        }
+        if (window.addEventListener) {
+            // For standards-compliant web browsers
+            window.addEventListener("message", updateObject, false);
+        }
+        else {
+            window.attachEvent("onmessage", updateObject);
+        }
+    
+    	function showDocument(data) {
+            //if this is JSON => parse it
+            var base64 = "";
+            var toolbar = 0;
+            if(data[0] == "{") {
+                var json = JSON.parse(data);
+                base64 = json.base64;
+                toolbar = (json.toolbar ? "1" : "0");
+            } else {
+                base64 = data;
+            }
+                //if Safari, the blob will not work. So go for base64
+        	var isSafari = navigator.vendor.search('Apple Computer') >= 0;
+            if(isSafari) {
+                document.getElementById("pdfObject").setAttribute('data', "data:application/pdf;base64," + base64);
+            } else {
+                var url = URL.createObjectURL(b64toBlob(base64, 'application/pdf')) + '#toolbar=' + toolbar;
+                document.getElementById("pdfObject").setAttribute('data', url);
+            }
+        }
+    </script>
+    <object data="data:application/pdf;base64,{!fetchPdfAsBase64}" type="application/pdf" download="test.pdf" width="100%" height="100%" class="pdf-viewer" id="pdfObject">
+    </object>
+    <a class="watermark" href="https://www.pdfbutler.com" target="_blank" id="poweredWatermark">
+        <img src="{!$Resource.logo32x32}"/>&nbsp;Powered by PDF Butler
+    </a>
+    <script>
+        var loaded = false;
+   		console.log("Pdfviewer started");
+        document.getElementById("pdfObject").onload = function() {
+            if("{!fetchPdfAsBase64 != ''}" && !loaded) {
+                //make sure the toolbar is not showing as this does show a bad name (name not in BASE64) and this is requested by customers to not show the toolbar
+                loaded = true;
+                
+                var pdf = "{!fetchPdfAsBase64}";
+                //var url = URL.createObjectURL(b64toBlob(pdf, 'application/pdf')) + '#toolbar=0';
+                //document.getElementById("pdfObject").setAttribute('data', url);
+                showDocument(pdf);
+            }
+
+            if({!settings.WhiteLabelled__c}) {
+                document.getElementById("poweredWatermark").style.display = "none";
+            }
+        };
+    </script>
+</apex:page>

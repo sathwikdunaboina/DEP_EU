@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>EasyFinanceAccountDynamicQuery</label>
+    <protected>true</protected>
+    <values>
+        <field>CalculatorAPI__AccountDynamicQuery__c</field>
+        <value xsi:type="xsd:string">SELECT Id,Name,Phone,LastModifiedDate,AccountNumber,BillingCity,BillingCountry,BillingPostalCode,RecordTypeId,BillingStreet,CalculatorAPI__CallingReferenceId__c,CalculatorAPI__Primary_Contact_Firstname__c,CalculatorAPI__Primary_Contact_Lastname__c,CalculatorAPI__Siren__c,CalculatorAPI__Siret__c,CompanyRegistrationNumber__c FROM Account WHERE (CompanyRegistrationNumber__c =: customerIdToSearch OR CalculatorAPI__Siren__c =: customerIdToSearch)</value>
+    </values>
+    <values>
+        <field>CalculatorAPI__Account_Record_Type_Query__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CalculatorAPI__QueryNumber__c</field>
+        <value xsi:type="xsd:double">5.0</value>
+    </values>
+</CustomMetadata>

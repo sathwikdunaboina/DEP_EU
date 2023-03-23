@@ -85,6 +85,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>CH_User_sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>CH User sharing</label>
+        <sharedTo>
+            <group>Swiss_Sales_Connect</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>DE_User</fullName>
         <accessLevel>Read</accessLevel>
         <label>DE_User</label>

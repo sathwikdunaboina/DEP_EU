@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All_Electric_Vehicles</fullName>
-    <booleanFilter>1 OR 2</booleanFilter>
+    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
     <columns>OPPORTUNITY.NAME</columns>
     <columns>ACCOUNT.NAME</columns>
     <columns>Factory_Order__c</columns>
@@ -12,6 +12,11 @@
     <columns>CORE.USERS.FULL_NAME</columns>
     <columns>OPPORTUNITY.LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>notEqual</operation>
+        <value>Opportunity.CalculatorAPI__Easy_Finance_Opportunity</value>
+    </filters>
     <filters>
         <field>Engine_Version__c</field>
         <operation>contains</operation>

@@ -57,6 +57,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>CH_TM_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CH TM sharing</label>
+        <sharedTo>
+            <group>Swiss_Sales_Connect</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>DE_Territory</fullName>
         <accessLevel>Edit</accessLevel>
         <label>DE_Territory</label>

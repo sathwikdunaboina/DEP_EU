@@ -43,9 +43,9 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>CH_FO_access</fullName>
+        <fullName>CH_FO</fullName>
         <accessLevel>Read</accessLevel>
-        <label>CH FO access</label>
+        <label>CH FO</label>
         <sharedTo>
             <group>Swiss_Sales_Connect</group>
         </sharedTo>
@@ -282,6 +282,20 @@
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Netherlands,NL,NLD</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>South_West_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>South West Access</label>
+        <sharedTo>
+            <group>South_West_Region_access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>United Kingdom,GB,UK,Italy,IT,Spain,ES,France,FR,Ireland,IE</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

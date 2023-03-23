@@ -317,6 +317,25 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>South_West_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>South West Access</label>
+        <sharedTo>
+            <group>South_West_Region_access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>United Kingdom,Spain,Italy,France</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Spain_Account</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -403,6 +422,54 @@
             <value>Ireland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>easy_finance_france</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>easy finance france</label>
+        <sharedTo>
+            <group>External_Easy_Finance_France</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Account</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>easy_finance_france_access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>easy finance france access</label>
+        <sharedTo>
+            <group>External_Easy_Finance_France</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Account</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>TM_DE_AT</fullName>
