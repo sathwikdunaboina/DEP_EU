@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
     <customApplications>
+        <label><!-- Sales Connect --></label>
+        <name>GCSalesConnect</name>
+    </customApplications>
+    <customApplications>
         <label>Generación de clientes potenciales</label>
         <name>Lead_Generation</name>
     </customApplications>
@@ -512,6 +516,713 @@
         <label><!-- Bulk Lead Converter --></label>
         <name>Bulk_Lead_Converter</name>
     </customTabs>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Display_Warning</name>
+                </fields>
+                <name>Display_text</name>
+            </screens>
+        </flows>
+        <fullName>Account_name_is_Mandate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Adjusted_Time</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Auto_Closure</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Country_Assignment_Sub_process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Last_changed_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_On_Create_Edit_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_On_Create_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contract_Currency_Update_Sub_process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contract_On_Create_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contract_TM_Assignment_Sub_process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Covid19_Restructure_Sub_Process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>FactoryOrderCheck</name>
+                </fields>
+                <name>Add_Factory_Order</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>unsuccessfuletectmsg</name>
+                </fields>
+                <name>DraftQuoteCreate_Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>QuoteCreateSuccess</name>
+                </fields>
+                <name>DraftQuoteCreate_Succes</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ErrorText</name>
+                </fields>
+                <name>Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>MissingDealerText</name>
+                </fields>
+                <name>MissingDealer_c</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>HasQuote</name>
+                </fields>
+                <name>Quote_Exists</name>
+            </screens>
+        </flows>
+        <fullName>Create_Quote_Flow_With_Display_Errors</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Do_Nothing</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>EmailMessage_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Email_Message_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Entitlement_Assignment</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>FO_Currency_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>FactoryOrderAfterInsertUpdateFlow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Fire_LeadSource_Changed_Event</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>GCErrorLogInsertPlatformEventHandler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>GCLeadAssignmentPlatformEventHandler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>GCLeadSourceUpsertPlatformEventHandler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>InvoiceResultText</name>
+                </fields>
+                <name>Invoice_Call_Result</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ErrorText</name>
+                </fields>
+                <name>Partial_Success</name>
+            </screens>
+        </flows>
+        <fullName>Invoke_Invoice_API</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Last_Email_Message_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>LeadSource_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Assignment</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Currency_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <textTemplates>
+                <name>multipleRecordsFoundTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>noRecordsFoundTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>Lead_Source_Change_Listner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Code</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>EnterOTPValue</name>
+                </fields>
+                <name>Email_Sent</name>
+            </screens>
+        </flows>
+        <fullName>Login_OTP</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Display_Errror</name>
+                </fields>
+                <name>Previous</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Errror_0</name>
+                </fields>
+                <name>Previous_0</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Errror_0_0</name>
+                </fields>
+                <name>Previous_0_0</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>dependencyWrapperApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middlePicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middleValue</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topPicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topValue</name>
+                        <value/>
+                    </inputParameters>
+                    <name>FinanceHouses</name>
+                </fields>
+                <fields>
+                    <name>Heading</name>
+                </fields>
+                <fields>
+                    <name>Interest_Rate</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Not_needed</name>
+                </fields>
+                <name>Reason</name>
+            </screens>
+        </flows>
+        <fullName>Opportunity_Lost_Reason_Interest_Rate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_country_update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_update_Currency</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>I_accept</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>Heading</name>
+                </fields>
+                <fields>
+                    <name>I_accept_field</name>
+                </fields>
+                <fields>
+                    <name>WhattoDisplay</name>
+                </fields>
+                <name>Terms_and_Condition</name>
+            </screens>
+        </flows>
+        <fullName>Portal_Login_Terms_Conditions</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Priority_Assignment_Sub_Process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Contact_unique_Id</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Opp_Stage</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Oppty_Fields_When_Factory_Order_Is_Cancelled</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Territory_Manager_for_Account</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_closed_case_recordtype</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>S_043f2c6f_3f66_4caa_a12e_fac8f7f30f4d</name>
+            </choices>
+            <choices>
+                <name>S_09cbe416_b76e_428a_9057_532591f37ad8</name>
+            </choices>
+            <choices>
+                <name>S_68f85722_14f8_4f3e_ab91_c3dc11afe9bb</name>
+            </choices>
+            <choices>
+                <name>S_96201536_1d5b_4d21_b34e_8a9d13fa5e1c</name>
+            </choices>
+            <choices>
+                <name>S_b76efa00_a4ad_43df_a60b_416e76cc18c7</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>q_baba329f_e416_44ac_a8e6_0b26da74b180</name>
+                </fields>
+                <fields>
+                    <name>q_eb13e35c_bb3d_42c9_9dc3_48aa8db358cd</name>
+                </fields>
+                <name>surveyQuestionPage</name>
+            </screens>
+            <textTemplates>
+                <name>thankYouDescriptionTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>thankYouLabelTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>customer_satisfaction</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>q_514f3088_964a_43a0_b2cf_4f8c0947c24f</name>
+                </fields>
+                <fields>
+                    <name>q_a1655ac8_1829_4272_b4d5_c7b12ef5cd59</name>
+                </fields>
+                <name>surveyQuestionPage</name>
+            </screens>
+            <textTemplates>
+                <name>thankYouDescriptionTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>thankYouLabelTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>net_promoter_score</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>setCaseType</fullName>
+    </flowDefinitions>
+    <prompts>
+        <name>ServiceIncidentManagementBroadcastUser</name>
+        <promptVersions>
+            <name>Incident Management Broadcast</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EnableSalesEngagement</name>
+        <promptVersions>
+            <name>EnableSalesEngagement</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudTrialChatterGuide</name>
+        <promptVersions>
+            <name>Service Cloud Trial Chatter Guide</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudTrialKanbanVideo</name>
+        <promptVersions>
+            <name>Sales Cloud Trial Kanban Video</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>NPSPLicenseDay1</name>
+        <promptVersions>
+            <name>NPSP License Day 1</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudCoreReportsTab</name>
+        <promptVersions>
+            <name>Service Cloud Core Reports Tab</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCoreQuoteAdminCpq</name>
+        <promptVersions>
+            <name>Sales Core Quote Admin to CPQ</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ReleaseReadinessServiceSandbox</name>
+        <promptVersions>
+            <name>Release Readiness Service Sandbox</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EnablementExploreProgramsEnblAdmin</name>
+        <promptVersions>
+            <name>Explore Programs</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EnablementSwitchToProgramsEnblAdmin</name>
+        <promptVersions>
+            <name>Switch Between Measures and Programs Easily</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesForecastingAdmin</name>
+        <promptVersions>
+            <name>ForecastingAdoption</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudInboxDockedPrompt</name>
+        <promptVersions>
+            <name>SalesCloudInboxDockedPrompt</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudTrialHomePage</name>
+        <promptVersions>
+            <name>Sales Cloud Trial Home Page</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ReleaseReadiness</name>
+        <promptVersions>
+            <name>Release Readiness</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>IAGFeatureAdoption</name>
+        <promptVersions>
+            <name>IAG Feature Adoption Step 1</name>
+            <stepNumber>1</stepNumber>
+        </promptVersions>
+        <promptVersions>
+            <name>IAG Feature Adoption Step 2</name>
+            <stepNumber>2</stepNumber>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>CDPOnboardingInAppGuidance</name>
+        <promptVersions>
+            <name>CDP Onboarding InApp Guidance</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesHVSDialer</name>
+        <promptVersions>
+            <name>Sales HVS Dialer</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SupportEmailToCase</name>
+        <promptVersions>
+            <name>Support Email To Case</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudCoreOpportunitiesTab</name>
+        <promptVersions>
+            <name>Sales Cloud Core Opportunities Tab</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>tabletFullWidthGA</name>
+        <promptVersions>
+            <name>TabletFullWidthGA</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EnablementExploreAnalyticsEnblAdmin</name>
+        <promptVersions>
+            <name>Explore Analytics</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EnablementExploreMeasuresEnblAdmin</name>
+        <promptVersions>
+            <name>Explore Measures</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesGenderFieldsAdmin</name>
+        <promptVersions>
+            <name>Capture gender inclusive data</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudforSlackWalkthrough</name>
+        <promptVersions>
+            <name>SalesCloudforSlackWalkthrough Step 1</name>
+            <stepNumber>1</stepNumber>
+        </promptVersions>
+        <promptVersions>
+            <name>SalesCloudforSlackWalkthrough Step 2</name>
+            <stepNumber>2</stepNumber>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>MFAAutoEnableAwarenessforNonCompliantOrgs</name>
+        <promptVersions>
+            <name>MFA Auto-Enable Awareness for Non-Compliant Orgs</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>FlowsForServiceDockedPrompt</name>
+        <promptVersions>
+            <name>FlowsForServiceDockedPrompt</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudTrialDashboardGuide</name>
+        <promptVersions>
+            <name>Service Cloud Trial Dashboard Guide</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudTrialCasesTab</name>
+        <promptVersions>
+            <name>Service Cloud Trial Cases Tab</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EngagementAttributeTips</name>
+        <promptVersions>
+            <name>Engagement Attribute Tips</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudTrialHomepageGuide</name>
+        <promptVersions>
+            <name>Service Cloud Trial Homepage Guide</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudCoreHomepage</name>
+        <promptVersions>
+            <name>Sales Cloud Core Homepage</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudTrialContactsListViewsVideo</name>
+        <promptVersions>
+            <name>Sales Cloud Trial Contacts List Views Video</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudCoreCases</name>
+        <promptVersions>
+            <name>Service Cloud Core Cases</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SetupUsers</name>
+        <promptVersions>
+            <name>Setup Users</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ReleaseReadinessSales</name>
+        <promptVersions>
+            <name>Release Readiness Sales</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>NPSPLicenseDay25</name>
+        <promptVersions>
+            <name>NPSP License Day 25</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>MFAAutoEnableAwarenessforCompliantOrgs</name>
+        <promptVersions>
+            <name>MFA Auto-Enable Awareness for Compliant Orgs</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudTrailPreconfiguredDashboardsGuide</name>
+        <promptVersions>
+            <name>Sales Cloud Trail Pre-configured Dashboards Guide</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>X2StepWalkthroughonReports</name>
+        <promptVersions>
+            <name>2 Step Walkthrough on Reports Step 1</name>
+            <stepNumber>1</stepNumber>
+        </promptVersions>
+        <promptVersions>
+            <name>2 Step Walkthrough on Reports Step 2</name>
+            <stepNumber>2</stepNumber>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceMacrosDockedPrompt</name>
+        <promptVersions>
+            <name>ServiceMacrosDockedPrompt</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SelfSupportDataImportWizard</name>
+        <promptVersions>
+            <name>Self Support Data Import Wizard</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>GmailIntegrationandSync</name>
+        <promptVersions>
+            <name>Gmail Integration and Sync</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCaseClassificationTargetedPrompt</name>
+        <promptVersions>
+            <name>ServiceCaseClassificationTargetedPrompt</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudCoreChatterTab</name>
+        <promptVersions>
+            <name>Sales Cloud Core Chatter Tab</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudCoreHomepage</name>
+        <promptVersions>
+            <name>Service Cloud Core Homepage</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ServiceCloudCoreChatter</name>
+        <promptVersions>
+            <name>Service Cloud Core Chatter</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>X4StepWalkthroughonContact</name>
+        <promptVersions>
+            <name>4 Step Walkthrough on Contact Step 1</name>
+            <stepNumber>1</stepNumber>
+        </promptVersions>
+        <promptVersions>
+            <name>4 Step Walkthrough on Contact Step 2</name>
+            <stepNumber>2</stepNumber>
+        </promptVersions>
+        <promptVersions>
+            <name>4 Step Walkthrough on Contact Step 3</name>
+            <stepNumber>3</stepNumber>
+        </promptVersions>
+        <promptVersions>
+            <name>4 Step Walkthrough on Contact Step 4</name>
+            <stepNumber>4</stepNumber>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudCoreContactsTab</name>
+        <promptVersions>
+            <name>Sales Cloud Core Contacts Tab</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>NPSPLicenseDay20</name>
+        <promptVersions>
+            <name>NPSP License Day 20</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudCoreReportsTab</name>
+        <promptVersions>
+            <name>Sales Cloud Core Reports Tab</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>SalesCloudTrialChatterGuide</name>
+        <promptVersions>
+            <name>Sales Cloud Trial Chatter Guide</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>ReleaseReadinessSandboxSales</name>
+        <promptVersions>
+            <name>Release Readiness Sandbox Sales</name>
+        </promptVersions>
+    </prompts>
+    <prompts>
+        <name>EinsteinPredictionBuilderSetupPagePrompt</name>
+        <promptVersions>
+            <name>Einstein Prediction Builder Setup Page Prompt</name>
+        </promptVersions>
+    </prompts>
     <quickActions>
         <aspect>Master</aspect>
         <label>Seguimiento</label>
@@ -573,4 +1284,135 @@
         <label><!-- Snapins_Contact_PrechatQuickAction_08h2p000000Cayp --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h2p000000Cayp</name>
     </quickActions>
+    <reportTypes>
+        <description>Cuentas con contratos con planes de pago</description>
+        <label>Cuentas con contratos con planes de pago</label>
+        <name>Accounts_with_Contracts_with_Payment_Plans</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contracts --></label>
+            <name>Contracts</name>
+        </sections>
+        <sections>
+            <label><!-- Payment Plans --></label>
+            <name>Payment Plans</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Entitlements with Contacts --></description>
+        <label><!-- Accounts with Entitlements with Contacts --></label>
+        <name>Accounts_with_Entitlements_with_Contacts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+        <sections>
+            <label><!-- Entitlements --></label>
+            <name>Entitlements</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Cases and Case Feed --></description>
+        <label><!-- Cases and Case Feed --></label>
+        <name>Cases_and_Case_Feed</name>
+        <sections>
+            <label><!-- Case Feed --></label>
+            <name>Case Feed</name>
+        </sections>
+        <sections>
+            <label><!-- Cases --></label>
+            <name>Cases</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Contacts Report --></description>
+        <label><!-- Contacts Report --></label>
+        <name>Contacts_Report</name>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>Objeto de contrato personalizado</description>
+        <label>Contratos (personalizados)</label>
+        <name>Contracts_Custom</name>
+        <sections>
+            <label><!-- Contracts --></label>
+            <name>Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Service Contracts with Contract Line Items --></description>
+        <label><!-- Service Contracts with Contract Line Items --></label>
+        <name>Service_Contracts_with_Contract_Line_Items</name>
+        <sections>
+            <label><!-- Contract Line Items --></label>
+            <name>Contract Line Items</name>
+        </sections>
+        <sections>
+            <label><!-- Service Contracts --></label>
+            <name>Service Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Service Contracts with Entitlements --></description>
+        <label><!-- Service Contracts with Entitlements --></label>
+        <name>Service_Contracts_with_Entitlements</name>
+        <sections>
+            <label><!-- Entitlements --></label>
+            <name>Entitlements</name>
+        </sections>
+        <sections>
+            <label><!-- Service Contracts --></label>
+            <name>Service Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- User Permission Set --></description>
+        <label><!-- User Permission Set --></label>
+        <name>User_Permission_Set</name>
+        <sections>
+            <label><!-- User Permission Sets --></label>
+            <name>User Permission Sets</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>Algunos campos de usuario no están disponibles en el diseño del tipo de informe estándar</description>
+        <label>Usuarios (Personalizado)</label>
+        <name>Users_Custom</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Users with FedID --></description>
+        <label><!-- Users with FedID --></label>
+        <name>Users_with_FedID</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>Descubra qué flujos se ejecutan y cuánto tiempo tardan los usuarios en completar cada pantalla de flujo.</description>
+        <label>Flujos de pantalla</label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow Interview Log Entries --></label>
+            <name>Flow Interview Log Entries</name>
+        </sections>
+        <sections>
+            <label><!-- Flow Interview Logs --></label>
+            <name>Flow Interview Logs</name>
+        </sections>
+    </reportTypes>
 </Translations>

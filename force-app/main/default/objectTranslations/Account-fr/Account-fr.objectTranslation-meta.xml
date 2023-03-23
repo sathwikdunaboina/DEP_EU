@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Golden Dealer Layout</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Adress Information --></label>
+            <section>Adress Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Change_TM_On_Account</name>
+    </quickActions>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>compte enfant ?</label>
+        <name>Child_Account</name>
+    </quickActions>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>obtenir les factures</label>
+        <name>Get_Invoices</name>
+    </quickActions>
     <recordTypes>
         <description>type d&apos;enregistrement pour les données du compte client</description>
         <label>compte client</label>

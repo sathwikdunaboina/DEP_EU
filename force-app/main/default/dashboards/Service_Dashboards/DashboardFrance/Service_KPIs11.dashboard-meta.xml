@@ -37,32 +37,19 @@
             <colSpan>4</colSpan>
             <columnIndex>4</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Bar</componentType>
-                <decimalPrecision>-1</decimalPrecision>
+                <componentType>BarStacked</componentType>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>true</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>true</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Case.Sub_Type__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>RowCount</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
                 <report>Service_Dashboards_Reports/Cases_by_Type_and_Open_Status</report>
                 <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
-                <showValues>true</showValues>
+                <showValues>false</showValues>
                 <sortBy>RowValueDescending</sortBy>
                 <title>Case Distribution by Type</title>
                 <useReportChart>false</useReportChart>
@@ -120,9 +107,9 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Nombre de requêtes par personne</header>
+                <header>Case Age Report</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>France1/Copie_de_Case_Age_Report_YTD</report>
+                <report>Service_Dashboards_Reports/Case_Age_Report_exi</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
@@ -136,34 +123,23 @@
             <colSpan>4</colSpan>
             <columnIndex>4</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Manual</chartAxisRange>
-                <chartAxisRangeMin>350.0</chartAxisRangeMin>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>FORMULA1</column>
-                </chartSummary>
-                <componentType>Column</componentType>
-                <decimalPrecision>-1</decimalPrecision>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Bar</componentType>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSED_DATE</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
                 <report>Service_Dashboards_Reports/Trend_of_Cases_Closed</report>
                 <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <title>Trend of Cases Closed</title>
-                <useReportChart>false</useReportChart>
+                <useReportChart>true</useReportChart>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -172,31 +148,19 @@
             <colSpan>4</colSpan>
             <columnIndex>8</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Manual</chartAxisRange>
-                <chartAxisRangeMin>350.0</chartAxisRangeMin>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Column</componentType>
-                <decimalPrecision>-1</decimalPrecision>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Line</componentType>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>true</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CREATED_DATEONLY</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
                 <report>Service_Dashboards_Reports/Trend_of_Cases_Created</report>
                 <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
+                <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <title>Trend of Cases Created</title>
                 <useReportChart>false</useReportChart>
