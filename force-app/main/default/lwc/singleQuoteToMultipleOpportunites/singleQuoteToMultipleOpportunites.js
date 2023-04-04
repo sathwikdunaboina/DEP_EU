@@ -20,7 +20,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
   }
   tableHeadings = ["Name","Quote Id", "Amount","Brand", "Dealer Name", "Dealer Delivery Date", "Closed Date"];
   data = [];
-  nonClosedateArray = [];
+  nonQuotedArray = [];
   firstCall = false;
   renderedCallback() {
       if (this.firstCall == false && this.recordId != null) {
@@ -28,20 +28,19 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
               .then(result => {
                   let data = result;
                   console.log(result);
-                  let today = new Date().toISOString().slice(0, 10);
-                  let closedateArray = [];
-                  this.nonClosedateArray = [];
+                  let QuotedArray = [];
+                  this.nonQuotedArray = [];
                   data.map(ele => {
                       if (ele.Quote_Id__c != null) {
-                          closedateArray = [...closedateArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,Brand__c: ele.Brand__c,
+                          QuotedArray = [...QuotedArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,Brand__c: ele.Brand__c,
                             Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: false }]
                       } else if(ele.Quote_Id__c == null) {
-                          this.nonClosedateArray = [...this.nonClosedateArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
+                          this.nonQuotedArray = [...this.nonQuotedArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
                             Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
                       }
                   })
                   this.firstCall = true;
-                  this.data = closedateArray.concat(this.nonClosedateArray);
+                  this.data = QuotedArray.concat(this.nonQuotedArray);
               })
               .catch(result => {
                 alert('Error Caused:renderedCallback'+JSON.stringify(result)); 
@@ -60,7 +59,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
               if (selectedOpps[i].checked && selectedOpps[i].type === 'checkbox') {
                   result.push(selectedOpps[i].value);
                   console.log('result1'+result);
-                  resultCopy = this.nonClosedateArray.filter(ele=>{
+                  resultCopy = this.nonQuotedArray.filter(ele=>{
                       return (ele.Id == selectedOpps[i].value)
                   })
                   if(!resultCopy[0].Amount){
@@ -100,8 +99,11 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
                         })
                     );
                 }
-                else if(data.includes("Please select atleast 1 record")|| data.includes("Could")){
+                else if(data.includes("Please select atleast 1 record")|| data.includes("Could") || data.includes("Cannot pass")){
                     this.isLoaded = !this.isLoaded;
+                    if(data.includes("Cannot pass")){
+                        this.dispatchEvent(new CloseActionScreenEvent());
+                    }
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: 'Warning',
@@ -111,7 +113,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
                     );
                 }
                 else {
-                    this.dispatchEvent(new CloseActionScreenEvent());
+                    
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: 'Success',
@@ -119,9 +121,12 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
                             variant: 'success'
                         })
                     );
-                    setTimeout(() => {
-                        eval("$A.get('e.force:refreshView').fire();");
-                   }, 1000); 
+                    alert('Success');
+                    //setTimeout(() => {
+                    //    eval("$A.get('e.force:refreshView').fire()");
+                    //}, 1000);
+                    setTimeout(() => { document.location.reload(); }, 1000);
+                    this.dispatchEvent(new CloseActionScreenEvent());
                 }
 
               })
@@ -169,6 +174,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
   handleSuccess() {
       // Close the modal window and display a success toast
       this.dispatchEvent(new CloseActionScreenEvent());
+      refreshView();
       this.dispatchEvent(
           new ShowToastEvent({
               title: 'Success',
@@ -177,4 +183,5 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
           })
       );
   }
+
 }

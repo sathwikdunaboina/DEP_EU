@@ -11,8 +11,8 @@ public with sharing  class quoteCalloutHandler {
         String UserName1 = UserInfo.getUserName();//Returns the context user's login name.
         System.Debug('UserName-' + UserName1);
         List<User> userObj =new List<User>();
-        userObj =  [SELECT Id,FederationIdentifier__c FROM User WHERE Username = : UserName1 ];
-        String userFederationID=userObj[0].FederationIdentifier__c;
+        userObj =  [SELECT Id,FederationIdentifier FROM User WHERE Username = : UserName1 ];
+        String userFederationID=userObj[0].FederationIdentifier;
         System.debug('This is user Federation id'+userFederationID);
         System.debug('This is the id'+oppIds);
         System.debug('This is the id'+oppIds.get(0));
@@ -54,7 +54,7 @@ public with sharing  class quoteCalloutHandler {
         System.debug('This is FO details'+foList);
         system.debug('This is 1st element '+foList[0].Assembly_Factory_Code__c);
         List<User> ownerObj =new List<User>();
-        ownerObj = [SELECT FederationIdentifier__c, Id FROM User WHERE Id in (SELECT OwnerId FROM Opportunity WHERE Id = :oppIds.get(0))];
+        ownerObj = [SELECT FederationIdentifier, Id FROM User WHERE Id in (SELECT OwnerId FROM Opportunity WHERE Id = :oppIds.get(0))];
         List<Account> accObj = new List<Account>();
         accObj = [SELECT Name, Customer_Number__c FROM Account WHERE Id in (SELECT AccountID FROM Opportunity WHERE Id = :oppIds.get(0))];
         string customerCmsId = accObj[0].Customer_Number__c;
@@ -62,7 +62,7 @@ public with sharing  class quoteCalloutHandler {
        	quotewrap.externalId = guid; 
         quotewrap.countryCode = oppList[0].Account.BillingCountryCode;
         quotewrap.brand = foList[0].Brand__c;
-        quotewrap.owner = ownerObj[0].FederationIdentifier__c;
+        quotewrap.owner = ownerObj[0].FederationIdentifier;
         quotewrap.requestedBy = userFederationID;
         quotewrap.Source = 'Sales Connect';
         quotewrap.version = '2';
@@ -117,17 +117,11 @@ public with sharing  class quoteCalloutHandler {
         quotewrap.customer = customer;
         System.debug('lstwrapeer: '+quotewrap);
 		String fullString=json.serialize(quotewrap.order);
-		//oppList1[0].description = fullString;
-        //update oppList1;
-        //List<String>listStr = new List<String>();
-        //listStr.add('false');
-        //return listStr;//dummy return
-        
-        //CMSAPI__c settings = CMSAPI_SettingsManager.get();
+
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:VFS_Global_APIs');
+        request.setEndpoint('callout:VFS_Global_APIs'+settings.Endpoint_QA__c);
         request.setMethod('POST');
         request.setHeader( 'X-Ibm-Client-Id',settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret' , settings.X_Ibm_Client_Secret__c);
@@ -187,17 +181,26 @@ public with sharing  class quoteCalloutHandler {
         else
         {
             try{
-            Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
-            String Error = values.get('errorMessage');
-            Error += '; '+values.get('message');
-            System.debug('This is the error Msg'+Error);      
-            system.debug('This is else');
-            listStr.add(Error);
-            system.debug(listStr);
+                Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
+                String Error = values.get('errorMessage');
+                Error = '; '+values.get('message') == null ? '':values.get('message');
+                System.debug('This is the error Msg'+Error);      
+                system.debug('This is else');
+                listStr.add(Error);
+                system.debug(listStr);
             }
             catch (Exception e) {
-            System.debug('The following exception has occurred:catch ' + e.getMessage()+'==+ :'+listStr);
-            listStr.add(e.getMessage());
+                System.debug('The following exception has occurred:catch ' + e.getMessage()+'==+ :'+listStr);
+                System.debug('The following exception has occurred:catch ' + e.getLineNumber());
+                System.debug('The following exception has occurred:catch ' + e.getTypeName());
+                System.debug('The following exception has occurred:catch ' + e.getStackTraceString());
+                Boolean result=e.getMessage().contains('Unexpected character');
+                if(result){
+                    listStr.add('Cannot pass the security checks that are required by the target API or operation. Please try again later!');
+                }
+                else{
+                   listStr.add(e.getMessage()); 
+                }
             }
             return listStr;
         }

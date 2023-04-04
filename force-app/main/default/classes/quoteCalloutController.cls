@@ -8,9 +8,10 @@ public with sharing class quoteCalloutController {
     @AuraEnabled
     public static List<opportunity> getOpportunities(String oppId){
         List <String> oppIdsList = new List<String>();
-        String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: OppId].Account.Customer_Number__c;
-        String DealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: OppId].Factory_Order__r.Dealer_Id__c;
-        String AccountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: OppId].AccountId;
+        String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
+        String DealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: oppId].Factory_Order__r.Dealer_Id__c;
+        String brand = [Select Id,Factory_Order__r.Brand__c From Opportunity Where Id =: oppId].Factory_Order__r.Brand__c;
+        String AccountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: oppId].AccountId;
         List<Opportunity> oppList = [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode
         FROM Opportunity
         WHERE Account.Customer_Number__c =: customerNumber];
@@ -21,14 +22,15 @@ public with sharing class quoteCalloutController {
                     FROM Opportunity
                     WHERE Account.Customer_Number__c =: customerNumber 
                     AND Factory_Order__r.Dealer_Id__c =: DealerID
-                    AND (StageName !='Closed Won' OR StageName != 'Closed Lost') 
+                    AND Factory_Order__r.Brand__c =: brand
+                    AND StageName !='Closed Won' AND StageName != 'Closed Lost' 
                     AND AccountId =: AccountIdFromOpportunity 
                     AND Account.Customer_Number__c !=null];  
         }
         else{
             return [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode,DealerId__c
                     FROM Opportunity
-                    WHERE Id =:oppId AND (StageName !='Closed Won' OR StageName != 'Closed Lost')];
+                    WHERE Id =:oppId AND StageName !='Closed Won' AND StageName != 'Closed Lost'];
         }
 
     }
