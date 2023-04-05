@@ -1,5 +1,11 @@
 @isTest
 global class QuoteCalloutMockCallout implements HttpCalloutMock {
+    
+    private Integer statusCode;
+    
+    public QuoteCalloutMockCallout(Integer statusCode){
+        this.statusCode = statusCode;
+    }
     global HttpResponse respond(HttpRequest request) {
         HttpResponse response = new HttpResponse();
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
@@ -7,7 +13,7 @@ global class QuoteCalloutMockCallout implements HttpCalloutMock {
         System.assertEquals('POST', request.getMethod());
         response.setHeader('contentType', 'application/json');
         response.setBody('{"example":"test"}');
-        response.setStatusCode(200);
+        response.setStatusCode(this.statusCode);
         return response;
     }
 }

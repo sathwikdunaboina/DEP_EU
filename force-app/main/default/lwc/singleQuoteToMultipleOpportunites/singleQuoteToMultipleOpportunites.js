@@ -20,7 +20,8 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
   }
   tableHeadings = ["Name","Quote Id", "Amount","Brand", "Dealer Name", "Dealer Delivery Date", "Closed Date"];
   data = [];
-  nonQuotedArray = [];
+  nonQuotedOpp = [];
+  nonQuotedOppSelected = [];
   firstCall = false;
   renderedCallback() {
       if (this.firstCall == false && this.recordId != null) {
@@ -28,19 +29,26 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
               .then(result => {
                   let data = result;
                   console.log(result);
-                  let QuotedArray = [];
-                  this.nonQuotedArray = [];
+                  let QuotedOpp = [];
+                  this.nonQuotedOpp = [];
+                  this.nonQuotedOppSelected = [];
                   data.map(ele => {
                       if (ele.Quote_Id__c != null) {
-                          QuotedArray = [...QuotedArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,Brand__c: ele.Brand__c,
+                          QuotedOpp = [...QuotedOpp, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,Brand__c: ele.Brand__c,
                             Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: false }]
                       } else if(ele.Quote_Id__c == null) {
-                          this.nonQuotedArray = [...this.nonQuotedArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
-                            Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
+                        if(this.recordId == ele.Id){
+                            this.nonQuotedOppSelected = [{Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
+                                Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
+                        }
+                        else{
+                            this.nonQuotedOpp = [...this.nonQuotedOpp, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
+                              Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
+                        }
                       }
                   })
                   this.firstCall = true;
-                  this.data = QuotedArray.concat(this.nonQuotedArray);
+                  this.data = QuotedOpp.concat(this.nonQuotedOppSelected.concat(this.nonQuotedOpp));
               })
               .catch(result => {
                 alert('Error Caused:renderedCallback'+JSON.stringify(result)); 
@@ -59,7 +67,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
               if (selectedOpps[i].checked && selectedOpps[i].type === 'checkbox') {
                   result.push(selectedOpps[i].value);
                   console.log('result1'+result);
-                  resultCopy = this.nonQuotedArray.filter(ele=>{
+                  resultCopy = this.nonQuotedOpp.filter(ele=>{
                       return (ele.Id == selectedOpps[i].value)
                   })
                   if(!resultCopy[0].Amount){

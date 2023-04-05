@@ -190,10 +190,6 @@ public with sharing  class quoteCalloutHandler {
                 system.debug(listStr);
             }
             catch (Exception e) {
-                System.debug('The following exception has occurred:catch ' + e.getMessage()+'==+ :'+listStr);
-                System.debug('The following exception has occurred:catch ' + e.getLineNumber());
-                System.debug('The following exception has occurred:catch ' + e.getTypeName());
-                System.debug('The following exception has occurred:catch ' + e.getStackTraceString());
                 Boolean result=e.getMessage().contains('Unexpected character');
                 if(result){
                     listStr.add('Cannot pass the security checks that are required by the target API or operation. Please try again later!');
