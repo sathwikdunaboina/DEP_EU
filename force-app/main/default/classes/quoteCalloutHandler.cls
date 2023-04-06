@@ -183,7 +183,7 @@ public with sharing  class quoteCalloutHandler {
             try{
                 Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
                 String Error = values.get('errorMessage');
-                Error = '; '+values.get('message') == null ? '':values.get('message');
+                Error += '; '+values.get('message') == null ? '':values.get('message');
                 System.debug('This is the error Msg'+Error);      
                 system.debug('This is else');
                 listStr.add(Error);
