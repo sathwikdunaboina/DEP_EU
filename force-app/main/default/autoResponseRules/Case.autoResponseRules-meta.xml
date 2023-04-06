@@ -513,7 +513,7 @@
             <template>Spain_Communication_Folder/Client_Renault</template>
         </ruleEntry>
         <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
                 <field>Case.Origin</field>
                 <operation>equals</operation>
@@ -524,6 +524,11 @@
                 <operation>equals</operation>
                 <value>DE - Contract Performance</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+                <value>unityconnection@vcn.ds.volvo.net</value>
+            </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs.operations.de@volvo.com</replyToEmail>
             <senderEmail>vfs.info.de@volvo.com</senderEmail>
@@ -531,7 +536,7 @@
             <template>DE_AT_Communication_Folder/DE_Contract_Performace</template>
         </ruleEntry>
         <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
                 <field>Case.Origin</field>
                 <operation>equals</operation>
@@ -541,6 +546,11 @@
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
                 <value>DE - End of Term</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+                <value>unityconnection@vcn.ds.volvo.net</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs.eot.de@volvo.com</replyToEmail>
