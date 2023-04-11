@@ -35,7 +35,7 @@ public with sharing  class quoteCalloutHandler {
         String h = EncodingUtil.ConvertTohex(b);
         String guid = h.SubString(0,6)+oppList[0].Account.Customer_Number__c;
         System.debug('foIds'+foIds);
-        oppList1 =[Select Id,description,Quote_Id__c,Quote_Url__c from Opportunity where Id =  : oppIds];
+        oppList1 =[Select Id,description,Quote_Id__c,Quote_Url__c,Account.Customer_Number__c from Opportunity where Id =  : oppIds];
         String foId = oppList[0].Factory_Order__c;
         system.debug('This is the list'+oppList[0].Account.BillingCountryCode);
         List<Factory_Order__c> foList=new List<Factory_Order__c>();
@@ -157,12 +157,13 @@ public with sharing  class quoteCalloutHandler {
             system.debug('Thi is url'+vfsConnectQuoteURL);
             //listStr.add(success);
             List <Opportunity> oppListUpt=new List<Opportunity>();
-            for (Opportunity opp :oppList1) 
-            {
+            //String QuoteReferenceId = quoteRecordCreate(oppList1[0],quoteId,guid);
+            for (Opportunity opp :oppList1) {
                 opp.Quote_Id__c = quoteId;
                 opp.Quote_Url__c = vfsConnectQuoteURL;
                 opp.Quote_Unique_Id__c = guid;
                 opp.StageName = 'Quoted';
+                //opp.VFS_Connect_Quote_Ref__c = QuoteReferenceId;
                 oppListUpt.add(opp);
             }
             update oppListUpt;
@@ -201,4 +202,15 @@ public with sharing  class quoteCalloutHandler {
             return listStr;
         }
     }
+    
+    /*public static String quoteRecordCreate(Opportunity oppList,String quoteNumber,String uniqueId){
+        VFS_Connect_Quote__c vfsConnectQuote = new VFS_Connect_Quote__c();
+        vfsConnectQuote.Account_CMS_Number__c = oppList.Account.Customer_Number__c;
+        vfsConnectQuote.Quote_Number__c = quoteNumber;
+        vfsConnectQuote.Quote_Unique_Id__c = uniqueId;
+        vfsConnectQuote.Name = quoteNumber;
+        vfsConnectQuote.Quote_Status__c = 'InComplete';
+        insert vfsConnectQuote;
+        return String.ValueOf(vfsConnectQuote.Id);
+    }*/
 }

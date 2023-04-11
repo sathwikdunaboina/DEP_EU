@@ -135,7 +135,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
                             variant: 'success'
                         })
                     );
-                    alert('Success');
+                    //alert('Success');
                     //setTimeout(() => {
                     //    eval("$A.get('e.force:refreshView').fire()");
                     //}, 1000);
