@@ -8,8 +8,6 @@ private class quoteCalloutHandlerTest {
         Id accountId = insertTestAccount();
         Id contactId = insertTestContact(accountId);
         Id opportunityId = insertTestOpp(accountId,FoId);
-        //Opportunity opp = insertTestOppRecord(accountId,FoId);
-        //insertQuoteRecord(opp);
         foOrder.add(String.valueOf(opportunityId));
         System.debug('foOrderTest'+foOrder);
         insertCustomSettingValues();
@@ -103,17 +101,7 @@ private class quoteCalloutHandlerTest {
         insert act;
         return act.Id;
     }
-    
-    private static Id insertQuoteRecord(Opportunity oppList){
-        VFS_Connect_Quote__c vfsConnectQuote = new VFS_Connect_Quote__c();
-        vfsConnectQuote.Account_CMS_Number__c = oppList.Account.Customer_Number__c;
-        vfsConnectQuote.Quote_Number__c = '123456';
-        vfsConnectQuote.Quote_Unique_Id__c = 'uniqueId';
-        vfsConnectQuote.Name = '123456';
-        vfsConnectQuote.Quote_Status__c = 'InComplete';
-        insert vfsConnectQuote;
-        return vfsConnectQuote.Id;
-    }
+   
     private static Id insertTestAccountWithoutCMS(){
         Account act = new Account();
         act.CustomerId__c = 'NL-X035000';
@@ -141,7 +129,7 @@ private class quoteCalloutHandlerTest {
         insert ld;
         return ld.Id;
     }
-    
+
     private static Id insertTestOpp(Id AccountId,Id FoId){
         Opportunity opp = new Opportunity();
         opp.Factory_Order__c = FoId;
@@ -154,18 +142,7 @@ private class quoteCalloutHandlerTest {
         insert opp;
         return opp.Id;
     }
-    /*private static Opportunity insertTestOppRecord(Id AccountId,Id FoId){
-        Opportunity opp = new Opportunity();
-        opp.Factory_Order__c = FoId;
-        opp.AccountId = AccountId;
-        opp.Amount = 12000;
-        opp.CloseDate = System.today() + 3;
-        opp.CurrencyIsoCode = 'EUR';
-        opp.Name = 'John2';
-        opp.StageName = 'New';
-        insert opp;
-        return opp;
-    }*/
+    
     private static Id insertTestOppWithoutCMS(Id AccountId,Id FoId){
         Opportunity opp = new Opportunity();
         opp.Factory_Order__c = FoId;

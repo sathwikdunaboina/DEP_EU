@@ -148,22 +148,18 @@ public with sharing  class quoteCalloutHandler {
             Map<String, String> values = (Map<String, String>)
                 JSON.deserialize(response.getBody(), Map<String, String>.class);
             String success = values.get('success');
-            String quoteId = values.get('quoteId');
-            
+            String quoteId = values.get('quoteId');          
             String vfsConnectQuoteURL = values.get('vfsConnectQuoteURL');
-            
             System.debug('This is success'+success);
             System.debug('This is quoteId'+quoteId);
             system.debug('Thi is url'+vfsConnectQuoteURL);
             //listStr.add(success);
-            List <Opportunity> oppListUpt=new List<Opportunity>();
-            //String QuoteReferenceId = quoteRecordCreate(oppList1[0],quoteId,guid);
+            List <Opportunity> oppListUpt=new List<Opportunity>(); 
             for (Opportunity opp :oppList1) {
                 opp.Quote_Id__c = quoteId;
                 opp.Quote_Url__c = vfsConnectQuoteURL;
                 opp.Quote_Unique_Id__c = guid;
                 opp.StageName = 'Quoted';
-                //opp.VFS_Connect_Quote_Ref__c = QuoteReferenceId;
                 oppListUpt.add(opp);
             }
             update oppListUpt;
@@ -202,15 +198,5 @@ public with sharing  class quoteCalloutHandler {
             return listStr;
         }
     }
-    
-    /*public static String quoteRecordCreate(Opportunity oppList,String quoteNumber,String uniqueId){
-        VFS_Connect_Quote__c vfsConnectQuote = new VFS_Connect_Quote__c();
-        vfsConnectQuote.Account_CMS_Number__c = oppList.Account.Customer_Number__c;
-        vfsConnectQuote.Quote_Number__c = quoteNumber;
-        vfsConnectQuote.Quote_Unique_Id__c = uniqueId;
-        vfsConnectQuote.Name = quoteNumber;
-        vfsConnectQuote.Quote_Status__c = 'InComplete';
-        insert vfsConnectQuote;
-        return String.ValueOf(vfsConnectQuote.Id);
-    }*/
+
 }
