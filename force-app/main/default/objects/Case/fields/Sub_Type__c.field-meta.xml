@@ -114,6 +114,11 @@
                 <label>Billing / Invoice query</label>
             </value>
             <value>
+                <fullName>Bus</fullName>
+                <default>false</default>
+                <label>Bus</label>
+            </value>
+            <value>
                 <fullName>CH /OL less than 6 months remaining</fullName>
                 <default>false</default>
                 <label>CH /OL less than 6 months remaining</label>
@@ -279,6 +284,11 @@
                 <label>Loading/Order Error</label>
             </value>
             <value>
+                <fullName>Login Details</fullName>
+                <default>false</default>
+                <label>Login Details</label>
+            </value>
+            <value>
                 <fullName>Maintenance Query Account on Stop</fullName>
                 <default>false</default>
                 <label>Maintenance Query Account on Stop</label>
@@ -307,6 +317,11 @@
                 <fullName>Maintenance Query Third Party</fullName>
                 <default>false</default>
                 <label>Maintenance Query Third Party</label>
+            </value>
+            <value>
+                <fullName>Missing Documents</fullName>
+                <default>false</default>
+                <label>Missing Documents</label>
             </value>
             <value>
                 <fullName>Monthly Billing</fullName>
@@ -419,6 +434,11 @@
                 <label>Remove User</label>
             </value>
             <value>
+                <fullName>Renault</fullName>
+                <default>false</default>
+                <label>Renault</label>
+            </value>
+            <value>
                 <fullName>Reporting</fullName>
                 <default>false</default>
                 <label>Reporting</label>
@@ -499,6 +519,11 @@
                 <label>Underwrite request</label>
             </value>
             <value>
+                <fullName>VCE</fullName>
+                <default>false</default>
+                <label>VCE</label>
+            </value>
+            <value>
                 <fullName>Vehicle information</fullName>
                 <default>false</default>
                 <label>Vehicle information</label>
@@ -507,6 +532,11 @@
                 <fullName>VGUK Ltd Query</fullName>
                 <default>false</default>
                 <label>VGUK Ltd Query</label>
+            </value>
+            <value>
+                <fullName>Volvo</fullName>
+                <default>false</default>
+                <label>Volvo</label>
             </value>
             <value>
                 <fullName>XSM Fleet Review Request</fullName>
@@ -727,6 +757,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Other</valueName>
         </valueSettings>
         <valueSettings>
@@ -907,6 +938,22 @@
             <valueName>Settlement Query</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Bus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Renault</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>VCE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Volvo</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
             <valueName>Back Up Information Query</valueName>
         </valueSettings>
@@ -921,6 +968,14 @@
         <valueSettings>
             <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
             <valueName>Invalid PO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>Login Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>Missing Documents</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
