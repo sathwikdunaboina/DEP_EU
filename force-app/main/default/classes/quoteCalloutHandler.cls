@@ -121,7 +121,7 @@ public with sharing  class quoteCalloutHandler {
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:VFS_Global_APIs'+settings.Endpoint_QA__c);
+        request.setEndpoint('{!Environment.VFS_Global_API Endpoint Named Credentials}1'+settings.Endpoint_QA__c);
         request.setMethod('POST');
         request.setHeader( 'X-Ibm-Client-Id',settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret' , settings.X_Ibm_Client_Secret__c);
