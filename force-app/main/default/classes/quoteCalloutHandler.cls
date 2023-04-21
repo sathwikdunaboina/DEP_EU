@@ -121,7 +121,7 @@ public with sharing  class quoteCalloutHandler {
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:VFS_Global_APIs'+settings.Endpoint_QA__c);
+        request.setEndpoint('{!Environment.VFS_Global_API Endpoint Named Credentials}1'+settings.Endpoint_QA__c);
         request.setMethod('POST');
         request.setHeader( 'X-Ibm-Client-Id',settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret' , settings.X_Ibm_Client_Secret__c);
@@ -148,13 +148,13 @@ public with sharing  class quoteCalloutHandler {
             Map<String, String> values = (Map<String, String>)
                 JSON.deserialize(response.getBody(), Map<String, String>.class);
             String success = values.get('success');
-            String quoteId = values.get('quoteId');          
+            String quoteId = values.get('quoteId');
             String vfsConnectQuoteURL = values.get('vfsConnectQuoteURL');
             System.debug('This is success'+success);
             System.debug('This is quoteId'+quoteId);
             system.debug('Thi is url'+vfsConnectQuoteURL);
             //listStr.add(success);
-            List <Opportunity> oppListUpt=new List<Opportunity>(); 
+            List <Opportunity> oppListUpt=new List<Opportunity>();
             for (Opportunity opp :oppList1) {
                 opp.Quote_Id__c = quoteId;
                 opp.Quote_Url__c = vfsConnectQuoteURL;
@@ -198,5 +198,5 @@ public with sharing  class quoteCalloutHandler {
             return listStr;
         }
     }
-
+    
 }
