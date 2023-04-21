@@ -101,7 +101,7 @@ private class quoteCalloutHandlerTest {
         insert act;
         return act.Id;
     }
-   
+    
     private static Id insertTestAccountWithoutCMS(){
         Account act = new Account();
         act.CustomerId__c = 'NL-X035000';
@@ -129,7 +129,7 @@ private class quoteCalloutHandlerTest {
         insert ld;
         return ld.Id;
     }
-
+    
     private static Id insertTestOpp(Id AccountId,Id FoId){
         Opportunity opp = new Opportunity();
         opp.Factory_Order__c = FoId;
