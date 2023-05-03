@@ -11,6 +11,7 @@ private class quoteCalloutHandlerTest {
         foOrder.add(String.valueOf(opportunityId));
         System.debug('foOrderTest'+foOrder);
         insertCustomSettingValues();
+        quoteCalloutHandler.quoteRecordCreate(insertTestOppRecord(accountId,FoId),'12112', '2we444r552w');
         System.test.startTest();
         quoteCalloutController.getOpportunities(String.valueOf(opportunityId));
         quoteCalloutController.getOppIds(foOrder);
@@ -101,7 +102,7 @@ private class quoteCalloutHandlerTest {
         insert act;
         return act.Id;
     }
-    
+   
     private static Id insertTestAccountWithoutCMS(){
         Account act = new Account();
         act.CustomerId__c = 'NL-X035000';
@@ -129,7 +130,7 @@ private class quoteCalloutHandlerTest {
         insert ld;
         return ld.Id;
     }
-    
+
     private static Id insertTestOpp(Id AccountId,Id FoId){
         Opportunity opp = new Opportunity();
         opp.Factory_Order__c = FoId;
@@ -141,6 +142,19 @@ private class quoteCalloutHandlerTest {
         opp.StageName = 'New';
         insert opp;
         return opp.Id;
+    }
+    
+    private static Opportunity insertTestOppRecord(Id AccountId,Id FoId){
+        Opportunity opp = new Opportunity();
+        opp.Factory_Order__c = FoId;
+        opp.AccountId = AccountId;
+        opp.Amount = 12000;
+        opp.CloseDate = System.today() + 3;
+        opp.CurrencyIsoCode = 'EUR';
+        opp.Name = 'John2';
+        opp.StageName = 'New';
+        insert opp;
+        return opp;
     }
     
     private static Id insertTestOppWithoutCMS(Id AccountId,Id FoId){
