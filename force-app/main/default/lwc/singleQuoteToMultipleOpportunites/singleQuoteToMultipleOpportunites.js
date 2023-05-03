@@ -34,10 +34,19 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
                   this.nonClosedateArray = [];
                   this.nonClosedateArraySelected = [];
                   data.map(ele => {
-                      if (ele.Quote_Id__c != null) {
+                      if (ele.Quote_Id__c != null || ele.Amount ==null) {
+                        if(ele.Amount ==null){
+                            this.dispatchEvent(
+                                new ShowToastEvent({
+                                    title: 'Warning',
+                                    message: 'Some Record(s) not having Amount!',
+                                    variant: 'warning'
+                                })
+                            );
+                        }
                           closedateArray = [...closedateArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,Brand__c: ele.Brand__c,
                             Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: false }]
-                      } else if(ele.Quote_Id__c == null) {
+                      } else if(ele.Quote_Id__c == null || ele.Amount !=null) {
                         if(this.recordId == ele.Id){
                             this.nonClosedateArraySelected = [{Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
                             Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
