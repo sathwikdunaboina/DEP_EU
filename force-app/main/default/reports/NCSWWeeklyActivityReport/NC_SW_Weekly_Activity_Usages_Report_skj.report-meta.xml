@@ -7,9 +7,6 @@
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>PROFILE</field>
-    </columns>
-    <columns>
         <field>USERNAME</field>
     </columns>
     <columns>
@@ -34,7 +31,7 @@
             <column>PROFILE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
+            <operator>contains</operator>
             <value>Sales</value>
         </criteriaItems>
         <language>en_US</language>
@@ -43,6 +40,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ADDRESS_COUNTRY_CODE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PROFILE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>NC &amp; SW Weekly Activity Usage Report</name>
