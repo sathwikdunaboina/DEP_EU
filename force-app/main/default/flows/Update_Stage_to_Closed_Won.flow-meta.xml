@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Update Stage to Closed Won when the Quote Status is &quot;Contract Activation Started&quot; or &quot;Contract Activated&quot;</description>
+    <environments>Default</environments>
+    <interviewLabel>Update Stage to Closed Won {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Stage to Closed Won</label>
+    <loops>
+        <name>loop_to_update_opp</name>
+        <label>loop to update opp</label>
+        <locationX>671</locationX>
+        <locationY>541</locationY>
+        <collectionReference>Get_Opp_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Update_Opportunity_Status</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Opp_Records</name>
+        <label>Get Opp Records</label>
+        <locationX>688</locationX>
+        <locationY>378</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>loop_to_update_opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>VFS_Connect_Quote_Ref__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Opportunity_Status</name>
+        <label>Update Opportunity Status</label>
+        <locationX>951</locationX>
+        <locationY>537</locationY>
+        <connector>
+            <targetReference>loop_to_update_opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>loop_to_update_opp.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>544</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Opp_Records</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Quote_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Contract Activated</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Quote_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Contract Activation Started</stringValue>
+            </value>
+        </filters>
+        <object>VFS_Connect_Quote__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
