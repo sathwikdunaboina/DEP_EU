@@ -8,8 +8,8 @@
     <loops>
         <name>loop_to_update_opp</name>
         <label>loop to update opp</label>
-        <locationX>603</locationX>
-        <locationY>489</locationY>
+        <locationX>671</locationX>
+        <locationY>541</locationY>
         <collectionReference>Get_Opp_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -38,8 +38,8 @@
     <recordLookups>
         <name>Get_Opp_Records</name>
         <label>Get Opp Records</label>
-        <locationX>611</locationX>
-        <locationY>337</locationY>
+        <locationX>688</locationX>
+        <locationY>378</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>loop_to_update_opp</targetReference>
@@ -52,6 +52,13 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Opportunity</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -59,8 +66,8 @@
     <recordUpdates>
         <name>Update_Opportunity_Status</name>
         <label>Update Opportunity Status</label>
-        <locationX>844</locationX>
-        <locationY>474</locationY>
+        <locationX>951</locationX>
+        <locationY>537</locationY>
         <connector>
             <targetReference>loop_to_update_opp</targetReference>
         </connector>
