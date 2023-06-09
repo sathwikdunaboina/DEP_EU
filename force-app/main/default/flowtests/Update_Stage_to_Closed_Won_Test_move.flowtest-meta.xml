@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Update_Stage_to_Closed_Won</flowApiName>
+    <label>Test move</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Account_CMS_Number__c&quot;:&quot;8577684&quot;,&quot;Country__c&quot;:&quot;DE&quot;,&quot;CurrencyIsoCode&quot;:&quot;EUR&quot;,&quot;Name&quot;:&quot;12345&quot;,&quot;OwnerId&quot;:&quot;0052p00000CZVCWAA5&quot;,&quot;Quote_Number__c&quot;:&quot;12345&quot;,&quot;Quote_Status__c&quot;:&quot;In-Complete&quot;,&quot;Quote_Unique_Id__c&quot;:&quot;qw3de8577684&quot;,&quot;VFS_Connect_Quote_Source__c&quot;:&quot;Sales Connect&quot;}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;Account_CMS_Number__c&quot;:&quot;8577684&quot;,&quot;Country__c&quot;:&quot;DE&quot;,&quot;CurrencyIsoCode&quot;:&quot;EUR&quot;,&quot;OwnerId&quot;:&quot;0052p00000CZVCWAA5&quot;,&quot;Quote_Number__c&quot;:&quot;12345&quot;,&quot;Quote_Status__c&quot;:&quot;Contract Activated&quot;,&quot;Quote_Unique_Id__c&quot;:&quot;qw3de8577684&quot;,&quot;VFS_Connect_Quote_Source__c&quot;:&quot;Sales Connect&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Quote_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Contract Activated</stringValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+    </testPoints>
+</FlowTest>
