@@ -29,7 +29,7 @@ public class PortalCampaignCarouselControllerTest {
             accObj.Name = 'testAcc';
             accObj.CustomerID__c = 'test123'; 
             accObj.Branding__c = 'Volvo';
-            accObj.companyRegistrationNumber1__c = 'demo1267';
+            //accObj.companyRegistrationNumber1__c = 'demo1267';
             insert accObj;
             
             Contact conObj = new Contact();
