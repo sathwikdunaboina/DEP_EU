@@ -59,8 +59,10 @@ List<Case> updateCase = new List<Case>([Select Status from Case where Id In :cas
 List<Case> updateTheCases=new List<Case>();
 List<Id> caseIdss = new List<Id>();
 for(Case c: updateCase)
-{
+{ 
+  c.Type='Settlement Query';
   c.Status='Closed';
+  c.Status_Reason__c='Auto Closed';
    //new change as on 3rd feb
    c.SlaStartDate=System.now();
   updateTheCases.add(c);
