@@ -23,78 +23,83 @@ public with sharing class quoteCalloutHandler {
             Factory_Order__r.T_Chassis__c, Factory_Order__r.Vehicle_Status__c, Factory_Order__r.VIN_Number__c
             FROM Opportunity WHERE Id = :oppIds];
 
-	    Blob b = Crypto.GenerateAESKey(128);
+        List<String> resultList = new List<String>();
+        
+        List<String> validationResults = validateQuote(oppList);
+
+        // exit on any validation issue
+        if (validationResults.size() > 0) {
+            //System.debug('Errors found. Exiting...');
+            resultList = validationResults;
+            return resultList;
+        }
+        
+        // Generate an unique identifier as a reference for the quote
+        Blob b = Crypto.GenerateAESKey(128);
         String h = EncodingUtil.ConvertTohex(b);
         String guid = h.SubString(0,6) + oppList[0].Account.Customer_Number__c;
 
-        List<String> resultList = new List<String>();
-
-        List<String> validationResults = validateQuote(oppList);
-
-        if (validationResults.size() > 0) {
-            resultList = validationResults;
-        }
-        else {
-            quoteWrapperClass.wrapperClass quote = buildQuote(oppList, guid);
-
-            HttpResponse response = sendQuote(quote);
-            
-            if (response != null && response.getStatusCode() == 200)
-            {
-                try{
-                    Map<String, String> values = (Map<String, String>)
-                        JSON.deserialize(response.getBody(), Map<String, String>.class);
-
-                    String success = values.get('success');
-                    String quoteId = values.get('quoteId');          
-                    String vfsConnectQuoteURL = values.get('vfsConnectQuoteURL');
-
-                    //System.debug('HttpResponse was: ' + success);
-                    //System.debug('QuoteId: ' + quoteId);
-                    //System.debug('Request to: ' + vfsConnectQuoteURL);
-
-                    List <Opportunity> oppListUpt = new List<Opportunity>(); 
-                    Id QuoteReferenceRecordId = quoteRecordCreate(oppList[0], quoteId, guid).Id;
-                    //System.debug('QuoteReferenceRecordId: ' + QuoteReferenceRecordId);
-
-                    for (Opportunity opp : oppList) {
-                        opp.Quote_Id__c = quoteId;
-                        opp.Quote_Url__c = vfsConnectQuoteURL;
-                        opp.Quote_Unique_Id__c = guid;
-                        opp.StageName = 'Quoted';
-                        opp.VFS_Connect_Quote_Ref__c = QuoteReferenceRecordId;
-                        oppListUpt.add(opp);
-                    }
-
-                    update oppListUpt;
-
-                    if(success == 'true'){
-                        resultList.add('Quote created successfully');
-                    }
+        quoteWrapperClass.wrapperClass quote = buildQuote(oppList, guid);
+        
+        HttpResponse response = sendQuote(quote);
+        
+        if (response != null && response.getStatusCode() == 200)
+        {
+            try{
+                Map<String, String> values = (Map<String, String>)
+                    JSON.deserialize(response.getBody(), Map<String, String>.class);
+                
+                String success = values.get('success');
+                String quoteId = values.get('quoteId');          
+                String vfsConnectQuoteURL = values.get('vfsConnectQuoteURL');
+                
+                //System.debug('HttpResponse was: ' + success);
+                //System.debug('QuoteId: ' + quoteId);
+                //System.debug('Request to: ' + vfsConnectQuoteURL);
+                
+                List <Opportunity> oppListUpt = new List<Opportunity>();
+                
+                // Create the quote and update the opportunities with it
+                Id QuoteReferenceRecordId = quoteRecordCreate(oppList[0], quoteId, guid).Id;
+                //System.debug('QuoteReferenceRecordId: ' + QuoteReferenceRecordId);
+                
+                for (Opportunity opp : oppList) {
+                    opp.Quote_Id__c = quoteId;
+                    opp.Quote_Url__c = vfsConnectQuoteURL;
+                    opp.Quote_Unique_Id__c = guid;
+                    opp.StageName = 'Quoted';
+                    opp.VFS_Connect_Quote_Ref__c = QuoteReferenceRecordId;
+                    oppListUpt.add(opp);
                 }
-                catch (Exception e) {
-                    //System.debug('The following exception has occurred: Try ' + e.getMessage()+'==+ :' + resultList);
-                    resultList.add(e.getMessage());
+                
+                update oppListUpt;
+                
+                if(success == 'true'){
+                    resultList.add('Quote created successfully');
                 }
             }
-            else
-            {
-                try {
-                    Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
-                    String Error = values.get('errorMessage');
-                    Error += '; '+ values.get('message') == null ? '' : values.get('message');
-                    //System.debug('This is the error Msg: ' + Error);      
-                    resultList.add(Error);
-                    //System.debug(resultList);
+            catch (Exception e) {
+                //System.debug('The following exception has occurred: Try ' + e.getMessage()+'==+ :' + resultList);
+                resultList.add(e.getMessage());
+            }
+        }
+        else
+        {
+            try {
+                Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
+                String Error = values.get('errorMessage');
+                Error += '; '+ values.get('message') == null ? '' : values.get('message');
+                //System.debug('This is the error Msg: ' + Error);      
+                resultList.add(Error);
+                //System.debug(resultList);
+            }
+            catch (Exception e) {
+                Boolean result = e.getMessage().contains('Unexpected character');
+                if(result){
+                    resultList.add('Cannot pass the security checks that are required by the target API or operation. Please try again later!');
                 }
-                catch (Exception e) {
-                    Boolean result = e.getMessage().contains('Unexpected character');
-                    if(result){
-                        resultList.add('Cannot pass the security checks that are required by the target API or operation. Please try again later!');
-                    }
-                    else {
-                        resultList.add(e.getMessage()); 
-                    }
+                else {
+                    resultList.add(e.getMessage()); 
                 }
             }
         }
@@ -146,7 +151,7 @@ public with sharing class quoteCalloutHandler {
         //New Addition Date 19th May
         String UserName1 = UserInfo.getUserName();//Returns the context user's login name.
 
-        //System.Debug('UserName-' + UserName1);
+        //System.debug('UserName-' + UserName1);
 
         User userObj = [SELECT Id,FederationIdentifier FROM User WHERE Username = :UserName1][0];
         String userFederationID = userObj.FederationIdentifier;
@@ -187,14 +192,16 @@ public with sharing class quoteCalloutHandler {
             if (String.isBlank(opp.Factory_Order__r.Main_Dealer_Name__c)) {
                 requiredFields.add('Dealer');
             }
+            
+            //System.debug(requiredFields);
 
             if (requiredFields.size() > 0) {
-                requiredFields.remove(null);
                 string fields = string.join(requiredFields,',');
                 errorList.add('You need values for fields ' + fields + ', on Factory Order (' + opp.Factory_Order__r.Assembly_Factory_Code__c + ')');
             }
         }
 
+        // This might be useful to keep to see if any errors occurred
         if (errorList.size() > 0) {
             System.debug('Invalid');
             System.debug(errorList);
@@ -212,7 +219,8 @@ public with sharing class quoteCalloutHandler {
         //System.debug('This is the id: ' + firstOpp.Id);
 
         //wrapper class-----------------------------------------------------------
-       	quotewrap.externalId = guid; 
+       	quotewrap.externalId = guid;
+        // the country code on the code needs to be as per Dealer
         quotewrap.countryCode = firstOpp.Factory_Order__r.Country__c;
         quotewrap.brand = firstOpp.Factory_Order__r.Brand__c;
 
@@ -259,7 +267,8 @@ public with sharing class quoteCalloutHandler {
         //System.debug('quotewrap.asset: '+quotewrap.order);
 
         dealer.id = firstOpp.Factory_Order__r.Dealer_Id__c;
-        dealer.dealerNumber = firstOpp.Factory_Order__r.Dealer_Number__c;//currently it is in number but it was not used now because identifier error is causing so changed to dealer number
+        //currently it is in number but it was not used now because identifier error is causing so changed to dealer number
+        dealer.dealerNumber = firstOpp.Factory_Order__r.Dealer_Number__c;
         dealer.mainDealerName = firstOpp.Factory_Order__r.Main_Dealer_Name__c;
         dealer.salesPersonName = firstOpp.Factory_Order__r.Sales_Person_Name__c;
         //System.debug('dealer: ' + dealer);
