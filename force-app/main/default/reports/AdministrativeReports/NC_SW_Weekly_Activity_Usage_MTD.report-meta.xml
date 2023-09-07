@@ -36,7 +36,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>admin</value>
+            <value>sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LOGIN_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2023 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LOGIN_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -56,7 +70,7 @@
         <field>USERNAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>NC &amp; SW Weekly Activity Usage MTD</name>
+    <name>NC &amp; SW Weekly Activity Usage Report</name>
     <params>
         <name>active</name>
         <value>active</value>
