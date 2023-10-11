@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
+        <fullName>Block_Account_on_CMS_duplication_matching_rule</fullName>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <label>Block Account on CMS duplication matching rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Name</fieldName>
+            <matchingMethod>CompanyName</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>BillingCountry</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>BillingCity</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Customer_Number__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+    <matchingRules>
         <fullName>CMS_Deduplication</fullName>
         <label>CMS Deduplication</label>
         <matchingRuleItems>
