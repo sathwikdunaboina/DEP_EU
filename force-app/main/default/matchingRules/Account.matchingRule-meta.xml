@@ -2,7 +2,7 @@
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
         <fullName>Block_Account_on_CMS_duplication_matching_rule</fullName>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <label>Block Account on CMS duplication matching rule</label>
         <matchingRuleItems>
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
@@ -17,11 +17,6 @@
         <matchingRuleItems>
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
             <fieldName>BillingCity</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>CustomerNumberCMSID__c</fieldName>
             <matchingMethod>Exact</matchingMethod>
         </matchingRuleItems>
         <matchingRuleItems>
