@@ -1,7 +1,16 @@
+/*
+ * #Script for sending the monthly deactivation report to the key users
+ * Written By Hari Vyas on 31 Oct 2023
+ * 
+ * 
+ * 
+ *
+*/
+
 public class DeactivationReportController{
     
     //Generate report Based on parameter
-    public void generateReport(string reportDevName)
+  @future(callout=true)  public Static void generateReport(string reportDevName)
     {
         try
         {
@@ -46,8 +55,7 @@ public class DeactivationReportController{
                 //System.debug('This is map'+mapEd);
                 for(String keyUserNames : mapEd.keySet()){
                 System.debug('----->'+mapEd.get(keyUserNames).Key_User_Email__c);
-                  sendTo.add(mapEd.get(keyUserNames).Key_User_Email__c);
-                  //sendTo.add('hariram.vyas@consultant.volvo.com');
+                sendTo.add(mapEd.get(keyUserNames).Key_User_Email__c);
 
                  }
 
@@ -61,30 +69,29 @@ public class DeactivationReportController{
     
       // (Optional) Set list of people who should be CC'ed
       List<String> ccTo = new List<String>();
-                 email.setSubject('Monthly User Deactivation Report');
-      String body = 'Dear Users<br>';
+      email.setSubject('Monthly User Deactivation Report');
+      String body = 'Dear Users,<br>';
       body += 'Attached report has users who did not logged ';
-      body += 'in to sales or servce connect since last 90 days<br>';
-      body += 'if you would like this user to be deactivated from sales or service connect';
-      body += 'we request you to please raise a faros request for the same<br>';
+      body += 'into sales or service connect since last 90 days.<br>';
+      body += 'If you would like this user to be deactivated from sales or service connect, ';
+      body += 'we request you to please raise a faros request for the same.<br>';
       body += 'Regards,<br>';
-      body += 'VFS Sales & Service Connect Team';
+      body += 'VFS Sales & Service Connect Team.';
 
 
       email.setHtmlBody(body);
-      //email.setBody(body);
           
       List<String> ccTot = new List<String>();
-      //ccTot.add('hariram.vyas@consultant.volvo.com');
+      //ccTot.add('');
       email.setCcAddresses(ccTot);
-            mails.add(email);
+      mails.add(email);
       Messaging.sendEmail(mails);
 
             }
         }
         catch(Exception ex)
         {
-            system.debug(ex.getMessage());
+           system.debug(ex.getMessage());
         }
     }
   
