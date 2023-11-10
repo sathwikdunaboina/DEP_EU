@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Update_case_Type_for_UK_IE</flowApiName>
+    <label>testing</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;BusinessHoursId&quot;:&quot;01m2p000000IvQxAAK&quot;,&quot;Country__c&quot;:&quot;United Kingdom&quot;,&quot;CurrencyIsoCode&quot;:&quot;EUR&quot;,&quot;IsEscalated&quot;:false,&quot;Is_Dataloader__c&quot;:false,&quot;OwnerId&quot;:&quot;0052p00000CZVCWAA5&quot;,&quot;Priority&quot;:&quot;Medium&quot;,&quot;Read_All_Emails__c&quot;:true,&quot;Status&quot;:&quot;New&quot;,&quot;Sub_Type__c&quot;:&quot;&quot;,&quot;Subject&quot;:&quot;testing&quot;,&quot;SuppliedEmail&quot;:&quot;volvo-mkt-prod2@adobe-campaign.com&quot;,&quot;SuppliedName&quot;:&quot;Aswin Balaji&quot;}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>ScheduledPathApiName</leftValueReference>
+            <type>ScheduledPath</type>
+            <value>
+                <stringValue>Run_after_1_minute</stringValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer Portal</stringValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+    </testPoints>
+</FlowTest>
