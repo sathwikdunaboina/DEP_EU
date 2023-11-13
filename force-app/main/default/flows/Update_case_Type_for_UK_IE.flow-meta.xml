@@ -56,6 +56,9 @@ The queue for which type should be Customer Portal is  UK/IE CS Operations Queue
     <start>
         <locationX>650</locationX>
         <locationY>48</locationY>
+        <connector>
+            <targetReference>update_type</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>SuppliedEmail</field>
@@ -66,17 +69,6 @@ The queue for which type should be Customer Portal is  UK/IE CS Operations Queue
         </filters>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
-        <scheduledPaths>
-            <name>Run_after_1_minute</name>
-            <connector>
-                <targetReference>update_type</targetReference>
-            </connector>
-            <label>Run after 1 minute</label>
-            <offsetNumber>0</offsetNumber>
-            <offsetUnit>Minutes</offsetUnit>
-            <recordField>CreatedDate</recordField>
-            <timeSource>RecordField</timeSource>
-        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
