@@ -16,7 +16,7 @@ private class CaseLastDateChangedFlowTest {
         Id contactId = cont.Id;
         
         List<Case> cases = new List<Case>{};
-            Case c = new Case(Subject = 'Test Case with Entitlement',Status = 'On Hold');
+            Case c = new Case(Subject = 'Test Case with Entitlement',Status = 'On Hold',SuppliedEmail='volvo-mkt-prod2@adobe-campaign.com',Country__c = 'United Kingdom');
         cases.add(c);
         
         insert cases;
