@@ -163,9 +163,9 @@ export default class SearchQuoteCalloutUI extends LightningElement {
                             }
                         })
                         this.secondcall = true;
-                        console.log(result);
+                        console.log('resultcurrent'+result);
                         console.log(getFieldValue(this.opportunity.data, Quote_Id__c_FIELD));
-                        console.log(closedateArrayQuote);
+                        console.log('closedateArrayQuote'+closedateArrayQuote);
                         this.fullData = closedateArrayQuote;
                         console.log('this.secondcall = true',this.secondcall);
                     })
@@ -299,9 +299,9 @@ export default class SearchQuoteCalloutUI extends LightningElement {
                         })
                     );
                 }
-                else if(data.includes("Please select atleast 1 record")|| data.includes("Could") || data.includes("Cannot pass")||data.includes("exception")){
+                else if(data.includes("Please select atleast 1 record")|| data.includes("Could") || data.includes("Cannot pass")||data.includes("exception")||data.includes("errorMessage")){
                     this.isLoaded = !this.isLoaded;
-                    if(data.includes("Cannot pass")||data.includes("exception")){
+                    if(data.includes("Cannot pass")||data.includes("exception")||data.includes("errorMessage")){
                         this.dispatchEvent(new CloseActionScreenEvent());
                     }
                     this.dispatchEvent(
