@@ -1,39 +1,111 @@
 /*
 * Subject: Fetch records to show on UI
 * Created by: Aswin balaji
-* Date: 03/07/2023, 12:48
-* Description: Create or Search quote for related opportunites and show it on UI where stage doesn't = Closed
+* Date: 29/08/2022, 12:48
+* Description: Based on Opportunity>Account.CMSId getting the related opportunites and show it on UI which doesn't have quote and stage doesn't = Closed
+* 
+*
+* September 2023 Updates: 
+* Author: Erin A. 
+*
+* New Lead Process update Opportunity Ownership to Dealer Accounts. 
+* Customer Accounts are now a Lookup on the Opportuntiy
+*
 * */ 
 public with sharing class quoteCalloutController {
     @AuraEnabled
+    /**NEW this method is used to return the list of Opportunities also associated with this 
+    *  opportunity Customer Account Id**/
     public static List<opportunity> getOpportunities(String oppId){
+        
+        /**NEW Updated to use Customer Account Id and reduce the amount of queries**/
+        //Local Variables
+        List<Opportunity> ThisOpportunity = [SELECT Id, Name,
+                    Amount,Dealer_Name__c,Brand__c,
+                    Dealer_Delivery_Date__c,CloseDate,
+                    Quote_Id__c,CurrencyIsoCode,DealerId__c, 
+                    Customer_Account__r.Id, AccountId
+                    FROM Opportunity 
+                    WHERE ID =: oppId
+                    AND StageName !='Closed Won' AND StageName != 'Closed Lost']; // if the opportunity is already closed (won or lost) it won't be quoted anymore;
+        List<Opportunity> ThisOpportunityByCustomer = [SELECT Id, Name,
+                    Amount,Dealer_Name__c,Brand__c,
+                    Dealer_Delivery_Date__c,CloseDate,
+                    Quote_Id__c,CurrencyIsoCode,DealerId__c
+                    FROM Opportunity
+                    WHERE Customer_Account__r.Id =: ThisOpportunity[0].Customer_Account__r.Id // to retrieve only the opportunities for the same Customer Account
+                    AND AccountId =: ThisOpportunity[0].AccountId // check that the opportunities belongs to the same Dealer Account
+                    AND Brand__c =: ThisOpportunity[0].Brand__c // only opportunities for the same Brand (VT or RT)
+                    AND StageName !='Closed Won' AND StageName != 'Closed Lost' // if the opportunity is already closed (won or lost) it won't be quoted anymore
+                    AND Account.CustomerID__c != null // CustomerID__c on Dealer Account
+                    AND Customer_Account__r.Id != null]; // Id of related Customer Account
+             
+        if(ThisOpportunityByCustomer.Size() > 1) {
+            return ThisOpportunityByCustomer;
+        } else {
+            return ThisOpportunity;
+        }
+       
+        
+        
+        
+        //Old Code
+        /** 
         List <String> oppIdsList = new List<String>();
         String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
-        String dealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: oppId].Factory_Order__r.Dealer_Id__c;
+         String DealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: oppId].Factory_Order__r.Dealer_Id__c;
+
+
         String brand = [Select Id,Factory_Order__r.Brand__c From Opportunity Where Id =: oppId].Factory_Order__r.Brand__c;
-        String accountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: oppId].AccountId;
+        String AccountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: oppId].AccountId;
+        
+   
         List<Opportunity> oppList = [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode
-                                     FROM Opportunity
-                                     WHERE Account.Customer_Number__c =: customerNumber];
+        FROM Opportunity
+        WHERE Account.Customer_Number__c =: customerNumber];
+        
         System.debug(oppList.size());
         system.debug('Opp.Account.Customer_Number__c'+customerNumber);
+        
         if(customerNumber != null){
             return [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode,DealerId__c
                     FROM Opportunity
                     WHERE Account.Customer_Number__c =: customerNumber 
-                    AND Factory_Order__r.Dealer_Id__c =: dealerID
+                    AND Factory_Order__r.Dealer_Id__c =: DealerID
                     AND Factory_Order__r.Brand__c =: brand
                     AND StageName !='Closed Won' AND StageName != 'Closed Lost' 
-                    AND AccountId =: accountIdFromOpportunity 
+                    AND AccountId =: AccountIdFromOpportunity 
                     AND Account.Customer_Number__c !=null];  
         }
         else{
             return [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode,DealerId__c
                     FROM Opportunity
                     WHERE Id =:oppId AND StageName !='Closed Won' AND StageName != 'Closed Lost'];
-        }
-        
+        }**/
+
     }
+
+    @AuraEnabled
+    public static String getOppIds(List <String> ids){
+       System.debug('List of strings'+ ids);
+       //List <String> oppIdsList = new List<String>();
+       //oppIdsList.add(Ids[0]);
+       List<String> ErrorMsges = new List<String>();
+       String ErrorMsg;
+        if(ids.isEmpty() == True){
+            ErrorMsg='Please select atleast 1 record';
+        }
+        else{
+            ErrorMsges = quoteCalloutHandler.fetchFromAPIForQuote(ids);
+        }
+        for(String str : ErrorMsges){
+            ErrorMsg = str;
+            System.debug(str);
+        }
+        System.debug(ErrorMsg);
+        return ErrorMsg;
+    }
+    
     @AuraEnabled
     public static List<VFS_Connect_Quote__c> getQuotes(String oppId){
         List <String> oppIdsList = new List<String>();
@@ -45,35 +117,18 @@ public with sharing class quoteCalloutController {
                                      FROM Opportunity
                                      WHERE Account.Customer_Number__c =: customerNumber];
         System.debug(oppList.size());
+        List<VFS_Connect_Quote__c> vfsConnect = [SELECT Name,Account_CMS_Number__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber 
+                                                 AND Quote_Status__c !='Cancelled'];
+        System.debug(vfsConnect.size());
+        System.debug(vfsConnect);
         system.debug('Opp.Account.Customer_Number__c'+customerNumber);
         if(customerNumber != null){
-            return [SELECT Name,Account_CMS_Number__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled' AND Id NOT IN(SELECT VFS_Connect_Quote_Ref__c From Opportunity)];  
+            return [SELECT Name,Account_CMS_Number__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
         }
         else{
             return null;
         }
         
-    }
-    
-    @AuraEnabled
-    public static String getOppIds(List <String> ids){
-        System.debug('List of strings'+ ids);
-        //List <String> oppidsList = new List<String>();
-        //oppidsList.add(ids[0]);
-        List<String> errorMsges = new List<String>();
-        String errorMsg;
-        if(ids.isEmpty() == True){
-            errorMsg='Please select atleast 1 record';
-        }
-        else{
-            errorMsges = quoteCalloutHandler.fetchFromAPIForQuote(ids);
-        }
-        for(String str : errorMsges){
-            errorMsg = str;
-            System.debug(str);
-        }
-        System.debug(errorMsg);
-        return errorMsg;
     }
     
     @AuraEnabled
@@ -85,7 +140,7 @@ public with sharing class quoteCalloutController {
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         if(quoteId != null){
             String quoteUrl = settings.SearchQuoteEndpoint__c+'QuotationId='+quoteId+'&ExternalSystem=SalesConnect';
-            Opportunity opp = [SELECT Name,Quote_Id__c, CloseDate,OwnerId, StageName FROM Opportunity WHERE Id=:oppId];
+            Opportunity opp = [SELECT Name,Quote_Id__c, CloseDate, StageName,OwnerId FROM Opportunity WHERE Id=:oppId];
             if(opp.Quote_Id__c == null || opp.Quote_Id__c ==''){
                 opp.Quote_Id__c = quoteId;
                 opp.Quote_Url__c = quoteUrl;
@@ -94,14 +149,14 @@ public with sharing class quoteCalloutController {
                 opp.VFS_Connect_Quote_Ref__c = quoteRecordId;
                 update opp;
                 System.debug('opp '+opp);
-                msg = 'Successfully saved!';
+                msg = 'Updated Successfully!';
                 List<CustomNotificationType > TemplateInfoDetail = [SELECT Id, DeveloperName FROM CustomNotificationType
                                                                     WHERE DeveloperName='Quote_created_notification'];
                 
                 Messaging.CustomNotification currNotification = new Messaging.CustomNotification();
                 currNotification.setTitle('Quote Notification');
                 
-                currNotification.setBody(opp.Name + ' Opportunity Quote is been merged with ' + opp.Quote_Id__c +' on ' + system.today());
+                currNotification.setBody(opp.Name + ' Opportunity was updated with Quote: ' + opp.Quote_Id__c +' on ' + system.today()+' by '+ userInfo.getName());
                 currNotification.setNotificationTypeId(TemplateInfoDetail[0].Id);
                 currNotification.setTargetId(opp.Id);
                 currNotification.send(new Set<String>{ opp.OwnerId });
@@ -116,7 +171,6 @@ public with sharing class quoteCalloutController {
         }
         System.debug('quoteId'+quoteId);
         System.debug('oppId'+oppId);
-        System.debug('msg'+msg);
         return msg;
     }
 }
