@@ -11,7 +11,7 @@ private class quoteCalloutHandlerTest {
         foOrder.add(String.valueOf(opportunityId));
         System.debug('foOrderTest'+foOrder);
         insertCustomSettingValues();
-        quoteCalloutHandler.quoteRecordCreate(insertTestOppRecord(accountId,FoId),'12112', '2we444r552w');
+        //quoteCalloutHandler.quoteRecordCreate(insertTestOppRecord(accountId,FoId),'12112', '2we444r552w');
         System.test.startTest();
         quoteCalloutController.getOpportunities(String.valueOf(opportunityId));
         quoteCalloutController.getOppIds(foOrder);
@@ -167,6 +167,7 @@ private class quoteCalloutHandlerTest {
         opp.CloseDate = System.today() + 3;
         opp.CurrencyIsoCode = 'EUR';
         opp.Name = 'John2';
+        opp.Customer_Account__c = AccountId;
         opp.StageName = 'New';
         opp.Quote_Id__c = '3110472';
         opp.Quote_Url__c = 'https://test-wlc.global.volvo.net/PM/Landingpage.aspx';
@@ -182,6 +183,7 @@ private class quoteCalloutHandlerTest {
         opp.CloseDate = System.today() + 3;
         opp.CurrencyIsoCode = 'EUR';
         opp.Name = 'John2';
+        opp.Customer_Account__c = AccountId;
         opp.StageName = 'New';
         //opp.Quote_Id__c = '3110472';
         //opp.Quote_Url__c = 'https://test-wlc.global.volvo.net/PM/Landingpage.aspx';
