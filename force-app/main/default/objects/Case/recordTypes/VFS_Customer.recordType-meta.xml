@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VFS_Customer</fullName>
+    <active>false</active>
+    <businessProcess>Case support process</businessProcess>
+    <description>This record type has been created for Customer Case Management for handling cases for customer accounts and contacts across all the countries</description>
+    <label>VFS Customer</label>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ireland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Kingdom</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email - Renault</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email - Volvo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VFS - CMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Complex functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructions not clear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User didn%27t attend training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status_Reason__c</picklist>
+        <values>
+            <fullName>No Action</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paperwork pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spam%2FHousekeeping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>To be checked</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>To be processed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>To be sent out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting filing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting on Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting on dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting on market company</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Type__c</picklist>
+        <values>
+            <fullName>Account Balance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agency Funded Settlement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aggregation request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amend Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Agreement Unwind</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Dealer Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment European Authorisation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Extended Term</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment OLIs %2F kms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Payment Date Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Restructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment Start date change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amortization Schedule</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Balloons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Billing %2F Invoice query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CH %2FOL less than 6 months remaining</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change Bank Details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change Business Name</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change My Details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change address %2F contact details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Company details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contract Information Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Copy Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Copy Credit Note</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Copy Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cost %2F NBV Settlement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer to Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Early termination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Address for Invoicing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End of Term Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End of Term query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End of Term start</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excess meterage query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Explanation of Invoices</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extension request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FTA 1st Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HPI Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance GAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoices to go onto Multiheader</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Login Details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Query Account on Stop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Query Change of Responsible Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Query Contract not Loaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Query Loading Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Query Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Query Third Party</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missing Documents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly Billing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novation - Finance Novation Completion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novation - Finance Novation Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novation - Maintenance Novation Completion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novation - Maintenance Novation Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novation Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overdue Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPK updates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problems with Web Portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rebate of rentals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relocation Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renault</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request For Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Return Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Road Fund Licence Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEPA Problems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sale of Vehicle %28SOV%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secondary Rental Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Settlement Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spam%2FJunk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Statement of Accounts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax Statement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Termination Collections Non Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Termination Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Termination Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Termination Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Underwrite request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XSM Fleet Review Request</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TODAYS_DATE__c</picklist>
+        <values>
+            <fullName>LAST MONTH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LAST WEEK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THIS MONTH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THIS WEEK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THIS YEAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TODAY</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Additional Services query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change my details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact with Sales rep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Feedback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End of term query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excess Meterage Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Contract query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General query %2F Miscellaneous</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice or payment or tax query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problems with Web Portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request Copy Document</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Settlement Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spam%2FJunk</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>
