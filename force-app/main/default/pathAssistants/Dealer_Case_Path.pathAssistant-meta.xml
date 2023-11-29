@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Case</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Dealer Case Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>AccountId</fieldNames>
+        <fieldNames>Origin</fieldNames>
+        <fieldNames>Priority</fieldNames>
+        <fieldNames>Type</fieldNames>
+        <fieldNames>Sub_Type__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Accept the case or assign the case to correct owner / queue&lt;/li&gt;&lt;li&gt;Choose the right customer&lt;/li&gt;&lt;li&gt;Create a new contact if needed or choose the existing contact&lt;/li&gt;&lt;li&gt;Classify the case (Type &amp;amp; Subtype)&lt;/li&gt;&lt;li&gt;Check the priority&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>VFS_Dealer</recordTypeName>
+</PathAssistant>
