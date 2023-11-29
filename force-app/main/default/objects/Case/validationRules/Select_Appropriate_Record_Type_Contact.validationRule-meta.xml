@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Select_Appropriate_Record_Type_Contact</fullName>
+    <active>true</active>
+    <description>This validation rule prevents the user to select contact associated with Customer account for dealer case and select contact associated with Dealer account for All cases case</description>
+    <errorConditionFormula>AND(OR( ISPICKVAL( Country__c , &apos;United Kingdom&apos;), ISPICKVAL( Country__c , &apos;Ireland&apos;)), OR(AND( RecordType.DeveloperName = &apos;VFS_Dealer&apos;, Contact.Account.RecordType.DeveloperName = &apos;Customer_Account&apos;), AND( RecordType.DeveloperName = &apos;All_Case&apos;, Contact.Account.RecordType.DeveloperName = &apos;Dealer_Account&apos;)))</errorConditionFormula>
+    <errorDisplayField>ContactId</errorDisplayField>
+    <errorMessage>Select Contact associated with Dealer account for dealer case and contact associated with customer account for All cases case</errorMessage>
+</ValidationRule>
