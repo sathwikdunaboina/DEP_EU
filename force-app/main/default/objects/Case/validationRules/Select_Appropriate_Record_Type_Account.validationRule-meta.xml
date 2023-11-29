@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Select_Appropriate_Record_Type_Account</fullName>
+    <active>true</active>
+    <description>This validation rule prevents user to select customer account for dealer case and dealer account for All Cases</description>
+    <errorConditionFormula>AND(OR( ISPICKVAL( Country__c , &apos;United Kingdom&apos;), ISPICKVAL( Country__c , &apos;Ireland&apos;)), OR(AND( RecordType.DeveloperName = &apos;VFS_Dealer&apos;,  Account.RecordType.DeveloperName = &apos;Customer_Account&apos;), AND( RecordType.DeveloperName = &apos;All_Case&apos;,  Account.RecordType.DeveloperName = &apos;Dealer_Account&apos;)))</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>Select Customer Account for All Cases and Dealer Account for Dealer Case</errorMessage>
+</ValidationRule>
