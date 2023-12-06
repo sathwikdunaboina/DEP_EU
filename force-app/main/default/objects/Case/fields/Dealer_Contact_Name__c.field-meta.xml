@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_Contact_Name__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup field created for Dealer contact as part of Dealer Management  for dealer record types , this custom field will be added only on dealer record type page layout</description>
+    <externalId>false</externalId>
+    <label>Dealer Contact Name</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Select the Dealer contact associated with the Dealer account on Case</errorMessage>
+        <filterItems>
+            <field>$Source.Dealer_Account_Name__c</field>
+            <operation>equals</operation>
+            <valueField>Contact.Account.Id</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Cases</relationshipLabel>
+    <relationshipName>Cases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
