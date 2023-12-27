@@ -57,6 +57,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>CH_TM_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CH TM sharing</label>
+        <sharedTo>
+            <group>Swiss_Sales_Connect</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>DE_Territory</fullName>
         <accessLevel>Edit</accessLevel>
         <label>DE_Territory</label>
@@ -123,6 +137,20 @@
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Italy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>South_West_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>South West Access</label>
+        <sharedTo>
+            <group>South_West_Region_access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Spain,Italy,United Kingdom,France</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

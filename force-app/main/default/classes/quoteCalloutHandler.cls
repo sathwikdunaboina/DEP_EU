@@ -27,8 +27,11 @@ public with sharing  class quoteCalloutHandler {
         //quoteWrapperClass.order order = new quoteWrapperClass.order();
         //quoteWrapperClass.financials financials = new quoteWrapperClass.financials();
         List<String> foIds = new List<String>();
-        oppList =[Select Id,Amount ,Factory_Order__c,Account.Name ,Account.BillingCountryCode,Account.Customer_Number__c from Opportunity where Id = : oppIds.get(0)];
-        oppListAll =[Select Id,Amount ,Factory_Order__c,Account.Name ,Account.BillingCountryCode,Quote_Unique_Id__c from Opportunity where Id IN : oppIds];
+        oppList =[Select Id, Amount, Factory_Order__c, Account.Name, Account.BillingCountryCode, Account.Customer_Number__c, Customer_Account__r.CustomerID__c, 
+                  Customer_Account__r.BillingCountryCode, Customer_Account__r.Customer_Number__c, Customer_Account__r.Name, Customer_Account__r.BillingStreet, 
+                  Customer_Account__r.Phone,Customer_Account__r.BillingCity, Customer_Account__r.BillingPostalCode
+                  from Opportunity where Id = : oppIds.get(0)];
+        oppListAll =[Select Id, Amount ,Factory_Order__c, Account.Name ,Account.BillingCountryCode, Quote_Unique_Id__c from Opportunity where Id IN : oppIds];
         for(Opportunity factoryOrderIds : oppListAll){
             foIds.add(factoryOrderIds.Id);
         }
@@ -36,7 +39,7 @@ public with sharing  class quoteCalloutHandler {
         String h = EncodingUtil.ConvertTohex(b);
         String guid = h.SubString(0,6)+oppList[0].Account.Customer_Number__c;
         System.debug('foIds'+foIds);
-        oppList1 =[Select Id,description,Quote_Id__c,Quote_Url__c,Account.Customer_Number__c from Opportunity where Id =  : oppIds];
+        oppList1 =[Select Id, description, Quote_Id__c, Quote_Url__c, Account.Customer_Number__c, Customer_Account__r.Customer_Number__c from Opportunity where Id =  : oppIds];
         String foId = oppList[0].Factory_Order__c;
         system.debug('This is the list'+oppList[0].Account.BillingCountryCode);
         List<Factory_Order__c> foList=new List<Factory_Order__c>();
@@ -56,9 +59,35 @@ public with sharing  class quoteCalloutHandler {
         system.debug('This is 1st element '+foList[0].Assembly_Factory_Code__c);
         List<User> ownerObj =new List<User>();
         ownerObj = [SELECT FederationIdentifier, Id FROM User WHERE Id in (SELECT OwnerId FROM Opportunity WHERE Id = :oppIds.get(0))];
-        List<Account> accObj = new List<Account>();
-        accObj = [SELECT Name, Customer_Number__c FROM Account WHERE Id in (SELECT AccountID FROM Opportunity WHERE Id = :oppIds.get(0))];
-        string customerCmsId = accObj[0].Customer_Number__c;
+        //List<Account> accObj = new List<Account>();
+        //accObj = [SELECT Name, Customer_Number__c FROM Account WHERE Id in (SELECT AccountID FROM Opportunity WHERE Id = :oppIds.get(0))];
+        //OLD CODE: string customerCmsId = oppList[0].Customer_Account__r.Customer_Number__c; //OLDER CODE: accObj[0].Customer_Number__c;
+        string customerCmsId = null;
+        
+        // Setting defaults based on info from the FO, but if a customer is specified, rather use that
+        // Going forward we need to use the information from the customer only, and checks will need to be 
+        // in place to force customer selection before quoting
+        String customerName = foList[0].End_Customer_Name__c;
+        String customerAddress = foList[0].End_Customer_Address1__c;
+        String customerPhone = foList[0].End_Customer_Phone__c;
+        String customerCity = foList[0].End_Customer_City__c;
+        String customerPostalCode = foList[0].End_Customer_Postal_Code__c;
+        String customerCountryCode = null;
+        
+        if (oppList[0].Customer_Account__r != null) {
+            customerName = oppList[0].Customer_Account__r.Name;
+        	customerAddress = oppList[0].Customer_Account__r.BillingStreet;
+        	customerPhone = oppList[0].Customer_Account__r.Phone;
+        	customerCity = oppList[0].Customer_Account__r.BillingCity;
+        	customerPostalCode = oppList[0].Customer_Account__r.BillingPostalCode;
+        	customerCountryCode = oppList[0].Customer_Account__r.BillingCountryCode;
+            
+            customerCmsId = oppList[0].Customer_Account__r.CustomerID__c;
+            if (customerCmsId != null) {
+                customerCmsId = customerCmsId.replaceAll('(^[A-Z]{2}[-]*)', ''); // Remove the country code segment e.g. 'US-'    
+            }
+        }
+        
         //wrapper class-----------------------------------------------------------
        	quotewrap.externalId = guid; 
         quotewrap.countryCode = oppList[0].Account.BillingCountryCode;
@@ -106,12 +135,12 @@ public with sharing  class quoteCalloutHandler {
         dealer.mainDealerName = foList[0].Main_Dealer_Name__c;
         dealer.salesPersonName = foList[0].Sales_Person_Name__c;
         System.debug('dealer: '+dealer);
-        customer.name = foList[0].End_Customer_Name__c;
-        customer.address = foList[0].End_Customer_Address1__c;
-        customer.phone = foList[0].End_Customer_Phone__c;
-        customer.city = foList[0].End_Customer_City__c;
-        customer.postalCode = foList[0].End_Customer_Postal_Code__c;
-        customer.countryCode = oppList[0].Account.BillingCountryCode;
+        customer.name = customerName;
+        customer.address = customerAddress;
+        customer.phone = customerPhone;
+        customer.city = customerCity;
+        customer.postalCode = customerPostalCode;
+        customer.countryCode = customerCountryCode;
         customer.CMS_ID = customerCmsId;
         System.debug('customer: '+customer);
         quotewrap.dealer = dealer;
@@ -122,7 +151,7 @@ public with sharing  class quoteCalloutHandler {
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('{!Environment.VFS_Global_API Endpoint Named Credentials}'+settings.Endpoint_QA__c);
+        request.setEndpoint('callout:VFS_Global_APIs1'+settings.Endpoint_QA__c);
         request.setMethod('POST');
         request.setHeader( 'X-Ibm-Client-Id',settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret' , settings.X_Ibm_Client_Secret__c);
@@ -202,14 +231,16 @@ public with sharing  class quoteCalloutHandler {
             return listStr;
         }
     }
-    
+    //DONE:  Connect VFS Quotes to Accounts 
+    //Id,description,Quote_Id__c,Quote_Url__c,Account.Customer_Number__c,Customer_Account__r.Customer_Number__c
     public static VFS_Connect_Quote__c quoteRecordCreate(Opportunity oppList,String quoteNumber,String uniqueId){
         VFS_Connect_Quote__c vfsConnectQuote = new VFS_Connect_Quote__c();
-        vfsConnectQuote.Account_CMS_Number__c = oppList.Account.Customer_Number__c;
+        vfsConnectQuote.Account_CMS_Number__c = oppList.Customer_Account__r.Customer_Number__c;
         vfsConnectQuote.Quote_Number__c = quoteNumber;
         vfsConnectQuote.Quote_Unique_Id__c = uniqueId;
         vfsConnectQuote.Name = quoteNumber;
         vfsConnectQuote.Quote_Status__c = 'In-Complete';
+        vfsConnectQuote.Account__c = oppList.Customer_Account__r.Id;
         insert vfsConnectQuote;
         return vfsConnectQuote;
     }

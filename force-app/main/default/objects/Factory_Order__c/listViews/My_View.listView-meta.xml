@@ -4,10 +4,8 @@
     <columns>NAME</columns>
     <columns>Brand__c</columns>
     <columns>Country__c</columns>
-    <columns>CURRENCY_ISO_CODE</columns>
     <columns>Dealer_Id__c</columns>
     <columns>Main_Dealer_Name__c</columns>
-    <columns>Order_Status_Description__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
@@ -19,15 +17,19 @@
     <filters>
         <field>Country__c</field>
         <operation>equals</operation>
-        <value>DE</value>
+        <value>IT</value>
     </filters>
     <filters>
         <field>Dealer_Id__c</field>
-        <operation>equals</operation>
+        <operation>notContain</operation>
+        <value>IT</value>
+    </filters>
+    <filters>
+        <field>Dealer_Id__c</field>
+        <operation>notEqual</operation>
     </filters>
     <label>My View</label>
     <sharedTo>
         <group>Admin_Public_Group</group>
-        <group>Swiss_Sales_Connect</group>
     </sharedTo>
 </ListView>

@@ -11,6 +11,12 @@
     <columns>Territory_Manager__c</columns>
     <columns>ACCOUNT.PHONE1</columns>
     <columns>ACCOUNT.CREATED_DATE</columns>
+    <columns>sourceSystemID__c</columns>
     <filterScope>Everything</filterScope>
-    <label>All Accounts</label>
+    <filters>
+        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
+        <operation>equals</operation>
+        <value>FR</value>
+    </filters>
+    <label>Tous les comptes</label>
 </ListView>

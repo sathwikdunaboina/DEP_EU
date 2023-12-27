@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email</name>
+        <label>Send Email</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_Opportunity_Owner_ID.Owner.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>EmailSubject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Check_If_FO_Has_Opp</name>
+        <label>Check If FO Has Opp</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_If_Factory_Order_Has_OPP</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Owner_ID.OwnerId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email</targetReference>
+            </connector>
+            <label>Check If Factory Order Has OPP</label>
+        </rules>
+    </decisions>
+    <description>Send An Email To Oportunity Owner When The Status OF The Factory Order Changed To Firm Planned</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>This has email body</description>
+        <name>EmailBody</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.End_Customer_Name__c}={!$Record__Prior.End_Customer_Name__c}, &apos;&apos;,&apos; Dear User The customer Name for FO &apos;+{!$Record.Name}+&apos; Changed Perviously it was &apos; + {!$Record__Prior.End_Customer_Name__c} +&apos; Now it is &apos; +{!$Record.End_Customer_Name__c}  ) +
+IF(TEXT({!$Record.Order_Status_Description__c})=TEXT({!$Record__Prior.Order_Status_Description__c}), &apos;&apos;,&apos; Dear User Status for FO &apos;+{!$Record.Name}+&apos; Is Changed &apos; )</expression>
+    </formulas>
+    <formulas>
+        <description>This is email Template</description>
+        <name>EmailSubject</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.End_Customer_Name__c}={!$Record__Prior.End_Customer_Name__c}, &apos;&apos;,&apos;The customer Name for FO &apos;+{!$Record.Name}+&apos; Changed &apos; ) +
+IF(TEXT({!$Record.Order_Status_Description__c})=TEXT({!$Record__Prior.Order_Status_Description__c}), &apos;&apos;,&apos; The Status for FO &apos;+{!$Record.Name}+&apos; Changed &apos; )</expression>
+    </formulas>
+    <interviewLabel>Send Mail When FO Status Changed {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Mail When FO Status Changed</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get the owner id of the opportunity</description>
+        <name>Get_Opportunity_Owner_ID</name>
+        <label>Get Opportunity Owner ID</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_FO_Has_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Factory_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Opportunity_Owner_ID</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Order_Status_Description__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Firm Planned</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>End_Customer_Name__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Factory_Order__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>This Variable has Owner Id of the opportunity of the Factoty Order</description>
+        <name>OpportunityOwnerId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sepa_Mandate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Unique identifier for Manadate</description>
+    <externalId>false</externalId>
+    <formula>&quot;FR94&quot; +  Account__r.companyRegistrationNumber2__c  +&quot;CORE&quot; +  Text(MONTH(Signed_Date__c))+ Text(DAY(Signed_Date__c))+ Text(YEAR(Signed_Date__c ))</formula>
+    <inlineHelpText>TEMP Field Need to gathe requierments for final value</inlineHelpText>
+    <label>Sepa Mandate</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
