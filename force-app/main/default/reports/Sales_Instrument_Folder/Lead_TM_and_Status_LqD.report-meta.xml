@@ -32,6 +32,9 @@
     <columns>
         <field>STATUS</field>
     </columns>
+    <columns>
+        <field>Lead.Dealer_Delivery_Date__c</field>
+    </columns>
     <currency>EUR</currency>
     <format>Summary</format>
     <groupingsDown>
@@ -54,6 +57,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>STATUS</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CURPREV1</interval>

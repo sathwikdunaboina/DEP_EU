@@ -1,0 +1,52 @@
+<template>
+  <lightning-card title="Assign a Customer" icon-name="custom:custom14">
+    <div class="slds-m-around_medium">
+      <template lwc:if={opportunityCustomer}>
+        <div class="cs-assigned-customer">
+          <span class="cs-assigned-customer-name">{opportunityCustomer}</span> is currently assigned
+        </div>
+      </template>
+      <lightning-input label="Choose from a suggested customer or search for your own" onchange={changeHandler}></lightning-input>
+    </div>
+    <div class="cs-filter-panel">
+      <template lwc:if={filteredCustomers.data}>
+        <div class="cs-filter-panel-heading">Customer search results:</div>
+        <template for:each={filteredCustomers.data} for:item="customer">
+          <c-customer-list-item
+            class="list-group-item"
+            key={customer.Id}
+            customer={customer}
+          ></c-customer-list-item>
+        </template>
+      </template>
+      <template lwc:if={hasNoFilteredCustomers}>
+        <c-placeholder
+          message="No customers found. Try searching for another one"
+        ></c-placeholder>
+      </template>
+    </div>
+    <div class="cs-suggestion-panel">
+      <template lwc:if={customers.data}>
+        <div class="cs-suggestion-panel-heading">Suggested customers:</div>
+        <template for:each={customers.data} for:item="customer">
+          <c-customer-list-item
+            class="list-group-item"
+            key={customer.Id}
+            customer={customer}
+          ></c-customer-list-item>
+        </template>
+      </template>
+      <template lwc:if={hasNoCustomers}>
+        <c-placeholder
+          message="No suggested customers. Try searching for one"
+        ></c-placeholder>
+      </template>
+    </div>
+    <template lwc:if={errors}>
+        <c-error-panel
+            friendly-message="An error has occurred while retrieving customers"
+            errors={errors}
+        ></c-error-panel>
+    </template>
+  </lightning-card>
+</template>

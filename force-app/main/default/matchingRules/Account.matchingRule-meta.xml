@@ -21,6 +21,28 @@
         <ruleStatus>Active</ruleStatus>
     </matchingRules>
     <matchingRules>
+        <fullName>Company_Registration_Number1_matching_rule</fullName>
+        <description>Company Regristration Number cannot match</description>
+        <label>Company Registration Number1 matching rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>CompanyRegistrationNr__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Inactive</ruleStatus>
+    </matchingRules>
+    <matchingRules>
+        <fullName>Company_Registration_Number_matching_rule</fullName>
+        <description>Company Regristration Number cannot match</description>
+        <label>Company Registration Number matching rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>CompanyRegistrationNumber__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+    <matchingRules>
         <fullName>VFS_CMS_Account_Matching</fullName>
         <description>The same customer is handled differently in different countries. So for the Pilot, we will create the same customer for 2 countries, separately, exactly as its present in backend CMS systems.</description>
         <label>VFS CMS Account Matching</label>

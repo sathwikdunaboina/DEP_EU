@@ -1,0 +1,34 @@
+<template>
+    <lightning-layout vertical-align="center">
+        <lightning-layout-item
+            flexibility="grow"
+            class="cs-results-panel-itemhorizontal_small customer-name"
+        >
+           <div>{customer.Name}</div>
+        </lightning-layout-item>
+        <lightning-layout-item
+            flexibility="grow"
+            class="cs-results-panel-itemhorizontal_small customer-number"
+        >
+           <div>{customer.Customer_Number__c}</div>
+        </lightning-layout-item>
+        <lightning-layout-item
+            flexibility="grow"
+            class="cs-results-panel-itemhorizontal_small billing-street"
+        >
+           <div>{customer.BillingStreet}</div>
+        </lightning-layout-item>
+        <lightning-layout-item
+            flexibility="grow"
+            class="cs-results-panel-itemhorizontal_small billing-city"
+        >
+           <div>{customer.BillingCity}</div>
+        </lightning-layout-item>
+        <lightning-layout-item
+            ><lightning-button
+                label="Assign"
+                onclick={handleCustomerClick}
+            ></lightning-button
+        ></lightning-layout-item>
+    </lightning-layout>
+</template>

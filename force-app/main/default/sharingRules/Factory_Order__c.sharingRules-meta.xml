@@ -1,187 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>AT_Factory</fullName>
+        <fullName>FO_RT_AT</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>AT_Factory</label>
+        <label>FO_RT_AT</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
+            <group>Austria_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Austria,AT</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>BE_Factory</fullName>
+        <fullName>FO_RT_BE</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>BE_Factory</label>
+        <label>FO_RT_BE</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>Belgium</roleAndSubordinatesInternal>
+            <group>Belgium_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Belgium,BE,Luxembourg,LU</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>BE_NL_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>BE-NL_Factory</label>
-        <sharedTo>
-            <group>BE_NL_TM</group>
-        </sharedTo>
         <criteriaItems>
-            <field>Country__c</field>
+            <field>Brand__c</field>
             <operation>equals</operation>
-            <value>BE,Belgium,Netherlands,NL,NLD,Luxembourg,LU</value>
+            <value>RT,Renault</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>CH_FO_access</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CH FO access</label>
+        <fullName>FO_RT_CH</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_RT_CH</label>
         <sharedTo>
-            <group>Swiss_Sales_Connect</group>
+            <group>Switzerland_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Switzerland,CH</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>CH_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>CH_Factory</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Switzerland</roleAndSubordinatesInternal>
-        </sharedTo>
         <criteriaItems>
-            <field>Country__c</field>
+            <field>Brand__c</field>
             <operation>equals</operation>
-            <value>Switzerland,CH</value>
+            <value>RT,Renault</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>DE_Factory</fullName>
+        <fullName>FO_RT_DE</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>DE_Factory</label>
+        <label>FO_RT_DE</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>Germany</roleAndSubordinatesInternal>
+            <group>Germany_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Germany,DE</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>DK_Factory</fullName>
+        <fullName>FO_RT_DK</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>DK_Factory</label>
+        <label>FO_RT_DK</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>Denmark</roleAndSubordinatesInternal>
+            <group>Denmark_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Denmark,DK</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>ES_PT_RT_Factory</fullName>
+        <fullName>FO_RT_ES</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>ES/PT_RT_Factory</label>
+        <label>FO_RT_ES</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>ES_PT_Renault_Truck</roleAndSubordinatesInternal>
+            <group>Spain_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
-            <value>Spain,ES</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Portugal,PT</value>
+            <value>Spain,ES,Portugal,PT</value>
         </criteriaItems>
         <criteriaItems>
             <field>Brand__c</field>
             <operation>equals</operation>
-            <value>RT</value>
+            <value>RT,Renault</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>ES_PT_VT_Factory</fullName>
+        <fullName>FO_RT_FI</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>ES/PT_VT_Factory</label>
+        <label>FO_RT_FI</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>ES_PT_Volvo</roleAndSubordinatesInternal>
-        </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Spain,ES</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Portugal,PT</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>VT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>FI_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>FI_Factory</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Finland</roleAndSubordinatesInternal>
+            <group>Finland_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Finland,FI</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>FR_Factory_All_Brand</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>FR_Factory_All_Brand</label>
-        <sharedTo>
-            <group>France_All_Brand_Access</group>
-        </sharedTo>
         <criteriaItems>
-            <field>Country__c</field>
+            <field>Brand__c</field>
             <operation>equals</operation>
-            <value>France,FR</value>
+            <value>RT,Renault</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>FR_RT_Factory</fullName>
+        <fullName>FO_RT_FR</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>FR_RT_Factory</label>
+        <label>FO_RT_FR</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>FR_Renault_Truck</roleAndSubordinatesInternal>
+            <group>France_Renault</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
@@ -191,16 +148,225 @@
         <criteriaItems>
             <field>Brand__c</field>
             <operation>equals</operation>
-            <value>RT</value>
+            <value>RT,Renault</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>FR_VT_Factory</fullName>
+        <fullName>FO_RT_IT</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>FR_VT_Factory</label>
+        <label>FO_RT_IT</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>FR_Volvo</roleAndSubordinatesInternal>
+            <group>Italy_Renault</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Italy,IT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_RT_NL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_RT_NL</label>
+        <sharedTo>
+            <group>Netherlands_Renault</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Netherlands,NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_RT_PL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_RT_PL</label>
+        <sharedTo>
+            <group>Poland_Renault</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Poland,PL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_RT_UK</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_RT_UK</label>
+        <sharedTo>
+            <group>United_Kingdom_Renault</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>United Kingdom,UK,GB,Ireland,IE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_AT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_AT</label>
+        <sharedTo>
+            <group>Austria_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Austria,AT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>Volvo,VT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_BE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_BE</label>
+        <sharedTo>
+            <group>Belgium_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Belgium,BE,Luxembourg,LU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>Volvo,VT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_CH</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_CH</label>
+        <sharedTo>
+            <group>Switzerland_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Switzerland,CH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_DE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_DE</label>
+        <sharedTo>
+            <group>Germany_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Germany,DE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_DK</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_DK</label>
+        <sharedTo>
+            <group>Denmark_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Denmark,DK</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>Volvo,VT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_ES</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_ES</label>
+        <sharedTo>
+            <group>Spain_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Spain,ES,Portugal,PT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_FI</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_FI</label>
+        <sharedTo>
+            <group>Finland_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Finland,FI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>Volvo,VT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_FR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_FR</label>
+        <sharedTo>
+            <group>France_Volvo</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
@@ -210,17 +376,75 @@
         <criteriaItems>
             <field>Brand__c</field>
             <operation>equals</operation>
-            <value>VT</value>
+            <value>VT,Volvo</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>IT_FO_Business_Leads</fullName>
+        <fullName>FO_VT_NL</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>IT_FO_Business_Leads</label>
+        <label>FO_VT_NL</label>
         <sharedTo>
-            <group>IT_RT_Access</group>
+            <group>Netherlands_Volvo</group>
         </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Netherlands,NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_PL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_PL</label>
+        <sharedTo>
+            <group>Poland_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Poland,PL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VT_UK</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_UK</label>
+        <sharedTo>
+            <group>United_Kingdom_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>United Kingdom,UK,GB,Ireland,IE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Factory_IT_VT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Factory_IT_VT</label>
+        <sharedTo>
+            <group>Italy_Volvo</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -229,161 +453,7 @@
         <criteriaItems>
             <field>Brand__c</field>
             <operation>equals</operation>
-            <value>RT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>IT_RT_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>IT_RT_Factory</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>IT_Renault_Truck</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Italy,IT</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>RT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>IT_VT_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>IT_VT_Factory</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>IT_Volvo</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Italy,IT</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>VT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>NL_Factory_Orders</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>NL Factory Orders</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>NL_Sales_Manager</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Netherlands,NL,NLD</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>UK_IE_RT_FO_Service_Connect</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>If any user belongs to service connect and need access to RT Factory Orders</description>
-        <label>UK/IE_RT_FO_Service_Connect</label>
-        <sharedTo>
-            <group>UK_IE_Sales_Connect</group>
-        </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>United Kingdom,GB</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Ireland,IE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>RT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>UK_IE_RT_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>UK/IE_RT_Factory</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>UK_IE_Renault_Truck</roleAndSubordinatesInternal>
-        </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>United Kingdom,GB</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Ireland,IE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>RT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>UK_IE_VT_FO_Service_Connect</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>If any user belongs to service connect and need access to VT Factory Orders</description>
-        <label>UK/IE_VT_FO_Service_Connect</label>
-        <sharedTo>
-            <group>UK_IE_VT_Brand_Access</group>
-        </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>United Kingdom,GB</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Ireland,IE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>VT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>UK_IE_VT_Factory</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>UK/IE_VT_Factory</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>UK_IE_Volvo</roleAndSubordinatesInternal>
-        </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>United Kingdom,GB</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Ireland,IE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Brand__c</field>
-            <operation>equals</operation>
-            <value>VT</value>
+            <value>Volvo,VT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

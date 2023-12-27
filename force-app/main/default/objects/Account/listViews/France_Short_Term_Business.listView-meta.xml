@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>France_Short_Term_Business</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>CompanyRegistrationNumber__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STREET</columns>
+    <columns>ACCOUNT.ADDRESS1_CITY</columns>
+    <columns>ACCOUNT.ADDRESS1_COUNTRY_CODE</columns>
+    <columns>sourceSystemID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>sourceSystemID__c</field>
+        <operation>equals</operation>
+        <value>FR94-SF</value>
+    </filters>
+    <filters>
+        <field>CREATEDBY_USER.ALIAS</field>
+        <operation>notEqual</operation>
+        <value>iuser</value>
+    </filters>
+    <label>France Short Term Business</label>
+</ListView>

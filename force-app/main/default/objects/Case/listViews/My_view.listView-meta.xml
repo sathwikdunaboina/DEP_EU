@@ -11,11 +11,12 @@
     <columns>CORE.USERS.ALIAS</columns>
     <columns>CASES.EMAIL</columns>
     <columns>CASES.NAME</columns>
+    <columns>Adjusted_Time__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>CORE.USERS.ALIAS</field>
-        <operation>equals</operation>
-        <value>Dave</value>
+        <field>Adjusted_Time__c</field>
+        <operation>notEqual</operation>
+        <value>Days hr min</value>
     </filters>
     <label>My view</label>
     <sharedTo>

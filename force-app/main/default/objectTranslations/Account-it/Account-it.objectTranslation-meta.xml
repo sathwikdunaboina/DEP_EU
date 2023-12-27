@@ -9,6 +9,45 @@
         <value>Cliente</value>
     </caseValues>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>Customer Management Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Golden Dealer Layout</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Adress Information --></label>
+            <section>Adress Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Change_TM_On_Account</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Child Account --></label>
+        <name>Child_Account</name>
+    </quickActions>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>Ottieni Fatture</label>
+        <name>Get_Invoices</name>
+    </quickActions>
     <recordTypes>
         <description><!-- Record type for Customer Account Data --></description>
         <label><!-- Customer Account --></label>
@@ -37,6 +76,10 @@
     <validationRules>
         <errorMessage><!-- The customerId field is used for integration. So, once filled, it cannot be edited. --></errorMessage>
         <name>Cannot_change_CustomerId</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Le numéro SIRET doit comporter 14 caractères --></errorMessage>
+        <name>Siret_Can_only_be_14_Digits</name>
     </validationRules>
     <webLinks>
         <label><!-- GoogleMaps --></label>
