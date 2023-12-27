@@ -88,7 +88,7 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>UK_IE_CS_tech_Tool</assignedTo>
+            <assignedTo>UK_IE_Service_Desk</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>(1 OR 2 ) AND 3</booleanFilter>
             <criteriaItems>
@@ -156,6 +156,20 @@
                 <field>Case.Type</field>
                 <operation>contains</operation>
                 <value>End of term query,Settlement Query</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>DE_Insurance</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Germany</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>Insurance query</value>
             </criteriaItems>
         </ruleEntry>
     </assignmentRule>

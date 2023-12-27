@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Bulk_Update_Opportunity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Quote --></label>
+        <name>Create_Quote</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Quotes --></label>
+        <name>Create_Quotes</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- Record Type For Financing --></description>
+        <label><!-- Finance --></label>
+        <name>Finance</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- When the stage is &apos;Closed Lost&apos;, please enter Lost Reason. --></errorMessage>
         <name>Mandatory_Lost_Reason_on_Closed_Stage</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Bulk_Update_Customer --></label>
+        <name>Bulk_Update_Customer</name>
+    </webLinks>
     <webLinks>
         <label><!-- Update_Owner --></label>
         <name>Update_Owner</name>

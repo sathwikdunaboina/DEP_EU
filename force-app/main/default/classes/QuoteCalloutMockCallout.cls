@@ -9,7 +9,7 @@ global class QuoteCalloutMockCallout implements HttpCalloutMock {
     global HttpResponse respond(HttpRequest request) {
         HttpResponse response = new HttpResponse();
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
-        System.assertEquals('{!Environment.VFS_Global_API Endpoint Named Credentials}'+settings.Endpoint_QA__c, request.getEndpoint());
+        System.assertEquals('callout:VFS_Global_APIs1'+settings.Endpoint_QA__c, request.getEndpoint());
         System.assertEquals('POST', request.getMethod());
         response.setHeader('contentType', 'application/json');
         response.setBody('{"example":"test","quoteId":"122334","success":"true"}');

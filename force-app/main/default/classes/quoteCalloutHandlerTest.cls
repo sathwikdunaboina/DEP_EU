@@ -18,7 +18,7 @@ private class quoteCalloutHandlerTest {
         System.test.stopTest();
     }
     
-        @isTest static void elseTestCallout() {
+    @isTest static void elseTestCallout() {
         // Set mock callout class 
         System.Test.setMock(HttpCalloutMock.class, new QuoteCalloutMockCallout(401));
         List<String> foOrder=new List<String>();
@@ -34,6 +34,7 @@ private class quoteCalloutHandlerTest {
         quoteCalloutController.getOppIds(foOrder);
         System.test.stopTest();
     }
+    
     @isTest static void testCalloutElse() {
         // Set mock callout class 
         System.Test.setMock(HttpCalloutMock.class, new QuoteCalloutMockCallout(200));

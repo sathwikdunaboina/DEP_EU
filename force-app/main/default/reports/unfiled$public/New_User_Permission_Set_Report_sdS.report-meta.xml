@@ -4,6 +4,16 @@
         <field>User_Permission_Set__c$Name</field>
     </columns>
     <currency>EUR</currency>
+    <filter>
+        <criteriaItems>
+            <column>User_Permission_Set__c$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>connect</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -29,7 +39,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>User_Permission_Set__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

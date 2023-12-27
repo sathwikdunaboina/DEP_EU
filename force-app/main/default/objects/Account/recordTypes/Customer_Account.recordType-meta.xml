@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Customer_Account</fullName>
     <active>true</active>
+    <compactLayoutAssignment>Customer_Management</compactLayoutAssignment>
     <description>Record type for Customer Account Data</description>
     <label>Customer Account</label>
     <picklistValues>
@@ -24,13 +25,237 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Bank_Rating_Character_Prefix__c</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>F</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>G</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>H</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>J</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>L</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>X</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Bank_Rating_Plus_or_Minus__c</picklist>
+        <values>
+            <fullName>0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Bank_Rating__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Branding__c</picklist>
+        <values>
+            <fullName>Bus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mack</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Renault</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>UD</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Coface_Rating__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -250,6 +475,230 @@
         </values>
         <values>
             <fullName>Reseller</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>VFS_Rating__c</picklist>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>defaultPaymentMethod__c</picklist>
+        <values>
+            <fullName>Bank transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cheque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct debit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>defaultPaymentTerms__c</picklist>
+        <values>
+            <fullName>0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 14</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>legalForm__c</picklist>
+        <values>
+            <fullName>%2810%29 Entrepreneur individuel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2821%29 Indivision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2822%29 Société créée de fait</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2823%29 Société en participation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2824%29 Fiducie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2827%29 Paroisse hors zone concordataire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2829%29 Autre groupement de droit privé non doté de la pers%2E morale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2831%29 Personne morale de droit étranger%2C immatriculée au RCS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2832%29 Personne morale de droit étranger%2C non immatriculée au RCS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2841%29 Etablissement pub%2E ou régie à caractère ind%2E ou commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2851%29 Société coopérative commerciale particulière</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2852%29 Société en nom collectif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2853%29 Société en commandite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2854%29 Société à responsabilité limitée %28SARL%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2855%29 Société anonyme à conseil d%27administration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2856%29 Société anonyme à directoire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2857%29 Société par actions simplifiée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2858%29 Société européenne</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2861%29 Caisse d%27épargne et de prévoyance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2862%29 Groupement d%27intérêt économique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2863%29 Société coopérative agricole</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2864%29 Société d%27assurance mutuelle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2865%29 Société civile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2869%29 Autre personne morale de droit privé inscrite au RCS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2871%29 Administration de l%27état</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2872%29 Collectivité territoriale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2873%29 Etablissement public administratif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2874%29 Autre personne morale de droit public administratif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2881%29 Org%2E gérant un régime de protection soc%2E à adhésion oblig%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2882%29 Organisme mutualiste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2883%29 Comité d%27entreprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2884%29 Organisme professionnel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2885%29 Organisme de retraite à adhésion non obligatoire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2891%29 Syndicat de propriétaires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2892%29 Association loi 1901 ou assimilé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2893%29 Fondation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2899%29 Autre personne morale de droit privé</fullName>
             <default>false</default>
         </values>
     </picklistValues>

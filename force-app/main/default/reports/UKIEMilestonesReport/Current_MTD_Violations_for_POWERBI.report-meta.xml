@@ -18,19 +18,16 @@
                 <sourceValue>Adam King</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>Ben Townsend</sourceValue>
-            </sourceValues>
-            <sourceValues>
                 <sourceValue>Heather Molloy</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Molly White</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>Sareena Jordamovic</sourceValue>
+                <sourceValue>IE - CS Operations</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>IE - CS Operations</sourceValue>
+                <sourceValue>Bart Wisniewski</sourceValue>
             </sourceValues>
             <value>Customer Service</value>
         </values>
@@ -65,11 +62,11 @@
             <value>Spam</value>
         </criteriaItems>
         <criteriaItems>
-            <column>BucketField_77895212</column>
+            <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Customer Service</value>
+            <operator>notContain</operator>
+            <value>contract,jenny,2nd,harry,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,Laura,Operations</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -90,8 +87,6 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2023-03-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-03-01</startDate>
+        <interval>INTERVAL_THISMONTH</interval>
     </timeFrameFilter>
 </Report>

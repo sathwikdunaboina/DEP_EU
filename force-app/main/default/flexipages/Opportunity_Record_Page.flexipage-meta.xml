@@ -129,6 +129,16 @@
                 <identifier>RecordVFS_Connect_Quote_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.VFS_Connect_Quote_Status__c</fieldItem>
+                <identifier>RecordVFS_Connect_Quote_Status_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-0e6555b5-8f72-4869-afd7-521a1ea4b2f4</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -151,6 +161,13 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CloseDate</fieldItem>
                 <identifier>RecordCloseDateField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.IsClosed}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -213,6 +230,23 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Additional_Details__c</fieldItem>
+                <identifier>RecordAdditional_Details_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Closed Lost</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Probability</fieldItem>
                 <identifier>RecordProbabilityField</identifier>
             </fieldInstance>
@@ -225,6 +259,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Amount</fieldItem>
                 <identifier>RecordAmountField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Customer_Account__c</fieldItem>
+                <identifier>RecordCustomer_Account_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-b3a5a48c-5b88-4690-bd64-fd18aec77197</name>
@@ -396,6 +440,10 @@
                     <value>Facet-f6178f4f-7143-43d3-9572-06ea703196fa</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>label</name>
                     <value>Opportunity Information</value>
                 </componentInstanceProperties>
@@ -410,6 +458,10 @@
                     <value>Facet-52cf788d-0354-48e3-8f6c-d3bb344f670d</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>label</name>
                     <value>Additional Information</value>
                 </componentInstanceProperties>
@@ -422,6 +474,10 @@
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-7d29ede3-98b0-4713-ae1d-ce8de2542f4a</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -453,6 +509,69 @@
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Opportunity.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Factory_Orders__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NAME</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>VIN_Number__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CDD_Date__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Market_Type_1_5__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Factory Orders</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -492,6 +611,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
@@ -627,6 +750,12 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>customerSearch</componentName>
+                <identifier>c_customerSearch</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

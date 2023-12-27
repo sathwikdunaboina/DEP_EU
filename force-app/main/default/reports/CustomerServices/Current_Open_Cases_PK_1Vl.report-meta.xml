@@ -40,6 +40,9 @@
         <field>Case.Indicator__c</field>
     </columns>
     <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
@@ -55,7 +58,7 @@
         <field>OPEN</field>
     </columns>
     <columns>
-        <field>STATUS</field>
+        <field>Case.Status_Reason__c</field>
     </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
@@ -72,14 +75,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>ext,waring,eot,billing,collections</value>
+            <value>ext,waring,eot,billing,collections,Beverley,laura</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Truslove,james,jayne</value>
+            <value>Truslove,james,jayne,scully,ilsley</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -156,7 +159,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>purchase order,PO</value>
+            <value>purchase order</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

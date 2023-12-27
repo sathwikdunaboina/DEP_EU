@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Case Layout</layout>
+        <sections>
+            <label>Informations Générales</label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>VFS Dealer Case Layout</layout>
+        <sections>
+            <label><!-- General Information (Dealer) --></label>
+            <section>General Information (Dealer)</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Related to Customer --></label>
+            <section>Related to Customer</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Bulk_Update</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Case --></label>
+        <name>CaseSummary</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewChildCase --></label>
+        <name>NewChildCase</name>
+    </quickActions>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>Taches</label>
+        <name>Note</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- SendEmail --></label>
+        <name>SendEmail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Case --></label>
+        <name>UpdateCaseCustom</name>
+    </quickActions>
     <recordTypes>
         <label><!-- All Case --></label>
         <name>All_Case</name>
@@ -7,6 +58,16 @@
     <recordTypes>
         <label><!-- Tech Tool --></label>
         <name>Tech_Tool</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record type has been created for Customer Case Management for handling cases for customer accounts and contacts across all the countries --></description>
+        <label><!-- VFS Customer --></label>
+        <name>VFS_Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- The record type has been created as part of Dealer Case Management , to be used for cases registered for dealers starting from UK/IE region --></description>
+        <label><!-- VFS Dealer --></label>
+        <name>VFS_Dealer</name>
     </recordTypes>
     <validationRules>
         <errorMessage>Impossible de créer des cas pour ce pays</errorMessage>
@@ -27,6 +88,14 @@
     <validationRules>
         <errorMessage>Veuillez remplir le cas parent lorsque le statut est en double</errorMessage>
         <name>Mandatory_parent_if_casetype_Duplicate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Contact associated with Dealer account --></errorMessage>
+        <name>Select_Dealer_Contact</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Contact associated with Customer account --></errorMessage>
+        <name>Select_Related_Customer_Contact</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Case type is mandatory when closing a case. --></errorMessage>

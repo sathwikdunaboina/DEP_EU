@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Sales_Person_Name__c</groupingColumn>
+        <groupingColumn>Opportunity.Dealer_Delivery_Date__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -63,6 +63,9 @@
     <columns>
         <field>TYPE</field>
     </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
     <currency>EUR</currency>
     <filter>
         <criteriaItems>
@@ -83,13 +86,13 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Sales_Person_Name__c</field>
+        <dateGranularity>Month</dateGranularity>
+        <field>Opportunity.Dealer_Delivery_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Sales_Person_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Peter_AlfredAngerer_AktuelleQuartal</name>

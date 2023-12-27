@@ -30,10 +30,6 @@
                 <field>Branding__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Territory_Manager__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>FiscalCode__c</field>
             </layoutItems>
@@ -173,6 +169,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Account.Get_Invoices</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
@@ -186,11 +187,6 @@
             <actionName>LogACall</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>NewTask</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>NewEvent</actionName>
@@ -244,18 +240,6 @@
             <quickActionName>SendEmail</quickActionName>
         </quickActionListItems>
     </quickActionList>
-    <relatedContent>
-        <relatedContentItems>
-            <layoutItem>
-                <component>wits:newsPanel</component>
-            </layoutItem>
-        </relatedContentItems>
-        <relatedContentItems>
-            <layoutItem>
-                <component>runtime_sales_social:socialPanel</component>
-            </layoutItem>
-        </relatedContentItems>
-    </relatedContent>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
@@ -285,7 +269,7 @@
         <fields>Amount_Including_Tax__c</fields>
         <fields>Term__c</fields>
         <fields>Business_Area__c</fields>
-        <fields>On_Balance_Sheet__c</fields>
+        <fields>VIN_Number__c</fields>
         <fields>Contract_Status__c</fields>
         <relatedList>Contract__c.Account__c</relatedList>
         <sortField>Start_Date__c</sortField>
@@ -341,6 +325,10 @@
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.WHAT_NAME</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>VFS_Connect_Quote__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

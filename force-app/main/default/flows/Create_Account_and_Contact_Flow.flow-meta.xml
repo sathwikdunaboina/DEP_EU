@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <description>Assign the Account to the Contact</description>
+        <name>Assign_the_Account</name>
+        <label>Assign the Account</label>
+        <locationX>459</locationX>
+        <locationY>614</locationY>
+        <assignmentItems>
+            <assignToReference>ContactToCreate.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AccountToCreate.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Contact_From_Flow</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Error_Message</name>
+        <label>Check Error Message</label>
+        <locationX>674</locationX>
+        <locationY>339</locationY>
+        <defaultConnector>
+            <targetReference>Unhandled_Error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Unhandled Error Occured</defaultConnectorLabel>
+        <rules>
+            <name>Check_For_Duplicate_Error</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Flow.FaultMessage</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>DUPLICATE</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Handler</targetReference>
+            </connector>
+            <label>Check For Duplicate Error</label>
+        </rules>
+    </decisions>
+    <description>Create Account and Contact Flow</description>
+    <environments>Default</environments>
+    <interviewLabel>Create Account and Contact Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Account and Contact Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>Create Account From Flow</description>
+        <name>Create_Account_From_Flow</name>
+        <label>Create Account From Flow</label>
+        <locationX>456</locationX>
+        <locationY>337</locationY>
+        <connector>
+            <targetReference>Create_Contact</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Check_Error_Message</targetReference>
+        </faultConnector>
+        <inputReference>AccountToCreate</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>Create Contact From Flow</description>
+        <name>Create_Contact_From_Flow</name>
+        <label>Create Contact From Flow</label>
+        <locationX>460</locationX>
+        <locationY>745</locationY>
+        <connector>
+            <targetReference>Creation_Completed</targetReference>
+        </connector>
+        <inputReference>ContactToCreate</inputReference>
+    </recordCreates>
+    <screens>
+        <description>Used to create and account and contact</description>
+        <name>Create_Account</name>
+        <label>Create Account</label>
+        <locationX>456</locationX>
+        <locationY>182</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_Account_From_Flow</targetReference>
+        </connector>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>AccountToCreate.Name</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>AccountToCreate.CompanyRegistrationNumber__c</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>AccountToCreate.VAT__c</objectFieldReference>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Create_Contact</name>
+        <label>Create Contact</label>
+        <locationX>458</locationX>
+        <locationY>481</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_the_Account</targetReference>
+        </connector>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>ContactToCreate.Name</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>ContactToCreate.Email</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>ContactToCreate.MobilePhone</objectFieldReference>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>The final screen</description>
+        <name>Creation_Completed</name>
+        <label>Creation Completed</label>
+        <locationX>676</locationX>
+        <locationY>750</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>OpenAccount</name>
+            <extensionName>c:navigateToRecordFromFlow</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>AccountToCreate.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>This will handle errors</description>
+        <name>Error_Handler</name>
+        <label>Error Handler</label>
+        <locationX>794</locationX>
+        <locationY>182</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Create_Account</targetReference>
+        </connector>
+        <fields>
+            <name>CustomErrorMessage</name>
+            <fieldText>&lt;p&gt;You have tried to create a Duplicate Account.  Please reenter the information or search for the exisiting account using that data you have entered.  &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <helpText>&lt;p&gt;You have encounted an issue.  Likely you have created a duplicate Account.  Please try to create a new account or select an existing Account. &lt;/p&gt;</helpText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>This happens when an unhandled error occurs.</description>
+        <name>Unhandled_Error</name>
+        <label>Unhandled Error</label>
+        <locationX>689</locationX>
+        <locationY>495</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>UnhandledErrorMessage</name>
+            <fieldText>&lt;p&gt;The following error occured.  We are sorry for the inconvience.  The IT team has been notified.  Please try again later. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Create_Account</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>This is the variable for the account creation</description>
+        <name>AccountToCreate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <description>Contact to Create</description>
+        <name>ContactToCreate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

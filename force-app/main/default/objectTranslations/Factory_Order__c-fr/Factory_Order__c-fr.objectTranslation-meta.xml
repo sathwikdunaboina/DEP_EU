@@ -8,7 +8,32 @@
         <plural>true</plural>
         <value><!-- Factory Order --></value>
     </caseValues>
+    <layouts>
+        <layout>Factory Order layout</layout>
+        <sections>
+            <label><!-- Contact Info --></label>
+            <section>Contact Info</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Order Config --></label>
+            <section>Order Config</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- FO Number --></nameFieldLabel>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>mise à jour de la commande d&apos;usine</label>
+        <name>Factory_Order_Update</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- This type represents orders that are for sale on a dealerships lot. --></description>
+        <label><!-- Inventory --></label>
+        <name>Inventory</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- The Customer Delivery Date Should Be Greater Than 31st Dec 2022 For UK/IE Market --></errorMessage>
         <name>Customer_Delivery_Date_For_UK_IE_Market</name>
