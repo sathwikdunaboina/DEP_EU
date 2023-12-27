@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Select_Customer_Contact</fullName>
-    <active>true</active>
+    <active>false</active>
     <description>This validation rule prevents the user to select contact associated with Dealer account</description>
     <errorConditionFormula>AND(OR( ISPICKVAL( Country__c , &apos;United Kingdom&apos;), ISPICKVAL( Country__c , &apos;Ireland&apos;)),  Contact.Account.RecordType.DeveloperName = &apos;Dealer_Account&apos;)</errorConditionFormula>
     <errorDisplayField>ContactId</errorDisplayField>

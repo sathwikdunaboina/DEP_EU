@@ -34,9 +34,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
         <field>FISCAL_QUARTER</field>
     </columns>
     <columns>
@@ -88,6 +85,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Sales_Person_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Peter_Kreuzer_OpportunitiesGesamt</name>

@@ -2,17 +2,30 @@
 global class QuoteCalloutMockCallout implements HttpCalloutMock {
     
     private Integer statusCode;
+    private String response;
     
-    public QuoteCalloutMockCallout(Integer statusCode){
+    public QuoteCalloutMockCallout(Integer statusCode) {
         this.statusCode = statusCode;
+        this.response = '{"example":"test","quoteId":"122334","success":"true","errorMessage":"Customer Account Null"}';
     }
+    
+    public QuoteCalloutMockCallout(Integer statusCode, String customResponse){
+        this.statusCode = statusCode;
+        
+        if (String.isBlank(customResponse)) {
+            this.response = '{"example":"test","quoteId":"122334","success":"true","errorMessage":"Customer Account Null"}';
+        } else {
+            this.response = customResponse;
+        }
+    }
+    
     global HttpResponse respond(HttpRequest request) {
         HttpResponse response = new HttpResponse();
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
-        System.assertEquals('{!Environment.VFS_Global_API Endpoint Named Credentials}'+settings.Endpoint_QA__c, request.getEndpoint());
+        System.assertEquals('callout:VFS_Global_APIs'+settings.Endpoint_QA__c, request.getEndpoint());
         System.assertEquals('POST', request.getMethod());
         response.setHeader('contentType', 'application/json');
-        response.setBody('{"example":"test","quoteId":"122334","success":"true"}');
+        response.setBody(this.response);
         response.setStatusCode(this.statusCode);
         return response;
     }

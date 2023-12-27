@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <customApplications>
+        <description xsi:nil="true"/>
+        <label><!-- Customer Management --></label>
+        <name>Customer_Management</name>
+    </customApplications>
+    <customApplications>
+        <description xsi:nil="true"/>
+        <label><!-- Sales Connect --></label>
+        <name>GCSalesConnect</name>
+    </customApplications>
+    <customApplications>
+        <description xsi:nil="true"/>
         <label><!-- Lead Generation --></label>
         <name>Lead_Generation</name>
     </customApplications>
     <customApplications>
+        <description xsi:nil="true"/>
+        <label><!-- Lead Management --></label>
+        <name>Lead_Management</name>
+    </customApplications>
+    <customApplications>
+        <description xsi:nil="true"/>
         <label><!-- Relationship Management --></label>
         <name>Relationship_Management</name>
     </customApplications>
     <customApplications>
+        <description xsi:nil="true"/>
         <label><!-- Sales Leadership --></label>
         <name>Sales_Leadership</name>
     </customApplications>
     <customApplications>
+        <description xsi:nil="true"/>
         <label><!-- Sales Operations --></label>
         <name>Sales_Operations</name>
     </customApplications>
@@ -512,6 +531,503 @@
         <label><!-- Bulk Lead Converter --></label>
         <name>Bulk_Lead_Converter</name>
     </customTabs>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Display_Warning</name>
+                </fields>
+                <name>Display_text</name>
+            </screens>
+        </flows>
+        <fullName>Account_name_is_Mandate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Customer_Change_Customer_Search_Text</name>
+                </fields>
+                <name>Customer_Search</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Select_Customer</name>
+                </fields>
+                <name>Select_Searched_Customer</name>
+            </screens>
+        </flows>
+        <fullName>Bulk_Update_Opportunity_Customer</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Adjusted_Time</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Auto_Closure</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Country_Assignment_Sub_process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Last_changed_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_On_Create_Edit_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_On_Create_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contract_Currency_Update_Sub_process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contract_On_Create_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contract_TM_Assignment_Sub_process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Covid19_Restructure_Sub_Process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>el_0</name>
+                </fields>
+                <fields>
+                    <name>el_1</name>
+                </fields>
+                <fields>
+                    <name>el_2</name>
+                </fields>
+                <name>Create_Account</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>el_3</name>
+                </fields>
+                <fields>
+                    <name>el_4</name>
+                </fields>
+                <fields>
+                    <name>el_5</name>
+                </fields>
+                <name>Create_Contact</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>recordId</name>
+                        <value/>
+                    </inputParameters>
+                    <name>OpenAccount</name>
+                </fields>
+                <name>Creation_Completed</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>CustomErrorMessage</name>
+                </fields>
+                <name>Error_Handler</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>UnhandledErrorMessage</name>
+                </fields>
+                <name>Unhandled_Error</name>
+            </screens>
+        </flows>
+        <fullName>Create_Account_and_Contact_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>FactoryOrderCheck</name>
+                </fields>
+                <name>Add_Factory_Order</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>unsuccessfuletectmsg</name>
+                </fields>
+                <name>DraftQuoteCreate_Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>QuoteCreateSuccess</name>
+                </fields>
+                <name>DraftQuoteCreate_Succes</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ErrorText</name>
+                </fields>
+                <name>Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>MissingDealerText</name>
+                </fields>
+                <name>MissingDealer_c</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>HasQuote</name>
+                </fields>
+                <name>Quote_Exists</name>
+            </screens>
+        </flows>
+        <fullName>Create_Quote_Flow_With_Display_Errors</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Create_Task_when_Case_is_created_via_Dataloader</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Do_Nothing</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>EmailMessage_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Email_Message_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Entitlement_Assignment</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>FO_Currency_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>FactoryOrderAfterInsertUpdateFlow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Factory_Order_to_Opportunity</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Fire_LeadSource_Changed_Event</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>GCErrorLogInsertPlatformEventHandler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>GCLeadAssignmentPlatformEventHandler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>GCLeadSourceUpsertPlatformEventHandler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>DiaplyText2</name>
+                </fields>
+                <name>After_Account_creation</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>DiaplyText2_0</name>
+                </fields>
+                <name>After_Account_creation_Failure</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>displyText</name>
+                </fields>
+                <name>Customer_Exist_in_Salesforce_System</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>CMS_ID</name>
+                </fields>
+                <fields>
+                    <name>Header</name>
+                </fields>
+                <name>Search_Customer_from_VFS</name>
+            </screens>
+        </flows>
+        <fullName>GetCustomerFromCMS</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>InvoiceResultText</name>
+                </fields>
+                <name>Invoice_Call_Result</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ErrorText</name>
+                </fields>
+                <name>Partial_Success</name>
+            </screens>
+        </flows>
+        <fullName>Invoke_Invoice_API</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Last_Email_Message_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>LeadSource_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Assignment</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Currency_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <textTemplates>
+                <name>multipleRecordsFoundTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>noRecordsFoundTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>Lead_Source_Change_Listner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Code</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>EnterOTPValue</name>
+                </fields>
+                <name>Email_Sent</name>
+            </screens>
+        </flows>
+        <fullName>Login_OTP</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Display_Errror</name>
+                </fields>
+                <name>Previous</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Errror_0</name>
+                </fields>
+                <name>Previous_0</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Errror_0_0</name>
+                </fields>
+                <name>Previous_0_0</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>dependencyWrapperApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middlePicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middleValue</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topPicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topValue</name>
+                        <value/>
+                    </inputParameters>
+                    <name>FinanceHouses</name>
+                </fields>
+                <fields>
+                    <name>Heading</name>
+                </fields>
+                <fields>
+                    <name>Interest_Rate</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Not_needed</name>
+                </fields>
+                <name>Reason</name>
+            </screens>
+        </flows>
+        <fullName>Opportunity_Lost_Reason_Interest_Rate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_country_update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_update_Currency</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>I_accept</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>Heading</name>
+                </fields>
+                <fields>
+                    <name>I_accept_field</name>
+                </fields>
+                <fields>
+                    <name>WhattoDisplay</name>
+                </fields>
+                <name>Terms_and_Condition</name>
+            </screens>
+        </flows>
+        <fullName>Portal_Login_Terms_Conditions</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Priority_Assignment_Sub_Process</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Set_Company_Registration_Number_2_On_Bank_Account</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Account_Owner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Bank_Rating</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Contact_unique_Id</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Customer_Registration_Number</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Opp_Close_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Opp_Stage</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Oppty_Fields_When_Factory_Order_Is_Cancelled</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Stage_to_Closed_Won</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Territory_Manager_for_Account</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_case_Type_for_UK_IE</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_closed_case_recordtype</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>S_043f2c6f_3f66_4caa_a12e_fac8f7f30f4d</name>
+            </choices>
+            <choices>
+                <name>S_09cbe416_b76e_428a_9057_532591f37ad8</name>
+            </choices>
+            <choices>
+                <name>S_68f85722_14f8_4f3e_ab91_c3dc11afe9bb</name>
+            </choices>
+            <choices>
+                <name>S_96201536_1d5b_4d21_b34e_8a9d13fa5e1c</name>
+            </choices>
+            <choices>
+                <name>S_b76efa00_a4ad_43df_a60b_416e76cc18c7</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>q_baba329f_e416_44ac_a8e6_0b26da74b180</name>
+                </fields>
+                <fields>
+                    <name>q_eb13e35c_bb3d_42c9_9dc3_48aa8db358cd</name>
+                </fields>
+                <name>surveyQuestionPage</name>
+            </screens>
+            <textTemplates>
+                <name>thankYouDescriptionTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>thankYouLabelTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>customer_satisfaction</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>q_514f3088_964a_43a0_b2cf_4f8c0947c24f</name>
+                </fields>
+                <fields>
+                    <name>q_a1655ac8_1829_4272_b4d5_c7b12ef5cd59</name>
+                </fields>
+                <name>surveyQuestionPage</name>
+            </screens>
+            <textTemplates>
+                <name>thankYouDescriptionTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>thankYouLabelTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>net_promoter_score</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>setCaseType</fullName>
+    </flowDefinitions>
     <quickActions>
         <label><!-- Follow Up --></label>
         <name>Follow_Up</name>
@@ -572,4 +1088,174 @@
         <label><!-- Snapins_Contact_PrechatQuickAction_08h2p000000Cayp --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h2p000000Cayp</name>
     </quickActions>
+    <reportTypes>
+        <description><!-- Accounts and Bank Accounts --></description>
+        <label><!-- Accounts and Bank Accounts --></label>
+        <name>Accounts_and_Bank_Accounts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Bank Accounts --></label>
+            <name>Bank Accounts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Bank Account Mandates --></description>
+        <label><!-- Accounts with Bank Account Mandates --></label>
+        <name>Accounts_with_Bank_Account_Mandates</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Bank Account Mandates --></label>
+            <name>Bank Account Mandates</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Contacts --></description>
+        <label><!-- Accounts with Contacts --></label>
+        <name>Accounts_with_Contacts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Contracts with Payment Plans --></description>
+        <label><!-- Accounts with Contracts with Payment Plans --></label>
+        <name>Accounts_with_Contracts_with_Payment_Plans</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contracts --></label>
+            <name>Contracts</name>
+        </sections>
+        <sections>
+            <label><!-- Payment Plans --></label>
+            <name>Payment Plans</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Entitlements with Contacts --></description>
+        <label><!-- Accounts with Entitlements with Contacts --></label>
+        <name>Accounts_with_Entitlements_with_Contacts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+        <sections>
+            <label><!-- Entitlements --></label>
+            <name>Entitlements</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Cases and Case Feed --></description>
+        <label><!-- Cases and Case Feed --></label>
+        <name>Cases_and_Case_Feed</name>
+        <sections>
+            <label><!-- Case Feed --></label>
+            <name>Case Feed</name>
+        </sections>
+        <sections>
+            <label><!-- Cases --></label>
+            <name>Cases</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Contacts Report --></description>
+        <label><!-- Contacts Report --></label>
+        <name>Contacts_Report</name>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Contracts (Custom) --></description>
+        <label><!-- Contracts (Custom) --></label>
+        <name>Contracts_Custom</name>
+        <sections>
+            <label><!-- Contracts --></label>
+            <name>Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Service Contracts with Contract Line Items --></description>
+        <label><!-- Service Contracts with Contract Line Items --></label>
+        <name>Service_Contracts_with_Contract_Line_Items</name>
+        <sections>
+            <label><!-- Contract Line Items --></label>
+            <name>Contract Line Items</name>
+        </sections>
+        <sections>
+            <label><!-- Service Contracts --></label>
+            <name>Service Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Service Contracts with Entitlements --></description>
+        <label><!-- Service Contracts with Entitlements --></label>
+        <name>Service_Contracts_with_Entitlements</name>
+        <sections>
+            <label><!-- Entitlements --></label>
+            <name>Entitlements</name>
+        </sections>
+        <sections>
+            <label><!-- Service Contracts --></label>
+            <name>Service Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- User Permission Set --></description>
+        <label><!-- User Permission Set --></label>
+        <name>User_Permission_Set</name>
+        <sections>
+            <label><!-- User Permission Sets --></label>
+            <name>User Permission Sets</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Users (Custom) --></description>
+        <label><!-- Users (Custom) --></label>
+        <name>Users_Custom</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Users with FedID --></description>
+        <label><!-- Users with FedID --></label>
+        <name>Users_with_FedID</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Screen Flows --></description>
+        <label><!-- Screen Flows --></label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow Interview Log Entries --></label>
+            <name>Flow Interview Log Entries</name>
+        </sections>
+        <sections>
+            <label><!-- Flow Interview Logs --></label>
+            <name>Flow Interview Logs</name>
+        </sections>
+    </reportTypes>
 </Translations>

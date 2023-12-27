@@ -26,6 +26,8 @@
                 <stringValue>hariram.vyas@consultant.volvo.com</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>eventContextMoreEmail</name>
@@ -53,6 +55,8 @@
                 <stringValue>hariram.vyas@consultant.volvo.com</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -74,6 +78,8 @@
         <actionName>Do_Nothing</actionName>
         <actionType>flow</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Do_Nothing</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -179,6 +185,8 @@
                 <elementReference>myVariable_myEvent.Change_Type__c</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>LeadSource_Handler</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>
@@ -419,7 +427,7 @@
         <queriedFields>Id</queriedFields>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Active</status>
+    <status>Obsolete</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>

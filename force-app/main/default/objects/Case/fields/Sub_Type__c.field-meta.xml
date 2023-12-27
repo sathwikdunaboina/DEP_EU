@@ -14,6 +14,24 @@
         <valueSetDefinition>
             <sorted>true</sorted>
             <value>
+                <fullName>3rd Party Invoice</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>3rd Party Invoice</label>
+            </value>
+            <value>
+                <fullName>3rd Party Query</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>3rd Party Query</label>
+            </value>
+            <value>
+                <fullName>3rd Party Sent for Approval</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>3rd Party Sent for Approval</label>
+            </value>
+            <value>
                 <fullName>Access Level Update</fullName>
                 <default>false</default>
                 <label>Access Level Update</label>
@@ -214,6 +232,12 @@
                 <label>Customised Impact online</label>
             </value>
             <value>
+                <fullName>Dealer Claims</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dealer Claims</label>
+            </value>
+            <value>
                 <fullName>Direct Debit/SEPA Problems</fullName>
                 <default>false</default>
                 <label>Direct Debit/SEPA Problems</label>
@@ -372,6 +396,12 @@
                 <fullName>New Users</fullName>
                 <default>false</default>
                 <label>New Users</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not Applicable</label>
             </value>
             <value>
                 <fullName>Novation - Finance Novation Completion</fullName>
@@ -941,6 +971,18 @@
             <valueName>Termination Query</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>RFL</controllingFieldValue>
+            <valueName>Admin Fees Queries</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RFL</controllingFieldValue>
+            <valueName>Refunds Queries</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RFL</controllingFieldValue>
+            <valueName>Renewals Queries</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
             <valueName>Other questions</valueName>
         </valueSettings>
@@ -996,28 +1038,8 @@
             <valueName>Tax Statement</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>RFL</controllingFieldValue>
-            <valueName>Admin Fees Queries</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>RFL</controllingFieldValue>
-            <valueName>Refunds Queries</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>RFL</controllingFieldValue>
-            <valueName>Renewals Queries</valueName>
-        </valueSettings>
-        <valueSettings>
             <controllingFieldValue>Request Copy Document</controllingFieldValue>
             <valueName>Copy Contract</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Service Third Party</controllingFieldValue>
-            <valueName>New Invoice</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Service Third Party</controllingFieldValue>
-            <valueName>Sent for approval</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Additional Services query</controllingFieldValue>
@@ -1050,6 +1072,14 @@
         <valueSettings>
             <controllingFieldValue>Additional Services query</controllingFieldValue>
             <valueName>Road Fund Licence Query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service Third Party</controllingFieldValue>
+            <valueName>New Invoice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service Third Party</controllingFieldValue>
+            <valueName>Sent for approval</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Settlement Query</controllingFieldValue>
