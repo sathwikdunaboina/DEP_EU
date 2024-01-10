@@ -19,8 +19,6 @@ public class quoteCalloutHandlerTest1 {
 		System.test.startTest();
         System.test.setMock(HttpCalloutMock.class, new QuoteCalloutMockCallout(200, '{"example":"test","quoteId":"122334","success":"true"}'));
         List<string> results = quoteCalloutHandler.fetchFromAPIForQuote(oppIdList);
-        quoteCalloutController.getOpportunities(oppIdList[0]);
-        quoteCalloutController.getOppIds(oppIdList);
         System.debug(results);
         for (String result : results) {
             Assert.areEqual(result, 'Quote created successfully');
