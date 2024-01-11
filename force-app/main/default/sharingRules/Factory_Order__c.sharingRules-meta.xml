@@ -163,6 +163,21 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>FO_IT_SA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This sharing rule gives read/write access to Italy FO records</description>
+        <label>FO_IT_SA</label>
+        <sharedTo>
+            <group>Italy_Sales</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Italy,IT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>FR_Factory_All_Brand</fullName>
         <accessLevel>Edit</accessLevel>
         <label>FR_Factory_All_Brand</label>
