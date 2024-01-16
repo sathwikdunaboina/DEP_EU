@@ -170,7 +170,7 @@ private class quoteCalloutHandlerTest {
         opp.Customer_Account__c = AccountId;
         opp.StageName = 'New';
         opp.Quote_Id__c = '3110472';
-        opp.Quote_Url__c = '{!Environment.SearchQuoteResponseURL}/PM/Landingpage.aspx';
+        opp.Quote_Url__c = 'https://test-wlc.global.volvo.net/PM/Landingpage.aspx';
         insert opp;
         return opp.Id;
     }
@@ -186,7 +186,7 @@ private class quoteCalloutHandlerTest {
         opp.Customer_Account__c = AccountId;
         opp.StageName = 'New';
         //opp.Quote_Id__c = '3110472';
-        //opp.Quote_Url__c = '{!Environment.SearchQuoteResponseURL}/PM/Landingpage.aspx';
+        //opp.Quote_Url__c = 'https://test-wlc.global.volvo.net/PM/Landingpage.aspx';
         insert opp;
         return opp.Id;
     }

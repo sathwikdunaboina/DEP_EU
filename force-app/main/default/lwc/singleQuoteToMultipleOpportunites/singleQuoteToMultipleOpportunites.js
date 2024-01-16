@@ -1,210 +1,346 @@
-import { LightningElement,api,wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
-import Id from '@salesforce/user/Id';
-import {ShowToastEvent} from 'lightning/platformShowToastEvent'
-import getOppIds from '@salesforce/apex/quoteCalloutController.getOppIds';
-import getOpportunities from '@salesforce/apex/quoteCalloutController.getOpportunities';
-import {CloseActionScreenEvent} from 'lightning/actions';
-import UserNameFld from '@salesforce/schema/User.Name';
+import { LightningElement, api, wire } from "lwc";
+import { getRecord, getFieldValue } from "lightning/uiRecordApi";
+import Id from "@salesforce/user/Id";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import getOppIds from "@salesforce/apex/quoteCalloutController.getOppIds";
+import getOpportunities from "@salesforce/apex/quoteCalloutController.getOpportunities";
+import { CloseActionScreenEvent } from "lightning/actions";
+import UserNameFld from "@salesforce/schema/User.Name";
+import ACCOUNT_NAME from "@salesforce/schema/Opportunity.Account.Name";
+import CUSTOMER_ACCOUNT_NAME from "@salesforce/schema/Opportunity.Customer_Account__r.Name";
+import AMOUNT from "@salesforce/schema/Opportunity.Amount";
 export default class SingleQuoteToMultipleOpportunites extends LightningElement {
-  @api recordId;
-  @api objectApiName;
-  @api isLoaded = false;
-  userId = Id;
-  currentUserName = UserNameFld;
-  @wire(getRecord, { recordId: Id, fields: [UserNameFld]}) 
-  userDetails({error, data}) {
-      if (data) {
-          this.currentUserName = data.fields.Name.value;
-      }
-  }
-  tableHeadings = ["Name","Quote Id", "Amount","Brand", "Dealer Name", "Dealer Delivery Date", "Closed Date"];
-  data = [];
-  nonClosedateArray = [];
-  nonClosedateArraySelected = [];
-  firstCall = false;
-  renderedCallback() {
-      if (this.firstCall == false && this.recordId != null) {
-          getOpportunities({ oppId: this.recordId })
-              .then(result => {
-                  let data = result;
-                  console.log(result);
-                  let today = new Date().toISOString().slice(0, 10);
-                  let closedateArray = [];
-                  this.nonClosedateArray = [];
-                  this.nonClosedateArraySelected = [];
-                  data.map(ele => {
-                      if (ele.Quote_Id__c != null || ele.Amount ==null) {
-                        if(ele.Amount ==null){
+    @api recordId;
+    @api objectApiName;
+    @api isLoaded = false;
+    ErrorMessageShow = false;
+    userId = Id;
+    currentUserName = UserNameFld;
+    customerNameUI;
+    dealerNameUI;
+    AmountUI;
+    data = [];
+    nonClosedateArray = [];
+    nonClosedateArraySelected = [];
+    firstCall = false;
+    //disableBtn = true;
+    listOfArray = [];
+
+    @wire(getRecord, { recordId: Id, fields: [UserNameFld] })
+    userDetails({ error, data }) {
+        if (data) {
+            this.currentUserName = data.fields.Name.value;
+        }
+    }
+    fields = [ACCOUNT_NAME, CUSTOMER_ACCOUNT_NAME];
+
+    @wire(getRecord, {
+        recordId: "$recordId",
+        fields: [ACCOUNT_NAME, CUSTOMER_ACCOUNT_NAME, AMOUNT]
+    })
+    record({ error, data }) {
+        if (data) {
+            //console.log(">>> ACCOUNT_NAME... " + getFieldValue(data, ACCOUNT_NAME));
+            //console.log(">> CUSTOMER_ACCOUNT_NAME..." +getFieldValue(data, CUSTOMER_ACCOUNT_NAME) );
+            this.customerNameUI = getFieldValue(data, ACCOUNT_NAME);
+            this.dealerNameUI = getFieldValue(data, CUSTOMER_ACCOUNT_NAME);
+            this.AmountUI = getFieldValue(data, AMOUNT);
+        }
+    }
+
+    handleChange(event) {
+        if (event.target.checked) {
+            let selectedOpps = this.template.querySelectorAll("lightning-input");
+            if (selectedOpps) {
+                for (let i = 0; i < selectedOpps.length; i++) {
+                    if (selectedOpps[i].checked && selectedOpps[i].type === "checkbox") {
+                        this.template.querySelector(`[data-id="${event.target.value}"]`).classList.add('highlight');
+                        //console.log("selectedOpps[i]" + selectedOpps[i]);
+                    }
+                }
+            }
+            this.listOfArray.push(event.target.value);
+        } else {
+            this.listOfArray.pop(event.target.value);
+            let selectedOpps = this.template.querySelectorAll("lightning-input");
+            if (selectedOpps) {
+                for (let i = 0; i < selectedOpps.length; i++) {
+                    if (selectedOpps[i].checked && selectedOpps[i].type === "checkbox") {
+                        this.template.querySelector(`[data-id="${event.target.value}"]`).classList.remove('highlight');
+                        //console.log("selectedOpps[i]" + selectedOpps[i]);
+                    }
+                }
+            }
+        }
+        //     if (this.listOfArray.length > 0) {
+        //         this.disableBtn = false;
+        //     } else {
+        //         this.disableBtn = true;
+        //     }
+    }
+    renderedCallback() {
+        if (this.firstCall == false && this.recordId != null) {
+            if (this.AmountUI == null) {
+                this.firstCall = true;
+                this.ErrorMessageShow = true;
+            } else {
+                getOpportunities({ oppId: this.recordId })
+                    .then(result => {
+                        let data = result;
+                        //console.log(result);
+                        let closedateArray = [];
+                        this.nonClosedateArray = [];
+                        this.nonClosedateArraySelected = [];
+                        data.map(ele => {
+                            if (ele.Quote_Id__c != null || ele.Amount == null) {
+                                if (ele.Amount == null) {
+                                    this.dispatchEvent(
+                                        new ShowToastEvent({
+                                            title: "Warning",
+                                            message: "Some Record(s) not having Amount!",
+                                            variant: "warning"
+                                        })
+                                    );
+                                }
+                                closedateArray = [
+                                    ...closedateArray,
+                                    {
+                                        Id: ele.Id,
+                                        Name: ele.Name,
+                                        Quote_Id__c: ele.Quote_Id__c,
+                                        Amount: ele.Amount,
+                                        CloseDate: ele.CloseDate,
+                                        Brand__c: ele.Brand__c,
+                                        Dealer_Name__c: ele.Account.Name,
+                                        Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,
+                                        CurrencyIsoCode: ele.CurrencyIsoCode,
+                                        checkbox: false, // Task-7323 code changes
+                                        vinNumber: ele.Factory_Order__r.VIN_Number__c, // Task-7323 code changes
+                                        marketType: ele.Factory_Order__r.Market_Type_1_5__c, // Task-7323 code changes
+                                        firstRecordCheckByDefault: false
+                                    }
+                                ];
+                            } else if (ele.Quote_Id__c == null || ele.Amount != null) {
+                                if (this.recordId == ele.Id) {
+                                    //this.disableBtn = false;
+                                    this.nonClosedateArraySelected = [{
+                                        Id: ele.Id,
+                                        Name: ele.Name,
+                                        Quote_Id__c: ele.Quote_Id__c,
+                                        Amount: ele.Amount,
+                                        CloseDate: ele.CloseDate,
+                                        DealerId__c: ele.DealerId__c,
+                                        Brand__c: ele.Brand__c,
+                                        Dealer_Name__c: ele.Account.Name,
+                                        Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,
+                                        CurrencyIsoCode: ele.CurrencyIsoCode,
+                                        checkbox: true, // Task-7323 code changes
+                                        vinNumber: ele.Factory_Order__r.VIN_Number__c, // Task-7323 code changes
+                                        marketType: ele.Factory_Order__r.Market_Type_1_5__c, // Task-7323 code changes
+                                        firstRecordCheckByDefault: true
+                                    }];
+                                } else {
+                                    this.nonClosedateArray = [
+                                        ...this.nonClosedateArray,
+                                        {
+                                            Id: ele.Id,
+                                            Name: ele.Name,
+                                            Quote_Id__c: ele.Quote_Id__c,
+                                            Amount: ele.Amount,
+                                            CloseDate: ele.CloseDate,
+                                            DealerId__c: ele.DealerId__c,
+                                            Brand__c: ele.Brand__c,
+                                            Dealer_Name__c: ele.Account.Name,
+                                            Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,
+                                            CurrencyIsoCode: ele.CurrencyIsoCode,
+                                            checkbox: true, // Task-7323 code changes
+                                            vinNumber: ele.Factory_Order__r.VIN_Number__c, // Task-7323 code changes
+                                            marketType: ele.Factory_Order__r.Market_Type_1_5__c, // Task-7323 code changes
+                                            firstRecordCheckByDefault: false
+                                        }
+                                    ];
+                                }
+                            }
+                        });
+                        this.firstCall = true;
+                        //this.nonClosedateArraySelected.concat();
+                        //closedateArray.concat(this.nonClosedateArraySelected);
+                        this.data = this.nonClosedateArraySelected.concat(
+                            this.nonClosedateArray,
+                            closedateArray
+                        );
+                        //this.data = closedateArray.concat(this.nonClosedateArraySelected,this.nonClosedateArray);
+                        //this.nonClosedateArray.concat(this.nonClosedateArraySelected);
+                        //alert('this.data'+this.data);
+                    })
+                    .catch(result => {
+                        alert("Error Caused:renderedCallback" + JSON.stringify(result));
+                    });
+            }
+        }
+        let selectedOpps = this.template.querySelectorAll("lightning-input");
+        if (selectedOpps) {
+            for (let i = 0; i < selectedOpps.length; i++) {
+                if (selectedOpps[i].checked && selectedOpps[i].type === "checkbox") {
+                    this.template.querySelector(`[data-id="${selectedOpps[i].value}"]`).classList.add('highlight');
+                    //console.log("selectedOpps[i]" + selectedOpps[i]);
+                }
+            }
+        }
+    }
+
+    refreshMethod(event) {
+        //console.log('event.detail.message' + event.detail.message);
+        //console.log('event.detail' + event.detail);
+        if (event.detail.message) {
+            setTimeout(() => {
+                document.location.reload();
+            }, 1000);
+            this.dispatchEvent(new CloseActionScreenEvent());
+        };
+    }
+
+    selectedOpportunities(event) {
+            this.isLoaded = !this.isLoaded;
+            let selectedOpps = this.template.querySelectorAll("lightning-input");
+            //console.log('>>> selectedOpps = ', JSON.stringify(selectedOpps)); // Task-7232 code changes
+            let result = [];
+            let resultCopy = [];
+            let amountArray = [];
+            let emptyAmountRecordNames = "";
+            let NoDealerId = "";
+            for (let i = 0; i < selectedOpps.length; i++) {
+                if (selectedOpps[i].checked && selectedOpps[i].type === "checkbox") {
+                    result.push(selectedOpps[i].value);
+                    //console.log("result1" + result);
+                    resultCopy = this.nonClosedateArray
+                        .concat(this.nonClosedateArraySelected)
+                        .filter(ele => {
+                            return ele.Id == selectedOpps[i].value;
+                        });
+                    //alert(resultCopy);
+                    if (!resultCopy[0].Amount) {
+                        emptyAmountRecordNames += resultCopy[0].Name + ",";
+                        amountArray.push(resultCopy);
+                    }
+                    if (!resultCopy[0].DealerId__c) {
+                        NoDealerId += resultCopy[0].Name + ",";
+                    }
+                }
+            }
+            //console.log("result2" + resultCopy);
+            //this.dispatchEvent(new CloseActionScreenEvent());
+            if (emptyAmountRecordNames == "") {
+                //alert(result);
+                if (NoDealerId != "") {
+                    this.dispatchEvent(new CloseActionScreenEvent());
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: "Error",
+                            message: `${NoDealerId} Record(s) not having Dealer Id!`,
+                            variant: "warning"
+                        })
+                    );
+                } else {
+                    getOppIds({ ids: result })
+                        .then(data => {
+                            //alert(data);
+                            if (data.includes("Error")) {
+                                this.dispatchEvent(new CloseActionScreenEvent());
+                                this.dispatchEvent(
+                                    new ShowToastEvent({
+                                        title: "Error",
+                                        message: `${data}`,
+                                        variant: "warning"
+                                    })
+                                );
+                            } else if (
+                                data.includes("Please select atleast 1 record") ||
+                                data.includes("Could") ||
+                                data.includes("Cannot pass") ||
+                                data.includes("exception") ||
+                                data.includes("errorMessage")
+                            ) {
+                                this.isLoaded = !this.isLoaded;
+                                if (
+                                    data.includes("Cannot pass") ||
+                                    data.includes("exception") ||
+                                    data.includes("errorMessage")
+                                ) {
+                                    this.dispatchEvent(new CloseActionScreenEvent());
+                                }
+                                this.dispatchEvent(
+                                    new ShowToastEvent({
+                                        title: "Warning",
+                                        message: `${data}`,
+                                        variant: "warning"
+                                    })
+                                );
+                            } else {
+                                this.dispatchEvent(
+                                    new ShowToastEvent({
+                                        title: "Success",
+                                        message: `${data}`,
+                                        variant: "success"
+                                    })
+                                );
+                                setTimeout(() => {
+                                    document.location.reload();
+                                }, 1000);
+                                this.dispatchEvent(new CloseActionScreenEvent());
+                            }
+                        })
+                        .catch(error => {
+                            //alert('Error Caused:selectedOpportunities'+JSON.stringify(error));
+                            //console.log(error);
+                            //console.log(JSON.stringify(error));
+                            this.dispatchEvent(new CloseActionScreenEvent());
                             this.dispatchEvent(
                                 new ShowToastEvent({
-                                    title: 'Warning',
-                                    message: 'Some Record(s) not having Amount!',
-                                    variant: 'warning'
+                                    title: "Warning Message",
+                                    message: `${JSON.stringify(error.body.message)}`,
+                                    variant: "warning"
                                 })
                             );
-                        }
-                          closedateArray = [...closedateArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,Brand__c: ele.Brand__c,
-                            Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: false }]
-                      } else if(ele.Quote_Id__c == null || ele.Amount !=null) {
-                        if(this.recordId == ele.Id){
-                            this.nonClosedateArraySelected = [{Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
-                            Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
-                        }
-                        else{
-                            this.nonClosedateArray = [...this.nonClosedateArray, {Id:ele.Id, Name: ele.Name,Quote_Id__c:ele.Quote_Id__c, Amount: ele.Amount, CloseDate: ele.CloseDate,DealerId__c: ele.DealerId__c,
-                            Brand__c: ele.Brand__c,Dealer_Name__c: ele.Dealer_Name__c,Dealer_Delivery_Date__c: ele.Dealer_Delivery_Date__c,CurrencyIsoCode : ele.CurrencyIsoCode, checkbox: true }]
-                        }
-                      }
-                  })
-                  this.firstCall = true;
-                  //this.nonClosedateArraySelected.concat();
-                  //closedateArray.concat(this.nonClosedateArraySelected);
-                  this.data = closedateArray.concat(this.nonClosedateArraySelected,this.nonClosedateArray);
-                  //this.nonClosedateArray.concat(this.nonClosedateArraySelected);
-                  //alert('this.data'+this.data);
-              })
-              .catch(result => {
-                alert('Error Caused:renderedCallback'+JSON.stringify(result)); 
-              })
-      }
-  }
-  selectedOpportunities(event) {
-      this.isLoaded = !this.isLoaded;
-      let selectedOpps = this.template.querySelectorAll('lightning-input');
-      let result = [];
-      let resultCopy = [];
-      let amountArray = [];
-      let emptyAmountRecordNames = '';
-      let NoDealerId = '';
-      for (let i = 0; i < selectedOpps.length; i++) {
-              if (selectedOpps[i].checked && selectedOpps[i].type === 'checkbox') {
-                  result.push(selectedOpps[i].value);
-                  console.log('result1'+result);
-                  resultCopy = this.nonClosedateArray.concat(this.nonClosedateArraySelected).filter(ele=>{
-                      return (ele.Id == selectedOpps[i].value)
-                  }) 
-                  //alert(resultCopy);
-                  if(!resultCopy[0].Amount){
-                      emptyAmountRecordNames += resultCopy[0].Name+',';
-                      amountArray.push(resultCopy);
-                  }
-                  if(!resultCopy[0].DealerId__c){
-                    NoDealerId += resultCopy[0].Name+',';
-                  }
-              }
-      }
-      console.log('result2'+resultCopy);
-      //this.dispatchEvent(new CloseActionScreenEvent());
-      if(emptyAmountRecordNames == ''){
-        //alert(result);
-        if(NoDealerId != ''){
-            this.dispatchEvent(new CloseActionScreenEvent());
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Error',
-                    message: `${NoDealerId} Record(s) not having Dealer Id!`,
-                    variant: 'warning'
-                })
-            );
-        }
-        else{
-          getOppIds({ Ids: result })
-              .then(data => {
-                //alert(data);
-                if(data.includes("Error")){
-                    this.dispatchEvent(new CloseActionScreenEvent());
-                    this.dispatchEvent(
-                        new ShowToastEvent({
-                            title: 'Error',
-                            message: `${data}`,
-                            variant: 'warning'
-                        })
-                    );
+                        });
                 }
-                else if(data.includes("Please select atleast 1 record")|| data.includes("Could") || data.includes("Cannot pass")){
-                    this.isLoaded = !this.isLoaded;
-                    if(data.includes("Cannot pass")){
-                        this.dispatchEvent(new CloseActionScreenEvent());
-                    }
-                    this.dispatchEvent(
-                        new ShowToastEvent({
-                            title: 'Warning',
-                            message: `${data}`,
-                            variant: 'warning'
-                        })
-                    );
-                }
-                else {
-                    
-                    this.dispatchEvent(
-                        new ShowToastEvent({
-                            title: 'Success',
-                            message: `${data}`,
-                            variant: 'success'
-                        })
-                    );
-                    //alert('Success');
-                    //setTimeout(() => {
-                    //    eval("$A.get('e.force:refreshView').fire()");
-                    //}, 1000);
-                    setTimeout(() => { document.location.reload(); }, 1000);
-                    this.dispatchEvent(new CloseActionScreenEvent());
-                }
-
-              })
-              .catch(error=>{
-                //alert('Error Caused:selectedOpportunities'+JSON.stringify(error));
-                console.log(error);
-                console.log(JSON.stringify(error));
-                this.dispatchEvent(new CloseActionScreenEvent());
+            } else {
+                this.isLoaded = !this.isLoaded;
                 this.dispatchEvent(
                     new ShowToastEvent({
-                        title: 'Warning Message',
-                        message: `${JSON.stringify(error.body.message)}`,
-                        variant: 'warning'
+                        title: "Error",
+                        message: `${emptyAmountRecordNames} Record(s) not having Amount!`,
+                        variant: "error"
                     })
                 );
-              })
             }
-      }else {
-        this.isLoaded = !this.isLoaded;
-          this.dispatchEvent(
-              new ShowToastEvent({
-                  title: 'Error',
-                  message: `${emptyAmountRecordNames} Record(s) not having Amount!`,
-                  variant: 'error'
-              })
-          );
-      }
-  }
-  selectedOpportunityAction() {
-      let selectedRecords = [];
+        }
+        // selectedOpportunityAction() {
+        //         let selectedRecords = [];
 
-      let selectedRows = this.template.querySelectorAll('lightning-input');
+    //         let selectedRows = this.template.querySelectorAll("lightning-input");
 
-      for (let i = 0; i < selectedRows.length; i++) {
-          if (selectedRows[i].checked && selectedRows[i].type === 'checkbox') {
-              selectedRecords.push({
-                  Id: selectedRows[i].dataset.record.Id,
-                  Name: selectedRows[i].dataset.record.Name,
-                  Amount: selectedRows[i].dataset.record.Amount,
-                  CloseDate: selectedRows[i].dataset.record.CloseDate
-              })
-          }
-      }
-  }
-  handleSuccess() {
-      // Close the modal window and display a success toast
-      this.dispatchEvent(new CloseActionScreenEvent());
-      refreshView();
-      this.dispatchEvent(
-          new ShowToastEvent({
-              title: 'Success',
-              message: 'Record updated!',
-              variant: 'success'
-          })
-      );
-  }
-
+    //         for (let i = 0; i < selectedRows.length; i++) {
+    //             if (selectedRows[i].checked && selectedRows[i].type === "checkbox") {
+    //                 selectedRecords.push({
+    //                     Id: selectedRows[i].dataset.record.Id,
+    //                     Name: selectedRows[i].dataset.record.Name,
+    //                     Amount: selectedRows[i].dataset.record.Amount,
+    //                     CloseDate: selectedRows[i].dataset.record.CloseDate
+    //                 });
+    //             }
+    //         }
+    //     }
+    /* handleSuccess() {
+        // Close the modal window and display a success toast
+        this.dispatchEvent(new CloseActionScreenEvent());
+        refreshView();
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Success',
+                message: 'Record updated!',
+                variant: 'success'
+            })
+        );
+    }*/
 }

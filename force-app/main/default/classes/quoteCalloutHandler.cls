@@ -86,7 +86,7 @@ public with sharing class quoteCalloutHandler {
             try {
                 Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
                 String Error = values.get('errorMessage');
-                Error += '; '+ values.get('message') == null ? '' : values.get('message');
+                Error += ('; ' + values.get('message') == null ? '' : values.get('message'));
                 //System.debug('This is the error Msg: ' + Error);     
                 if (!Error.contains('Error')) {
                     Error = 'Error: ' + Error;
@@ -128,7 +128,7 @@ public with sharing class quoteCalloutHandler {
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('{!Environment.VFS_Global_API Endpoint Named Credentials}' + settings.Endpoint_QA__c);
+        request.setEndpoint('callout:VFS_Global_APIs1' + settings.Endpoint_QA__c);
         request.setMethod('POST');
         request.setHeader('X-Ibm-Client-Id', settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret', settings.X_Ibm_Client_Secret__c);
