@@ -91,7 +91,7 @@ public with sharing class quoteCalloutController {
         System.debug(vfsConnect);
         system.debug('Opp.Account.Customer_Number__c'+customerNumber);
         if(customerNumber != null){
-            return [SELECT Name,Account_CMS_Number__c,Quote_Status__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
+            return [SELECT Name,Account_CMS_Number__c,Quote_Status__c,Vin_Number__c,Financed_Amount__c,Delivery_Date__c,Make__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
         }
         else{
             return null;

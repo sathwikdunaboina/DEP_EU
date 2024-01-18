@@ -50,14 +50,18 @@ export default class SearchQuoteCalloutUI2 extends LightningElement {
                     let closedateArrayQuote = [];
                     data.map(ele => {
                             if (getFieldValue(this.opportunity.data, Quote_Id__c_FIELD) != null) {
-                                closedateArrayQuote = [...closedateArrayQuote, { Quote_Id__c: ele.Name, Id: ele.Name, checkbox: false, radio: false, Quote_Status__c: ele.Quote_Status__c }]
+                                closedateArrayQuote = [...closedateArrayQuote, { Quote_Id__c: ele.Name, Id: ele.Name, checkbox: false, radio: false, Quote_Status__c: ele.Quote_Status__c, Vin_Number__c: ele.Vin_Number__c, Financed_Amount__c: ele.Financed_Amount__c, Delivery_Date__c: ele.Delivery_Date__c, Make__c: ele.Make__c }]
                             } else {
                                 closedateArrayQuote = [...closedateArrayQuote, {
                                     Quote_Id__c: ele.Name,
                                     Id: ele.Name,
                                     checkbox: false,
                                     radio: true,
-                                    Quote_Status__c: ele.Quote_Status__c
+                                    Quote_Status__c: ele.Quote_Status__c,
+                                    Vin_Number__c: ele.Vin_Number__c,
+                                    Financed_Amount__c: ele.Financed_Amount__c,
+                                    Delivery_Date__c: ele.Delivery_Date__c,
+                                    Make__c: ele.Make__c
                                 }]
                             }
                         })
