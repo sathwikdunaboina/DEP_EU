@@ -115,12 +115,11 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_South_Africa</targetReference>
+                <targetReference>ZA_Currency_Update</targetReference>
             </connector>
             <label>South Africa</label>
         </rules>
     </decisions>
-    <description>Added South Africa</description>
     <environments>Default</environments>
     <interviewLabel>FO Currency Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>FO Currency Update</label>
@@ -146,8 +145,8 @@
     <recordUpdates>
         <name>CH_Currency_Update</name>
         <label>CH Currency Update</label>
-        <locationX>900</locationX>
-        <locationY>645</locationY>
+        <locationX>782</locationX>
+        <locationY>433</locationY>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -159,8 +158,8 @@
     <recordUpdates>
         <name>DK_Currency_Update</name>
         <label>DK Currency Update</label>
-        <locationX>139</locationX>
-        <locationY>386</locationY>
+        <locationX>311</locationX>
+        <locationY>449</locationY>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -172,8 +171,8 @@
     <recordUpdates>
         <name>PL_Currency_Update</name>
         <label>PL Currency Update</label>
-        <locationX>1037</locationX>
-        <locationY>374</locationY>
+        <locationX>974</locationX>
+        <locationY>426</locationY>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -198,8 +197,8 @@
     <recordUpdates>
         <name>UK_Currency_Update</name>
         <label>UK Currency Update</label>
-        <locationX>274</locationX>
-        <locationY>283</locationY>
+        <locationX>139</locationX>
+        <locationY>375</locationY>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -211,8 +210,8 @@
     <recordUpdates>
         <name>update_norway</name>
         <label>update norway</label>
-        <locationX>271</locationX>
-        <locationY>649</locationY>
+        <locationX>563</locationX>
+        <locationY>551</locationY>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -222,10 +221,10 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_South_Africa</name>
-        <label>Update South Africa</label>
-        <locationX>575</locationX>
-        <locationY>634</locationY>
+        <name>ZA_Currency_Update</name>
+        <label>ZA Currency Update</label>
+        <locationX>684</locationX>
+        <locationY>555</locationY>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -244,5 +243,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>
