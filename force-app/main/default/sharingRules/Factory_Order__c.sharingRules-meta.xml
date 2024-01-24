@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>FO_IT_SA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This sharing rule gives read/write access to Italy FO records</description>
+        <label>FO_IT_SA</label>
+        <sharedTo>
+            <group>Italy_Sales</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Italy,IT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>FO_RT_AT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>FO_RT_AT</label>
