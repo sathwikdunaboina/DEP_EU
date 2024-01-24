@@ -1,57 +1,83 @@
 <template>
-    <lightning-quick-action-panel header="Quote Creations">
-        <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName} onsuccess={refreshView}>
-            <table>
-                <thead if:false={isLoaded}>
-                    <tr>
-                        <th style="width:5%;"></th>
-                        <th style="width:25%;">Name</th>
-                        <th style="width:10%;">Quote Id</th>
-                        <th style="width:10%;">Amount</th>
-                        <th style="width:10%;">Brand</th>
-                        <th style="width:20%;">Dealer Name</th>
-                        <th style="width:10%;">Dealer Delivery Date</th>
-                        <th style="width:10%;">Closed Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <template for:each={data} for:item="item" if:false={isLoaded}>
-                        <tr key={item.Id} style="border-bottom: 1px solid #ddd;">
-                            <td style="width: 5%;">
-                                <template if:true={item.checkbox}>
-                                    <lightning-input style="color:blue;" type="checkbox" data-amount={item.Amount} name={item.Id} value={item.Id}>
-                                    </lightning-input>
-                                </template>
-                            </td>
-                            <td style="width:25%;text-overflow:ellipsis;">{item.Name}</td>
-                            <td style="width:10%;text-overflow:ellipsis;">{item.Quote_Id__c}</td>
-                            <td style="width:10%;text-overflow:ellipsis;">
-                                <lightning-formatted-number value={item.Amount} format-style="currency" currency-code={item.CurrencyIsoCode}>
-                                </lightning-formatted-number>
-                            </td>
-                            <td style="width:10%;text-overflow:ellipsis;">{item.Brand__c}</td>
-                            <td style="width:20%;text-overflow:ellipsis;">{item.Dealer_Name__c}</td>
-                            <td style="width:10%;text-overflow:ellipsis;">{item.Dealer_Delivery_Date__c}</td>
-                            <td style="width:10%;text-overflow:ellipsis;">{item.CloseDate}</td>
-                        </tr>
-                    </template>
-                </tbody>
-            </table>
-            <div if:true={isLoaded} class="slds-is-relative" style="padding: bottom 10%;margin-top: 45px;margin-bottom: 45px;">
-                
-                <div class="spin-container">
-                    <div class="spin loader" id="loader"></div>
-                    <div class="spin loader2" id="loader2"></div>
-                    <div class="spin loader3" id="loader3"></div>
-                    <div class="spin loader4" id="loader4"></div>
-                    <span class="text">Thank you for your patience {currentUserName}! Quote creation is in progress...</span>
-                  </div>
-            </div>
-        </lightning-record-edit-form>
-        <div slot="footer" if:false={isLoaded}>
-            <h2 class="WelcomeMsg">Hello {currentUserName} Welcome to Quote Creation process!</h2>
-            <lightning-button variant="neutral" label="Submit" class="slds-m-left_x-small" onclick={selectedOpportunities}>
-            </lightning-button>
-        </div>
-    </lightning-quick-action-panel>
- </template>
+    <div if:true={ErrorMessageShow}>
+        <lightning-quick-action-panel header="Create VFS Connect quotation or Link to existing VFS Connect quotations">
+            <h1 class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder; background-color:red"><lightning-formatted-text value="You can't create a quote, please add first the amount"></lightning-formatted-text></h1>
+        </lightning-quick-action-panel>
+    </div>
+    <div if:false={ErrorMessageShow}>
+            <lightning-quick-action-panel header="Create VFS Connect quotation or Link to existing VFS Connect quotations">
+                    <lightning-quick-action-panel>
+                <h1 if:false={isLoaded} class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder">Dealer Name: <lightning-formatted-text value={dealerNameUI}></lightning-formatted-text></h1>
+                <h1 if:false={isLoaded} class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder">Customer Name: <lightning-formatted-text value={customerNameUI}></lightning-formatted-text></h1>
+            </lightning-quick-action-panel>
+                <lightning-quick-action-panel if:false={isLoaded} header="Select one or several opportunities to include in the VFS Connect Quote">
+                <lightning-record-edit-form record-id={recordId}  object-api-name={objectApiName} onsuccess={refreshView}>
+                    <table>
+                        <thead if:false={isLoaded}>
+                            <tr> 
+                                <th style="width:10%;"></th>
+                                <th style="width:10%;">Quote Id</th>
+                                <th style="width:20%;">Amount</th>
+                                <th style="width:20%;">VIN Number</th> <!--Task-7323-->
+                                <th style="width:20%;">Asset</th> <!--Task-7323-->
+                                <!-- <th style="width:25%;">Dealer Name</th> -->
+                                <th style="width:20%;">Dealer Delivery Date</th>
+                                <!-- <th style="width:10%;">Brand</th> -->
+                                <!-- <th style="width:25%;">Name</th>--> 
+                                <!-- <th style="width:10%;">Closed Date</th> --> <!--Task-7323-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={data} for:item="item" if:false={isLoaded}>
+                                <tr key={item.Id} style="border-bottom: 1px solid #ddd;" data-id={item.Id} id={item.Id}>
+                                    <td style="width: 10%;">
+                                        <template if:true={item.checkbox}>
+                                            <lightning-input style="color:blue;" onchange={handleChange} type="checkbox" checked={item.firstRecordCheckByDefault} disabled={item.firstRecordCheckByDefault} data-amount={item.Amount} name={item.Id} value={item.Id}>
+                                            </lightning-input>
+                                        </template>
+</td>
+<!-- <td style="width:25%;text-overflow:ellipsis;">{item.Name}</td> -->
+<td style="width:10%;text-overflow:ellipsis;">{item.Quote_Id__c}</td>
+<td style="width:20%;text-overflow:ellipsis;">
+    <lightning-formatted-number value={item.Amount} format-style="currency" currency-code={item.CurrencyIsoCode}>
+    </lightning-formatted-number>
+</td>
+<!--Task-7323-->
+<td style="width:20%;text-overflow:ellipsis;">{item.vinNumber}</td>
+<!--Task-7323-->
+<td style="width:20%;text-overflow:ellipsis;">{item.marketType}</td>
+<!-- <td style="width:10%;text-overflow:ellipsis;">{item.Brand__c}</td> -->
+<!-- <td style="width:25%;text-overflow:ellipsis;">{item.Dealer_Name__c}</td> -->
+<td style="width:20%;text-overflow:ellipsis;">{item.Dealer_Delivery_Date__c}</td>
+<!-- <td style="width:10%;text-overflow:ellipsis;">{item.CloseDate}</td> -->
+<!--Task-7323-->
+</tr>
+</template>
+</tbody>
+</table>
+<div if:false={isLoaded} style="padding-left:77%; margin-top:1%;">
+    <lightning-button variant="neutral" label="Create VFS Connect Quote" class="slds-m-left_x-small" onclick={selectedOpportunities}>
+    </lightning-button>
+</div>
+</lightning-record-edit-form>
+</lightning-quick-action-panel>
+<div if:true={isLoaded} class="slds-is-relative" style="padding: bottom 10%;margin-top: 45px;margin-bottom: 45px;">
+
+    <div class="spin-container">
+        <div class="spin loader" id="loader"></div>
+        <div class="spin loader2" id="loader2"></div>
+        <div class="spin loader3" id="loader3"></div>
+        <div class="spin loader4" id="loader4"></div>
+        <span class="text">Thank you for your patience {currentUserName}! Quote creation is in progress...</span>
+    </div>
+</div>
+<div if:false={isLoaded}>
+    <c-search-quote-callout-u-i-2 record-id={recordId} onrefreshevent={refreshMethod}></c-search-quote-callout-u-i-2>
+    <div slot="footer" if:false={isLoaded}>
+        <h2 class="WelcomeMsg">Hello {currentUserName} Welcome</h2>
+    </div>
+</div>
+</lightning-quick-action-panel>
+</div>
+
+</template>
