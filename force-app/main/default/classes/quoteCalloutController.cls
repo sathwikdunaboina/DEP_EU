@@ -1,7 +1,7 @@
 /*
 * Subject: Fetch records to show on UI
 * Created by: Aswin balaji
-* Date: 29/08/2022, 12:48
+* Date: 29/08/2022, 12:48 
 * Description: Based on Opportunity>Account.CMSId getting the related opportunites and show it on UI which doesn't have quote and stage doesn't = Closed
 * 
 *
@@ -24,64 +24,31 @@ public with sharing class quoteCalloutController {
                     Amount,Dealer_Name__c,Brand__c,
                     Dealer_Delivery_Date__c,CloseDate,
                     Quote_Id__c,CurrencyIsoCode,DealerId__c, 
-                    Customer_Account__r.Id, AccountId
+                    Customer_Account__r.Id, AccountId,Account.Name,Customer_Account__r.Name,
+                    Factory_Order__r.VIN_Number__c, Factory_Order__r.Market_Type_1_5__c // Task-7323 code changes
                     FROM Opportunity 
                     WHERE ID =: oppId
                     AND StageName !='Closed Won' AND StageName != 'Closed Lost']; // if the opportunity is already closed (won or lost) it won't be quoted anymore;
         List<Opportunity> ThisOpportunityByCustomer = [SELECT Id, Name,
                     Amount,Dealer_Name__c,Brand__c,
                     Dealer_Delivery_Date__c,CloseDate,
-                    Quote_Id__c,CurrencyIsoCode,DealerId__c
+                    Quote_Id__c,CurrencyIsoCode,DealerId__c,Account.Name,Customer_Account__r.Name,
+                    Factory_Order__r.VIN_Number__c, Factory_Order__r.Market_Type_1_5__c // Task-7323 code changes
                     FROM Opportunity
                     WHERE Customer_Account__r.Id =: ThisOpportunity[0].Customer_Account__r.Id // to retrieve only the opportunities for the same Customer Account
                     AND AccountId =: ThisOpportunity[0].AccountId // check that the opportunities belongs to the same Dealer Account
                     AND Brand__c =: ThisOpportunity[0].Brand__c // only opportunities for the same Brand (VT or RT)
                     AND StageName !='Closed Won' AND StageName != 'Closed Lost' // if the opportunity is already closed (won or lost) it won't be quoted anymore
                     AND Account.CustomerID__c != null // CustomerID__c on Dealer Account
-                    AND Customer_Account__r.Id != null]; // Id of related Customer Account
+                    AND Customer_Account__r.Id != null
+                    AND Quote_Id__c = null
+                    AND Amount != null]; // Id of related Customer Account
              
         if(ThisOpportunityByCustomer.Size() > 1) {
             return ThisOpportunityByCustomer;
         } else {
             return ThisOpportunity;
         }
-       
-        
-        
-        
-        //Old Code
-        /** 
-        List <String> oppIdsList = new List<String>();
-        String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
-         String DealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: oppId].Factory_Order__r.Dealer_Id__c;
-
-
-        String brand = [Select Id,Factory_Order__r.Brand__c From Opportunity Where Id =: oppId].Factory_Order__r.Brand__c;
-        String AccountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: oppId].AccountId;
-        
-   
-        List<Opportunity> oppList = [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode
-        FROM Opportunity
-        WHERE Account.Customer_Number__c =: customerNumber];
-        
-        System.debug(oppList.size());
-        system.debug('Opp.Account.Customer_Number__c'+customerNumber);
-        
-        if(customerNumber != null){
-            return [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode,DealerId__c
-                    FROM Opportunity
-                    WHERE Account.Customer_Number__c =: customerNumber 
-                    AND Factory_Order__r.Dealer_Id__c =: DealerID
-                    AND Factory_Order__r.Brand__c =: brand
-                    AND StageName !='Closed Won' AND StageName != 'Closed Lost' 
-                    AND AccountId =: AccountIdFromOpportunity 
-                    AND Account.Customer_Number__c !=null];  
-        }
-        else{
-            return [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode,DealerId__c
-                    FROM Opportunity
-                    WHERE Id =:oppId AND StageName !='Closed Won' AND StageName != 'Closed Lost'];
-        }**/
 
     }
 
@@ -109,7 +76,8 @@ public with sharing class quoteCalloutController {
     @AuraEnabled
     public static List<VFS_Connect_Quote__c> getQuotes(String oppId){
         List <String> oppIdsList = new List<String>();
-        String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
+        //String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
+        String customerNumber = [Select Customer_Account__r.Customer_Number__c From Opportunity Where Id =: oppId].Customer_Account__r.Customer_Number__c;
         String dealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: oppId].Factory_Order__r.Dealer_Id__c;
         String brand = [Select Id,Factory_Order__r.Brand__c From Opportunity Where Id =: oppId].Factory_Order__r.Brand__c;
         String accountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: oppId].AccountId;
@@ -118,12 +86,12 @@ public with sharing class quoteCalloutController {
                                      WHERE Account.Customer_Number__c =: customerNumber];
         System.debug(oppList.size());
         List<VFS_Connect_Quote__c> vfsConnect = [SELECT Name,Account_CMS_Number__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber 
-                                                 AND Quote_Status__c !='Cancelled'];
+                                                 AND Quote_Status__c !='Cancelled' AND Id NOT IN (Select VFS_Connect_Quote_Ref__c From Opportunity Where Id IN:oppList)];
         System.debug(vfsConnect.size());
         System.debug(vfsConnect);
         system.debug('Opp.Account.Customer_Number__c'+customerNumber);
         if(customerNumber != null){
-            return [SELECT Name,Account_CMS_Number__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
+            return [SELECT Name,Account_CMS_Number__c,Quote_Status__c,Vin_Number__c,Financed_Amount__c,Delivery_Date__c,Make__c,Model__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
         }
         else{
             return null;
