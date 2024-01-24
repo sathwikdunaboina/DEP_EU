@@ -42,8 +42,8 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
         if (data) {
             //console.log(">>> ACCOUNT_NAME... " + getFieldValue(data, ACCOUNT_NAME));
             //console.log(">> CUSTOMER_ACCOUNT_NAME..." +getFieldValue(data, CUSTOMER_ACCOUNT_NAME) );
-            this.customerNameUI = getFieldValue(data, ACCOUNT_NAME);
-            this.dealerNameUI = getFieldValue(data, CUSTOMER_ACCOUNT_NAME);
+            this.customerNameUI = getFieldValue(data, CUSTOMER_ACCOUNT_NAME);
+            this.dealerNameUI = getFieldValue(data, ACCOUNT_NAME);
             this.AmountUI = getFieldValue(data, AMOUNT);
         }
     }
