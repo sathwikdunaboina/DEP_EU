@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response for FR- Renault Merci d&apos;avoir contacté le support!</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Service Réclamations Renault</name>
+    <style>none</style>
+    <subject>Merci d&apos;avoir contacté le support!</subject>
+    <textOnly>Madame, Monsieur,
+
+Nous vous accusons bonne réception de votre email.
+
+Nous prenons en charge votre demande et nous nous efforçons de revenir à vous le plus rapidement possible.
+
+Un numéro de requête a été attribué à votre demande il s’agit du :  {!Case.CaseNumber} : {!Case.Subject}
+
+Ce numéro de requête permet le suivi de votre demande, nous vous remercions par avance de le rappeler dans tous les mails relatifs à celle – ci.
+
+Cordialement
+
+Service Réclamations
+
+Renault Trucks Financial Services
+99 Route de Lyon
+BP 20310
+69800 Saint-Priest
+Tél : 04 81 93 79 42
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
