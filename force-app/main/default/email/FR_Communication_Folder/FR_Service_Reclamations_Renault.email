@@ -1,0 +1,26 @@
+<style>
+div {
+famille de polices: calibri;
+taille de la police: moyenne;
+}
+</style>
+
+<div>
+Madame, Monsieur,
+
+<p>Nous vous accusons bonne réception de votre email.</p>
+<p>Nous prenons en charge votre demande et nous nous efforçons de revenir à vous le plus rapidement possible.</p>
+<p>Un numéro de requête a été attribué à votre demande il s’agit du : <b> {!Case.CaseNumber} : {!Case.Subject}</b></p>
+<p>Ce numéro de requête permet le suivi de votre demande, nous vous remercions par avance de le rappeler dans tous les mails relatifs à celle – ci.</p> 
+
+
+<p><b> Cordialement</b></p>
+<p> 
+Service Réclamations<br/><br/>
+Renault Trucks Financial Services<br/>
+99 Route de Lyon<br/>
+BP 20310 <br/>
+69800 Saint-Priest<br/>
+Tél : 04 81 93 79 42<br/>
+</p>
+<small> ref: {!Case.Thread_Id} </small>

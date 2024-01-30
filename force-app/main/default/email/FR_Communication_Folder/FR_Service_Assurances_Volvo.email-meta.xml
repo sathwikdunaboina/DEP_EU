@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response for FR- Volvo Merci d&apos;avoir contacté le support!</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>FR - Service Assurances Volvo</name>
+    <style>none</style>
+    <subject>Merci d&apos;avoir contacté le support!</subject>
+    <textOnly>Cher (e) Client (e),
+
+Nous vous remercions d’avoir contacté le Service Assurance VFS.
+
+Nous prenons en charge votre demande et nous nous efforçons de revenir à vous le plus rapidement possible.
+
+Un numéro de requête a été attribué à votre demande il s’agit du :  {!Case.CaseNumber} : {!Case.Subject}
+
+Ce numéro de requête permet le suivi de votre demande, nous vous remercions par avance de le rappeler dans tous les mails relatifs à celle – ci.
+
+En cas d’urgence, nous restons disponibles par téléphone au 04 81 93 79 42.
+
+Veuillez noter que nos heures d&apos;ouverture sont de 8h30 à 12h30 et de 13h30 à 17h30 du lundi au vendredi.
+
+Cordialement
+
+Volvo Financial Services
+
+Volvo Truck Rental
+99 Route de Lyon
+BP 20310
+69800 Saint-Priest
+Tél : 04 81 93 79 42
+
+ref: {!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
