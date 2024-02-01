@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <constants>
+        <name>DealerAccountRecordType</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Dealer_Account</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if we have retrieved and account record before creating the Opportunity</description>
+        <name>Account_Record_Retrieved</name>
+        <label>Account Record Retrieved</label>
+        <locationX>611</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Account Not Retrieved</defaultConnectorLabel>
+        <rules>
+            <name>Account_Successfully_Retrieved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Dealer_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_an_Opportunity</targetReference>
+            </connector>
+            <label>Account Successfully Retrieved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If this field is check on Account, we need to relate the dealer sales person to a contact in order to get the owner. This owner will be used as the owner of the opportunity created in the previous step.</description>
+        <name>Check_sales_person</name>
+        <label>Check sales person</label>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Do not relate sales person</defaultConnectorLabel>
+        <rules>
+            <name>True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Dealer_Account.Check_on_dealer_sales_person__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sales_Person_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact</targetReference>
+            </connector>
+            <label>Relate sales person</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if we have a contact with a owner specified</description>
+        <name>Contacts_exists</name>
+        <label>Has Contact</label>
+        <locationX>182</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>No contact exists</defaultConnectorLabel>
+        <rules>
+            <name>Contact_exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.OwnerId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_opportunity_owner</targetReference>
+            </connector>
+            <label>Contact exists</label>
+        </rules>
+    </decisions>
+    <description>This is the flow that is used to create an Opportunity from a Factory Order.
+
+16 October 2023 - Don&apos;t do a Customer -or Dealer Account record Type check
+26 October 2023 - Assign an opportunity owner based on the contact, if conditions are met</description>
+    <environments>Default</environments>
+    <interviewLabel>Factory Order to Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Factory Order to Opportunity</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create an Opportunity</description>
+        <name>Create_an_Opportunity</name>
+        <label>Create an Opportunity</label>
+        <locationX>380</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Update_Original_Factory_Order</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>Get_Dealer_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>Get_Dealer_Account.BillingCountry</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <elementReference>$Record.CurrencyIsoCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Dealer_Name__c</field>
+            <value>
+                <elementReference>$Record.Main_Dealer_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Factory_Order__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <stringValue>{!$Record.End_Customer_Name__c}_{!$Record.Order_Id__c}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Dealer_Account.Owner.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Needs Analysis</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get the contact by the Sales person name on Factory order</description>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contacts_exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>$Record.Sales_Person_Name__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>This uses the Dealer Id to get the Dealer Account associated with this Factory Order.</description>
+        <name>Get_Dealer_Account</name>
+        <label>Get Dealer Account</label>
+        <locationX>611</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Account_Record_Retrieved</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CustomerID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Dealer_Id__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update the opportunity owner with the owner of the contact</description>
+        <name>Update_opportunity_owner</name>
+        <label>Update opportunity owner</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Contact.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Finance_Opportunity__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Original Factory Order</description>
+        <name>Update_Original_Factory_Order</name>
+        <label>Update Original Factory Order</label>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Check_sales_person</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>Get_Dealer_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Finance_Opportunity__c</field>
+            <value>
+                <elementReference>Create_an_Opportunity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>485</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Dealer_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Dealer_Id__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Finance_Opportunity__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Factory_Order__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>A place holder for the Dealer Account RecordTypeId</description>
+        <name>DealerAccountRecordTypeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+</Flow>
