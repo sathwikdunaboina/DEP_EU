@@ -438,6 +438,26 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>FO_VT_ZA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VT_ZA</label>
+        <sharedTo>
+            <group>South_Africa_Volvo</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>South Africa,ZA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>Volvo,VT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Factory_IT_VT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Factory_IT_VT</label>
