@@ -19,8 +19,8 @@ public class setCaseType_Test {
         cs_UK_IE_Contract_Extensions.Origin = 'Email';
         cs_UK_IE_Contract_Extensions.Subject = 'test@1';
         cs_UK_IE_Contract_Extensions.OwnerId = UK_IE_Contract_Extensions;
-        cs_UK_IE_Contract_Extensions.Type = 'End of term query';
-        cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Extension request';
+        cs_UK_IE_Contract_Extensions.Type = 'Additional Services query'; // User Story-7542
+        cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Excess meterage query'; // User Story-7542
         cs_UK_IE_Contract_Extensions.Country__c = 'United Kingdom';
         insert cs_UK_IE_Contract_Extensions;
         System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Type);
@@ -33,8 +33,8 @@ public class setCaseType_Test {
         cs_UK_IE_BRS.Origin = 'Email';
         cs_UK_IE_BRS.Subject = 'test@1';
         cs_UK_IE_BRS.OwnerId = UK_IE_BRS;
-        cs_UK_IE_BRS.Type = 'End of term query';
-        cs_UK_IE_BRS.Sub_Type__c = 'Extension request';
+        cs_UK_IE_BRS.Type = 'Additional Services query'; // User Story-7542
+        cs_UK_IE_BRS.Sub_Type__c = 'Excess meterage query'; // User Story-7542
         cs_UK_IE_BRS.Country__c = 'United Kingdom';
         insert cs_UK_IE_BRS;
         System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Type);
@@ -48,8 +48,8 @@ public class setCaseType_Test {
         cs_UK_IE_Contract_Extensions_VCE.Origin = 'Email';
         cs_UK_IE_Contract_Extensions_VCE.Subject = 'test@1';
         cs_UK_IE_Contract_Extensions_VCE.OwnerId = UK_IE_Contract_Extensions_VCE;
-        cs_UK_IE_Contract_Extensions_VCE.Type = 'End of term query';
-        cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c = 'Extension request';
+        cs_UK_IE_Contract_Extensions_VCE.Type = 'Additional Services query'; // User Story-7542
+        cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c = 'Excess meterage query'; // User Story-7542
         cs_UK_IE_Contract_Extensions_VCE.Country__c = 'United Kingdom';
         insert cs_UK_IE_Contract_Extensions_VCE;
         System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Type);
@@ -62,8 +62,8 @@ public class setCaseType_Test {
         cs_UK_IE_Contract_Extensions_RT.Origin = 'Email';
         cs_UK_IE_Contract_Extensions_RT.Subject = 'test@1';
         cs_UK_IE_Contract_Extensions_RT.OwnerId = UK_IE_Contract_Extensions_RT;
-        cs_UK_IE_Contract_Extensions_RT.Type = 'End of term query';
-        cs_UK_IE_Contract_Extensions_RT.Sub_Type__c = 'Extension request';
+        cs_UK_IE_Contract_Extensions_RT.Type = 'Additional Services query'; // User Story-7542
+        cs_UK_IE_Contract_Extensions_RT.Sub_Type__c = 'Excess meterage query'; // User Story-7542
         cs_UK_IE_Contract_Extensions_RT.Country__c = 'United Kingdom';
         insert cs_UK_IE_Contract_Extensions_RT;
         System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Type);
