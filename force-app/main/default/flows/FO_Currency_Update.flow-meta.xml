@@ -104,6 +104,21 @@
             </connector>
             <label>norway</label>
         </rules>
+        <rules>
+            <name>South_Africa</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Country__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ZA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ZA_Currency_Update</targetReference>
+            </connector>
+            <label>South Africa</label>
+        </rules>
     </decisions>
     <environments>Default</environments>
     <interviewLabel>FO Currency Update {!$Flow.CurrentDateTime}</interviewLabel>
@@ -201,6 +216,19 @@
             <field>CurrencyIsoCode</field>
             <value>
                 <stringValue>NOK</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>ZA_Currency_Update</name>
+        <label>ZA Currency Update</label>
+        <locationX>684</locationX>
+        <locationY>555</locationY>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <stringValue>ZAR</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
