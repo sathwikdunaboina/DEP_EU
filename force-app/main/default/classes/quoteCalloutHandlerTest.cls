@@ -14,6 +14,7 @@ private class quoteCalloutHandlerTest {
         //quoteCalloutHandler.quoteRecordCreate(insertTestOppRecord(accountId,FoId),'12112', '2we444r552w');
         System.test.startTest();
         quoteCalloutController.getOpportunities(String.valueOf(opportunityId));
+        quoteCalloutController.getAmount(String.valueOf(opportunityId));
         quoteCalloutController.getOppIds(foOrder);
         System.test.stopTest();
     }
