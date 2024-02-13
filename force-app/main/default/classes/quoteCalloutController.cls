@@ -78,17 +78,6 @@ public with sharing class quoteCalloutController {
         List <String> oppIdsList = new List<String>();
         //String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
         String customerNumber = [Select Customer_Account__r.Customer_Number__c From Opportunity Where Id =: oppId].Customer_Account__r.Customer_Number__c;
-        String dealerID = [Select Id,Factory_Order__r.Dealer_Id__c From Opportunity Where Id =: oppId].Factory_Order__r.Dealer_Id__c;
-        String brand = [Select Id,Factory_Order__r.Brand__c From Opportunity Where Id =: oppId].Factory_Order__r.Brand__c;
-        String accountIdFromOpportunity = [Select Id,AccountId From Opportunity Where Id =: oppId].AccountId;
-        List<Opportunity> oppList = [SELECT Id, Name,Amount,Dealer_Name__c,Brand__c,Dealer_Delivery_Date__c,CloseDate,Quote_Id__c,CurrencyIsoCode
-                                     FROM Opportunity
-                                     WHERE Account.Customer_Number__c =: customerNumber];
-        System.debug(oppList.size());
-        List<VFS_Connect_Quote__c> vfsConnect = [SELECT Name,Account_CMS_Number__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber 
-                                                 AND Quote_Status__c !='Cancelled' AND Id NOT IN (Select VFS_Connect_Quote_Ref__c From Opportunity Where Id IN:oppList)];
-        System.debug(vfsConnect.size());
-        System.debug(vfsConnect);
         system.debug('Opp.Account.Customer_Number__c'+customerNumber);
         if(customerNumber != null){
             return [SELECT Name,Account_CMS_Number__c,Quote_Status__c,Vin_Number__c,Financed_Amount__c,Delivery_Date__c,Make__c,Model__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
@@ -96,7 +85,19 @@ public with sharing class quoteCalloutController {
         else{
             return null;
         }
-        
+    }
+
+    @AuraEnabled
+    public static Decimal getAmount(String oppId){
+        system.debug('oppId'+oppId);
+        Decimal AmountUI =  [Select Amount From Opportunity Where Id =: oppId].Amount;
+        system.debug(AmountUI);
+        if(AmountUI != null){
+            return AmountUI;
+        }
+        else{
+            return null;
+        }
     }
     
     @AuraEnabled

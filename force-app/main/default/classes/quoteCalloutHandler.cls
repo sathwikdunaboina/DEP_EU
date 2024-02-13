@@ -43,8 +43,10 @@ public with sharing class quoteCalloutHandler {
                 String success = values.get('success');
                 String quoteId = values.get('quoteId');          
                 String vfsConnectQuoteURL = values.get('vfsConnectQuoteURL');
-                if(success == 'true' && values.get('errorMessage') == null){ 
+                //System.debug('errorMessage was: ' + values.get('errorMessage'));
+                if(success == 'true' && (values.get('errorMessage') == '' || values.get('errorMessage') == null)){ 
                     //System.debug('HttpResponse was: ' + success);
+                    //System.debug('errorMessage was1: ' + values.get('errorMessage'));
                     //System.debug('QuoteId: ' + quoteId);
                     //System.debug('Request to: ' + vfsConnectQuoteURL);
                     
@@ -71,6 +73,7 @@ public with sharing class quoteCalloutHandler {
                         error = 'Error: ' + error;
                     }
                     resultList.add(error);
+                    //System.debug('resultList+++'+resultList);
                 }
             }
             catch (Exception e) {
@@ -121,6 +124,7 @@ public with sharing class quoteCalloutHandler {
         vfsConnectQuote.Name = quoteNumber;
         vfsConnectQuote.Quote_Status__c = 'In-Complete';
         insert vfsConnectQuote;
+        //system.debug('vfsConnectQuote++'+vfsConnectQuote);
         return vfsConnectQuote;
     }
     
