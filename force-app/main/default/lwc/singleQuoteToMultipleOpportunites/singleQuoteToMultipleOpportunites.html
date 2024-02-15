@@ -1,4 +1,5 @@
 <template>
+<template if:true={recordId}>
     <div if:true={ErrorMessageShow}>
         <lightning-quick-action-panel header="Create VFS Connect quotation or Link to existing VFS Connect quotations">
             <h1 class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder; background-color:red"><lightning-formatted-text value="You can't create a quote, please add first the amount"></lightning-formatted-text></h1>
@@ -7,8 +8,8 @@
     <div if:false={ErrorMessageShow}>
             <lightning-quick-action-panel header="Create VFS Connect quotation or Link to existing VFS Connect quotations">
                     <lightning-quick-action-panel>
-                <h1 if:false={isLoaded} class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder">Dealer Name: <lightning-formatted-text value={dealerNameUI}></lightning-formatted-text></h1>
-                <h1 if:false={isLoaded} class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder">Customer Name: <lightning-formatted-text value={customerNameUI}></lightning-formatted-text></h1>
+                <h1 if:false={isLoaded} class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder">Dealer Name: &nbsp;<lightning-formatted-text value={dealerNameUI}></lightning-formatted-text></h1>
+                <h1 if:false={isLoaded} class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder">Customer Name: &nbsp;<lightning-formatted-text value= {customerNameUI}></lightning-formatted-text></h1>
             </lightning-quick-action-panel>
                 <lightning-quick-action-panel if:false={isLoaded} header="Select one or several opportunities to include in the VFS Connect Quote">
                 <lightning-record-edit-form record-id={recordId}  object-api-name={objectApiName} onsuccess={refreshView}>
@@ -73,11 +74,8 @@
 </div>
 <div if:false={isLoaded}>
     <c-search-quote-callout-u-i-2 record-id={recordId} onrefreshevent={refreshMethod}></c-search-quote-callout-u-i-2>
-    <div slot="footer" if:false={isLoaded}>
-        <h2 class="WelcomeMsg">Hello {currentUserName} Welcome</h2>
-    </div>
 </div>
 </lightning-quick-action-panel>
 </div>
-
+</template>
 </template>
