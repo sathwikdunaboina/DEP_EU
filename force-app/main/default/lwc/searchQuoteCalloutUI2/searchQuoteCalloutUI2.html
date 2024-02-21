@@ -1,0 +1,36 @@
+<template>
+    <lightning-quick-action-panel header="Select one existing VFS Connect Quote to link it with the current opportunity">
+        <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName} onsuccess={refreshView}>
+            <table>
+                <thead if:false={isLoaded}>
+                    <tr>
+                        <th style="width:10%;">Select</th>
+                        <th style="width:15%;">VFS Connect Quote Id</th>
+                        <th style="width:15%;">Status</th>
+                        <th style="width:15%;">VIN Number</th>
+                        <th style="width:15%;">Financed Amount</th>
+                        <th style="width:15%;">Delivery Date</th>
+                        <th style="width:15%;">Model</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={data} for:item="item" if:false={isLoaded}>
+                        <tr key={item.Id} style="border-bottom: 1px solid #ddd;">
+                            <td style="width: 10%;">
+                                <template if:true={item.radio}>
+                                    <lightning-button-icon icon-name="utility:link"  alternative-text="Link" value={item.Id} name={item.Quote_Id__c} onclick={linkOpportunity} title="link"></lightning-button-icon>
+                                </template>
+</td>
+<td style="width:15%;text-overflow:ellipsis;">{item.Quote_Id__c}</td>
+<td style="width:15%;text-overflow:ellipsis;">{item.Quote_Status__c}</td>
+<td style="width:15%;text-overflow:ellipsis;">{item.Vin_Number__c}</td>
+<td style="width:15%;text-overflow:ellipsis;">{item.Financed_Amount__c}</td>
+<td style="width:15%;text-overflow:ellipsis;">{item.Delivery_Date__c}</td>
+<td style="width:15%;text-overflow:ellipsis;">{item.Model__c}</td>
+</tr>
+</template>
+</tbody>
+</table>
+</lightning-record-edit-form>
+</lightning-quick-action-panel>
+</template>
