@@ -4,7 +4,7 @@ import Id from "@salesforce/user/Id";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import getOppIds from "@salesforce/apex/quoteCalloutController.getOppIds";
 import getOpportunities from "@salesforce/apex/quoteCalloutController.getOpportunities";
-import getAmountFromApex from "@salesforce/apex/quoteCalloutController.getAmount";
+import getAmountFromApex from "@salesforce/apex/quoteCalloutController.getOppForAmountAndCustomer";
 import { CloseActionScreenEvent } from "lightning/actions";
 import UserNameFld from "@salesforce/schema/User.Name";
 import ACCOUNT_NAME from "@salesforce/schema/Opportunity.Account.Name";
@@ -21,7 +21,7 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
     customerNameUI;
     dealerNameUI;
     getAmountData;
-    AmountUI;
+    getCustomerData;
     data = [];
     nonClosedateArray = [];
     nonClosedateArraySelected = [];
@@ -53,7 +53,6 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
         if (data) {
             this.customerNameUI = getFieldValue(data, CUSTOMER_ACCOUNT_NAME);
             this.dealerNameUI = getFieldValue(data, ACCOUNT_NAME);
-            this.AmountUI = getFieldValue(data, AMOUNT);
         }
     }
 
@@ -87,9 +86,10 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
         if (this.firstCall == false && this.recordId != null) {
             getAmountFromApex({ oppId: this.recordId })
                 .then(result => {
-                    console.log('result1' + result);
-                    this.getAmountData = result;
-                    if (this.getAmountData == null) {
+                    console.log('result1' + result.Amount);
+                    this.getAmountData = result.Amount;
+                    this.getCustomerData = result.Customer_Account__c;
+                    if (this.getAmountData == null || this.getCustomerData == null) {
                         this.ErrorMessageShow = true;
                         this.firstCall = true;
                     } else {

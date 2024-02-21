@@ -88,12 +88,11 @@ public with sharing class quoteCalloutController {
     }
 
     @AuraEnabled
-    public static Decimal getAmount(String oppId){
-        system.debug('oppId'+oppId);
+    public static Opportunity getOppForAmountAndCustomer(String oppId){
         Decimal AmountUI =  [Select Amount From Opportunity Where Id =: oppId].Amount;
-        system.debug(AmountUI);
-        if(AmountUI != null){
-            return AmountUI;
+        Opportunity opp = [Select Amount,Customer_Account__c From Opportunity Where Id =: oppId LIMIT 1];
+        if(opp != null){
+            return opp;
         }
         else{
             return null;
