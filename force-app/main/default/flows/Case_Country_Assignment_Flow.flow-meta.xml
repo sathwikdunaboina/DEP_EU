@@ -42,8 +42,8 @@
     <recordUpdates>
         <name>Case_country_update_from_Queue</name>
         <label>Case country update from Queue</label>
-        <locationX>679</locationX>
-        <locationY>509</locationY>
+        <locationX>774</locationX>
+        <locationY>514</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>OwnerId</field>
@@ -63,8 +63,8 @@
     <recordUpdates>
         <name>Case_country_update_from_user</name>
         <label>Case country update from user</label>
-        <locationX>668</locationX>
-        <locationY>333</locationY>
+        <locationX>776</locationX>
+        <locationY>335</locationY>
         <connector>
             <targetReference>Case_country_update_from_Queue</targetReference>
         </connector>
@@ -85,19 +85,12 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>543</locationX>
+        <locationX>650</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>Case_country_update_from_user</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
-        <filters>
-            <field>Country__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
         <filters>
             <field>OwnerId</field>
             <operator>IsNull</operator>

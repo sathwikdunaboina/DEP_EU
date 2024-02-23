@@ -55,7 +55,6 @@ public class CaseCountryAssignmentFlow_Test {
         );
         insert owner;
 
-        System.debug('>>> owner.Id = ' + owner.Id);
         Case objCaseZA;
         System.runAs(owner) {
 
@@ -68,13 +67,10 @@ public class CaseCountryAssignmentFlow_Test {
             objCaseZA.Sub_Type__c = 'Extension request';
             Test.startTest();
             insert objCaseZA;
-            System.debug('>>> objCaseZA.OwnerId = ' + objCaseZA.OwnerId);
             Test.stopTest();
 
             Case cs = [Select Id, Country__c From Case where Id = :objCaseZA.Id];
-            /*System.debug('>>> cs.Country__c = ' + cs.Country__c);
             Assert.areEqual('South Africa', cs.Country__c);
-            System.debug('>>> cs.Country__c 2 = ' + cs.Country__c);*/
         }
     }
 }
