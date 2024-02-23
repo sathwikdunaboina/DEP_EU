@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
-    <description>This lflow assigns the country on the case based on the owner</description>
     <environments>Default</environments>
     <formulas>
         <name>CountryName</name>
@@ -42,8 +41,8 @@
     <recordUpdates>
         <name>Case_country_update_from_Queue</name>
         <label>Case country update from Queue</label>
-        <locationX>774</locationX>
-        <locationY>514</locationY>
+        <locationX>679</locationX>
+        <locationY>509</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>OwnerId</field>
@@ -63,8 +62,8 @@
     <recordUpdates>
         <name>Case_country_update_from_user</name>
         <label>Case country update from user</label>
-        <locationX>776</locationX>
-        <locationY>335</locationY>
+        <locationX>668</locationX>
+        <locationY>333</locationY>
         <connector>
             <targetReference>Case_country_update_from_Queue</targetReference>
         </connector>
@@ -85,7 +84,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>650</locationX>
+        <locationX>543</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>Case_country_update_from_user</targetReference>
