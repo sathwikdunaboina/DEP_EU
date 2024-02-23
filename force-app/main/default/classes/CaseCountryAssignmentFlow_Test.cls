@@ -17,7 +17,7 @@ public class CaseCountryAssignmentFlow_Test {
 
         Id ZA_ActivationRequest_QueueId = [SELECT Id, Name, DeveloperName, Email, Type 
                                         FROM Group where Type='Queue' And Name ='ZA - Activation request'].Id;
-        
+        Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
         System.debug('>>> ZA_ActivationRequest_QueueId = ' + ZA_ActivationRequest_QueueId);
         Case objCaseZA = new Case();
         objCaseZA.Status = 'New';
@@ -26,6 +26,7 @@ public class CaseCountryAssignmentFlow_Test {
         objCaseZA.OwnerId = ZA_ActivationRequest_QueueId;
         objCaseZA.Type = 'End of term query';
         objCaseZA.Sub_Type__c = 'Extension request';
+        objCaseZA.RecordTypeId = devRecordTypeId;
 
         Test.startTest();
         insert objCaseZA;
@@ -56,6 +57,7 @@ public class CaseCountryAssignmentFlow_Test {
         insert owner;
 
         Case objCaseZA;
+        Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
         System.runAs(owner) {
 
             objCaseZA = new Case();
@@ -65,6 +67,7 @@ public class CaseCountryAssignmentFlow_Test {
             objCaseZA.OwnerId = owner.Id;
             objCaseZA.Type = 'End of term query';
             objCaseZA.Sub_Type__c = 'Extension request';
+            objCaseZA.RecordTypeId = devRecordTypeId;
             Test.startTest();
             insert objCaseZA;
             Test.stopTest();
