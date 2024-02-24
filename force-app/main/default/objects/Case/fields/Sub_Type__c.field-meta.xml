@@ -189,6 +189,11 @@
                 <label>Contract</label>
             </value>
             <value>
+                <fullName>Contract activations</fullName>
+                <default>false</default>
+                <label>Contract activations</label>
+            </value>
+            <value>
                 <fullName>Contract Information Required</fullName>
                 <default>false</default>
                 <label>Contract Information Required</label>
@@ -217,6 +222,11 @@
                 <fullName>Credit Request</fullName>
                 <default>false</default>
                 <label>Credit Request</label>
+            </value>
+            <value>
+                <fullName>Cross border letter</fullName>
+                <default>false</default>
+                <label>Cross border letter</label>
             </value>
             <value>
                 <fullName>Customer to Purchase</fullName>
@@ -277,6 +287,11 @@
                 <fullName>Extension request</fullName>
                 <default>false</default>
                 <label>Extension request</label>
+            </value>
+            <value>
+                <fullName>FICA Check</fullName>
+                <default>false</default>
+                <label>FICA Check</label>
             </value>
             <value>
                 <fullName>FTA 1st Inspection</fullName>
@@ -474,6 +489,11 @@
                 <label>Rebate of rentals</label>
             </value>
             <value>
+                <fullName>Refund Queries</fullName>
+                <default>false</default>
+                <label>Refund Queries</label>
+            </value>
+            <value>
                 <fullName>Refunds Queries</fullName>
                 <default>false</default>
                 <label>Refunds Queries</label>
@@ -636,24 +656,29 @@
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Techtool - Change my details</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Access Level Update</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Change my details</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Change address / contact details</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Change my details</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Email Address for Invoicing</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Change my details</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>New Users</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Change my details</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Password Reset</valueName>
         </valueSettings>
         <valueSettings>
@@ -662,6 +687,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool -- end of term query</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Remove Subscription Access</valueName>
         </valueSettings>
         <valueSettings>
@@ -669,16 +695,32 @@
             <valueName>Remove User</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Service 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>Service Third Party</controllingFieldValue>
+            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
+            <valueName>Invoice Query</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Techtool - Orders</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Customised Impact online</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Orders</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Techtool</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Orders</controllingFieldValue>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Techtool &amp; Customised Impact Online</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Change my details (FICA Check)</controllingFieldValue>
+            <controllingFieldValue>Change my details</controllingFieldValue>
+            <valueName>Change Bank Details</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
@@ -695,12 +737,29 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
+            <controllingFieldValue>Techtool - Request Copy Document</controllingFieldValue>
+            <controllingFieldValue>Request Copy Document</controllingFieldValue>
+            <valueName>Copy Invoice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
+            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
+            <valueName>Invalid PO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Loading/Order Error</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
+            <valueName>Payment Query</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
@@ -722,11 +781,6 @@
             <controllingFieldValue>Techtool - Request Copy Document</controllingFieldValue>
             <controllingFieldValue>Request Copy Document</controllingFieldValue>
             <valueName>Copy Credit Note</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Techtool - Request Copy Document</controllingFieldValue>
-            <controllingFieldValue>Request Copy Document</controllingFieldValue>
-            <valueName>Copy Invoice</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Problems with Web Portal</controllingFieldValue>
@@ -764,6 +818,10 @@
         <valueSettings>
             <controllingFieldValue>Spam/Junk</controllingFieldValue>
             <valueName>Spam/Junk</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support</controllingFieldValue>
+            <valueName>Contract activations</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Sales Support</controllingFieldValue>
@@ -807,6 +865,14 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>Login Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>Missing Documents</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Payment</valueName>
         </valueSettings>
         <valueSettings>
@@ -819,15 +885,15 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
-            <valueName>Change Bank Details</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Change Business Name</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Company details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Change my details</controllingFieldValue>
+            <valueName>FICA Check</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
@@ -856,10 +922,6 @@
         <valueSettings>
             <controllingFieldValue>Contract Hire</controllingFieldValue>
             <controllingFieldValue>General Services query</controllingFieldValue>
-            <controllingFieldValue>Service Consent Query</controllingFieldValue>
-            <controllingFieldValue>Service Extension Request</controllingFieldValue>
-            <controllingFieldValue>Service -Initiation / New</controllingFieldValue>
-            <controllingFieldValue>Service Termination Request</controllingFieldValue>
             <valueName>Not Applicable</valueName>
         </valueSettings>
         <valueSettings>
@@ -1028,12 +1090,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>Service Third Party</controllingFieldValue>
-            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
-            <valueName>Invoice Query</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <valueName>Invoices to go onto Multiheader</valueName>
         </valueSettings>
         <valueSettings>
@@ -1043,11 +1099,6 @@
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <valueName>Payment Information</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
-            <valueName>Payment Query</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
@@ -1122,6 +1173,10 @@
             <valueName>Settlement Query</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>General Service Enquiry</controllingFieldValue>
+            <valueName>Cross border letter</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
             <valueName>Back Up Information Query</valueName>
         </valueSettings>
@@ -1132,10 +1187,6 @@
         <valueSettings>
             <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
             <valueName>Direct Debit/SEPA Problems</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
-            <valueName>Invalid PO</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
