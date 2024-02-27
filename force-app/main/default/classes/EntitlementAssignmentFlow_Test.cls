@@ -10,12 +10,10 @@ S.No.    Date                    Developer Name         Azure Item Number
 public class EntitlementAssignmentFlow_Test {
 
     Static map<String, String> mapCountryToSlaProcessName = new map<String, String>{'UK' => 'SLA for UK/IE', 
-                                                                                    'FR' => 'entitlement for france_v4', 
-                                                                                    'SWISS' => 'slas for ch'};
+                                                                                    'FR' => 'entitlement for france_v4'};
 
     static map<String, String> mapCountryToEntitlementName = new map<String, String>{'UK' => 'Case Support Process For UK/IE',
-                                                                                     'FR' => 'Case Support Process For France',
-                                                                                     'SWISS' => 'Case Support Process For CH'};
+                                                                                     'FR' => 'Case Support Process For France'};
     @TestSetup
     static void dataSetup() {
         
@@ -49,16 +47,6 @@ public class EntitlementAssignmentFlow_Test {
             SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('FR')).Id
         );
         listEntitlement.add(entFR);
-
-        Entitlement entSWISS = new Entitlement
-        (
-            Name = mapCountryToEntitlementName.get('SWISS'),
-            AccountId = acc.Id,
-            StartDate = Date.today().addDays(-1),
-            Type = 'Phone Support',
-            SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('SWISS')).Id
-        );
-        listEntitlement.add(entSWISS);
         
         if(!listEntitlement.isEmpty())
             Insert listEntitlement;
@@ -87,13 +75,6 @@ public class EntitlementAssignmentFlow_Test {
         );
         listGroup.add(group_UK_IE_Service_Desk);
 
-        Group group_Italy_CS_Operations = new Group
-        (
-            name = 'Italy - CS Operations',
-            type = 'Queue'
-        );
-        listGroup.add(group_Italy_CS_Operations);
-
         Group group_FR_CS_Administration = new Group
         (
             name = 'FR - Service Clients Volvo',
@@ -104,8 +85,14 @@ public class EntitlementAssignmentFlow_Test {
         if(!listGroup.isEmpty())
             Insert listGroup;
         
-    }
+        Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
+        User objUser = new User(alias = 'standt', email='demo@testorg.com',
+                            emailencodingkey='UTF-8', firstname='Demo_1', lastname='Demo_l', languagelocalekey='en_US',
+                            localesidkey='en_US', profileid = profileObj.Id,CountryCode = 'NL',
+                            timezonesidkey='America/Los_Angeles', username='Demo_1_l@testorg.com');
 
+        Insert objUser;
+    }
     
     @isTest
     static void test_UK_IE_CSOperation_WithNoEntitlement_Record() {
@@ -122,7 +109,9 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id from Group Where Name='UK/IE - CS Operations']);
             
             if(!listGroup.isEmpty()) {
@@ -149,8 +138,6 @@ public class EntitlementAssignmentFlow_Test {
         Test.stopTest();
         list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
         Assert.areEqual(objCase.EntitlementId, null);
-        // Assert.areEqual(strNoENtitlementExceptionMessage, 
-        // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
     }
 
     @isTest
@@ -161,7 +148,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id, Name, DeveloperName from Group Where Name='UK/IE - CS Operations']);
             
             if(!listGroup.isEmpty()) {
@@ -206,7 +194,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id from Group Where Name='IE - CS Operations']);
             
             if(!listGroup.isEmpty()) {
@@ -245,7 +234,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id, Name, DeveloperName from Group Where Name='IE - CS Operations']);
             
             if(!listGroup.isEmpty()) {
@@ -290,7 +280,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id from Group Where Name='UK/IE - Service Desk']);
             
             if(!listGroup.isEmpty()) {
@@ -329,7 +320,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id, Name, DeveloperName from Group Where Name='UK/IE - Service Desk']);
             
             if(!listGroup.isEmpty()) {
@@ -375,7 +367,8 @@ public class EntitlementAssignmentFlow_Test {
     //     // creating the queueSobject as logged in user to avoid mixed dml errors
     //     QueueSobject qs;
     //     list<Group> listGroup;
-    //     System.runAs(new User(Id=UserInfo.getUserId())) {
+    //     User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+    //    System.runAs(objUser) {
     //         listGroup = new list<Group>([Select Id from Group Where Name='Italy - CS Operations']);
             
     //         if(!listGroup.isEmpty()) {
@@ -414,7 +407,8 @@ public class EntitlementAssignmentFlow_Test {
     //     // creating the queueSobject as logged in user to avoid mixed dml errors
     //     QueueSobject qs;
     //     list<Group> listGroup;
-    //     System.runAs(new User(Id=UserInfo.getUserId())) {
+    //     User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+    //    System.runAs(objUser) {
     //         listGroup = new list<Group>([Select Id, Name, DeveloperName from Group Where Name='Italy - CS Operations']);
             
     //         if(!listGroup.isEmpty()) {
@@ -459,7 +453,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id from Group Where Name='FR - Service Clients Volvo']);
             
             if(!listGroup.isEmpty()) {
@@ -498,7 +493,8 @@ public class EntitlementAssignmentFlow_Test {
         // creating the queueSobject as logged in user to avoid mixed dml errors
         QueueSobject qs;
         list<Group> listGroup;
-        System.runAs(new User(Id=UserInfo.getUserId())) {
+        User objUser = [Select Id From User Where FirstName = 'Demo_1' Limit 1];
+        System.runAs(objUser) {
             listGroup = new list<Group>([Select Id, Name, DeveloperName from Group Where Name='FR - Service Clients Volvo']);
             
             if(!listGroup.isEmpty()) {
