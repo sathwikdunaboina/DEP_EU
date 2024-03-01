@@ -11,13 +11,31 @@ private class quoteCalloutHandlerTest {
         foOrder.add(String.valueOf(opportunityId));
         System.debug('foOrderTest'+foOrder);
         insertCustomSettingValues();
-        quoteCalloutHandler.quoteRecordCreate(insertTestOppRecord(accountId,FoId),'12112', '2we444r552w');
+        //quoteCalloutHandler.quoteRecordCreate(insertTestOppRecord(accountId,FoId),'12112', '2we444r552w');
         System.test.startTest();
         quoteCalloutController.getOpportunities(String.valueOf(opportunityId));
+        quoteCalloutController.getOppForAmountAndCustomer(String.valueOf(opportunityId));
         quoteCalloutController.getOppIds(foOrder);
         System.test.stopTest();
     }
-    
+    //////////////////////////////////////////////////////
+        @isTest static void testSearchAndUpdate() {
+        List<String> foOrder=new List<String>();
+        Id FoId = insertTestFactoryOrders();
+        Id accountId = insertTestAccount();
+        Id contactId = insertTestContact(accountId);
+        String quoteId = insertTestQuote();
+        Id opportunityId = insertTestOpp(accountId,FoId);
+        Id opportunityIdSearch = insertTestOppSerchQuote(accountId,FoId);
+        foOrder.add(String.valueOf(opportunityId));
+        System.debug('foOrderTest'+foOrder);
+        insertCustomSettingValues();
+        System.test.startTest();
+        quoteCalloutController.getQuotes(opportunityId);
+		quoteCalloutController.getQuoteId(quoteId, opportunityIdSearch);
+        System.test.stopTest();
+    }
+    //////////////////////////////////////////////////////
         @isTest static void elseTestCallout() {
         // Set mock callout class 
         System.Test.setMock(HttpCalloutMock.class, new QuoteCalloutMockCallout(401));
@@ -34,6 +52,17 @@ private class quoteCalloutHandlerTest {
         quoteCalloutController.getOppIds(foOrder);
         System.test.stopTest();
     }
+    
+    private static String insertTestQuote(){
+        VFS_Connect_Quote__c quote = new VFS_Connect_Quote__c();
+        quote.Quote_Status__c = 'In-Complete';
+        quote.Quote_Number__c = '3110472';
+        quote.Name = '3110472';
+        quote.Country__c = 'NL';
+        insert quote;
+        return quote.Quote_Number__c;
+    }
+    
     @isTest static void testCalloutElse() {
         // Set mock callout class 
         System.Test.setMock(HttpCalloutMock.class, new QuoteCalloutMockCallout(200));
@@ -139,7 +168,26 @@ private class quoteCalloutHandlerTest {
         opp.CloseDate = System.today() + 3;
         opp.CurrencyIsoCode = 'EUR';
         opp.Name = 'John2';
+        opp.Customer_Account__c = AccountId;
         opp.StageName = 'New';
+        opp.Quote_Id__c = '3110472';
+        opp.Quote_Url__c = '{!Environment.SearchQuoteCustomSettingValue}/PM/Landingpage.aspx';
+        insert opp;
+        return opp.Id;
+    }
+    
+    private static Id insertTestOppSerchQuote(Id AccountId,Id FoId){
+        Opportunity opp = new Opportunity();
+        opp.Factory_Order__c = FoId;
+        opp.AccountId = AccountId;
+        opp.Amount = 12000;
+        opp.CloseDate = System.today() + 3;
+        opp.CurrencyIsoCode = 'EUR';
+        opp.Name = 'John2';
+        opp.Customer_Account__c = AccountId;
+        opp.StageName = 'New';
+        //opp.Quote_Id__c = '3110472';
+        //opp.Quote_Url__c = '{!Environment.SearchQuoteCustomSettingValue}/PM/Landingpage.aspx';
         insert opp;
         return opp.Id;
     }
@@ -172,7 +220,7 @@ private class quoteCalloutHandlerTest {
     
     private static void insertCustomSettingValues(){
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
-        settings.Endpoint_QA__c = '/vfsconnect/quotation/v1.1/draft';
+        settings.Endpoint_QA__c = '/vfsconnect/quotation/v1.2/draft';
         settings.X_Ibm_Client_Id__c = '0987654321';
         settings.X_Ibm_Client_Secret__c = '09oi87uy6t';
         insert settings;
