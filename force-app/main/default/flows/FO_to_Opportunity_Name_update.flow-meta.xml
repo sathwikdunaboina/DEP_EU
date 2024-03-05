@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <name>Opportunity_Stage_check</name>
+        <label>Opportunity Stage check</label>
+        <locationX>775</locationX>
+        <locationY>423</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_closed_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Name</targetReference>
+            </connector>
+            <label>Check for closed Opportunity</label>
+        </rules>
+    </decisions>
+    <description>Update the Opportunity name whenever the Factory order Customer name is getting updated</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CDDFormula</name>
+        <dataType>String</dataType>
+        <expression>&apos;Please check the Opportunity.&apos;+ 
+IF(ISCHANGED({!$Record.CDD_Date__c}), &apos;CDD Date changed from &apos;+TEXT({!$Record__Prior.CDD_Date__c}) + &apos; to &apos; + TEXT({!$Record.CDD_Date__c}),&apos;&apos;) +&apos;. &apos;+
+IF(ISCHANGED({!$Record.End_Customer_Name__c}), &apos;Customer Name changed from &apos;+{!$Record__Prior.End_Customer_Name__c}+ &apos; to &apos;+ {!$Record.End_Customer_Name__c},&apos;&apos;) +&apos;. &apos;+
+IF(ISCHANGED({!$Record.VIN_Number__c}),  &apos;VIN Number assigned, &apos;+ {!$Record.VIN_Number__c},&apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>FO to Opportunity Name update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FO to Opportunity Name update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Opportunity_Name</name>
+        <label>Update Opportunity Name</label>
+        <locationX>1027</locationX>
+        <locationY>416</locationY>
+        <inputAssignments>
+            <field>Customer_Account__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <stringValue>{!$Record.End_Customer_Name__c}_{!$Record.Order_Id__c}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Opportunities__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>649</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Opportunity_Stage_check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>End_Customer_Name__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Finance_Opportunity__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </filters>
+        <object>Factory_Order__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
