@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <description>This flow captures the first owner , the owner of the case when it was first created</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>This resource stores the first owner name of the case</description>
+        <name>FirstOwnerName</name>
+        <dataType>String</dataType>
+        <expression>IF(BEGINS({!$Record.OwnerId}, &quot;005&quot;) , {!$Record.Owner:User.FirstName}+&apos; &apos;  +{!$Record.Owner:User.LastName}, {!$Record.Owner:Group.Name})</expression>
+    </formulas>
+    <interviewLabel>Capture Case First Owner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Capture Case First Owner</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>This element captures the name of the first owner of the case and puts in the field First_Owner__c</description>
+        <name>Get_First_Owner_Name</name>
+        <label>Get First Owner Name</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>First_Owner__c</field>
+            <value>
+                <elementReference>FirstOwnerName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_First_Owner_Name</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
