@@ -315,6 +315,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FOToOpportunityNameupdateFlow</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>FetchContractDetailController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -4883,6 +4887,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>User.Enable_Bell_Notification__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>User.Golden_Copy_User__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5001,6 +5010,14 @@
         <field>VFS_Connect_Quote__c.Vin_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>FO_Changes_notification_to_the_opportunity_owner</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>FO_to_Opportunity_Name_update</flow>
+    </flowAccesses>
     <layoutAssignments>
         <layout>APIC_Auth_Provider__mdt-APIC Auth Provider Layout</layout>
     </layoutAssignments>
@@ -7234,6 +7251,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageUnlistedGroups</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageUserAccessPolicies</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
