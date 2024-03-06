@@ -1,0 +1,106 @@
+table{
+    border-collapse:collapse;
+    width: 100%;
+    border: 1px solid black;
+}
+td, th{
+    text-align: left;
+    padding: 8px;
+}
+tr{
+    border-bottom: 1px solid #ddd;
+}
+th {
+    border-top: 1px solid #ddd;
+    background-color: #f3f3f3;
+    color: #444444;
+}
+tr:hover {
+    background-color: #f3f3f3;
+}
+
+.WelcomeMsg{
+    padding-right: 35%;
+    color: #0176D3;
+    font-weight: bold;   
+}   
+
+.spins::after {
+    position: absolute;
+   
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+    color: #0176D3;
+}
+
+
+
+.spin-container {
+    text-align: center;
+    margin-top: 150px;
+  }
+  .spin {
+    border: 3px solid #0D4B9F;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: rotate 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+  }
+  .loader2 {
+    border: 3px solid #E0EDFF;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    top: -111px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: rotate2 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+  }
+  .loader3 {
+    border: 3px solid #005CDC;
+    width: 140px;
+    height: 140px;
+    position: relative;
+    top: -243px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: rotate 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+  }
+  .loader4 {
+    border: 3px solid #94B6E5;
+    width: 160px;
+    height: 160px;
+    position: relative;
+    top: -393px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: rotate2 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotateZ(-360deg)
+    }
+    100% {
+      transform: rotateZ(0deg)
+    }
+  }
+  @keyframes rotate2 {
+    0% {
+      transform: rotateZ(360deg)
+    }
+    100% {
+      transform: rotateZ(0deg)
+    }
+  }
+  .text {
+    color: #0051cb;
+    font-family: Arial;
+    font-size: 15px;
+    position: relative;
+    top: -386px;
+  }
