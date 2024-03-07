@@ -12,6 +12,12 @@
     <columns>OPPORTUNITY.LEAD_SOURCE</columns>
     <columns>CORE.USERS.FULL_NAME</columns>
     <columns>OPPORTUNITY.LAST_UPDATE</columns>
+    <columns>NetSalesPrice__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Finance</value>
+    </filters>
     <label>All Opportunities</label>
 </ListView>
