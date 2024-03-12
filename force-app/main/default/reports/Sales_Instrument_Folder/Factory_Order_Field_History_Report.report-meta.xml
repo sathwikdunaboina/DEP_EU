@@ -22,7 +22,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>CDD Date,End Customer Name,VIN Number</value>
+            <value>CDD Date,End Customer Name,VIN Number,Order Status Description</value>
         </criteriaItems>
         <criteriaItems>
             <column>Factory_Order__c.Financed_Opportunity_Owner__c</column>
@@ -48,6 +48,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_LAST7</interval>
+        <interval>INTERVAL_TODAY</interval>
     </timeFrameFilter>
 </Report>
