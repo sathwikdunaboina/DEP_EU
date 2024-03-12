@@ -130,9 +130,9 @@ Change Customer Name (A value change)</description>
     <formulas>
         <name>CDDFormula</name>
         <dataType>String</dataType>
-        <expression>&apos;Please check the Opportunity.&apos;+ 
-IF(ISCHANGED({!$Record.CDD_Date__c}), &apos;CDD Date changed from &apos;+TEXT({!$Record__Prior.CDD_Date__c}) + &apos; to &apos; + TEXT({!$Record.CDD_Date__c}),&apos;&apos;) +&apos;. &apos;+
-IF(ISCHANGED({!$Record.End_Customer_Name__c}), &apos;Customer Name changed from &apos;+{!$Record__Prior.End_Customer_Name__c}+ &apos; to &apos;+ {!$Record.End_Customer_Name__c},&apos;&apos;) +&apos;. &apos;+
+        <expression>&apos;Please check the Opportunity. &apos;+ 
+IF(ISCHANGED({!$Record.CDD_Date__c}), &apos;CDD Date changed from &apos;+TEXT({!$Record__Prior.CDD_Date__c}) + &apos; to &apos; + TEXT({!$Record.CDD_Date__c})+&apos;. &apos;,&apos;&apos;)+
+IF(ISCHANGED({!$Record.End_Customer_Name__c}), &apos;Customer Name changed from &apos;+{!$Record__Prior.End_Customer_Name__c}+ &apos; to &apos;+ {!$Record.End_Customer_Name__c}+&apos;. &apos;,&apos;&apos;)+
 IF(ISCHANGED({!$Record.VIN_Number__c}),  &apos;VIN Number assigned, &apos;+ {!$Record.VIN_Number__c},&apos;&apos;)</expression>
     </formulas>
     <interviewLabel>FO Changes notification to the opportunity owner {!$Flow.CurrentDateTime}</interviewLabel>
