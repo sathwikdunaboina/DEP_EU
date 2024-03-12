@@ -315,6 +315,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FOToOpportunityNameupdateFlow</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>FetchContractDetailController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -2865,6 +2869,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Factory_Order__c.Financed_Opportunity_Owner__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Factory_Order__c.HP__c</field>
         <readable>true</readable>
@@ -4947,6 +4956,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Territory_Manager__c.User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Enable_Bell_Notification__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
