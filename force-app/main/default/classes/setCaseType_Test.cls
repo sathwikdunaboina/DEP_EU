@@ -9,8 +9,39 @@ S.No.    Date                    Developer Name              Azure Item Number
 ***********************************************************************************************************/
 @isTest
 public class setCaseType_Test {
+
+    Static map<String, String> mapCountryToSlaProcessName = new map<String, String>{'UK' => 'SLA for UK/IE', 
+                                                                                    'FR' => 'entitlement for france_v4'};
+
+    static map<String, String> mapCountryToEntitlementName = new map<String, String>{'UK' => 'Case Support Process For UK/IE',
+                                                                                     'FR' => 'Case Support Process For France'};
     
     static testMethod void queueOwner1() {
+
+        map<string, SlaProcess> mapSLANameToSLAProcess = new map<string, SlaProcess>();
+        for (SlaProcess sla: [Select Id, Name From SlaProcess 
+                                                           Where Name IN :mapCountryToSlaProcessName.values()]) {
+            mapSLANameToSLAProcess.put(sla.Name, sla);
+        }
+        // creating account
+        Account acc = new Account(Name='Demo Acc');
+        Insert acc;
+
+        // creating entitlement records
+        List<Entitlement> listEntitlement = new List<Entitlement>();
+        Entitlement entUK = new Entitlement
+        (
+            Name = mapCountryToEntitlementName.get('UK'),
+            AccountId = acc.Id,
+            StartDate = Date.today().addDays(-1),
+            Type = 'Phone Support',
+            SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('UK')).Id
+        );
+        listEntitlement.add(entUK);
+
+        if(!listEntitlement.isEmpty())
+            Insert listEntitlement;
+
         Id UK_IE_Contract_Extensions = [SELECT Id, Name, DeveloperName, Email, Type 
                                         FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext VT'].Id;
         System.debug('>>> UK_IE_Contract_Extensions = ' + UK_IE_Contract_Extensions);
@@ -19,8 +50,8 @@ public class setCaseType_Test {
         cs_UK_IE_Contract_Extensions.Origin = 'Email';
         cs_UK_IE_Contract_Extensions.Subject = 'test@1';
         cs_UK_IE_Contract_Extensions.OwnerId = UK_IE_Contract_Extensions;
-        cs_UK_IE_Contract_Extensions.Type = 'RFL'; // User Story-7542
-        cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Admin Fees Queries'; // User Story-7542
+        cs_UK_IE_Contract_Extensions.Type = 'End of term query';
+        cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Extension request';
         cs_UK_IE_Contract_Extensions.Country__c = 'United Kingdom';
         insert cs_UK_IE_Contract_Extensions;
         System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Type);
@@ -33,8 +64,8 @@ public class setCaseType_Test {
         cs_UK_IE_BRS.Origin = 'Email';
         cs_UK_IE_BRS.Subject = 'test@1';
         cs_UK_IE_BRS.OwnerId = UK_IE_BRS;
-        cs_UK_IE_BRS.Type = 'RFL'; // User Story-7542
-        cs_UK_IE_BRS.Sub_Type__c = 'Admin Fees Queries'; // User Story-7542
+        cs_UK_IE_BRS.Type = 'End of term query';
+        cs_UK_IE_BRS.Sub_Type__c = 'Extension request';
         cs_UK_IE_BRS.Country__c = 'United Kingdom';
         insert cs_UK_IE_BRS;
         System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Type);
@@ -48,8 +79,8 @@ public class setCaseType_Test {
         cs_UK_IE_Contract_Extensions_VCE.Origin = 'Email';
         cs_UK_IE_Contract_Extensions_VCE.Subject = 'test@1';
         cs_UK_IE_Contract_Extensions_VCE.OwnerId = UK_IE_Contract_Extensions_VCE;
-        cs_UK_IE_Contract_Extensions_VCE.Type = 'RFL'; // User Story-7542
-        cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c = 'Admin Fees Queries'; // User Story-7542
+        cs_UK_IE_Contract_Extensions_VCE.Type = 'End of term query';
+        cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c = 'Extension request'; 
         cs_UK_IE_Contract_Extensions_VCE.Country__c = 'United Kingdom';
         insert cs_UK_IE_Contract_Extensions_VCE;
         System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Type);
@@ -62,8 +93,8 @@ public class setCaseType_Test {
         cs_UK_IE_Contract_Extensions_RT.Origin = 'Email';
         cs_UK_IE_Contract_Extensions_RT.Subject = 'test@1';
         cs_UK_IE_Contract_Extensions_RT.OwnerId = UK_IE_Contract_Extensions_RT;
-        cs_UK_IE_Contract_Extensions_RT.Type = 'RFL'; // User Story-7542
-        cs_UK_IE_Contract_Extensions_RT.Sub_Type__c = 'Admin Fees Queries'; // User Story-7542
+        cs_UK_IE_Contract_Extensions_RT.Type = 'End of term query';
+        cs_UK_IE_Contract_Extensions_RT.Sub_Type__c = 'Extension request';
         cs_UK_IE_Contract_Extensions_RT.Country__c = 'United Kingdom';
         insert cs_UK_IE_Contract_Extensions_RT;
         System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Type);
