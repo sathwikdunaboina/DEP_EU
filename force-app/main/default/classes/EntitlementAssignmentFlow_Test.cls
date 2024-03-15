@@ -86,12 +86,23 @@ public class EntitlementAssignmentFlow_Test {
             Insert listGroup;
         
         Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
+        
+        Profile profileObj2 = [Select Id from Profile where name = 'CS Operations'];
+        
         User objUser = new User(alias = 'standt', email='demo@testorg.com',
                             emailencodingkey='UTF-8', firstname='Demo_1', lastname='Demo_l', languagelocalekey='en_US',
-                            localesidkey='en_US', profileid = profileObj.Id,CountryCode = 'NL',
+                            localesidkey='en_US', profileid = profileObj.Id,CountryCode = 'GB', CurrencyISOCode='EUR',
                             timezonesidkey='America/Los_Angeles', username='Demo_1_l@testorg.com');
 
         Insert objUser;
+        
+        
+        User objUser2 = new User(alias = 'standt2', email='demo2@testorg.com',
+                            emailencodingkey='UTF-8', firstname='Demo_2', lastname='Demo_2', languagelocalekey='en_US',
+                            localesidkey='en_US', profileid = profileObj2.Id,CountryCode = 'GB', CurrencyISOCode='EUR',
+                            timezonesidkey='America/Los_Angeles', username='Demo_2_l@testorg.com');
+
+        Insert objUser2;
     }
     
     @isTest
@@ -119,25 +130,34 @@ public class EntitlementAssignmentFlow_Test {
                 Insert qs;
             }
         }
-
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'United Kingdom'
-            );
-        }
-        Test.startTest();
-        String strNoENtitlementExceptionMessage;
-        if(objCase != Null)
-            insert objCase;
+		
         
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        Assert.areEqual(objCase.EntitlementId, null);
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
+        
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'United Kingdom'
+                );
+                
+            }
+            Test.startTest();
+            String strNoENtitlementExceptionMessage;
+            
+            if(objCase != Null)
+                insert objCase;
+            
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            Assert.areEqual(objCase.EntitlementId, null);
+        }
+        
     }
 
     @isTest
@@ -158,24 +178,29 @@ public class EntitlementAssignmentFlow_Test {
             }
         }
 
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'United Kingdom'
-            );
-        }
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
         
-        Test.startTest();
-        if(objCase != Null)
-            insert objCase;
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
-            Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'United Kingdom'
+                );
+            }
+        
+            Test.startTest();
+            if(objCase != Null)
+                insert objCase;
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
+                Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+            }
         }
     }
 
@@ -203,27 +228,32 @@ public class EntitlementAssignmentFlow_Test {
                 Insert qs;
             }
         }
-
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'United Kingdom'
-            );
-        }
-        Test.startTest();
-        String strNoENtitlementExceptionMessage;
-        if(objCase != Null)
-            insert objCase;
+		
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
         
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        Assert.areEqual(objCase.EntitlementId, null);
-        // Assert.areEqual(strNoENtitlementExceptionMessage, 
-        // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'United Kingdom'
+                );
+            }
+            Test.startTest();
+            String strNoENtitlementExceptionMessage;
+            if(objCase != Null)
+                insert objCase;
+            
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            Assert.areEqual(objCase.EntitlementId, null);
+            // Assert.areEqual(strNoENtitlementExceptionMessage, 
+            // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
+        }
     }
 
     @isTest
@@ -243,25 +273,29 @@ public class EntitlementAssignmentFlow_Test {
                 Insert qs;
             }
         }
-
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'United Kingdom'
-            );
-        }
-        
-        Test.startTest();
-        if(objCase != Null)
-            insert objCase;
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
-            Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+	
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'United Kingdom'
+                );
+            }
+            
+            Test.startTest();
+            if(objCase != Null)
+                insert objCase;
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
+                Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+            }
         }
     }
 
@@ -289,27 +323,31 @@ public class EntitlementAssignmentFlow_Test {
                 Insert qs;
             }
         }
-
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'United Kingdom'
-            );
+	
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'United Kingdom'
+                );
+            }
+            Test.startTest();
+            String strNoENtitlementExceptionMessage;
+            if(objCase != Null)
+                insert objCase;
+            
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            Assert.areEqual(objCase.EntitlementId, null);
+            // Assert.areEqual(strNoENtitlementExceptionMessage, 
+            // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
         }
-        Test.startTest();
-        String strNoENtitlementExceptionMessage;
-        if(objCase != Null)
-            insert objCase;
-        
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        Assert.areEqual(objCase.EntitlementId, null);
-        // Assert.areEqual(strNoENtitlementExceptionMessage, 
-        // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
     }
 
     @isTest
@@ -329,25 +367,29 @@ public class EntitlementAssignmentFlow_Test {
                 Insert qs;
             }
         }
-
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'United Kingdom'
-            );
-        }
-        
-        Test.startTest();
-        if(objCase != Null)
-            insert objCase;
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
-            Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+	
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'United Kingdom'
+                );
+            }
+            
+            Test.startTest();
+            if(objCase != Null)
+                insert objCase;
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
+                Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+            }
         }
     }
 
@@ -463,26 +505,30 @@ public class EntitlementAssignmentFlow_Test {
             }
         }
 
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'France'
-            );
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'France'
+                );
+            }
+            Test.startTest();
+            String strNoENtitlementExceptionMessage;
+            if(objCase != Null)
+                insert objCase;
+            
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            Assert.areEqual(objCase.EntitlementId, null);
+            // Assert.areEqual(strNoENtitlementExceptionMessage, 
+            // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
         }
-        Test.startTest();
-        String strNoENtitlementExceptionMessage;
-        if(objCase != Null)
-            insert objCase;
-        
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        Assert.areEqual(objCase.EntitlementId, null);
-        // Assert.areEqual(strNoENtitlementExceptionMessage, 
-        // 'There is no entitlement record present for UK/IE, please ask your administrator to create an entitlement record for UK/IE');
     }
 
     @isTest
@@ -503,24 +549,28 @@ public class EntitlementAssignmentFlow_Test {
             }
         }
 
-        Case objCase;
-        if(!listGroup.isEmpty()) {
-            objCase = new Case(
-                Status = 'New',
-                Origin = 'Email',
-                Subject = 'test@1',
-                OwnerId = listGroup[0].Id,
-                Country__c = 'France'
-            );
-        }
-        
-        Test.startTest();
-        if(objCase != Null)
-            insert objCase;
-        Test.stopTest();
-        list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
-        if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
-            Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
-        }
+        User objUser2 = [Select Id From User Where FirstName = 'Demo_2' Limit 1];
+        system.runAs(objUser2) {
+            
+            Case objCase;
+            if(!listGroup.isEmpty()) {
+                objCase = new Case(
+                    Status = 'New',
+                    Origin = 'Email',
+                    Subject = 'test@1',
+                    OwnerId = listGroup[0].Id,
+                    Country__c = 'France'
+                );
+            }
+            
+            Test.startTest();
+            if(objCase != Null)
+                insert objCase;
+            Test.stopTest();
+            list<Case> listCase = new List<Case>([Select Id, Status, Origin, OwnerId, Country__c, EntitlementId From Case where Id= :objCase.Id]);
+            if(!listCase.isEmpty() && !listEntitlement.isEmpty()) {
+                Assert.areEqual(listCase[0].EntitlementId, listEntitlement[0].Id);   
+            }
+    	}	
     }
 }
