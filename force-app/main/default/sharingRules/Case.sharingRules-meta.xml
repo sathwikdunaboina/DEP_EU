@@ -30,6 +30,21 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Belgium_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This sharing setting is used for Belgium cases</description>
+        <label>Belgium Cases</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>BE_Service_Representative_Customer_Services</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Belgium</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>CH_Users</fullName>
         <accessLevel>Edit</accessLevel>
         <label>CH Users</label>
