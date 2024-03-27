@@ -38,11 +38,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Territory_Manager__c</field>
+                <field>Is_Deleted_From_Backbone__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Is_Deleted_From_Backbone__c</field>
+                <field>Check_on_dealer_sales_person__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -206,18 +206,16 @@
             <quickActionName>SendEmail</quickActionName>
         </quickActionListItems>
     </quickActionList>
-    <relatedContent>
-        <relatedContentItems>
-            <layoutItem>
-                <component>wits:newsPanel</component>
-            </layoutItem>
-        </relatedContentItems>
-        <relatedContentItems>
-            <layoutItem>
-                <component>runtime_sales_social:socialPanel</component>
-            </layoutItem>
-        </relatedContentItems>
-    </relatedContent>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>RECORDTYPE</fields>
+        <fields>Brand__c</fields>
+        <fields>Number_of_asset__c</fields>
+        <fields>Connect_Delivery_ID__c</fields>
+        <fields>Status__c</fields>
+        <fields>OWNER.ALIAS</fields>
+        <relatedList>Initiation__c.Customer_Account__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
@@ -241,14 +239,14 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Type__c</fields>
+        <fields>Dealer__c</fields>
         <fields>Start_Date__c</fields>
         <fields>End_Date__c</fields>
+        <fields>Type__c</fields>
         <fields>Amount_Including_Tax__c</fields>
         <fields>Term__c</fields>
         <fields>Business_Area__c</fields>
-        <fields>On_Balance_Sheet__c</fields>
-        <fields>Regulated__c</fields>
+        <fields>VIN_Number__c</fields>
         <fields>Contract_Status__c</fields>
         <relatedList>Contract__c.Account__c</relatedList>
         <sortField>Start_Date__c</sortField>
@@ -301,6 +299,10 @@
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.WHAT_NAME</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>VFS_Connect_Quote__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
