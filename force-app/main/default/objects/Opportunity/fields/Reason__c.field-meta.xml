@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason__c</fullName>
+    <description>Reason field will be enabled when the lost deal selected the specific lost reason.</description>
+    <externalId>false</externalId>
+    <label>Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Lost_Reason__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sales</fullName>
+                <default>false</default>
+                <label>Sales</label>
+            </value>
+            <value>
+                <fullName>Credit</fullName>
+                <default>false</default>
+                <label>Credit</label>
+            </value>
+            <value>
+                <fullName>Too poor customer credit grade</fullName>
+                <default>false</default>
+                <label>Too poor customer credit grade</label>
+            </value>
+            <value>
+                <fullName>Too risky asset</fullName>
+                <default>false</default>
+                <label>Too risky asset</label>
+            </value>
+            <value>
+                <fullName>Exposure too high</fullName>
+                <default>false</default>
+                <label>Exposure too high</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Order cancelled</fullName>
+                <default>false</default>
+                <label>Order cancelled</label>
+            </value>
+            <value>
+                <fullName>Poor dealer relationship</fullName>
+                <default>false</default>
+                <label>Poor dealer relationship</label>
+            </value>
+            <value>
+                <fullName>Sold to government</fullName>
+                <default>false</default>
+                <label>Sold to government</label>
+            </value>
+            <value>
+                <fullName>Unit intended for OEM rental fleet</fullName>
+                <default>false</default>
+                <label>Unit intended for OEM rental fleet</label>
+            </value>
+            <value>
+                <fullName>Unit being flagged out</fullName>
+                <default>false</default>
+                <label>Unit being flagged out</label>
+            </value>
+            <value>
+                <fullName>Demo unit</fullName>
+                <default>false</default>
+                <label>Demo unit</label>
+            </value>
+            <value>
+                <fullName>Unit sold to bodybuilder to resell</fullName>
+                <default>false</default>
+                <label>Unit sold to bodybuilder to resell</label>
+            </value>
+            <value>
+                <fullName>Part of larger deal with non-Volvo Group products</fullName>
+                <default>false</default>
+                <label>Part of larger deal with non-Volvo Group products</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Order cancelled</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Poor dealer relationship</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Sold to government</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Unit intended for OEM rental fleet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Unit being flagged out</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Demo unit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Unit sold to bodybuilder to resell</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <valueName>Part of larger deal with non-Volvo Group products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
+            <valueName>Sales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
+            <valueName>Credit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
+            <valueName>Too poor customer credit grade</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
+            <valueName>Too risky asset</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
+            <valueName>Exposure too high</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>
