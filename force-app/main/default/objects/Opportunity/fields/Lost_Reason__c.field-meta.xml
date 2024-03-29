@@ -3,133 +3,123 @@
     <fullName>Lost_Reason__c</fullName>
     <externalId>false</externalId>
     <inlineHelpText>Please select &apos;Lost Reason&apos; when the stage is &apos;Closed - Lost Deal&apos;</inlineHelpText>
-    <label>Lost Reason</label>
+    <label>Lost Reason1</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
-    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <controllingField>StageName</controllingField>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Competition - Interest rate</fullName>
+                <fullName>Interest rate was too high</fullName>
                 <default>false</default>
-                <label>Competition - Interest rate</label>
+                <label>Interest rate was too high</label>
             </value>
             <value>
-                <fullName>Competition - Lack of Product</fullName>
+                <fullName>Required finance product was not available</fullName>
                 <default>false</default>
-                <label>Competition - Lack of Product</label>
+                <label>Required finance product was not available</label>
             </value>
             <value>
-                <fullName>Deal Structure - Down Payment</fullName>
+                <fullName>Down payment was too high</fullName>
                 <default>false</default>
-                <label>Deal Structure - Down Payment</label>
+                <label>Down payment was too high</label>
             </value>
             <value>
-                <fullName>Deal Structure - Residual Value</fullName>
+                <fullName>Residual value was too low</fullName>
                 <default>false</default>
-                <label>Deal Structure - Residual Value</label>
+                <label>Residual value was too low</label>
             </value>
             <value>
-                <fullName>Deal Structure - Term / Tenor</fullName>
+                <fullName>Term/tenor was too short</fullName>
                 <default>false</default>
-                <label>Deal Structure - Term / Tenor</label>
+                <label>Term/tenor was too short</label>
             </value>
             <value>
-                <fullName>No Truck Sale</fullName>
+                <fullName>Too poor speed of execution</fullName>
                 <default>false</default>
-                <label>No Truck Sale</label>
+                <label>Too poor speed of execution</label>
+            </value>
+            <value>
+                <fullName>Approached the customer too late</fullName>
+                <default>false</default>
+                <label>Approached the customer too late</label>
+            </value>
+            <value>
+                <fullName>Declined for credit reasons</fullName>
+                <default>false</default>
+                <label>Declined for credit reasons</label>
+            </value>
+            <value>
+                <fullName>Guarantee requested, but not accepted</fullName>
+                <default>false</default>
+                <label>Guarantee requested, but not accepted</label>
+            </value>
+            <value>
+                <fullName>Negative view of VFS</fullName>
+                <default>false</default>
+                <label>Negative view of VFS</label>
+            </value>
+            <value>
+                <fullName>Not available for financing</fullName>
+                <default>false</default>
+                <label>Not available for financing</label>
             </value>
             <value>
                 <fullName>Paid Cash</fullName>
                 <default>false</default>
                 <label>Paid Cash</label>
             </value>
-            <value>
-                <fullName>VFS - Alternative quoted</fullName>
-                <default>false</default>
-                <label>VFS - Alternative quoted</label>
-            </value>
-            <value>
-                <fullName>VFS - Deal not quoted</fullName>
-                <default>false</default>
-                <label>VFS - Deal not quoted</label>
-            </value>
-            <value>
-                <fullName>VFS - Declined / Cancelled by Credit</fullName>
-                <default>false</default>
-                <label>VFS - Declined / Cancelled by Credit</label>
-            </value>
-            <value>
-                <fullName>VFS - Speed of Execution</fullName>
-                <default>false</default>
-                <label>VFS - Speed of Execution</label>
-            </value>
-            <value>
-                <fullName>Dealer Contract Hire,</fullName>
-                <default>false</default>
-                <label>Dealer Contract Hire,</label>
-            </value>
-            <value>
-                <fullName>Does not use Finance</fullName>
-                <default>false</default>
-                <label>Does not use Finance</label>
-            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Competition - Interest rate</valueName>
+            <valueName>Interest rate was too high</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Competition - Lack of Product</valueName>
+            <valueName>Required finance product was not available</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Deal Structure - Down Payment</valueName>
+            <valueName>Down payment was too high</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Deal Structure - Residual Value</valueName>
+            <valueName>Residual value was too low</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Deal Structure - Term / Tenor</valueName>
+            <valueName>Term/tenor was too short</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>No Truck Sale</valueName>
+            <valueName>Too poor speed of execution</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed Lost</controllingFieldValue>
+            <valueName>Approached the customer too late</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed Lost</controllingFieldValue>
+            <valueName>Declined for credit reasons</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed Lost</controllingFieldValue>
+            <valueName>Guarantee requested, but not accepted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed Lost</controllingFieldValue>
+            <valueName>Negative view of VFS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed Lost</controllingFieldValue>
+            <valueName>Not available for financing</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
             <valueName>Paid Cash</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>VFS - Alternative quoted</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>VFS - Deal not quoted</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>VFS - Declined / Cancelled by Credit</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>VFS - Speed of Execution</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Dealer Contract Hire,</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Does not use Finance</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
