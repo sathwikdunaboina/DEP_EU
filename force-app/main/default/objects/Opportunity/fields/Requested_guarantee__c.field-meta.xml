@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requested_guarantee__c</fullName>
+    <description>Customers didn&apos;t accept the guarantee requested to approve the credit</description>
+    <externalId>false</externalId>
+    <label>Requested guarantee</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Lost_Reason__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Holding Company Guarantee</fullName>
+                <default>false</default>
+                <label>Holding Company Guarantee</label>
+            </value>
+            <value>
+                <fullName>Cross Company Guarantee</fullName>
+                <default>false</default>
+                <label>Cross Company Guarantee</label>
+            </value>
+            <value>
+                <fullName>Personal Guarantee</fullName>
+                <default>false</default>
+                <label>Personal Guarantee</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Guarantee requested, but not accepted</controllingFieldValue>
+            <valueName>Holding Company Guarantee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guarantee requested, but not accepted</controllingFieldValue>
+            <valueName>Cross Company Guarantee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guarantee requested, but not accepted</controllingFieldValue>
+            <valueName>Personal Guarantee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guarantee requested, but not accepted</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

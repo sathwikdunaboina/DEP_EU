@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandate_Reason</fullName>
+    <active>true</active>
+    <description>Make Mandate reason when they select specific lost reason mentioned below.
+Too poor speed of execution
+Declined for credit reasons
+Not available for financing</description>
+    <errorConditionFormula>IF( 
+AND(
+OR( 
+ISPICKVAL( Lost_Reason__c , &quot;Too poor speed of execution&quot;),
+ISPICKVAL( Lost_Reason__c , &quot;Declined for credit reasons&quot;),
+ISPICKVAL( Lost_Reason__c , &quot;Not available for financing&quot;)
+),
+ISPICKVAL( Reason__c , &quot;&quot;)), 
+true, false)</errorConditionFormula>
+    <errorDisplayField>Reason__c</errorDisplayField>
+    <errorMessage>Please select the Reason.</errorMessage>
+</ValidationRule>

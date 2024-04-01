@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandate_Requested_guarantee</fullName>
+    <active>true</active>
+    <description>Make Mandate Requested guarantee when they select specific lost reason mentioned below.
+Guarantee requested, but not accepted</description>
+    <errorConditionFormula>IF( 
+AND( ISPICKVAL(Requested_guarantee__c,&quot;&quot;),
+ISPICKVAL( Lost_Reason__c,&quot;Guarantee requested, but not accepted&quot;)
+),
+true, false)</errorConditionFormula>
+    <errorDisplayField>Requested_guarantee__c</errorDisplayField>
+    <errorMessage>Please select the Requested guarantee.</errorMessage>
+</ValidationRule>
