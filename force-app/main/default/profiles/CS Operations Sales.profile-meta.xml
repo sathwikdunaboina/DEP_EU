@@ -2,7 +2,7 @@
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata"
       xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
     <classAccesses>
-        <apexClass>quoteCalloutHandlerTest1</apexClass>
+        <apexClass>ChangeOppStatusFlowTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -10,12 +10,16 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>quoteCalloutHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>quoteCalloutHandlerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>quoteCalloutHandler</apexClass>
-        <enabled>true</enabled>
+        <apexClass>quoteCalloutHandlerTest1</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
     <fieldPermissions>
@@ -424,16 +428,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
-        <layout>Public_group_assignment__mdt-Public group assignment Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>User-User Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>UserAlt-User Profile Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>VFS_Connect_Quote__c-VFS Connect Quote Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Public_group_assignment__mdt-Public group assignment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>User-User Layout</layout>
     </layoutAssignments>
     <loginHours n1:nil="true" />
     <objectPermissions>
