@@ -1,8 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Notification</name>
+        <label>Send Notification</label>
+        <locationX>873</locationX>
+        <locationY>376</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>get_notification_record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>GetOwnerIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Factory Order Notification</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>Notificationmessage</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
     <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>Assign_Owner_Ids</name>
+        <label>Assign Owner Ids</label>
+        <locationX>1007</locationX>
+        <locationY>385</locationY>
+        <assignmentItems>
+            <assignToReference>GetOwnerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Send_Notification</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>IsCheck_user_notification_is_enabled</name>
+        <label>IsCheck user notification is enabled</label>
+        <locationX>956</locationX>
+        <locationY>567</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_If_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Assignment_premission</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.Owner.Enable_Bell_Notification__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Opportunity Notification</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Owner_Ids</targetReference>
+            </connector>
+            <label>Check If True</label>
+        </rules>
+    </decisions>
     <description>This flow is used to update the related Opportunity on a factory order when the factory order is updated to canceled.</description>
     <environments>Default</environments>
+    <formulas>
+        <name>Notificationmessage</name>
+        <dataType>String</dataType>
+        <expression>&apos;The factory order &apos;+{!$Record.Name}+ &apos; for customer &apos; +{!$Record.End_Customer_Name__c}+ &apos; was cancelled and the opportunity moved to closed lost.&apos;</expression>
+    </formulas>
     <interviewLabel>Update Opp Stage {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Opp Stage</label>
     <processMetadataValues>
@@ -14,7 +105,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -24,12 +115,85 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Assignment_premission</name>
+        <label>Get Assignment premission</label>
+        <locationX>745</locationX>
+        <locationY>552</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IsCheck_user_notification_is_enabled</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.OwnerId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_custom_notification.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSetAssignment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_custom_notification</name>
+        <label>Get custom notification</label>
+        <locationX>543</locationX>
+        <locationY>616</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Assignment_premission</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Custom_notification_permission</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSet</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_notification_record</name>
+        <label>get notification record</label>
+        <locationX>374</locationX>
+        <locationY>630</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_custom_notification</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Quote_created_notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <description>Update Related Financial Opportunity</description>
         <name>Update_Financial_Opportunity</name>
         <label>Update Financial Opportunity</label>
-        <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationX>584</locationX>
+        <locationY>371</locationY>
+        <connector>
+            <targetReference>get_notification_record</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -39,9 +203,15 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>Loss_Reason__c</field>
+            <field>Lost_Reason__c</field>
             <value>
-                <stringValue>No Truck Sale</stringValue>
+                <stringValue>Not available for financing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reason__c</field>
+            <value>
+                <stringValue>Order cancelled</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -53,8 +223,8 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Update_Financial_Opportunity</targetReference>
         </connector>
@@ -72,6 +242,13 @@
     </start>
     <status>Active</status>
     <variables>
+        <name>GetOwnerIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
         <name>OpptyToUpdate</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
@@ -86,5 +263,12 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>OwnerIds</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>
