@@ -39,11 +39,6 @@
                 <label>Exposure too high</label>
             </value>
             <value>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <label>Other</label>
-            </value>
-            <value>
                 <fullName>Order cancelled</fullName>
                 <default>false</default>
                 <label>Order cancelled</label>
@@ -83,12 +78,12 @@
                 <default>false</default>
                 <label>Part of larger deal with non-Volvo Group products</label>
             </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
         </valueSetDefinition>
-        <valueSettings>
-            <controllingFieldValue>Not available for financing</controllingFieldValue>
-            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
-            <valueName>Other</valueName>
-        </valueSettings>
         <valueSettings>
             <controllingFieldValue>Not available for financing</controllingFieldValue>
             <valueName>Order cancelled</valueName>
@@ -120,6 +115,12 @@
         <valueSettings>
             <controllingFieldValue>Not available for financing</controllingFieldValue>
             <valueName>Part of larger deal with non-Volvo Group products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
+            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
+            <valueName>Other</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
