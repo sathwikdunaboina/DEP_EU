@@ -3,6 +3,9 @@
     <fullName>Reason__c</fullName>
     <description>Reason field will be enabled when the lost deal selected the specific lost reason.</description>
     <externalId>false</externalId>
+    <inlineHelpText>1. Reason for causing the delay -&gt; When selecting &quot;Too poor speed of execution&quot;
+2. Reason for declining the credit request -&gt; When selecting &quot;Declined for credit reasons&quot;
+3. Reason why not available for financing by VFS -&gt; When selecting &quot;Not available for financing&quot;</inlineHelpText>
     <label>Reason</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
@@ -37,11 +40,6 @@
                 <fullName>Exposure too high</fullName>
                 <default>false</default>
                 <label>Exposure too high</label>
-            </value>
-            <value>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <label>Other</label>
             </value>
             <value>
                 <fullName>Order cancelled</fullName>
@@ -83,12 +81,12 @@
                 <default>false</default>
                 <label>Part of larger deal with non-Volvo Group products</label>
             </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
         </valueSetDefinition>
-        <valueSettings>
-            <controllingFieldValue>Not available for financing</controllingFieldValue>
-            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
-            <valueName>Other</valueName>
-        </valueSettings>
         <valueSettings>
             <controllingFieldValue>Not available for financing</controllingFieldValue>
             <valueName>Order cancelled</valueName>
@@ -120,6 +118,12 @@
         <valueSettings>
             <controllingFieldValue>Not available for financing</controllingFieldValue>
             <valueName>Part of larger deal with non-Volvo Group products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not available for financing</controllingFieldValue>
+            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
+            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
+            <valueName>Other</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
