@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <environments>Default</environments>
+    <formulas>
+        <name>CountryName</name>
+        <dataType>String</dataType>
+        <expression>CASE(UPPER(LEFT({!$Record.Owner:Group.DeveloperName}, 2)), 
+&apos;IT&apos; , &apos;Italy&apos;
+, &apos;UK&apos; , &apos;United Kingdom&apos;
+, &apos;IE&apos; , &apos;Ireland&apos;
+, &apos;FR&apos; , &apos;France&apos;
+, &apos;CH&apos; , &apos;Switzerland&apos;
+, &apos;ES&apos; , &apos;Spain&apos;
+, &apos;DE&apos; , &apos;Germany&apos;
+, &apos;AT&apos; , &apos;Austria&apos;
+, &apos;ZA&apos;, &apos;South Africa&apos;
+,&apos;NL&apos;, &apos;Netherlands&apos;
+,&apos;BE&apos;, &apos;Belgium&apos;
+, &apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>Case Country Assignment Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case Country Assignment Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Case_country_update_from_Queue</name>
+        <label>Case country update from Queue</label>
+        <locationX>679</locationX>
+        <locationY>509</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>00G</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>CountryName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Case_country_update_from_user</name>
+        <label>Case country update from user</label>
+        <locationX>668</locationX>
+        <locationY>333</locationY>
+        <connector>
+            <targetReference>Case_country_update_from_Queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>005</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>$Record.Owner:User.Country</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Case_country_update_from_user</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
