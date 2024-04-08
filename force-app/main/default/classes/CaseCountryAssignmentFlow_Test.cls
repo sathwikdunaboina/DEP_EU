@@ -7,7 +7,7 @@
 *******************************************   Changelog   **************************************************
 S.No.    Date                    Developer Name         Azure Item Number
 (1)      22 Feb 2024             Infosys                TASK 7894: Creation of flow for Case Country 
-                                                                   Assignment
+                                                                   Assignment.
 ***********************************************************************************************************/
 @isTest
 public class CaseCountryAssignmentFlow_Test {
