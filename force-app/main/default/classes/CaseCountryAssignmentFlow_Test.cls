@@ -27,7 +27,11 @@ public class CaseCountryAssignmentFlow_Test {
         objCaseZA.Type = 'End of term query';
         objCaseZA.Sub_Type__c = 'Extension request';
         objCaseZA.RecordTypeId = devRecordTypeId;
-
+		
+        Database.DMLOptions options = new Database.DMLOptions();
+        options.assignmentRuleHeader.useDefaultRule = false;
+        objCaseZA.setOptions(options);
+        
         Test.startTest();
         insert objCaseZA;
         Test.stopTest();
@@ -68,6 +72,11 @@ public class CaseCountryAssignmentFlow_Test {
             objCaseZA.Type = 'End of term query';
             objCaseZA.Sub_Type__c = 'Extension request';
             objCaseZA.RecordTypeId = devRecordTypeId;
+            
+            Database.DMLOptions options = new Database.DMLOptions();
+            options.assignmentRuleHeader.useDefaultRule = false;
+            objCaseZA.setOptions(options);
+            
             Test.startTest();
             insert objCaseZA;
             Test.stopTest();
