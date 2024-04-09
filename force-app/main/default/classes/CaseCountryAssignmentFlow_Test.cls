@@ -15,6 +15,24 @@ public class CaseCountryAssignmentFlow_Test {
     @isTest
     static void countryAssignmentByQueueOwner() {
 
+        UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
+        Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
+        User owner = new User(
+            ProfileId = profileObj.Id,
+            UserRoleId = portalRole.Id,
+            Username = 'admin@testclass.org' + System.currentTimeMillis(),
+            Alias = 'admin',
+            Email = 'admin@testclass.org',
+            EmailEncodingKey = 'UTF-8',
+            Lastname = 'admin',
+            LanguageLocaleKey = 'en_US',
+            LocaleSidKey = 'en_US',
+            TimeZoneSidKey = 'America/Chicago',
+            Country = 'South Africa'
+        );
+        insert owner;
+        
+        System.runAs(owner) {
         Id ZA_ActivationRequest_QueueId = [SELECT Id, Name, DeveloperName, Email, Type 
                                         FROM Group where Type='Queue' And Name ='ZA - Activation request'].Id;
         Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
@@ -38,6 +56,7 @@ public class CaseCountryAssignmentFlow_Test {
 
         Case cs = [Select Id, Country__c From Case where Id = :objCaseZA.Id];
         Assert.areEqual('South Africa', cs.Country__c);
+    }
     }
 
     @isTest
