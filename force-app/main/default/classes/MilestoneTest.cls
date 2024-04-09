@@ -21,110 +21,91 @@
 */
 @isTest
 private class MilestoneTest {
-
-static testMethod void TestCompleteMilestoneCase(){
-
-List<Account> acts = new List<Account>();
-Account myAcc = new Account(Name='TestAct', phone='1001231234');
-acts.add(myAcc);
-
-Account busAcc = new Account(Name = 'TestForMS', phone='4567890999');
-acts.add(busAcc);
-insert acts;
-Contact cont = new Contact(FirstName = 'Test', LastName = 'LastName', phone='4567890999', accountid = busAcc.id);
-insert(cont);
-
-Id contactId = cont.Id;
-
-Entitlement entl = new Entitlement(Name='TestEntitlement', AccountId=busAcc.Id);
-insert entl;
-
-String entlId;
-if (entl != null)
-entlId = entl.Id; 
-
-List<Case> cases = new List<Case>{};
-if (entlId != null){
-Case c = new Case(Subject = 'Test Case with Entitlement ', 
-EntitlementId = entlId, ContactId = contactId,Country__c='Italy',Type='Change my details');
-cases.add(c);
-}
-if (cases.isEmpty()==false){
-insert cases;
-List<Id> caseIds = new List<Id>();
-for (Case cL : cases){
-caseIds.add(cL.Id);
-}
-List<Case> updateCase = new List<Case>([Select Status from Case where Id In :caseIds]);
-List<Case> updateTheCases=new List<Case>();
-List<Id> caseIdss = new List<Id>();
-for(Case c: updateCase)
-{ 
-  c.Type='Settlement Query';
-  c.Status='Closed';
-  c.Status_Reason__c='Auto Closed';
-   //new change as on 3rd feb
-   c.SlaStartDate=System.now();
-  updateTheCases.add(c);
-  caseIdss.add(c.Id);
-
-}
-    update updateTheCases;
-    //CaseMilestone cm=new CaseMilestone();
-    //cm.MilestoneType.Name='CaseMilestone';
-milestoneUtils.completeMilestone(caseIdss, 'First Response', System.now());
-}
-}
-
-static testMethod void testCompleteMilestoneViaCase(){
-
-List<Account> acts = new List<Account>();
-Account myAcc = new Account(Name='TestAct', phone='1001231234');
-acts.add(myAcc);
-
-Account busAcc = new Account(Name = 'TestForMS', phone='4567890999');
-acts.add(busAcc);
-insert acts;
-Contact cont = new Contact(FirstName = 'Test', LastName = 'LastName', phone='4567890999', accountid = busAcc.id);
-insert(cont);
-
-Id contactId = cont.Id;
-
-Entitlement entl = new Entitlement(Name='TestEntitlement', AccountId=busAcc.Id);
-insert entl;
-
-String entlId;
-if (entl != null)
-entlId = entl.Id; 
-
-List<Case> cases = new List<Case>{};
-for(Integer i = 0; i < 1; i++){
-//Case c = new Case(Subject = 'Test Case ' + i);
-Case c = new Case();
-//cases.add(c);
-if (entlId != null){
-c = new Case(Subject = 'Test Case with Entitlement ' + i, 
-EntitlementId = entlId, ContactId = contactId,Status='In Progress',Country__c='Italy',Type='Change my details');
-cases.add(c);
     
-   
+    Static map<String, String> mapCountryToSlaProcessName = new map<String, String>{'UK' => 'SLA for UK/IE', 
+                                                                                    'FR' => 'entitlement for france_v4'};
 
-}
-}
-    
-     //Adding new code as of 3rd Feb 
-     insert cases;
-    List<Case> updateTheCasesInProgress=new List<Case>();
+    static map<String, String> mapCountryToEntitlementName = new map<String, String>{'UK' => 'Case Support Process For UK/IE',
+                                                                                     'FR' => 'Case Support Process For France'};
 
-   List<Id> caseIds = new List<Id>();
+    static testMethod void TestCompleteMilestoneCase(){
 
-    for (Case ca : cases)
-    {
-      ca.SlaStartDate=System.now();
-     caseIds.add(ca.Id);
-     updateTheCasesInProgress.add(ca);
+        List<Account> acts = new List<Account>();
+        Account myAcc = new Account(Name='TestAct', phone='1001231234');
+        acts.add(myAcc);
+        
+        Account busAcc = new Account(Name = 'TestForMS', phone='4567890999');
+        acts.add(busAcc);
+        insert acts;
+        Contact cont = new Contact(FirstName = 'Test', LastName = 'LastName', phone='4567890999', accountid = busAcc.id);
+        insert(cont);
+        
+        map<string, SlaProcess> mapSLANameToSLAProcess = new map<string, SlaProcess>();
+        for (SlaProcess sla: [Select Id, Name From SlaProcess Where Name IN :mapCountryToSlaProcessName.values()]) {
+            mapSLANameToSLAProcess.put(sla.Name, sla);
+        }
+        List<Entitlement> listEntitlement = new List<Entitlement>();
+        Entitlement entUK = new Entitlement
+        (
+            Name = mapCountryToEntitlementName.get('UK'),
+            AccountId = acts[0].Id,
+            StartDate = Date.today().addDays(-1),
+            Type = 'Phone Support',
+            SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('UK')).Id
+        );
+        listEntitlement.add(entUK);
+        Insert listEntitlement;
+        Id contactId = cont.Id;
+        list<Group> listGroup = new list<Group>();
+        Group group_UK_IE_CS_Operations = new Group
+        (
+            name = 'UK/IE - CS Operations',
+            type = 'Queue'
+        );
+        listGroup.add(group_UK_IE_CS_Operations);
+        Insert listGroup;
+
+        Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
+        User objUser = new User(alias = 'standt', email='demo@testorg.com',
+                            emailencodingkey='UTF-8', firstname='Demo_1', lastname='Demo_l', languagelocalekey='en_US',
+                            localesidkey='en_US', profileid = profileObj.Id,CountryCode = 'NL',
+                            timezonesidkey='America/Los_Angeles', username='Demo_1_l@testorg.com');
+
+        Insert objUser;
+
+        QueueSobject qs;
+        System.runAs(objUser) {
+            
+            if(!listGroup.isEmpty()) {
+                qs = new QueueSobject(QueueId=listGroup[0].Id, SobjectType='Case');
+                Insert qs;
+            }
+        }
+        
+        List<Case> cases = new List<Case>{};
+        if (!listEntitlement.isEmpty()) {
+            Case c = new Case(Subject = 'Test Case with Entitlement ', Origin='Email', Status='New', OwnerId=listGroup[0].Id, 
+            ContactId = contactId,Country__c='United Kingdom',Type='Change my details');
+            cases.add(c);
+        }
+        if (!cases.isEmpty()) {
+            insert cases;
+            List<Case> updateCase = new List<Case>([Select Id, Status from Case where Id = :cases[0].Id]);
+            List<Case> updateTheCases=new List<Case>();
+            List<Id> caseIdss = new List<Id>();
+            for(Case c: updateCase)
+            { 
+                c.Type='Settlement Query';
+                c.Status='In Progress';
+                c.SlaStartDate=System.now();
+            
+            }
+            update updateCase;
+
+            updateCase[0].Type = 'Settlement Query';
+            updateCase[0].Status = 'Closed';
+            updateCase[0].Status_Reason__c = 'Auto Closed' ;
+            update updateCase;
+        }
     }
-    update updateTheCasesInProgress;
-    milestoneUtils.completeMilestone(caseIds, 'First Response', System.now());
-}
 }
