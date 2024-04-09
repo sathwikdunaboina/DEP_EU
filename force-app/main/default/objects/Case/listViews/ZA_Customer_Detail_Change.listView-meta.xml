@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ZA_Customer_Detail_Change</fullName>
-    <booleanFilter>1 AND 2 AND ((3 AND 4) OR (5 AND 6)  OR (7 AND 8) OR (9 AND 10))</booleanFilter>
+    <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7) OR (8 AND 9)) AND 10</booleanFilter>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>Indicator__c</columns>
     <columns>CASES.PRIORITY</columns>
@@ -15,11 +15,6 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>Country__c</field>
-        <operation>equals</operation>
-        <value>South Africa</value>
-    </filters>
     <filters>
         <field>CASES.RECORDTYPE</field>
         <operation>equals</operation>
@@ -64,6 +59,11 @@
         <field>Sub_Type__c</field>
         <operation>equals</operation>
         <value>Change address / contact details</value>
+    </filters>
+    <filters>
+        <field>CASES.CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
     </filters>
     <label>ZA - Customer Detail Change</label>
     <sharedTo>

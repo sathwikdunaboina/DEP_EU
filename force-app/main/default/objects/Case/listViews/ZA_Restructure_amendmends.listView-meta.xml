@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ZA_Restructure_amendmends</fullName>
-    <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5))</booleanFilter>
+    <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5)) AND 6</booleanFilter>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>Indicator__c</columns>
     <columns>CASES.PRIORITY</columns>
@@ -39,6 +39,11 @@
         <field>Sub_Type__c</field>
         <operation>equals</operation>
         <value>Amend Contract,Amendment Payment Date Change,Amendment Restructure</value>
+    </filters>
+    <filters>
+        <field>CASES.CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
     </filters>
     <label>ZA - Restructure/amendmends</label>
     <sharedTo>
