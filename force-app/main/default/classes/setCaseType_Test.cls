@@ -18,30 +18,6 @@ public class setCaseType_Test {
     
     static testMethod void queueOwner1() {
 
-        map<string, SlaProcess> mapSLANameToSLAProcess = new map<string, SlaProcess>();
-        for (SlaProcess sla: [Select Id, Name From SlaProcess 
-                                                           Where Name IN :mapCountryToSlaProcessName.values()]) {
-            mapSLANameToSLAProcess.put(sla.Name, sla);
-        }
-        // creating account
-        Account acc = new Account(Name='Demo Acc');
-        Insert acc;
-
-        // creating entitlement records
-        List<Entitlement> listEntitlement = new List<Entitlement>();
-        Entitlement entUK = new Entitlement
-        (
-            Name = mapCountryToEntitlementName.get('UK'),
-            AccountId = acc.Id,
-            StartDate = Date.today().addDays(-1),
-            Type = 'Phone Support',
-            SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('UK')).Id
-        );
-        listEntitlement.add(entUK);
-
-        if(!listEntitlement.isEmpty())
-            Insert listEntitlement;
-        
         UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
         Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
         User owner = new User(
@@ -61,7 +37,31 @@ public class setCaseType_Test {
         
         System.runAs(owner) {
             
-            Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
+            map<string, SlaProcess> mapSLANameToSLAProcess = new map<string, SlaProcess>();
+            for (SlaProcess sla: [Select Id, Name From SlaProcess 
+                                                               Where Name IN :mapCountryToSlaProcessName.values()]) {
+                mapSLANameToSLAProcess.put(sla.Name, sla);
+            }
+            // creating account
+            Account acc = new Account(Name='Demo Acc');
+            Insert acc;
+    
+            // creating entitlement records
+            List<Entitlement> listEntitlement = new List<Entitlement>();
+            Entitlement entUK = new Entitlement
+            (
+                Name = mapCountryToEntitlementName.get('UK'),
+                AccountId = acc.Id,
+                StartDate = Date.today().addDays(-1),
+                Type = 'Phone Support',
+                SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('UK')).Id
+            );
+            listEntitlement.add(entUK);
+    
+            if(!listEntitlement.isEmpty())
+                Insert listEntitlement;
+            
+            //Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
             Id UK_IE_Contract_Extensions = [SELECT Id, Name, DeveloperName, Email, Type 
                                             FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext VT'].Id;
             System.debug('>>> UK_IE_Contract_Extensions = ' + UK_IE_Contract_Extensions);
@@ -73,7 +73,7 @@ public class setCaseType_Test {
             cs_UK_IE_Contract_Extensions.Type = 'End of term query';
             cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Extension request';
             cs_UK_IE_Contract_Extensions.Country__c = 'United Kingdom';
-            cs_UK_IE_Contract_Extensions.RecordTypeId = UK_IE_Contract_Extensions;
+            //cs_UK_IE_Contract_Extensions.RecordTypeId = UK_IE_Contract_Extensions;
             insert cs_UK_IE_Contract_Extensions;
             System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Type);
             System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Sub_Type__c);
