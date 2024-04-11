@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response email template for Belgium service connect</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BE- Service Desk</name>
+    <style>none</style>
+    <subject>Ticketnumber: {!Case.Subject}</subject>
+    <textOnly>Geachte klant,
+
+Hartelijk dank voor uw e-mail.
+
+We nemen uw verzoek zo spoedig mogelijk in behandeling.
+
+Met vriendelijke groeten,
+
+VFS FINANCIAL SERVICES BELUX
+
+--------------------------------------------------------
+
+Cher client,
+
+Nous avons bien reçu votre message et vous en remercions.
+
+Nous traitons votre demande dans les plus brefs délais.
+
+Cordialement,
+
+VFS FINANCIAL SERVICES BELUX
+
+-------------------------------------------------------
+
+Dear customer,
+
+Thank you for your e-mail.
+
+We’ll action your request as soon as possible.
+
+Best regards,
+
+VFS FINANCIAL SERVICES BELUX</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
