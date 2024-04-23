@@ -20,7 +20,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>New  case Created </stringValue>
+                <stringValue>Thanks for contacting support!</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -42,7 +42,24 @@
     <formulas>
         <name>EmailMessageBody</name>
         <dataType>String</dataType>
-        <expression>&apos;HI User , New case with case number&apos; + {!CaseNumberOfNewlyCreatedCase} + &apos; Is Created &apos;</expression>
+        <expression>&apos;Hello Customer,&apos; +BR()+
+&apos;Thank you for contacting our Customer Service Team at VFS Financial Services.&apos;+BR()+
+&apos;Your case number is:  CaseNumberOfNewlyCreatedCase .&apos;+BR()+
+&apos;We endeavour to respond to your query as quickly as possible, if the query is urgent please do not hesitate to contact us by&apos;+BR()+
+&apos;telephone on +44 (0)1926 401203.&apos;+BR()+
+&apos;Web Address: www.vfsco.com&apos;+BR()+
+&apos;Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)&apos;</expression>
+    </formulas>
+    <formulas>
+        <description>This is the value of incoming field from a email message</description>
+        <name>Incoming</name>
+        <dataType>Boolean</dataType>
+        <expression>IF({!$Record__Prior.Source:EmailMessage.Incoming}==null, true, {!$Record__Prior.Source:EmailMessage.Incoming})</expression>
+    </formulas>
+    <formulas>
+        <name>NewlyCreatedCaseSubject</name>
+        <dataType>String</dataType>
+        <expression>{!$Record__Prior.Subject}</expression>
     </formulas>
     <interviewLabel>Create A New Case From 14 Days Old Closed Case {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create A New Case From 14 Days Old Closed Case</label>
@@ -113,7 +130,7 @@
         <inputAssignments>
             <field>Incoming</field>
             <value>
-                <elementReference>$Record__Prior.Source:EmailMessage.Incoming</elementReference>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -228,7 +245,7 @@
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <stringValue>MY Test Subject</stringValue>
+                <elementReference>NewlyCreatedCaseSubject</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -281,12 +298,13 @@
         <connector>
             <targetReference>Create_A_New_Case</targetReference>
         </connector>
-        <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=10)</filterFormula>
+        <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=14) &amp;&amp;
+(ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;))</filterFormula>
         <object>Case</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>CaseIDVariable</name>
         <dataType>String</dataType>

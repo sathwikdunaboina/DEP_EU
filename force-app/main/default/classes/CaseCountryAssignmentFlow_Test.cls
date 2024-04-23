@@ -14,7 +14,7 @@ public class CaseCountryAssignmentFlow_Test {
     
     @isTest
     static void countryAssignmentByQueueOwner() {
-
+		
         UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
         Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
         User owner = new User(
@@ -33,30 +33,30 @@ public class CaseCountryAssignmentFlow_Test {
         insert owner;
         
         System.runAs(owner) {
-        Id ZA_ActivationRequest_QueueId = [SELECT Id, Name, DeveloperName, Email, Type 
-                                        FROM Group where Type='Queue' And Name ='ZA - Activation request'].Id;
-        Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
-        System.debug('>>> ZA_ActivationRequest_QueueId = ' + ZA_ActivationRequest_QueueId);
-        Case objCaseZA = new Case();
-        objCaseZA.Status = 'New';
-        objCaseZA.Origin = 'Email';
-        objCaseZA.Subject = 'test@1';
-        objCaseZA.OwnerId = ZA_ActivationRequest_QueueId;
-        objCaseZA.Type = 'End of term query';
-        objCaseZA.Sub_Type__c = 'Extension request';
-        objCaseZA.RecordTypeId = devRecordTypeId;
-
-        Database.DMLOptions options = new Database.DMLOptions();
-        options.assignmentRuleHeader.useDefaultRule = false;
-        objCaseZA.setOptions(options);
-        
-        Test.startTest();
-        insert objCaseZA;
-        Test.stopTest();
-
-        Case cs = [Select Id, Country__c From Case where Id = :objCaseZA.Id];
-        Assert.areEqual('South Africa', cs.Country__c);
-    }
+            Id ZA_ActivationRequest_QueueId = [SELECT Id, Name, DeveloperName, Email, Type 
+                                            FROM Group where Type='Queue' And Name ='ZA - Activation request'].Id;
+            Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
+            System.debug('>>> ZA_ActivationRequest_QueueId = ' + ZA_ActivationRequest_QueueId);
+            Case objCaseZA = new Case();
+            objCaseZA.Status = 'New';
+            objCaseZA.Origin = 'Email';
+            objCaseZA.Subject = 'test@1';
+            objCaseZA.OwnerId = ZA_ActivationRequest_QueueId;
+            objCaseZA.Type = 'End of term query';
+            objCaseZA.Sub_Type__c = 'Extension request';
+            objCaseZA.RecordTypeId = devRecordTypeId;
+    
+            Database.DMLOptions options = new Database.DMLOptions();
+            options.assignmentRuleHeader.useDefaultRule = false;
+            objCaseZA.setOptions(options);
+            
+            Test.startTest();
+            insert objCaseZA;
+            Test.stopTest();
+    
+            Case cs = [Select Id, Country__c From Case where Id = :objCaseZA.Id];
+            Assert.areEqual('South Africa', cs.Country__c);
+        }
     }
 
     @isTest
