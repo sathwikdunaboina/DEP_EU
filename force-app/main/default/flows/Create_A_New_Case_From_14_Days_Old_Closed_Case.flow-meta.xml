@@ -18,6 +18,18 @@
             </value>
         </inputParameters>
         <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>paul.kennedy@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
             <name>emailSubject</name>
             <value>
                 <stringValue>Thanks for contacting support!</stringValue>
@@ -44,11 +56,11 @@
         <dataType>String</dataType>
         <expression>&apos;Hello Customer,&apos; +BR()+
 &apos;Thank you for contacting our Customer Service Team at VFS Financial Services.&apos;+BR()+
-&apos;Your case number is:  CaseNumberOfNewlyCreatedCase .&apos;+BR()+
+&apos;Your case number is: &apos;+{!CaseNumberOfNewlyCreatedCase}+&apos;:&apos;+{!NewlyCreatedCaseSubject}+ BR()+
 &apos;We endeavour to respond to your query as quickly as possible, if the query is urgent please do not hesitate to contact us by&apos;+BR()+
 &apos;telephone on +44 (0)1926 401203.&apos;+BR()+
 &apos;Web Address: www.vfsco.com&apos;+BR()+
-&apos;Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)&apos;</expression>
+&apos;Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)&apos; +BR()</expression>
     </formulas>
     <formulas>
         <description>This is the value of incoming field from a email message</description>
@@ -298,7 +310,7 @@
         <connector>
             <targetReference>Create_A_New_Case</targetReference>
         </connector>
-        <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=14) &amp;&amp;
+        <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=0) &amp;&amp;
 (ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;))</filterFormula>
         <object>Case</object>
         <recordTriggerType>Update</recordTriggerType>
