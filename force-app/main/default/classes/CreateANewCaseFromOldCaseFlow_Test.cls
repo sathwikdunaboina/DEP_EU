@@ -9,11 +9,11 @@ S.No.    Date                    Developer Name         Azure Item Number
 (1)      9th April 2024       Infosys                TASK 628022: Stop old cases reopening, 
                                                                   force a new case to be opened
 ***********************************************************************************************************/
-@isTest
+ @isTest(SeeAllData=true)
 public class CreateANewCaseFromOldCaseFlow_Test {
     
     
-     @TestSetup
+     
     static void setup() {
                UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
         Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
@@ -36,6 +36,8 @@ public class CreateANewCaseFromOldCaseFlow_Test {
         {
         
     Case caseObj = new Case(Status='Closed', Subject='TestFor14DaysOld',Country__c='United Kingdom',SuppliedEmail='hariram.vyas@consultant.volvo.com',CreatedDate=system.now()-25,ClosedDate=system.now()-14,Type='Spam/Junk',Sub_Type__c='Spam/Junk');
+                //Case caseObj = new Case(Status='New', Subject='TestFor14DaysOld',Country__c='United Kingdom',SuppliedEmail='hariram.vyas@consultant.volvo.com');
+
   EmailMessage newEmailMsg= new EmailMessage();
            newEmailMsg.Subject= 'TestVFS';
            newEmailMsg.FromAddress= 'hariram.vyas@consultant.volvo.com';
