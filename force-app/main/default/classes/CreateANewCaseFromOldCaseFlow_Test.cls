@@ -37,7 +37,7 @@ public class CreateANewCaseFromOldCaseFlow_Test {
 
         System.runAs(owner) {
 
-            Case caseObj = new Case(Status = 'Closed', Subject = 'TestFor14DaysOld', SuppliedEmail = 'hariram.vyas@consultant.volvo.com', Country__c = 'United Kingdom', CreatedDate = system.now() - 65, ClosedDate = system.now() - 30, Type = 'Spam/Junk', Sub_Type__c = 'Spam/Junk');
+            Case caseObj = new Case(Status = 'Closed', Subject = 'TestFor14DaysOld', SuppliedEmail = 'hariram.vyas@consultant.volvo.com', Country__c = 'United Kingdom', CreatedDate = system.now() - 65, ClosedDate = system.now() - 30, Type ='Spam/Junk', Sub_Type__c ='Spam/Junk',RecordTypeId='0122p000000OXVRAA4');
 
 
             EmailMessage newEmailMsg = new EmailMessage();
@@ -58,7 +58,7 @@ public class CreateANewCaseFromOldCaseFlow_Test {
             newEmailMsg.MessageIdentifier = 'Test';
             newEmailMsg.ReplyToEmailMessageId = caseObj.Id;
             newEmailMsg.Incoming = true;
-
+            System.debug('This is the caseobj'+caseObj);
             insert caseObj;
             insert newEmailMsg;
 
