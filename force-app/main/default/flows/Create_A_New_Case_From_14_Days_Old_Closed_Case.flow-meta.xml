@@ -310,7 +310,7 @@
         <connector>
             <targetReference>Create_A_New_Case</targetReference>
         </connector>
-        <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=14) &amp;&amp;
+        <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=30) &amp;&amp;
 (ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;))</filterFormula>
         <object>Case</object>
         <recordTriggerType>Update</recordTriggerType>
