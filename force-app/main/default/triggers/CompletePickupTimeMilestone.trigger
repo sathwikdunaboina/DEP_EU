@@ -15,7 +15,11 @@ trigger CompletePickupTimeMilestone on Case (before update, after update) {
         set<Id> setCaseIdForCaseMilestoneToComplete = new Set<Id>();
         for(Case cs: trigger.New) {
 
-            if(cs.EntitlementId != Null && cs.Status == 'Closed' && trigger.oldMap.get(cs.Id).Status != 'Closed') {
+            if(cs.EntitlementId != Null && cs.Status == 'Closed' && trigger.oldMap.get(cs.Id).Status != 'Closed' 
+              
+              //User story 628022 Changes for the test class Added on Date 24th April 2024 
+               && cs.SlaExitDate==Null
+              ) {
 
                     setCaseIdForCaseMilestoneToComplete.add(cs.Id);
             }
