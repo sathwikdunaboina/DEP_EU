@@ -18,88 +18,111 @@ public class setCaseType_Test {
     
     static testMethod void queueOwner1() {
 
-        map<string, SlaProcess> mapSLANameToSLAProcess = new map<string, SlaProcess>();
-        for (SlaProcess sla: [Select Id, Name From SlaProcess 
-                                                           Where Name IN :mapCountryToSlaProcessName.values()]) {
-            mapSLANameToSLAProcess.put(sla.Name, sla);
-        }
-        // creating account
-        Account acc = new Account(Name='Demo Acc');
-        Insert acc;
-
-        // creating entitlement records
-        List<Entitlement> listEntitlement = new List<Entitlement>();
-        Entitlement entUK = new Entitlement
-        (
-            Name = mapCountryToEntitlementName.get('UK'),
-            AccountId = acc.Id,
-            StartDate = Date.today().addDays(-1),
-            Type = 'Phone Support',
-            SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('UK')).Id
+        UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' Limit 1];
+        Profile profileObj = [Select Id from Profile where name = 'System Administrator'];
+        User owner = new User(
+            ProfileId = profileObj.Id,
+            UserRoleId = portalRole.Id,
+            Username = 'admin@testclass.org' + System.currentTimeMillis(),
+            Alias = 'admin',
+            Email = 'admin@testclass.org',
+            EmailEncodingKey = 'UTF-8',
+            Lastname = 'admin',
+            LanguageLocaleKey = 'en_US',
+            LocaleSidKey = 'en_US',
+            TimeZoneSidKey = 'America/Chicago',
+            Country = 'South Africa'
         );
-        listEntitlement.add(entUK);
-
-        if(!listEntitlement.isEmpty())
-            Insert listEntitlement;
-
-        Id UK_IE_Contract_Extensions = [SELECT Id, Name, DeveloperName, Email, Type 
-                                        FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext VT'].Id;
-        System.debug('>>> UK_IE_Contract_Extensions = ' + UK_IE_Contract_Extensions);
-        Case cs_UK_IE_Contract_Extensions = new Case();
-        cs_UK_IE_Contract_Extensions.Status = 'New';
-        cs_UK_IE_Contract_Extensions.Origin = 'Email';
-        cs_UK_IE_Contract_Extensions.Subject = 'test@1';
-        cs_UK_IE_Contract_Extensions.OwnerId = UK_IE_Contract_Extensions;
-        cs_UK_IE_Contract_Extensions.Type = 'End of term query';
-        cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Extension request';
-        cs_UK_IE_Contract_Extensions.Country__c = 'United Kingdom';
-        insert cs_UK_IE_Contract_Extensions;
-        System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Type);
-        System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Sub_Type__c);
-        System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Country__c);
+        insert owner;
         
-        Id UK_IE_BRS = [SELECT Id, Name, DeveloperName, Email, Type FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext BRS'].Id;
-        Case cs_UK_IE_BRS = new Case();
-        cs_UK_IE_BRS.Status = 'New';
-        cs_UK_IE_BRS.Origin = 'Email';
-        cs_UK_IE_BRS.Subject = 'test@1';
-        cs_UK_IE_BRS.OwnerId = UK_IE_BRS;
-        cs_UK_IE_BRS.Type = 'End of term query';
-        cs_UK_IE_BRS.Sub_Type__c = 'Extension request';
-        cs_UK_IE_BRS.Country__c = 'United Kingdom';
-        insert cs_UK_IE_BRS;
-        System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Type);
-        System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Sub_Type__c);
-        System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Country__c);
-        assert.areEqual(UK_IE_BRS, cs_UK_IE_BRS.OwnerId);
-        
-        Id UK_IE_Contract_Extensions_VCE = [SELECT Id, Name, DeveloperName, Email, Type FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext VCE'].Id;
-        Case cs_UK_IE_Contract_Extensions_VCE = new Case();
-        cs_UK_IE_Contract_Extensions_VCE.Status = 'New';
-        cs_UK_IE_Contract_Extensions_VCE.Origin = 'Email';
-        cs_UK_IE_Contract_Extensions_VCE.Subject = 'test@1';
-        cs_UK_IE_Contract_Extensions_VCE.OwnerId = UK_IE_Contract_Extensions_VCE;
-        cs_UK_IE_Contract_Extensions_VCE.Type = 'End of term query';
-        cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c = 'Extension request'; 
-        cs_UK_IE_Contract_Extensions_VCE.Country__c = 'United Kingdom';
-        insert cs_UK_IE_Contract_Extensions_VCE;
-        System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Type);
-        System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c);
-        System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Country__c);
-        
-        Id UK_IE_Contract_Extensions_RT = [SELECT Id, Name, DeveloperName, Email, Type FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext RT'].Id;
-        Case cs_UK_IE_Contract_Extensions_RT = new Case();
-        cs_UK_IE_Contract_Extensions_RT.Status = 'New';
-        cs_UK_IE_Contract_Extensions_RT.Origin = 'Email';
-        cs_UK_IE_Contract_Extensions_RT.Subject = 'test@1';
-        cs_UK_IE_Contract_Extensions_RT.OwnerId = UK_IE_Contract_Extensions_RT;
-        cs_UK_IE_Contract_Extensions_RT.Type = 'End of term query';
-        cs_UK_IE_Contract_Extensions_RT.Sub_Type__c = 'Extension request';
-        cs_UK_IE_Contract_Extensions_RT.Country__c = 'United Kingdom';
-        insert cs_UK_IE_Contract_Extensions_RT;
-        System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Type);
-        System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Sub_Type__c);
-        System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Country__c);
+        System.runAs(owner) {
+            
+            map<string, SlaProcess> mapSLANameToSLAProcess = new map<string, SlaProcess>();
+            for (SlaProcess sla: [Select Id, Name From SlaProcess 
+                                                               Where Name IN :mapCountryToSlaProcessName.values()]) {
+                mapSLANameToSLAProcess.put(sla.Name, sla);
+            }
+            // creating account
+            Account acc = new Account(Name='Demo Acc');
+            Insert acc;
+    
+            // creating entitlement records
+            List<Entitlement> listEntitlement = new List<Entitlement>();
+            Entitlement entUK = new Entitlement
+            (
+                Name = mapCountryToEntitlementName.get('UK'),
+                AccountId = acc.Id,
+                StartDate = Date.today().addDays(-1),
+                Type = 'Phone Support',
+                SlaProcessId = mapSLANameToSLAProcess.get(mapCountryToSlaProcessName.get('UK')).Id
+            );
+            listEntitlement.add(entUK);
+    
+            if(!listEntitlement.isEmpty())
+                Insert listEntitlement;
+            
+            //Id devRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
+            Id UK_IE_Contract_Extensions = [SELECT Id, Name, DeveloperName, Email, Type 
+                                            FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext VT'].Id;
+            System.debug('>>> UK_IE_Contract_Extensions = ' + UK_IE_Contract_Extensions);
+            Case cs_UK_IE_Contract_Extensions = new Case();
+            cs_UK_IE_Contract_Extensions.Status = 'New';
+            cs_UK_IE_Contract_Extensions.Origin = 'Email';
+            cs_UK_IE_Contract_Extensions.Subject = 'test@1';
+            cs_UK_IE_Contract_Extensions.OwnerId = UK_IE_Contract_Extensions;
+            cs_UK_IE_Contract_Extensions.Type = 'End of term query';
+            cs_UK_IE_Contract_Extensions.Sub_Type__c = 'Extension request';
+            cs_UK_IE_Contract_Extensions.Country__c = 'United Kingdom';
+            //cs_UK_IE_Contract_Extensions.RecordTypeId = UK_IE_Contract_Extensions;
+            insert cs_UK_IE_Contract_Extensions;
+            System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Type);
+            System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Sub_Type__c);
+            System.debug('cs_UK_IE_Contract_Extensions'+cs_UK_IE_Contract_Extensions.Country__c);
+            
+            Id UK_IE_BRS = [SELECT Id, Name, DeveloperName, Email, Type FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext BRS'].Id;
+            Case cs_UK_IE_BRS = new Case();
+            cs_UK_IE_BRS.Status = 'New';
+            cs_UK_IE_BRS.Origin = 'Email';
+            cs_UK_IE_BRS.Subject = 'test@1';
+            cs_UK_IE_BRS.OwnerId = UK_IE_BRS;
+            cs_UK_IE_BRS.Type = 'End of term query';
+            cs_UK_IE_BRS.Sub_Type__c = 'Extension request';
+            cs_UK_IE_BRS.Country__c = 'United Kingdom';
+            cs_UK_IE_Contract_Extensions.RecordTypeId = UK_IE_Contract_Extensions;
+            insert cs_UK_IE_BRS;
+            System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Type);
+            System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Sub_Type__c);
+            System.debug('cs_UK_IE_BRS'+cs_UK_IE_BRS.Country__c);
+            assert.areEqual(UK_IE_BRS, cs_UK_IE_BRS.OwnerId);
+            
+            Id UK_IE_Contract_Extensions_VCE = [SELECT Id, Name, DeveloperName, Email, Type FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext VCE'].Id;
+            Case cs_UK_IE_Contract_Extensions_VCE = new Case();
+            cs_UK_IE_Contract_Extensions_VCE.Status = 'New';
+            cs_UK_IE_Contract_Extensions_VCE.Origin = 'Email';
+            cs_UK_IE_Contract_Extensions_VCE.Subject = 'test@1';
+            cs_UK_IE_Contract_Extensions_VCE.OwnerId = UK_IE_Contract_Extensions_VCE;
+            cs_UK_IE_Contract_Extensions_VCE.Type = 'End of term query';
+            cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c = 'Extension request'; 
+            cs_UK_IE_Contract_Extensions_VCE.Country__c = 'United Kingdom';
+            insert cs_UK_IE_Contract_Extensions_VCE;
+            System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Type);
+            System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Sub_Type__c);
+            System.debug('cs_UK_IE_Contract_Extensions_VCE'+cs_UK_IE_Contract_Extensions_VCE.Country__c);
+            
+            Id UK_IE_Contract_Extensions_RT = [SELECT Id, Name, DeveloperName, Email, Type FROM Group where Type='Queue' And Name ='UK/IE-Contract Ext RT'].Id;
+            Case cs_UK_IE_Contract_Extensions_RT = new Case();
+            cs_UK_IE_Contract_Extensions_RT.Status = 'New';
+            cs_UK_IE_Contract_Extensions_RT.Origin = 'Email';
+            cs_UK_IE_Contract_Extensions_RT.Subject = 'test@1';
+            cs_UK_IE_Contract_Extensions_RT.OwnerId = UK_IE_Contract_Extensions_RT;
+            cs_UK_IE_Contract_Extensions_RT.Type = 'End of term query';
+            cs_UK_IE_Contract_Extensions_RT.Sub_Type__c = 'Extension request';
+            cs_UK_IE_Contract_Extensions_RT.Country__c = 'United Kingdom';
+            insert cs_UK_IE_Contract_Extensions_RT;
+            System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Type);
+            System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Sub_Type__c);
+            System.debug('cs_UK_IE_Contract_Extensions_RT'+cs_UK_IE_Contract_Extensions_RT.Country__c);
+        }
     }
     
 }
