@@ -1,10 +1,11 @@
 <apex:page standardController="Opportunity" recordSetVar="opportunities"  showHeader="false"
  lightningStylesheets="true">
-<script>
+<script type="text/javascript">
+
         function showToast() {
             sforce.one.showToast({
                 "title": "Success!",
-                "message": " record updated successfully.",
+                "message": "Record updated successfully.",
                 "type": "success"
             });
         }
@@ -17,18 +18,19 @@
                           
   <apex:pageBlock >
       <apex:pageBlockSection >
-      <apex:inputField value="{!Opportunity.OwnerId}" />
+      <apex:inputField value="{!Opportunity.OwnerId}" required="false"/>
+      <apex:inputField value="{!Opportunity.StageName}" required="false"/>
       <apex:inputField value="{!Opportunity.Customer_Account__c}" />
-       <apex:inputField value="{!Opportunity.StageName}" />
+        <apex:inputField value="{!Opportunity.Lost_Reason__c}" />
         <apex:inputField value="{!Opportunity.Type}" />
-         <apex:inputField value="{!Opportunity.Probability}" />
+         <apex:inputField value="{!Opportunity.Probability}" required="false"/>
           <apex:inputField value="{!Opportunity.Amount}" />
-           <apex:inputField value="{!Opportunity.Lost_Reason__c}" />
+          
       </apex:pageBlockSection>
     <apex:pageBlockTable value="{!selected}" var="opp">
         <apex:column value="{!opp.Name}"/>    
       </apex:pageBlockTable>
-      <apex:commandButton action="{!Save}" value="Save" onclick="showToast();" />
+      <apex:commandButton action="{!save}" value="Save" onClick="showToast();" />
       
       <apex:commandButton value="Cancel" action="{!cancel}" />
     
