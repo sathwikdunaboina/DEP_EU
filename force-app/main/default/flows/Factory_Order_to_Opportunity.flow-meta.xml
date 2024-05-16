@@ -8,12 +8,19 @@
             <stringValue>Dealer_Account</stringValue>
         </value>
     </constants>
+    <constants>
+        <name>FinanceOpportunityRecordType</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Finance</stringValue>
+        </value>
+    </constants>
     <decisions>
         <description>Check if we have retrieved and account record before creating the Opportunity</description>
         <name>Account_Record_Retrieved</name>
         <label>Account Record Retrieved</label>
-        <locationX>611</locationX>
-        <locationY>431</locationY>
+        <locationX>660</locationX>
+        <locationY>508</locationY>
         <defaultConnectorLabel>Account Not Retrieved</defaultConnectorLabel>
         <rules>
             <name>Account_Successfully_Retrieved</name>
@@ -26,7 +33,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Create_an_Opportunity</targetReference>
+                <targetReference>Get_Finance_Record_Type</targetReference>
             </connector>
             <label>Account Successfully Retrieved</label>
         </rules>
@@ -35,8 +42,8 @@
         <description>If this field is check on Account, we need to relate the dealer sales person to a contact in order to get the owner. This owner will be used as the owner of the opportunity created in the previous step.</description>
         <name>Check_sales_person</name>
         <label>Check sales person</label>
-        <locationX>380</locationX>
-        <locationY>755</locationY>
+        <locationX>509</locationX>
+        <locationY>975</locationY>
         <defaultConnectorLabel>Do not relate sales person</defaultConnectorLabel>
         <rules>
             <name>True</name>
@@ -65,8 +72,8 @@
         <description>Check if we have a contact with a owner specified</description>
         <name>Contacts_exists</name>
         <label>Has Contact</label>
-        <locationX>182</locationX>
-        <locationY>971</locationY>
+        <locationX>240</locationX>
+        <locationY>1127</locationY>
         <defaultConnectorLabel>No contact exists</defaultConnectorLabel>
         <rules>
             <name>Contact_exists</name>
@@ -107,7 +114,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -121,8 +128,8 @@
         <description>Create an Opportunity</description>
         <name>Create_an_Opportunity</name>
         <label>Create an Opportunity</label>
-        <locationX>380</locationX>
-        <locationY>539</locationY>
+        <locationX>439</locationX>
+        <locationY>695</locationY>
         <connector>
             <targetReference>Update_Original_Factory_Order</targetReference>
         </connector>
@@ -141,7 +148,7 @@
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
-                <elementReference>$Record.CurrencyIsoCode</elementReference>
+                <elementReference>Get_Metadata_for_currency.CurrencyIsoCode__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -169,6 +176,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>FinanceOpportunityRecordTypeId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>StageName</field>
             <value>
                 <stringValue>Needs Analysis</stringValue>
@@ -181,8 +194,8 @@
         <description>Get the contact by the Sales person name on Factory order</description>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>182</locationX>
-        <locationY>863</locationY>
+        <locationX>240</locationX>
+        <locationY>1019</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Contacts_exists</targetReference>
@@ -203,8 +216,8 @@
         <description>This uses the Dealer Id to get the Dealer Account associated with this Factory Order.</description>
         <name>Get_Dealer_Account</name>
         <label>Get Dealer Account</label>
-        <locationX>611</locationX>
-        <locationY>323</locationY>
+        <locationX>669</locationX>
+        <locationY>371</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Account_Record_Retrieved</targetReference>
@@ -221,12 +234,58 @@
         <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <description>Get the opportunity finance record type to set on the opportunity</description>
+        <name>Get_Finance_Record_Type</name>
+        <label>Get Finance Record Type</label>
+        <locationX>394</locationX>
+        <locationY>501</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Metadata_for_currency</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>FinanceOpportunityRecordType</elementReference>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>FinanceOpportunityRecordTypeId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Get custom metadata records based on country code</description>
+        <name>Get_Metadata_for_currency</name>
+        <label>Get Metadata for currency</label>
+        <locationX>253</locationX>
+        <locationY>616</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_an_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Country_code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Country__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Map_Currency_to_Market__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <description>Update the opportunity owner with the owner of the contact</description>
         <name>Update_opportunity_owner</name>
         <label>Update opportunity owner</label>
-        <locationX>50</locationX>
-        <locationY>1079</locationY>
+        <locationX>108</locationX>
+        <locationY>1235</locationY>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -239,8 +298,8 @@
         <description>Update Original Factory Order</description>
         <name>Update_Original_Factory_Order</name>
         <label>Update Original Factory Order</label>
-        <locationX>380</locationX>
-        <locationY>647</locationY>
+        <locationX>610</locationX>
+        <locationY>821</locationY>
         <connector>
             <targetReference>Check_sales_person</targetReference>
         </connector>
@@ -259,8 +318,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>485</locationX>
-        <locationY>0</locationY>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Get_Dealer_Account</targetReference>
         </connector>
@@ -287,6 +346,16 @@
     <variables>
         <description>A place holder for the Dealer Account RecordTypeId</description>
         <name>DealerAccountRecordTypeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>FinanceOpportunityRecordTypeId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
