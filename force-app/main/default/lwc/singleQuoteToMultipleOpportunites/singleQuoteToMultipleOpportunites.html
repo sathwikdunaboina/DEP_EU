@@ -2,7 +2,7 @@
 <template if:true={recordId}>
     <div if:true={ErrorMessageShow}>
         <lightning-quick-action-panel header="Create VFS Connect quotation or Link to existing VFS Connect quotations">
-            <h1 class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder; background-color:red"><lightning-formatted-text value="You can't create quotes. Please first add amount and customer account."></lightning-formatted-text></h1>
+            <h1 class="slds-align_absolute-center slds-text-heading_medium" style="font-weight:bolder; background-color:red"><lightning-formatted-text value="You can't create quotes. Please first add customer account and net sales price."></lightning-formatted-text></h1>
         </lightning-quick-action-panel>
     </div>
     <div if:false={ErrorMessageShow}>
