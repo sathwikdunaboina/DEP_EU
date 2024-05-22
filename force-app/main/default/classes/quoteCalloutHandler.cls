@@ -10,7 +10,7 @@ public with sharing class quoteCalloutHandler {
     public static List<String> fetchFromAPIForQuote(List<String> oppIds) {
         //System.debug('This is the id' + oppIds);
         
-        List<Opportunity> oppList = [SELECT Id, description, Quote_Id__c, Quote_Url__c, Amount, Factory_Order__c, Account.Name,
+        List<Opportunity> oppList = [SELECT Id, description, Quote_Id__c, Quote_Url__c, Amount, Factory_Order__c, Account.Name,CurrencyIsoCode,
                                      Account.BillingCountryCode, Account.Customer_Number__c, Quote_Unique_Id__c, 
                                      Factory_Order__r.Assembly_Factory_Code__c, Factory_Order__r.Assembly_Factory_Name__c, Factory_Order__r.Axle_Arrangement__c,	
                                      Factory_Order__r.Brand__c, Factory_Order__r.CDD_Date__c, Factory_Order__r.Chassis_Type__c, Factory_Order__r.Contact_Last_Name__c,
@@ -210,7 +210,7 @@ public with sharing class quoteCalloutHandler {
             assetwrap.assemblyFactoryCode = opp.Factory_Order__r.Assembly_Factory_Code__c;
             assetwrap.assemblyFactoryName = opp.Factory_Order__r.Assembly_Factory_Name__c; 
             financials.amount = String.valueOf(opp.Amount.longValue());
-            financials.currencyCode = opp.Factory_Order__r.CurrencyIsoCode;
+            financials.currencyCode = opp.CurrencyIsoCode;
             order.Orderid = opp.Factory_Order__r.Order_Id__c;
             order.orderNumber = opp.Factory_Order__r.Dealer_Number__c;
             order.statusDescription = opp.Factory_Order__r.Order_Status_Description__c;
