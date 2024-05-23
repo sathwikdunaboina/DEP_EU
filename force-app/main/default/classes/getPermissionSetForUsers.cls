@@ -6,7 +6,7 @@ List<User_Permission_Set__c> perSetListDel=new List<User_Permission_Set__c>();
 perSetListDel =[select Id from User_Permission_Set__c];
 delete perSetListDel;
         
-AggregateResult[] groupedResults =[SELECT Assignee.Name userName,Assignee.Email userEmail,Assignee.Country userCountry,PermissionSet.Name perName  FROM PermissionSetAssignment WHERE permissionSet.IsOwnedByProfile = FALSE and Assignee.IsActive = TRUE and Assignee.Country != null group by PermissionSet.Name,Assignee.Name ,Assignee.Email ,Assignee.Country];
+AggregateResult[] groupedResults =[SELECT Assignee.Name userName,Assignee.Email userEmail,Assignee.Country userCountry,PermissionSet.Name perName  FROM PermissionSetAssignment WHERE permissionSet.IsOwnedByProfile = FALSE and Assignee.IsActive = TRUE and Assignee.Country != null and Assignee.Email != 'rsandoval@00d2p000000pbrleak' group by PermissionSet.Name,Assignee.Name ,Assignee.Email ,Assignee.Country];
 System.debug('This is set'+groupedResults);
 List<User_Permission_Set__c> perSetList=new List<User_Permission_Set__c>();
 for(integer i=0 ;i<groupedResults.size(); i++)
