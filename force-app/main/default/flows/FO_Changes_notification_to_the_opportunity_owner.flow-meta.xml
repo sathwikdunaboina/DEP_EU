@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Notification</name>
+        <label>Send Notification</label>
+        <locationX>1330</locationX>
+        <locationY>502</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Get_custom_notification_name.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>Ids</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Factory Order Updated</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>CDDFormula</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Assign_Ids</name>
+        <label>Assign Ids</label>
+        <locationX>1134</locationX>
+        <locationY>477</locationY>
+        <assignmentItems>
+            <assignToReference>Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_custom_notification_name</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_If_Permission_assigned</name>
+        <label>Check If Permission assigned</label>
+        <locationX>647</locationX>
+        <locationY>713</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Custom_notification_permission</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_User_has_Custom_permission</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Ids</targetReference>
+            </connector>
+            <label>Custom_notification_permission</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Opportunity_Stage_check</name>
+        <label>Opportunity Stage check</label>
+        <locationX>775</locationX>
+        <locationY>423</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_closed_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Finance_Opportunity__r.Owner.Enable_Bell_Notification__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Opportunity Notification</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Permission_set</targetReference>
+            </connector>
+            <label>Check for closed Opportunity</label>
+        </rules>
+    </decisions>
+    <description>Assign VIN number (from nothing to something)
+Change CCD Date (A value change)
+Change Customer Name (A value change)</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CDDFormula</name>
+        <dataType>String</dataType>
+        <expression>&apos;Please check the Opportunity. &apos;+ 
+IF(ISCHANGED({!$Record.CDD_Date__c}), &apos;CDD Date changed from &apos;+TEXT({!$Record__Prior.CDD_Date__c}) + &apos; to &apos; + TEXT({!$Record.CDD_Date__c})+&apos;. &apos;,&apos;&apos;)+
+IF(ISCHANGED({!$Record.End_Customer_Name__c}), &apos;Customer Name changed from &apos;+{!$Record__Prior.End_Customer_Name__c}+ &apos; to &apos;+ {!$Record.End_Customer_Name__c}+&apos;. &apos;,&apos;&apos;)+
+IF(ISCHANGED({!$Record.VIN_Number__c}),  &apos;VIN Number assigned, &apos;+ {!$Record.VIN_Number__c},&apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>FO Changes notification to the opportunity owner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FO Changes notification to the opportunity owner</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_custom_notification_name</name>
+        <label>Get custom notification name</label>
+        <locationX>1068</locationX>
+        <locationY>661</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Notification</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Quote_created_notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Custom_notification_permission_set name</description>
+        <name>get_Permission_set</name>
+        <label>get Permission set</label>
+        <locationX>528</locationX>
+        <locationY>465</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_User_has_Custom_permission</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Custom_notification_permission</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSet</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_has_Custom_permission</name>
+        <label>Get User has Custom permission</label>
+        <locationX>629</locationX>
+        <locationY>578</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_Permission_assigned</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AssigneeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.Owner.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>get_Permission_set.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSetAssignment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Opportunity_Stage_check</targetReference>
+        </connector>
+        <filterLogic>(1 OR 3 OR 4) AND 2</filterLogic>
+        <filters>
+            <field>End_Customer_Name__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Finance_Opportunity__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>VIN_Number__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CDD_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Factory_Order__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
