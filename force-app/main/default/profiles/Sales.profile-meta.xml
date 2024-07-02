@@ -22,17 +22,12 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>GCSalesConnect</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
         <application>Lead_Generation</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>standard__Marketing</application>
+        <application>GCSalesConnect</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
@@ -42,7 +37,7 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>Relationship_Management</application>
+        <application>standard__Marketing</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
@@ -52,17 +47,22 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
+        <application>Relationship_Management</application>
+        <default>false</default>
+        <visible>false</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>standard__Service</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>standard__LightningBolt</application>
+        <application>standard__SalesforceCMS</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>standard__SalesforceCMS</application>
+        <application>standard__LightningBolt</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
@@ -102,12 +102,12 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>standard__AllTabSet</application>
+        <application>standard__Sales</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>standard__Sales</application>
+        <application>standard__AllTabSet</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
@@ -345,6 +345,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>FOToOpportunityNameupdateFlow</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FactoryOrderDealerChangeFlow_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -634,15 +638,15 @@
     <custom>true</custom>
     <customSettingAccesses>
         <enabled>true</enabled>
-        <name>End_of_Term_Notification_Settings__c</name>
-    </customSettingAccesses>
-    <customSettingAccesses>
-        <enabled>true</enabled>
         <name>Lead_Assignment_Settings__c</name>
     </customSettingAccesses>
     <customSettingAccesses>
         <enabled>true</enabled>
-        <name>Support_Desk__c</name>
+        <name>End_of_Term_Notification_Settings__c</name>
+    </customSettingAccesses>
+    <customSettingAccesses>
+        <enabled>true</enabled>
+        <name>Welcome_Mail_Info__c</name>
     </customSettingAccesses>
     <customSettingAccesses>
         <enabled>true</enabled>
@@ -650,7 +654,7 @@
     </customSettingAccesses>
     <customSettingAccesses>
         <enabled>true</enabled>
-        <name>Welcome_Mail_Info__c</name>
+        <name>Support_Desk__c</name>
     </customSettingAccesses>
     <customSettingAccesses>
         <enabled>true</enabled>
@@ -4161,6 +4165,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Cancelled_Reason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Chassis_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5569,10 +5578,10 @@
         <layout>Product2-Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>QuickText-Quick Text Layout</layout>
+        <layout>AssociatedLocation-Associated Location Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>AssociatedLocation-Associated Location Layout</layout>
+        <layout>QuickText-Quick Text Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ContactPointAddress-Contact Point Address Layout</layout>
@@ -5582,10 +5591,10 @@
         <recordType>Case.VFS_Customer</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>WorkBadge-Badge Received Layout 192</layout>
+        <layout>Quote-Quote Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Quote-Quote Layout</layout>
+        <layout>WorkBadge-Badge Received Layout 192</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>UserAppMenuItem-Application Layout</layout>
@@ -5609,10 +5618,10 @@
         <layout>LiveChatTranscript-Live Chat Transcript Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>AccountTeamMember-Account Team Member Layout</layout>
+        <layout>APIC_Auth_Provider__mdt-APIC Auth Provider Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>APIC_Auth_Provider__mdt-APIC Auth Provider Layout</layout>
+        <layout>AccountTeamMember-Account Team Member Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CaseInteraction-Case Feed Layout</layout>
@@ -5624,10 +5633,10 @@
         <layout>OpportunityLineItem-Opportunity Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>DealerRecordTypeId__mdt-DealerRecordTypeId Layout</layout>
+        <layout>Contract-Contract Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contract-Contract Layout</layout>
+        <layout>DealerRecordTypeId__mdt-DealerRecordTypeId Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>FeedItem-Feed Item Layout</layout>
@@ -5639,10 +5648,10 @@
         <layout>Case_Auto_Close_Cofig__mdt-Case Auto Close Cofig Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Pricebook2-Price Book Layout</layout>
+        <layout>DelegatedAccount-External Managed Account Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>DelegatedAccount-External Managed Account Layout</layout>
+        <layout>Pricebook2-Price Book Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>WorkThanks-Thanks Layout</layout>
@@ -5660,10 +5669,10 @@
         <layout>FlowOrchestrationInstance-Layout Esecuzione orchestrazione</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Global-Global Layout</layout>
+        <layout>Error_Log__c-Error Logs Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Error_Log__c-Error Logs Layout</layout>
+        <layout>Global-Global Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>AccountBrand-Account Brand Layout</layout>
@@ -5687,19 +5696,19 @@
         <layout>Event-Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LiveAgentSession-Live Agent Session Layout</layout>
+        <layout>ContractLineItem-Contract Line Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contract__c-Contract Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ContractLineItem-Contract Line Item Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>FlowInterview-Flow Interview Layout</layout>
+        <layout>LiveAgentSession-Live Agent Session Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Address-Address Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>FlowInterview-Flow Interview Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-Case Layout</layout>
@@ -5709,10 +5718,10 @@
         <layout>Lead-Lead Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SocialPersona-Social Persona Layout</layout>
+        <layout>BusinessBrand-Business Brand Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>BusinessBrand-Business Brand Layout</layout>
+        <layout>SocialPersona-Social Persona Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ServiceContract-Service Contract Layout</layout>
@@ -5730,21 +5739,21 @@
         <layout>Seller-Seller Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>WorkBadgeDefinition-Badge Layout 192</layout>
+        <layout>Territory_Manager__c-Territory Manager Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Territory_Manager__c-Territory Manager Layout</layout>
+        <layout>WorkBadgeDefinition-Badge Layout 192</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-Case Layout</layout>
         <recordType>Case.All_Case</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>VFS_Campaign__c-VFS Campaign Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Account-Dealer</layout>
         <recordType>Account.Dealer_Account</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>VFS_Campaign__c-VFS Campaign Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LiveChatTranscriptWaiting-Live Chat Transcript %28Waiting%29 Layout</layout>
@@ -5768,10 +5777,10 @@
         <layout>Monthly_User_Deactivation_Report_Name__mdt-Monthly User Deactivation Report Name Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Solution-Solution Layout</layout>
+        <layout>Dealer_Record_Type__mdt-Dealer Record Type Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Dealer_Record_Type__mdt-Dealer Record Type Layout</layout>
+        <layout>Solution-Solution Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
@@ -5780,44 +5789,44 @@
         <layout>UserProvisioningLog-User Provisioning Log Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>OpportunityContactRole-Opportunity Contact Role Layout</layout>
+        <layout>Country_Key_Users__mdt-Country Key User Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Country_Key_Users__mdt-Country Key User Layout</layout>
+        <layout>OpportunityContactRole-Opportunity Contact Role Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Individual-Individual Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>PricebookEntry-Price Book Entry Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Entitlement-Entitlement Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>EmailMessage-Email Message Layout</layout>
+        <layout>PricebookEntry-Price Book Entry Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
         <recordType>Contact.GCContact</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>AccountContactRelation-Account Contact Relationship Layout</layout>
+        <layout>EmailMessage-Email Message Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Task-Task Layout</layout>
+        <layout>AccountContactRelation-Account Contact Relationship Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LiveChatTranscriptEvent-Live Chat Transcript Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Task-Task Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>LiveChatTranscriptActive-Live Chat Transcript %28In Progress%29 Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LiveChatVisitor-Live Chat Visitor Layout</layout>
+        <layout>Campaign-Campaign Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Campaign-Campaign Layout</layout>
+        <layout>LiveChatVisitor-Live Chat Visitor Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ProcessException-Process Exception Layout</layout>
@@ -5842,11 +5851,11 @@
         <layout>OrderItem-Order Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ChannelProgramLevel-Channel Program Level Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Case-VFS Dealer Case Layout</layout>
         <recordType>Case.VFS_Dealer</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>ChannelProgramLevel-Channel Program Level Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ContentVersion-Content Version</layout>
@@ -5864,10 +5873,10 @@
         <layout>Macro-Macro Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ListEmail-List Email Layout</layout>
+        <layout>EmpUserProvisionProcessErr-Employee User Provisioning Process Error Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>EmpUserProvisionProcessErr-Employee User Provisioning Process Error Layout</layout>
+        <layout>ListEmail-List Email Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ProfileSkillUser-Skill User Layout</layout>
@@ -5894,10 +5903,10 @@
         <layout>CaseClose-Close Case Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>User-User Layout</layout>
+        <layout>Outlook-Outlook Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Outlook-Outlook Layout</layout>
+        <layout>User-User Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Customer-Customer Layout</layout>
@@ -5972,15 +5981,6 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Entitlement</object>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
         <object>Error_Log__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
@@ -5990,7 +5990,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>EntitlementContact</object>
+        <object>Entitlement</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -6000,6 +6000,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>QuickText</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>EntitlementContact</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -6084,6 +6093,15 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Case</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
@@ -6098,7 +6116,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Case</object>
+        <object>Contract__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -6110,15 +6128,6 @@
         <object>ContractLineItem</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Contract__c</object>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
     <pageAccesses>
         <apexPage>Exception</apexPage>
         <enabled>false</enabled>
@@ -6128,19 +6137,19 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>MicrobatchSelfReg</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
-    <pageAccesses>
         <apexPage>getAccountNotes</apexPage>
         <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>MicrobatchSelfReg</apexPage>
+        <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>CommunitiesSelfReg</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>ForgotPassword</apexPage>
+        <apexPage>UnderConstruction</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -6148,7 +6157,7 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>UnderConstruction</apexPage>
+        <apexPage>ForgotPassword</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -6160,11 +6169,11 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>AnswersHome</apexPage>
+        <apexPage>SiteRegister</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>SiteRegister</apexPage>
+        <apexPage>AnswersHome</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -6188,19 +6197,19 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>DashboardChart</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
-    <pageAccesses>
         <apexPage>FileNotFound</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>CommunitiesTemplate</apexPage>
-        <enabled>false</enabled>
+        <apexPage>DashboardChart</apexPage>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>ForgotPasswordConfirm</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CommunitiesTemplate</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -6242,13 +6251,13 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Account.Dealer_Account</recordType>
-        <visible>true</visible>
+        <recordType>Account.GCAccountDealer</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Account.GCAccountDealer</recordType>
-        <visible>false</visible>
+        <recordType>Account.Dealer_Account</recordType>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -6256,15 +6265,15 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Case.VFS_Dealer</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <default>true</default>
         <personAccountDefault>true</personAccountDefault>
         <recordType>Account.Customer_Account</recordType>
         <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Case.VFS_Dealer</recordType>
-        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -6278,12 +6287,12 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Idea.InternalIdeasIdeaRecordType</recordType>
+        <recordType>Lead.GCLead</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Lead.GCLead</recordType>
+        <recordType>Idea.InternalIdeasIdeaRecordType</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -6306,31 +6315,23 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Territory_Manager__c</tab>
-        <visibility>DefaultOff</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>standard-Contact</tab>
-        <visibility>DefaultOn</visibility>
+        <tab>standard-PartyConsent</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-LiveChatTranscript</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-PartyConsent</tab>
-        <visibility>Hidden</visibility>
+        <tab>standard-Contact</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Territory_Manager__c</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Bank_Account__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>VFS_Campaign__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>standard-AccountBrand</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6338,11 +6339,19 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>standard-AccountBrand</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>VFS_Campaign__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>standard-Forecasting3</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Bulk_Lead_Converter</tab>
+        <tab>standard-Scorecard</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6350,11 +6359,7 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Scorecard</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>standard-ContractLineItem</tab>
+        <tab>Bulk_Lead_Converter</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6362,11 +6367,7 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-ProfilePlatformFeed</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>standard-Recognition</tab>
+        <tab>standard-ContractLineItem</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6374,19 +6375,27 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Account_Note__c</tab>
-        <visibility>DefaultOn</visibility>
+        <tab>standard-Recognition</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-ProfilePlatformFeed</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Seller</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-BusinessBrand</tab>
-        <visibility>Hidden</visibility>
+        <tab>Account_Note__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-ContactPointConsent</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-BusinessBrand</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6406,11 +6415,11 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-AuthorizationForm</tab>
+        <tab>standard-CommSubscriptionChannelType</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-CommSubscriptionChannelType</tab>
+        <tab>standard-AuthorizationForm</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6422,11 +6431,11 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Product2</tab>
+        <tab>standard-UserProfile</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-UserProfile</tab>
+        <tab>standard-Product2</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6466,11 +6475,11 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-CommSubscription</tab>
+        <tab>standard-ServiceContract</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-ServiceContract</tab>
+        <tab>standard-CommSubscription</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6494,15 +6503,19 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Dashboard</tab>
-        <visibility>DefaultOff</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>standard-ProcessException</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>standard-Dashboard</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>standard-KnowledgePublishing</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-EngagementChannelType</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6510,15 +6523,7 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-EngagementChannelType</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>TerritoryManager__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Linked_Bank_Accounts__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6526,7 +6531,15 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>Linked_Bank_Accounts__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>standard-ServiceResource</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-ContactPointTypeConsent</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6534,20 +6547,16 @@
         <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-ContactPointTypeConsent</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>standard-ChannelProgramLevel</tab>
-        <visibility>DefaultOff</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>standard-QuickText</tab>
         <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Quote</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-QuickText</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Chatter</tab>
@@ -6558,11 +6567,11 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-AuthorizationFormDataUse</tab>
+        <tab>standard-Solution</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Solution</tab>
+        <tab>standard-AuthorizationFormDataUse</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6570,11 +6579,15 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>standard-Recommendation</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>standard-Macro</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Recommendation</tab>
+        <tab>standard-Asset</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6582,15 +6595,11 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Asset</tab>
+        <tab>standard-Entitlement</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-CommSubscriptionConsent</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>standard-Entitlement</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -6658,12 +6667,12 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Factory_Order__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>standard-LiveChatVisitor</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Factory_Order__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-DataUseLegalBasis</tab>
@@ -6674,16 +6683,16 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-AppLauncher</tab>
-        <visibility>Hidden</visibility>
+        <tab>standard-Knowledge</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-File</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Knowledge</tab>
-        <visibility>DefaultOn</visibility>
+        <tab>standard-AppLauncher</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
