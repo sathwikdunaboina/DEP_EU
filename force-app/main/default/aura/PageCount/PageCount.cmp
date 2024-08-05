@@ -1,8 +1,0 @@
-<aura:component description="PageCount">
-	<aura:attribute name="pageNumber" type="String"/>
-    <aura:attribute name="currentPageNumber" type="String"/>
-    <aura:attribute name="totalpage" type="String"/>
-    <aura:attribute name="currnetPagesCount" type="String"/>
-    <aura:registerEvent name="goToPage" type="c:PageChangeEvt"/>
-    <ui:button class="{!v.pageNumber == v.currentPageNumber ? 'btn' : '' }" label="{!v.pageNumber}" press="{!c.openthePage}" />
-</aura:component>
