@@ -1,0 +1,202 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="LightningLoginFormController">
+    <aura:attribute name="showError" type="Boolean" required="true" description="" default="false" access="private"/>
+    <aura:attribute name="errorMessage" type="String" required="false" description="" access="private"/>
+    <aura:attribute name="startUrl" type="String" required="false" description="The url you go to after a successful login" />
+    <aura:attribute name="usernameLabel" type="String" required="false" default=""/>
+    <aura:attribute name="passwordLabel" type="String" required="false" default=""/>
+    <aura:attribute name="loginButtonLabel" type="String" required="false" default="Log in"/>
+    <aura:attribute name="expid" type="String" required="false" description="The branding experience ID" />        
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    
+    <aura:attribute name="isselfregistration" type="boolean" default="false"/>
+    
+    <aura:attribute name="forgotPasswordLabel" type="String" required="false" default="{!$Label.c.Forgot_your_password}"/>
+    <aura:attribute name="portalLoginLabel" type="String" required="false" default="Test"/>    
+    <aura:attribute name="selfRegisterLabel" type="String" required="false" default="{!$Label.c.Not_a_member}"/>
+    <aura:attribute name="forgotPasswordUrl" type="String" required="false" default="/ForgotPassword"/>
+    
+    <aura:attribute name="selfRegisterUrl" type="String" required="false" default="/SelfRegister"/>
+    
+    <aura:attribute name="isUsernamePasswordEnabled" type="Boolean" access="private"/>
+    <aura:attribute name="isSelfRegistrationEnabled" type="Boolean" access="private"/>
+    <aura:attribute name="communityForgotPasswordUrl" type="String" access="private"/>
+    <aura:attribute name="communitySelfRegisterUrl" type="String" access="private"/>
+    <aura:attribute name="ie" type="Boolean" access="private" default="false"/>
+    <aura:attribute name="supportInformation" type="List" />
+    <aura:registerevent name="sitePropagatedStartUrl" type="c:setStartUrl"/>
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}"/>
+    <aura:dependency resource="c:setStartUrl" type="EVENT"/>
+    
+    <!--aura:registerEvent name="self" type="c:IL_SelfRegister"/-->
+    
+    <!-- Please uncomment
+    <aura:dependency resource="siteforce:registerQueryEventMap" type="EVENT"/>
+    -->
+    <aura:handler event="c:setStartUrl" action="{!c.setStartUrl}"/>
+    <aura:handler event="c:setExpId" action="{!c.setExpId}"/>    
+    <aura:dependency resource="c:setExpId" type="EVENT"/>  
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:attribute name="spinner" type="boolean" default="false"/>
+    
+    <!--loading spinner start-->
+    <aura:if isTrue="{!v.spinner}">
+        <div class="demo-only" >
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Loading spinner end-->  
+    <div class="slds-p-right_xx-small slds-align_absolute-center slds-p-top_xx-small">
+        <div class="{!v.ie? 'sty' : ''}">
+            <div class="styling ">
+                <header class="slds-p-top_small">
+                </header>
+                <div class="slds-p-top_large">
+                    
+                    <div class="slds-align_absolute-center modalBodyStyle">
+                        <strong>{!$Label.c.Customer_Portal_Login}</strong>
+                    </div>
+                    
+                    <div class="slds-align_absolute-center" style="color:red">
+                        <aura:if isTrue="{!v.showError}" >{!v.errorMessage}</aura:if>
+                    </div>
+                    <span onkeypress="{!c.handleEnter}">
+                        <lightning:input type="email" value="{!v.usernameLabel}" class="slds-p-left_large slds-p-right_small" placeholder="{!$Label.c.Username}" />
+                        <lightning:input type="password"  value="{!v.passwordLabel}" class="slds-p-left_large slds-p-right_small"  placeholder="{!$Label.c.Password}" />
+                    </span>
+                    
+                    <div class="slds-grid slds-p-top_small slds-grid_align-end">
+                        <div class="textalign" >
+                            <div><a href="{!if(v.communityForgotPasswordUrl == null, v.forgotPasswordUrl, v.communityForgotPasswordUrl)}">{!v.forgotPasswordLabel}</a></div>
+                            <!--div>
+                                
+                                <span> <a class="hyperlinkText" onclick="{! c.openModalforselfregistration }">{!v.selfRegisterLabel}</a></span>  
+                                
+                            </div-->
+                        </div> 
+                        <div class="slds-col  slds-p-left_xx-large">
+                            
+                            <!--<lightning:button label="Log In >" title="Base action" onclick="{!c.handleLogin}"  class="slds-float_right buttonstyle"/>-->
+                            <button class="slds-button  slds-button--icon paymentButton slds-float_right buttonstyle" onclick="{!c.handleLogin}" >
+                                <span class="slds-p-right_xx-small">{!$Label.c.Login}</span>
+                                <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColor" />
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-grid slds-p-top_x-large slds-align_absolute-center">
+                        <div class="slds-col slds-size_1-of-1 notes slds-p-bottom_medium">
+                            {!$Label.c.To_contact_Customer_Service_please_click} <a class="slds-m-left--xx-small" href="" onclick="{!c.openModal}"> {!$Label.c.here}</a> 
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!v.isOpen}">
+        
+        <!--###### MODAL BOX Start######--> 
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- ###### MODAL BOX HEADER Start ######-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModel }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    
+                </header>
+                <!--###### MODAL BOX BODY Part Start######-->
+                <div class="slds-modal__content slds-p-around_medium textstyle" id="modal-content-id-1">
+                    <b><!--We are sorry for the inconvenience, please contact your customer service team. 
+                        <br/>
+                        <br/>-->
+                        
+                        
+                        
+                        <aura:if isTrue="{!$Browser.isPhone}">
+                            
+                            <span class="shift">{!$Label.c.In_the_Italy_please_call_or_email}:</span><br/><br/>
+                            <div class="slds-grid slds-gutters slds-wrap">
+                                <aura:iteration items="{!v.supportInformation}" var="supportInfo">
+                                    <div>
+                                        <div class="slds-col slds-size_2-of-2 slds-align_absolute-center">
+                                            <span class="modaltext">{!supportInfo.Country__c}</span>
+                                        </div>
+                                        
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning:icon iconName="utility:call" alternativeText="Call" size = "xx-small" class="smallerPhone" />
+                                            <lightning:formattedphone value="{!supportInfo.Contact_Number__c}" />
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning:formattedEmail value="{!supportInfo.E_Mail__c}" class="smallerText" />
+                                        </div>	
+                                    </div>
+                                </aura:iteration>     
+                            </div>
+                            
+                            
+                            <aura:set attribute="else">
+                                
+                                <span class="shift">{!$Label.c.In_the_Italy_please_call_or_email}:</span><br/><br/>
+                                
+                                <div class="slds-grid slds-gutters " >
+                                     <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                         <tbody class = "slds-scrollable_y">
+                                    <aura:iteration items="{!v.supportInformation}" var="supportInfo">
+                                                <tr>
+                                                    
+                                                    <td data-label="Country" class= "table">
+                                                        <div class="slds-col slds-size--4-of-12 ">
+                                                            <span class="modaltext">{!supportInfo.Country__c}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Phone Number " class= "table">
+                                                        <div class="slds-col slds-size--4-of-12">
+                                                            <lightning:icon iconName="utility:call" alternativeText="Call" size = "xx-small" class="smallerPhone" />
+                                                            <lightning:formattedPhone value="{!supportInfo.Contact_Number__c}" class="smallerText"/>
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Email " class= "table">
+                                                        <div class="slds-col slds-size--5-of-12">
+                                                           
+                                                            <lightning:formattedEmail value="{!supportInfo.E_Mail__c}" class="smallerText" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            
+                                          
+                                    </aura:iteration>   
+                                             </tbody>
+                                    </table>      
+                                </div>
+                                
+                            </aura:set>
+                        </aura:if>
+                        
+                    </b>
+                    
+                </div>
+                
+                <!--###### MODAL BOX FOOTER Part Start ######-->
+                <footer class="slds-modal__footer">
+                    <lightning:button 
+                                      label="{!$Label.c.Close}"
+                                      title="{!$Label.c.Close}"
+                                      onclick="{! c.closeModel }" class="slds-float_right buttonmodal"/>
+                    
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    <lightning:overlayLibrary aura:id="modal"/> 
+</aura:component>

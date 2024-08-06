@@ -1,0 +1,534 @@
+<aura:component extends="c:AuraUtilities" controller="ContractDetailController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="error" type="String"/>
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="currentUser" type="Object" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData fields="FirstName,Account.Name,Account.Branding__c"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+    <aura:attribute name="simpleRecord" type="Contract__c"/>
+    <force:recordData aura:id="forceRecordCmp"
+                      recordId="{!v.recordId}" 
+                      layoutType="FULL"
+                      mode="VIEW"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.simpleRecord}"
+                      targetError="{!v.error}" 
+                      recordUpdated="{!c.doInit}"/>
+    <!--ltng:require scripts="{!$Resource.chartjs}" afterScriptsLoaded="{!c.afterScriptsLoaded}"/-->
+    <!--aura:handler event="force:refreshView" action="{!c.isRefreshed}" /-->
+    <!--aura:attribute name="docNotification" type="boolean" default="{!v.currentUser.Contact.Document_Notification__c}"/-->
+    
+    <div>
+        <aura:if isTrue="{!$Browser.isPhone}">
+            <div class="slds-border_bottom slds-p-bottom_small ">
+                <div class="labelStyle">
+                    {!$Label.c.Contract_Number}:
+                </div>
+                <div class="slds-p-bottom_small ">
+                    <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Renault'}">
+                        <div class="slds-grid slds-gutters">
+                            <div class=" slds-col slds-size_2-of-3 ">
+                                <div class="Renault">
+                                    {!v.simpleRecord.Contract_Number__c}
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 slds-clearfix">
+                                <div class="slds-float_right">
+                                    <lightning:Icon iconName="utility:chevronleft" size="x-small" alternativeText="Back"  onclick="{!c.navigatecontract}" />
+                                </div>
+                            </div>
+                        </div>
+                        <aura:set attribute="else">
+                            <div class="slds-grid slds-gutters">
+                                <div class=" slds-col slds-size_2-of-3 ">
+                                    <div class="Volvo">
+                                        {!v.simpleRecord.Contract_Number__c}
+                                    </div>
+                                    
+                                </div>
+                                <div class="slds-col slds-size_1-of-3 slds-clearfix">
+                                    <div class="slds-float_right">
+                                        <lightning:Icon iconName="utility:chevronleft" size="x-small" alternativeText="Back"  onclick="{!c.navigatecontract}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+            <div class="slds-border_bottom slds-p-bottom_small">
+                <div class="slds-max-small-size_1-of-1 slds-p-top_small"><c:ContractMenu contractId="{!v.recordId}" /></div>
+                <div class="slds-col slds-size_1-of-3 slds-max-small-size_1-of-1 slds-p-top_small slds-p-top_small ">
+                    <!-- <lightning:button class="payment " label="Make a Payment >"  onclick=""/>-->
+                    
+                    <!--aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}">
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Mack'}">
+                            <button onclick="{!c.toCreateCase}" class="slds-button slds-button-      -icon paymentButton" >
+                                <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                <lightning:icon iconName="utility:chevronright" size="xx-small" />
+                            </button>
+                        </aura:if>
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Mack'}">
+                            <button onclick="{!c.toCreateCase}" class="slds-button slds-button-        -icon paymentButtonmack" >
+                                <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowmack"/>
+                            </button>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <button onclick="{!c.toCreateCase}" class="slds-button slds-button-          -icon paymentButtontransport" >
+                                <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColortransport"/>
+                            </button>
+                        </aura:set>
+                    </aura:if-->
+                </div>
+                <div class="slds-max-small-size_1-of-1 slds-p-top_small ">
+                    <span class="labelStyle slds-p-right_xx-small">{!$Label.c.Net_Investment}:</span>
+                    <span class="">
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c =='Renault'}">
+                            <div class="valueStyleRenault">
+                                <ui:outputCurrency value="{!v.simpleRecord.Net_Investment__c}"/>
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="valueStyleVolvo">
+                                    <ui:outputCurrency value="{!v.simpleRecord.Net_Investment__c}"/>
+                                </div> 
+                            </aura:set>
+                        </aura:if>
+                    </span>
+                </div>
+            </div>
+            
+            <aura:set attribute="else">
+                <div class="slds-grid slds-wrap slds-border_bottom slds-p-bottom_small">
+                    <div class="slds-col slds-max-small-size_1-of-1  slds-size_1-of-3 ">
+                        <div class="labelStyle">
+                            {!$Label.c.Contract_Number}:
+                        </div>
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c =='Renault'}">
+                            <div class="Renault">
+                                {!v.simpleRecord.Contract_Number__c}
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="Volvo">
+                                    {!v.simpleRecord.Contract_Number__c}
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div class="slds-col  slds-size_1-of-3 slds-max-small-size_1-of-1 ">
+                        <div class="amountDueTittleStyle">
+                            {!$Label.c.Net_Investment}:
+                        </div>
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Renault'}">
+                            <div class="amountStyleRenault">
+                                <ui:outputCurrency value="{!v.simpleRecord.Net_Investment__c}"/>
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="amountStyleVolvo">
+                                    <ui:outputCurrency value="{!v.simpleRecord.Net_Investment__c}"/>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-3 slds-max-small-size_1-of-1 slds-p-top_small slds-p-top_small slds-clearfix">
+                        
+                        <div class="slds-float_right">
+                            <lightning:button  label="{!$Label.c.Back}" class="buttoncss" onclick="{!c.navigatecontract}"/>
+                        </div>
+                        
+                        <!-- <lightning:button class="payment " label="Make a Payment >"  onclick=""/>-->
+                        <!--aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}">
+                            <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Mack'}">
+                                <button onclick="{!c.toCreateCase}" class="slds-button slds-button-   -icon paymentButton" >
+                                    <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                    <lightning:icon iconName="utility:chevronright" size="xx-small" />
+                                </button>
+                            </aura:if>
+                            <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Mack'}">
+                                <button onclick="{!c.toCreateCase}" class="slds-button slds-button-    -icon paymentButtonmack" >
+                                    <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                    <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowmack"/>
+                                </button>
+                            </aura:if>
+                            <aura:set attribute="else">
+                                <button onclick="{!c.toCreateCase}" class="slds-button slds-button-    -icon paymentButtontransport" >
+                                    <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                    <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColortransport"/>
+                                </button>
+                            </aura:set>
+                        </aura:if-->
+                    </div>
+                </div>
+            </aura:set>
+        </aura:if>
+        
+        <div class="slds-grid slds-wrap slds-border_bottom">
+            <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 labelStyle slds-p-top_small ">
+                <div>{!$Label.c.Termination_Date}:</div>
+                <div>{!$Label.c.Amount}:</div>
+                <div>{!$Label.c.Balance}:</div>
+                <div>{!$Label.c.Remaining_Balance}: <lightning:helptext class="custom" content="{!$Label.c.Please_note_Balance_is_not_a_valid_payoff_amount}" /></div>
+            </div>
+            <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 valueStyle slds-p-top_small ">
+                <div><ui:outputDate value="{!v.simpleRecord.TerminationDate__c}" format="DD/MM/YYYY"/>&nbsp;</div>
+                <div><ui:outputCurrency value="{!v.simpleRecord.Amount_Including_Tax__c}"/>&nbsp;</div>
+                <div><ui:outputCurrency value="{!v.simpleRecord.Balance__c}"/>&nbsp;</div>
+                <div><ui:outputCurrency value="{!v.simpleRecord.Remaining_Balance__c}"/></div>
+            </div>
+            <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 labelStyle slds-p-top_small ">
+                <div>{!$Label.c.VIN_Number}:</div>
+                <!--div>{!$Label.c.Legal_Status}:</div-->
+                <div>{!$Label.c.Dealer_Id}:</div>
+                <!--div>{!$Label.c.Contract_Id}:</div-->
+            </div>
+            <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 valueStyle slds-p-top_small ">
+                <div>{!v.simpleRecord.VIN_Number__c}&nbsp;</div>
+                <!--div>{!v.simpleRecord.Legal_Status__c}&nbsp;</div-->
+                <div>{!v.simpleRecord.DealerId__c}&nbsp;</div>
+                <!--div>{!v.simpleRecord.Name}&nbsp;</div-->
+            </div>
+            <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 slds-p-top_small"></div>
+            <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 slds-p-top_small"></div>
+            
+            <!--div class="slds-col slds-size_4-of-12 slds-max-small-size_1-of-1 slds-p-top_small ">
+                <div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 labelStyle"> {!$Label.c.Automatic_Payments}:</div>
+                        <div class="slds-col slds-size_1-of-2 ">{!v.simpleRecord.Automatic_Payments__c ? $Label.c.Yes: $Label.c.No}</div>
+                    </div>
+                </div>
+                <div><a class="hyperlinkText" onclick="{!c.doAutoPay}">{!$Label.c.Setup_Change_Automatic_Payments}<lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColor"/></a></div>
+                <div>
+                    <div class="slds-grid slds-wrap slds-p-top_small ">
+                        <div class="slds-col slds-size_1-of-2 labelStyle"> {!$Label.c.Paperless_Invoicing}:</div>
+                        <div class="slds-col slds-size_1-of-2 ">{! v.simpleRecord.Paperless_Invoicing__c ? $Label.c.Yes: $Label.c.No}</div>
+                    </div>
+                </div>
+                <div><a class="hyperlinkText" onclick="{!c.doPaperlessInvoice}">	{!$Label.c.Sign_up_for_Paperless_Invoicing}<lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColor"/></a></div>
+            </div-->
+            
+            <!--div class="slds-col slds-size_4-of-12 slds-max-small-size_1-of-1 slds-p-top_small ">
+                <div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_2-of-3 slds-max-small-size_1-of-2 labelStyle"> {!$Label.c.Document_Notification}:</div>
+                        <div class="slds-col slds-size_1-of-3 slds-max-small-size_1-of-2">{! v.currentUser.Contact.Document_Notification__c ? $Label.c.Yes: $Label.c.No}</div>
+                    </div>
+                </div>
+                <div><a class="hyperlinkText" onclick="{!c.addRemoveNotification}">{!$Label.c.Add_Remove_Notification} <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColor"/></a></div>
+                <div>
+                    <div class="slds-grid slds-wrap slds-p-top_small ">
+                        <div class="slds-col slds-size_1-of-2 labelStyle">{!$Label.c.Payoff_Quote}:</div>
+                        <div class="slds-col slds-size_1-of-2 "></div>
+                    </div>
+                </div>
+                <div><a class="hyperlinkText" onclick="{! c.doShowPayoff }">{!$Label.c.Request_Quote}<lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowColor"/></a></div>
+            </div-->
+        </div>
+        
+        <div class="slds-border_bottom">
+            <div class="slds-p-top_small ">
+                <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Renault'}">
+                    <div class="sectionTitleRenault">
+                        Section A
+                    </div>
+                    <aura:set attribute="else">
+                        <div class="sectionTitleVolvo">
+                            Section A
+                        </div>
+                    </aura:set>
+                </aura:if>
+            </div>
+            <div>
+                <div class="slds-grid slds-wrap">
+                      
+                         <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 labelStyle slds-p-top_small">
+                        <div>{!$Label.c.Term}:</div>
+                        <div>{!$Label.c.Equipment_Cost}:</div>
+                        <div>{!$Label.c.Residual}:</div>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 valueStyle slds-p-top_small">
+                        <div>{!v.simpleRecord.Term__c}&nbsp;</div>
+                        <div><ui:outputCurrency value="{!v.simpleRecord.Equipment_Cost__c}"/>&nbsp;</div>
+                        <div><ui:outputCurrency value="{!v.simpleRecord.Residual__c}"/>&nbsp;</div>
+                    </div>
+                         <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 labelStyle slds-p-top_small">
+                        <div>{!$Label.c.End_Date}:</div>
+                        <div>{!$Label.c.Start_Date}:</div>
+                        <div>{!$Label.c.Type}:</div>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 valueStyle slds-p-top_small">
+                        <div><ui:outputDate value="{!v.simpleRecord.End_Date__c}" format="DD/MM/YYYY"/>&nbsp;</div>
+                        <div><ui:outputDate value="{!v.simpleRecord.Start_Date__c}" format="DD/MM/YYYY"/>&nbsp;</div>
+                        <div>{!v.simpleRecord.Type__c}&nbsp;</div>
+                    </div>
+                       
+                    
+                    <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 slds-p-top_small"></div>
+                    <div class="slds-col slds-size_2-of-12 slds-max-small-size_1-of-2 slds-p-top_small"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!--div class="slds-border_bottom">
+            <div class="slds-p-top_small ">
+                <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Renault'}">
+                    <div class="sectionTitleRenault">
+                        {!$Label.c.Customer_Information}
+                    </div>
+                    <aura:set attribute="else">
+                        <div class="sectionTitleVolvo">
+                            {!$Label.c.Customer_Information}
+                        </div>
+                    </aura:set>
+                </aura:if>
+            </div>
+            <div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-6 slds-max-small-size_1-of-2 labelStyle">{!$Label.c.Customer_Address}</div>
+                    <div class="slds-col slds-size_1-of-6 slds-max-small-size_1-of-2">
+                        <div><ui:outputText value="{!v.simpleRecord.Physical_Street__c}"/></div>
+                        <div><aura:if isTrue="{!v.simpleRecord.Physical_City__c != null}">
+                            <ui:outputText value="{!v.simpleRecord.Physical_City__c}"/>,
+                            </aura:if>
+                            <span class="slds-p-right_xx-small">
+                                <ui:outputText value="{!v.simpleRecord.Physical_State_Province__c}"/>
+                            </span>
+                            <ui:outputText value="{!v.simpleRecord.Physical_Zip_Postal_Code__c}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-6 slds-max-small-size_1-of-2 labelStyle">{!$Label.c.Billing_Address}</div>
+                    <div class="slds-col slds-size_1-of-6 slds-max-small-size_1-of-2">
+                        <div><ui:outputText value="{!v.simpleRecord.Billing_Street__c}"/></div>
+                        <div> <aura:if isTrue="{!v.simpleRecord.Billing_City__c != null}">
+                            <ui:outputText value="{!v.simpleRecord.Billing_City__c}"/>,
+                            </aura:if>
+                            <span class="slds-p-right_xx-small">
+                                <ui:outputText value="{!v.simpleRecord.Billing_State_Province__c}"/>
+                            </span>
+                            <ui:outputText value="{!v.simpleRecord.Billing_Zip_Postal_Code__c}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div-->
+        
+        <!--aura:if isTrue="{!$Browser.isPhone}">
+            <aura:if isTrue="{!v.simpleRecord.Lease_Loan__c == 'Loan'}">
+                <div class="slds-border_bottom">
+                    <div class="slds-p-top_small ">
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}">
+                            <div class="{!v.currentUser.Account.Branding__c=='Mack' ? 'sectionTitlemack' : 'sectionTitle'}">
+                                {!$Label.c.Loan_Details}
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="sectionTitletransport">
+                                    {!$Label.c.Loan_Details}
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div>
+                        <div class="slds-grid">
+                            <div class="slds-size_1-of-2 labelStyle">
+                                <div>{!$Label.c.Interest_Rate}:</div>
+                                <div>{!$Label.c.Current_Principal_Balance}:</div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div>
+                                    <aura:if isTrue="{! !empty(v.simpleRecord.Contract_Interest_Rate__c)}">
+                                        <ui:outputNumber value="{!v.simpleRecord.Contract_Interest_Rate__c}" format = ".00"/>%&nbsp;
+                                    </aura:if>
+                                </div>
+                                <div> 
+                                    <ui:outputCurrency value="{!v.simpleRecord.Principal_Balance__c}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class=" slds-border_bottom">
+                    <div class="slds-p-top_small ">
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}">
+                            <div class="{!v.currentUser.Account.Branding__c=='Mack' ? 'sectionTitlemack' : 'sectionTitle'}">
+                                {!$Label.c.Interest_Paid}
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="sectionTitletransport">
+                                    {!$Label.c.Interest_Paid}
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div>
+                        <div class="slds-grid">
+                            <div class="slds-size_1-of-2 labelStyle">
+                                <div>{!$Label.c.Year_to_Date}:</div>
+                                <div>{!$Label.c.Previous_Year}:</div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div><ui:outputCurrency value="{!v.simpleRecord.Interest_Paid_YTD__c}"/>&nbsp;</div>
+                                <div><ui:outputCurrency value="{!v.simpleRecord.Interest_Paid_Last_Year__c}"/>&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-border_bottom">
+                    <div class="slds-p-top_small ">
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}">
+                            <div class="{!v.currentUser.Account.Branding__c=='Mack' ? 'sectionTitlemack' : 'sectionTitle'}">
+                                {!$Label.c.Year_End_Principal_Balance}
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="sectionTitletransport">
+                                    {!$Label.c.Year_End_Principal_Balance}
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div>
+                        <div class="slds-grid">
+                            <div class="slds-size_1-of-2 labelStyle">
+                                <div>{!$Label.c.X2017}:</div>
+                                <div>{!$Label.c.X2016}:</div>
+                                <div>{!$Label.c.X2015}</div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div><ui:outputCurrency value="{!v.simpleRecord.Year_End_Principal_Balance_2017__c}"/>&nbsp;</div>
+                                <div>  <ui:outputCurrency value="{!v.simpleRecord.Year_End_Principal_Balance_2016__c}"/>&nbsp;</div>
+                                <div> <ui:outputCurrency value="{!v.simpleRecord.Year_End_Principal_Balance_2015__c}"/>&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.simpleRecord.Lease_Loan__c == 'Loan'}">
+                    <div class="slds-grid slds-border_bottom">
+                        <div class="slds-size_1-of-3">
+                            <h3 class="slds-tile_title slds-truncate slds-p-top_small" title="Loan Details">
+                                <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}"> 
+                                    <div class="{!v.currentUser.Account.Branding__c=='Mack' ? 'sectionTitlemack' : 'sectionTitle'}">
+                                        {!$Label.c.Loan_Details}
+                                    </div>
+                                    <aura:set attribute="else">
+                                        <div class="sectionTitletransport">
+                                            {!$Label.c.Loan_Details}
+                                        </div>
+                                    </aura:set>
+                                </aura:if>
+                            </h3>
+                            <dl class="slds-dl_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak">
+                                    <p class="slds-dl-    -inline__labe">{!$Label.c.Interest_Rate}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                    <p class="slds-item_detail">
+                                        <aura:if isTrue="{! !empty(v.simpleRecord.Contract_Interest_Rate__c)}">
+                                            <ui:outputNumber value="{!v.simpleRecord.Contract_Interest_Rate__c}" format = ".00"/>%&nbsp;
+                                        </aura:if>
+                                    </p>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak">
+                                    <p class="slds-dl-    -inline__labe">{!$Label.c.Current_Principal_Balance}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                    <p class="slds-item_detail">
+                                        <ui:outputCurrency value="{!v.simpleRecord.Principal_Balance__c}"/>
+                                    </p>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="slds-size_1-of-3">
+                            <h3 class="slds-tile_title slds-truncate  slds-p-top_small"  title="Interest Paid">
+                                <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}"> 
+                                    <div class="{!v.currentUser.Account.Branding__c=='Mack' ? 'sectionTitlemack' : 'sectionTitle'}">
+                                        {!$Label.c.Interest_Paid}
+                                    </div>
+                                    <aura:set attribute="else">
+                                        <div class="sectionTitletransport">
+                                            {!$Label.c.Interest_Paid}
+                                        </div>
+                                    </aura:set>
+                                </aura:if>
+                            </h3>
+                            <dl class="slds-dl_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak" style="width:45% !important;">
+                                    <p class="slds-dl-        -inline__labe">{!$Label.c.Year_to_Date}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                    <p class="slds-item_detail">
+                                        <ui:outputCurrency value="{!v.simpleRecord.Interest_Paid_YTD__c}"/>&nbsp;
+                                    </p>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak" style="width:45% !important;">
+                                    <p class="slds-dl-           -inline__labe">{!$Label.c.Previous_Year}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta" >
+                                    <p class="slds-item_detail">
+                                        <ui:outputCurrency value="{!v.simpleRecord.Interest_Paid_Last_Year__c}"/>
+                                    </p>
+                                </dd>
+                            </dl>
+                            
+                        </div>
+                        <div class="slds-size_1-of-3">
+                            <h3 class="slds-tile_title slds-truncate slds-p-top_small"  title="Year End Principal Balance">
+                                <aura:if isTrue="{!v.currentUser.Account.Branding__c!='Transport Funding'}"> 
+                                    <div class="{!v.currentUser.Account.Branding__c=='Mack' ? 'sectionTitlemack' : 'sectionTitle'}">
+                                        {!$Label.c.Year_End_Principal_Balance}
+                                    </div>
+                                    <aura:set attribute="else">
+                                        <div class="sectionTitletransport">
+                                            {!$Label.c.Year_End_Principal_Balance}
+                                        </div>
+                                    </aura:set>
+                                </aura:if>
+                            </h3>
+                            <dl class="slds-dl_horizontal slds-wrap">
+                                
+                                <dt class="slds-item_label slds-text-color_weak" style="width:31% !important;">
+                                    <p class="slds-dl-             -inline__labe">{!$Label.c.X2017}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                    <p class="slds-item_detail">
+                                        <ui:outputCurrency value="{!v.simpleRecord.Year_End_Principal_Balance_2017__c}"/>&nbsp;
+                                    </p>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak" style="width:31% !important;">
+                                    <p class="slds-dl-                -inline__labe">{!$Label.c.X2016}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                    <p class="slds-item_detail">
+                                        <ui:outputCurrency value="{!v.simpleRecord.Year_End_Principal_Balance_2016__c}"/>&nbsp;
+                                    </p>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak" style="width:31% !important;">
+                                    <p class="slds-dl-                 -inline__labe" >{!$Label.c.X2015}:</p>
+                                </dt>
+                                <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                    <p class="slds-item_detail" >
+                                        <ui:outputCurrency value="{!v.simpleRecord.Year_End_Principal_Balance_2015__c}"/>&nbsp;
+                                    </p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </aura:if>
+            </aura:set>
+        </aura:if-->
+    </div>
+    <span>&nbsp;</span>
+    <!--lightning:overlayLibrary aura:id="modal"/-->
+</aura:component>

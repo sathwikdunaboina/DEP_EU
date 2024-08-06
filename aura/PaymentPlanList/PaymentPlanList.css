@@ -1,0 +1,145 @@
+.THIS .Renault {
+  font-family: Arial !important;
+  font-weight: bold !important;
+  font-size: 24px;
+  Color: #000000;  
+}
+
+.THIS .Volvo {
+  font-family: Arial !important;
+  font-weight: bold !important;
+  font-size: 24px;
+  Color: #000000;  
+}
+
+.THIS .slds-text-title_bold{
+    font-size: 13px;
+    color: #4A4A4A;
+    font-family: Arial !important;
+    font-weight: bold !important;
+    
+}
+.THIS {
+    background: token(portalComponentBackgroundColor);
+    width: 100% !important;
+}
+.THIS lightning-helptext button {
+    margin-top:-10px;
+}
+.THIS .buttoncss{
+    color: black !important;
+}
+.THIS dt {
+    width: 40% !important;
+}
+.THIS dd {
+    width: 60% !important;
+}
+.THIS th {
+    max-width:75px !important;
+}
+
+.THIS .slds-scrollable_y{
+    background:transparent;
+}
+
+.THIS .sort-arrow svg {
+    height:10px;
+    margin-bottom:2px;
+    fill: rgb(37, 116, 169);
+    
+}
+.THIS .redOnYellow svg{
+    fill: white !important;
+    border: 7px solid;
+    border-color: black;
+}
+.THIS .redOnYellow{
+    background-color: black !important;
+}
+.THIS a{
+    font-size:13px;
+}
+.THIS .container{
+    height:45px;
+    width:100%;
+}
+.THIS .bottom{
+    position: relative;
+    bottom: 0px;
+}
+.THIS .searchTop{
+    margin-top: 1.35rem;
+}   
+.THIS .slds-input{
+    border-radius: 0px !important;
+}
+.THIS .slds-button{
+    border-radius: 0px !important;
+}
+.THIS .slds-border_bottom{
+    border-bottom: 1px solid #8F8A83 !important;
+}
+.THIS .contractstyle{
+    font-family: Arial;
+    font-size: 13px;
+    color: #4A4A4A !important;
+    font-weight: bold;
+}
+.THIS .idstyle{
+    font-family: Arial;
+    font-size: 24px !important;
+    color: #8F8A83 !important;
+    
+}
+
+@media only screen and (max-width: 420px){
+    .THIS input[type="text"] {
+        font-family: Arial;
+        font-size: 13px;
+    }
+    
+    .THIS    ::-webkit-input-placeholder {
+        font-size: 13px;
+    }
+    .THIS ::-moz-placeholder {
+        font-size: 13px;
+    }
+    .THIS :-ms-input-placeholder {
+        font-size: 13px;
+    }
+    .THIS ::placeholder {
+        font-size: 13px;
+    }
+    .THIS  input[type="date"]{
+        font-family: Arial;
+        font-size: 13px;
+        color:grey;
+         -webkit-appearance : menuList;
+        padding-right: 0px;
+    }
+    
+    .THIS .ToStyle{
+        width: 43%;
+    }
+    
+    .THIS .FromStyle{
+        width: 48%;
+    }
+    .THIS  input[type="date"]:before {
+        content: attr(placeholder) !important;
+    }
+    .THIS  .ToStyle > input[type="date"]:focus:before {
+        content: "To:" !important;
+    }
+    .THIS  .ToStyle > input[type="date"]:valid:before {
+        content: "To:" !important;
+    }
+    
+    .THIS  .FromStyle > input[type="date"]:focus:before {
+        content: "From:" !important;
+    }
+    .THIS  .FromStyle > input[type="date"]:valid:before {
+        content: "From:" !important;
+    }
+}

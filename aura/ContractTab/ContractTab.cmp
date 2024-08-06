@@ -1,0 +1,63 @@
+<aura:component access="global" extends="c:AuraUtilities" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable">
+    <aura:attribute name="contractId" type="String" default="{!v.recordId}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="currentUser" type="Object" />
+    <force:recordData fields="FirstName,Account.Name,Account.Branding__c"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+    <aura:handler event="c:VerticalSideNavEvt" action="{!c.handleApplicationEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="selTabId" type="String" default="" />
+    <aura:attribute name="contract" type="String"/>
+    <aura:attribute name="error" type="String"/>
+    <aura:attribute name="contractRecord" type="Contract__c"/>
+    <aura:attribute name="simpleContractRecord" type="Contract__c"/>
+    <force:recordData aura:id="contractForceView"
+                      recordId="{!v.contractId}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      targetRecord="{!v.contractRecord}"
+                      targetFields="{!v.simpleContractRecord}"
+                      targetError="{!v.error}"
+                      />
+    <aura:attribute name="ContractName" type="String" default="{!v.simpleContractRecord.Name}"/>
+    
+    <aura:if isTrue="{!$Browser.isPhone}">
+        <aura:set attribute="else">
+            <div>
+                <aura:if isTrue="{!v.currentUser.Account.Branding__c  == 'Renault'}">
+                    <lightning:tabset aura:id="tabs" variant="default" class="renault" onselect="{!c.tabSelected}"  selectedTabId="{!v.selTabId}">
+                        <lightning:tab  label="{!$Label.c.Contract_Detail}"  aura:id="contract_details" tabindex="1" id="contract_details" >
+                        </lightning:tab>
+                        <lightning:tab   label="{!$Label.c.Payment_Plan}" aura:id="payment_plan" tabindex="2" id="payment_plan" title="Payment Plan">
+                        </lightning:tab>
+                        <!--lightning:tab label="{!$Label.c.Invoices}" aura:id="invoice_list" tabindex="3" id="invoice_list" title="Invoices">
+                        </lightning:tab>
+                        <lightning:tab label="{!$Label.c.Payment_History}" aura:id="payment_history" tabindex="4" id="payment_history" title="Payment History">
+                        </lightning:tab>
+                        <lightning:tab  label="{!$Label.c.Documents}" aura:id="documents" tabindex="5" id="documents" title="Documents">
+                        </lightning:tab-->
+                    </lightning:tabset>
+                    <aura:set attribute="else">
+                        <lightning:tabset aura:id="tabsVolvo" variant="default" class="volvofunding"  onselect="{!c.tabSelectedVolvo}"  selectedTabId="{!v.selTabId}">
+                            <lightning:tab  label="{!$Label.c.Contract_Detail}"  aura:id="contract_details" tabindex="1" id="contract_details" >
+                            </lightning:tab>
+                            <lightning:tab   label="{!$Label.c.Payment_Plan}" aura:id="payment_plan" tabindex="2" id="payment_plan" title="Payment Plan">
+                            </lightning:tab>
+                            <!--lightning:tab label="{!$Label.c.Invoices}" aura:id="invoice_list" tabindex="3" id="invoice_list" title="Invoices">
+                            </lightning:tab>
+                            <lightning:tab label="{!$Label.c.Payment_History}" aura:id="payment_history" tabindex="4" id="payment_history" title="Payment History">
+                            </lightning:tab>
+                            <lightning:tab  label="{!$Label.c.Documents}" aura:id="documents" tabindex="5" id="documents" title="Documents">
+                            </lightning:tab-->
+                        </lightning:tabset>  
+                    </aura:set>
+                </aura:if>                
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

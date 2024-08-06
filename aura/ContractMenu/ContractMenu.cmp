@@ -1,0 +1,38 @@
+<aura:component access="global" extends="c:AuraUtilities"  implements="force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable">
+    <aura:attribute name="selTabId" type="String" default="details"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="contractId" type="String" default=""/>
+    <aura:attribute name="contract" type="String"/>
+    <aura:attribute name="error" type="String"/>
+    <aura:attribute name="contractRecord" type="Contract__c"/>
+    <aura:attribute name="simpleContractRecord" type="Contract__c"/>
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="currentUser" type="Object" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="contractForceView"
+                      recordId="{!v.contractId}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      targetRecord="{!v.contractRecord}"
+                      targetFields="{!v.simpleContractRecord}"
+                      targetError="{!v.error}"
+                      />
+    <force:recordData fields="FirstName,Account.Name,Account.Branding__c"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+    
+    <aura:if isTrue="{!v.currentUser.Account.Branding__c == 'Renault'}">
+        <lightning:select aura:id="select" onchange="{!c.onOptionChange}" class="Renault"  value="{!v.selTabId}"  name="select" label="Select an item">
+            <option value="details">{!$Label.c.Contract_Detail}</option>
+            <option value="payment">{!$Label.c.Payment_Plan}</option>
+        </lightning:select>
+        <aura:set attribute="else">
+            <lightning:select aura:id="selectTransport" onchange="{!c.onOptionChangeVolvo}" class="Volvo"  value="{!v.selTabId}"  name="select" label="Select an item">
+                <option value="details">{!$Label.c.Contract_Detail}</option>
+                <option value="payment">{!$Label.c.Payment_Plan}</option>
+            </lightning:select>
+        </aura:set>
+    </aura:if>
+</aura:component>
