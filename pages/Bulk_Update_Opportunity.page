@@ -1,0 +1,53 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities"  showHeader="false"
+ lightningStylesheets="true">
+<script type="text/javascript">
+
+        function showToast() {
+            sforce.one.showToast({
+                "title": "Success!",
+                "message": "Record updated successfully.",
+                "type": "success"
+            });
+        }
+    </script>
+  <apex:outputpanel rendered="{!selected != null}">
+    <apex:form id="muform">
+        <apex:pageMessage summary="" 
+            severity="info"
+                          id="mupms" />
+                          
+  <apex:pageBlock >
+      <apex:pageBlockSection >
+      <apex:inputField value="{!Opportunity.OwnerId}" required="false"/>
+      <apex:inputField value="{!Opportunity.StageName}" required="false"/>
+      <apex:inputField value="{!Opportunity.Customer_Account__c}" />
+        <apex:inputField value="{!Opportunity.Lost_Reason__c}" />
+        <apex:inputField value="{!Opportunity.Type}" />
+         <apex:inputField value="{!Opportunity.Probability}" required="false"/>
+          <apex:inputField value="{!Opportunity.Amount}" />
+          
+      </apex:pageBlockSection>
+    <apex:pageBlockTable value="{!selected}" var="opp">
+        <apex:column value="{!opp.Name}"/>    
+      </apex:pageBlockTable>
+      <apex:commandButton action="{!save}" value="Save" onClick="showToast();" />
+      
+      <apex:commandButton value="Cancel" action="{!cancel}" />
+    
+    </apex:pageBlock>  
+    
+    </apex:form>    
+    </apex:outputpanel>
+
+      <apex:outputpanel rendered="{!selected == null}">
+          <apex:form >    
+
+      <h1> Please Select Atleast one record</h1>
+      <apex:commandButton value="Cancel" action="{!cancel}" />
+      </apex:form>    
+
+          </apex:outputpanel>
+        
+
+
+</apex:page>

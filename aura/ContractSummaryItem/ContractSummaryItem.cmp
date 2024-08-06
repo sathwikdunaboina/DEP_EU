@@ -1,0 +1,131 @@
+<aura:component description="ContractSummaryItem" extends="c:AuraUtilities" controller="DownloadFilesApexController">
+    <aura:attribute name="contract" type="Object"/>
+    <aura:registerEvent name="tc_contractLeftNav_event" type="c:ContractLeftNavEvt"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="currentUser" type="Object" />
+	<aura:attribute name="files" type="List"/>
+    <aura:attribute name="Baseurl" type="String" />
+    <force:recordData
+                      fields="FirstName,Account.Name,Account.Branding__c"
+                      recordId="{!$SObjectType.CurrentUser.Id}"
+                      targetFields="{!v.currentUser}"
+                      mode="VIEW"
+                      />
+   
+    
+    <div class="slds-border_bottom">    
+        <div class="slds-grid slds-wrap slds-p-bottom_xx-small slds-p-top_xx-small ">
+            
+            <div class="slds-col slds-max-small-size_1-of-2 slds-size_3-of-12  slds-p-top_small labelStyle ">
+                <div>{!$Label.c.Contract_Number}:</div>
+                <div>{!$Label.c.Remaining_Balance}:
+                    <!--lightning:helptext class="custom" content="{!$Label.c.Please_note_Balance_is_not_a_valid_payoff_amount+'.'}" /-->
+                </div>
+                <div>{!$Label.c.Start_Date}:</div>
+                <div>{!$Label.c.End_Date}:</div>
+            </div>
+            
+            <div class="slds-col slds-max-small-size_1-of-2 sld-size_2-of-12 slds-p-top_small">
+                <div>{!v.contract.Contract_Number__c}</div>
+               <!-- <div> <a onclick="{!c.viewContract}">{!v.contract.Contract_Number__c}</a></div> -->
+                <div class="valueStyle"><ui:outputCurrency value="{!v.contract.Remaining_Balance__c}"/>&nbsp;</div>
+                <div class="valueStyle"><ui:outputDate value="{!v.contract.Start_Date__c}" format="dd/MM/yyyy"/>&nbsp;</div>
+                <div class="valueStyle"><ui:outputDate value="{!v.contract.End_Date__c}" format="dd/MM/yyyy"/>&nbsp;</div>
+            </div>
+            &nbsp;
+            <div class="slds-col slds-max-small-size_1-of-1 slds-size_3-of-12 slds-p-top_small">
+                <div>
+                    <div class="slds-grid">
+                        <div class="slds-size_1-of-2 ">
+                              <!-- <div class="labelStyle">{!$Label.c.Termination_Date}:</div> -->
+                            <div class="labelStyle">{!$Label.c.Type}:</div>
+                            <div class="labelStyle">{!$Label.c.Net_Investment}:</div>
+                            <!--div class="labelStyle">{!$Label.c.Legal_Status}:</div-->
+                            <div class="labelStyle">{!$Label.c.VIN_Number}:</div>
+                            <div class="labelStyle">{!$Label.c.Term}:</div>
+                        </div>
+                        
+                        <div class="slds-size_2-of-2 ">
+                            <div class="valueStyle">{!v.contract.Type__c}&nbsp;</div>
+                            <div><!--p class="{!v.contract.Past_Due_Status__c!=undefined ? 'red' : 'black'}"-->
+                                <ui:outputCurrency value="{!v.contract.Net_Investment__c}"/>
+                                <!--/p-->
+                            </div>
+                            <!--div class="valueStyle">{!v.contract.Legal_Status__c}&nbsp;</div-->
+                            <div class="valueStyle">{!v.contract.VIN_Number__c}&nbsp;</div>
+                            <div class="valueStyle">{!v.contract.Term__c}&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-top_small"><!--c:ContractPastDueDateColor  pastDue="{!v.contract.Past_Due_Status__c}"/--></div>
+            </div>
+            
+            
+            <div class="slds-col slds-max-small-size_1-of-1 slds-size_3-of-12 slds-wrap slds-p-top_small">
+                <!-- <lightning:button class="payment " label="Make a Payment >"  onclick=""/>-->
+                <!--aura:if isTrue="{!(v.currentUser.Account.Branding__c=='Transport Funding')}">
+                    <button onclick="{!c.toCreateCase}" class="slds-button slds-button-        -icon paymentButtontransport "  >
+                        <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                        <lightning:icon iconName="utility:chevronright" size="xx-small" class="arrowtransport"/>
+                    </button>
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!(v.currentUser.Account.Branding__c!='Mack')}">
+                            <button onclick="{!c.toCreateCase}" class="slds-button slds-button-      -icon paymentButton "  >
+                                <span class="slds-p-right_xx-small">{!$Label.c.Create_Case}</span>
+                                <lightning:icon iconName="utility:chevronright" size="xx-small" />
+                            </button>
+                        </aura:if>
+                        <aura:if isTrue="{!v.currentUser.Account.Branding__c=='Mack'}">
+                            <button onclick="{!c.toCreateCase}" class="slds-button slds-button-       -icon gold "  >
+                                <span class="slds-p-right_xx-small" style="color:#87754E">{!$Label.c.Create_Case}</span>
+                                <lightning:icon  style="fill:#87754E" iconName="utility:chevronright" size="xx-small" class="arrowmack"/>
+                            </button>
+                        </aura:if>
+                    </aura:set>
+                </aura:if-->
+            </div>
+            
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-grid_align-end linkStyle">
+            <aura:if isTrue="{!$Browser.isPhone}">
+                <div class="slds-col slds-size_1-of-1">
+                    <a onclick="{!c.doContractRequest}" id="{!$Label.c.Early_Termination}">{!$Label.c.Request_Early_Termination}</a>
+                    
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                    <a onclick="{!c.doContractRequest}" id="{!$Label.c.Contract_Extension}">{!$Label.c.Request_Contract_Extension}</a>
+                    
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1">
+                    <a onclick="{!c.doContractRequest}" id="{!$Label.c.Amend_Contract}">{!$Label.c.Contract_Amendment}</a>
+                </div>
+                
+                <aura:set attribute="else">
+                    <div class="slds-col slds-max-small-size_2-of-3">
+                        <!--a onclick="{!c.navigateToAssets}">{!$Label.c.Assets}</a>
+                |
+                <a onclick="{!c.navigateToInvoices}">{!$Label.c.Invoices}</a>
+                |
+                <a onclick="{!c.navigateToPaymentHistory}">{!$Label.c.Payment_History}</a>
+                |
+                <a onclick="{!c.navigateToDocuments}">{!$Label.c.Documents}</a>
+                |-->
+                        <a onclick="{!c.doContractRequest}" id="{!$Label.c.Early_Termination}">{!$Label.c.Request_Early_Termination}</a>
+                        |
+                        <a onclick="{!c.doContractRequest}" id="{!$Label.c.Contract_Extension}">{!$Label.c.Request_Contract_Extension}</a>
+                        |
+                        <a onclick="{!c.doContractRequest}" id="{!$Label.c.Amend_Contract}">{!$Label.c.Contract_Amendment}</a>
+						|
+						<a onclick="{!c.download}">Download</a>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </div>
+        
+    </div>
+    <lightning:overlayLibrary aura:id="modal"/>
+    
+</aura:component>

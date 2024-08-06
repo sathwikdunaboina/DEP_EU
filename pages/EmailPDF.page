@@ -1,0 +1,25 @@
+<apex:page controller="C3S_VFP08_EmailPDFController" showHeader="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" renderAs="PDF">
+      <head>
+      <style>
+        @page{size: A4 landscape;}            
+      </style>
+    </head>
+    <!-- DO PDF -->
+    <body>
+         <!-- ADRESS -->
+         From: {!EmailMessage.FromAddress}
+         <br/> 
+         TO: {!EmailMessage.ToAddress}
+         <br/> 
+         CC:{!EmailMessage.CcAddress}
+        <br/>
+            
+        <!-- Message -->    
+        Subject: {!EmailMessage.Subject}
+        <br/>
+        Date: {!MessageDate}
+        <br/>
+        <br/>
+        <apex:outputText value="{!EmailMessage.HtmlBody}" escape="false"></apex:outputText>
+    </body>                  
+</apex:page>
