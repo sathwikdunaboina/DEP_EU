@@ -1,6 +1,0 @@
-<aura:component description="AuraUtilities" extensible="true" abstract="true">
-    <aura:attribute name="showSpinner" type="Boolean" default="{!false}"/>
-    <lightning:spinner aura:id="spinner" variant="brand" size="medium" class="{!if (v.showSpinner, '', 'slds-hide')}"/>
-
-    {!v.body}
-</aura:component>
