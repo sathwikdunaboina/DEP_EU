@@ -197,17 +197,12 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Cancelled_Reason__c</fieldItem>
-                <identifier>RecordCancelled__cField</identifier>
+                <identifier>RecordCancelled_Reason_cField</identifier>
                 <visibilityRule>
                     <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.StageName}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Under negotiation</rightValue>
-                    </criteria>
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>NE</operator>
@@ -216,7 +211,12 @@
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>NE</operator>
-                        <rightValue>Dealer inventory</rightValue>
+                        <rightValue>Under Negotiation</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer Inventory</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
