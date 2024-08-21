@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>FO_IT_SA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This sharing rule gives read/write access to Italy FO records</description>
+        <label>FO_IT_SA</label>
+        <sharedTo>
+            <group>Italy_Sales</group>
+        </sharedTo>
+        <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>IT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Italy,IT</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>FO_RT_AT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>FO_RT_AT</label>
         <sharedTo>
             <group>Austria_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>AT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -26,6 +63,22 @@
         <sharedTo>
             <group>Belgium_Renault</group>
         </sharedTo>
+        <booleanFilter>((1 OR 2) OR (3 AND 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>BE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>LU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -45,6 +98,17 @@
         <sharedTo>
             <group>Switzerland_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>CH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -64,6 +128,17 @@
         <sharedTo>
             <group>Germany_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>DE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -83,6 +158,17 @@
         <sharedTo>
             <group>Denmark_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>DK</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value>DK</value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -102,6 +188,17 @@
         <sharedTo>
             <group>Spain_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR 5 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>ES</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -112,6 +209,11 @@
             <operation>equals</operation>
             <value>RT,Renault</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>PT</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -121,6 +223,17 @@
         <sharedTo>
             <group>Finland_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>FI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -140,6 +253,17 @@
         <sharedTo>
             <group>France_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -159,6 +283,17 @@
         <sharedTo>
             <group>Italy_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>IT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -178,6 +313,17 @@
         <sharedTo>
             <group>Netherlands_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -197,6 +343,17 @@
         <sharedTo>
             <group>Poland_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>PL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -216,6 +373,22 @@
         <sharedTo>
             <group>United_Kingdom_Renault</group>
         </sharedTo>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>GB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>IE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -235,6 +408,17 @@
         <sharedTo>
             <group>Austria_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>AT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -254,6 +438,22 @@
         <sharedTo>
             <group>Belgium_Volvo</group>
         </sharedTo>
+        <booleanFilter>((1 OR 2 )AND (3 AND 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value>BE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>LU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -273,6 +473,17 @@
         <sharedTo>
             <group>Switzerland_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>CH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -292,6 +503,17 @@
         <sharedTo>
             <group>Germany_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>DE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -311,6 +533,17 @@
         <sharedTo>
             <group>Denmark_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>DK</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -330,6 +563,22 @@
         <sharedTo>
             <group>Spain_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>ES</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>PT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -349,6 +598,17 @@
         <sharedTo>
             <group>Finland_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>FI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -369,6 +629,16 @@
             <group>France_Volvo</group>
         </sharedTo>
         <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
             <value>France,FR</value>
@@ -387,6 +657,17 @@
         <sharedTo>
             <group>Netherlands_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -406,6 +687,17 @@
         <sharedTo>
             <group>Poland_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>PL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -425,6 +717,22 @@
         <sharedTo>
             <group>United_Kingdom_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>startsWith</operation>
+            <value>GB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>startsWith</operation>
+            <value>IE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -444,7 +752,17 @@
         <sharedTo>
             <group>South_Africa_Volvo</group>
         </sharedTo>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>ZA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
@@ -464,7 +782,17 @@
         <sharedTo>
             <group>Italy_Volvo</group>
         </sharedTo>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>IT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
