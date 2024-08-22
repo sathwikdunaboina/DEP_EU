@@ -167,7 +167,7 @@
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>equals</operation>
-            <value>DK</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <field>Country__c</field>
@@ -256,7 +256,7 @@
         <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
-            <operation>equals</operation>
+            <operation>startsWith</operation>
             <value>FR</value>
         </criteriaItems>
         <criteriaItems>
@@ -441,7 +441,7 @@
         <booleanFilter>((1 OR 2 )AND (3 AND 4)) AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
-            <operation>equals</operation>
+            <operation>startsWith</operation>
             <value>BE</value>
         </criteriaItems>
         <criteriaItems>
@@ -600,12 +600,12 @@
         </sharedTo>
         <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
         <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
             <value>FI</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Brand__c</field>
+            <field>Dealer_Id__c</field>
             <operation>equals</operation>
             <value></value>
         </criteriaItems>
@@ -628,6 +628,7 @@
         <sharedTo>
             <group>France_Volvo</group>
         </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
