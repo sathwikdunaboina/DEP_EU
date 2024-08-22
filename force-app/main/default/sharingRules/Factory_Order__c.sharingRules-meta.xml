@@ -225,7 +225,7 @@
         <sharedTo>
             <group>Belgium_Renault</group>
         </sharedTo>
-        <booleanFilter>((1 OR 2) OR (3 AND 4)) AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -600,7 +600,7 @@
         <sharedTo>
             <group>Belgium_Volvo</group>
         </sharedTo>
-        <booleanFilter>((1 OR 2 )AND (3 AND 4)) AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -882,12 +882,12 @@
         </sharedTo>
         <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
         <criteriaItems>
-            <field>Country__c</field>
+            <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
             <value>GB</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Brand__c</field>
+            <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
             <value>IE</value>
         </criteriaItems>
