@@ -285,6 +285,49 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Cancelled_Reason__c</fieldItem>
+                <identifier>RecordCancelled_Reason_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Needs Analysis</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Under Negotiation</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer Inventory</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Quoted</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Closed Won</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Closed Lost</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Lost_Reason__c</fieldItem>
                 <identifier>RecordLost_Reason_cField</identifier>
                 <visibilityRule>
