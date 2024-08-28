@@ -5,20 +5,120 @@
         <active>true</active>
         <ruleEntry>
             <criteriaItems>
-                <field>Case.Origin</field>
+                <field>Case.OwnerId</field>
                 <operation>equals</operation>
-                <value>Email - Volvo</value>
+                <value>NL-Subsidies</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>vfs.no-reply.nl@volvo.com</senderEmail>
+            <senderName>VFS NL - Service Team</senderName>
+            <template>NL_Communication_Folder/NL_Subsidies</template>
+        </ruleEntry>
+        <ruleEntry>
+            <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>BE-Operations</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
-                <value>UK/IE - CS tech Tool</value>
+                <value>BE-EOT</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>BE-Collections</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>vfs.no-reply.be@volvo.com</senderEmail>
+            <senderName>Belgium Support</senderName>
+            <template>BE_Communication_Folder/BE_Service_Desk</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>FR-ServiceClientsVolvoOld-NePasUtiliser</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>nepasrepondre_noreply_vfs@volvo.com</senderEmail>
+            <senderName>FR-ServiceClientsVolvoOld-NePasUtiliser</senderName>
+            <template>FR_Communication_Folder/FR_Service_Clients_Volvo_Old_ne_pas_utiliser</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>FR - Service Réclamations Renault</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>nepasrepondre_noreply_rtfs@renault-trucks.com</senderEmail>
+            <senderName>FR - Service Réclamations Renault</senderName>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_R_clamations_Renault_1715580442178</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>FR - Service Réclamations Volvo</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>nepasrepondre_noreply_vfs@volvo.com</senderEmail>
+            <senderName>FR - Service Réclamations Volvo</senderName>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_R_clamations_Volvo_1715580577516</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>FR - Service Assurances Renault</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>nepasrepondre_noreply_rtfs@renault-trucks.com</senderEmail>
+            <senderName>FR - Service Assurances Renault</senderName>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_Assurances_Renault_1715579952935</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>FR - Service Assurances Volvo</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>nepasrepondre_noreply_vfs@volvo.com</senderEmail>
+            <senderName>FR - Service Assurances Volvo</senderName>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_Assurances_Volvo_1715580100475</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>FR - Service Clients Rental</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>rental@volvo.com</replyToEmail>
+            <senderEmail>nepasrepondre_noreply_vfs@volvo.com</senderEmail>
+            <senderName>FR - Service Clients Rental</senderName>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_Clients_Rental_1715580716232</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>UK/IE - Service Desk</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs.techtool@volvo.com</replyToEmail>
             <senderEmail>pav.dhaliwal@volvo.com</senderEmail>
-            <senderName>UK/IE CS Tech Tool</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Tech_Tool_Case_Auto_Response_Volvo</template>
+            <senderName>UK/IE Service Desk</senderName>
+            <template>UK_IE_Communication_Folder/UK_IE</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
@@ -194,7 +294,7 @@
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
-                <value>FR - CS Administration</value>
+                <value>FR - Service Clients Volvo</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Origin</field>
@@ -203,15 +303,15 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs_services@volvo.com</replyToEmail>
-            <senderEmail>laure.coupas@volvo.com</senderEmail>
+            <senderEmail>nepasrepondre_noreply_vfs@volvo.com</senderEmail>
             <senderName>FR Support</senderName>
-            <template>FR_Communication_Folder/FR_Case_Auto_response_Volvo</template>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_Clients_Volvo_1715580292093</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
-                <value>FR - CS Administration</value>
+                <value>FR - Service Clients Renault</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Origin</field>
@@ -220,9 +320,9 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>rtfs_services@renault-trucks.com</replyToEmail>
-            <senderEmail>laure.coupas@volvo.com</senderEmail>
+            <senderEmail>nepasrepondre_noreply_rtfs@renault-trucks.com</senderEmail>
             <senderName>FR Support</senderName>
-            <template>FR_Communication_Folder/FR_Case_Auto_response_Renault</template>
+            <template>FranceAutoResponseEmailTemplates/FR_Service_Clients_Renault_1715580202159</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
@@ -316,7 +416,7 @@
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>clienti@vfsco.com</replyToEmail>
-            <senderEmail>monica.achenza@vfsco.com</senderEmail>
+            <senderEmail>stefania.zanchi@volvo.com</senderEmail>
             <senderName>Italy Support</senderName>
             <template>Italy_Communication_Templates/Italy_Case_Auto_reponse_Italy</template>
         </ruleEntry>
@@ -373,7 +473,7 @@
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>notEqual</operation>
-                <value>UK/IE - CS tech Tool</value>
+                <value>UK/IE - Service Desk</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.OwnerId</field>
@@ -401,12 +501,12 @@
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
-                <value>UK/IE - CS tech Tool</value>
+                <value>UK/IE - Service Desk</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <senderEmail>pav.dhaliwal@volvo.com</senderEmail>
-            <senderName>UK - Tech Tool</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Tech_Tool_Case_Auto_Response_vfsco</template>
+            <senderName>UK - Service Desk</senderName>
+            <template>UK_IE_Communication_Folder/UK_IE</template>
         </ruleEntry>
         <ruleEntry>
             <booleanFilter>( 1 AND 2 ) OR ( 3 AND 4 )</booleanFilter>
@@ -513,7 +613,7 @@
             <template>Spain_Communication_Folder/Client_Renault</template>
         </ruleEntry>
         <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
                 <field>Case.Origin</field>
                 <operation>equals</operation>
@@ -524,6 +624,11 @@
                 <operation>equals</operation>
                 <value>DE - Contract Performance</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+                <value>unityconnection@vcn.ds.volvo.net</value>
+            </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs.operations.de@volvo.com</replyToEmail>
             <senderEmail>vfs.info.de@volvo.com</senderEmail>
@@ -531,7 +636,7 @@
             <template>DE_AT_Communication_Folder/DE_Contract_Performace</template>
         </ruleEntry>
         <ruleEntry>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
                 <field>Case.Origin</field>
                 <operation>equals</operation>
@@ -542,11 +647,132 @@
                 <operation>equals</operation>
                 <value>DE - End of Term</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+                <value>unityconnection@vcn.ds.volvo.net</value>
+            </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>vfs.eot.de@volvo.com</replyToEmail>
             <senderEmail>vfs.info.de@volvo.com</senderEmail>
             <senderName>DE Support</senderName>
             <template>DE_AT_Communication_Folder/DE_EOT</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>DE - Insurance</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>vfs.info.de@volvo.com</senderEmail>
+            <senderName>DE - Insurance</senderName>
+            <template>DE_AT_Communication_Folder/DE_Insurance</template>
+        </ruleEntry>
+        <ruleEntry>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>South Africa</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>ZA - Activation Request</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
+            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <senderName>VFS ZA - Service Team</senderName>
+            <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>South Africa</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>ZA - After sales</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
+            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <senderName>VFS ZA - Service Team</senderName>
+            <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>South Africa</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>ZA - Drafting and administration queues</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
+            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <senderName>VFS ZA - Service Team</senderName>
+            <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>South Africa</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>ZA - Restucture</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
+            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <senderName>VFS ZA - Service Team</senderName>
+            <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>BR - Paschoalotto</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>aswin.balaji.m@consultant.volvo.com</senderEmail>
+            <senderName>BR Paschoalotto</senderName>
+            <template>ZA_Communication_Folder/ZA_Service_Connect_Lightning_Email_Template</template>
         </ruleEntry>
     </autoResponseRule>
 </AutoResponseRules>
