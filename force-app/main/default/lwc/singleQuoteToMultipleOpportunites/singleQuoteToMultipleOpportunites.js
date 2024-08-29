@@ -207,6 +207,13 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
             this.dispatchEvent(new CloseActionScreenEvent());
         };
     }
+    selectAll(event) {
+            let i;
+           let checkboxes = this.template.querySelectorAll('[data-id="checkbox1"]');
+           for(i=1; i<checkboxes.length; i++) {
+                checkboxes[i].checked = event.target.checked;              
+            }
+        }
 
     selectedOpportunities(event) {
         this.isLoaded = !this.isLoaded;
@@ -217,16 +224,14 @@ export default class SingleQuoteToMultipleOpportunites extends LightningElement 
         let amountArray = [];
         let emptyAmountRecordNames = "";
         let NoDealerId = "";
-        for (let i = 0; i < selectedOpps.length; i++) {
+        for (let i = 1; i < selectedOpps.length; i++) {
             if (selectedOpps[i].checked && selectedOpps[i].type === "checkbox") {
-                result.push(selectedOpps[i].value);
-                //console.log("result1" + result);
+                result.push(selectedOpps[i].value);             
                 resultCopy = this.nonClosedateArray
                     .concat(this.nonClosedateArraySelected)
                     .filter(ele => {
                         return ele.Id == selectedOpps[i].value;
-                    });
-                //alert(resultCopy);
+                    });           
                 if (!resultCopy[0].Amount) {
                     emptyAmountRecordNames += resultCopy[0].Name + ",";
                     amountArray.push(resultCopy);
