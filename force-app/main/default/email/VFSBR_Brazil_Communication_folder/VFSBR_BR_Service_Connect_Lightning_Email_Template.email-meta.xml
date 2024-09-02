@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template is sent to the customers for acknowledging that their case has been created in the system for Brazil</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BR - Service Connect Lightning Email Template</name>
+    <style>none</style>
+    <subject>Case created with VFS Service Team, Case Number: {!Case.CaseNumber}</subject>
+    <textOnly>Obrigado por entrar em contato com nossa equipe de atendimento da Volvo Financial Services.
+
+O número do seu caso é: {!Case.CaseNumber} : {!Case.Subject}
+
+Nosso objetivo é responder à sua consulta dentro de 48 horas úteis.
+
+Observe que nosso horário de funcionamento é das 9h00 às 18h00, de segunda a sexta-feira (exceto feriados)</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
