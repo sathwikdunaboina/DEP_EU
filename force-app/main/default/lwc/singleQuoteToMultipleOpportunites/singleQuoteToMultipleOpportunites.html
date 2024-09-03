@@ -16,11 +16,12 @@
                     <table>
                         <thead if:false={isLoaded}>
                             <tr> 
-                                <th style="width:10%;"></th>
-                                <th style="width:10%;">Quote Id</th>
-                                <th style="width:20%;">Amount</th>
-                                <th style="width:20%;">VIN Number</th> <!--Task-7323-->
-                                <th style="width:20%;">Asset</th> <!--Task-7323-->
+                                <th style="width:15%;"><lightning-input class="slds-p-left_xxx-small"  type="checkbox" label=" Select all" onclick={selectAll}  ></lightning-input></th>    
+                                   
+                                <th style="width:15%;">Quote Id</th>
+                                <th style="width:5%;">Amount</th>
+                                <th style="width:2%;">VIN Number</th> <!--Task-7323-->
+                                <th style="width:2%;">Asset</th> <!--Task-7323-->
                                 <!-- <th style="width:25%;">Dealer Name</th> -->
                                 <th style="width:20%;">Dealer Delivery Date</th>
                                 <!-- <th style="width:10%;">Brand</th> -->
@@ -33,10 +34,9 @@
                                 <tr key={item.Id} style="border-bottom: 1px solid #ddd;" data-id={item.Id} id={item.Id}>
                                     <td style="width: 10%;">
                                         <template if:true={item.checkbox}>
-                                            <lightning-input style="color:blue;" onchange={handleChange} type="checkbox" checked={item.firstRecordCheckByDefault} disabled={item.firstRecordCheckByDefault} data-amount={item.Amount} name={item.Id} value={item.Id}>
+                                            <lightning-input style="color:blue;" data-id="checkbox1" onchange={handleChange} type="checkbox" checked={item.firstRecordCheckByDefault} disabled={item.firstRecordCheckByDefault} data-amount={item.Amount} name={item.Id} value={item.Id}>
                                             </lightning-input>
-                                        </template>
-</td>
+                                        </template></td>
 <!-- <td style="width:25%;text-overflow:ellipsis;">{item.Name}</td> -->
 <td style="width:10%;text-overflow:ellipsis;">{item.Quote_Id__c}</td>
 <td style="width:20%;text-overflow:ellipsis;">
