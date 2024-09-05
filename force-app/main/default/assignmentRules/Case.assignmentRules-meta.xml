@@ -4,6 +4,69 @@
         <fullName>Case Assignments</fullName>
         <active>true</active>
         <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_UK_Purchase_New</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;New&apos;),
+medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
+ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;),
+RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_New_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_UK_Pur_Escalated</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;),
+medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
+ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;),
+RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Escalated_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_UK_Pur_Overdue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;),
+medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
+ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;),
+RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Overdue_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_UK_Rel_Escalated</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;),
+medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
+ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;),
+RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Escalated_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_UK_Relship_New</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;New&apos;),
+medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
+ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;),
+RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_New_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_UK_Rel_Overdue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;),
+medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
+ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;),
+RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Overdue_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>NL_Collections</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Netherlands</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>Italy_CS_Sales_Team</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -88,7 +151,7 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>UK_IE_CS_tech_Tool</assignedTo>
+            <assignedTo>UK_IE_Service_Desk</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>(1 OR 2 ) AND 3</booleanFilter>
             <criteriaItems>
@@ -156,6 +219,29 @@
                 <field>Case.Type</field>
                 <operation>contains</operation>
                 <value>End of term query,Settlement Query</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>DE_Insurance</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Germany</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>Insurance query</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>VFSBR_BR_General</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>Brazil</value>
             </criteriaItems>
         </ruleEntry>
     </assignmentRule>
