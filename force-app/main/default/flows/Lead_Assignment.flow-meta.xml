@@ -20,6 +20,8 @@
         <actionName>Do_Nothing</actionName>
         <actionType>flow</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Do_Nothing</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -32,7 +34,7 @@
         <label>Call LeadAssignmentController</label>
         <locationX>300</locationX>
         <locationY>200</locationY>
-        <actionName>LeadAssignmentController</actionName>
+        <actionName>leadAssignmentController</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -77,6 +79,8 @@
                 <elementReference>myVariable_current.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>leadAssignmentController</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>
