@@ -4,24 +4,92 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
-            <inputField>Initials__c</inputField>
-            <outputField>Initials__c</outputField>
+            <inputField>VAT_Number__c</inputField>
+            <outputField>VATNumber__c</outputField>
         </mappingFields>
-        <outputObject>Contact</outputObject>
+        <outputObject>Account</outputObject>
     </objectMapping>
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
+            <inputField>AdditionalServices__c</inputField>
+            <outputField>Additional_Services__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Lead_Axle_Arrangement__c</inputField>
+            <outputField>Lead_Axle_Arrangement__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Brand__c</inputField>
+            <outputField>Lead_Brand__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Cab_Version__c</inputField>
+            <outputField>Cab_Version__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Lead_Chassis_Type__c</inputField>
+            <outputField>Lead_Chassis_Type__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Contact_Role__c</inputField>
+            <outputField>Contact_Role__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Credit_Rate__c</inputField>
+            <outputField>Credit_Rate__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>Dealer_Name__c</inputField>
             <outputField>Dealer_Name__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Dealer_Sales_Person__c</inputField>
+            <outputField>Lead_Dealer_Sales_Person__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Detailed_Specification__c</inputField>
+            <outputField>Detailed_Specification__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>Factory_Order__c</inputField>
             <outputField>Factory_Order__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>FactoryOrder__c</inputField>
-            <outputField>FactoryOrder__c</outputField>
+            <inputField>General_Description__c</inputField>
+            <outputField>General_Description__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Lead_Type__c</inputField>
+            <outputField>Opportunity_Type__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Milage__c</inputField>
+            <outputField>Milage__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Model__c</inputField>
+            <outputField>Lead_Model__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Net_Sales_Price__c</inputField>
+            <outputField>NetSalesPrice__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Registration_Date__c</inputField>
+            <outputField>Registration_Date__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Registration_Number__c</inputField>
+            <outputField>Registration_Number__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Superstructure_Type__c</inputField>
+            <outputField>Superstructure_Type__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>VIN_Number__c</inputField>
+            <outputField>Lead_VIN_Number__c</outputField>
         </mappingFields>
         <outputObject>Opportunity</outputObject>
     </objectMapping>
