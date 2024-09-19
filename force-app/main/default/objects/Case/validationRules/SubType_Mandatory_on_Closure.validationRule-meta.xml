@@ -3,7 +3,15 @@
     <fullName>SubType_Mandatory_on_Closure</fullName>
     <active>true</active>
     <description>Case subtype is mandatory when closing a case.</description>
-    <errorConditionFormula>&apos;Closed&apos; == text(Status) &amp;&amp; isBlank(text( Sub_Type__c )) &amp;&amp;  text(Status_Reason__c) != &apos;Auto Closed&apos;</errorConditionFormula>
+    <errorConditionFormula>AND(&apos;Closed&apos; == text(Status), isBlank(text( Sub_Type__c )),  text(Status_Reason__c) != &apos;Auto Closed&apos;,
+NOT(
+VLOOKUP(
+$ObjectType.ExcludeCaseSubtypeValidation__c.Fields.Country__c,
+$ObjectType.ExcludeCaseSubtypeValidation__c.Fields.Name,
+text(Country__c)
+)=
+text(Country__c)
+))</errorConditionFormula>
     <errorDisplayField>Sub_Type__c</errorDisplayField>
-    <errorMessage>Case type is mandatory when closing a case.</errorMessage>
+    <errorMessage>Case Sub type is mandatory when closing a case.</errorMessage>
 </ValidationRule>
