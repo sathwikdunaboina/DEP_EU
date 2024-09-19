@@ -21,6 +21,21 @@
         <ruleStatus>Active</ruleStatus>
     </matchingRules>
     <matchingRules>
+        <fullName>Manual_Lead_Account_Rule</fullName>
+        <label>Manual Lead Account Rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Name</fieldName>
+            <matchingMethod>CompanyName</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>BillingCountry</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+    <matchingRules>
         <fullName>VFS_CMS_Account_Matching</fullName>
         <description>The same customer is handled differently in different countries. So for the Pilot, we will create the same customer for 2 countries, separately, exactly as its present in backend CMS systems.</description>
         <label>VFS CMS Account Matching</label>
