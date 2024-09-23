@@ -31,7 +31,7 @@
         <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Update_Lead_Country</targetReference>
+            <targetReference>Get_Logged_In_User_Record</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -45,15 +45,49 @@
         <object>Lead</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <description>Get the logged in user record</description>
+        <name>Get_Logged_In_User_Record</name>
+        <label>Get Logged In User Record</label>
+        <locationX>176</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Lead_Country</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Update_Lead_Country</name>
         <label>Update Lead Country</label>
         <locationX>176</locationX>
-        <locationY>395</locationY>
+        <locationY>503</locationY>
         <inputAssignments>
             <field>Country</field>
             <value>
-                <elementReference>$User.Country</elementReference>
+                <elementReference>Get_Logged_In_User_Record.Country</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CountryCode</field>
+            <value>
+                <elementReference>Get_Logged_In_User_Record.CountryCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <elementReference>Get_Logged_In_User_Record.DefaultCurrencyIsoCode</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
