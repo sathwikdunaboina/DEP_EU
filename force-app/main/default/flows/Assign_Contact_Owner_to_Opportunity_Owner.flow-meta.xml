@@ -14,13 +14,29 @@
             </value>
         </assignmentItems>
     </assignments>
+    <assignments>
+        <name>Assign_Owner_Id_0</name>
+        <label>Assign Owner Id</label>
+        <locationX>1057</locationX>
+        <locationY>377</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunityOwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FORecord.Finance_Opportunity__r.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
     <decisions>
         <description>Check if the contact is exist or not to proceed further to update Opportunity Owner</description>
         <name>If_Contact_Exist_Check</name>
         <label>If Contact Exist Check</label>
-        <locationX>722</locationX>
-        <locationY>207</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <locationX>847</locationX>
+        <locationY>208</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Owner_Id_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>IfContactNotExist</defaultConnectorLabel>
         <rules>
             <name>IsContact</name>
             <conditionLogic>and</conditionLogic>
