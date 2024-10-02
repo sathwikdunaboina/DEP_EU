@@ -20,16 +20,13 @@ trigger ContentDocumentLinkTrigger on ContentDocumentLink (before insert,after i
             handler.onBeforeInsert(Trigger.New);
         }
         when AFTER_INSERT{
-            //After inserting an attachment,change the field Has_Attachment__c value on Case Object to 'Yes'
             handler.onAfterInsert(Trigger.NewMap);
         }
         when BEFORE_DELETE{
-            //Before unlinking an attachment from Case Object,get the Case Id
-            handler.onBeforeDelete(Trigger.OldMap);
+            //do nothing
         }
         when AFTER_DELETE{
-            //After unlinking an attachment,change the field Has_Attachment__c value on Case Object to 'Yes' or 'No'
-            handler.onAfterDelete();
+            handler.onAfterDelete(Trigger.OldMap);
         }
     }
     }

@@ -30,7 +30,7 @@ public without sharing class ContentDocumentLinkServices {
  * @param listContentDocLinks List of ContentDocLinks inserted
  * @returns void
  */
-    public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLink> listContentDocLinks){
+public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLink> listContentDocLinks){
         //check if there are any restricted channels
         List<VFSGLB_Messaging_Channel_Setting__mdt> listMsgChnlSettings = [Select MasterLabel From VFSGLB_Messaging_Channel_Setting__mdt where Attachment_Restricted__c = true];
         Set<String> setFileRestrictedMsgChnls = new Set<String>();
@@ -72,115 +72,103 @@ public without sharing class ContentDocumentLinkServices {
         List<Id> contentDocIds = new List<Id>(listContentDocIds);
         ContentDocumentServices.deleteContentDocument(contentDocIds);
     }
+
 /**
- * --------------------------------------------------------------------
- * @Description
- * If any attachment is added to a case record update the field Has_Attachment__c 
-   with 'Yes' if not already 'Yes' 
- * --------------------------------------------------------------------
- * @param listContentDocLinks List of ContentDocLinks inserted
- * 
+ * @desciption : Update the related file status on the Linked Entity/Object record when
+ *              a file is linked/added to that entity/object record
+ * @param : contentDocLinks - list of contentdocumentlink records that were created and for which
+ *          the linked entity file status have to be computed and updated
  */
-    private static Set<Id> caseIdsToCheck = new Set<Id>();
-    
-    //Method to Handle after inserting an attachment
-    public void handleAfterInsert(List<ContentDocumentLink> newContentDocumentLinks) {
-        for (ContentDocumentLink cdl : newContentDocumentLinks) {
-            if (cdl.LinkedEntityId.getSObjectType() == Case.SObjectType) {
-                caseIdsToCheck.add(cdl.LinkedEntityId);
+    public void updateParentFileStatusOnInsert(List<ContentDocumentLink> contentDocLinks){
+        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachment_Settings = ObjectHasAttachment_Setting__mdt.getAll();
+        try{
+        Map<string,Set<Id>> mapLinkedEntityIdsByEntityName = getLinkedEntityIds(contentDocLinks);
+        List<sobject> linkedEntitiesToUpdate = new List<sobject>();
+        for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){
+            string fileStatusField = ObjectHasAttachment_Settings.get(linkedEntity).FileStatusFieldName__c;
+            set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);
+            Map<String,object> queryBinds = new Map<String, object>();
+            queryBinds.put('linkedEntityIds',linkedEntityRecordIds);
+            queryBinds.put('fileStatus','Yes');
+
+            string queryString = 'Select Id,'+fileStatusField+' From '+ linkedEntity +' where Id in :linkedEntityIds AND '+fileStatusField + ' != :fileStatus';
+            List<sobject> linkedEntities = Database.queryWithBinds(queryString,queryBinds,AccessLevel.SYSTEM_MODE);
+            for(sobject linkedEntityObj : linkedEntities){
+                linkedEntityObj.put(fileStatusField,'Yes');
+                linkedEntitiesToUpdate.add(linkedEntityObj);
             }
         }
-        updateCaseAttachmentFlag();
-    }
-    
- /**
- * --------------------------------------------------------------------
- * @Description
- * Before unlinking an attachment from a Case Object record, get the CaseId 
- * --------------------------------------------------------------------
- * @param listContentDocLinks List of ContentDocLinks inserted
- * 
- */
-
-    //Method to Handle before unlinking an attachment
-    public void handleBeforeDelete(List<ContentDocumentLink> oldContentDocumentLinks) {
-        try {
-            for (ContentDocumentLink cdl : oldContentDocumentLinks) {
-                if (cdl.LinkedEntityId.getSObjectType() == Case.SObjectType) {                    
-                    caseIdsToCheck.add(cdl.LinkedEntityId);
-                }
-            }
+            Database.Update(linkedEntitiesToUpdate,true,AccessLevel.SYSTEM_MODE);
             if(Test.isRunningTest()) {
                 throw new AuraHandledException('error');
             }
-        } catch (Exception e) {
-            System.debug('Exception in handleBeforeDelete: ' + e.getMessage());
-        }
-    }
-    
- /**
- * --------------------------------------------------------------------
- * @Description
- * After unlinking an attachment from a Case Object record, update the Has_Attachment__c 
- * field with value 'Yes' or 'No' based on the number of attachments present
- * --------------------------------------------------------------------
- */
-
-    public void handleAfterDelete() {        
-        try {
-            updateCaseAttachmentFlag();
-            if(Test.isRunningTest()) {
-                throw new AuraHandledException('error');
-            }
-        } catch (Exception e) {
-            System.debug('Exception in handleAfterDelete: ' + e.getMessage());
-        }
-    }
-    
- /**
- * --------------------------------------------------------------------
- * @Description
- * If any attachment is added or Unlinked from a case record update the field Has_Attachment__c 
-   with 'Yes' or 'No'  
- * -------------------------------------------------------------------
- */
-
-    //Method to update the Has_Attachment__c field when a file is attached or Removed from Case Record
-    private static void updateCaseAttachmentFlag() { 
-        
-        if (caseIdsToCheck.isEmpty()) {            
-            return;  // Exit early if there's nothing to process
-        }        
-        List<Case> casesToUpdate = new List<Case>();       
-        try{     
-            List<case> cases = [Select Id,Has_Attachment__c,(Select Id From ContentDocumentLinks) From Case where Id in :caseIdsToCheck WITH USER_MODE];
-            for(Case casesToCheck : cases){
-                String shasAttachments = (casesToCheck.ContentDocumentLinks).size() > 0 ? 'Yes' : 'No';
-                if (casesToCheck.Has_Attachment__c != shasAttachments) {                    
-                    casesToCheck.Has_Attachment__c = shasAttachments;
-                    casesToUpdate.add(casesToCheck);
-                } else {
-                    System.debug('No update needed for ' );
-                }
-                if(Test.isRunningTest()) {
-                    throw new AuraHandledException('error');
-                }
-            } 
         }
         catch (Exception e) {
-            System.debug('Error processing ' + e.getMessage());
-        }   
-        if (!casesToUpdate.isEmpty()) {
-            try {                
-                update casesToUpdate;                
-                if(Test.isRunningTest()) {
-                    throw new AuraHandledException('error');
-                }
-            } catch (Exception e) {
-                System.debug('Error updating cases: ' + e.getMessage());
+            ErrorLogUtil.logError(e,null,null);
+        }
+    }
+
+/**
+ * @desciption : Update the related file status on the Linked Entity/Object record when
+ *               file related to that entity/object record are removed/unlinked
+ * @param : contentDocLinks - list of contentdocumentlink records that were unlinked and for which
+ *          the linked entity file status have to be computed and updated
+ */
+    public void updateParentFileStatusOnDelete(List<ContentDocumentLink> contentDocLinks){
+        try{
+        Map<string,Set<Id>> mapLinkedEntityIdsByEntityName = getLinkedEntityIds(contentDocLinks);        
+        List<sobject> linkedEntitiesToUpdate = getLinkedEntitiesWithNoFiles(mapLinkedEntityIdsByEntityName);        
+        Database.Update(linkedEntitiesToUpdate,true,AccessLevel.SYSTEM_MODE);
+            if(Test.isRunningTest()) {
+                throw new AuraHandledException('error');
             }
-        }        
-        // Clear the caseIdsToCheck set after processing
-        caseIdsToCheck.clear();        
+        }
+        catch (Exception e) {
+            ErrorLogUtil.logError(e,null,null);
+        }
+    }
+
+/**
+ * @desciption : returns a map of Entity/Object API name to the set of entity/object Ids which are 
+ *              linked through the provided contentdocumentlink records
+ * @param : contentDocLinks - list of contentdocumentlink records to be processed for identifying
+ *          the linked entities.
+ * @return : Map<string,Set<Id>> map of LinkedEntityIds by LinkedEntity API name
+ */
+    public Map<string,Set<Id>> getLinkedEntityIds(List<ContentDocumentLink> contentDocLinks){
+        Map<string,Set<Id>> mapLinkedEntityIdsByLinkedEntity = new Map<string,Set<Id>>();
+        mapLinkedEntityIdsByLinkedEntity.put('Case',new Set<Id>());
+        mapLinkedEntityIdsByLinkedEntity.put('EmailMessage',new Set<Id>());
+        for (ContentDocumentLink contentDocLink : contentDocLinks) {
+            string linkedEntityObjectName = String.valueOf(contentDocLink.LinkedEntityId.getSobjectType());
+            if(mapLinkedEntityIdsByLinkedEntity.get(linkedEntityObjectName) != null){
+                mapLinkedEntityIdsByLinkedEntity.get(linkedEntityObjectName).add(contentDocLink.LinkedEntityId);
+            }
+        }
+        return mapLinkedEntityIdsByLinkedEntity;
+    }
+
+/**
+ * @desciption : identify and return the list if linked entities (from the provided list) having no files.
+ * @param : mapLinkedEntityIdsByEntityName - list of entity Ids to process.
+ */
+    public List<sobject> getLinkedEntitiesWithNoFiles(Map<string,Set<Id>> mapLinkedEntityIdsByEntityName){
+        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachment_Settings = ObjectHasAttachment_Setting__mdt.getAll();
+        List<sobject> linkedEntitiesToUpdate = new List<sobject>();
+        for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){            
+            string fileStatusField = ObjectHasAttachment_Settings.get(linkedEntity).FileStatusFieldName__c;
+            set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);
+            Map<String,object> queryBinds = new Map<String, object>();
+            queryBinds.put('linkedEntityIds',linkedEntityRecordIds);
+            string queryString = 'Select Id,'+fileStatusField+ ',(Select Id From ContentDocumentLinks)' +' From '+ linkedEntity +' where Id in :linkedEntityIds';
+            List<sobject> linkedEntities = Database.queryWithBinds(queryString,queryBinds,AccessLevel.SYSTEM_MODE);
+            for(sobject linkedEntityObj : linkedEntities){
+                if(linkedEntityObj.getSObjects('ContentDocumentLinks') == null){
+                linkedEntityObj.put(fileStatusField,'No');
+                linkedEntitiesToUpdate.add(linkedEntityObj);
+                }
+            }
+        } 
+        return linkedEntitiesToUpdate;
     }
 }

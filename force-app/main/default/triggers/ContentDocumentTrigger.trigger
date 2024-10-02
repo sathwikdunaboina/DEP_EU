@@ -14,11 +14,9 @@ trigger ContentDocumentTrigger on ContentDocument (before delete, after delete){
         ContentDocumentTriggerHandler handler = new ContentDocumentTriggerHandler();
         Switch on Trigger.operationType{
             when BEFORE_DELETE{
-                //Before deleting an attachment from Case Object,get the Case Id
                 handler.onBeforeDelete(Trigger.OldMap);
             }
             when AFTER_DELETE{
-                //After deleting an attachment,change the field Has_Attachment__c value on Case Object to 'Yes' or 'No'
                 handler.onAfterDelete();
             }
         }

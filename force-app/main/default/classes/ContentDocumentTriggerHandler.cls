@@ -10,15 +10,14 @@
  * This is the Trigger Handler Class for Apex Trigger on ContentDocument object
  **/
 public class ContentDocumentTriggerHandler {
-    public void onBeforeDelete(Map<Id,ContentDocument> mapOldContentDocsById){
-        
-        ContentDocumentServices contentDocService = new ContentDocumentServices();
-        contentDocService.handleBeforeDelete(mapOldContentDocsById.values());
-    }
-    public void onAfterDelete(){
-        
-        ContentDocumentServices contentDocService = new ContentDocumentServices();
-        contentDocService.handleAfterDelete();
-    }
     
+    public void onBeforeDelete(Map<Id,ContentDocument> mapOldContentDocsById){        
+        ContentDocumentServices contentDocService = new ContentDocumentServices();
+        contentDocService.setLinkedEntityIdsByEntityNameMap(mapOldContentDocsById);
+    }
+
+    public void onAfterDelete(){        
+        ContentDocumentServices contentDocService = new ContentDocumentServices();
+        contentDocService.updateParentFileStatusOnDelete();
+    }    
 }
