@@ -55,5 +55,8 @@ public class ContentDocumentServices_Test {
         System.assertEquals('No',casewithAttachmentAfterUpdate.Has_Attachment__c);
         
     }
-    
+    @IsTest
+    public static void errorLogUtilTest(){
+        ErrorLogUtil.createErrorLog('TestClassName','TestErrorMessage','TestStatusCode',1,'TestMethodName','TestStackTrace','TestRequestHeader','TestActualRequest','TestAssociatedRecord');
+    }
 }
