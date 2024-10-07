@@ -19,9 +19,9 @@ public class AutoClosureofCaseOnCreate_Test {
         Case oCase = new Case (Origin='Email', 
                                     Subject ='Fin de Contrat RTFS – Test', 
                                     SuppliedEmail = 'rtfs_services@renault-trucks.com',
-                                    Description = 'Nous vous confirmons la bonne fin de votre contrat de financement - Test');
+                                    Description = 'Nous vous confirmons la bonne fin de votre contrat de financement - Test',
+                              RecordTypeId='0122p000000OXVRAA4');
         insert oCase;
-        
         //insert an emailMessage with attachment
         EmailMessage  oEmailMessage = new EmailMessage ();
         oEmailMessage.Subject = 'Fin de Contrat RTFS – Test';
@@ -33,7 +33,8 @@ public class AutoClosureofCaseOnCreate_Test {
     @IsTest
     static void autoCaseClosureMethod(){
         Test.startTest();
-        Case oCase = [SELECT Id,SuppliedEmail,Status FROM Case WHERE Subject ='Fin de Contrat RTFS – Test' Limit 1];
+        Case oCase = [SELECT Id,SuppliedEmail,Status,Type,Sub_Type__c FROM Case WHERE Subject ='Fin de Contrat RTFS – Test' Limit 1];
+        System.debug(oCase.Type+' pp '+oCase.Sub_Type__c);
         EmailToCaseCloseCriteria__mdt eTCCC = EmailToCaseCloseCriteria__mdt.getInstance('rtfs_services_renault_trucks_com');
         Assert.areEqual(eTCCC.Label, oCase.SuppliedEmail, 'Expected to get same Subject in the Case'); // Succeeds
         Test.stopTest();
