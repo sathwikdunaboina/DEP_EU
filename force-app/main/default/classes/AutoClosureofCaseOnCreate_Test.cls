@@ -31,11 +31,11 @@ public class AutoClosureofCaseOnCreate_Test {
     }
     
     @IsTest
-    static void attachmentHappyFlow(){
+    static void autoCaseClosureMethod(){
         Test.startTest();
-        Case oCase = [SELECT Id,SuppliedEmail FROM Case WHERE Subject ='Fin de Contrat RTFS – Test' Limit 1];
+        Case oCase = [SELECT Id,SuppliedEmail,Status FROM Case WHERE Subject ='Fin de Contrat RTFS – Test' Limit 1];
         EmailToCaseCloseCriteria__mdt eTCCC = EmailToCaseCloseCriteria__mdt.getInstance('rtfs_services_renault_trucks_com');
-		Assert.areEqual(eTCCC.Label, oCase.SuppliedEmail, 'Expected to get same Subject in the Case'); // Succeeds
+        Assert.areEqual(eTCCC.Label, oCase.SuppliedEmail, 'Expected to get same Subject in the Case'); // Succeeds
         Test.stopTest();
     }
 }
