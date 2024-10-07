@@ -34,7 +34,7 @@ public class AutoClosureofCaseOnCreate_Test {
     static void attachmentHappyFlow(){
         Test.startTest();
         Case oCase = [SELECT Id,SuppliedEmail FROM Case WHERE Subject ='Fin de Contrat RTFS – Test' Limit 1];
-        EmailToCaseCloseCriteria__mdt eTCCC = EmailToCaseCloseCriteria__mdt.getInstance('RTFS_FR');
+        EmailToCaseCloseCriteria__mdt eTCCC = EmailToCaseCloseCriteria__mdt.getInstance('rtfs_services_renault_trucks_com');
 		Assert.areEqual(eTCCC.Label, oCase.SuppliedEmail, 'Expected to get same Subject in the Case'); // Succeeds
         Test.stopTest();
     }
