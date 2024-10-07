@@ -115,6 +115,7 @@
             <label>Incoming Email on New Case</label>
         </rules>
     </decisions>
+    <description>CR-820125 - The Email message entry criteria has been added. so that whenever the case getting created on closed status will not trigger this flow.</description>
     <environments>Default</environments>
     <interviewLabel>Email Message Handler {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Email Message Handler</label>
@@ -188,8 +189,16 @@
         <connector>
             <targetReference>Decision1</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Headers</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>In-Reply-To</stringValue>
+            </value>
+        </filters>
         <object>EmailMessage</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
