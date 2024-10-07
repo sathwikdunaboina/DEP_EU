@@ -15,12 +15,13 @@
 public class AutoClosureofCaseOnCreate_Test {
     @TestSetup
     static void setUpCaseData(){
+        Id recordTypeId = [Select Id,Name From RecordType Where Name = 'All Case' Limit 1].Id;
         //Create a case
         Case oCase = new Case (Origin='Email', 
                                     Subject ='Fin de Contrat RTFS – Test', 
                                     SuppliedEmail = 'rtfs_services@renault-trucks.com',
                                     Description = 'Nous vous confirmons la bonne fin de votre contrat de financement - Test',
-                              RecordTypeId='0122p000000OXVRAA4');
+                              RecordTypeId= recordTypeId);
         insert oCase;
         //insert an emailMessage with attachment
         EmailMessage  oEmailMessage = new EmailMessage ();
