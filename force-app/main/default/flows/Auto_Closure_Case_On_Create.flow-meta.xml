@@ -2,32 +2,10 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>59.0</apiVersion>
     <decisions>
-        <name>Check_Custom_metadata_is_not_empty</name>
-        <label>Check Custom metadata is not empty</label>
-        <locationX>410</locationX>
-        <locationY>450</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IsCheck</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_custom_metadata_record</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Check_for_auto_closure_of_case</targetReference>
-            </connector>
-            <label>IsCheck</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Check_for_auto_closure_of_case</name>
         <label>Check for auto closure of case</label>
-        <locationX>678</locationX>
-        <locationY>531</locationY>
+        <locationX>606</locationX>
+        <locationY>296</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>RT_Check</name>
@@ -51,6 +29,13 @@
                 <operator>Contains</operator>
                 <rightValue>
                     <elementReference>Get_custom_metadata_record.Email_Body_2__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_custom_metadata_record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -82,6 +67,13 @@
                     <elementReference>Get_custom_metadata_record.Email_Body_2__c</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>Get_custom_metadata_record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <label>VT Check</label>
         </rules>
     </decisions>
@@ -109,13 +101,14 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <description>Getting Custom metadata to fetch the related case to auto closed</description>
         <name>Get_custom_metadata_record</name>
         <label>Get custom metadata record</label>
-        <locationX>1001</locationX>
-        <locationY>218</locationY>
+        <locationX>850</locationX>
+        <locationY>205</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_Custom_metadata_is_not_empty</targetReference>
+            <targetReference>Check_for_auto_closure_of_case</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -132,8 +125,8 @@
     <recordUpdates>
         <name>Update_Case</name>
         <label>Update Case</label>
-        <locationX>944</locationX>
-        <locationY>459</locationY>
+        <locationX>849</locationX>
+        <locationY>383</locationY>
         <inputAssignments>
             <field>Status</field>
             <value>
