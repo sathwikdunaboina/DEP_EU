@@ -1,7 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Assign_Case_With_Queue_Country</name>
+        <label>Assign Case With Queue Country</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Country__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Custom_Metadata_Records.MasterLabel</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Case_with_User_s_Country</name>
+        <label>Assign Case with User&apos;s Country</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Country__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Owner:User.Country</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Whether_Case_Owner_is_Queue_or_User</name>
+        <label>Check Whether Case Owner is Queue or User</label>
+        <locationX>446</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Case_Owner_is_a_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Case_with_User_s_Country</targetReference>
+            </connector>
+            <label>If Case Owner is a User</label>
+        </rules>
+        <rules>
+            <name>If_Case_Owner_is_a_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>00G</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Custom_Metadata_Records</targetReference>
+            </connector>
+            <label>If Case Owner is a Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Whether_Metadata_Records_Present</name>
+        <label>Check Whether Metadata Records Present</label>
+        <locationX>446</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Metadata_Record_Available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CaptureFirsttwoLettersofQueueName</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Case_With_Queue_Country</targetReference>
+            </connector>
+            <label>Metadata Record Available</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>CaptureFirsttwoLettersofQueueName</name>
+        <dataType>String</dataType>
+        <expression>UPPER(LEFT({!$Record.Owner:Group.DeveloperName}, 2))</expression>
+    </formulas>
     <formulas>
         <name>CountryName</name>
         <dataType>String</dataType>
@@ -30,7 +120,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -40,65 +130,35 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordUpdates>
-        <name>Case_country_update_from_Queue</name>
-        <label>Case country update from Queue</label>
-        <locationX>679</locationX>
-        <locationY>509</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>OwnerId</field>
-            <operator>StartsWith</operator>
-            <value>
-                <stringValue>00G</stringValue>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <elementReference>CountryName</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Case_country_update_from_user</name>
-        <label>Case country update from user</label>
-        <locationX>668</locationX>
-        <locationY>333</locationY>
+    <recordLookups>
+        <name>Get_Custom_Metadata_Records</name>
+        <label>Get Custom Metadata Records</label>
+        <locationX>446</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Case_country_update_from_Queue</targetReference>
+            <targetReference>Check_Whether_Metadata_Records_Present</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>OwnerId</field>
-            <operator>StartsWith</operator>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
             <value>
-                <stringValue>005</stringValue>
+                <elementReference>CaptureFirsttwoLettersofQueueName</elementReference>
             </value>
         </filters>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <elementReference>$Record.Owner:User.Country</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>VFS_Country_Setting__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>543</locationX>
-        <locationY>48</locationY>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
         <connector>
-            <targetReference>Case_country_update_from_user</targetReference>
+            <targetReference>Check_Whether_Case_Owner_is_Queue_or_User</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>OwnerId</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(OR({!$Record.RecordType.DeveloperName}=&apos;All_Case&apos;,
+{!$Record.RecordType.DeveloperName}=&apos;VFS_Dealer&apos;),OR(ISCHANGED({!$Record.OwnerId}),ISNEW()))</filterFormula>
         <object>Case</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
