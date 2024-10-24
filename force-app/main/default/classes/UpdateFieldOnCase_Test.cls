@@ -104,9 +104,11 @@ without Attachment
         oemailMessage.Has_Attachment__c = 'Yes';
         Test.startTest();
         update oemailMessage;
+        System.debug('Testing' + oemailMessage.Has_Attachment__c);
         Test.stopTest();
         Case casewithEmailAttachment = [SELECT id,Has_Attachment__c FROM Case WHERE Subject = 'Test Case With Email Attachment'];
         System.assertEquals('Yes',casewithEmailAttachment.Has_Attachment__c);
+       
     }
     
     
