@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_notification_to_New_owner</name>
         <label>Send notification to New owner</label>
-        <locationX>818</locationX>
-        <locationY>1093</locationY>
+        <locationX>847</locationX>
+        <locationY>1201</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -39,18 +39,19 @@
             </value>
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
         <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>Send notification to old owner to notify the opportunity is moved to another queue</description>
         <name>Send_notification_to_old_owner</name>
         <label>Send notification to old owner</label>
-        <locationX>644</locationX>
-        <locationY>1072</locationY>
+        <locationX>665</locationX>
+        <locationY>1168</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <connector>
-            <targetReference>Send_notification_to_New_owner</targetReference>
+            <targetReference>Get_New_OwnerActiveOne</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -84,6 +85,7 @@
             </value>
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
@@ -379,6 +381,53 @@
             <label>Is Account successfully retrieved</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>IsActive_OwnerNewOne</name>
+        <label>IsActive OwnerNewOne</label>
+        <locationX>713</locationX>
+        <locationY>1338</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>NewActiveOwnerOne</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_OwnerActiveOne</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_notification_to_New_owner</targetReference>
+            </connector>
+            <label>NewActiveOwnerOne</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Owner_Is_Check</name>
+        <label>Owner Is Check</label>
+        <locationX>499</locationX>
+        <locationY>1054</locationY>
+        <defaultConnector>
+            <targetReference>Get_New_OwnerActiveOne</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Old_Owner_Null_Check</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Old_OwnerActiveOne</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_notification_to_old_owner</targetReference>
+            </connector>
+            <label>Old Owner Null Check</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>NewNotificationBody</name>
@@ -483,7 +532,7 @@
         <locationY>858</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Send_notification_to_old_owner</targetReference>
+            <targetReference>Get_Old_OwnerActiveOne</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -581,6 +630,64 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Map_Currency_to_Market__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_New_OwnerActiveOne</name>
+        <label>Get New OwnerActiveOne</label>
+        <locationX>549</locationX>
+        <locationY>1309</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IsActive_OwnerNewOne</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>NewOwnerId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Old_OwnerActiveOne</name>
+        <label>Get Old OwnerActiveOne</label>
+        <locationX>681</locationX>
+        <locationY>1013</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Owner_Is_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>OldOwnerId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
