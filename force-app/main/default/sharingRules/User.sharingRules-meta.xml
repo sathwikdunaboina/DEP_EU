@@ -211,6 +211,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Sweden_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sweden Access</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Sweden</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>Sweden</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>UserPoland</fullName>
         <accessLevel>Read</accessLevel>
         <description>Sharing Rule for Polish Users</description>
