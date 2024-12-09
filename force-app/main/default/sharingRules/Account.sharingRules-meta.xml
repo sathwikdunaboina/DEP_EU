@@ -1027,6 +1027,44 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Sweden_RT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>Sweden RT Access</label>
+        <sharedTo>
+            <group>Sweden_Renault</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Sweden</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sweden_VT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>Sweden VT Access</label>
+        <sharedTo>
+            <group>Sweden_Volvo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Sweden</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Swiss_Account_Sharing</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -1069,456 +1107,6 @@
             <value>United Kingdom</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Renault</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Renault brand.</description>
-        <label>BR Renault</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Renault</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSBR_Volvo</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing Account, Contact and Case records to the users which is related to Volvo brand.</description>
-        <label>BR Volvo</label>
-        <sharedTo>
-            <group>VFSBR_Brazil_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>VFSBR_Renault</fullName>

@@ -806,4 +806,64 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sweden_RT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sweden RT Access</label>
+        <sharedTo>
+            <group>Sweden_Renault</group>
+        </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>SE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>SE,Sweden</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>RT,Renault</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sweden_VT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sweden VT Access</label>
+        <sharedTo>
+            <group>Sweden_Volvo</group>
+        </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>SE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>SE,Sweden</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VT,Volvo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
 </SharingRules>
