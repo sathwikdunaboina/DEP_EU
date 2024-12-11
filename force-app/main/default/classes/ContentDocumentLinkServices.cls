@@ -40,6 +40,8 @@ public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLi
         if(setFileRestrictedMsgChnls.size() > 0){
             //get list of content document links which are related to MessagingSession entity
             Map<Id,String> mapLinkedEntityTypeByContentDocLinkRecId = getLinkedEntityTypeName(listContentDocLinks);
+            Set<String> linkedEntityTypes = new Set<String>(mapLinkedEntityTypeByContentDocLinkRecId.values());
+            if(linkedEntityTypes.contains('MessagingSession')){
             List<ContentDocumentLink> listContentDocLinkLinkedToMsgSessionEntity = new List<ContentDocumentLink>();
             Set<Id> setMsgSessionId = new Set<Id>();
             for(ContentDocumentLink contentDocLink : listContentDocLinks){
@@ -60,10 +62,10 @@ public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLi
                     setContentDocRelatedToFileRestrictedMsgSessions.add(contentDocLink.ContentDocumentId);
                 }
             }
-
             if(setContentDocRelatedToFileRestrictedMsgSessions.size() > 0){
                 deleteContentDocumentAsync(setContentDocRelatedToFileRestrictedMsgSessions);
             }
+        }
         }
     }
     
@@ -80,25 +82,27 @@ public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLi
  *          the linked entity file status have to be computed and updated
  */
     public void updateParentFileStatusOnInsert(List<ContentDocumentLink> contentDocLinks){
-        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachment_Settings = ObjectHasAttachment_Setting__mdt.getAll();
+        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachmentSettings = ObjectHasAttachment_Setting__mdt.getAll();
         try{
+        List<String> errorMsgs = new List<String>();
         Map<string,Set<Id>> mapLinkedEntityIdsByEntityName = getLinkedEntityIds(contentDocLinks);
         List<sobject> linkedEntitiesToUpdate = new List<sobject>();
-        for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){
-            string fileStatusField = ObjectHasAttachment_Settings.get(linkedEntity).FileStatusFieldName__c;
-            set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);
-            Map<String,object> queryBinds = new Map<String, object>();
-            queryBinds.put('linkedEntityIds',linkedEntityRecordIds);
-            queryBinds.put('fileStatus','Yes');
-
-            string queryString = 'Select Id,'+fileStatusField+' From '+ linkedEntity +' where Id in :linkedEntityIds AND '+fileStatusField + ' != :fileStatus';
-            List<sobject> linkedEntities = Database.queryWithBinds(queryString,queryBinds,AccessLevel.SYSTEM_MODE);
-            for(sobject linkedEntityObj : linkedEntities){
-                linkedEntityObj.put(fileStatusField,'Yes');
-                linkedEntitiesToUpdate.add(linkedEntityObj);
+        List<String> errorMsgsinLoop = new List<string>();
+        for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){            
+            string fileStatusField = (ObjectHasAttachmentSettings.get(linkedEntity) != null) && (ObjectHasAttachmentSettings.get(linkedEntity).On_Insert__c) ? ObjectHasAttachmentSettings.get(linkedEntity).FileStatusFieldName__c : null;
+            if(fileStatusField != null){
+            set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);            
+            for(Id linkedEntityRecordId : linkedEntityRecordIds){                
+                SObject linkedEntityRecord = (SObject) Type.forName(linkedEntity).newInstance();
+                linkedEntityRecord.put(fileStatusField,'Yes');
+                linkedEntityRecord.put('Id',linkedEntityRecordId);
+                linkedEntitiesToUpdate.add(linkedEntityRecord);
             }
         }
-            Database.Update(linkedEntitiesToUpdate,true,AccessLevel.SYSTEM_MODE);
+        }
+        //if(!linkedEntitiesToUpdate.isEmpty()){    
+        Database.Update(linkedEntitiesToUpdate,true,AccessLevel.SYSTEM_MODE);
+        //}
             if(Test.isRunningTest()) {
                 throw new AuraHandledException('error');
             }
@@ -137,13 +141,13 @@ public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLi
  */
     public Map<string,Set<Id>> getLinkedEntityIds(List<ContentDocumentLink> contentDocLinks){
         Map<string,Set<Id>> mapLinkedEntityIdsByLinkedEntity = new Map<string,Set<Id>>();
-        mapLinkedEntityIdsByLinkedEntity.put('Case',new Set<Id>());
-        mapLinkedEntityIdsByLinkedEntity.put('EmailMessage',new Set<Id>());
+        string linkedEntityObjectName = '';
         for (ContentDocumentLink contentDocLink : contentDocLinks) {
-            string linkedEntityObjectName = String.valueOf(contentDocLink.LinkedEntityId.getSobjectType());
-            if(mapLinkedEntityIdsByLinkedEntity.get(linkedEntityObjectName) != null){
-                mapLinkedEntityIdsByLinkedEntity.get(linkedEntityObjectName).add(contentDocLink.LinkedEntityId);
+            linkedEntityObjectName = String.valueOf(contentDocLink.LinkedEntityId.getSobjectType());
+            if(!mapLinkedEntityIdsByLinkedEntity.containsKey(linkedEntityObjectName)){
+                mapLinkedEntityIdsByLinkedEntity.put(linkedEntityObjectName,new Set<Id>());
             }
+            mapLinkedEntityIdsByLinkedEntity.get(linkedEntityObjectName).add(contentDocLink.LinkedEntityId);
         }
         return mapLinkedEntityIdsByLinkedEntity;
     }
@@ -153,10 +157,11 @@ public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLi
  * @param : mapLinkedEntityIdsByEntityName - list of entity Ids to process.
  */
     public List<sobject> getLinkedEntitiesWithNoFiles(Map<string,Set<Id>> mapLinkedEntityIdsByEntityName){
-        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachment_Settings = ObjectHasAttachment_Setting__mdt.getAll();
+        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachmentSettings = ObjectHasAttachment_Setting__mdt.getAll();
         List<sobject> linkedEntitiesToUpdate = new List<sobject>();
         for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){            
-            string fileStatusField = ObjectHasAttachment_Settings.get(linkedEntity).FileStatusFieldName__c;
+            string fileStatusField = (ObjectHasAttachmentSettings.get(linkedEntity) != null) && (ObjectHasAttachmentSettings.get(linkedEntity).On_Delete__c) ? ObjectHasAttachmentSettings.get(linkedEntity).FileStatusFieldName__c : null;
+            if(fileStatusField != null){
             set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);
             Map<String,object> queryBinds = new Map<String, object>();
             queryBinds.put('linkedEntityIds',linkedEntityRecordIds);
@@ -168,7 +173,10 @@ public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLi
                 linkedEntitiesToUpdate.add(linkedEntityObj);
                 }
             }
+            }
         } 
         return linkedEntitiesToUpdate;
     }
+
+    
 }
