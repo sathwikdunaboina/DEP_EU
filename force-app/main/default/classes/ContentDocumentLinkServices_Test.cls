@@ -25,13 +25,14 @@ private class ContentDocumentLinkServices_Test {
     private static void setUpData(){
         
         
+        
         Id accountRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Customer_Account').getRecordTypeId();
         
         Account oAccount = new Account();
         oAccount.Name = 'test account';
         oAccount.RecordTypeId = accountRecordTypeId;
         insert oAccount; 
-       
+        
         Contract__c oContract = new Contract__c();
         oContract.Account__c = oAccount.Id;
         oContract.Contract_Id__c = '12345';
@@ -43,6 +44,8 @@ private class ContentDocumentLinkServices_Test {
         oCV.Title = 'test file '+DateTime.now();
         oCV.versiondata=Blob.valueOf('test file body');
         insert oCV;
+        
+        
         
         ContentDocumentLink oCdl = new ContentDocumentLink();
         oCdl.ContentDocumentId = [SELECT Id, ContentDocumentId FROM ContentVersion WHERE Id =: oCV.Id].ContentDocumentId;
@@ -78,7 +81,51 @@ private class ContentDocumentLinkServices_Test {
         testcontentDocumentLink.ShareType = 'V';
         testcontentDocumentLink.Visibility = 'AllUsers';
         insert testcontentDocumentLink;
-          
+        
+        MessagingChannel oMessagingChannel = new MessagingChannel();
+          System.runAs(new User(Id = UserInfo.getUserId())){
+        
+        oMessagingChannel.MasterLabel = 'Test Channel';
+        oMessagingChannel.DeveloperName = 'Test_Channel';
+        oMessagingChannel.IsActive = true;
+        oMessagingChannel.MessageType = 'Text'; 
+        oMessagingChannel.MessagingPlatformKey = '71823b51-1111-2222-3333-211e1143ce85';
+              
+              insert oMessagingChannel;
+	
+          }
+        
+        system.debug('oMessagingChannel ==> '+oMessagingChannel);
+        
+        MessagingEndUser oMessagingEndUser = new MessagingEndUser();
+        oMessagingEndUser.Name = 'Test';
+        oMessagingEndUser.MessagingChannelId = oMessagingChannel.Id;
+        oMessagingEndUser.MessageType = 'Whatsapp';
+        oMessagingEndUser.MessagingPlatformKey = 'Test';
+        insert oMessagingEndUser;
+        
+        MessagingSession oMessagingSession = new MessagingSession();
+        oMessagingSession.Email__c ='test@123.com';
+        oMessagingSession.MessagingChannelId = oMessagingChannel.Id;
+        oMessagingSession.MessagingEndUserId = oMessagingEndUser.Id;
+        oMessagingSession.Status = 'New';
+        insert oMessagingSession;
+        
+        ContentVersion messagingSessionContentVersion = new ContentVersion();
+        messagingSessionContentVersion.Title = 'TestFile.txt';
+        messagingSessionContentVersion.PathOnClient = 'TestFile.txt';
+        messagingSessionContentVersion.VersionData = Blob.valueOf('This is a test file');
+        insert messagingSessionContentVersion;
+        
+        ContentVersion testContentVersionInserted =[SELECT Id,ContentDocumentId FROM ContentVersion WHERE Id=:messagingSessionContentVersion.Id];
+       
+        ContentDocumentLink messagingSessionContentDocumentLink = new ContentDocumentLink();
+        messagingSessionContentDocumentLink.LinkedEntityId = oMessagingSession.Id;
+        messagingSessionContentDocumentLink.ContentDocumentId = testContentVersionInserted.ContentDocumentId;
+        messagingSessionContentDocumentLink.ShareType = 'V';
+        messagingSessionContentDocumentLink.Visibility = 'AllUsers';
+        insert messagingSessionContentDocumentLink;
+    
     }
     
 /*
@@ -90,7 +137,7 @@ private class ContentDocumentLinkServices_Test {
 * @return          
 * ------------------------------------------------------------------------------------------------------ 
 */ 
-    
+   
     @IsTest private static void testContentDocumentLinkServiceClass(){
         
         List<ContentDocument> listContentDocument = [Select Id FROM ContentDocument];
@@ -141,7 +188,7 @@ private class ContentDocumentLinkServices_Test {
 * @Method Name     RemoveAttachmentFromRecord
 * @description     To cover AttachmentTriggerHandler when an attachment is unlinked from a Case 
 * ------------------------------------------------------------------------------------------------------
-*/     
+*/    
     @IsTest
     public static void RemoveAttachmentFromRecord(){
         Case casewithAttachment = [SELECT id,Has_Attachment__c FROM Case WHERE Subject = 'Test Case With Attachment'];
@@ -157,5 +204,6 @@ private class ContentDocumentLinkServices_Test {
         
         System.assertEquals('No',casewithAttachmentAfterUpdate.Has_Attachment__c);
     }
+
     
 }
