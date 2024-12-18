@@ -26,102 +26,9 @@
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <description>This element creates factory order record from opportunity</description>
-        <name>Copy_1_of_Create_factory_order_record</name>
-        <label>Copy 1 of Create factory order record</label>
-        <locationX>50</locationX>
-        <locationY>276</locationY>
-        <inputAssignments>
-            <field>Axle_Arrangement__c</field>
-            <value>
-                <elementReference>$Record.Lead_Axle_Arrangement__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Chassis_Type__c</field>
-            <value>
-                <elementReference>$Record.Lead_Chassis_Type__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <elementReference>$Record.Customer_Account__r.BillingCountry</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Dealer_Id__c</field>
-            <value>
-                <elementReference>$Record.Account.CustomerID__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Dealer_Number__c</field>
-            <value>
-                <elementReference>$Record.Account.Customer_Number__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>EndCustomerVATNumber__c</field>
-            <value>
-                <elementReference>$Record.Customer_Account__r.VATNumber__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>End_Customer_City__c</field>
-            <value>
-                <elementReference>$Record.Customer_Account__r.BillingCity</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>End_Customer_Name__c</field>
-            <value>
-                <elementReference>$Record.Customer_Account__r.Name</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>End_Customer_Phone__c</field>
-            <value>
-                <elementReference>$Record.Customer_Account__r.Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>FO_Registration_Date__c</field>
-            <value>
-                <elementReference>$Record.Lead_Creation_Date__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Finance_Opportunity__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Market_Type_1_5__c</field>
-            <value>
-                <elementReference>$Record.Lead_Model__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Order_Id__c</field>
-            <value>
-                <stringValue>Manual + {!$Record.Id}</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>VIN_Number__c</field>
-            <value>
-                <elementReference>$Record.Lead_VIN_Number__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Factory_Order__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <description>This element creates factory order record from opportunity</description>
         <name>Create_factory_order_record</name>
         <label>Create factory order record</label>
-        <locationX>314</locationX>
+        <locationX>308</locationX>
         <locationY>276</locationY>
         <connector>
             <targetReference>Update_factory_order_reference</targetReference>
@@ -133,6 +40,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Brand__c</field>
+            <value>
+                <elementReference>$Record.Lead_Brand__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Chassis_Type__c</field>
             <value>
                 <elementReference>$Record.Lead_Chassis_Type__c</elementReference>
@@ -141,7 +54,7 @@
         <inputAssignments>
             <field>Country__c</field>
             <value>
-                <elementReference>$Record.Customer_Account__r.BillingCountry</elementReference>
+                <elementReference>$Record.Customer_Account__r.BillingCountryCode</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -216,7 +129,7 @@
     <recordUpdates>
         <name>Update_factory_order_reference</name>
         <label>Update factory order reference</label>
-        <locationX>314</locationX>
+        <locationX>308</locationX>
         <locationY>384</locationY>
         <inputAssignments>
             <field>Factory_Order__c</field>
@@ -227,11 +140,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
-        <connector>
-            <targetReference>Copy_1_of_Create_factory_order_record</targetReference>
-        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>LeadSource</field>
