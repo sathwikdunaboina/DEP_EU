@@ -567,32 +567,6 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Contact_Name1__r.Email</fieldItem>
-                <identifier>RecordContact_Name1_rEmailField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Contact_Name1__r.MobilePhone</fieldItem>
-                <identifier>RecordContact_Name1_rMobilePhoneField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
                     <value>none</value>
