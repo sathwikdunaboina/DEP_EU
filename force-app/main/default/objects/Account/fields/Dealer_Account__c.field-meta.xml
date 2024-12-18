@@ -5,15 +5,6 @@
     <description>Account of the dealer to which the customer belongs</description>
     <inlineHelpText>Account of the dealer to which the customer belongs</inlineHelpText>
     <label>Dealer Account</label>
-    <lookupFilter>
-        <active>true</active>
-        <filterItems>
-            <field>Account.RecordType.DeveloperName</field>
-            <operation>equals</operation>
-            <value>Dealer</value>
-        </filterItems>
-        <isOptional>false</isOptional>
-    </lookupFilter>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Accounts</relationshipLabel>
     <relationshipName>Accounts</relationshipName>
