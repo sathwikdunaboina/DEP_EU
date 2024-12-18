@@ -24,6 +24,14 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
+            <inputField>Contact_Role__c</inputField>
+            <outputField>Role__c</outputField>
+        </mappingFields>
+        <outputObject>Contact</outputObject>
+    </objectMapping>
+    <objectMapping>
+        <inputObject>Lead</inputObject>
+        <mappingFields>
             <inputField>AdditionalServices__c</inputField>
             <outputField>Additional_Services__c</outputField>
         </mappingFields>
@@ -48,6 +56,10 @@
             <outputField>Contact_Role__c</outputField>
         </mappingFields>
         <mappingFields>
+            <inputField>Credit_Rate__c</inputField>
+            <outputField>Credit_Rate__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>Dealer_Name__c</inputField>
             <outputField>Dealer_Name__c</outputField>
         </mappingFields>
@@ -62,6 +74,10 @@
         <mappingFields>
             <inputField>Factory_Order__c</inputField>
             <outputField>Factory_Order__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Financing_Specification__c</inputField>
+            <outputField>Financing_Specification__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>General_Description__c</inputField>
@@ -98,10 +114,6 @@
         <mappingFields>
             <inputField>VIN_Number__c</inputField>
             <outputField>Lead_VIN_Number__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>Credit_Rate__c</inputField>
-            <outputField>Credit_Rate__c</outputField>
         </mappingFields>
         <outputObject>Opportunity</outputObject>
     </objectMapping>

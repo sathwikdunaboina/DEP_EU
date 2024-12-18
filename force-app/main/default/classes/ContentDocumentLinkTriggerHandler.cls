@@ -18,7 +18,7 @@ public class ContentDocumentLinkTriggerHandler {
 
     public void onAfterInsert(Map<Id,ContentDocumentLink> mapNewContentDocLinksById){
         ContentDocumentLinkServices contentDocLinkService = new ContentDocumentLinkServices();
-        contentDocLinkService.deleteContentDocumentLinkedToMessagingSession(mapNewContentDocLinksById.values());
+        contentDocLinkService.deleteContentDocumentLinkedToMessagingSession(mapNewContentDocLinksById.values()); 
         contentDocLinkService.updateParentFileStatusOnInsert(mapNewContentDocLinksById.values());
     }
 
