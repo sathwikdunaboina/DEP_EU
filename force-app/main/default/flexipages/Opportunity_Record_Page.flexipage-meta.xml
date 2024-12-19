@@ -127,6 +127,22 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Name</fieldItem>
+                <identifier>RecordNameField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.CreatedBy.LastName}</leftValue>
+                        <operator>EQUAL</operator>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Lead_Creation_Date__c</fieldItem>
@@ -223,25 +239,21 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Dealer_Delivery_Date__c</fieldItem>
-                <identifier>RecordDealer_Delivery_Date_cField</identifier>
+                <fieldItem>Record.Finance_Type__c</fieldItem>
+                <identifier>RecordFinance_Type_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Factory Order</rightValue>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
-                <identifier>RecordCredit_Assessment_Date__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-204cc5fb-20a3-4216-b556-0751235d1e6a</name>
@@ -256,6 +268,29 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.StageName</fieldItem>
                 <identifier>RecordStageNameField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Sub_Stage__c</fieldItem>
+                <identifier>RecordOpportunity_Sub_Status_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -455,23 +490,6 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Country__c</fieldItem>
-                <identifier>RecordCountry_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
                 <fieldItem>Record.Customer_Account__r.VATNumber__c</fieldItem>
                 <identifier>RecordCustomer_Account_rVATNumber_cField</identifier>
             </fieldInstance>
@@ -586,33 +604,6 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.AccountId</fieldItem>
-                <identifier>RecordAccountIdField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Lead_Dealer_Sales_Person__c</fieldItem>
-                <identifier>RecordLead_Dealer_Sales_Person_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Sales_Person_Name__c</fieldItem>
@@ -651,6 +642,105 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-4e019f3b-0834-43ec-8b7f-35115ae7cf84</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.AccountId</fieldItem>
+                <identifier>RecordAccountIdField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dealer_Delivery_Date__c</fieldItem>
+                <identifier>RecordDealer_Delivery_Date_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-59bfbcb9-af4e-4e61-a3c3-47b5a8702e1e</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Lead_Dealer_Sales_Person__c</fieldItem>
+                <identifier>RecordLead_Dealer_Sales_Person_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dealer_Sales_Person__c</fieldItem>
+                <identifier>RecordDealer_Rep_Name_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-f1bdd56f-ba33-432d-a63b-dfb6d7f214f2</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-59bfbcb9-af4e-4e61-a3c3-47b5a8702e1e</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-f1bdd56f-ba33-432d-a63b-dfb6d7f214f2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-e65200f2-2acb-4b82-bae2-c5710dbd7ef4</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -863,16 +953,6 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Financing_Specification__c</fieldItem>
-                <identifier>RecordFinancing_Specification__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-83d915a2-4b43-443e-a296-794b31c7d972</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1012,6 +1092,75 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Asset_Type__c</fieldItem>
+                <identifier>RecordAsset_type_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Average_Value_Per_Asset__c</fieldItem>
+                <identifier>RecordAverage_Value_Per_Asset_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Number_of_Assets__c</fieldItem>
+                <identifier>RecordNumber_of_Assets_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-49390d3a-e81e-40ce-9dd2-7e3792f8fc58</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1132,6 +1281,24 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
+                    <value>Facet-e65200f2-2acb-4b82-bae2-c5710dbd7ef4</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Dealer Information</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
                     <value>Facet-0fc7f0a2-c83c-4c0d-b0f4-462a91110497</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -1140,7 +1307,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Product Information</value>
+                    <value>Asset Information</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection7</identifier>

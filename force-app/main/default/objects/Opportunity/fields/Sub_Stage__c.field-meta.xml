@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Stage__c</fullName>
+    <description>Purpose: Field to track the substatus when the opportunity is at “Needs analysis”  and Quoted Stage
+How Populated: This field will be populated by User
+Is UI Field: Yes</description>
+    <label>Sub Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>StageName</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pre-qualifying customer</fullName>
+                <default>false</default>
+                <label>Pre-qualifying customer</label>
+            </value>
+            <value>
+                <fullName>Awaiting Info</fullName>
+                <default>false</default>
+                <label>Awaiting Info</label>
+            </value>
+            <value>
+                <fullName>Awaiting Start Date</fullName>
+                <default>false</default>
+                <label>Awaiting Start Date</label>
+            </value>
+            <value>
+                <fullName>With Credit</fullName>
+                <default>false</default>
+                <label>With Credit</label>
+            </value>
+            <value>
+                <fullName>Credit Approved</fullName>
+                <default>false</default>
+                <label>Credit Approved</label>
+            </value>
+            <value>
+                <fullName>Docs Sent</fullName>
+                <default>false</default>
+                <label>Docs Sent</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Quoted</controllingFieldValue>
+            <controllingFieldValue>Needs Analysis</controllingFieldValue>
+            <valueName>Awaiting Info</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quoted</controllingFieldValue>
+            <valueName>With Credit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quoted</controllingFieldValue>
+            <valueName>Credit Approved</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quoted</controllingFieldValue>
+            <valueName>Docs Sent</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Needs Analysis</controllingFieldValue>
+            <valueName>Pre-qualifying customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Needs Analysis</controllingFieldValue>
+            <valueName>Awaiting Start Date</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

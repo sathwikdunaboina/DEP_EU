@@ -44,7 +44,27 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Customer_Delivery_Date__c</field>
+                <field>Number_of_Assets__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Asset_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Dealer_Sales_Person__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Finance_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sub_Stage__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Average_Value_Per_Asset__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -175,11 +195,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Opportunity.Create_Quotes</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
@@ -193,6 +208,11 @@
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>LogACall</actionName>
@@ -323,6 +343,14 @@
         <fields>EVENT.LOCATION</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Status</fields>
+        <fields>HasAttachment</fields>
+        <fields>Address</fields>
+        <fields>Subject</fields>
+        <fields>MessageDate</fields>
+        <relatedList>EmailMessage.Parent_Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
