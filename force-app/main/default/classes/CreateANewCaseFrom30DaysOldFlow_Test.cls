@@ -21,17 +21,18 @@ public class CreateANewCaseFrom30DaysOldFlow_Test {
     
     @isTest
     static void emailMessageTobeSentToCustomer(){
-        User testUser = [SELECT Id, Username FROM User WHERE Email = 'vfs.support.salesforce@volvo.com' LIMIT 1];
+        User testUser = [SELECT Id, Username FROM User WHERE lastname = 'VFS Salesforce Support' LIMIT 1];
         System.runAs(testUser){
             Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
             Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
             
             //Create an Account Record
             Account acc= new Account();
-            acc.name='Test Account for 30';
+            acc.name='Test Account for UK';
             acc.CurrencyIsoCode='EUR';
             acc.RecordTypeId=accountRecordTypeID;  
             insert acc;
+            
             Entitlement EntitlementRecord = new Entitlement();
             EntitlementRecord.Name='Case Support Process For UK/IE';
             EntitlementRecord.AccountId= acc.Id;             
@@ -55,7 +56,7 @@ public class CreateANewCaseFrom30DaysOldFlow_Test {
             caseWithEmail.Status='New';      
             update caseWithEmail;
             Test.stopTest();           
-            Case newCasewithEmail = [SELECT id,Casenumber,SuppliedEmail,RecordTypeId,OwnerId,Status,ClosedDate,CreatedDate,Subject,Country__c FROM Case WHERE Country__c='United Kingdom' and Status='New' limit 1 ];
+            Case newCasewithEmail = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Email' and Status='New' limit 1 ];
             Id queueId = [SELECT Id,Type FROM Group where DeveloperName ='UK_IE_CS_Operations' and Type='Queue' LIMIT 1].Id;
             System.assertEquals(queueId, newCasewithEmail.OwnerId); 
             System.assertEquals(recordTypeId, newCasewithEmail.RecordTypeId);
@@ -73,17 +74,18 @@ with Attachment
     
     @isTest
     static void emailMessageNotSentToCustomer(){
-        User otestUser = [SELECT Id, Username FROM User WHERE Email = 'vfs.support.salesforce@volvo.com' LIMIT 1];
+        User otestUser = [SELECT Id, Username FROM User WHERE lastname = 'VFS Salesforce Support' LIMIT 1];
         System.runAs(otestUser){ 
             Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
             Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
             
             //Create an Account Record
             Account acc= new Account();
-            acc.name='Test Account for 30';
+            acc.name='Test Account For Ireland';
             acc.CurrencyIsoCode='EUR';
             acc.RecordTypeId=accountRecordTypeID;  
             insert acc;
+            
             Entitlement EntitlementRecord = new Entitlement();
             EntitlementRecord.Name='Case Support Process For UK/IE';
             EntitlementRecord.AccountId= acc.Id;             
@@ -102,12 +104,11 @@ with Attachment
             caseWithoutEmail.ClosedDate=Date.today().addDays(-31);
             caseWithoutEmail.Country__c='Ireland';       
             insert caseWithoutEmail;  
-            System.debug('caseWithoutEmail'+caseWithoutEmail);
             Test.startTest();     
-            caseWithoutEmail.Status = 'New';
+            caseWithoutEmail.Status='New';
             update caseWithoutEmail;
             Test.stopTest();
-            Case newCaseWithOutEmail = [SELECT id,Casenumber,SuppliedEmail,OwnerId,Status,Subject,Country__c FROM Case WHERE Country__c='United Kingdom' and Status='New' limit 1 ];
+            Case newCaseWithOutEmail = [SELECT id,SuppliedEmail,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject without Email' and Status='New' limit 1 ];
             Id queueId = [SELECT Id,Type FROM Group where DeveloperName ='UK_IE_CS_Operations' and Type='Queue' LIMIT 1].Id;
             System.assertEquals(queueId, newCaseWithOutEmail.OwnerId); 
             System.assertEquals(null,newCaseWithOutEmail.SuppliedEmail);
