@@ -80,10 +80,12 @@ public class CreateANewCaseFrom30DaysOldFlow_Test {
     
     @isTest
     static void emailMessageTobeSentToCustomer(){
-        User testUser = [SELECT Id, Username FROM User WHERE Username = 'vfs.support.salesforce@volvo.com' LIMIT 1];
+        User testUser = [SELECT Id, Username FROM User WHERE Email = 'vfs.support.salesforce@volvo.com' LIMIT 1];
         System.runAs(testUser){
             Test.startTest();            
-            Case closedCaseWithEmail = [SELECT id,SuppliedEmail,OwnerId,Owner.Username,Status,ClosedDate,CreatedDate,Country__c,Subject FROM Case WHERE Country__c='United Kingdom' and status='Closed'limit 1];            closedCaseWithEmail.Status='New';      
+            Case closedCaseWithEmail = [SELECT id,SuppliedEmail,OwnerId,Owner.Username,Status,ClosedDate,CreatedDate,Country__c,Subject FROM Case WHERE Country__c='United Kingdom' and status='Closed'limit 1];            
+            System.debug('closedCaseWithEmail'+closedCaseWithEmail);
+            closedCaseWithEmail.Status='New';      
             update closedCaseWithEmail;
             Test.stopTest();           
             Case newCasewithEmail = [SELECT id,Casenumber,SuppliedEmail,Origin,Priority,ParentId,RecordTypeId,OwnerId,Owner.name,Owner.Username,Status,ClosedDate,CreatedDate,Subject,Country__c FROM Case WHERE Country__c='United Kingdom' and Status='New' limit 1 ];
@@ -105,7 +107,7 @@ with Attachment
     
     @isTest
     static void emailMessageNotSentToCustomer(){
-        User otestUser = [SELECT Id, Username FROM User WHERE Username = 'vfs.support.salesforce@volvo.com' LIMIT 1];
+        User otestUser = [SELECT Id, Username FROM User WHERE Email = 'vfs.support.salesforce@volvo.com' LIMIT 1];
         System.runAs(otestUser){ 
             Test.startTest();     
             Case caseWithoutEmail =[SELECT id,SuppliedEmail,SourceId,OwnerId,Owner.Username,Status,ClosedDate,CreatedDate,Country__c,Subject FROM Case where Country__c='Ireland'and Status='Closed' limit 1];             
