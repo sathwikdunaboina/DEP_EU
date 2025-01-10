@@ -475,7 +475,7 @@
             <targetReference>Case_Queue_Name</targetReference>
         </connector>
         <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=30) &amp;&amp;
-(ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;))&amp;&amp;( {!$User.Email}=&apos;vfs.support.salesforce@volvo.com&apos;)</filterFormula>
+(ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;))&amp;&amp;( {!$User.LastName}=&apos;VFS Salesforce Support&apos;)</filterFormula>
         <object>Case</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
