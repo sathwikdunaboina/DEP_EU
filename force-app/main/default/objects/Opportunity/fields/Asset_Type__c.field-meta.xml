@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset_Type__c</fullName>
+    <description>Purpose: Picklist field to capture Asset Type
+How Populated: This field will be populated by User
+Is UI Field: Yes</description>
+    <label>Asset Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Master Red</fullName>
+                <default>false</default>
+                <label>Master Red</label>
+            </value>
+            <value>
+                <fullName>Master E-Tech</fullName>
+                <default>false</default>
+                <label>Master E-Tech</label>
+            </value>
+            <value>
+                <fullName>Trafic Red</fullName>
+                <default>false</default>
+                <label>Trafic Red</label>
+            </value>
+            <value>
+                <fullName>Trafic E-tech</fullName>
+                <default>false</default>
+                <label>Trafic E-tech</label>
+            </value>
+            <value>
+                <fullName>Trafic Exclusive</fullName>
+                <default>false</default>
+                <label>Trafic Exclusive</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
