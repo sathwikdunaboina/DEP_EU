@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <assignments>
+        <description>Element to assign value from the Formula Variable ValuetobepopulatedforNetSalesPrice to Net Sales Price Field in Opportunity Object</description>
+        <name>Assign_Value_to_Net_Sales_Price</name>
+        <label>Assign Value to Net Sales Price</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Amount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ValuetobepopulatedforNetSalesPrice</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Populate the Net Sales Price ( Amount ) field with Number of Assets x Average Value Per Asset when Lead Source =  Dealer-Stockbook , Dealer-Wagonex and Number of Assets or Average Value Per Asset has changed.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula Variable to store the Product of two fields Number of Assets and Average Value per Asset</description>
+        <name>ValuetobepopulatedforNetSalesPrice</name>
+        <dataType>Number</dataType>
+        <expression>{!$Record.Number_of_Assets__c}*{!$Record.Average_Value_Per_Asset__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Update Net Sales Price Field On Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Net Sales Price Field On Opportunity Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Value_to_Net_Sales_Price</targetReference>
+        </connector>
+        <filterFormula>AND(
+  OR(
+    ISPICKVAL({!$Record.LeadSource}, &apos;Dealer-Stockbook&apos;),
+    ISPICKVAL({!$Record.LeadSource}, &apos;Dealer-Wagonex&apos;)
+  ),
+  OR(
+    ISCHANGED({!$Record.Number_of_Assets__c}),
+    ISCHANGED({!$Record.Average_Value_Per_Asset__c}),
+AND(ISNEW(),
+NOT(ISBLANK({!$Record.Number_of_Assets__c})),
+NOT(ISBLANK({!$Record.Average_Value_Per_Asset__c}))
+  
+  )
+)
+)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
