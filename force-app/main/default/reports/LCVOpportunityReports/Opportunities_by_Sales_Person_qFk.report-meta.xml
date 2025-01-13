@@ -29,6 +29,16 @@
     </columns>
     <currency>EUR</currency>
     <description>Report to show Opportunities by Sales Person(Contacts from Dealer Account) only for Opportunity Lead Source as &apos;Dealer-Stockbook&apos; and &apos;Dealer-Wagonex&apos;</description>
+    <filter>
+        <criteriaItems>
+            <column>LEAD_SOURCE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Dealer-Stockbook,Dealer-Wagonex</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
