@@ -39,9 +39,9 @@ public with sharing class MyProfilePageController {
         }
     }
 
-    public PageReference changePassword() {
-        return Page.ChangePassword;
-    }
+    //public PageReference changePassword() {
+      //  return Page.ChangePassword;
+    //}
 
     public void cancel() {
         isEdit=false;
