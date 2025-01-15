@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Lost_Reason__c</fullName>
-    <externalId>false</externalId>
     <inlineHelpText>Reason for the lost sale</inlineHelpText>
-    <label>Lost Reason1</label>
+    <label>Lost Reason</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <controllingField>StageName</controllingField>
@@ -73,14 +73,14 @@
                 <label>Not available for financing</label>
             </value>
             <value>
-                <fullName>Dealer Contract Hire,</fullName>
+                <fullName>Bodybuilder</fullName>
                 <default>false</default>
-                <label>Dealer Contract Hire,</label>
+                <label>Bodybuilder</label>
             </value>
             <value>
-                <fullName>Does not use Finance</fullName>
+                <fullName>Government body</fullName>
                 <default>false</default>
-                <label>Does not use Finance</label>
+                <label>Government body</label>
             </value>
         </valueSetDefinition>
         <valueSettings>
@@ -133,11 +133,11 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Dealer Contract Hire,</valueName>
+            <valueName>Bodybuilder</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Closed Lost</controllingFieldValue>
-            <valueName>Does not use Finance</valueName>
+            <valueName>Government body</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
