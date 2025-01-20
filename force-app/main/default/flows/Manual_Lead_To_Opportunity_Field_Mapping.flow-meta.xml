@@ -57,24 +57,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Contact_Email__c</field>
-            <value>
-                <elementReference>$Record.Email</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Contact_Mobile__c</field>
-            <value>
-                <elementReference>$Record.MobilePhone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Contact_Name__c</field>
-            <value>
-                <elementReference>ContactName</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Country__c</field>
             <value>
                 <elementReference>$Record.Country</elementReference>
@@ -138,6 +120,12 @@
             <field>Customer_Address__Street__s</field>
             <value>
                 <elementReference>$Record.Street</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Contact__c</field>
+            <value>
+                <elementReference>$Record.ConvertedContactId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
