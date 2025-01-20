@@ -518,6 +518,62 @@
                 <identifier>RecordCustomer_Account_rVATNumber_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Credit_Rate__c</fieldItem>
+                <identifier>RecordCredit_Rate_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
+                <identifier>RecordCredit_Assessment_Date__cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-f4817694-2807-4415-b0e4-1a19c36177ba</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -545,13 +601,24 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Credit_Rate__c</fieldItem>
-                <identifier>RecordCredit_Rate_cField</identifier>
+                <fieldItem>Record.Contact_Role__c</fieldItem>
+                <identifier>RecordContact_Role_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -562,13 +629,24 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
-                <identifier>RecordCredit_Assessment_Date__cField</identifier>
+                <fieldItem>Record.Contact_Name__c</fieldItem>
+                <identifier>RecordContact_Name_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -579,8 +657,54 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Customer_Contact__c</fieldItem>
-                <identifier>RecordCustomer_Contact_cField</identifier>
+                <fieldItem>Record.Contact_Email__c</fieldItem>
+                <identifier>RecordContact_Email_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Contact_Mobile__c</fieldItem>
+                <identifier>RecordContact_Mobile_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -634,15 +758,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Dealer_Sales_Person__c</fieldItem>
-                <identifier>RecordDealer_Sales_Person_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <fieldItem>Record.AccountId</fieldItem>
+                <identifier>RecordAccountIdField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -672,8 +789,15 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.AccountId</fieldItem>
-                <identifier>RecordAccountIdField</identifier>
+                <fieldItem>Record.Dealer_Sales_Person__c</fieldItem>
+                <identifier>RecordDealer_Sales_Person_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-90a1f3d4-3fc1-4d5c-a7fa-ebbe5b5f7418</name>
@@ -781,10 +905,21 @@
                 <fieldItem>Record.Lead_Model__c</fieldItem>
                 <identifier>RecordLead_Model_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -811,10 +946,21 @@
                 <fieldItem>Record.Lead_Axle_Arrangement__c</fieldItem>
                 <identifier>RecordLead_Axle_Arrangement_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -828,10 +974,21 @@
                 <fieldItem>Record.Cab_Version__c</fieldItem>
                 <identifier>RecordCab_Version_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -858,10 +1015,21 @@
                 <fieldItem>Record.Lead_Chassis_Type__c</fieldItem>
                 <identifier>RecordLead_Chassis_Type_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -888,10 +1056,21 @@
                 <fieldItem>Record.Superstructure_Type__c</fieldItem>
                 <identifier>RecordSuperstructure_Type_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -905,10 +1084,21 @@
                 <fieldItem>Record.Additional_Services__c</fieldItem>
                 <identifier>RecordAdditional_Services_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -922,10 +1112,21 @@
                 <fieldItem>Record.Financing_Specification__c</fieldItem>
                 <identifier>RecordFinancing_Specification__cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -956,10 +1157,21 @@
                 <fieldItem>Record.Lead_VIN_Number__c</fieldItem>
                 <identifier>RecordLead_VIN_Number_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -993,10 +1205,21 @@
                 <fieldItem>Record.Registration_Date__c</fieldItem>
                 <identifier>RecordRegistration_Date_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1010,10 +1233,21 @@
                 <fieldItem>Record.Registration_Number__c</fieldItem>
                 <identifier>RecordRegistration_Number_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1027,10 +1261,21 @@
                 <fieldItem>Record.Milage__c</fieldItem>
                 <identifier>RecordMilage_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1044,10 +1289,21 @@
                 <fieldItem>Record.Detailed_Specification__c</fieldItem>
                 <identifier>RecordDetailed_Specification_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Stockbook</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Dealer-Wagonex</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
