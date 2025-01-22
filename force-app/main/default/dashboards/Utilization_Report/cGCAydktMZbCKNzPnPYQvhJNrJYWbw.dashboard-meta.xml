@@ -18,8 +18,8 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>between</operator>
-            <values>12/31/2022</values>
             <values>1/1/2024</values>
+            <values>12/31/2024</values>
         </dashboardFilterOptions>
         <name>Dealer Delivery Date</name>
     </dashboardFilters>
@@ -129,6 +129,17 @@
         </dashboardFilterOptions>
         <name>Dealer Name</name>
     </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>notEqual</operator>
+            <values>Dealer Inventory</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Dealer Inventory</values>
+        </dashboardFilterOptions>
+        <name>Status</name>
+    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
@@ -137,7 +148,7 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>Image</componentType>
                 <dashboardComponentContents>
-                    <additionalInfo>{&quot;contentDocumentId&quot;:&quot;0692p00000eTRrRAAW&quot;,&quot;fileAssetName&quot;:&quot;T2013_0882jpg&quot;,&quot;namespacePrefix&quot;:&quot;&quot;,&quot;inlineWidgetStyle&quot;:{}}</additionalInfo>
+                    <additionalInfo>{&quot;contentDocumentId&quot;:&quot;0692p00000eTRrRAAW&quot;,&quot;fileAssetName&quot;:&quot;T2013_0882jpg&quot;,&quot;inlineWidgetStyle&quot;:{},&quot;namespacePrefix&quot;:&quot;&quot;}</additionalInfo>
                     <altText>ciao</altText>
                     <fileName>T2013_0882.jpg</fileName>
                     <fit>fitheight</fit>
@@ -169,6 +180,9 @@
                 <dashboardFilterColumns>
                     <column>Opportunity.Dealer_Name__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>STAGE_NAME</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>2</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -192,7 +206,7 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>Image</componentType>
                 <dashboardComponentContents>
-                    <additionalInfo>{&quot;contentDocumentId&quot;:&quot;0692p00000eTRzQAAW&quot;,&quot;fileAssetName&quot;:&quot;T2018_0137jpg&quot;,&quot;namespacePrefix&quot;:&quot;&quot;,&quot;inlineWidgetStyle&quot;:{}}</additionalInfo>
+                    <additionalInfo>{&quot;contentDocumentId&quot;:&quot;0692p00000eTRzQAAW&quot;,&quot;fileAssetName&quot;:&quot;T2018_0137jpg&quot;,&quot;inlineWidgetStyle&quot;:{},&quot;namespacePrefix&quot;:&quot;&quot;}</additionalInfo>
                     <fileName>T2018_0137.jpg</fileName>
                     <fit>fitheight</fit>
                     <horizontalAlignment>center</horizontalAlignment>
@@ -223,6 +237,9 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Dealer_Name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>STAGE_NAME</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -270,6 +287,9 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Opportunity.Dealer_Name__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>STAGE_NAME</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -319,6 +339,9 @@
                 <dashboardFilterColumns>
                     <column>Opportunity.Dealer_Name__c</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>STAGE_NAME</column>
+                </dashboardFilterColumns>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -341,6 +364,7 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
+    <owner>mara.bertuletti@volvo.com</owner>
     <runningUser>mara.bertuletti@volvo.com</runningUser>
     <textColor>#000000</textColor>
     <title>Utilization Dashboard</title>

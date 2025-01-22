@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Invitation_In_60_Days</name>
+        <label>Send Invitation In 60 Days</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>medallia_xm__MedProcessSendInvitation</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>reportId</name>
+        </inputParameters>
+        <inputParameters>
+            <name>service</name>
+            <value>
+                <stringValue>sfdc_create_survey_opportunity_won</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>whenToSend</name>
+            <value>
+                <elementReference>SendAfter60Days</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>medallia_xm__MedProcessSendInvitation</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <description>Invitation gets sent to contact in Onboarding Program X days (default 60) after Opportunity is &quot;Closed Won&quot;.</description>
+    <formulas>
+        <name>SendAfter60Days</name>
+        <dataType>DateTime</dataType>
+        <expression>now()+60</expression>
+    </formulas>
+    <interviewLabel>Send Invitation 60 Days After Opportunity is Won {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Send Invitation 60 Days After Opportunity is Won_Template</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Invitation_In_60_Days</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

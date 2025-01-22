@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Financial_Product_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Allowed financed product for the approved credit line. If approval does not required this control, user can choose &quot;Control Not Required&quot; option. User can create multiple control line for different products.,
+How Populated: UI-Manual ,
+Is UI field : Yes</description>
+    <label>Financial Product Type</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>InstallmentCredit</fullName>
+                <default>false</default>
+                <label>InstallmentCredit</label>
+            </value>
+            <value>
+                <fullName>FinanceLease</fullName>
+                <default>false</default>
+                <label>FinanceLease</label>
+            </value>
+            <value>
+                <fullName>OperatingLease</fullName>
+                <default>false</default>
+                <label>OperatingLease</label>
+            </value>
+            <value>
+                <fullName>ControlNotRequired</fullName>
+                <default>false</default>
+                <label>ControlNotRequired</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

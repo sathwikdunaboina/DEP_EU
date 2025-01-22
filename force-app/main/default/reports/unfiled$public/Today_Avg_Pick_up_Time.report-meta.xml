@@ -54,6 +54,9 @@
     <columns>
         <field>CM.COMPLETION_DATE</field>
     </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
     <currency>GBP</currency>
     <customDetailFormulas>
         <calculatedFormula>8.5*(
@@ -68,7 +71,7 @@ MIN(5,
 MOD(DATEVALUE(CM.START_DATE)-DATE(1996,01,01), 7) +
 MIN(1, 24/8.5*(MAX(0,MOD(CM.START_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CM.START_DATE))&amp;&apos; 08:30:00&apos;), 1))))
 ))
-)*60</calculatedFormula>
+)</calculatedFormula>
         <dataType>Double</dataType>
         <developerName>CDF1</developerName>
         <label>Average Completion Time</label>
@@ -90,18 +93,25 @@ MIN(1, 24/8.5*(MAX(0,MOD(CM.START_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CM.START_DAT
             <value>Spam/Junk</value>
         </criteriaItems>
         <criteriaItems>
-            <column>BucketField_10701725</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Customer Service</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>IS_COMPLETED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Heather Molloy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CM.COMPLETION_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -132,6 +142,6 @@ MIN(1, 24/8.5*(MAX(0,MOD(CM.START_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CM.START_DAT
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_TODAY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__Contact_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field is used to link the feedback to an existing contact is Salesforce.  The contact object has additional summary fields to calculate insights</description>
+    <label>Contact - Id</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Responses</relationshipLabel>
+    <relationshipName>Medallia_Feedbacks</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+</CustomField>

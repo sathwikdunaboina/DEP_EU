@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Limit_Drawn_Amount</fullName>
+    <active>true</active>
+    <description>Prevent Maximum value in Drawn Amount, Max allowed limit is 100 M.</description>
+    <errorConditionFormula>CLA_Drawn_Amount__c &gt; 100000000</errorConditionFormula>
+    <errorMessage>Maximum limit is 100 M.</errorMessage>
+</ValidationRule>

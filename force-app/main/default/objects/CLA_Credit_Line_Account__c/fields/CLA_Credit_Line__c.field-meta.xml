@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Credit_Line__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Lookup to Credit Line,
+How Populated: UI-Manual/Automated ,
+Process : Auto populated from credit line for primary customer . Manually selected for Non Primary Customer
+Is UI field : Yes</description>
+    <label>Credit Line</label>
+    <referenceTo>CLA_Credit_Line__c</referenceTo>
+    <relationshipLabel>Credit Line Customers</relationshipLabel>
+    <relationshipName>Credit_Line_Customers</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

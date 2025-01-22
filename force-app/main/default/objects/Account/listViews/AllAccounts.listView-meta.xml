@@ -8,15 +8,13 @@
     <columns>VATNumber__c</columns>
     <columns>ACCOUNT.ADDRESS1_CITY</columns>
     <columns>ACCOUNT.ADDRESS1_STATE</columns>
-    <columns>Territory_Manager__c</columns>
     <columns>ACCOUNT.PHONE1</columns>
     <columns>ACCOUNT.CREATED_DATE</columns>
     <columns>sourceSystemID__c</columns>
+    <columns>Invoices_Fetched_On__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
-        <operation>equals</operation>
-        <value>FR</value>
-    </filters>
-    <label>Tous les comptes</label>
+    <label>All Accounts</label>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
 </ListView>

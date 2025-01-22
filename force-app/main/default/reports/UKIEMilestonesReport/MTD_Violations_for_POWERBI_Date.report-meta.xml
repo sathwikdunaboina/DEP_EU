@@ -71,8 +71,15 @@
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>tech,contract,jenny,2nd,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,callum</value>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Heather Molloy,Andy Medcalf</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Case Pickup</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -95,7 +102,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2023-12-31</endDate>
+        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2023-01-01</startDate>
     </timeFrameFilter>

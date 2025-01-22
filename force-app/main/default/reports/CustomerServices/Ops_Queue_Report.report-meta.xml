@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CM.COMPLETION_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <currency>EUR</currency>
+    <customDetailFormulas>
+        <calculatedFormula>round((8.5*(
+(5*FLOOR((DATEVALUE(CM.COMPLETION_DATE) -DATE(1996,01,01))/7) +
+MIN(5,
+MOD(DATEVALUE(CM.COMPLETION_DATE) -DATE(1996,01,01), 7) +
+MIN(1, 24/8.5*(MAX(0,MOD(CM.COMPLETION_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CM.COMPLETION_DATE))&amp;&apos; 08:30:00&apos;), 1))))
+))
+-
+(5*FLOOR((DATEVALUE(CREATED_DATE)-DATE(1996,01,01))/7) +
+MIN(5,
+MOD(DATEVALUE(CREATED_DATE)-DATE(1996,01,01), 7) +
+MIN(1, 24/8.5*(MAX(0,MOD(CM.START_DATE-DATETIMEVALUE(TEXT(DATEVALUE(CREATED_DATE))&amp;&apos; 08:30:00&apos;), 1))))
+))
+)),0)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Pick Up Time</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Case.Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Ireland,United Kingdom</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>EXT,XSM,Helen,EOT,Credit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Sub_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Spam</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_DAYS:1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Ops Queue Report</name>
+    <params>
+        <name>units</name>
+        <value>m</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseMilestone</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -31,16 +31,28 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
+        <field>LAST_UPDATE_BY_ALIAS</field>
+    </columns>
+    <columns>
+        <field>PARENT_CASE_NUMBER</field>
+    </columns>
+    <columns>
         <field>Case.Indicator__c</field>
     </columns>
     <columns>
-        <field>SUBJECT</field>
+        <field>STATUS</field>
     </columns>
     <columns>
         <field>TYPE</field>
@@ -53,9 +65,6 @@
     </columns>
     <columns>
         <field>OPEN</field>
-    </columns>
-    <columns>
-        <field>STATUS</field>
     </columns>
     <columns>
         <field>Case.Status_Reason__c</field>
@@ -138,7 +147,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>lovepreet</value>
+            <value>lovepreet,holleyhead</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -160,6 +169,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>purchase order</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Heather Molloy,Andy Medcalf</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

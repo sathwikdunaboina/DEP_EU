@@ -131,7 +131,7 @@ public class FactoryOrderDealerChangeFlow_Test {
         Test.stopTest();
         
         Factory_Order__c facOrder = [SELECT Account__r.Name FROM Factory_Order__c WHERE Id =: fo.Id LIMIT 1];
-        //System Assert to get the proper valid test scenario
         Assert.areEqual(facOrder.Account__r.Name, oDealerAccountChange.Name, 'Factory Order Account is same as Updated Dealer Account');
     }
+    
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Initiation asset</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Initiation assets</value>
+    </caseValues>
+    <layouts>
+        <layout>Initiation asset Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Update --></label>
+        <name>Bulkupdatea</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- In order to update status to &quot;Complete&quot; , you need to have the PO and Reg. Please uncheck the PO Hotpot and Reg hotpot flags if you have them --></errorMessage>
+        <name>Can_not_complete_if_no_reg_or_PO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a payout date on all assets. This is to help guide the activations team and help with reporting --></errorMessage>
+        <name>Enter_Payout_date</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Create_error_s --></label>
+        <name>Create_error_s</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Error__c</fullName>
+    <deprecated>false</deprecated>
+    <description>List of errors that are applied to the initiation and or initiation assets.
+Grouped by Global picklist value (Wholesale or Service).
+Applied from screen flow on initiation record</description>
+    <label>Error</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Error_Group__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Other (see notes)</fullName>
+                <default>false</default>
+                <label>Other (see notes)</label>
+            </value>
+            <value>
+                <fullName>Money not booked/Incorrect</fullName>
+                <default>false</default>
+                <label>Money not booked/Incorrect</label>
+            </value>
+            <value>
+                <fullName>No S07</fullName>
+                <default>false</default>
+                <label>No start date/registration in VDA+ (no S07)</label>
+            </value>
+            <value>
+                <fullName>Panels not approved</fullName>
+                <default>false</default>
+                <label>Panels not approved</label>
+            </value>
+            <value>
+                <fullName>FD Dates</fullName>
+                <default>false</default>
+                <label>FD Dates</label>
+            </value>
+            <value>
+                <fullName>INCORRECT START DATE</fullName>
+                <default>false</default>
+                <label>Incorrect start date/registration in VDA+ (S09)</label>
+            </value>
+            <value>
+                <fullName>FD AMOUNTS</fullName>
+                <default>false</default>
+                <label>FD Amounts</label>
+            </value>
+            <value>
+                <fullName>SIGNED &amp; WHITNESSED</fullName>
+                <default>false</default>
+                <label>Signed &amp; Witnessed</label>
+            </value>
+            <value>
+                <fullName>FD Payment Method</fullName>
+                <default>false</default>
+                <label>FD Payment Method</label>
+            </value>
+            <value>
+                <fullName>CQ QUERY</fullName>
+                <default>false</default>
+                <label>CQ Query</label>
+            </value>
+            <value>
+                <fullName>INCORRECT BANK DETAILS</fullName>
+                <default>false</default>
+                <label>Incorrect bank details</label>
+            </value>
+            <value>
+                <fullName>Asset Details</fullName>
+                <default>false</default>
+                <label>Asset Details</label>
+            </value>
+            <value>
+                <fullName>Securities</fullName>
+                <default>false</default>
+                <label>Securities</label>
+            </value>
+            <value>
+                <fullName>Sent Late/Or not at all</fullName>
+                <default>false</default>
+                <label>Sent Late/Or not at all</label>
+            </value>
+            <value>
+                <fullName>REG / CHASSIS DETAILS INCORRECT</fullName>
+                <default>false</default>
+                <label>REG / Chassis Details query</label>
+            </value>
+            <value>
+                <fullName>Incomplete Payout Pack</fullName>
+                <default>false</default>
+                <label>Incomplete Payout Pack</label>
+            </value>
+            <value>
+                <fullName>Check sheet Incorrect</fullName>
+                <default>false</default>
+                <label>Check sheet incorrect</label>
+            </value>
+            <value>
+                <fullName>INVOICE INCORRECT</fullName>
+                <default>false</default>
+                <label>Invoice Incorrect</label>
+            </value>
+            <value>
+                <fullName>3RD PARTY CONTRACT QUERY</fullName>
+                <default>false</default>
+                <label>3rd party contract query</label>
+            </value>
+            <value>
+                <fullName>ANNUAL MILAGE</fullName>
+                <default>false</default>
+                <label>Annual Mileage</label>
+            </value>
+            <value>
+                <fullName>Business Parties</fullName>
+                <default>false</default>
+                <label>Business Parties</label>
+            </value>
+            <value>
+                <fullName>CDB Number</fullName>
+                <default>false</default>
+                <label>CDB Number</label>
+            </value>
+            <value>
+                <fullName>CQ OUT OF DATE</fullName>
+                <default>false</default>
+                <label>CQ out of date</label>
+            </value>
+            <value>
+                <fullName>Credit acceptance</fullName>
+                <default>false</default>
+                <label>Credit acceptance</label>
+            </value>
+            <value>
+                <fullName>Customer Details</fullName>
+                <default>false</default>
+                <label>Customer details query</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER IN ARREARS</fullName>
+                <default>false</default>
+                <label>Customer in arrears</label>
+            </value>
+            <value>
+                <fullName>Direct Debit mandate missing</fullName>
+                <default>false</default>
+                <label>Direct Debit mandate query</label>
+            </value>
+            <value>
+                <fullName>ESTEPPE AXEL QUERY</fullName>
+                <default>false</default>
+                <label>Vehicle type query</label>
+            </value>
+            <value>
+                <fullName>FD Incorrect/Missing</fullName>
+                <default>false</default>
+                <label>FD Incorrect/Missing</label>
+            </value>
+            <value>
+                <fullName>FD PAYEE</fullName>
+                <default>false</default>
+                <label>FD payee</label>
+            </value>
+            <value>
+                <fullName>FIXED / INDEXED QUERY</fullName>
+                <default>false</default>
+                <label>Fixed / Indexed query</label>
+            </value>
+            <value>
+                <fullName>Funding type</fullName>
+                <default>false</default>
+                <label>Funding type</label>
+            </value>
+            <value>
+                <fullName>Invoice payee incorrect</fullName>
+                <default>false</default>
+                <label>Invoice payee incorrect</label>
+            </value>
+            <value>
+                <fullName>Legacy Ref</fullName>
+                <default>false</default>
+                <label>Legacy Ref</label>
+            </value>
+            <value>
+                <fullName>Multiheader Details</fullName>
+                <default>false</default>
+                <label>Multiheader Details</label>
+            </value>
+            <value>
+                <fullName>NEW / USED</fullName>
+                <default>false</default>
+                <label>New / Used</label>
+            </value>
+            <value>
+                <fullName>OLI Intervals</fullName>
+                <default>false</default>
+                <label>OLI Intervals</label>
+            </value>
+            <value>
+                <fullName>PMI REQUESTED</fullName>
+                <default>false</default>
+                <label>PMI Awaiting Approval Request</label>
+            </value>
+            <value>
+                <fullName>POC Query</fullName>
+                <default>false</default>
+                <label>POC Query</label>
+            </value>
+            <value>
+                <fullName>SIGNED CQ REQUIRED</fullName>
+                <default>false</default>
+                <label>Signed CQ Required</label>
+            </value>
+            <value>
+                <fullName>SIPPORT / AWAITING MARKET COMPANY CONFIRMATION</fullName>
+                <default>false</default>
+                <label>Support / Awaiting Market Company Confirmation</label>
+            </value>
+            <value>
+                <fullName>Start Date</fullName>
+                <default>false</default>
+                <label>Start Date</label>
+            </value>
+            <value>
+                <fullName>START MILAGE</fullName>
+                <default>false</default>
+                <label>Start Mileage</label>
+            </value>
+            <value>
+                <fullName>Stockplan</fullName>
+                <default>false</default>
+                <label>Stockplan</label>
+            </value>
+            <value>
+                <fullName>Subsidy code missing</fullName>
+                <default>false</default>
+                <label>Subsidy code missing</label>
+            </value>
+            <value>
+                <fullName>SUPPORT / AWAITING DEALER CONFIRMATION</fullName>
+                <default>false</default>
+                <label>Support / Awaiting Dealer Confirmation</label>
+            </value>
+            <value>
+                <fullName>Unable to Pay (Pulled Payment)</fullName>
+                <default>false</default>
+                <label>Unable to Pay (Pulled Payment)</label>
+            </value>
+            <value>
+                <fullName>UPTIME PROMISE QUERY</fullName>
+                <default>false</default>
+                <label>Uptime Care query</label>
+            </value>
+            <value>
+                <fullName>PPK</fullName>
+                <default>false</default>
+                <label>XSM query</label>
+            </value>
+            <value>
+                <fullName>XSM Meter</fullName>
+                <default>false</default>
+                <label>XSM Meter</label>
+            </value>
+            <value>
+                <fullName>Start date query</fullName>
+                <default>false</default>
+                <label>Start date query</label>
+            </value>
+            <value>
+                <fullName>Matrix Query</fullName>
+                <default>false</default>
+                <label>Matrix Query</label>
+            </value>
+            <value>
+                <fullName>S09</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>S09</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Other (see notes)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>No S07</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>INCORRECT START DATE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>SIGNED &amp; WHITNESSED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>CQ QUERY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>INCORRECT BANK DETAILS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Asset Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>REG / CHASSIS DETAILS INCORRECT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Check sheet Incorrect</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>3RD PARTY CONTRACT QUERY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>ANNUAL MILAGE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>CQ OUT OF DATE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>Customer Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>CUSTOMER IN ARREARS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>Direct Debit mandate missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>ESTEPPE AXEL QUERY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>FIXED / INDEXED QUERY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>NEW / USED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>OLI Intervals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>PMI REQUESTED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>POC Query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>SIGNED CQ REQUIRED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>SIPPORT / AWAITING MARKET COMPANY CONFIRMATION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>START MILAGE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>SUPPORT / AWAITING DEALER CONFIRMATION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>UPTIME PROMISE QUERY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>PPK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>XSM Meter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>Start date query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>Matrix Query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Money not booked/Incorrect</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Panels not approved</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>FD Dates</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>FD AMOUNTS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>FD Payment Method</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Securities</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Sent Late/Or not at all</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Incomplete Payout Pack</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>INVOICE INCORRECT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Business Parties</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>FD Incorrect/Missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>FD PAYEE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Invoice payee incorrect</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Legacy Ref</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Multiheader Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Start Date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Stockplan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Subsidy code missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wholesale</controllingFieldValue>
+            <valueName>Unable to Pay (Pulled Payment)</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

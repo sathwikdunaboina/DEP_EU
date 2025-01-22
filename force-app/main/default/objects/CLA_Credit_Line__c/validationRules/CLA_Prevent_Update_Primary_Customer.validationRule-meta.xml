@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Update_Primary_Customer</fullName>
+    <active>true</active>
+    <description>Prevent Change in primary customer field section in approved status.</description>
+    <errorConditionFormula>AND(TEXT( CLA_Status__c ) = &apos;Approved&apos; , 
+     OR ( ISCHANGED( CLA_Account__c ) ,
+          ISCHANGED( CLA_VFS_Customer_Number__c  ) , 
+          ISCHANGED( CLA_Primary_Customer_Name__c   ),
+          ISCHANGED( CLA_Company_Identification_Number__c   )
+) 
+)</errorConditionFormula>
+    <errorMessage>Primary Customer section can not be edited.</errorMessage>
+</ValidationRule>

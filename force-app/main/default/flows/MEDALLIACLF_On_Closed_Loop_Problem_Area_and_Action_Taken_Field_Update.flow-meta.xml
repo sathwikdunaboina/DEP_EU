@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Assign_values_to_Problem_Areas_and_Actions_taken_fields</name>
+        <label>Assign values to Problem Areas and Actions taken fields</label>
+        <locationX>456</locationX>
+        <locationY>335</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.MEDALLIACLF_PURCHASE_PROBLEM_AREAS_OTHER__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PurchaseProblemAreaOtherValue</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.MEDALLIACLF_PURCHASE_ACTIONS_TAKEN_OTHER__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PurchaseActionTakenOtherValue</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.MEDALLIACLF_RELATIONSHP_PROB_AREAS_OTHER__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>RelationshipProblemAreaOtherValue</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.MEDALLIACLF_REL_ACTIONS_TAKEN_OTHER__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>RelationshipActionTakenOtherValue</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>When &quot;Problem Areas&quot; and &quot;Actions Taken&quot; field Values of Purchase and Relationship are updated from &quot;Other&quot; to some Non-other value, then &quot;Problem Areas-Other&quot; and &quot;Actions Taken-Other&quot; fields are set to Blank</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>PurchaseActionTakenOtherValue</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISPICKVAL({!$Record.MEDALLIACLF_PURCHASE_ACTIONS_TAKEN__c}, &apos;99&apos;)),&apos;&apos;, {!$Record.MEDALLIACLF_PURCHASE_ACTIONS_TAKEN_OTHER__c})</expression>
+    </formulas>
+    <formulas>
+        <name>PurchaseProblemAreaOtherValue</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISPICKVAL({!$Record.MEDALLIACLF_PURCHASE_PROBLEM_AREAS__c},&apos;99&apos;)),&apos;&apos;,{!$Record.MEDALLIACLF_PURCHASE_PROBLEM_AREAS_OTHER__c} )</expression>
+    </formulas>
+    <formulas>
+        <name>RelationshipActionTakenOtherValue</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISPICKVAL({!$Record.MEDALLIACLF_RELATIONSHIP_ACTIONS_TAKEN__c}, &apos;99&apos;)),&apos;&apos;, {!$Record.MEDALLIACLF_REL_ACTIONS_TAKEN_OTHER__c})</expression>
+    </formulas>
+    <formulas>
+        <name>RelationshipProblemAreaOtherValue</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISPICKVAL({!$Record.MEDALLIACLF_RELATIONSHIP_PROBLEM_AREAS__c}, &apos;99&apos;)),&apos;&apos;, {!$Record.MEDALLIACLF_RELATIONSHP_PROB_AREAS_OTHER__c})</expression>
+    </formulas>
+    <interviewLabel>On Closed Loop Problem Area and Action Taken Field Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>On Closed Loop Problem Area and Action Taken Field Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Assign_values_to_Problem_Areas_and_Actions_taken_fields</targetReference>
+        </connector>
+        <filterFormula>OR(
+AND(NOT(ISPICKVAL({!$Record.MEDALLIACLF_PURCHASE_ACTIONS_TAKEN__c}, &apos;99&apos;)),
+ISPICKVAL({!$Record__Prior.MEDALLIACLF_PURCHASE_ACTIONS_TAKEN__c}, &apos;99&apos;)),
+AND(NOT(ISPICKVAL({!$Record.MEDALLIACLF_PURCHASE_PROBLEM_AREAS__c},&apos;99&apos;)),
+ISPICKVAL({!$Record__Prior.MEDALLIACLF_PURCHASE_PROBLEM_AREAS__c},&apos;99&apos;)),
+AND(NOT(ISPICKVAL({!$Record.MEDALLIACLF_RELATIONSHIP_ACTIONS_TAKEN__c}, &apos;99&apos;)), ISPICKVAL({!$Record__Prior.MEDALLIACLF_RELATIONSHIP_ACTIONS_TAKEN__c}, &apos;99&apos;)),
+AND(NOT(ISPICKVAL({!$Record.MEDALLIACLF_RELATIONSHIP_PROBLEM_AREAS__c}, &apos;99&apos;)), ISPICKVAL({!$Record__Prior.MEDALLIACLF_RELATIONSHIP_PROBLEM_AREAS__c}, &apos;99&apos;))
+)</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

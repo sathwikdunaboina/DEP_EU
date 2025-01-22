@@ -7,25 +7,6 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
-    <layouts>
-        <layout>Golden Dealer Layout</layout>
-        <sections>
-            <label><!-- Account Information --></label>
-            <section>Account Information</section>
-        </sections>
-        <sections>
-            <label><!-- Adress Information --></label>
-            <section>Adress Information</section>
-        </sections>
-        <sections>
-            <label><!-- Custom Links --></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label><!-- System Information --></label>
-            <section>System Information</section>
-        </sections>
-    </layouts>
     <quickActions>
         <label><!-- Bulk Update --></label>
         <name>Change_TM_On_Account</name>
@@ -47,16 +28,6 @@
         <description><!-- Record type for Dealer Account Data --></description>
         <label><!-- Dealer Account --></label>
         <name>Dealer_Account</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Customer Account Data --></description>
-        <label><!-- Customer --></label>
-        <name>GCAccountCustomer</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Dealer Account Data --></description>
-        <label><!-- Dealer --></label>
-        <name>GCAccountDealer</name>
     </recordTypes>
     <validationRules>
         <errorMessage>Kundendaten können nur in Charisma geändert werden. Änderungen sind am nächsten Tag sichtbar</errorMessage>
@@ -81,5 +52,17 @@
     <webLinks>
         <label>Google Suche</label>
         <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Message --></label>
+        <name>Send_Message</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_Detail --></label>
+        <name>medallia_xm__Add_To_Program_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_ListView --></label>
+        <name>medallia_xm__Add_To_Program_ListView</name>
     </webLinks>
 </CustomObjectTranslation>

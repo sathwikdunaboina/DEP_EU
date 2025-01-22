@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Contact that will receive initiation correspondence</description>
+    <inlineHelpText>Limited to contacts associated to Customer Account on Initiation</inlineHelpText>
+    <label>Customer Contact</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>$Source.Customer_Account__c</field>
+            <operation>equals</operation>
+            <valueField>Contact.AccountId</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Initiations</relationshipLabel>
+    <relationshipName>Initiations</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__Allow_Multiple</fullName>
+    <active>false</active>
+    <description>Only Date Based Events can have the Allow Multiples field checked.</description>
+    <errorConditionFormula>NOT(medallia_xm__Is_Date_Based_Event__c)  &amp;&amp;
+            medallia_xm__Disable_Duplicate_Checking__c</errorConditionFormula>
+    <errorDisplayField>medallia_xm__Disable_Duplicate_Checking__c</errorDisplayField>
+    <errorMessage>Only Date Based Events can have the Allow Multiples field checked.</errorMessage>
+</ValidationRule>

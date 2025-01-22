@@ -70,6 +70,20 @@
             <operator>equals</operator>
             <value>VT</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Dealer_Delivery_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2024</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Dealer_Delivery_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessThan</operator>
+            <value>12/31/2024</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -103,6 +117,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Dealer_Delivery_Date__c</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

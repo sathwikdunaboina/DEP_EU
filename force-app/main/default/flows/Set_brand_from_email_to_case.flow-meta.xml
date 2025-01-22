@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <decisions>
+        <name>update_brand</name>
+        <label>update brand</label>
+        <locationX>512</locationX>
+        <locationY>354</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>volvo</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Source:EmailMessage.ToAddress</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>volvo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Source:EmailMessage.ToAddress</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>vfsco</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_volvo</targetReference>
+            </connector>
+            <label>volvo</label>
+        </rules>
+        <rules>
+            <name>renault</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Source:EmailMessage.ToAddress</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>renault-truck</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_renault</targetReference>
+            </connector>
+            <label>renault</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Set brand from email to case {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Set brand from email to case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>update_renault</name>
+        <label>update renault</label>
+        <locationX>776</locationX>
+        <locationY>424</locationY>
+        <inputAssignments>
+            <field>Brand__c</field>
+            <value>
+                <stringValue>Renault Truck</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_volvo</name>
+        <label>update volvo</label>
+        <locationX>415</locationX>
+        <locationY>480</locationY>
+        <inputAssignments>
+            <field>Brand__c</field>
+            <value>
+                <stringValue>Volvo Truck</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>304</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>update_brand</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

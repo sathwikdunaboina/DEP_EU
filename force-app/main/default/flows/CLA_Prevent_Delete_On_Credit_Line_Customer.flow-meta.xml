@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <customErrors>
+        <name>Prevent_Deletion_Error</name>
+        <label>Prevent Deletion Error</label>
+        <locationX>1196</locationX>
+        <locationY>454</locationY>
+        <customErrorMessages>
+            <errorMessage>Record can not be deleted.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Check Credit Line Status</description>
+        <name>Check_Credit_Line_Status</name>
+        <label>Check Credit Line Status</label>
+        <locationX>732</locationX>
+        <locationY>435</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Credit_Line_status_is_Approved_Suspended_Expiry</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Credit_Line_Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Credit_Line_Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Suspended</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Credit_Line_Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Expired</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Prevent_Deletion_Error</targetReference>
+            </connector>
+            <label>Credit Line status is Approved/Suspended/Expiry</label>
+        </rules>
+        <rules>
+            <name>Credit_Line_Customer_is_Primary_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Is_Primary__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Prevent_Deletion_Error</targetReference>
+            </connector>
+            <label>Credit Line Customer is Primary Customer</label>
+        </rules>
+    </decisions>
+    <description>Prevent credit line customer delete when credit line status is approved/expired/suspended.</description>
+    <environments>Default</environments>
+    <interviewLabel>Prevent Delete On Credit Line Customer {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Prevent Delete On Credit Line Customer</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Credit_Line_Record</name>
+        <label>Get Credit Line Record</label>
+        <locationX>515</locationX>
+        <locationY>364</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Credit_Line_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CLA_Credit_Line__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CLA_Credit_Line__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CLA_Status__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Credit_Line_Record</targetReference>
+        </connector>
+        <object>CLA_Credit_Line_Account__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

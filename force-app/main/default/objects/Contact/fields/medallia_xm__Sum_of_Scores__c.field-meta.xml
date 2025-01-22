@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__Sum_of_Scores__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Sum of all scores</description>
+    <inlineHelpText>Sum of all scores</inlineHelpText>
+    <label>Sum of Scores</label>
+    <summarizedField>medallia_xm__Medallia_Feedback__c.medallia_xm__Response_Main_score__c</summarizedField>
+    <summaryForeignKey>medallia_xm__Medallia_Feedback__c.medallia_xm__Contact_Id__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

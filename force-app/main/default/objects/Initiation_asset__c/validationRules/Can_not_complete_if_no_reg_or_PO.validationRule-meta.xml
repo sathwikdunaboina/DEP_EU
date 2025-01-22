@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Can_not_complete_if_no_reg_or_PO</fullName>
+    <active>false</active>
+    <description>Alert, status can not be updated if no reg or PO</description>
+    <errorConditionFormula>AND(ISPICKVAL(  Asset_status__c  ,&quot;Pack ready&quot;) ,OR(PO_available__c  = True,Registration_Hotpot__c =True))</errorConditionFormula>
+    <errorDisplayField>Asset_status__c</errorDisplayField>
+    <errorMessage>In order to update status to &quot;Complete&quot; , you need to have the PO and Reg. Please uncheck the PO Hotpot and Reg hotpot flags if you have them</errorMessage>
+</ValidationRule>

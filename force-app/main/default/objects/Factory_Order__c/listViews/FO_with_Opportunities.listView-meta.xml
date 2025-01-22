@@ -17,5 +17,10 @@
         <field>Finance_Opportunity__c</field>
         <operation>notEqual</operation>
     </filters>
+    <filters>
+        <field>Order_Id__c</field>
+        <operation>notContain</operation>
+        <value>Manual</value>
+    </filters>
     <label>FO with Opportunities</label>
 </ListView>

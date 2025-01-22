@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
+    <description>Mandate UI screen on Case</description>
     <environments>Default</environments>
     <interviewLabel>Account name is Mandate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Account name is Mandate V1</label>
@@ -33,7 +34,7 @@
         <allowPause>true</allowPause>
         <fields>
             <name>Display_Warning</name>
-            <fieldText>&lt;h1 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;, &amp;quot;Android Emoji&amp;quot;, EmojiSymbols, &amp;quot;EmojiOne Mozilla&amp;quot;, &amp;quot;Twemoji Mozilla&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji Compat&amp;quot;, emoji, noto-emojipedia-fallback; background-color: transparent;&quot;&gt;⚠️&lt;/span&gt;&lt;strong style=&quot;color: rgb(141, 0, 0);&quot;&gt;Please fill the Account Name!&lt;/strong&gt;&lt;/h1&gt;</fieldText>
+            <fieldText>&lt;h1 style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-family: &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;, &amp;quot;Android Emoji&amp;quot;, EmojiSymbols, &amp;quot;EmojiOne Mozilla&amp;quot;, &amp;quot;Twemoji Mozilla&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji Compat&amp;quot;, emoji, noto-emojipedia-fallback; background-color: transparent; color: rgb(169, 3, 3);&quot;&gt;{!$Label.Case_Account_Mandate_Value}&lt;/strong&gt;&lt;/h1&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>false</showFooter>
@@ -46,5 +47,5 @@
             <targetReference>Display_text</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

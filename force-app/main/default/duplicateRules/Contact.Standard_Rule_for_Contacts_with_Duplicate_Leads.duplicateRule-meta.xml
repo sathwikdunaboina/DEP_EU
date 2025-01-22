@@ -20,6 +20,10 @@
         <objectMapping>
             <inputObject>Contact</inputObject>
             <mappingFields>
+                <inputField>Email</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <mappingFields>
                 <inputField>FirstName</inputField>
                 <outputField>FirstName</outputField>
             </mappingFields>
@@ -32,12 +36,12 @@
                 <outputField>Phone</outputField>
             </mappingFields>
             <mappingFields>
-                <inputField>Email</inputField>
-                <outputField>Email</outputField>
-            </mappingFields>
-            <mappingFields>
                 <inputField>MailingCity</inputField>
                 <outputField>City</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>AccountId</inputField>
+                <outputField>Company</outputField>
             </mappingFields>
             <mappingFields>
                 <inputField>MailingStreet</inputField>
@@ -51,10 +55,6 @@
                 <inputField>Title</inputField>
                 <outputField>Title</outputField>
             </mappingFields>
-            <mappingFields>
-                <inputField>AccountId</inputField>
-                <outputField>Company</outputField>
-            </mappingFields>
             <outputObject>Lead</outputObject>
         </objectMapping>
     </duplicateRuleMatchRules>
@@ -64,5 +64,5 @@
     <operationsOnInsert>Report</operationsOnInsert>
     <operationsOnUpdate>Report</operationsOnUpdate>
     <securityOption>EnforceSharingRules</securityOption>
-    <sortOrder>2</sortOrder>
+    <sortOrder>3</sortOrder>
 </DuplicateRule>

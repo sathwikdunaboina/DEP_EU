@@ -1,39 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>FO_IT_SA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>This sharing rule gives read/write access to Italy FO records</description>
-        <label>FO_IT_SA</label>
-        <sharedTo>
-            <group>Italy_Sales</group>
-        </sharedTo>
-        <booleanFilter>1 OR (2 AND 3)</booleanFilter>
-        <criteriaItems>
-            <field>Dealer_Id__c</field>
-            <operation>startsWith</operation>
-            <value>IT</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Dealer_Id__c</field>
-            <operation>equals</operation>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>Italy,IT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>FO_RT_AT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>FO_RT_AT</label>
         <sharedTo>
             <group>Austria_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -54,6 +28,11 @@
             <operation>equals</operation>
             <value>RT,Renault</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -63,7 +42,7 @@
         <sharedTo>
             <group>Belgium_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -88,6 +67,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>RT,Renault</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -128,7 +112,7 @@
         <sharedTo>
             <group>Germany_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -149,6 +133,11 @@
             <operation>equals</operation>
             <value>RT,Renault</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -158,7 +147,7 @@
         <sharedTo>
             <group>Denmark_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -178,6 +167,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>RT,Renault</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -223,7 +217,7 @@
         <sharedTo>
             <group>Finland_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -244,6 +238,11 @@
             <operation>equals</operation>
             <value>RT,Renault</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -253,7 +252,7 @@
         <sharedTo>
             <group>France_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -273,6 +272,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>RT,Renault</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -408,7 +412,7 @@
         <sharedTo>
             <group>Austria_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -429,6 +433,11 @@
             <operation>equals</operation>
             <value>Volvo,VT</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -438,7 +447,7 @@
         <sharedTo>
             <group>Belgium_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2 OR (3 AND 4)) AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -463,6 +472,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>Volvo,VT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -533,7 +547,7 @@
         <sharedTo>
             <group>Denmark_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -553,6 +567,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>Volvo,VT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -598,7 +617,7 @@
         <sharedTo>
             <group>Finland_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -619,6 +638,11 @@
             <operation>equals</operation>
             <value>Volvo,VT</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -628,7 +652,7 @@
         <sharedTo>
             <group>France_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -648,6 +672,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>VT,Volvo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -813,7 +842,7 @@
         <sharedTo>
             <group>Sweden_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -834,6 +863,11 @@
             <operation>equals</operation>
             <value>RT,Renault</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -843,7 +877,7 @@
         <sharedTo>
             <group>Sweden_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <field>Dealer_Id__c</field>
             <operation>startsWith</operation>
@@ -863,6 +897,11 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>VT,Volvo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order_Id__c</field>
+            <operation>notContain</operation>
+            <value>Manual</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -10,23 +10,9 @@
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Brand__c</field>
-        <operation>equals</operation>
-        <value>RT</value>
-    </filters>
-    <filters>
-        <field>Country__c</field>
-        <operation>equals</operation>
-        <value>IT</value>
-    </filters>
-    <filters>
-        <field>Dealer_Id__c</field>
+        <field>Order_Id__c</field>
         <operation>notContain</operation>
-        <value>IT</value>
-    </filters>
-    <filters>
-        <field>Dealer_Id__c</field>
-        <operation>notEqual</operation>
+        <value>Manual</value>
     </filters>
     <label>My View</label>
     <sharedTo>

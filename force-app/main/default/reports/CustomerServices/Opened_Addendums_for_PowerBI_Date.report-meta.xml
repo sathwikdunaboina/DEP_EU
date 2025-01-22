@@ -13,6 +13,10 @@
         <field>CDF1</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
         <field>CLOSED_DATEONLY</field>
     </columns>
     <currency>GBP</currency>
@@ -29,8 +33,8 @@
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>tech,contract,jenny,2nd,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,callum</value>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Heather Molloy,Andy Medcalf</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Sub_Type__c</column>

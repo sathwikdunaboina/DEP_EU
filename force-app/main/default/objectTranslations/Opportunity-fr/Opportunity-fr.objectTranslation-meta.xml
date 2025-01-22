@@ -9,7 +9,7 @@
         <name>Create_Quote</name>
     </quickActions>
     <quickActions>
-        <label><!-- Search/Create Quotes --></label>
+        <label><!-- Search/Create Quote(s) --></label>
         <name>Create_Quotes</name>
     </quickActions>
     <recordTypes>
@@ -18,9 +18,25 @@
         <name>Finance</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Cancelled Opportunity cannot be edited. --></errorMessage>
+        <name>Cancelled_Read_Only_Opportunity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the Reason. --></errorMessage>
+        <name>Mandate_Reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the Requested guarantee. --></errorMessage>
+        <name>Mandate_Requested_guarantee</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- When the stage is &apos;Closed Lost&apos;, please enter Lost Reason. --></errorMessage>
         <name>Mandatory_Lost_Reason_on_Closed_Stage</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Bulk_Update_Common --></label>
+        <name>Bulk_Update_Common</name>
+    </webLinks>
     <webLinks>
         <label><!-- Bulk_Update_Customer --></label>
         <name>Bulk_Update_Customer</name>

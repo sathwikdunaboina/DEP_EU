@@ -28,6 +28,10 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
@@ -117,6 +121,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>UK/IE - EOT Billing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -147,7 +147,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.VAT__c</field>
+        <field>Account.VATNumber__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -258,11 +258,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Bank_Account_Mandate__c.Registration_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Bank_Account_Mandate__c.Sepa_Mandate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -396,14 +391,6 @@
         <tab>Bank_Account__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>CreateCustomizeFilters</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>EditPublicFilters</name>
-    </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>RunFlow</name>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__Medallia_Feedback_Header__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field forms the relationship between a Response record and its parent Medallia-Feedback-Header record. Data on a Response record, through its Feedback Header record, feed into graphical components on a further Account record, affecting what they display. Reparenting a Response will change the graphical components on both its original and new corresponding Account record.</description>
+    <label>Medallia Feedback Header</label>
+    <referenceTo>medallia_xm__Medallia_Feedback_Header__c</referenceTo>
+    <relationshipLabel>Responses</relationshipLabel>
+    <relationshipName>Medallia_Feedback</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

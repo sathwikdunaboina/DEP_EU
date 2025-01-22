@@ -14,10 +14,8 @@
         <operation>equals</operation>
         <value>FR94-SF</value>
     </filters>
-    <filters>
-        <field>CREATEDBY_USER.ALIAS</field>
-        <operation>notEqual</operation>
-        <value>iuser</value>
-    </filters>
     <label>France Short Term Business</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>FR_CS</roleAndSubordinatesInternal>
+    </sharedTo>
 </ListView>

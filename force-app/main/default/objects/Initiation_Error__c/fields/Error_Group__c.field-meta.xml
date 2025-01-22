@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Error_Group__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Error Group (set as a global picklist value) based on user group that is applying the errors.
+Used as a dependent field for Errors to limit the errors presented in the picklist of the teams applying the errors.</description>
+    <label>Error Group</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Error_Group</valueSetName>
+    </valueSet>
+</CustomField>
