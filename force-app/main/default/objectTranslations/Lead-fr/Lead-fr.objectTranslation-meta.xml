@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <recordTypes>
-        <label><!-- Lead --></label>
-        <name>GCLead</name>
-    </recordTypes>
-    <validationRules>
-        <errorMessage><!-- Please verify the country	. --></errorMessage>
-        <name>LeadCountryRestriction</name>
-    </validationRules>
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Customer Details --></label>
+            <section>Customer Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>New Lead Layout</layout>
+        <sections>
+            <label><!-- Customer Information --></label>
+            <section>Customer Information</section>
+        </sections>
+        <sections>
+            <label><!-- Product Information --></label>
+            <section>Product Information</section>
+        </sections>
+        <sections>
+            <label><!-- Progress --></label>
+            <section>Progress</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Unqualified Leads --></label>
+        <name>Bulk_Unqualified_Leads</name>
+    </quickActions>
     <validationRules>
         <errorMessage><!-- Please verify the country	. --></errorMessage>
         <name>Lead_Country_Restriction</name>

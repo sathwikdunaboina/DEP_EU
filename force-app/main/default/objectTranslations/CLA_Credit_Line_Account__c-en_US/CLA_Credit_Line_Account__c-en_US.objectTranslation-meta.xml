@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Credit Line Customer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Credit Line Customers</value>
+    </caseValues>
+    <layouts>
+        <layout>Credit Line Customer Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Validate --></label>
+        <name>Validate</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Can not create/update record as Credit line is expired. --></errorMessage>
+        <name>CLA_Prevent_Create_Update_Expired_CL</name>
+    </validationRules>
+</CustomObjectTranslation>

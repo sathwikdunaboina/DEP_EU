@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <description>Assign Approval Date</description>
+        <name>Assign_Approval_Date</name>
+        <label>Assign Approval Date</label>
+        <locationX>1190</locationX>
+        <locationY>560</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Approval_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>TodayDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assign country</description>
+        <name>Assign_Country</name>
+        <label>Assign Country</label>
+        <locationX>1186</locationX>
+        <locationY>766</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Country__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_User.CountryCode</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Country</name>
+        <label>Check Country</label>
+        <locationX>411</locationX>
+        <locationY>446</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Country_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Country__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Get_User</targetReference>
+            </connector>
+            <label>Country Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Fields</name>
+        <label>Check Fields</label>
+        <locationX>1004</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_to_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Approval_Date</targetReference>
+            </connector>
+            <label>Status is Approved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_picklist_value</name>
+        <label>Check picklist value</label>
+        <locationX>581</locationX>
+        <locationY>656</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>User_Country_IN_Picklist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CountryPicklistValues</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>Get_User.CountryCode</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Country</targetReference>
+            </connector>
+            <label>User Country IN Picklist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Insert_or_Update</name>
+        <label>Is Insert or Update</label>
+        <locationX>661</locationX>
+        <locationY>445</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Country</targetReference>
+            </connector>
+            <label>Is Insert</label>
+        </rules>
+        <rules>
+            <name>Is_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Fields</targetReference>
+            </connector>
+            <label>Is Update</label>
+        </rules>
+    </decisions>
+    <description>Runs on before insert/update event ,Initialise fields on credit line field change.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CountryPicklistValues</name>
+        <dataType>String</dataType>
+        <expression>&apos;NL-BE-GB-IE-SE-NO-FI-DK-DE-AT-CH-LV-LT-EE-ES-IT&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>TodayDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Field Initialisation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Field Initialise On Credit Line Field Change Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get User detail</description>
+        <name>Get_User</name>
+        <label>Get User</label>
+        <locationX>355</locationX>
+        <locationY>656</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_picklist_value</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CountryCode</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Is_Insert_or_Update</targetReference>
+        </connector>
+        <object>CLA_Credit_Line__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>200</triggerOrder>
+    <variables>
+        <name>currentItem_Filter</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>PicklistValueInfo</objectType>
+    </variables>
+</Flow>

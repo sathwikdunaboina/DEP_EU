@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>this custom notification will be used for closed loop escalated/overdue alert status</description>
+        <name>CustomNotificationEscalatedOverdueAlert</name>
+        <label>CustomNotificationEscalatedOverdueAlert</label>
+        <locationX>314</locationX>
+        <locationY>1358</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Get_NotificationType.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>RecipientIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <elementReference>ClosedLoopNotificationTitle</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>ClosedLoopEscalatedOverdueNotificationBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Case.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>this custom notification will be used for closed loop new alert status</description>
+        <name>CustomNotificationNewAlert</name>
+        <label>CustomNotificationNewAlert</label>
+        <locationX>50</locationX>
+        <locationY>1358</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Get_NotificationType.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>RecipientIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <elementReference>ClosedLoopNotificationTitle</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>ClosedLoopNewAlertNotificationBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Case.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <description>this assignment box adds members received from Loop to recipient id list one by one</description>
+        <name>Add_Member_To_Notification_Recipient_List</name>
+        <label>Add Member To Notification Recipient List</label>
+        <locationX>372</locationX>
+        <locationY>782</locationY>
+        <assignmentItems>
+            <assignToReference>RecipientIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Through_Members.UserOrGroupId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Members</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>this assignment box assigns users to recipient id variable created to send out notifications</description>
+        <name>Set_Recipient_To_Queue_Owner_User</name>
+        <label>Set Recipient To Queue Owner User</label>
+        <locationX>764</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>RecipientIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Case.Owner:User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Are_Recipients_Present</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Are_Members_Present</name>
+        <label>Are Members Present</label>
+        <locationX>392</locationX>
+        <locationY>566</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_MembersPresent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case_Owner_Queue_Members</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Through_Members</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>this decision box checks if recipient id list is empty or not</description>
+        <name>Are_Recipients_Present</name>
+        <label>Are Recipients Present</label>
+        <locationX>578</locationX>
+        <locationY>1142</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Recipients</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientIds</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CheckCaseStatus</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>this decision box is used to check for case status to send custom notification</description>
+        <name>CheckCaseStatus</name>
+        <label>CheckCaseStatus</label>
+        <locationX>314</locationX>
+        <locationY>1250</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsNew</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Case.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CustomNotificationNewAlert</targetReference>
+            </connector>
+            <label>IsNew</label>
+        </rules>
+        <rules>
+            <name>IsEscalatedorOverdue</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Case.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Case.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Overdue</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CustomNotificationEscalatedOverdueAlert</targetReference>
+            </connector>
+            <label>IsEscalatedorOverdue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Does Custom Notification with given details exist</description>
+        <name>Custom_Notification_Type_Exists</name>
+        <label>Custom Notification Type Exists</label>
+        <locationX>842</locationX>
+        <locationY>242</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_NotificationType</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Owner_a_Queue</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>this decision box checks if the case owner is of type queue</description>
+        <name>Is_Owner_a_Queue</name>
+        <label>Is Owner a Queue</label>
+        <locationX>578</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Set_Recipient_To_Queue_Owner_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_QueueOwner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Case.Owner:Group.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Queue</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Case_Owner_Queue_Members</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Send Custom notification of type MEDALLIACLF_Custom_Notification  to case owners</description>
+    <environments>Default</environments>
+    <interviewLabel>Send Custom Notification To Case Owners {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Custom Notification To Case Owners</label>
+    <loops>
+        <description>Loop through all the members of the group to add them to recipient id list variable</description>
+        <name>Loop_Through_Members</name>
+        <label>Loop Through Members</label>
+        <locationX>284</locationX>
+        <locationY>674</locationY>
+        <collectionReference>Get_Case_Owner_Queue_Members</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Member_To_Notification_Recipient_List</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Are_Recipients_Present</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get the members of the queue which is assigned as owner of the case</description>
+        <name>Get_Case_Owner_Queue_Members</name>
+        <label>Get Case Owner Queue Members</label>
+        <locationX>392</locationX>
+        <locationY>458</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Are_Members_Present</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Case.Owner:Group.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>GroupMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>this get record element is used to get notification type of custom notification created for closed loop alerts</description>
+        <name>Get_NotificationType</name>
+        <label>Get NotificationType</label>
+        <locationX>842</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Custom_Notification_Type_Exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>MEDALLIACLF_Custom_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>716</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_NotificationType</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>this resource is used to store notification body for closed loop alert escalated or overdue status</description>
+        <name>ClosedLoopEscalatedOverdueNotificationBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The case {!Case.CaseNumber} has changed to {!Case.Status}. Kindly contact the customer</text>
+    </textTemplates>
+    <textTemplates>
+        <description>this resource is used to store the closed loop new alert notification body</description>
+        <name>ClosedLoopNewAlertNotificationBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>You have a {!Case.Status} Closed Loop case: {!Case.CaseNumber}. Kindly contact the customer.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ClosedLoopNotificationTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>The case {!Case.CaseNumber} has changed to {!Case.Status}. Kindly contact the customer</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ClosedLoopNotificationTitle</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!Case.Status} Alert : Closed Loop Case {!Case.CaseNumber}</text>
+    </textTemplates>
+    <variables>
+        <description>This variable is used to store case record from main flow</description>
+        <name>Case</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <description>This variable is used to store recipient ids for case notifications</description>
+        <name>RecipientIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -9,6 +9,26 @@
         <value>Cliente</value>
     </caseValues>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>Customer Management Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Change_TM_On_Account</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Child Account --></label>
+        <name>Child_Account</name>
+    </quickActions>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>Ottieni Fatture</label>
+        <name>Get_Invoices</name>
+    </quickActions>
     <recordTypes>
         <description><!-- Record type for Customer Account Data --></description>
         <label><!-- Customer Account --></label>
@@ -19,16 +39,6 @@
         <label><!-- Dealer Account --></label>
         <name>Dealer_Account</name>
     </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Customer Account Data --></description>
-        <label><!-- Customer --></label>
-        <name>GCAccountCustomer</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Dealer Account Data --></description>
-        <label><!-- Dealer --></label>
-        <name>GCAccountDealer</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Cannot edit a customer once its integrated with CMS. Any changes has to be done in CMS, and it will reflect the next day. --></errorMessage>
@@ -37,6 +47,10 @@
     <validationRules>
         <errorMessage><!-- The customerId field is used for integration. So, once filled, it cannot be edited. --></errorMessage>
         <name>Cannot_change_CustomerId</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Le numéro SIRET doit comporter 14 caractères --></errorMessage>
+        <name>Siret_Can_only_be_14_Digits</name>
     </validationRules>
     <webLinks>
         <label><!-- GoogleMaps --></label>
@@ -49,5 +63,17 @@
     <webLinks>
         <label><!-- GoogleSearch --></label>
         <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Message --></label>
+        <name>Send_Message</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_Detail --></label>
+        <name>medallia_xm__Add_To_Program_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_ListView --></label>
+        <name>medallia_xm__Add_To_Program_ListView</name>
     </webLinks>
 </CustomObjectTranslation>

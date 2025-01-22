@@ -15,6 +15,21 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Austria_Case_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule is used for Sharing case of Austria Market</description>
+        <label>Austria Case Sharing Rule</label>
+        <sharedTo>
+            <group>Austria_Case_Sharing</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Austria</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Belgium_Cases</fullName>
         <accessLevel>Edit</accessLevel>
         <description>This sharing setting is used for Belgium cases</description>
@@ -98,6 +113,21 @@
             <value>Italy</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Netherlands_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This sharing setting is used for Netherlands case sharing</description>
+        <label>Netherlands Cases</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Netherlands</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Netherlands</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Spain_Case</fullName>

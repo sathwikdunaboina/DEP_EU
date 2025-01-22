@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>APIC_Auth_Provider__mdt.APIC_Auth_Provider</customMetadataTypeRecord>
-    <executionUser>vfs.support.salesforce@volvo.com</executionUser>
+    <executionUser>vfs.support.salesforce@volvo.com.devboxalok</executionUser>
     <friendlyName>APIC Auth Provider</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
     <plugin>APICAuthProviderPlugin</plugin>
     <providerType>Custom</providerType>
+    <requireMfa>false</requireMfa>
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>false</sendSecretInApis>

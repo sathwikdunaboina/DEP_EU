@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>CLA_Approve_Credit_Line</name>
+    </customPermissions>
+    <description>Includes Credit Manager specific permissions</description>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>CLA_APIC_External_creds-CLA_APIC_External_Creds_Principal</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CLA Credit Manager PS</label>
+</PermissionSet>

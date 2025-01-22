@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <description>this decision box is used to check if case alert is eligible for notification for different case status</description>
+        <name>Case_Eligible_For_Notification</name>
+        <label>Case Eligible For Notification</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Eligible</name>
+            <conditionLogic>(1 OR 2 OR 3) AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Overdue</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:Group.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Queue</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_CLF_notification</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>This flow is used to check for closed loop Case Owner change to send out custom notifications to the queue members of the assigned case, to be part of medallia package</description>
+    <environments>Default</environments>
+    <interviewLabel>On Closed Loop Case Owner Change {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>On Closed Loop Case Owner Change</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Case_Eligible_For_Notification</targetReference>
+        </connector>
+        <filterFormula>AND({!$Record.RecordType.DeveloperName}=&apos;MEDALLIACLF_Alert_Cases&apos;,{!$Record.OwnerId} &lt;&gt; {!$Record__Prior.OwnerId},LEFT({!$Record.OwnerId},3)=&apos;00G&apos;)</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>this subflow is called to send out custom notification to queue members for the closed loop alerts</description>
+        <name>Send_CLF_notification</name>
+        <label>Send CLF notification</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <flowName>MEDALLIACLF_Send_Custom_Notification_To_Case_Owners</flowName>
+        <inputAssignments>
+            <name>Case</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

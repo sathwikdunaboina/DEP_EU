@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Finance_Houses__c</fullName>
-    <externalId>false</externalId>
     <inlineHelpText>The finance house the deal was lost to</inlineHelpText>
     <label>Lost to Finance House</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <controllingField>Country__c</controllingField>
@@ -1369,13 +1369,50 @@
                 <label>Avis Fleet</label>
             </value>
             <value>
+                <fullName>Nordic Finance</fullName>
+                <default>false</default>
+                <label>Nordic Finance</label>
+            </value>
+            <value>
+                <fullName>Wasa Kredit</fullName>
+                <default>false</default>
+                <label>Wasa Kredit</label>
+            </value>
+            <value>
+                <fullName>Ikano Bank</fullName>
+                <default>false</default>
+                <label>Ikano Bank</label>
+            </value>
+            <value>
+                <fullName>Siemens Financial Services</fullName>
+                <default>false</default>
+                <label>Siemens Financial Services</label>
+            </value>
+            <value>
+                <fullName>De Lage Landen Finans</fullName>
+                <default>false</default>
+                <label>De Lage Landen Finans</label>
+            </value>
+            <value>
+                <fullName>Nordea Equipment Finance</fullName>
+                <default>false</default>
+                <label>Nordea Equipment Finance</label>
+            </value>
+            <value>
                 <fullName>--</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
                 <label>--</label>
             </value>
+            <value>
+                <fullName>Broker</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Broker</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
             <controllingFieldValue>Denmark</controllingFieldValue>
             <controllingFieldValue>Spain</controllingFieldValue>
             <controllingFieldValue>Italy</controllingFieldValue>
@@ -1385,8 +1422,38 @@
             <controllingFieldValue>Switzerland</controllingFieldValue>
             <controllingFieldValue>Austria</controllingFieldValue>
             <controllingFieldValue>Belgium</controllingFieldValue>
-            <controllingFieldValue>Finland</controllingFieldValue>
             <valueName>OtherFinanceCompany</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Nordea</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <valueName>Danske</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <controllingFieldValue>Spain</controllingFieldValue>
+            <valueName>SCANIA FINANCE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <valueName>OP-Pohjola</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Handelsbanken</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <valueName>EasyKM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finland</controllingFieldValue>
+            <valueName>Aktia</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Denmark</controllingFieldValue>
@@ -1467,11 +1534,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Spain</controllingFieldValue>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>SCANIA FINANCE</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Spain</controllingFieldValue>
             <valueName>BBVA</valueName>
         </valueSettings>
         <valueSettings>
@@ -1521,6 +1583,46 @@
         <valueSettings>
             <controllingFieldValue>Spain</controllingFieldValue>
             <valueName>LIBERBANK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Swedbank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>SEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>DnB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Danske Bank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Nordic Finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Wasa Kredit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Ikano Bank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Siemens Financial Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>De Lage Landen Finans</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sweden</controllingFieldValue>
+            <valueName>Nordea Equipment Finance</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Italy</controllingFieldValue>
@@ -1926,30 +2028,6 @@
         <valueSettings>
             <controllingFieldValue>South Africa</controllingFieldValue>
             <valueName>Avis Fleet</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>Nordea</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>Danske</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>OP-Pohjola</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>Handelsbanken</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>EasyKM</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Finland</controllingFieldValue>
-            <valueName>Aktia</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

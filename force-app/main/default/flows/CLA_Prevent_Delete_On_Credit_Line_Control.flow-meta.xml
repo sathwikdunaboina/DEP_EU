@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <customErrors>
+        <name>Prevent_deletion_error</name>
+        <label>Prevent deletion error</label>
+        <locationX>1058</locationX>
+        <locationY>401</locationY>
+        <customErrorMessages>
+            <errorMessage>Record can not be deleted.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Check credit line status</description>
+        <name>Check_credit_line_status</name>
+        <label>Check credit line status</label>
+        <locationX>819</locationX>
+        <locationY>511</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_Approved_Suspended_Expiry</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Credit_Line_Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Credit_Line_Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Suspended</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Credit_Line_Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Expired</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Prevent_deletion_error</targetReference>
+            </connector>
+            <label>Status is Approved/Suspended/Expiry</label>
+        </rules>
+    </decisions>
+    <description>Prevent credit line control delete when credit line status is approved/suspended/expiry</description>
+    <environments>Default</environments>
+    <interviewLabel>Prevent Delete On Credit Line Control {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Prevent Delete On Credit Line Control</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets credit line record.</description>
+        <name>Get_Credit_Line_Record</name>
+        <label>Get Credit Line Record</label>
+        <locationX>445</locationX>
+        <locationY>400</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_credit_line_status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CLA_Credit_Line__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CLA_Credit_Line__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CLA_Status__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>566</locationX>
+        <locationY>78</locationY>
+        <connector>
+            <targetReference>Get_Credit_Line_Record</targetReference>
+        </connector>
+        <object>CLA_Credit_Line_Control__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

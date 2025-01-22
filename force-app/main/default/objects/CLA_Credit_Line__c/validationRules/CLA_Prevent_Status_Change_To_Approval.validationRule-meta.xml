@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Status_Change_To_Approval</fullName>
+    <active>true</active>
+    <description>Prevent status change to approval by credit analyst.</description>
+    <errorConditionFormula>AND( ISCHANGED( CLA_Status__c ) , TEXT(CLA_Status__c ) =  &apos;Approved&apos; , NOT ($Permission.CLA_Approve_Credit_Line) )</errorConditionFormula>
+    <errorDisplayField>CLA_Status__c</errorDisplayField>
+    <errorMessage>Can not change status to approved.</errorMessage>
+</ValidationRule>

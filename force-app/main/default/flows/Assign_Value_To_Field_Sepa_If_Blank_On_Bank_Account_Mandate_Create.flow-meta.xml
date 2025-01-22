@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <assignments>
+        <name>Assign_Default_Value_to_Sepa_Field</name>
+        <label>Assign Default Value to Sepa Field</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Reference__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>DefaultValue</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Value_to_Sepa_Field</name>
+        <label>Assign Value to Sepa Field</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Reference__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FR94_Value</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Legal_Entity</name>
+        <label>Check Legal Entity</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Default_Value_to_Sepa_Field</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>FR94_SF</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account__r.sourceSystemID__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>FR94-SF</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Value_to_Sepa_Field</targetReference>
+            </connector>
+            <label>FR94-SF</label>
+        </rules>
+    </decisions>
+    <description>While creating a Bank Account Mandate, if the field Sepa(Reference__c) is Blank then Set it to a calculated value based on the formula defined.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>DefaultValue</name>
+        <dataType>String</dataType>
+        <expression>&quot;FR94&quot; +{!$Record.Account__r.companyRegistrationNumber2__c} +&quot;CORE&quot; + Text(MONTH({!$Record.Signed_Date__c}))+ Text(DAY({!$Record.Signed_Date__c}))+ Text(YEAR({!$Record.Signed_Date__c} ))</expression>
+    </formulas>
+    <formulas>
+        <name>FR94_Value</name>
+        <dataType>String</dataType>
+        <expression>&quot;FR94&quot; +{!$Record.Account__r.companyRegistrationNumber2__c} +&quot;CORE&quot; + Text(MONTH({!$Record.Signed_Date__c}))+ Text(DAY({!$Record.Signed_Date__c}))+ Text(YEAR({!$Record.Signed_Date__c} ))</expression>
+    </formulas>
+    <interviewLabel>Assign Value To Field Sepa If Blank On Bank Account Mandate Create {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Assign Value To Field Sepa If Blank On Bank Account Mandate Create</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Legal_Entity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Reference__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </filters>
+        <object>Bank_Account_Mandate__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

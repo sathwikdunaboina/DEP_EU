@@ -234,16 +234,6 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
-                <identifier>RecordCredit_Assessment_Date__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-204cc5fb-20a3-4216-b556-0751235d1e6a</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -484,6 +474,23 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Credit_Rate__c</fieldItem>
                 <identifier>RecordCredit_Rate_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
+                <identifier>RecordCredit_Assessment_Date__cField</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
@@ -871,6 +878,13 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Financing_Specification__c</fieldItem>
                 <identifier>RecordFinancing_Specification__cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-83d915a2-4b43-443e-a296-794b31c7d972</name>

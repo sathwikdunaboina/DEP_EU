@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Validate_Activation_Date</fullName>
+    <active>false</active>
+    <description>*DO NOT ACTIVATE*  Rule deprecated
+ Activation date has to be greater than Approval Date.</description>
+    <errorConditionFormula>CLA_Approval_Date__c &gt;  CLA_Activation_Date__c</errorConditionFormula>
+    <errorDisplayField>CLA_Activation_Date__c</errorDisplayField>
+    <errorMessage>Activation date has to be equal / greater than Approval Date.</errorMessage>
+</ValidationRule>

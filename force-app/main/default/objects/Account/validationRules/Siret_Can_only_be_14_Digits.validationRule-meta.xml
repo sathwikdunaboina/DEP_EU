@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Siret_Can_only_be_14_Digits</fullName>
+    <active>true</active>
+    <description>This is specific for the French market requiring that the Company Registration Number be 14 chars in length</description>
+    <errorConditionFormula>AND( BillingCountry = &quot;France&quot;, LEN(CompanyRegistrationNumber__c   ) != 14,  RecordType.Name = &quot;Customer Acount&quot;)</errorConditionFormula>
+    <errorDisplayField>CompanyRegistrationNumber__c</errorDisplayField>
+    <errorMessage>Le numéro SIRET doit comporter 14 caractères</errorMessage>
+</ValidationRule>

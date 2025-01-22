@@ -84,16 +84,6 @@
                 <identifier>runtime_sales_social_socialPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>flavor</name>
-                    <value>list</value>
-                </componentInstanceProperties>
-                <componentName>wits:newsPanel</componentName>
-                <identifier>wits_newsPanel</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>facet-4bb8d101-320f-4c10-9eb7-17568862c8b8</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -168,7 +158,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:visualforcePage</componentName>
-                <identifier>flexipage_visualforcePage1</identifier>
+                <identifier>flexipage_visualforcePage</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -188,6 +178,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>

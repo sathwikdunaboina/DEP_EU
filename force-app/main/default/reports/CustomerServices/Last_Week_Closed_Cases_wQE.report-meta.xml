@@ -37,9 +37,6 @@
         <field>TYPE</field>
     </columns>
     <columns>
-        <field>Case.Sub_Type__c</field>
-    </columns>
-    <columns>
         <field>AGE</field>
     </columns>
     <columns>
@@ -123,7 +120,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>No Action,No Response,Spam/Housekeeping</value>
+            <value>Spam/Housekeeping</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -146,9 +143,28 @@
             <operator>notContain</operator>
             <value>Undeliverable,Unable to Process &amp; Pay Invoice</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Case.Sub_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>3rd Party Invoice,3rd Party Query,3rd Party Sent for Approval,Dealer Claims,Maintenance Query Account on Stop,Maintenance Query Change of Responsible Dealer,Maintenance Query Contract not Loaded,Maintenance Query Loading Error,Maintenance Query Other,Maintenance Query Third Party,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Branding__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Volvo</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Sub_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>
@@ -174,7 +190,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>INTERVAL_PREVFY</interval>
     </timeFrameFilter>
 </Report>

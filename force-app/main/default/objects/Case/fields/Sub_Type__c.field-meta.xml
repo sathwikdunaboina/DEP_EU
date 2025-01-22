@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Sub_Type__c</fullName>
-    <externalId>false</externalId>
     <label>Sub Type</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
+    <trackFeedHistory>true</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -254,6 +253,11 @@
                 <label>Early termination</label>
             </value>
             <value>
+                <fullName>Eicher</fullName>
+                <default>false</default>
+                <label>Eicher</label>
+            </value>
+            <value>
                 <fullName>Email Address for Invoicing</fullName>
                 <default>false</default>
                 <label>Email Address for Invoicing</label>
@@ -354,6 +358,11 @@
                 <label>Login Details</label>
             </value>
             <value>
+                <fullName>Mack</fullName>
+                <default>false</default>
+                <label>Mack</label>
+            </value>
+            <value>
                 <fullName>Maintenance Query Account on Stop</fullName>
                 <default>false</default>
                 <label>Maintenance Query Account on Stop</label>
@@ -382,6 +391,11 @@
                 <fullName>Maintenance Query Third Party</fullName>
                 <default>false</default>
                 <label>Maintenance Query Third Party</label>
+            </value>
+            <value>
+                <fullName>Membership</fullName>
+                <default>false</default>
+                <label>Membership</label>
             </value>
             <value>
                 <fullName>Missing Documents</fullName>
@@ -452,6 +466,11 @@
                 <fullName>Overdue Information</fullName>
                 <default>false</default>
                 <label>Overdue Information</label>
+            </value>
+            <value>
+                <fullName>Partial claims</fullName>
+                <default>false</default>
+                <label>Partial claims</label>
             </value>
             <value>
                 <fullName>Password Reset</fullName>
@@ -559,6 +578,11 @@
                 <label>Sale of Vehicle (SOV)</label>
             </value>
             <value>
+                <fullName>SDLG</fullName>
+                <default>false</default>
+                <label>SDLG</label>
+            </value>
+            <value>
                 <fullName>Secondary Rental Query</fullName>
                 <default>false</default>
                 <label>Secondary Rental Query</label>
@@ -624,6 +648,11 @@
                 <label>Termination Query</label>
             </value>
             <value>
+                <fullName>Total claims</fullName>
+                <default>false</default>
+                <label>Total claims</label>
+            </value>
+            <value>
                 <fullName>Underwrite request</fullName>
                 <default>false</default>
                 <label>Underwrite request</label>
@@ -682,6 +711,17 @@
             <valueName>Password Reset</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Service - Initiation / New</controllingFieldValue>
+            <controllingFieldValue>Sevice Conset Query</controllingFieldValue>
+            <controllingFieldValue>Extraction</controllingFieldValue>
+            <controllingFieldValue>Contract Hire</controllingFieldValue>
+            <controllingFieldValue>General Services query</controllingFieldValue>
+            <controllingFieldValue>Service Consent Query</controllingFieldValue>
+            <controllingFieldValue>Service Extension Request</controllingFieldValue>
+            <controllingFieldValue>Service Termination Request</controllingFieldValue>
+            <valueName>Not Applicable</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Techtool -- end of term query</controllingFieldValue>
             <valueName>Close Client ID</valueName>
         </valueSettings>
@@ -693,14 +733,6 @@
         <valueSettings>
             <controllingFieldValue>Techtool -- end of term query</controllingFieldValue>
             <valueName>Remove User</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Service 3rd Party</controllingFieldValue>
-            <controllingFieldValue>Techtool - General query</controllingFieldValue>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>Service Third Party</controllingFieldValue>
-            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
-            <valueName>Invoice Query</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - Orders</controllingFieldValue>
@@ -716,6 +748,33 @@
             <controllingFieldValue>Techtool - Orders</controllingFieldValue>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <valueName>Techtool &amp; Customised Impact Online</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
+            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
+            <valueName>Eicher</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
+            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
+            <valueName>Mack</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
+            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Renault</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
+            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
+            <valueName>SDLG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
+            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Volvo</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
@@ -740,6 +799,14 @@
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
             <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
             <valueName>Invalid PO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Techtool - General query</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>Service Third Party</controllingFieldValue>
+            <controllingFieldValue>Techtool - Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>Service 3rd Party</controllingFieldValue>
+            <valueName>Invoice Query</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Techtool - General query</controllingFieldValue>
@@ -828,15 +895,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Feedback</controllingFieldValue>
-            <valueName>Renault</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Customer Feedback</controllingFieldValue>
             <valueName>VCE</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Customer Feedback</controllingFieldValue>
-            <valueName>Volvo</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
@@ -917,11 +976,6 @@
         <valueSettings>
             <controllingFieldValue>Contact with Sales rep</controllingFieldValue>
             <valueName>Commercial Information</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Contract Hire</controllingFieldValue>
-            <controllingFieldValue>General Services query</controllingFieldValue>
-            <valueName>Not Applicable</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>End of term query</controllingFieldValue>
@@ -1079,6 +1133,18 @@
         <valueSettings>
             <controllingFieldValue>Insurance query</controllingFieldValue>
             <valueName>Insurance Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance query</controllingFieldValue>
+            <valueName>Membership</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance query</controllingFieldValue>
+            <valueName>Partial claims</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance query</controllingFieldValue>
+            <valueName>Total claims</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>

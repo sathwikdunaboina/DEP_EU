@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <description>Assign Primary Customer Fields</description>
+        <name>Assign_Fields</name>
+        <label>Assign Fields</label>
+        <locationX>1122</locationX>
+        <locationY>1027</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Company_Identification_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CompanyIdentificationNumber</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Primary_Customer_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PrimaryCustomerName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_VFS_Customer_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>VFSCustomerNumber</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <customErrors>
+        <description>Show Customer Information not valid error.</description>
+        <name>Customer_Information_not_valid_error</name>
+        <label>Error</label>
+        <locationX>541</locationX>
+        <locationY>1095</locationY>
+        <customErrorMessages>
+            <errorMessage>Customer information is invalid.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Check change in account field and new account is not null.</description>
+        <name>Check_Account_Field_Change_or_Primary_Customer_Changes</name>
+        <label>Check Account Field Change or Primary Customer Changes</label>
+        <locationX>834</locationX>
+        <locationY>1033</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Insert1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Fields</targetReference>
+            </connector>
+            <label>Is Insert</label>
+        </rules>
+        <rules>
+            <name>Is_Change_Account_OR_Primary_Customer_Changes</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5) AND 6</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Account__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Account__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Primary_Customer_Name__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Company_Identification_Number__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_VFS_Customer_Number__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Fields</targetReference>
+            </connector>
+            <label>Is Change Account OR Primary Customer Changes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check Account Present</description>
+        <name>Check_Account_Present</name>
+        <label>Check Account Present</label>
+        <locationX>768</locationX>
+        <locationY>585</locationY>
+        <defaultConnector>
+            <targetReference>Check_Primary_Customer_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Account__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account</targetReference>
+            </connector>
+            <label>Account Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks primary customer fields.</description>
+        <name>Check_Primary_Customer_Fields</name>
+        <label>Check Primary Customer Fields</label>
+        <locationX>346</locationX>
+        <locationY>853</locationY>
+        <defaultConnector>
+            <targetReference>Customer_Information_not_valid_error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Required_fields_present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CompanyIdentificationNumber</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>PrimaryCustomerName</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_Field_Change_or_Primary_Customer_Changes</targetReference>
+            </connector>
+            <label>Required fields present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decision for checking whether before insert event or before update event.</description>
+        <name>Is_Insert_or_Is_Update</name>
+        <label>Is Insert or Is Update</label>
+        <locationX>768</locationX>
+        <locationY>361</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_Present</targetReference>
+            </connector>
+            <label>Is Insert</label>
+        </rules>
+        <rules>
+            <name>Is_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_Present</targetReference>
+            </connector>
+            <label>Is Update</label>
+        </rules>
+    </decisions>
+    <description>Assign Primary Customer fields on before create/update event. Gets primary customer field(VFS Customer Number/Company Identification number) information from account and assigns to credit line. Validate if information is not available at account then user manually adds it.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CompanyIdentificationNumber</name>
+        <dataType>String</dataType>
+        <expression>IF( {!CompanyIdentificationNumberAccount} != &apos;&apos; , {!CompanyIdentificationNumberAccount}     ,  {!$Record.CLA_Company_Identification_Number__c}   )</expression>
+    </formulas>
+    <formulas>
+        <name>CompanyIdentificationNumberAccount</name>
+        <dataType>String</dataType>
+        <expression>CASE( TEXT( {!$Record.CLA_Country__c}) , &apos;ES&apos;,  {!Get_Account.VATNumber__c} ,
+                                                                  &apos;BE&apos;, {!Get_Account.VATNumber__c} , 
+                                                                   &apos;DE&apos;  ,{!Get_Account.Customer_Number__c} , 
+                                                                   &apos;CH&apos; ,{!Get_Account.Customer_Number__c}  , 
+                                                                   &apos;AT&apos; ,{!Get_Account.Customer_Number__c} , 
+                                                                   &apos;DK&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+   &apos;LV&apos; , {!Get_Account.CompanyRegistrationNumber__c} , 
+   &apos;LT&apos; , {!Get_Account.CompanyRegistrationNumber__c}  , 
+   &apos;EE&apos; , {!Get_Account.CompanyRegistrationNumber__c} , 
+    &apos;FI&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;NL&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;SE&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;NO&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+   &apos;GB&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;IT&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+     &apos;&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>PrimaryCustomerName</name>
+        <dataType>String</dataType>
+        <expression>IF( NOT (  ISBLANK(  {!Get_Account.Name} ) )  ,   {!Get_Account.Name}, {!$Record.CLA_Primary_Customer_Name__c})</expression>
+    </formulas>
+    <formulas>
+        <name>VFSCustomerNumber</name>
+        <dataType>String</dataType>
+        <expression>IF(   NOT( ISBLANK({!Get_Account.Customer_Number__c}) )  , {!Get_Account.Customer_Number__c}  , {!$Record.CLA_VFS_Customer_Number__c})</expression>
+    </formulas>
+    <interviewLabel>Assign Primary Customer Fields On Credit Line Before Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Assign Primary Customer Fields On Credit Line Before Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Account Fields</description>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>951</locationX>
+        <locationY>883</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Primary_Customer_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CLA_Account__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>VATNumber__c</queriedFields>
+        <queriedFields>CompanyRegistrationNumber__c</queriedFields>
+        <queriedFields>Customer_Number__c</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Is_Insert_or_Is_Update</targetReference>
+        </connector>
+        <object>CLA_Credit_Line__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>600</triggerOrder>
+</Flow>
