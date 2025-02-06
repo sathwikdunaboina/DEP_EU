@@ -1,0 +1,16 @@
+<template>
+
+    <lightning-card  title="Selected Accounts">
+        <template if:true={loadSpinner}> <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner> </template>
+        <template if:false={loadSpinner}>
+            <lightning-datatable
+            key-field="sAccId"
+            data={data}
+            columns={columns}
+            hide-checkbox-column="true"
+            show-row-number-column="true" 
+            onrowaction={callRowAction}>
+       </lightning-datatable>
+        </template>
+    </lightning-card>
+</template>
