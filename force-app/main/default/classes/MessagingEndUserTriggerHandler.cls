@@ -22,8 +22,11 @@ public class MessagingEndUserTriggerHandler {
 * ------------------------------------------------------------------------------------------------------ 
 */ 
     public  void handleBeforeInsert(List<MessagingEndUser> listMessagingEndUser){
+        system.debug('handleBeforeInsert called');
         for(MessagingEndUser messagingEndUser : listMessagingEndUser){
-            messagingEndUser.MessagingPlatformKey =  isInboundMessagingUserBrazil(messagingEndUser) ? getUpdatedMessagingPlatformKeyForBrazilUser(messagingEndUser.MessagingPlatformKey).replaceAll('[^0-9.]', '') : messagingEndUser.MessagingPlatformKey.replaceAll('[^0-9.]', '');
+            system.debug('messagingEndUser ==> '+messagingEndUser);
+            messagingEndUser.MessagingPlatformKey = messagingEndUser.MessagingPlatformKey.replaceAll('[^0-9.]', '') ;
+          //messagingEndUser.MessagingPlatformKey =  isInboundMessagingUserBrazil(messagingEndUser) ? getUpdatedMessagingPlatformKeyForBrazilUser(messagingEndUser.MessagingPlatformKey).replaceAll('[^0-9.]', '') : messagingEndUser.MessagingPlatformKey.replaceAll('[^0-9.]', '');
         }
     }
     
@@ -36,7 +39,8 @@ public class MessagingEndUserTriggerHandler {
 * @return         Boolean
 * ------------------------------------------------------------------------------------------------------ 
 */
-    private Boolean isInboundMessagingUserBrazil(MessagingEndUser oMessagingUser){
+    /*private Boolean isInboundMessagingUserBrazil(MessagingEndUser oMessagingUser){
+       
         if(oMessagingUser.MessageType == 'WhatsApp' && oMessagingUser.MessagingPlatformKey.startsWith('55') 
            && oMessagingUser.MessagingPlatformKey.length() == 12 ){
                return true;       
@@ -44,7 +48,7 @@ public class MessagingEndUserTriggerHandler {
         else{
             return false;
         }
-    }  
+    }  */
     
     /*
 * ------------------------------------------------------------------------------------------------------
@@ -56,10 +60,11 @@ public class MessagingEndUserTriggerHandler {
 * @return         Boolean
 * ------------------------------------------------------------------------------------------------------ 
 */
-    private String getUpdatedMessagingPlatformKeyForBrazilUser(String sMessagtePlatformKey){
+    /*private String getUpdatedMessagingPlatformKeyForBrazilUser(String sMessagtePlatformKey){
         sMessagtePlatformKey = sMessagtePlatformKey.substring(0, 4) + '9' + sMessagtePlatformKey.substring(4);
+        system.debug('sMessagtePlatformKey ==> '+sMessagtePlatformKey);
         return  sMessagtePlatformKey ;  
-    }
+    }*/
     
     
     
