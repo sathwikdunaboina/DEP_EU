@@ -37,8 +37,8 @@ export default class AccountMessagingUser extends LightningElement {
     data = [];
     columns = [
         { label: Account_Name, fieldName: 'sAccName' },
-        { label: Account_Phone, fieldName: 'sAccWebsite', type: 'url' },
-        { label: Account_Website, fieldName: 'sAccPhone', type: 'phone' },
+        { label: Account_Phone, fieldName: 'sAccPhone', type: 'phone' },
+        { label: Account_Website, fieldName: 'sAccWebsite', type: 'url' },
         {
             type: "button", label: IsEnabledForMessaging, typeAttributes: {
                 label: {fieldName: 'sEnableOrNot'},
