@@ -1,14 +1,45 @@
 <apex:page standardController="Opportunity" recordSetVar="opportunities"  showHeader="false"
  lightningStylesheets="true">
 <script type="text/javascript">
+    var v;
+    function handleChange(sourceId, destinationId) {
+    console.log('sourceId=' + sourceId);
+    console.log('destinationId=' + destinationId);
+     //document.getElementById("{!$Component.sourceId}").value;
+ 
+    }
 
-        function showToast() {
-            sforce.one.showToast({
+        function showToast(sourceIds) {
+            console.log('sourceId=' + sourceIds);
+
+                    var sourceIdis ="j_id0.muform.block.j_id16";
+                    var fieldId = document.getElementById("{!$Component.j_id0.muform.block.j_id16.source}").value;
+                   if (fieldId === "" || fieldId === null)  
+                   {
+                   sforce.one.showToast({
+                "title": "Error!",
+                "message": "Records not updated please enter the required values.",
+                "type": "Error"
+            });
+                   }
+                   
+                   else 
+                   {
+                   sforce.one.showToast({
                 "title": "Success!",
                 "message": "Record updated successfully.",
                 "type": "success"
             });
-        }
+                   
+                   
+                   }
+                        
+
+            }
+            
+          
+            
+          
     </script>
   <apex:outputpanel rendered="{!selected != null}">
     <apex:form id="muform">
@@ -16,23 +47,28 @@
             severity="info"
                           id="mupms" />
                           
-  <apex:pageBlock >
+  <apex:pageBlock id="block" >
       <apex:pageBlockSection >
       <apex:inputField value="{!Opportunity.OwnerId}" required="false"/>
       <apex:inputField value="{!Opportunity.StageName}" required="false"/>
       <apex:inputField value="{!Opportunity.Customer_Account__c}" />
         <apex:inputField value="{!Opportunity.Lost_Reason__c}" />
         <apex:inputField value="{!Opportunity.Type}" />
-         <apex:inputField value="{!Opportunity.Probability}" required="false"/>
-          <apex:inputField value="{!Opportunity.Amount}" />
+ <apex:inputField id="source" value="{!Opportunity.Reason__c}" required="true"
+                  onchange="handleChange('{! $Component.source }', '{! $Component.destination }')"/>
+        <apex:inputField value="{!Opportunity.Amount}" />
+        <apex:inputField value="{!Opportunity.Probability}" required="false"/>
+         <apex:outputText id="destination" value=""/>
+
           
       </apex:pageBlockSection>
     <apex:pageBlockTable value="{!selected}" var="opp">
         <apex:column value="{!opp.Name}"/>    
       </apex:pageBlockTable>
-      <apex:commandButton action="{!save}" value="Save" onClick="showToast();" />
+      <apex:commandButton action="{!save}" value="Save" onClick="showToast({!$Component.source });" />
       
       <apex:commandButton value="Cancel" action="{!cancel}" />
+
     
     </apex:pageBlock>  
     
