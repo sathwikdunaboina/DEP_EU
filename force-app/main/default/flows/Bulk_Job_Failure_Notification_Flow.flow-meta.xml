@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_To_Support_Mailbox_On_Login_Failure</name>
+        <label>Send Email To Support Mailbox On Login Failure</label>
+        <locationX>270</locationX>
+        <locationY>576</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Check_for_failure_login</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Bulk Job Integration Failuer</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>BulkFailureNotificaitonEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_To_Support_Mailbox_On_No_Login</name>
+        <label>Send Email To Support Mailbox On No Login</label>
+        <locationX>50</locationX>
+        <locationY>960</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Bulk Job Integration Failuer</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>BulkFailureNotificaitonEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <decisions>
+        <name>Check_for_no_login_record_for_the_date</name>
+        <label>Check for no login record for the date</label>
+        <locationX>182</locationX>
+        <locationY>852</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_no_login_record</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Integration_User_Failed_Login</leftValueReference>
+                <operator>IsEmpty</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_To_Support_Mailbox_On_No_Login</targetReference>
+            </connector>
+            <label>Check for no login record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_login_has_failed</name>
+        <label>Check if login has failed</label>
+        <locationX>402</locationX>
+        <locationY>468</locationY>
+        <defaultConnector>
+            <targetReference>Check_for_failure_login</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_login_failure</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_for_failure_login.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Success</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_To_Support_Mailbox_On_Login_Failure</targetReference>
+            </connector>
+            <label>Check for login failure</label>
+        </rules>
+    </decisions>
+    <description>This flow sends notification to vfs.support.salesforce@volvo.com mailbox if there is integration failure from data backbone to salesforce .
+The bulk job is scheduled after the bulk job integration completes on salesforce .Currently the job starts at 8:30 AM and completes at 11 AM CET this this flow is scheduled at 11:30 AM currently</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>GetCurrentTIme</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <description>This formula field get the todays date</description>
+        <name>GetTodaysDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <formulas>
+        <name>GetYesterdayDateTime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()-(1)</expression>
+    </formulas>
+    <interviewLabel>Bulk Job Failure Notification Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Bulk Job Failure Notification Flow</label>
+    <loops>
+        <description>This element check for the failed login attempt for the integration user</description>
+        <name>Check_for_failure_login</name>
+        <label>Check for failure login</label>
+        <locationX>182</locationX>
+        <locationY>360</locationY>
+        <collectionReference>Get_Integration_User_Failed_Login</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_if_login_has_failed</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Check_for_no_login_record_for_the_date</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Integration_User_Failed_Login</name>
+        <label>Get Integration User Failed  Login</label>
+        <locationX>182</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_for_failure_login</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>UserId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0052p000009XySyAAK</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LoginTime</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <elementReference>GetTodaysDate</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>LoginHistory</object>
+        <sortField>LoginTime</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Integration_User_Failed_Login</targetReference>
+        </connector>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-01-30</startDate>
+            <startTime>15:30:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>BulkFailureNotificaitonEmail</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello ,
+The bulk integration has failed . Please login to salesforce and check the bulk job status .
+Regards,
+VFS Salesforce Automation Platform</text>
+    </textTemplates>
+    <textTemplates>
+        <name>BulkJobLoginFailureNotificaiton</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello ,
+The bulk integration has failed . Please Connect to data-lake team and inform them that the bulk job has not ran today.
+Regards,
+VFS Salesforce Automations Platform</text>
+    </textTemplates>
+</Flow>
