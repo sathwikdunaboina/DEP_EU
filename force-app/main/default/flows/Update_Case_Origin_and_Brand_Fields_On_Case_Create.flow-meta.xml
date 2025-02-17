@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>When a case is created through email-to-case, Case Origin will be updated to &apos;Email&apos; and Brand Field will be updated based on the Case Prior Origin.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Set the Brand Value based on the Case Origin</description>
+        <name>SetTheBrand</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT({!$Record.Origin}) = &apos;Email - Renault&apos;,&apos;Renault Truck&apos;,IF(TEXT({!$Record.Origin}) = &apos;Email - Volvo&apos;, &apos;Volvo Truck&apos;, TEXT({!$Record.Origin})))</expression>
+    </formulas>
+    <interviewLabel>Update Case Origin and Brand Fields On Case Create {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Case Origin and Brand Fields On Case Create</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update Case Origin(Email) and Brand Field(From the Formula Resource)</description>
+        <name>Update_Case_Origin_as_Email_and_Brand_based_on_Case_Origin</name>
+        <label>Update Case Origin as Email and Brand based on Case Origin</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Brand__c</field>
+            <value>
+                <elementReference>SetTheBrand</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Case_Origin_as_Email_and_Brand_based_on_Case_Origin</targetReference>
+        </connector>
+        <filterFormula>AND(
+OR(
+ISPICKVAL({!$Record.Origin}, &apos;Email - Renault&apos;),
+ISPICKVAL({!$Record.Origin}, &apos;Email - Volvo&apos;)
+),
+OR({!$Record.RecordType.DeveloperName} = &apos;All_Case&apos;,
+{!$Record.RecordType.DeveloperName} = &apos;VFS_Dealer&apos;)
+)</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
