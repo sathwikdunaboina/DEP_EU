@@ -368,6 +368,12 @@
             <targetReference>Get_Newly_Created_Case_Reocrd_Details</targetReference>
         </connector>
         <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>$Record__Prior.Country__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
                 <elementReference>$Record__Prior.CurrencyIsoCode</elementReference>
@@ -439,6 +445,12 @@
         <connector>
             <targetReference>Get_Newly_Created_Case_Reocrd_Details</targetReference>
         </connector>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>$Record__Prior.Country__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
