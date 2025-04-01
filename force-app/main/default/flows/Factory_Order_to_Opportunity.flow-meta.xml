@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <constants>
         <name>DealerAccountRecordType</name>
         <dataType>String</dataType>
@@ -258,21 +259,10 @@
         <connector>
             <targetReference>Get_Dealer_Account</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Dealer_Id__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue></stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Finance_Opportunity__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
+        <filterFormula> (((NOT((ISBLANK({!$Record.Dealer_Id__c})))) &amp;&amp; ISBLANK({!$Record.Finance_Opportunity__c}))) &amp;&amp; 
+ (IF((BEGINS({!$Record.Order_Id__c}, &apos;RT_RUBI-B&apos;)&amp;&amp; (CONTAINS({!$Record.Country__c}, &apos;GB&apos;) || CONTAINS({!$Record.Country__c}, &apos;UK&apos;) ||  CONTAINS({!$Record.Country__c}, &apos;IE&apos;) ) ), false, true) &amp;&amp;
+ IF((BEGINS({!$Record.Order_Id__c}, &apos;RT_RUBI-Y&apos;) &amp;&amp; (CONTAINS({!$Record.Country__c}, &apos;GB&apos;) ||  CONTAINS({!$Record.Country__c}, &apos;UK&apos;) ||  CONTAINS({!$Record.Country__c}, &apos;IE&apos;) )), false, true)
+ &amp;&amp; IF((BEGINS({!$Record.Order_Id__c}, &apos;RT_RUBI-S&apos;) &amp;&amp; (CONTAINS({!$Record.Country__c}, &apos;GB&apos;) ||CONTAINS({!$Record.Country__c}, &apos;UK&apos;) || CONTAINS({!$Record.Country__c}, &apos;IE&apos;)   )), false, true) )</filterFormula>
         <object>Factory_Order__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
