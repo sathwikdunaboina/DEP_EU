@@ -113,6 +113,14 @@
         <connector>
             <targetReference>Get_Custom_Metadata_Records</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Headers</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <object>EmailMessage</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
