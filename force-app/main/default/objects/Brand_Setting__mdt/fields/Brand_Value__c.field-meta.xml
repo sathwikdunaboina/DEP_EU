@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brand_Value__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Brand Value</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Volvo Truck</fullName>
+                <default>true</default>
+                <label>Volvo Truck</label>
+            </value>
+            <value>
+                <fullName>Renault Truck</fullName>
+                <default>false</default>
+                <label>Renault Truck</label>
+            </value>
+            <value>
+                <fullName>Bus</fullName>
+                <default>false</default>
+                <label>Bus</label>
+            </value>
+            <value>
+                <fullName>VCE</fullName>
+                <default>false</default>
+                <label>VCE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
