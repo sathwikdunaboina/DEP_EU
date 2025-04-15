@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata"
+      xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
+    <custom>true</custom>
+    <description>This is the base profile to be used by integration users. And this is cloned from &apos; Minimum Access - API Only Integrations&apos; standard profile</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Contract_Start_Usage_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Usage_Allowance_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Usage_Allowance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Usage_Amount_Unit_Of_Measure__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Contract_Territory_Manager_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Employee_Full_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <loginHours n1:nil="true" />
+    <userLicense>Salesforce Integration</userLicense>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApiEnabled</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApiUserOnly</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterInternalUser</name>
+    </userPermissions>
+</Profile>
