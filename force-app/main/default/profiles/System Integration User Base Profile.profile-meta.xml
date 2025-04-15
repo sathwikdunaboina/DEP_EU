@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Profile xmlns="http://soap.sforce.com/2006/04/metadata">
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata"
+      xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
     <applicationVisibilities>
         <application>CLA_VFS_Credit_Line</application>
         <default>false</default>
@@ -3459,6 +3460,26 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Contract_Start_Usage_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Usage_Allowance_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Usage_Allowance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Asset_Usage_Amount_Unit_Of_Measure__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Contract__c.Balance__c</field>
         <readable>false</readable>
@@ -3489,6 +3510,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Contract_Territory_Manager_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Contract__c.DealerId__c</field>
         <readable>false</readable>
@@ -3507,6 +3533,11 @@
         <editable>false</editable>
         <field>Contract__c.Down_Payment__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.Employee_Full_Name__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7879,6 +7910,7 @@
     <layoutAssignments>
         <layout>VFS_Country_Setting__mdt-VFS Country Setting Layout</layout>
     </layoutAssignments>
+    <loginHours n1:nil="true" />
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>false</enabled>
