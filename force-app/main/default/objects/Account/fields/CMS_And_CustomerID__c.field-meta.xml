@@ -3,7 +3,8 @@
     <fullName>CMS_And_CustomerID__c</fullName>
     <description>This field is a formula field which contains both CMS ID and Customer ID of a account to display in the account search layout</description>
     <externalId>false</externalId>
-    <formula>IF( ISBLANK(Customer_Number__c),&apos; &apos;, &apos;CMS_ID : &apos;) + &apos; &apos; + Customer_Number__c +IF( ISBLANK(Customer_Number__c) &amp;&amp;ISBLANK(Customer_Number__c),&apos; &apos;, &apos; / &apos;)
+    <formula>IF( ISBLANK(Customer_Number__c),&apos; &apos;, &apos;CMS_ID : &apos;) + &apos; &apos; + Customer_Number__c +IF(ISBLANK(Customer_Number__c)||ISBLANK(CustomerID__c),&apos; &apos;, &apos; / &apos;) 
+
  +IF(ISBLANK(CustomerID__c),&apos; &apos;, &apos;CustomerID : &apos;)+&apos; &apos; + CustomerID__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>CMS And CustomerID</label>
