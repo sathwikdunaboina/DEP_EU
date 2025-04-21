@@ -1,0 +1,94 @@
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #d1d1d1;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 350px;
+    z-index: 1000;
+    padding-right: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    /* Ensures each name appears on a new line */
+    border-bottom: 1px solid #eee;
+    width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: white;
+    white-space: nowrap;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+    /* Removes border for the last item */
+}
+
+.dropdown-item:hover {
+    background: #f4f4f4;
+}
+
+.lookup-container {
+    position: relative;
+    display: inline-block;
+    width: 900px;
+}
+
+.help-text-container {
+    align-items: center;
+}
+
+.help-text-container lightning-helptext {
+    margin-left: -6px;
+}
+
+.field-size {
+    width: 350px;
+}
+
+.opportunity-container {
+    width: 100%;
+    background-color: lightgray;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+.header {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px;
+}
+
+.opportunity-row {
+    padding: 2px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    line-height: 0.2;
+}
+
+
+/* This applies when hovering over an opportunity row */
+
+.opportunity-row:hover {
+    background-color: lightgray;
+}
+
+.error-message {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}

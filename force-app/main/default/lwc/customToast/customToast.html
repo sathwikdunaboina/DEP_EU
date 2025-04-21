@@ -1,0 +1,15 @@
+<template>
+    <template if:true={showToast}>
+        <div class="slds-notify_container">
+            <div class={toastClass} role="alert">
+                <span class="slds-assistive-text">{variant}</span>
+                <span class="slds-icon_container">
+                    <lightning-icon icon-name={iconName} size="small" alternative-text={variant}></lightning-icon>
+                </span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small">{message}</h2>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>
