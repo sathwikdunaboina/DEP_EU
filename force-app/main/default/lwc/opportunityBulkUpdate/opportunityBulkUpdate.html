@@ -1,0 +1,165 @@
+<template>
+<template if:true={error}>
+<div class="error-message"> {error} </div>
+</template>
+
+<template if:true={showFields}>
+    <lightning-card >
+            <div class="slds-grid slds-gutters slds-wrap slds-m-around_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                <!-- Opportunity Owner Lookup -->
+                <div class="lookup-container help-text-container" >
+                        <label class="slds-form-element__label">Opportunity Owner</label>
+                        <lightning-helptext content={opportunityOwnerHelpText}></lightning-helptext>
+    <lightning-input class="field-size" type="search" name="OwnerId"
+    value={selectedOwnerName}
+    onchange={handleOwnerSearch}>
+</lightning-input>
+
+<!-- Show dropdown results properly -->
+<template if:true={ownerOptions.length}>
+        <div class="dropdown">
+            <template for:each={ownerOptions} for:item="owner">
+
+<div key={owner.Id} class="dropdown-item"
+    data-id={owner.Id}
+    data-name={owner.Name}
+                        onclick={selectOwner}>
+        {owner.Name}
+                </div>
+            </template>
+</div>
+</template>
+</div>
+
+<!-- Customer Account Lookup -->
+<div class="lookup-container help-text-container">
+    <label class="slds-form-element__label">Customer Account</label>
+    <lightning-helptext content={customerAccountHelpText}></lightning-helptext>
+    <lightning-input class="field-size" type="search" name="Customer_Account__c" value={selectedAccountName} onchange={handleAccountSearch}>
+
+    </lightning-input>
+
+    <!-- Show dropdown results properly -->
+    <template if:true={accountOptions.length}>
+        <div class="dropdown">
+            <template for:each={accountOptions} for:item="account">
+<div key={account.Id} class="dropdown-item"
+            data-id={account.Id}
+        data-name={account.Name}
+                        onclick={selectAccount}>
+{account.Name}
+                </div>
+            </template>
+</div>
+</template>
+</div>
+<template if:true={isLCVOpportunity}>
+                            <div class="help-text-container">
+                                    <label class="slds-form-element__label">Opportunity Type</label>
+                            <lightning-combobox class="field-size" name="Opportunity_Type__c" value={opportunityType}  
+                            options={OpportunityTypePicklistValue} onchange={handleFieldChange}
+                            ></lightning-combobox>
+                        </div>
+                    </template>
+<template if:true={isFinance}>
+                        <div class="help-text-container">
+                                <label class="slds-form-element__label">Opportunity Type</label>
+                        <lightning-combobox class="field-size" name="Type" value={opportunityTypeFinance}  
+                        options={OpportunityTypeFinancePicklistValue} onchange={handleFieldChange}
+                        ></lightning-combobox>
+                    </div>
+                </template>
+<div class="help-text-container">
+    <label class="slds-form-element__label">Net Sales Price</label>
+    <lightning-helptext content={netSalesPriceHelpText}></lightning-helptext>
+    <lightning-input class="field-size" name="Amount" data="number" type="number" value={netSalesPriceValue} data-field="Amount" onchange={handleFieldChange}>
+    </lightning-input>
+</div>
+</div>
+<div class="slds-col slds-size_1-of-2">
+    <template if:true={showFields}>
+                                <div class="help-text-container">
+                                        <label class="slds-form-element__label">Stage</label>
+                                    <lightning-combobox class="field-size" name="StageName" value={selectedStage}
+                                    options={stageOptions} onchange={handleStageChange}
+                                    ></lightning-combobox>
+                                    </div>
+                                </template>
+    <template if:true={isLCVOpportunity}>
+                            <template if:true={showFields}>
+                                    <div class="help-text-container">
+                                            <label class="slds-form-element__label">Sub Stage</label>
+                                <lightning-combobox class="field-size" name="Sub_Stage__c" value={subStage}  placeholder="--None--"
+                                options={subStageOptions} disabled={isSubStageDisabled} onchange={handleFieldChange}
+                                ></lightning-combobox>
+                            </div>
+                            </template>
+    </template>
+    <template if:true={showFields}>
+                                    <div class="help-text-container">
+                                        <label class="slds-form-element__label">Lost Reason</label>
+                                        <lightning-helptext content={lostReasonHelpText}></lightning-helptext>
+                                    <lightning-combobox class="field-size" name="Lost_Reason__c" value={lostReason} placeholder="--None--" 
+                                    options={lostReasonOptions} disabled={isLostReasonDisabled} onchange={handleLostReasonChange}
+                                    ></lightning-combobox>
+                                </div>
+                                </template>
+    <template if:true={showFields}>
+                                        <div class="help-text-container">
+                                                <label class="slds-form-element__label">Reason</label>
+                                                <lightning-helptext content={reasonHelpText}></lightning-helptext>
+                                        <lightning-combobox class="field-size" name="Reason__c" value={reason} placeholder="--None--"
+                                        options={reasonOptions} disabled={isReasonDisabled}
+                                        onchange={handleFieldChange}
+                                        >
+                                        
+                                    </lightning-combobox>
+                                    </div>
+                                    </template>
+    <div class="help-text-container">
+        <label class="slds-form-element__label">Probability (%)</label>
+        <lightning-helptext content={probabilityHelpText}></lightning-helptext>
+        <lightning-input class="field-size" name="Probability" data="number" type="number" value={probabilityValue} data-field="Probability" onchange={handleFieldChange}>
+        </lightning-input>
+    </div>
+</div>
+</div>
+
+</lightning-card>
+<template if:true={showFields}>
+                                <lightning-card >
+                                    <div class="slds-m-around_medium">
+                                            <lightning-layout>
+                                                <lightning-layout-item padding="around-small" class="opportunity-container">
+                                                    <div class="header-column">
+                                                        <p class="field-title header" title="Opportunity Name">OPPORTUNITY NAME</p>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                </lightning-layout>
+                                                <template for:each={opportunities} for:item="opportunity">
+                                                    <lightning-layout key={opportunity.Id} class="opportunity-row">
+                                                        <lightning-layout-item padding="around-small">
+                                                            <div class="header-column">
+                                                                <p>{opportunity.Name}</p>
+                                                            </div>
+                                                            </lightning-layout-item>
+                                                            </lightning-layout>
+                                                            </template>
+</div>
+</lightning-card>
+
+</template>
+
+<div class="slds-m-around_medium">
+    <template if:true={showFields}>
+                    <lightning-button label="Save" onclick={handleSave}></lightning-button>
+                    
+                    <template if:true={showToast}>
+                        <c-custom-toast message={toastMessage} variant={toastVariant} duration="4000"></c-custom-toast>
+                    </template>
+    </template>
+    <lightning-button label="Cancel" variant="neutral" onclick={handleCancel} class="slds-m-left_small"></lightning-button>
+</div>
+</template>
+</template>
