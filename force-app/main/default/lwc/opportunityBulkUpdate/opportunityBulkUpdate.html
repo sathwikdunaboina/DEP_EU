@@ -107,13 +107,13 @@
                                 </template>
     <template if:true={showFields}>
                                         <div class="help-text-container">
-                                                <label class="slds-form-element__label">Reason</label>
+                                                <label class="slds-form-element__label" for="Reason__c">
+                                                        <abbr class="slds-required" title="required">*</abbr>Reason</label>
                                                 <lightning-helptext content={reasonHelpText}></lightning-helptext>
                                         <lightning-combobox class="field-size" name="Reason__c" value={reason} placeholder="--None--"
                                         options={reasonOptions} disabled={isReasonDisabled}
-                                        onchange={handleFieldChange}
+                                        onchange={handleFieldChange} message-when-value-missing="Complete this field"
                                         >
-                                        
                                     </lightning-combobox>
                                     </div>
                                     </template>

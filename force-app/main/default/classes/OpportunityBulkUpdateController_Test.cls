@@ -39,6 +39,7 @@ public class OpportunityBulkUpdateController_Test {
             
             Account testCustomerAccount = new Account();
             testCustomerAccount.Name = 'TestAccount';
+            testCustomerAccount.BillingCountry = 'United Kingdom';
             insert testCustomerAccount;
             
         }
