@@ -29,17 +29,19 @@ public with sharing class CaseBulkUpdateController {
         }
         return casesWithoutParent;
     }
-    @AuraEnabled
+   @AuraEnabled
     public static String validateRecordTypes(List<Id> caseIds) {
         if (caseIds == null || caseIds.isEmpty()) {
-            return 'No cases selected.';
+            return 'No cases selected. Please select at least one case';
         }
         
         Map<Id, Case> caseMap = new Map<Id, Case>([SELECT Id, RecordTypeId FROM Case WHERE Id IN :caseIds]);
+        System.debug('caseMap'+caseMap);
         Set<Id> recordTypeIds = new Set<Id>();
         
         for (Case caseRecord : caseMap.values()) {
             recordTypeIds.add(caseRecord.RecordTypeId);
+            System.debug('recordTypeIds'+recordTypeIds);
         }
         
         if (recordTypeIds.size() > 1) {
