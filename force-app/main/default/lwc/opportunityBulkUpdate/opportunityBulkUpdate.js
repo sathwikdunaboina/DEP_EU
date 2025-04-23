@@ -413,16 +413,26 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     }
 
     handleSave() {
-        if (this.selectedStage !== '' || this.selectedAccountName !== '' || this.selectedOwnerName !== '' || this.opportunityType !== '' ||
-            this.opportunityTypeFinance !== '' || this.probabilityValue !== '' || this.netSalesPriceValue !== '') {
-            updateOpportunities({ opportunities: this.opportunities })
-                .then(() => {
-                    this.showCustomToast('Records updated successfully', 'success');
-                    setTimeout(() => window.history.back(), 2000);
-                })
-        } else {
-            this.showCustomToast('No Changes to Update', 'warning');
-            setTimeout(() => window.history.back(), 2000);
+        try {
+
+            if (this.selectedStage !== '' || this.selectedAccountName !== '' || this.selectedOwnerName !== '' || this.opportunityType !== '' ||
+                this.opportunityTypeFinance !== '' || this.probabilityValue !== '' || this.netSalesPriceValue !== '') {
+                updateOpportunities({ opportunities: this.opportunities })
+                    .then(() => {
+                        this.showCustomToast('Records updated successfully', 'success');
+                        setTimeout(() => window.history.back(), 2000);
+                    })
+                    .catch(error => {
+                        console.error('Error in updateOpportunities:', error);
+                        this.showCustomToast('Please check required fields and entered values', 'error');
+                    });
+            } else {
+                this.showCustomToast('No Changes to Update', 'warning');
+                setTimeout(() => window.history.back(), 2000);
+            }
+        } catch (error) {
+            console.error('Unexpected error in handleSave:', error);
+            this.showCustomToast('Unexpected error occurred', 'error');
         }
 
     }
