@@ -14,11 +14,7 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Molly White</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Heather Molloy</values>
+            <values>Andy Medcalf</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -27,6 +23,10 @@
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>Jordan Mulholland</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Molly White</values>
         </dashboardFilterOptions>
         <name>Case Owner</name>
     </dashboardFilters>
@@ -52,7 +52,7 @@
                 <indicatorHighColor>#C23934</indicatorHighColor>
                 <indicatorLowColor>#007175</indicatorLowColor>
                 <indicatorMiddleColor>#007175</indicatorMiddleColor>
-                <report>unfiled$public/Chase_Report_for_On_Hold_Cases_nEW</report>
+                <report>CustomerServices/Chase_Report_for_On_Hold_Cases_nEW</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -79,7 +79,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#C23934</indicatorMiddleColor>
-                <report>unfiled$public/Today_Picked_Cases</report>
+                <report>CustomerServices/Today_Picked_Cases</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -106,7 +106,7 @@
                 <indicatorHighColor>#C23934</indicatorHighColor>
                 <indicatorLowColor>#00716B</indicatorLowColor>
                 <indicatorMiddleColor>#00716B</indicatorMiddleColor>
-                <report>unfiled$public/New_Email_Alert_II</report>
+                <report>CustomerServices/New_Email_Alert_II</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -134,7 +134,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#C23934</indicatorMiddleColor>
-                <report>unfiled$public/Closed_Cases_for_Customer_uVn</report>
+                <report>CustomerServices/Closed_Cases_for_Customer_uVn</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -169,11 +169,12 @@
                 </groupingSortProperties>
                 <header>TODAY Closed Cases</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/Closed_Cases_for_Customer_uVn</report>
+                <report>CustomerServices/Closed_Cases_for_Customer_uVn</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -222,7 +223,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>New Email Alert</header>
-                <report>unfiled$public/New_Email_Alert_II</report>
+                <report>CustomerServices/New_Email_Alert_II</report>
             </dashboardComponent>
             <rowIndex>6</rowIndex>
             <rowSpan>8</rowSpan>
@@ -232,6 +233,7 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
+    <owner>rumeysa.belibagli@volvo.com</owner>
     <runningUser>rumeysa.belibagli@volvo.com</runningUser>
     <textColor>#000000</textColor>
     <title>Personal Dashboard</title>

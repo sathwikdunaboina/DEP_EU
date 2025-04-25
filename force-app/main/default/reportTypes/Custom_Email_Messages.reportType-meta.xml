@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>EmailMessage</baseObject>
+    <category>admin</category>
+    <deployed>true</deployed>
+    <description>Report Type on Standard Object EmailMessage</description>
+    <label>Custom Email Messages</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message ID</displayNameOverride>
+            <field>Id</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Case</displayNameOverride>
+            <field>Parent</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Text Body</displayNameOverride>
+            <field>TextBody</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HTML Body</displayNameOverride>
+            <field>HtmlBody</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Headers</displayNameOverride>
+            <field>Headers</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subject</displayNameOverride>
+            <field>Subject</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Email Message Name</displayNameOverride>
+            <field>Name</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>From Name</displayNameOverride>
+            <field>FromName</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>From Address</displayNameOverride>
+            <field>FromAddress</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>To Address</displayNameOverride>
+            <field>ToAddress</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CC Address</displayNameOverride>
+            <field>CcAddress</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>BCC Address</displayNameOverride>
+            <field>BccAddress</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Incoming</displayNameOverride>
+            <field>Incoming</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Has Attachment</displayNameOverride>
+            <field>HasAttachment</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Message Date</displayNameOverride>
+            <field>MessageDate</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Message Size</displayNameOverride>
+            <field>MessageSize</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reply-to Email Message</displayNameOverride>
+            <field>ReplyToEmailMessage</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Private Draft</displayNameOverride>
+            <field>IsPrivateDraft</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Externally Visible</displayNameOverride>
+            <field>IsExternallyVisible</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Message ID</displayNameOverride>
+            <field>MessageIdentifier</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Thread ID</displayNameOverride>
+            <field>ThreadIdentifier</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Client Thread ID</displayNameOverride>
+            <field>ClientThreadIdentifier</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Client Managed</displayNameOverride>
+            <field>IsClientManaged</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Tracked</displayNameOverride>
+            <field>IsTracked</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Opened</displayNameOverride>
+            <field>FirstOpenedDate</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Opened</displayNameOverride>
+            <field>LastOpenedDate</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bounced?</displayNameOverride>
+            <field>IsBounced</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Automation Type</displayNameOverride>
+            <field>AutomationType</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DATE TEST EMAIL</displayNameOverride>
+            <field>DATE_TEST_EMAIL__c</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Has Attachment</displayNameOverride>
+            <field>Has_Attachment__c</field>
+            <table>EmailMessage</table>
+        </columns>
+        <masterLabel>Email Messages</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message : Parent Case : Case Number</displayNameOverride>
+            <field>Parent.CaseNumber</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message : Parent Case : Case Record Type</displayNameOverride>
+            <field>Parent.RecordType</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message : Parent Case : Closed</displayNameOverride>
+            <field>Parent.IsClosed</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message : Parent Case : Country</displayNameOverride>
+            <field>Parent.Country__c</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message : Parent Case : Name</displayNameOverride>
+            <field>Parent.SuppliedName</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Message : Parent Case : Status</displayNameOverride>
+            <field>Parent.Status</field>
+            <table>EmailMessage</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Parent.ClosedDate</field>
+            <table>EmailMessage</table>
+        </columns>
+        <masterLabel>Case</masterLabel>
+    </sections>
+</ReportType>

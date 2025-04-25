@@ -53,7 +53,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>callum,ben,george,emily,tracy,2nd,ext,claire,harry,Gary,Beverley</value>
+            <value>musgreave,ben,george,emily,2nd,ext,harry,Gary,Beverley</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -81,14 +81,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>thay,collections,laura</value>
+            <value>collections,laura</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>,helen,operations,jenny,woodcock,billing,eot</value>
+            <value>operations,jenny,woodcock,billing,eot</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -116,7 +116,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Email,Web,VFS - CMS,Email - Renault,Email - Volvo</value>
+            <value>,Email,Phone,Web,VFS - CMS,Email - Renault,Email - Volvo</value>
         </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
@@ -124,6 +124,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>purchase order,PO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>rob,king,tracy,helen,molly,jordan,bart,medcalf,thay,callum,claire</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SUBJECT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>VFS Financial Services Ltd Invoice</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -133,7 +147,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Cases Closed current MTD by Agent - PK</name>
+    <name>Contract Amendment Closed Cases</name>
     <params>
         <name>units</name>
         <value>h</value>
@@ -149,6 +163,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_THISMONTH</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

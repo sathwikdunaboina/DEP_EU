@@ -10,6 +10,10 @@
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
         <field>CDF1</field>
     </columns>
     <currency>GBP</currency>
@@ -26,8 +30,8 @@
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>contract,jenny,2nd,harry,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,Laura,Operations</value>
+            <operator>equals</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Sub_Type__c</column>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VT_finance_type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Volvo Finance product types to capture the product type of the contract</description>
+    <label>VT finance type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Contract Hire</fullName>
+                <default>false</default>
+                <label>Contract Hire</label>
+            </value>
+            <value>
+                <fullName>Operational Lease</fullName>
+                <default>false</default>
+                <label>Operational Lease</label>
+            </value>
+            <value>
+                <fullName>Finance Lease</fullName>
+                <default>false</default>
+                <label>Finance Lease</label>
+            </value>
+            <value>
+                <fullName>Hire Purchase</fullName>
+                <default>false</default>
+                <label>Hire Purchase</label>
+            </value>
+            <value>
+                <fullName>Hire Purchase VR</fullName>
+                <default>false</default>
+                <label>Hire Purchase VR</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

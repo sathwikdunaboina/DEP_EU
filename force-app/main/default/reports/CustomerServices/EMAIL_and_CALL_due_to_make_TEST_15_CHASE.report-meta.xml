@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>CASE_NUMBER:UNIQUE</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Unique Case Number</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_61548485</developerName>
+        <masterLabel>Customer Service Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam King</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ben Townsend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Laura Restall</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Molly White</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rumeysa Belibagli</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Harry Ashman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Molloy</sourceValue>
+            </sourceValues>
+            <value>Customer Service Team</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>EMAIL.MESSAGE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Last_Email_Message_Date_is__c</field>
+    </columns>
+    <columns>
+        <field>Case.Last_Changed_Date__c</field>
+    </columns>
+    <currency>GBP</currency>
+    <customDetailFormulas>
+        <calculatedFormula>IF
+( 
+    ((5 * ( FLOOR( ( TODAY() - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD( TODAY() - DATE( 1900,1, 8), 7 ) ) )
+-
+    (5 * ( FLOOR( ( DATEVALUE(Case.Last_Email_Message_Date_is__c) - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD( DATEVALUE(Case.Last_Email_Message_Date_is__c)- DATE( 1900,1, 8), 7 ) ) )&gt;2),&quot;DIDNTCHASE&quot;,
+    IF(
+ 
+ ((5 * ( FLOOR( ( TODAY() - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD( TODAY() - DATE( 1900,1, 8), 7 ) ) )
+-
+    (5 * ( FLOOR( ( DATEVALUE(Case.Last_Email_Message_Date_is__c) - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD( DATEVALUE(Case.Last_Email_Message_Date_is__c)- DATE( 1900,1, 8), 7 ) ) )=2),&quot;CHASE&quot;,&quot;NA&quot; ))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Todays Action</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>EMAIL.STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>On Hold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL.MESSAGE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_61548485</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer Service Team</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Last_Changed_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>11/4/2022 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Status_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Waiting on Customer,Waiting on dealer,Waiting on market company</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CDF1</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>NA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CASE_NUMBER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMAIL and CALL due to make TEST_15_CHASE</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>CaseEmail</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

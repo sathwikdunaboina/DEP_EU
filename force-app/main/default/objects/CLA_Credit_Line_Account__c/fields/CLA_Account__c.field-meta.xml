@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Purpose: Lookup to account,
+How Populated: UI-Manual/Automated ,
+Process : Auto populated from credit line for primary customer . Manually selected for Non Primary Customer
+Is UI field : Yes</description>
+    <label>Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Credit Line Customers</relationshipLabel>
+    <relationshipName>Credit_Line_Customers</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

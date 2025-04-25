@@ -43,10 +43,6 @@
                 <behavior>Edit</behavior>
                 <field>Agreed_To_Terms__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Initials__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -68,10 +64,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Fax</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Case_Priority__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -245,8 +237,8 @@
     </relatedLists>
     <relatedLists>
         <fields>ACCOUNT.NAME</fields>
-        <fields>VATNumber__c</fields>
-        <fields>FiscalCode__c</fields>
+        <fields>Account.VATNumber__c</fields>
+        <fields>Account.FiscalCode__c</fields>
         <fields>ACCOUNT.ADDRESS1_COUNTRY</fields>
         <relatedList>RelatedContactAccountRelationList</relatedList>
     </relatedLists>
@@ -274,6 +266,21 @@
         <fields>EVENT.LOCATION</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>CASES.SUBJECT</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <fields>CASES.PRIORITY</fields>
+        <relatedList>Case.Related_Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>MessagingChannel</fields>
+        <fields>Status</fields>
+        <fields>StartTime</fields>
+        <fields>EndTime</fields>
+        <relatedList>MessagingSession</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Validate_Drawn_Amount</fullName>
+    <active>true</active>
+    <description>Credit Line remaining balance can not be negative. Validate Drawn Amount field again remaining balance in credit line.</description>
+    <errorConditionFormula>OR (AND( (CLA_Credit_Line__r.CLA_Remaining_Amount__c -  CLA_Drawn_Amount__c ) &lt; 0 , ISNEW() ) , 
+
+AND(NOT(ISNEW()) , CLA_Credit_Line__r.CLA_Remaining_Amount__c - ( CLA_Drawn_Amount__c - PRIORVALUE(CLA_Drawn_Amount__c) ) &lt; 0 ) )</errorConditionFormula>
+    <errorDisplayField>CLA_Drawn_Amount__c</errorDisplayField>
+    <errorMessage>Credit Line remaining balance can not be negative.</errorMessage>
+</ValidationRule>

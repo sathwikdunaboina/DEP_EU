@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.Id</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.Profile</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.UserRole</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.CountryCode</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$Group.Name</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.FederationIdentifier</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User</field>
+    </columns>
+    <currency>EUR</currency>
+    <format>Tabular</format>
+    <name>Users without Group</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User_Groups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>GroupMember-QueuePublicGroupMembership$Group.Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+</Report>

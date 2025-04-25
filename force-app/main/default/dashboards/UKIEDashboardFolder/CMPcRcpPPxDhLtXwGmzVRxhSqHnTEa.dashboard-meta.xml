@@ -156,12 +156,87 @@
             <rowIndex>8</rowIndex>
             <rowSpan>9</rowSpan>
         </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>5</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <componentType>FlexTable</componentType>
+                <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
+                    <flexTableColumn>
+                        <reportColumn>ACCOUNT.NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>grouping</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>RowCount</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>aggregate</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortOrder>1</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                </flexComponentProperties>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Settlement Requests- 60 Days</header>
+                <report>CustomerServices/Settlement_Requests_60_Days</report>
+            </dashboardComponent>
+            <rowIndex>17</rowIndex>
+            <rowSpan>11</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>5</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <componentType>FlexTable</componentType>
+                <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
+                    <flexTableColumn>
+                        <reportColumn>Initiation__c.Customer_Account__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>grouping</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>RowCount</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>aggregate</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortOrder>1</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                </flexComponentProperties>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Initiations Open deposit report</header>
+                <report>Initiations_Reports/Initiations_Open_deposit_report</report>
+            </dashboardComponent>
+            <rowIndex>17</rowIndex>
+            <rowSpan>11</rowSpan>
+        </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <runningUser>rumeysa.belibagli@volvo.com</runningUser>
+    <owner>rumeysa.belibagli@volvo.com</owner>
+    <runningUser>scott.holleyhead@volvo.com</runningUser>
     <textColor>#000000</textColor>
     <title>Collection Dashboard</title>
     <titleColor>#000000</titleColor>

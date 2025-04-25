@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>AT_User</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>AT_User</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>CountryCode</field>
-            <operation>equals</operation>
-            <value>Austria</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Admins</fullName>
         <accessLevel>Read</accessLevel>
         <label>Admins</label>
@@ -71,6 +57,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Brazil_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Brazil User</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>VFSBR_Brazil</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>Brazil</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>CH_Sharing</fullName>
         <accessLevel>Read</accessLevel>
         <label>CH Sharing</label>
@@ -81,34 +81,6 @@
             <field>Country</field>
             <operation>equals</operation>
             <value>Switzerland</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>CH_User_sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>CH User sharing</label>
-        <sharedTo>
-            <group>Swiss_Sales_Connect</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country</field>
-            <operation>equals</operation>
-            <value>Switzerland</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>DE_User</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>DE_User</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Germany</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>CountryCode</field>
-            <operation>equals</operation>
-            <value>Germany</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -197,18 +169,18 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>South_West_Access</fullName>
+        <fullName>South_Africa_User</fullName>
         <accessLevel>Read</accessLevel>
-        <label>South West Access</label>
+        <label>South Africa User</label>
         <sharedTo>
-            <group>South_West_Region_access</group>
+            <roleAndSubordinatesInternal>South_Africa</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
             <field>Country</field>
             <operation>equals</operation>
-            <value>United Kingdom,Spain,Italy,France</value>
+            <value>South Africa</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Spain_Users</fullName>
@@ -221,6 +193,34 @@
             <field>Country</field>
             <operation>equals</operation>
             <value>Spain</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sweden_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sweden Access</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Sweden</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>Sweden</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>User_Poland</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>User Poland</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>PL_Sales_manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>Poland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

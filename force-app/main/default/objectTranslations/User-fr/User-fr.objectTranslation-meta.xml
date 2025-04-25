@@ -5,6 +5,13 @@
         <name>PersonalInfo_EPIM</name>
     </fieldSets>
     <layouts>
+        <layout>User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
         <layout>User Profile Layout</layout>
         <layoutType>UserAlt</layoutType>
         <sections>
@@ -28,4 +35,8 @@
         <errorMessage>Veuillez entrer identifiant Volvo en utilisant le format a12345.Tous les caractères doivent être en minuscules</errorMessage>
         <name>VFS_Federation_Id</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Clone_User --></label>
+        <name>Clone_User</name>
+    </webLinks>
 </CustomObjectTranslation>

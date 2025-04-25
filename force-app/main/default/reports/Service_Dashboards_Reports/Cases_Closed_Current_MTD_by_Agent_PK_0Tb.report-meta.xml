@@ -41,7 +41,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>george,emily,tracy,2nd,ext</value>
+            <value>george,emily,2nd,ext</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -62,14 +62,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech tool,xsm,lovepreet,jenny,helen,claire,EOT</value>
+            <value>tech tool,xsm,lovepreet,jenny,EOT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Spam,tech</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>thay</value>
+            <value>UK/IE,Loop,Fleet,XSM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>king,tracy,helen,molly,jordan,bart,medcalf,thay,callum,claire</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -79,7 +93,12 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Cases Closed Current MTD by Agent - PK</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>TYPE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Cases Closed</name>
     <params>
         <name>units</name>
         <value>h</value>
@@ -95,6 +114,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_THISMONTH</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

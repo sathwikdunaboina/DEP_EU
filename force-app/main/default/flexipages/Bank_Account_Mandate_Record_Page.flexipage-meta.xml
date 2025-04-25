@@ -72,16 +72,6 @@
                 <identifier>RecordRegistration_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Sepa_Mandate__c</fieldItem>
-                <identifier>RecordSepa_Mandate_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-608fadcb-58f4-42a5-a7c5-63a16519a4ef</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -120,10 +110,32 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Reference__c</fieldItem>
                 <identifier>RecordReference_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.CreatedBy.LastName}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Reference__c</fieldItem>
+                <identifier>RecordReference_cField2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LastModifiedBy.Username}</leftValue>
+                        <operator>EQUAL</operator>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

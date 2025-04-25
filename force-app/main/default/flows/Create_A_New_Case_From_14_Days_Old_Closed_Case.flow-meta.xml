@@ -1,47 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Copy_1_of_Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</name>
-        <label>Copy 1 of Email Message To Be Sent When Email Record Creation Fails</label>
-        <locationX>1370</locationX>
-        <locationY>1271</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddresses</name>
-            <value>
-                <stringValue>aswin.balaji.m@consultant.volvo.com,sugapriya.vanjiyappan@consultant.volvo.com,hariram.vyas@consultant.volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>Error Handling</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>ErrorMessageBody</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <name>Email_Message_To_Be_Sent_To_Customer</name>
         <label>Email Message To Be Sent To Customer</label>
         <locationX>314</locationX>
@@ -83,47 +42,6 @@
             <name>emailBody</name>
             <value>
                 <elementReference>EmailMessageBody</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
-        <name>Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</name>
-        <label>Email Message To Be Sent When Email Record Creation Fails</label>
-        <locationX>842</locationX>
-        <locationY>1271</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddresses</name>
-            <value>
-                <stringValue>aswin.balaji.m@consultant.volvo.com,sugapriya.vanjiyappan@consultant.volvo.com,hariram.vyas@consultant.volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>Error Handling</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>ErrorMessageBody</elementReference>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -194,11 +112,6 @@
 &apos;Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)&apos; +BR()</expression>
     </formulas>
     <formulas>
-        <name>ErrorMessageBody</name>
-        <dataType>String</dataType>
-        <expression>&apos;Hello Team,&apos; +BR()+ &apos;An error occured while creating a Case from 30 Days Old Closed Case for Case Number : &apos; + {!$Record__Prior.CaseNumber} +BR() + {!$Flow.FaultMessage}</expression>
-    </formulas>
-    <formulas>
         <description>This is the value of incoming field from a email message</description>
         <name>Incoming</name>
         <dataType>Boolean</dataType>
@@ -245,14 +158,11 @@
         <description>This element creats a email message on the newly crated case</description>
         <name>Copy_1_of_Create_A_Email_Record</name>
         <label>Copy 1 of Create A Email Record</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>1163</locationY>
         <connector>
             <targetReference>Copy_1_of_Set_Status_To_Closed_OF_Trigering_Case</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Copy_1_of_Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>ActivityId</field>
             <value>
@@ -355,9 +265,6 @@
         <connector>
             <targetReference>Set_Status_To_Closed_OF_Trigering_Case</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>ActivityId</field>
             <value>
@@ -378,6 +285,9 @@
         </inputAssignments>
         <inputAssignments>
             <field>FromName</field>
+            <value>
+                <elementReference>Get_Latest_Email.FromName</elementReference>
+            </value>
         </inputAssignments>
         <inputAssignments>
             <field>Headers</field>
@@ -637,7 +547,7 @@
         <description>To get the Latest Email Message</description>
         <name>Copy_1_of_Get_Latest_Email</name>
         <label>Copy 1 of Get Latest Email</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>947</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -707,7 +617,7 @@
     <recordUpdates>
         <name>Copy_1_of_Set_Status_To_Closed_OF_Trigering_Case</name>
         <label>Copy 1 of Set Status To Closed OF Trigering Case</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>1271</locationY>
         <inputAssignments>
             <field>Status</field>
@@ -721,7 +631,7 @@
         <description>Element to update the description of newly created Case with the Text body of the Latest Email</description>
         <name>Copy_1_of_Update_Newly_Created_Case_Description</name>
         <label>Copy 1 of Update Newly Created Case Description</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>1055</locationY>
         <connector>
             <targetReference>Copy_1_of_Create_A_Email_Record</targetReference>

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- medalliaOutbound_closeAlert --></label>
+        <name>medallia_xm__medalliaOutbound_closeAlert</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- medalliaOutbound_createSurvey --></label>
+        <name>medallia_xm__medalliaOutbound_createSurvey</name>
+    </fieldSets>
     <layouts>
         <layout>Case Layout</layout>
         <sections>
@@ -12,10 +20,10 @@
         </sections>
     </layouts>
     <layouts>
-        <layout>VFS Dealer Case Layout</layout>
+        <layout>MEDALLIACLF Case Layout</layout>
         <sections>
-            <label><!-- Dealer Information --></label>
-            <section>Dealer Information</section>
+            <label><!-- Closed Loop Feedback --></label>
+            <section>Closed Loop Feedback</section>
         </sections>
         <sections>
             <label><!-- General Information --></label>
@@ -24,6 +32,21 @@
         <sections>
             <label><!-- New Section --></label>
             <section>New Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>VFS Dealer Case Layout</layout>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Related to Customer --></label>
+            <section>Related to Customer</section>
         </sections>
     </layouts>
     <quickActions>
@@ -47,6 +70,10 @@
         <name>SendEmail</name>
     </quickActions>
     <quickActions>
+        <label><!-- Update CLF Case --></label>
+        <name>UpdateCLFCase</name>
+    </quickActions>
+    <quickActions>
         <label><!-- Update Case --></label>
         <name>UpdateCaseCustom</name>
     </quickActions>
@@ -55,8 +82,9 @@
         <name>All_Case</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Tech Tool --></label>
-        <name>Tech_Tool</name>
+        <description><!-- This record type has been created as part of SFDC to Medallia integration , and should be used for medallia alert cases --></description>
+        <label><!-- MEDALLIACLF Alert Cases --></label>
+        <name>MEDALLIACLF_Alert_Cases</name>
     </recordTypes>
     <recordTypes>
         <description><!-- This record type has been created for Customer Case Management for handling cases for customer accounts and contacts across all the countries --></description>
@@ -81,27 +109,31 @@
         <name>Case_Reassign_Country_Restriction_User</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Invalid type. --></errorMessage>
-        <name>Invalid_Case_Check</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Please fill parent case when status is duplicate --></errorMessage>
         <name>Mandatory_parent_if_casetype_Duplicate</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Case Brand is mandatory when closing a case --></errorMessage>
+        <name>Prevent_Closure_of_Case_Without_Brand</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Select Contact associated with Customer account --></errorMessage>
-        <name>Select_Customer_Contact</name>
+        <name>Select_Related_Customer_Contact</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Select Contact associated with Dealer account --></errorMessage>
-        <name>Select_Dealer_Contact</name>
+        <errorMessage><!-- Case Status Reason is mandatory when closing a case --></errorMessage>
+        <name>Status_Reason_Mandatory_on_Closure</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Case type is mandatory when closing a case. --></errorMessage>
+        <errorMessage><!-- Case Sub type is mandatory when closing a case. --></errorMessage>
         <name>SubType_Mandatory_on_Closure</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Case type is mandatory when closing a case. --></errorMessage>
         <name>Type_Mandatory_on_Closure</name>
     </validationRules>
+    <webLinks>
+        <label><!-- UpsellCrosssellOpportunity --></label>
+        <name>medallia_xm__UpsellCrosssellOpportunity</name>
+    </webLinks>
 </CustomObjectTranslation>

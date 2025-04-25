@@ -5,6 +5,13 @@
         <name>PersonalInfo_EPIM</name>
     </fieldSets>
     <layouts>
+        <layout>User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
         <layout>User Profile Layout</layout>
         <layoutType>UserAlt</layoutType>
         <sections>
@@ -28,4 +35,8 @@
         <errorMessage>Introducir identificador de la federacion en el formato siguiente a12345. Solo en minusculas</errorMessage>
         <name>VFS_Federation_Id</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Clone_User --></label>
+        <name>Clone_User</name>
+    </webLinks>
 </CustomObjectTranslation>

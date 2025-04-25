@@ -37,13 +37,13 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
         <field>TYPE</field>
     </columns>
     <columns>
         <field>Case.Sub_Type__c</field>
-    </columns>
-    <columns>
-        <field>AGE</field>
     </columns>
     <columns>
         <field>OPEN</field>
@@ -51,58 +51,17 @@
     <columns>
         <field>ORIGIN</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.CASE_AGE_DAY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
     <filter>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>ext</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Truslove,claire,beverley,scully</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Paul James</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>tech</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ALIAS</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>credit,lovepreet</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>barber,helen</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>thay</value>
-        </criteriaItems>
         <criteriaItems>
             <column>CLOSED</column>
             <columnToColumn>false</columnToColumn>
@@ -118,53 +77,11 @@
             <value>TODAY</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>annette,collections</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>operations,jenny,XSM,singh</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Status_Reason__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>No Action,No Response,Spam/Housekeeping</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT to be checked</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>ORIGIN</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Email,Web,VFS - CMS,Email - Renault,Email - Volvo</value>
+            <value>Email,Phone,Web,VFS - CMS,Email - Renault,Email - Volvo</value>
         </criteriaItems>
         <criteriaItems>
             <column>TYPE</column>
@@ -174,18 +91,11 @@
             <value>Spam/Junk</value>
         </criteriaItems>
         <criteriaItems>
-            <column>SUBJECT</column>
+            <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Unable to Process &amp; Pay Invoice</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>purchase order</value>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf,Callum Scully</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

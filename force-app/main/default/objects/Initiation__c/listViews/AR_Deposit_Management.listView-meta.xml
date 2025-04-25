@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AR_Deposit_Management</fullName>
+    <columns>NAME</columns>
+    <columns>Connect_Delivery_ID__c</columns>
+    <columns>Customer_Account__c</columns>
+    <columns>Total_Deposit_amount__c</columns>
+    <columns>Depositallocated__c</columns>
+    <columns>Number_of_asset__c</columns>
+    <columns>Bank_Account_Numberr__c</columns>
+    <columns>DepositSort_Code1__c</columns>
+    <columns>IBAN__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Initiation__c.Contract_Hire,Initiation__c.Lease_with_R_M,Initiation__c.Stand_Alone_Finance</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>New,In progress,to be signed,To be filed</value>
+    </filters>
+    <filters>
+        <field>Deposit_By_Bank_transfer__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>AR Deposit Management</label>
+</ListView>

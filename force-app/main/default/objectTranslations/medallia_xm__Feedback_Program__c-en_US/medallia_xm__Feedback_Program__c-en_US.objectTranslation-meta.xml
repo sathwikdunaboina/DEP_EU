@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Feedback Program Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Only Date Based Events can have the Allow Multiples field checked. --></errorMessage>
+        <name>medallia_xm__Allow_Multiple</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Date value needs to be equal or greater than today plus Recurrence Days.
+Or at least, one more day from today if there is no Recurrence Days. --></errorMessage>
+        <name>medallia_xm__EndDate_eq_Today_plus_RecurrenceDays</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End dates can only be specified for a recurring program. --></errorMessage>
+        <name>medallia_xm__EndDate_onlyIfRecurrenceDaysNotNull</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Date Based Events can have a value in the Recurrence Days field. --></errorMessage>
+        <name>medallia_xm__Recurrence_Days</name>
+    </validationRules>
+</CustomObjectTranslation>

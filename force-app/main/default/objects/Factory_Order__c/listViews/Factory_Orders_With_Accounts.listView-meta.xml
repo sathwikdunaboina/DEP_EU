@@ -11,5 +11,10 @@
         <field>Account__c</field>
         <operation>notEqual</operation>
     </filters>
+    <filters>
+        <field>Order_Id__c</field>
+        <operation>notContain</operation>
+        <value>Manual</value>
+    </filters>
     <label>Factory Orders With Accounts</label>
 </ListView>

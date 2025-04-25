@@ -53,14 +53,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>ext,XSM,helen</value>
+            <value>ext,XSM</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Truslove,operations</value>
+            <value>operations</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -89,13 +89,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>barber</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>thay</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSED</column>
@@ -132,6 +125,13 @@
             <operator>equals</operator>
             <value>Phone</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>king,tracy,helen,molly,jordan,bart,medcalf,thay,callum,claire</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -145,7 +145,7 @@
         <field>ORIGIN</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>This Month New Phone Cases Logged</name>
+    <name>New Phone Cases Logged</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -161,6 +161,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_THISMONTH</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

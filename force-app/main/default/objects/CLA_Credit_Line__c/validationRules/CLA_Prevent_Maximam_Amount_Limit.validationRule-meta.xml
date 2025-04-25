@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Maximam_Amount_Limit</fullName>
+    <active>true</active>
+    <description>Prevent maximum value in Approved Limit and Max Allowed Group Exposure</description>
+    <errorConditionFormula>OR( CLA_Max_Allowed_Group_Exposure__c &gt; 100000000000 , CLA_Approved_Limit__c &gt; 100000000000 )</errorConditionFormula>
+    <errorMessage>Maximum limit is 100B.</errorMessage>
+</ValidationRule>

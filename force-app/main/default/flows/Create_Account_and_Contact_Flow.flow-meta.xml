@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign FR94-SF as source system id assuming that this flow only works for france customer</description>
+        <name>Assign_Source_System_Id_for_France</name>
+        <label>Assign Source System Id for France</label>
+        <locationX>195</locationX>
+        <locationY>216</locationY>
+        <assignmentItems>
+            <assignToReference>AccountToCreate.sourceSystemID__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>FR94-SF</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Account_From_Flow</targetReference>
+        </connector>
+    </assignments>
     <assignments>
         <description>Assign the Account to the Contact</description>
         <name>Assign_the_Account</name>
@@ -101,7 +119,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Create_Account_From_Flow</targetReference>
+            <targetReference>Assign_Source_System_Id_for_France</targetReference>
         </connector>
         <fields>
             <fieldType>ObjectProvided</fieldType>
@@ -119,7 +137,7 @@
             <fieldType>ObjectProvided</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
-            <objectFieldReference>AccountToCreate.VAT__c</objectFieldReference>
+            <objectFieldReference>AccountToCreate.VATNumber__c</objectFieldReference>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
