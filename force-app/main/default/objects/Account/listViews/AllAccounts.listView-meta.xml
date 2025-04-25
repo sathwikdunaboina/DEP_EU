@@ -8,10 +8,21 @@
     <columns>VATNumber__c</columns>
     <columns>ACCOUNT.ADDRESS1_CITY</columns>
     <columns>ACCOUNT.ADDRESS1_STATE</columns>
-    <columns>Territory_Manager__c</columns>
     <columns>ACCOUNT.PHONE1</columns>
     <columns>ACCOUNT.CREATED_DATE</columns>
-    <columns>ACCOUNT.ADDRESS1_COUNTRY_CODE</columns>
+    <columns>sourceSystemID__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>sourceSystemID__c</field>
+        <operation>notEqual</operation>
+        <value>FR94-SF</value>
+    </filters>
+    <filters>
+        <field>CustomerID__c</field>
+        <operation>notEqual</operation>
+    </filters>
     <label>All Accounts</label>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
 </ListView>

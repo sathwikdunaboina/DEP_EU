@@ -5,6 +5,29 @@
     <businessProcess>Case support process</businessProcess>
     <label>All Case</label>
     <picklistValues>
+        <picklist>Brand__c</picklist>
+        <values>
+            <fullName>Bus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renault Truck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo Truck</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Country__c</picklist>
         <values>
             <fullName>Austria</fullName>
@@ -12,6 +35,10 @@
         </values>
         <values>
             <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brazil</fullName>
             <default>false</default>
         </values>
         <values>
@@ -60,25 +87,230 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Has_Attachment__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MEDALLIACLF_PURCHASE_ACTIONS_TAKEN__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>99</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MEDALLIACLF_PURCHASE_PROBLEM_AREAS__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>99</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MEDALLIACLF_RAPID_RESPONSE_SENT__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MEDALLIACLF_RELATIONSHIP_ACTIONS_TAKEN__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>99</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MEDALLIACLF_RELATIONSHIP_PROBLEM_AREAS__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>99</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MEDALLIACLF_alert_type__c</picklist>
+        <values>
+            <fullName>Purchase - Contact Me</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relationship - Contact Me</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Origin</picklist>
         <values>
             <fullName>Email</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Email - Renault</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Email - Volvo</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Phone</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>VFS - CMS</fullName>
             <default>false</default>
         </values>
         <values>
@@ -139,6 +371,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Resolved</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Spam%2FHousekeeping</fullName>
             <default>false</default>
         </values>
@@ -177,10 +413,6 @@
     </picklistValues>
     <picklistValues>
         <picklist>Sub_Type__c</picklist>
-        <values>
-            <fullName>Access Level Update</fullName>
-            <default>false</default>
-        </values>
         <values>
             <fullName>Account Balance</fullName>
             <default>false</default>
@@ -318,10 +550,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Customised Impact online</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Early termination</fullName>
             <default>false</default>
         </values>
@@ -382,10 +610,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Invalid PO</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Invoice</fullName>
             <default>false</default>
         </values>
@@ -426,6 +650,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Membership</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Missing Documents</fullName>
             <default>false</default>
         </values>
@@ -435,10 +663,6 @@
         </values>
         <values>
             <fullName>Monthly Review</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>New Users</fullName>
             <default>false</default>
         </values>
         <values>
@@ -482,7 +706,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Password Reset</fullName>
+            <fullName>Partial claims</fullName>
             <default>false</default>
         </values>
         <values>
@@ -506,27 +730,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Relocation Client ID</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Relocation Contract</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Relocation User</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Remove Subscription Access</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Renault</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Reporting</fullName>
             <default>false</default>
         </values>
         <values>
@@ -570,14 +778,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Techtool</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Techtool %26 Customised Impact Online</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Termination Collections Non Payment</fullName>
             <default>false</default>
         </values>
@@ -591,6 +791,10 @@
         </values>
         <values>
             <fullName>Termination Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Total claims</fullName>
             <default>false</default>
         </values>
         <values>
@@ -649,10 +853,6 @@
         </values>
         <values>
             <fullName>Change my details</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Change my details %28FICA Check%29</fullName>
             <default>false</default>
         </values>
         <values>
@@ -723,24 +923,15 @@
             <fullName>Spam%2FJunk</fullName>
             <default>false</default>
         </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>medallia_xm__PotentialLiability__c</picklist>
         <values>
-            <fullName>Techtool - Change my details</fullName>
+            <fullName>No</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Techtool - General query</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Techtool - Invoice or payment or tax query</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Techtool - Orders</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Techtool - Problems with Web Portal</fullName>
+            <fullName>Yes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

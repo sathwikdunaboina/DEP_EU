@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_10701725</developerName>
+        <masterLabel>Customer Service</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam King</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ben Townsend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Molly White</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rumeysa Belibagli</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK/IE - CS Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IE - CS Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Molloy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sareena Jordamovic</sourceValue>
+            </sourceValues>
+            <value>Customer Service</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CM.START_DATE</field>
+    </columns>
+    <columns>
+        <field>CM.TARGET_DATE</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <currency>GBP</currency>
+    <customDetailFormulas>
+        <calculatedFormula>TEXT(FLOOR(((ROUND( 8.5 * (
+( 5 * FLOOR( ( DATEVALUE( CM.TARGET_DATE) - DATE( 1900, 1, 8) ) / 7) +
+MIN(5,
+MOD( DATEVALUE( CM.TARGET_DATE ) - DATE( 1900, 1, 8), 7) +
+MIN( 1, 24 / 8.5 * ( MOD( CM.TARGET_DATE - DATETIMEVALUE( &apos;1900-01-08 08:30:00&apos; ), 1 ) )
+)
+)
+)
+-
+( 5 * FLOOR( ( DATEVALUE( NOW() ) - DATE( 1900, 1, 8) ) / 7) +
+MIN( 5,
+MOD( DATEVALUE( NOW()) - DATE( 1996, 1, 1), 7 ) +
+MIN( 1, 24 / 8.5 * ( MOD( NOW() - DATETIMEVALUE( &apos;1900-01-08 08:30:00&apos; ), 1) )
+)
+)
+)
+),
+2 )) )
+)) + &apos; h &apos; 
++  
+
+TEXT( FLOOR( ( ROUND(((ROUND( 8.5 * (
+( 5 * FLOOR( ( DATEVALUE( CM.TARGET_DATE) - DATE( 1900, 1, 8) ) / 7) +
+MIN(5,
+MOD( DATEVALUE( CM.TARGET_DATE ) - DATE( 1900, 1, 8), 7) +
+MIN( 1, 24 / 8.5 * ( MOD( CM.TARGET_DATE - DATETIMEVALUE( &apos;1900-01-08 08:30:00&apos; ), 1 ) )
+)
+)
+)
+-
+( 5 * FLOOR( ( DATEVALUE( NOW() ) - DATE( 1900, 1, 8) ) / 7) +
+MIN( 5,
+MOD( DATEVALUE( NOW()) - DATE( 1996, 1, 1), 7 ) +
+MIN( 1, 24 / 8.5 * ( MOD( NOW() - DATETIMEVALUE( &apos;1900-01-08 08:30:00&apos; ), 1) )
+)
+)
+)
+),2 )) ),2)-FLOOR(((ROUND( 8.5 * (
+( 5 * FLOOR( ( DATEVALUE( CM.TARGET_DATE) - DATE( 1900, 1, 8) ) / 7) +
+MIN(5,
+MOD( DATEVALUE( CM.TARGET_DATE ) - DATE( 1900, 1, 8), 7) +
+MIN( 1, 24 / 8.5 * ( MOD( CM.TARGET_DATE - DATETIMEVALUE( &apos;1900-01-08 08:30:00&apos; ), 1 ) )
+)
+)
+)
+-
+( 5 * FLOOR( ( DATEVALUE( NOW() ) - DATE( 1900, 1, 8) ) / 7) +
+MIN( 5,
+MOD( DATEVALUE( NOW()) - DATE( 1996, 1, 1), 7 ) +
+MIN( 1, 24 / 8.5 * ( MOD( NOW() - DATETIMEVALUE( &apos;1900-01-08 08:30:00&apos; ), 1) )
+)
+)
+)
+),
+2 )) )
+) ) * 60 ) ) + &apos; min&apos;</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Due</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>CLOSED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Spam/Junk</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>IS_COMPLETED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_10701725</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer Service</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Cases with Milestones Report Due Hour</name>
+    <params>
+        <name>units</name>
+        <value>m</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseMilestone</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>CM.START_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

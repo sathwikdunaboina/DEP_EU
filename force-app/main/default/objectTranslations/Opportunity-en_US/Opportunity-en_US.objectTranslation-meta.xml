@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <recordTypes>
+        <description><!-- Record Type For Financing --></description>
+        <label><!-- Finance --></label>
+        <name>Finance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type For LCV Opportunity --></description>
+        <label><!-- LCV Opportunity --></label>
+        <name>LCV_Opportunity</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Cancelled Opportunity cannot be edited. --></errorMessage>
+        <name>Cancelled_Read_Only_Opportunity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the Reason. --></errorMessage>
+        <name>Mandate_Reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the Requested guarantee. --></errorMessage>
+        <name>Mandate_Requested_guarantee</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When the stage is &apos;Closed Lost&apos;, please enter Lost Reason. --></errorMessage>
+        <name>Mandatory_Lost_Reason_on_Closed_Stage</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Bulk_Update_Common --></label>
+        <name>Bulk_Update_Common</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Bulk_Update_Customer --></label>
+        <name>Bulk_Update_Customer</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Bulk_Update_LWC --></label>
+        <name>Bulk_Update_LWC</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Update_Owner --></label>
+        <name>Update_Owner</name>
+    </webLinks>
+</CustomObjectTranslation>

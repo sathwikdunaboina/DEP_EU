@@ -3,8 +3,7 @@
     <fullName>Cannot_change_CustomerId</fullName>
     <active>true</active>
     <description>The customerId field is used for integration. So, once filled, it cannot be edited.</description>
-    <errorConditionFormula>$Permission.GoldenCopy  = false  
-&amp;&amp; ISCHANGED(CustomerID__c) 
+    <errorConditionFormula>ISCHANGED(CustomerID__c) 
 &amp;&amp; NOT(ISNEW()) 
 &amp;&amp;  $Profile.Name != &apos;System Administrator&apos;</errorConditionFormula>
     <errorMessage>The customerId field is used for integration. So, once filled, it cannot be edited.</errorMessage>

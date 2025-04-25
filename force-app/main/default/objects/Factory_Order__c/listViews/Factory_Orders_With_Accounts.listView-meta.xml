@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Factory_Orders_With_Accounts</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Dealer_Id__c</columns>
+    <columns>End_Customer_Name__c</columns>
+    <columns>Finance_Opportunity__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Order_Id__c</field>
+        <operation>notContain</operation>
+        <value>Manual</value>
+    </filters>
+    <label>Factory Orders With Accounts</label>
+</ListView>

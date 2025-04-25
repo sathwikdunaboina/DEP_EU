@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Country__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Initiation Country to ensure Activations team use the correct CMS to set up the contract</description>
+    <externalId>false</externalId>
+    <formula>TEXT( Initiation__r.Country__c )</formula>
+    <label>Parent Country</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

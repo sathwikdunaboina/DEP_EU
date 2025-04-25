@@ -34,7 +34,7 @@ public with sharing class quoteCalloutHandler {
         
         quoteWrapperClass.wrapperClass quote = buildQuote(oppList, guid);
         
-        HttpResponse response = sendQuote(quote);
+        HttpResponse response = sendQuote(quote);       
         
         if (response != null && response.getStatusCode() == 200) {
             try{
@@ -86,7 +86,7 @@ public with sharing class quoteCalloutHandler {
         }
         else
         {
-            try {
+            try {                
                 Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
                 String Error = values.get('errorMessage');
                 Error += ('; ' + values.get('message') == null ? '' : values.get('message'));
@@ -99,7 +99,7 @@ public with sharing class quoteCalloutHandler {
             }
             catch (Exception e) {
                 Boolean result = e.getMessage().contains('Unexpected character');
-                if(result){
+                  if(result){
                     resultList.add('Cannot pass the security checks that are required by the target API or operation. Please try again later!');
                 }
                 else {
@@ -132,7 +132,11 @@ public with sharing class quoteCalloutHandler {
         CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
+        //request.setEndpoint('callout:VFS_Global_APIs1_Test' + settings.Endpoint_QA__c);
         request.setEndpoint('callout:VFS_Global_APIs1' + settings.Endpoint_QA__c);
+        
+
+
         request.setMethod('POST');
         request.setHeader('X-Ibm-Client-Id', settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret', settings.X_Ibm_Client_Secret__c);
@@ -140,6 +144,7 @@ public with sharing class quoteCalloutHandler {
         request.setHeader('Service-Id', 'SRV25720');
         
         String jsonQuote = json.serialize(quote);
+        System.Debug('Quote Request Payload >> '+ jsonQuote);
         request.setBody(jsonQuote);
         
         //System.debug('Json View: ' + jsonQuote);
@@ -150,8 +155,8 @@ public with sharing class quoteCalloutHandler {
         
         //System.debug('Sending request...');
         HttpResponse response = http.send(request);
-        //System.debug('HttpResponse code: ' + response.getStatusCode());
-        //System.debug('HttpResponse body: ' + response.getBody());
+        System.debug('HttpResponse code: ' + response.getStatusCode());
+        System.debug('HttpResponse body: ' + response.getBody());
         
         return response;
     }

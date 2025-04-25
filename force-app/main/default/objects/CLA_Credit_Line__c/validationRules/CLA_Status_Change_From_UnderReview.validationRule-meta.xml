@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Status_Change_From_UnderReview</fullName>
+    <active>true</active>
+    <description>Status can only changed to Approved or Draft from Under Review Status.</description>
+    <errorConditionFormula>AND( TEXT( PRIORVALUE( CLA_Status__c ) ) = &apos;Under Review&apos; ,
+     TEXT(  CLA_Status__c )  &lt;&gt; &apos;Approved&apos; , 
+     TEXT(  CLA_Status__c  ) &lt;&gt; &apos;Draft&apos;,
+     TEXT(  CLA_Status__c )  &lt;&gt; &apos;Under Review&apos;
+
+  )</errorConditionFormula>
+    <errorDisplayField>CLA_Status__c</errorDisplayField>
+    <errorMessage>Status can only changed to Approved or Draft from Under Review Status.</errorMessage>
+</ValidationRule>

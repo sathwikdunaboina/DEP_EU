@@ -8,13 +8,11 @@
     <columns>Brand__c</columns>
     <columns>Dealer_Delivery_Date__c</columns>
     <columns>Owner_Name__c</columns>
-    <columns>LEAD.COUNTRY_CODE</columns>
-    <columns>LEAD.LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>LEAD.LEAD_SOURCE</field>
-        <operation>notEqual</operation>
-        <value>Factory Order</value>
+        <field>Dealer_Name__c</field>
+        <operation>equals</operation>
+        <value>RENAULT TRUCKS BELUX</value>
     </filters>
     <label>My View</label>
     <sharedTo>

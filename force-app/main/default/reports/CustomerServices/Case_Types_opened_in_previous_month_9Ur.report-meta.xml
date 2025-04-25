@@ -25,9 +25,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Case.Sub_Type__c</field>
-    </columns>
-    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
@@ -50,7 +47,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>2nd,harry,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,Laura,Operations</value>
+            <value>ben,contract,jenny,2nd,harry,Tracy,Lovepreet,Thay,XSM,Collections,Credit,EOT,EXT,Laura,Operations</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Sub_Type__c</column>
@@ -72,6 +69,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Sub_Type__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opened Addendums YTD</name>

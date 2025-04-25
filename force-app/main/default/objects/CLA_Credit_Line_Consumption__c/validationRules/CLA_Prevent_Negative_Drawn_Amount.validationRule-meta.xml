@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Negative_Drawn_Amount</fullName>
+    <active>true</active>
+    <description>Prevent Negative value in Drawn Amount.</description>
+    <errorConditionFormula>CLA_Drawn_Amount__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>CLA_Drawn_Amount__c</errorDisplayField>
+    <errorMessage>Negative value is not allowed.</errorMessage>
+</ValidationRule>

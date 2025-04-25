@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bank_Account_Sharing</fullName>
+    <active>true</active>
+    <description>Bank accounts can only be shared with Parent Child Accounts.</description>
+    <errorConditionFormula>Account__r.ParentId   =  Account__r.Id</errorConditionFormula>
+    <errorMessage>Bank accounts must only be shared with child accounts.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Invitation_Opportunity_Lost</name>
+        <label>Send Invitation Opportunity Lost</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>medallia_xm__MedProcessSendInvitation</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>reportId</name>
+        </inputParameters>
+        <inputParameters>
+            <name>service</name>
+            <value>
+                <stringValue>sfdc_create_survey_opportunity_lost</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>whenToSend</name>
+            <value>
+                <elementReference>SendNow</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>medallia_xm__MedProcessSendInvitation</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Invitation_Opportunity_Won</name>
+        <label>Send Invitation Opportunity Won</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <actionName>medallia_xm__MedProcessSendInvitation</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>reportId</name>
+        </inputParameters>
+        <inputParameters>
+            <name>service</name>
+            <value>
+                <stringValue>sfdc_create_survey_opportunity_won</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>whenToSend</name>
+            <value>
+                <elementReference>SendNow</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>medallia_xm__MedProcessSendInvitation</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Send_Invitation</name>
+        <label>Send Invitation</label>
+        <locationX>314</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Closes_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Invitation_Opportunity_Lost</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Closes Lost</label>
+        </rules>
+        <rules>
+            <name>Closes_Won</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Invitation_Opportunity_Won</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Closes Won</label>
+        </rules>
+    </decisions>
+    <description>Sends an invitation when an opportunity closes lost or won.</description>
+    <formulas>
+        <name>SendNow</name>
+        <dataType>DateTime</dataType>
+        <expression>now()</expression>
+    </formulas>
+    <interviewLabel>Send Invitation When Opportunity Closes {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Send Invitation When Opportunity Closes Template</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Invitation</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

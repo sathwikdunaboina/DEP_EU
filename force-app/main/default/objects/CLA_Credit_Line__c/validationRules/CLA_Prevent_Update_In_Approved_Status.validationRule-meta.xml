@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Update_In_Approved_Status</fullName>
+    <active>true</active>
+    <description>Country , Type , Currency , Activation Date can not be changed in Approved status.</description>
+    <errorConditionFormula>AND( TEXT( CLA_Status__c ) = &apos;Approved&apos; , 
+   OR(  ISCHANGED( CLA_Country__c ) , 
+        ISCHANGED(  CLA_Type__c  ) , 
+        ISCHANGED(  CLA_Currency__c   ) ,
+        ISCHANGED(   CLA_Activation_Date__c    ) 
+     )  , 
+     TEXT(  PRIORVALUE(CLA_Status__c) ) = &apos;Approved&apos;  
+)</errorConditionFormula>
+    <errorDisplayField>CLA_Status__c</errorDisplayField>
+    <errorMessage>Country , Type , Currency , Activation Date can not be changed in Approved status.</errorMessage>
+</ValidationRule>

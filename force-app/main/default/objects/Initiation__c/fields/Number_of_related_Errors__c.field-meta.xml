@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_related_Errors__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Summary Field that shows the number of errors relating to the initiations object</description>
+    <label>Number of related Errors</label>
+    <summaryForeignKey>Initiation_Error__c.Initiation__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

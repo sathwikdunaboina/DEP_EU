@@ -44,7 +44,7 @@
     </columns>
     <currency>EUR</currency>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5)</booleanFilter>
         <criteriaItems>
             <column>Case.Country__c</column>
             <columnToColumn>false</columnToColumn>
@@ -72,6 +72,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>DE - Contract Performance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Michael Stoeger</value>
         </criteriaItems>
         <language>de</language>
     </filter>

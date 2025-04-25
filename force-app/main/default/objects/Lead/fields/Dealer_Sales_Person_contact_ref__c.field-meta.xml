@@ -5,6 +5,15 @@
     <description>Main sales person of the selling dealer</description>
     <inlineHelpText>Main sales person of the selling dealer</inlineHelpText>
     <label>Dealer Sales Person</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.AccountId</field>
+            <operation>equals</operation>
+            <valueField>$Source.Dealer_Account__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Leads</relationshipLabel>
     <relationshipName>Leads</relationshipName>

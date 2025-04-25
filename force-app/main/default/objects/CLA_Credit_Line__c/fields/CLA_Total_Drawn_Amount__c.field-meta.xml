@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Total_Drawn_Amount__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Sum of total drawn amount for  credit line consumption,
+How Populated: Automated,
+Process : Roll up Summary Field
+Is UI field : No</description>
+    <label>Total Drawn Amount</label>
+    <summarizedField>CLA_Credit_Line_Consumption__c.CLA_Drawn_Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>CLA_Credit_Line_Consumption__c.CLA_Status__c</field>
+        <operation>equals</operation>
+        <value>Confirmed</value>
+    </summaryFilterItems>
+    <summaryForeignKey>CLA_Credit_Line_Consumption__c.CLA_Credit_Line__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

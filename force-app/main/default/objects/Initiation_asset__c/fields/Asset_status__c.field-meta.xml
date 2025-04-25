@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset_status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The initiation Asset status is used by both the Sales desk and activations team. 
+It captures the status of the finance side of a Stand alone finance or Contract hire contract.
+This is used to help filter Initiation assets in multiple listing pages. 
+This needs to be set to Complete for the Initiation to be progress to be signed</description>
+    <label>Asset status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pre PM activated</fullName>
+                <default>false</default>
+                <label>Pre PM activated</label>
+            </value>
+            <value>
+                <fullName>With Service Team</fullName>
+                <default>false</default>
+                <label>With Service Team</label>
+            </value>
+            <value>
+                <fullName>1st Checked</fullName>
+                <default>false</default>
+                <label>1st Checked</label>
+            </value>
+            <value>
+                <fullName>Service signed off for payout</fullName>
+                <default>false</default>
+                <label>Service signed off for payout</label>
+            </value>
+            <value>
+                <fullName>PM Activated</fullName>
+                <default>true</default>
+                <label>PM Activated</label>
+            </value>
+            <value>
+                <fullName>File in query</fullName>
+                <default>false</default>
+                <label>File in query</label>
+            </value>
+            <value>
+                <fullName>With back office for activation</fullName>
+                <default>false</default>
+                <label>File with activations</label>
+            </value>
+            <value>
+                <fullName>File with front office</fullName>
+                <default>false</default>
+                <label>Vienna activated</label>
+            </value>
+            <value>
+                <fullName>Pack ready</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BR_Contracts</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Contract_Id__c</columns>
+    <columns>End_of_Term__c</columns>
+    <columns>Start_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>11/18/2024 12:00 AM</value>
+    </filters>
+    <label>BR Contracts</label>
+    <sharedTo>
+        <group>VFSBR_Brazil_Volvo</group>
+    </sharedTo>
+</ListView>

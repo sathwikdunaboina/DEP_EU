@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__EndDate_onlyIfRecurrenceDaysNotNull</fullName>
+    <active>true</active>
+    <description>Populating End Date field will be only possible if Recurrence Days field has a value.</description>
+    <errorConditionFormula>IF(AND(ISNULL(medallia_xm__Recurrence_Days__c), NOT(ISNULL(medallia_xm__End_Date__c))),true,false)</errorConditionFormula>
+    <errorMessage>End dates can only be specified for a recurring program.</errorMessage>
+</ValidationRule>

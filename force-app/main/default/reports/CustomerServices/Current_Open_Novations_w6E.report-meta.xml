@@ -45,6 +45,9 @@
     <columns>
         <field>Case.Sub_Type__c</field>
     </columns>
+    <columns>
+        <field>Case.Status_Reason__c</field>
+    </columns>
     <currency>GBP</currency>
     <description>To show all current open novations</description>
     <filter>
@@ -53,7 +56,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Amendment Restructure,Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process,Novation Request</value>
+            <value>Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation Request</value>
         </criteriaItems>
         <criteriaItems>
             <column>STATUS</column>
@@ -61,13 +64,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>,New,In Progress,On Hold,Escalated,Chasing marketing company</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing,XSM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -77,12 +73,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ALIAS</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Current Open Novations &amp; Restructures</name>
+    <name>Current Open Novations</name>
     <params>
         <name>units</name>
         <value>d</value>

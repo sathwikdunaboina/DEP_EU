@@ -95,8 +95,7 @@ public without sharing  class quoteCallout {
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        //request.setEndpoint('callout:VFS_Global_APIs');
-        request.setEndpoint('callout:VFS_Global_APIs'+'/vfsconnect/quotation/v1.0/draft');
+        request.setEndpoint('callout:VFS_Global_APIs1'+'/vfsconnect/quotation/v1.0/draft');
         request.setMethod('POST');
         request.setHeader( 'X-Ibm-Client-Id',settings.X_Ibm_Client_Id__c);
         request.setHeader('X-Ibm-Client-Secret' , settings.X_Ibm_Client_Secret__c);
@@ -116,7 +115,7 @@ public without sharing  class quoteCallout {
                 //return listStr;
                 //
         System.debug('Sending request anfet the timeout');
-
+ 
         HttpResponse response = http.send(request);
         //response.setTimeout(40000);
         System.debug('This is body code'+response.getStatusCode());

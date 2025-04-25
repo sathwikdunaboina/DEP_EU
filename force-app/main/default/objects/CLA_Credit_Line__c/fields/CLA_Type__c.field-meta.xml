@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Amortizing line means, balance gets reduced after each consumption and can be be refilled upon payment. However, Revolving lines are automatically refilled upon payment.,
+How Populated: UI-Manual ,
+Is UI field : Yes</description>
+    <label>Type</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Amortizing</fullName>
+                <default>false</default>
+                <label>Amortizing</label>
+            </value>
+            <value>
+                <fullName>Revolving</fullName>
+                <default>false</default>
+                <label>Revolving</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

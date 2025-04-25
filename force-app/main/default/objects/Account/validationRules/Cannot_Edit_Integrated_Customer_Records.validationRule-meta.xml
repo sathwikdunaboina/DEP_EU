@@ -3,9 +3,7 @@
     <fullName>Cannot_Edit_Integrated_Customer_Records</fullName>
     <active>true</active>
     <description>Because the changes from Salesforce doesnt flow through to CMS, once its integrated with CustomerId, Sales team is not allowed to edit the customer records</description>
-    <errorConditionFormula>$Permission.GoldenCopy = false
-&amp;&amp; 
-$Permission.CalculatorAPI__Easy_Finance_User = false
+    <errorConditionFormula>NOT($Permission.Cannot_Edit_Integrated_Customer_Records)
 &amp;&amp;
 $Profile.Name != &apos;System Administrator&apos;
 &amp;&amp;

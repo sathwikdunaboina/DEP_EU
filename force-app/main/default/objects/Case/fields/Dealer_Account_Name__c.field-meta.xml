@@ -3,10 +3,9 @@
     <fullName>Dealer_Account_Name__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <description>Lookup field created to showcase dealer account on case object , this field is created as part of Dealer Management implemented in the system , and will be visible on the dealer record type page layout</description>
-    <externalId>false</externalId>
     <label>Dealer Account Name</label>
     <lookupFilter>
-        <active>true</active>
+        <active>false</active>
         <errorMessage>Please select a Dealer Account on the case</errorMessage>
         <filterItems>
             <field>Account.RecordTypeId</field>

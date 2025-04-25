@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign field to credit line consumption.</description>
+        <name>Assign_Credit_Line_Consumption_Fields</name>
+        <label>Assign Credit Line Consumption Fields</label>
+        <locationX>697</locationX>
+        <locationY>337</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Credit_Line_Approver_s_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Credit_Line_Approver.Email</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Credit line consumption before create/update event</description>
+    <environments>Default</environments>
+    <interviewLabel>Field Initialise On Credit Line Consumption Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Field Initialise On Credit Line Consumption Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets Credit Line Record</description>
+        <name>Get_Credit_Line</name>
+        <label>Get Credit Line</label>
+        <locationX>169</locationX>
+        <locationY>315</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Credit_Line_Approver</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CLA_Credit_Line__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CLA_Credit_Line__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CLA_Approver__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets credit line approver email</description>
+        <name>Get_Credit_Line_Approver</name>
+        <label>Get Credit Line Approver</label>
+        <locationX>450</locationX>
+        <locationY>313</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Credit_Line_Consumption_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Credit_Line.CLA_Approver__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>369</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Credit_Line</targetReference>
+        </connector>
+        <object>CLA_Credit_Line_Consumption__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
