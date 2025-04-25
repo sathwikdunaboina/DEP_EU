@@ -1,0 +1,41 @@
+<apex:page id="MedAcctNPSDetails" standardController="Account" extensions="medallia_xm.LightningOutExtension" 
+            showHeader="false" sideBar="false" tabStyle="Account" label="Medallia NPS/Response Rate" >
+    <apex:includeLightning />
+
+    <div id="medAcctNPSDetails"></div>
+    <script>
+        var recordId = "{! $CurrentPage.parameters.id }";
+
+        // Determine Classic or Lightning Experience
+        var userContext = "{!$User.UITheme}";
+        var isLightning = userContext == 'Theme3'
+
+        $Lightning.use("{!ns}:MedAcctNPSDetailsApp", function () {
+
+            $Lightning.createComponent('{!ns}:MedAcctNPSDetails',
+                {
+                    recordId: recordId,
+                    isLightning:isLightning,
+                    npsLabel: "NPS",
+                    respLabel: "Response Rate (in %)",
+                    selectedDateRangeNPS: "past6mo",
+                    selectedDateRangeResp: "past6mo",
+                    display: "See Both",
+                    npsPromoterThreshold: "9",
+                    npsDetractorThreshold: "6",
+                    npsLowBottomThreshold: "-100",
+                    npsLowTopThreshold: "-1",
+                    npsMidBottomThreshold: "0",
+                    npsMidTopThreshold: "50",
+                    npsHighBottomThreshold: "51",
+                    npsHighTopThreshold: "100",
+                    respHighBottomThreshold: "0",
+                    respHighTopThreshold: "100"
+                },
+                "medAcctNPSDetails",
+                function (component) {
+                    //supporting setup
+                });
+        });
+    </script>
+</apex:page>
