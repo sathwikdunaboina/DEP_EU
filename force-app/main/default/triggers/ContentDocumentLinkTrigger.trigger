@@ -1,5 +1,7 @@
-trigger ContentDocumentLinkTrigger on ContentDocumentLink (before insert,after insert) {
-    
+trigger ContentDocumentLinkTrigger on ContentDocumentLink (before insert,after insert,before delete,after delete) {
+    Boolean hasPermission = FeatureManagement.checkPermission('ByPassAttachmentTriggers');
+    if(!hasPermission )
+    {
     
     ContentDocumentLinkTriggerHandler handler = new ContentDocumentLinkTriggerHandler();
     Switch on Trigger.operationType{
@@ -20,9 +22,12 @@ trigger ContentDocumentLinkTrigger on ContentDocumentLink (before insert,after i
         when AFTER_INSERT{
             handler.onAfterInsert(Trigger.NewMap);
         }
-        when else{
+        when BEFORE_DELETE{
             //do nothing
         }
+        when AFTER_DELETE{
+            handler.onAfterDelete(Trigger.OldMap);
+        }
     }
-    
+    }
 }

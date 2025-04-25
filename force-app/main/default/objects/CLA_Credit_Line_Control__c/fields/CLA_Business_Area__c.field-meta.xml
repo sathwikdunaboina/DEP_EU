@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Business_Area__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Business area where credit line is allowed to be used / consumed.,
+How Populated: UI-Manual ,
+Is UI field : Yes</description>
+    <label>Business Area</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VT</fullName>
+                <default>false</default>
+                <label>VT</label>
+            </value>
+            <value>
+                <fullName>RT</fullName>
+                <default>false</default>
+                <label>RT</label>
+            </value>
+            <value>
+                <fullName>VCE</fullName>
+                <default>false</default>
+                <label>VCE</label>
+            </value>
+            <value>
+                <fullName>VB</fullName>
+                <default>false</default>
+                <label>VB</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

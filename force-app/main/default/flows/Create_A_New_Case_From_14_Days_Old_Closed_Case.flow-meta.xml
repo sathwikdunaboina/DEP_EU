@@ -1,58 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Copy_1_of_Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</name>
-        <label>Copy 1 of Email Message To Be Sent When Email Record Creation Fails</label>
-        <locationX>1370</locationX>
-        <locationY>1271</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddresses</name>
-            <value>
-                <stringValue>aswin.balaji.m@consultant.volvo.com,sugapriya.vanjiyappan@consultant.volvo.com,hariram.vyas@consultant.volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>Error Handling</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>ErrorMessageBody</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <name>Email_Message_To_Be_Sent_To_Customer</name>
         <label>Email Message To Be Sent To Customer</label>
-        <locationX>314</locationX>
-        <locationY>839</locationY>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
-            <targetReference>Get_Latest_Email</targetReference>
+            <targetReference>Create_A_Email_Record</targetReference>
         </connector>
         <faultConnector>
-            <targetReference>Copy_1_of_Get_Latest_Email</targetReference>
+            <targetReference>Copy_1_of_Create_A_Email_Record</targetReference>
         </faultConnector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -88,94 +47,8 @@
         <nameSegment>emailSimple</nameSegment>
         <offset>0</offset>
     </actionCalls>
-    <actionCalls>
-        <name>Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</name>
-        <label>Email Message To Be Sent When Email Record Creation Fails</label>
-        <locationX>842</locationX>
-        <locationY>1271</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddresses</name>
-            <value>
-                <stringValue>aswin.balaji.m@consultant.volvo.com,sugapriya.vanjiyappan@consultant.volvo.com,hariram.vyas@consultant.volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>Error Handling</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>ErrorMessageBody</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <decisions>
-        <description>Checking an entry condition for both UK/IE and ZA Markets.</description>
-        <name>Check_Country</name>
-        <label>Check Country</label>
-        <locationX>314</locationX>
-        <locationY>431</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IF_UK_IE</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Country__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>United Kingdom</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Country__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Ireland</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_A_New_Case_for_UK_IE</targetReference>
-            </connector>
-            <label>IF UK/IE</label>
-        </rules>
-        <rules>
-            <name>IF_ZA</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Country__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>South Africa</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_A_New_Case_for_ZA</targetReference>
-            </connector>
-            <label>IF ZA</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>CreatedDate</name>
@@ -194,21 +67,10 @@
 &apos;Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)&apos; +BR()</expression>
     </formulas>
     <formulas>
-        <name>ErrorMessageBody</name>
-        <dataType>String</dataType>
-        <expression>&apos;Hello Team,&apos; +BR()+ &apos;An error occured while creating a Case from 30 Days Old Closed Case for Case Number : &apos; + {!$Record__Prior.CaseNumber} +BR() + {!$Flow.FaultMessage}</expression>
-    </formulas>
-    <formulas>
         <description>This is the value of incoming field from a email message</description>
         <name>Incoming</name>
         <dataType>Boolean</dataType>
         <expression>IF({!$Record__Prior.Source:EmailMessage.Incoming}==null, true, {!$Record__Prior.Source:EmailMessage.Incoming})</expression>
-    </formulas>
-    <formulas>
-        <description>Formula variable to get the Latest Email Message</description>
-        <name>LatestEmailMessageTextBody</name>
-        <dataType>String</dataType>
-        <expression>LEFT({!Get_Latest_Email.TextBody}, FIND(&apos;From:&apos;, {!Get_Latest_Email.TextBody}) -1)</expression>
     </formulas>
     <formulas>
         <name>NewlyCreatedCaseSubject</name>
@@ -245,42 +107,45 @@
         <description>This element creats a email message on the newly crated case</description>
         <name>Copy_1_of_Create_A_Email_Record</name>
         <label>Copy 1 of Create A Email Record</label>
-        <locationX>1106</locationX>
-        <locationY>1163</locationY>
+        <locationX>440</locationX>
+        <locationY>755</locationY>
         <connector>
             <targetReference>Copy_1_of_Set_Status_To_Closed_OF_Trigering_Case</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Copy_1_of_Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>ActivityId</field>
             <value>
-                <elementReference>Get_Latest_Email.ActivityId</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ActivityId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ClientThreadIdentifier</field>
             <value>
-                <elementReference>Get_Latest_Email.ClientThreadIdentifier</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ClientThreadIdentifier</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>FromAddress</field>
             <value>
-                <elementReference>Get_Latest_Email.FromAddress</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.FromAddress</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>FromName</field>
             <value>
-                <elementReference>Get_Latest_Email.FromName</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.FromName</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Headers</field>
             <value>
-                <elementReference>Get_Latest_Email.Headers</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.Headers</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>HtmlBody</field>
+            <value>
+                <elementReference>$Record__Prior.Source:EmailMessage.HtmlBody</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -292,13 +157,13 @@
         <inputAssignments>
             <field>MessageDate</field>
             <value>
-                <elementReference>Get_Latest_Email.MessageDate</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.MessageDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>MessageIdentifier</field>
             <value>
-                <elementReference>Get_Latest_Email.MessageIdentifier</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.MessageIdentifier</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -316,31 +181,31 @@
         <inputAssignments>
             <field>ReplyToEmailMessageId</field>
             <value>
-                <elementReference>Get_Latest_Email.ReplyToEmailMessageId</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ReplyToEmailMessageId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <elementReference>Get_Latest_Email.Subject</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.Subject</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>TextBody</field>
             <value>
-                <elementReference>Get_Latest_Email.TextBody</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.TextBody</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ThreadIdentifier</field>
             <value>
-                <elementReference>Get_Latest_Email.ThreadIdentifier</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ThreadIdentifier</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ToAddress</field>
             <value>
-                <elementReference>Get_Latest_Email.ToAddress</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ToAddress</elementReference>
             </value>
         </inputAssignments>
         <object>EmailMessage</object>
@@ -350,39 +215,45 @@
         <description>This element creats a email message on the newly crated case</description>
         <name>Create_A_Email_Record</name>
         <label>Create A Email Record</label>
-        <locationX>314</locationX>
-        <locationY>1163</locationY>
+        <locationX>176</locationX>
+        <locationY>755</locationY>
         <connector>
             <targetReference>Set_Status_To_Closed_OF_Trigering_Case</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Email_Message_To_Be_Sent_When_Email_Record_Creation_Fails</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>ActivityId</field>
             <value>
-                <elementReference>Get_Latest_Email.ActivityId</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ActivityId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ClientThreadIdentifier</field>
             <value>
-                <elementReference>Get_Latest_Email.ClientThreadIdentifier</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ClientThreadIdentifier</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>FromAddress</field>
             <value>
-                <elementReference>Get_Latest_Email.FromAddress</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.FromAddress</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>FromName</field>
+            <value>
+                <elementReference>$Record__Prior.Source:EmailMessage.FromName</elementReference>
+            </value>
         </inputAssignments>
         <inputAssignments>
             <field>Headers</field>
             <value>
-                <elementReference>Get_Latest_Email.Headers</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.Headers</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>HtmlBody</field>
+            <value>
+                <elementReference>$Record__Prior.Source:EmailMessage.HtmlBody</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -394,13 +265,13 @@
         <inputAssignments>
             <field>MessageDate</field>
             <value>
-                <elementReference>Get_Latest_Email.MessageDate</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.MessageDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>MessageIdentifier</field>
             <value>
-                <elementReference>Get_Latest_Email.MessageIdentifier</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.MessageIdentifier</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -418,52 +289,46 @@
         <inputAssignments>
             <field>ReplyToEmailMessageId</field>
             <value>
-                <elementReference>Get_Latest_Email.ReplyToEmailMessageId</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ReplyToEmailMessageId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <elementReference>Get_Latest_Email.Subject</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.Subject</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>TextBody</field>
             <value>
-                <elementReference>Get_Latest_Email.TextBody</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.TextBody</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ThreadIdentifier</field>
             <value>
-                <elementReference>Get_Latest_Email.ThreadIdentifier</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ThreadIdentifier</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ToAddress</field>
             <value>
-                <elementReference>Get_Latest_Email.ToAddress</elementReference>
+                <elementReference>$Record__Prior.Source:EmailMessage.ToAddress</elementReference>
             </value>
         </inputAssignments>
         <object>EmailMessage</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
-        <description>This Action Creates A New Case When A Closed Case Is Reopened  for UK/IE.</description>
-        <name>Create_A_New_Case_for_UK_IE</name>
-        <label>Create A New Case for UK/IE</label>
-        <locationX>50</locationX>
-        <locationY>539</locationY>
+        <description>This Action Creates A New Case When A Closed Case Is Reopened .</description>
+        <name>Create_A_New_Case</name>
+        <label>Create A New Case</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
         <assignRecordIdToReference>CaseIDVariable</assignRecordIdToReference>
         <connector>
             <targetReference>Get_Newly_Created_Case_Reocrd_Details</targetReference>
         </connector>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <elementReference>$Record__Prior.Country__c</elementReference>
-            </value>
-        </inputAssignments>
         <inputAssignments>
             <field>CurrencyIsoCode</field>
             <value>
@@ -526,93 +391,15 @@
         </inputAssignments>
         <object>Case</object>
     </recordCreates>
-    <recordCreates>
-        <description>This Action Creates A New Case When A Closed Case Is Reopened for ZA.</description>
-        <name>Create_A_New_Case_for_ZA</name>
-        <label>Create A New Case for ZA</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
-        <assignRecordIdToReference>CaseIDVariable</assignRecordIdToReference>
-        <connector>
-            <targetReference>Get_Newly_Created_Case_Reocrd_Details</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <elementReference>$Record__Prior.Country__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>CurrencyIsoCode</field>
-            <value>
-                <elementReference>$Record__Prior.CurrencyIsoCode</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Description</field>
-            <value>
-                <elementReference>$Record__Prior.Description</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>EntitlementId</field>
-            <value>
-                <elementReference>$Record__Prior.EntitlementId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Origin</field>
-            <value>
-                <elementReference>$Record__Prior.Origin</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>OwnerId</field>
-            <value>
-                <elementReference>$Record__Prior.OwnerId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>$Record__Prior.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>RecordTypeId</field>
-            <value>
-                <elementReference>$Record__Prior.RecordTypeId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Status</field>
-            <value>
-                <stringValue>New</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Subject</field>
-            <value>
-                <elementReference>NewlyCreatedCaseSubject</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SuppliedEmail</field>
-            <value>
-                <elementReference>$Record__Prior.SuppliedEmail</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Case</object>
-    </recordCreates>
     <recordLookups>
         <description>This Action will Get the Queue Id</description>
         <name>Case_Queue_Name</name>
         <label>Case Queue Name</label>
-        <locationX>314</locationX>
+        <locationX>176</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_Country</targetReference>
+            <targetReference>Create_A_New_Case</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -634,58 +421,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <description>To get the Latest Email Message</description>
-        <name>Copy_1_of_Get_Latest_Email</name>
-        <label>Copy 1 of Get Latest Email</label>
-        <locationX>1106</locationX>
-        <locationY>947</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Copy_1_of_Update_Newly_Created_Case_Description</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>ParentId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record__Prior.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>EmailMessage</object>
-        <sortField>MessageDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <description>To get the Latest Email Message</description>
-        <name>Get_Latest_Email</name>
-        <label>Get Latest Email</label>
-        <locationX>314</locationX>
-        <locationY>947</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Update_Newly_Created_Case_Description</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>ParentId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record__Prior.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>EmailMessage</object>
-        <sortField>MessageDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Newly_Created_Case_Reocrd_Details</name>
         <label>Get Newly Created Case Reocrd Details</label>
-        <locationX>314</locationX>
-        <locationY>731</locationY>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Email_Message_To_Be_Sent_To_Customer</targetReference>
@@ -707,8 +446,8 @@
     <recordUpdates>
         <name>Copy_1_of_Set_Status_To_Closed_OF_Trigering_Case</name>
         <label>Copy 1 of Set Status To Closed OF Trigering Case</label>
-        <locationX>1106</locationX>
-        <locationY>1271</locationY>
+        <locationX>440</locationX>
+        <locationY>863</locationY>
         <inputAssignments>
             <field>Status</field>
             <value>
@@ -716,37 +455,12 @@
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <description>Element to update the description of newly created Case with the Text body of the Latest Email</description>
-        <name>Copy_1_of_Update_Newly_Created_Case_Description</name>
-        <label>Copy 1 of Update Newly Created Case Description</label>
-        <locationX>1106</locationX>
-        <locationY>1055</locationY>
-        <connector>
-            <targetReference>Copy_1_of_Create_A_Email_Record</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>CaseIDVariable</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Description</field>
-            <value>
-                <elementReference>LatestEmailMessageTextBody</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Case</object>
     </recordUpdates>
     <recordUpdates>
         <name>Set_Status_To_Closed_OF_Trigering_Case</name>
         <label>Set Status To Closed OF Trigering Case</label>
-        <locationX>314</locationX>
-        <locationY>1271</locationY>
+        <locationX>176</locationX>
+        <locationY>863</locationY>
         <inputAssignments>
             <field>Status</field>
             <value>
@@ -755,39 +469,14 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
-    <recordUpdates>
-        <description>Element to update the description of newly created Case with the Text body of the Latest Email</description>
-        <name>Update_Newly_Created_Case_Description</name>
-        <label>Update Newly Created Case Description</label>
-        <locationX>314</locationX>
-        <locationY>1055</locationY>
-        <connector>
-            <targetReference>Create_A_Email_Record</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>CaseIDVariable</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Description</field>
-            <value>
-                <elementReference>LatestEmailMessageTextBody</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Case</object>
-    </recordUpdates>
     <start>
-        <locationX>188</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Case_Queue_Name</targetReference>
         </connector>
         <filterFormula>ISPICKVAL ({!$Record__Prior.Status}, &quot;Closed&quot;) &amp;&amp; ISPICKVAL ({!$Record.Status}, &quot;New&quot;) &amp;&amp; ((NOW()-{!$Record__Prior.ClosedDate})&gt;=30) &amp;&amp;
-(ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;South Africa&quot;))&amp;&amp;( {!$User.LastName}=&apos;VFS Salesforce Support&apos;)</filterFormula>
+(ISPICKVAL ({!$Record__Prior.Country__c}, &quot;United Kingdom&quot;) || ISPICKVAL ({!$Record__Prior.Country__c}, &quot;Ireland&quot;))&amp;&amp;( {!$User.LastName}=&apos;VFS Salesforce Support&apos;)</filterFormula>
         <object>Case</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

@@ -1,8 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Bem-vindo ao Suporte do Banco Volvo. Nosso horário de atendimento é de segunda a sexta, das 8h às 19h. Um de nossos agentes estará disponível para assisti-lo em breve.</value>
+        </constantValueTranslations>
+        <label>Welcome Message</label>
+        <name>Auto_Response_Component</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Your Link Title Here</value>
+        </constantValueTranslations>
+        <label>BR Satisfaction Survey Demo</label>
+        <name>BR_Satisfaction_Survey_Demo</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Your Link Title Here</value>
+        </constantValueTranslations>
+        <label>BR WhatsApp After payment confirmation Notification</label>
+        <name>BR_WhatsApp_After_payment_confirmation_Notification</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Your Link Title Here</value>
+        </constantValueTranslations>
+        <label>BR WhatsApp Before expiration – 1 days before Notification</label>
+        <name>BR_WhatsApp_Before_expiration_1_days_before_Notification</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Your Link Title Here</value>
+        </constantValueTranslations>
+        <label>BR WhatsApp Before expiration – 5 days before Notification</label>
+        <name>BR_WhatsApp_Before_expiration_5_days_before_Notification</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>This chat session has been closed by the agent. If your query is not resolved , you can start a new conversation. Thank you!</value>
+        </constantValueTranslations>
+        <label>End Conversation Messaging Component</label>
+        <name>End_Conversation_Messaging_Component</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>This chat is auto closed because of inactivity.</value>
+        </constantValueTranslations>
+        <label>Inactive Conversation Message Component</label>
+        <name>Inactive_Conversation_Message_Component</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Hope you are doing good? How may I help you?</value>
+        </constantValueTranslations>
+        <label>Start Conversation Message Component</label>
+        <name>Start_Conversation_Message_Component</name>
+    </conversationMessageDefinitions>
+    <conversationMessageDefinitions>
+        <constantValueTranslations>
+            <name>Constants.Options.ListItem.1.Title</name>
+            <value>Sim</value>
+        </constantValueTranslations>
+        <constantValueTranslations>
+            <name>Constants.Options.ListItem.2.Title</name>
+            <value>Não</value>
+        </constantValueTranslations>
+        <constantValueTranslations>
+            <name>Constants.Title</name>
+            <value>Olá! Tudo bem?
+Passando por aqui para confirmar se você gostaria de receber uma mensagem com a pesquisa de satisfação do Banco Volvo. Ela é bem rápida e ajuda bastante na melhoria do nosso atendimento. 😊
+Posso te enviar?</value>
+        </constantValueTranslations>
+        <label>BR Satisfaction Survey Question</label>
+        <name>VFSBR_Satisfaction_Survey_Question</name>
+    </conversationMessageDefinitions>
+    <customApplications>
+        <label><!-- VFS Credit Line --></label>
+        <name>CLA_VFS_Credit_Line</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Customer Management --></label>
+        <name>Customer_Management</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Initiations Process --></label>
+        <name>Initiations_Process</name>
+    </customApplications>
     <customApplications>
         <label>origine du lead</label>
         <name>Lead_Generation</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Lead Management --></label>
+        <name>Lead_Management</name>
     </customApplications>
     <customApplications>
         <label>Gestion de la relation</label>
@@ -17,36 +115,16 @@
         <name>Sales_Operations</name>
     </customApplications>
     <customLabels>
-        <label>modifier le contrat</label>
-        <name>Amend_Contract</name>
+        <label><!-- Account Name Label Used in Screen Flow --></label>
+        <name>Account_Name</name>
     </customLabels>
     <customLabels>
-        <label>Amortissement</label>
-        <name>Amotization</name>
+        <label><!-- Account Phone Label Used in Screen Flow --></label>
+        <name>Account_Phone</name>
     </customLabels>
     <customLabels>
-        <label>Montant</label>
-        <name>Amount</name>
-    </customLabels>
-    <customLabels>
-        <label>Montant dû</label>
-        <name>Amount_Due</name>
-    </customLabels>
-    <customLabels>
-        <label>Montant à payer</label>
-        <name>Amount_To_Pay</name>
-    </customLabels>
-    <customLabels>
-        <label>actifs</label>
-        <name>Assets</name>
-    </customLabels>
-    <customLabels>
-        <label>retour ? arrière ?</label>
-        <name>Back</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Balance --></label>
-        <name>Balance</name>
+        <label><!-- Account Website Label Used in Screen Flow --></label>
+        <name>Account_Website</name>
     </customLabels>
     <customLabels>
         <label><!-- Branding Renault --></label>
@@ -57,212 +135,548 @@
         <name>Branding_Volvo</name>
     </customLabels>
     <customLabels>
-        <label>annuler</label>
-        <name>Cancel</name>
+        <label><!-- Case Account Mandate Value --></label>
+        <name>Case_Account_Mandate_Value</name>
     </customLabels>
     <customLabels>
-        <label><!-- Case Auto Response Email Template --></label>
-        <name>Case_Auto_Response_Email_Template</name>
+        <label><!-- EM_Chat_Carousels_CarouselDescriptionAssistiveText_04IKA000000000L_2898203 --></label>
+        <name>EM_Chat_Carousels_CarouselDescriptionAssistiveText_04IKA000000000L_2898203</name>
     </customLabels>
     <customLabels>
-        <label><!-- Case Description --></label>
-        <name>Case_Description</name>
+        <label><!-- EM_Chat_Carousels_NextCardButtonAssistiveText_04IKA000000000L_3770507 --></label>
+        <name>EM_Chat_Carousels_NextCardButtonAssistiveText_04IKA000000000L_3770507</name>
     </customLabels>
     <customLabels>
-        <label><!-- Case Subject --></label>
-        <name>Case_Subject</name>
+        <label><!-- EM_Chat_Carousels_PreviousCardButtonAssistiveText_04IKA000000000L_5949597 --></label>
+        <name>EM_Chat_Carousels_PreviousCardButtonAssistiveText_04IKA000000000L_5949597</name>
     </customLabels>
     <customLabels>
-        <label>cliquer ici</label>
-        <name>Click_Here</name>
+        <label><!-- EM_Chat_ChatBody_AgentTypingIndicatorAssistiveText_04IKA000000000L_8004184 --></label>
+        <name>EM_Chat_ChatBody_AgentTypingIndicatorAssistiveText_04IKA000000000L_8004184</name>
     </customLabels>
     <customLabels>
-        <label>Fermer</label>
-        <name>Close</name>
+        <label><!-- EM_Chat_ChatBody_ChatbotTypingIndicatorAssistiveText_04IKA000000000L_7867429 --></label>
+        <name>EM_Chat_ChatBody_ChatbotTypingIndicatorAssistiveText_04IKA000000000L_7867429</name>
     </customLabels>
     <customLabels>
-        <label>nom de l&apos;entreprise</label>
-        <name>Company_Name</name>
+        <label><!-- EM_Chat_ChatBody_Delivered_04IKA000000000L_7779375 --></label>
+        <name>EM_Chat_ChatBody_Delivered_04IKA000000000L_7779375</name>
     </customLabels>
     <customLabels>
-        <label>enregistrement de la société</label>
-        <name>Company_Registration</name>
+        <label><!-- EM_Chat_ChatBody_EstimatedWaitTimeInMinute_04IKA000000000L_8018446 --></label>
+        <name>EM_Chat_ChatBody_EstimatedWaitTimeInMinute_04IKA000000000L_8018446</name>
     </customLabels>
     <customLabels>
-        <label>Adresse du contact</label>
-        <name>Contact_Address</name>
+        <label><!-- EM_Chat_ChatBody_EstimatedWaitTimeInMinutes_04IKA000000000L_1442840 --></label>
+        <name>EM_Chat_ChatBody_EstimatedWaitTimeInMinutes_04IKA000000000L_1442840</name>
     </customLabels>
     <customLabels>
-        <label>avenant au contrat</label>
-        <name>Contract_Amendment</name>
+        <label><!-- EM_Chat_ChatBody_FetchMoreEntriesSpinnerAssistiveText_04IKA000000000L_1205147 --></label>
+        <name>EM_Chat_ChatBody_FetchMoreEntriesSpinnerAssistiveText_04IKA000000000L_1205147</name>
     </customLabels>
     <customLabels>
-        <label>Détail du contrat</label>
-        <name>Contract_Detail</name>
+        <label><!-- EM_Chat_ChatBody_MessageResendButtonText_04IKA000000000L_2986909 --></label>
+        <name>EM_Chat_ChatBody_MessageResendButtonText_04IKA000000000L_2986909</name>
     </customLabels>
     <customLabels>
-        <label>Extension du contrat</label>
-        <name>Contract_Extension</name>
+        <label><!-- EM_Chat_ChatBody_NotRoutedToAgentRoutingResult_04IKA000000000L_6403761 --></label>
+        <name>EM_Chat_ChatBody_NotRoutedToAgentRoutingResult_04IKA000000000L_6403761</name>
     </customLabels>
     <customLabels>
-        <label>Identifiant du contrat</label>
-        <name>Contract_Id</name>
+        <label><!-- EM_Chat_ChatBody_NotSent_04IKA000000000L_9738586 --></label>
+        <name>EM_Chat_ChatBody_NotSent_04IKA000000000L_9738586</name>
     </customLabels>
     <customLabels>
-        <label>Liste des contrats</label>
-        <name>Contract_List</name>
+        <label><!-- EM_Chat_ChatBody_Read_04IKA000000000L_5315848 --></label>
+        <name>EM_Chat_ChatBody_Read_04IKA000000000L_5315848</name>
     </customLabels>
     <customLabels>
-        <label>numéro de contrat</label>
-        <name>Contract_Number</name>
+        <label><!-- EM_Chat_ChatBody_Sent_04IKA000000000L_7564277 --></label>
+        <name>EM_Chat_ChatBody_Sent_04IKA000000000L_7564277</name>
     </customLabels>
     <customLabels>
-        <label>plan de paiment du contrat</label>
-        <name>Contract_Payment_Plan</name>
+        <label><!-- EM_Chat_ChatBody_SpinnerDefaultAssistiveText_04IKA000000000L_2689755 --></label>
+        <name>EM_Chat_ChatBody_SpinnerDefaultAssistiveText_04IKA000000000L_2689755</name>
     </customLabels>
     <customLabels>
-        <label>résumés du contrat</label>
-        <name>Contract_Summaries</name>
+        <label><!-- EM_Chat_ChatBody_UnsupportedMessageTypeText_04IKA000000000L_5006383 --></label>
+        <name>EM_Chat_ChatBody_UnsupportedMessageTypeText_04IKA000000000L_5006383</name>
     </customLabels>
     <customLabels>
-        <label>contrats</label>
-        <name>Contracts</name>
+        <label><!-- EM_Chat_ChatBody_Yesterday_04IKA000000000L_4866586 --></label>
+        <name>EM_Chat_ChatBody_Yesterday_04IKA000000000L_4866586</name>
     </customLabels>
     <customLabels>
-        <label><!-- Create Case Success Message --></label>
-        <name>Create_Case_Success_Message</name>
+        <label><!-- EM_Chat_ChoicesMessage_ButtonsAssistiveText_04IKA000000000L_1399379 --></label>
+        <name>EM_Chat_ChoicesMessage_ButtonsAssistiveText_04IKA000000000L_1399379</name>
     </customLabels>
     <customLabels>
-        <label>connexion à mon portal</label>
-        <name>Customer_Portal_Login</name>
+        <label><!-- EM_Chat_ChoicesMessage_MenuAssistiveText_04IKA000000000L_6439270 --></label>
+        <name>EM_Chat_ChoicesMessage_MenuAssistiveText_04IKA000000000L_6439270</name>
     </customLabels>
     <customLabels>
-        <label>Identifiant du vendeur/concession</label>
-        <name>Dealer_Id</name>
+        <label><!-- EM_Chat_ChoicesSelectionResponse_PlaceholderText_04IKA000000000L_6617248 --></label>
+        <name>EM_Chat_ChoicesSelectionResponse_PlaceholderText_04IKA000000000L_6617248</name>
     </customLabels>
     <customLabels>
-        <label><!-- Documents --></label>
-        <name>Documents</name>
+        <label><!-- EM_Chat_FileTransfer_DownloadFileButtonAssistiveText_04IKA000000000L_1415586 --></label>
+        <name>EM_Chat_FileTransfer_DownloadFileButtonAssistiveText_04IKA000000000L_1415586</name>
     </customLabels>
     <customLabels>
-        <label>Télécharger les contrats</label>
-        <name>Download_Contracts</name>
+        <label><!-- EM_Chat_FileTransfer_DownloadFileButtonTitle_04IKA000000000L_7356425 --></label>
+        <name>EM_Chat_FileTransfer_DownloadFileButtonTitle_04IKA000000000L_7356425</name>
     </customLabels>
     <customLabels>
-        <label>date d&apos;échéance</label>
-        <name>Due_Date</name>
+        <label><!-- EM_Chat_FileTransfer_FileExceededSizeLimitErrorText_04IKA000000000L_8675073 --></label>
+        <name>EM_Chat_FileTransfer_FileExceededSizeLimitErrorText_04IKA000000000L_8675073</name>
     </customLabels>
     <customLabels>
-        <label>résiliation anticipée</label>
-        <name>Early_Termination</name>
+        <label><!-- EM_Chat_FileTransfer_FileSendingText_04IKA000000000L_8857328 --></label>
+        <name>EM_Chat_FileTransfer_FileSendingText_04IKA000000000L_8857328</name>
     </customLabels>
     <customLabels>
-        <label>email</label>
-        <name>Email</name>
+        <label><!-- EM_Chat_FileTransfer_MaximumNumberOfFilesAllowedErrorTex_04IKA000000000L_1758632 --></label>
+        <name>EM_Chat_FileTransfer_MaximumNumberOfFilesAllowedErrorTex_04IKA000000000L_1758632</name>
     </customLabels>
     <customLabels>
-        <label>date de fin</label>
-        <name>End_Date</name>
+        <label><!-- EM_Chat_FileTransfer_SelectFileAttachmentButtonAssistive_04IKA000000000L_7505426 --></label>
+        <name>EM_Chat_FileTransfer_SelectFileAttachmentButtonAssistive_04IKA000000000L_7505426</name>
     </customLabels>
     <customLabels>
-        <label>fin du mandat</label>
-        <name>End_of_Term</name>
+        <label><!-- EM_Chat_FileTransfer_SelectFileAttachmentButtonTitle_04IKA000000000L_4556522 --></label>
+        <name>EM_Chat_FileTransfer_SelectFileAttachmentButtonTitle_04IKA000000000L_4556522</name>
     </customLabels>
     <customLabels>
-        <label>coût de l&apos;équipement</label>
-        <name>Equipment_Cost</name>
+        <label><!-- EM_Chat_FileTransfer_UnsupportedFileTypeErrorText_04IKA000000000L_7534501 --></label>
+        <name>EM_Chat_FileTransfer_UnsupportedFileTypeErrorText_04IKA000000000L_7534501</name>
     </customLabels>
     <customLabels>
-        <label>veuillez remplir les champs obligatoirs</label>
-        <name>ErrorLiveChat</name>
+        <label><!-- EM_Chat_SecureForms_BackButtonDisabledAssistiveText_04IKA000000000L_2720426 --></label>
+        <name>EM_Chat_SecureForms_BackButtonDisabledAssistiveText_04IKA000000000L_2720426</name>
     </customLabels>
     <customLabels>
-        <label>FAQ</label>
-        <name>FAQs</name>
+        <label><!-- EM_Chat_SecureForms_BackButtonLabel_04IKA000000000L_8242145 --></label>
+        <name>EM_Chat_SecureForms_BackButtonLabel_04IKA000000000L_8242145</name>
     </customLabels>
     <customLabels>
-        <label>type de fichier</label>
-        <name>File_Type</name>
+        <label><!-- EM_Chat_SecureForms_CloseConfirmationCancelButtonLabel_04IKA000000000L_5587377 --></label>
+        <name>EM_Chat_SecureForms_CloseConfirmationCancelButtonLabel_04IKA000000000L_5587377</name>
     </customLabels>
     <customLabels>
-        <label>mot de passe oublié ?</label>
-        <name>Forgot_your_password</name>
+        <label><!-- EM_Chat_SecureForms_CloseConfirmationConfirmButtonLabel_04IKA000000000L_4788292 --></label>
+        <name>EM_Chat_SecureForms_CloseConfirmationConfirmButtonLabel_04IKA000000000L_4788292</name>
     </customLabels>
     <customLabels>
-        <label>de ? à partir de ?</label>
-        <name>From</name>
+        <label><!-- EM_Chat_SecureForms_CloseConfirmationDialogBodyText_04IKA000000000L_9925855 --></label>
+        <name>EM_Chat_SecureForms_CloseConfirmationDialogBodyText_04IKA000000000L_9925855</name>
     </customLabels>
     <customLabels>
-        <label>clause de non-responsabilité du RGPD</label>
-        <name>GDPR_Disclaimer</name>
+        <label><!-- EM_Chat_SecureForms_CloseConfirmationDialogTitleText_04IKA000000000L_1063706 --></label>
+        <name>EM_Chat_SecureForms_CloseConfirmationDialogTitleText_04IKA000000000L_1063706</name>
     </customLabels>
     <customLabels>
-        <label>maison</label>
-        <name>Home</name>
+        <label><!-- EM_Chat_SecureForms_DatePickerInputSelectInstruction_04IKA000000000L_9588652 --></label>
+        <name>EM_Chat_SecureForms_DatePickerInputSelectInstruction_04IKA000000000L_9588652</name>
     </customLabels>
     <customLabels>
-        <label>veuillez appeler ou envoyer un email</label>
-        <name>In_the_Italy_please_call_or_email</name>
+        <label><!-- EM_Chat_SecureForms_FormButtonErrorResponseStateTitle_04IKA000000000L_5775317 --></label>
+        <name>EM_Chat_SecureForms_FormButtonErrorResponseStateTitle_04IKA000000000L_5775317</name>
     </customLabels>
     <customLabels>
-        <label>Intérêt</label>
-        <name>Interest</name>
+        <label><!-- EM_Chat_SecureForms_FormButtonInactiveStateAssistiveText_04IKA000000000L_9042563 --></label>
+        <name>EM_Chat_SecureForms_FormButtonInactiveStateAssistiveText_04IKA000000000L_9042563</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_FormButtonInitialStateAssistiveText_04IKA000000000L_4335649 --></label>
+        <name>EM_Chat_SecureForms_FormButtonInitialStateAssistiveText_04IKA000000000L_4335649</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_FormButtonPendingStateTitle_04IKA000000000L_2694542 --></label>
+        <name>EM_Chat_SecureForms_FormButtonPendingStateTitle_04IKA000000000L_2694542</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_FormButtonSuccessResponseStateTitle_04IKA000000000L_4784513 --></label>
+        <name>EM_Chat_SecureForms_FormButtonSuccessResponseStateTitle_04IKA000000000L_4784513</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_NextButtonDisabledAssistiveText_04IKA000000000L_5212075 --></label>
+        <name>EM_Chat_SecureForms_NextButtonDisabledAssistiveText_04IKA000000000L_5212075</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_NextButtonLabel_04IKA000000000L_6073984 --></label>
+        <name>EM_Chat_SecureForms_NextButtonLabel_04IKA000000000L_6073984</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_OptionSelectInputMultipleSelectInstr_04IKA000000000L_8822246 --></label>
+        <name>EM_Chat_SecureForms_OptionSelectInputMultipleSelectInstr_04IKA000000000L_8822246</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_OptionSelectInputSingleSelectInstruc_04IKA000000000L_7539508 --></label>
+        <name>EM_Chat_SecureForms_OptionSelectInputSingleSelectInstruc_04IKA000000000L_7539508</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_ProgressBarAssistiveText_04IKA000000000L_4327632 --></label>
+        <name>EM_Chat_SecureForms_ProgressBarAssistiveText_04IKA000000000L_4327632</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_RegexPatternMismatch_04IKA000000000L_9443111 --></label>
+        <name>EM_Chat_SecureForms_RegexPatternMismatch_04IKA000000000L_9443111</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_RequiredInputMissing_04IKA000000000L_9574569 --></label>
+        <name>EM_Chat_SecureForms_RequiredInputMissing_04IKA000000000L_9574569</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_RequiredSelectInputMissing_04IKA000000000L_2901438 --></label>
+        <name>EM_Chat_SecureForms_RequiredSelectInputMissing_04IKA000000000L_2901438</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_SubmitButtonDisabledAssistiveText_04IKA000000000L_2650345 --></label>
+        <name>EM_Chat_SecureForms_SubmitButtonDisabledAssistiveText_04IKA000000000L_2650345</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_SubmitButtonLabel_04IKA000000000L_4029821 --></label>
+        <name>EM_Chat_SecureForms_SubmitButtonLabel_04IKA000000000L_4029821</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Chat_SecureForms_TextInputSelectInstruction_04IKA000000000L_3694809 --></label>
+        <name>EM_Chat_SecureForms_TextInputSelectInstruction_04IKA000000000L_3694809</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_AgentJoinAnnouncement_04IKA000000000L_2326854 --></label>
+        <name>EM_Container_Base_AgentJoinAnnouncement_04IKA000000000L_2326854</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_AgentLeaveAnnouncement_04IKA000000000L_9173413 --></label>
+        <name>EM_Container_Base_AgentLeaveAnnouncement_04IKA000000000L_9173413</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_BeforeUnloadWarningMessage_04IKA000000000L_2530116 --></label>
+        <name>EM_Container_Base_BeforeUnloadWarningMessage_04IKA000000000L_2530116</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ChatMessageMetadataAssistiveText_04IKA000000000L_7419121 --></label>
+        <name>EM_Container_Base_ChatMessageMetadataAssistiveText_04IKA000000000L_7419121</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ChatWindowAssistiveText_04IKA000000000L_3235223 --></label>
+        <name>EM_Container_Base_ChatWindowAssistiveText_04IKA000000000L_3235223</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_CloseButtonAssistiveText_04IKA000000000L_5260468 --></label>
+        <name>EM_Container_Base_CloseButtonAssistiveText_04IKA000000000L_5260468</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_CloseConversation_04IKA000000000L_3757492 --></label>
+        <name>EM_Container_Base_CloseConversation_04IKA000000000L_3757492</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_CloseMenuButtonAssistiveText_04IKA000000000L_3130636 --></label>
+        <name>EM_Container_Base_CloseMenuButtonAssistiveText_04IKA000000000L_3130636</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_CloseNotification_04IKA000000000L_5254593 --></label>
+        <name>EM_Container_Base_CloseNotification_04IKA000000000L_5254593</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_Close_04IKA000000000L_7653375 --></label>
+        <name>EM_Container_Base_Close_04IKA000000000L_7653375</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ConversationEndedMinimizedText_04IKA000000000L_4977639 --></label>
+        <name>EM_Container_Base_ConversationEndedMinimizedText_04IKA000000000L_4977639</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_DefaultHeaderText_04IKA000000000L_3389785 --></label>
+        <name>EM_Container_Base_DefaultHeaderText_04IKA000000000L_3389785</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_DownloadErrorNotification_04IKA000000000L_5831227 --></label>
+        <name>EM_Container_Base_DownloadErrorNotification_04IKA000000000L_5831227</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_DownloadInProgressNotification_04IKA000000000L_4868086 --></label>
+        <name>EM_Container_Base_DownloadInProgressNotification_04IKA000000000L_4868086</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_DownloadSuccessNotification_04IKA000000000L_2026371 --></label>
+        <name>EM_Container_Base_DownloadSuccessNotification_04IKA000000000L_2026371</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_EndBookendText_04IKA000000000L_3856334 --></label>
+        <name>EM_Container_Base_EndBookendText_04IKA000000000L_3856334</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ExpiredJWT_04IKA000000000L_3730333 --></label>
+        <name>EM_Container_Base_ExpiredJWT_04IKA000000000L_3730333</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_FilePreviewIframeCloseButtonTitle_04IKA000000000L_1765494 --></label>
+        <name>EM_Container_Base_FilePreviewIframeCloseButtonTitle_04IKA000000000L_1765494</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_FilePreviewIframeTitle_04IKA000000000L_2732213 --></label>
+        <name>EM_Container_Base_FilePreviewIframeTitle_04IKA000000000L_2732213</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_HeaderAnnouncementTransferRequestFailu_04IKA000000000L_5041644 --></label>
+        <name>EM_Container_Base_HeaderAnnouncementTransferRequestFailu_04IKA000000000L_5041644</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_HeaderAnnouncementTransferRequestSucce_04IKA000000000L_3929155 --></label>
+        <name>EM_Container_Base_HeaderAnnouncementTransferRequestSucce_04IKA000000000L_3929155</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_HeaderGreetingAnnouncement_04IKA000000000L_8370619 --></label>
+        <name>EM_Container_Base_HeaderGreetingAnnouncement_04IKA000000000L_8370619</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterEmojiButtonAssistiveText_04IKA000000000L_5118988 --></label>
+        <name>EM_Container_Base_InputFooterEmojiButtonAssistiveText_04IKA000000000L_5118988</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterEmojiKeyboardAssistiveText_04IKA000000000L_9314693 --></label>
+        <name>EM_Container_Base_InputFooterEmojiKeyboardAssistiveText_04IKA000000000L_9314693</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterSendButtonAssistiveText_04IKA000000000L_9632593 --></label>
+        <name>EM_Container_Base_InputFooterSendButtonAssistiveText_04IKA000000000L_9632593</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterTextAreaAssistiveText_04IKA000000000L_6415340 --></label>
+        <name>EM_Container_Base_InputFooterTextAreaAssistiveText_04IKA000000000L_6415340</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterTextAreaPlaceHolderAwaiting_04IKA000000000L_7247531 --></label>
+        <name>EM_Container_Base_InputFooterTextAreaPlaceHolderAwaiting_04IKA000000000L_7247531</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterTextAreaPlaceHolder_04IKA000000000L_8503263 --></label>
+        <name>EM_Container_Base_InputFooterTextAreaPlaceHolder_04IKA000000000L_8503263</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InputFooterTextAreaPlaceholderOnlyPart_04IKA000000000L_2807447 --></label>
+        <name>EM_Container_Base_InputFooterTextAreaPlaceholderOnlyPart_04IKA000000000L_2807447</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_InvalidEmailFormFieldError_04IKA000000000L_5550192 --></label>
+        <name>EM_Container_Base_InvalidEmailFormFieldError_04IKA000000000L_5550192</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_JWTExpiredAnnouncement_04IKA000000000L_5318080 --></label>
+        <name>EM_Container_Base_JWTExpiredAnnouncement_04IKA000000000L_5318080</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_JWTRetrievalFailureText_04IKA000000000L_7585754 --></label>
+        <name>EM_Container_Base_JWTRetrievalFailureText_04IKA000000000L_7585754</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_JwtExpiredText_04IKA000000000L_8003695 --></label>
+        <name>EM_Container_Base_JwtExpiredText_04IKA000000000L_8003695</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MenuButtonAssistiveText_04IKA000000000L_8608542 --></label>
+        <name>EM_Container_Base_MenuButtonAssistiveText_04IKA000000000L_8608542</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MessagingIframeTitle_04IKA000000000L_4970020 --></label>
+        <name>EM_Container_Base_MessagingIframeTitle_04IKA000000000L_4970020</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MinimizeButtonAssistiveText_04IKA000000000L_8508486 --></label>
+        <name>EM_Container_Base_MinimizeButtonAssistiveText_04IKA000000000L_8508486</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_Minimize_04IKA000000000L_2611776 --></label>
+        <name>EM_Container_Base_Minimize_04IKA000000000L_2611776</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MinimizedButtonAssistiveText_04IKA000000000L_6959224 --></label>
+        <name>EM_Container_Base_MinimizedButtonAssistiveText_04IKA000000000L_6959224</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MinimizedNotifDismissButtonAssistiveTe_04IKA000000000L_7297191 --></label>
+        <name>EM_Container_Base_MinimizedNotifDismissButtonAssistiveTe_04IKA000000000L_7297191</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MinimizedNotificationAssistiveText_04IKA000000000L_5747073 --></label>
+        <name>EM_Container_Base_MinimizedNotificationAssistiveText_04IKA000000000L_5747073</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MinimizedReconnectInProgress_04IKA000000000L_1003268 --></label>
+        <name>EM_Container_Base_MinimizedReconnectInProgress_04IKA000000000L_1003268</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MinimizedStateAssistiveText_04IKA000000000L_2199051 --></label>
+        <name>EM_Container_Base_MinimizedStateAssistiveText_04IKA000000000L_2199051</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_MultipleNewMessagesText_04IKA000000000L_7800774 --></label>
+        <name>EM_Container_Base_MultipleNewMessagesText_04IKA000000000L_7800774</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_NewMessageText_04IKA000000000L_2086787 --></label>
+        <name>EM_Container_Base_NewMessageText_04IKA000000000L_2086787</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_NinePlusUnseenMessagesAssistiveText_04IKA000000000L_3069243 --></label>
+        <name>EM_Container_Base_NinePlusUnseenMessagesAssistiveText_04IKA000000000L_3069243</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_NotificationDismissButtonText_04IKA000000000L_7698075 --></label>
+        <name>EM_Container_Base_NotificationDismissButtonText_04IKA000000000L_7698075</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ParticipantJoinText_04IKA000000000L_9959207 --></label>
+        <name>EM_Container_Base_ParticipantJoinText_04IKA000000000L_9959207</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ParticipantJoinedText_04IKA000000000L_7016985 --></label>
+        <name>EM_Container_Base_ParticipantJoinedText_04IKA000000000L_7016985</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ParticipantLeaveText_04IKA000000000L_6357849 --></label>
+        <name>EM_Container_Base_ParticipantLeaveText_04IKA000000000L_6357849</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ParticipantLeftText_04IKA000000000L_6930057 --></label>
+        <name>EM_Container_Base_ParticipantLeftText_04IKA000000000L_6930057</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatConfirmationDialogBodyText_04IKA000000000L_4442596 --></label>
+        <name>EM_Container_Base_PostchatConfirmationDialogBodyText_04IKA000000000L_4442596</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatConfirmationDialogCancelButton_04IKA000000000L_9173705 --></label>
+        <name>EM_Container_Base_PostchatConfirmationDialogCancelButton_04IKA000000000L_9173705</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatConfirmationDialogConfirmButto_04IKA000000000L_9068391 --></label>
+        <name>EM_Container_Base_PostchatConfirmationDialogConfirmButto_04IKA000000000L_9068391</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatConfirmationDialogTitleText_04IKA000000000L_4145002 --></label>
+        <name>EM_Container_Base_PostchatConfirmationDialogTitleText_04IKA000000000L_4145002</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatFrameTitle_04IKA000000000L_6607888 --></label>
+        <name>EM_Container_Base_PostchatFrameTitle_04IKA000000000L_6607888</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatHeaderBackButtonAssistiveText_04IKA000000000L_1614453 --></label>
+        <name>EM_Container_Base_PostchatHeaderBackButtonAssistiveText_04IKA000000000L_1614453</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatHeaderBackButtonTitle_04IKA000000000L_7571397 --></label>
+        <name>EM_Container_Base_PostchatHeaderBackButtonTitle_04IKA000000000L_7571397</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PostchatHeaderText_04IKA000000000L_9712163 --></label>
+        <name>EM_Container_Base_PostchatHeaderText_04IKA000000000L_9712163</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatChoiceListValueNone_04IKA000000000L_4868287 --></label>
+        <name>EM_Container_Base_PrechatChoiceListValueNone_04IKA000000000L_4868287</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatEmail_3ffKA0000000004_3412018 --></label>
+        <name>EM_Container_Base_PrechatEmail_3ffKA0000000004_3412018</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatFirstName_3ffKA0000000002_1323805 --></label>
+        <name>EM_Container_Base_PrechatFirstName_3ffKA0000000002_1323805</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatLastName_3ffKA0000000003_6681449 --></label>
+        <name>EM_Container_Base_PrechatLastName_3ffKA0000000003_6681449</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatLoading_04IKA000000000L_2386235 --></label>
+        <name>EM_Container_Base_PrechatLoading_04IKA000000000L_2386235</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatStateSubmitButton_04IKA000000000L_2351566 --></label>
+        <name>EM_Container_Base_PrechatStateSubmitButton_04IKA000000000L_2351566</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_PrechatTermsAndConditionsAcknowledgeme_04IKA000000000L_5969102 --></label>
+        <name>EM_Container_Base_PrechatTermsAndConditionsAcknowledgeme_04IKA000000000L_5969102</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ReconnectInProgressAssistiveText_04IKA000000000L_9784889 --></label>
+        <name>EM_Container_Base_ReconnectInProgressAssistiveText_04IKA000000000L_9784889</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ReconnectInProgress_04IKA000000000L_9774193 --></label>
+        <name>EM_Container_Base_ReconnectInProgress_04IKA000000000L_9774193</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_RequestTranscriptMenuOption_04IKA000000000L_4129418 --></label>
+        <name>EM_Container_Base_RequestTranscriptMenuOption_04IKA000000000L_4129418</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_RequiredFormFieldError_04IKA000000000L_9379997 --></label>
+        <name>EM_Container_Base_RequiredFormFieldError_04IKA000000000L_9379997</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_StartBookendText_04IKA000000000L_7168001 --></label>
+        <name>EM_Container_Base_StartBookendText_04IKA000000000L_7168001</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_SystemMessageTransferRequestFailure_04IKA000000000L_6578934 --></label>
+        <name>EM_Container_Base_SystemMessageTransferRequestFailure_04IKA000000000L_6578934</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_SystemMessageTransferRequestSuccess_04IKA000000000L_2835495 --></label>
+        <name>EM_Container_Base_SystemMessageTransferRequestSuccess_04IKA000000000L_2835495</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_SystemMessageTransferRequestTryAgain_04IKA000000000L_8123535 --></label>
+        <name>EM_Container_Base_SystemMessageTransferRequestTryAgain_04IKA000000000L_8123535</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_TitleNotificationSenderDisplayName_04IKA000000000L_3266105 --></label>
+        <name>EM_Container_Base_TitleNotificationSenderDisplayName_04IKA000000000L_3266105</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_TransferFailedText_04IKA000000000L_3484949 --></label>
+        <name>EM_Container_Base_TransferFailedText_04IKA000000000L_3484949</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_TransferInitiatedText_04IKA000000000L_9361896 --></label>
+        <name>EM_Container_Base_TransferInitiatedText_04IKA000000000L_9361896</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_UnseenMessagesAssistiveText_04IKA000000000L_4660713 --></label>
+        <name>EM_Container_Base_UnseenMessagesAssistiveText_04IKA000000000L_4660713</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EM_Container_Base_ZeroUnseenMessagesAssistiveText_04IKA000000000L_3235349 --></label>
+        <name>EM_Container_Base_ZeroUnseenMessagesAssistiveText_04IKA000000000L_3235349</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enable Used in LWC --></label>
+        <name>EnableLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enabled Used in LWC --></label>
+        <name>EnabledLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Integration User DBB Username --></label>
+        <name>Integration_User_DBB_Username</name>
     </customLabels>
     <customLabels>
         <label>factures récupérées</label>
         <name>Invoice_API_Result</name>
     </customLabels>
     <customLabels>
-        <label>statut legal ?</label>
-        <name>Legal_Status</name>
+        <label><!-- Is Enabled For Messaging Used in LWC --></label>
+        <name>IsEnabledForMessagingLabel</name>
     </customLabels>
     <customLabels>
-        <label>clause de non-responsabilité locale</label>
-        <name>Local_Disclaimer</name>
-    </customLabels>
-    <customLabels>
-        <label>connexion</label>
-        <name>Login</name>
-    </customLabels>
-    <customLabels>
-        <label>mon compte</label>
-        <name>My_Account</name>
-    </customLabels>
-    <customLabels>
-        <label>nom</label>
-        <name>Name</name>
-    </customLabels>
-    <customLabels>
-        <label>contrat arrivant à échéance</label>
-        <name>Near_Term</name>
-    </customLabels>
-    <customLabels>
-        <label>investissement net</label>
-        <name>Net_Investment</name>
-    </customLabels>
-    <customLabels>
-        <label>aucun contrat approchant à la fin du terme</label>
-        <name>No_Contracts</name>
-    </customLabels>
-    <customLabels>
-        <label>aucune correspondance à afficher</label>
-        <name>No_Matching_Records_to_Display</name>
-    </customLabels>
-    <customLabels>
-        <label>pas d&apos;enregistrements</label>
-        <name>No_Records</name>
-    </customLabels>
-    <customLabels>
-        <label>&quot;Aucun gestionnaire de territoire lié à votre compte, veuillez contacter le support&quot;</label>
-        <name>No_Territory_Manager_Present</name>
-    </customLabels>
-    <customLabels>
-        <label>aucune campagne active trouvée</label>
-        <name>No_active_campaigns</name>
-    </customLabels>
-    <customLabels>
-        <label>pas un membre ?</label>
-        <name>Not_a_member</name>
+        <label><!-- Meta Data Label Used in Screen Flow --></label>
+        <name>Label</name>
     </customLabels>
     <customLabels>
         <label><!-- NotificationEmail.Body.Content1 --></label>
@@ -301,217 +715,941 @@
         <name>NotificationEmail_SubjectText</name>
     </customLabels>
     <customLabels>
-        <label>adresse</label>
-        <name>Office_Address</name>
+        <label><!-- Recipient_Name Label used in screen flow --></label>
+        <name>Recipient_Name</name>
     </customLabels>
     <customLabels>
-        <label>mot de passe</label>
-        <name>Password</name>
-    </customLabels>
-    <customLabels>
-        <label>historique de paiement</label>
-        <name>Payment_History</name>
-    </customLabels>
-    <customLabels>
-        <label>échéancier</label>
-        <name>Payment_Plan</name>
-    </customLabels>
-    <customLabels>
-        <label>téléphone</label>
-        <name>Phone</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Please Select Case Type --></label>
-        <name>Please_Select_Case_Type</name>
-    </customLabels>
-    <customLabels>
-        <label>Veuillez noter que le solde n&apos;est pas un montant de paiement valide</label>
-        <name>Please_note_Balance_is_not_a_valid_payoff_amount</name>
-    </customLabels>
-    <customLabels>
-        <label>vous trouverez ci-dessous vos informations de connexion</label>
-        <name>Portal_Welcome_Body2</name>
-    </customLabels>
-    <customLabels>
-        <label>&quot;Pour obtenir de l&apos;aide pour naviguer sur le portail ou pour toute autre demande, contactez-nous à :&quot;</label>
-        <name>Portal_Welcome_Body3</name>
-    </customLabels>
-    <customLabels>
-        <label>bonjour</label>
-        <name>Portal_Welcome_Hello</name>
-    </customLabels>
-    <customLabels>
-        <label>solde restant</label>
-        <name>Remaining_Balance</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Renault Financial Services --></label>
-        <name>Renault_Financial_Services</name>
+        <label><!-- Recipient_Phone --></label>
+        <name>Recipient_Phone</name>
     </customLabels>
     <customLabels>
         <label><!-- Renault Group Code --></label>
         <name>Renault_Group_Code</name>
     </customLabels>
     <customLabels>
-        <label>demander une prolongation de contrat</label>
-        <name>Request_Contract_Extension</name>
-    </customLabels>
-    <customLabels>
-        <label>demander une résiliation anticipée</label>
-        <name>Request_Early_Termination</name>
-    </customLabels>
-    <customLabels>
-        <label>résiduel(le)</label>
-        <name>Residual</name>
-    </customLabels>
-    <customLabels>
-        <label>sauvegarder</label>
-        <name>Save</name>
-    </customLabels>
-    <customLabels>
-        <label>plan de recherche</label>
-        <name>Search_Plan</name>
-    </customLabels>
-    <customLabels>
-        <label>rechercher par numéro de contrat</label>
-        <name>Search_by_Contract_Number</name>
-    </customLabels>
-    <customLabels>
-        <label>sélectionner le type de devis</label>
-        <name>Select_Quote_Type</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Service Desk --></label>
-        <name>Service_Desk</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Address --></label>
-        <name>Service_Desk_Address</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Service Desk EMail --></label>
-        <name>Service_Desk_EMail</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Service Desk Hours --></label>
-        <name>Service_Desk_Hours</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Service Desk Phone --></label>
-        <name>Service_Desk_Phone</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Short Summary --></label>
         <name>Short_Summary</name>
     </customLabels>
     <customLabels>
-        <label>trier par</label>
-        <name>Sort_by</name>
+        <label><!-- Meta Data Label Used in Screen Flow --></label>
+        <name>Template_Content</name>
     </customLabels>
     <customLabels>
-        <label>date de début</label>
-        <name>Start_Date</name>
+        <label><!-- Create Opportunity from Response record --></label>
+        <name>medallia_xm__CreateOppFromResponseButton</name>
     </customLabels>
     <customLabels>
-        <label><!-- Submit a Case to Customer Service --></label>
-        <name>Submit_a_Case_to_Customer_Service</name>
+        <label><!-- Opportunity button help text --></label>
+        <name>medallia_xm__CreateOppFromResponseButtonHelpText</name>
     </customLabels>
     <customLabels>
-        <label>support</label>
-        <name>Support</name>
+        <label><!-- DAE: Bad Query --></label>
+        <name>medallia_xm__DAE_BadQuery</name>
     </customLabels>
     <customLabels>
-        <label>terme</label>
-        <name>Term</name>
+        <label><!-- DAE: Bad Relationship Name --></label>
+        <name>medallia_xm__DAE_BadRelationshipName</name>
     </customLabels>
     <customLabels>
-        <label>date de résiliation</label>
-        <name>Termination_Date</name>
+        <label><!-- DAE: Duplicate Record For Upsert --></label>
+        <name>medallia_xm__DAE_DuplicateRecordForUpsert</name>
     </customLabels>
     <customLabels>
-        <label><!-- Territory Manager --></label>
-        <name>Territory_Manager</name>
+        <label><!-- DAE: Field Does Not Exist --></label>
+        <name>medallia_xm__DAE_FieldDoesNotExist</name>
     </customLabels>
     <customLabels>
-        <label>merci</label>
-        <name>Thank_You</name>
+        <label><!-- DAE: Field Not Accessible --></label>
+        <name>medallia_xm__DAE_FieldNotAccessible</name>
     </customLabels>
     <customLabels>
-        <label><!-- Time To Term --></label>
-        <name>Time_To_Term</name>
+        <label><!-- DAE: Invalid External Id --></label>
+        <name>medallia_xm__DAE_InvalidExternalId</name>
     </customLabels>
     <customLabels>
-        <label><!-- Time To Term Dashboard Tooltip --></label>
-        <name>Time_To_Term_Dashboard_Tooltip</name>
+        <label><!-- DAE: Object Not Accessible --></label>
+        <name>medallia_xm__DAE_ObjectNotAccessible</name>
     </customLabels>
     <customLabels>
-        <label><!-- To --></label>
-        <name>To</name>
+        <label><!-- No drivers available label --></label>
+        <name>medallia_xm__NoDriversAvailableLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- To contact Customer Service, please click --></label>
-        <name>To_contact_Customer_Service_please_click</name>
+        <label><!-- oAuth: Account Not Linked --></label>
+        <name>medallia_xm__oAuth_AccountNotLinked</name>
     </customLabels>
     <customLabels>
-        <label>Contrats totaux</label>
-        <name>Total_Contracts</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Type --></label>
-        <name>Type</name>
-    </customLabels>
-    <customLabels>
-        <label>nom d&apos;utilisateur</label>
-        <name>User_Name</name>
-    </customLabels>
-    <customLabels>
-        <label>nom d&apos;utilisateur</label>
-        <name>Username</name>
-    </customLabels>
-    <customLabels>
-        <label>numéro VIN</label>
-        <name>VIN_Number</name>
-    </customLabels>
-    <customLabels>
-        <label>afficher tous les contrats</label>
-        <name>View_All_Contracts</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Volvo Financial Services --></label>
-        <name>Volvo_Financial_Services</name>
-    </customLabels>
-    <customLabels>
-        <label>bienvenu(e)</label>
-        <name>Welcome</name>
-    </customLabels>
-    <customLabels>
-        <label>&quot;Bienvenu(e sur le portail client de Volvo Financial Services ! Pour commencer, veuillez cliquer sur le lien suivant&quot;</label>
-        <name>WelcomeTest</name>
-    </customLabels>
-    <customLabels>
-        <label>Mon RTFS</label>
-        <name>Welcome_to_RTFS_Portal</name>
-    </customLabels>
-    <customLabels>
-        <label>Mon VFS</label>
-        <name>Welcome_to_VFS_Portal</name>
-    </customLabels>
-    <customLabels>
-        <label>3 mois</label>
-        <name>X3_Months</name>
-    </customLabels>
-    <customLabels>
-        <label>6 mois</label>
-        <name>X6_Months</name>
-    </customLabels>
-    <customLabels>
-        <label>ici</label>
-        <name>here</name>
+        <label><!-- oAuth: No Mock Found --></label>
+        <name>medallia_xm__oAuth_NoMockFound</name>
     </customLabels>
     <customTabs>
         <label><!-- Bulk Lead Converter --></label>
         <name>Bulk_Lead_Converter</name>
     </customTabs>
+    <customTabs>
+        <label><!-- Medallia --></label>
+        <name>medallia_xm__Medallia</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Medallia Setup --></label>
+        <name>medallia_xm__Medallia_Setup</name>
+    </customTabs>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Display_Warning</name>
+                </fields>
+                <name>Display_text</name>
+            </screens>
+        </flows>
+        <fullName>Account_name_is_Mandate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Assign_Contact_Owner_to_Opportunity_Owner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Assign_Value_To_Field_Sepa_If_Blank_On_Bank_Account_Mandate_Create</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Auto_Closure_Case_On_Create</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Customer_Change_Customer_Search_Text</name>
+                </fields>
+                <name>Customer_Search</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Select_Customer</name>
+                </fields>
+                <name>Select_Searched_Customer</name>
+            </screens>
+        </flows>
+        <fullName>Bulk_Update_Opportunity_Customer</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Customer_Information_not_valid_error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Assign_Primary_Customer_Fields_On_Credit_Line_Before_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>CLA_Create_Update_Credit_Line_Customer_On_Credit_Line_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>CLA_Field_Initialise_On_Credit_Line_Field_Change_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Status_Expired_Error</developerName>
+            </customErrorMessages>
+            <customErrorMessages>
+                <developerName>Primary_Customer_required_field_missing_error</developerName>
+            </customErrorMessages>
+            <customErrorMessages>
+                <developerName>Country_Blank_Error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Handle_Validation_On_Credit_Line_Before_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Prevent_Deletion_Error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Prevent_Delete_On_Credit_Line</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Prevent_Deletion_Error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Prevent_Delete_On_Credit_Line_Consumption</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Prevent_deletion_error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Prevent_Delete_On_Credit_Line_Control</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Prevent_Deletion_Error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Prevent_Delete_On_Credit_Line_Customer</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Customer_Information_not_valid_error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>CLA_Reset_Fields_On_Credit_Line_Customer_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Capture_Case_First_Owner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Adjusted_Time</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Auto_Closure</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Country_Assignment_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Last_changed_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Close_Case_For</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Create_A_New_Case_From_14_Days_Old_Closed_Case</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>el_0</name>
+                </fields>
+                <fields>
+                    <name>el_1</name>
+                </fields>
+                <fields>
+                    <name>el_2</name>
+                </fields>
+                <name>Create_Account</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>el_3</name>
+                </fields>
+                <fields>
+                    <name>el_4</name>
+                </fields>
+                <fields>
+                    <name>el_5</name>
+                </fields>
+                <name>Create_Contact</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>recordId</name>
+                        <value/>
+                    </inputParameters>
+                    <name>OpenAccount</name>
+                </fields>
+                <name>Creation_Completed</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>CustomErrorMessage</name>
+                </fields>
+                <name>Error_Handler</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>UnhandledErrorMessage</name>
+                </fields>
+                <name>Unhandled_Error</name>
+            </screens>
+        </flows>
+        <fullName>Create_Account_and_Contact_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>FactoryOrderCheck</name>
+                </fields>
+                <name>Add_Factory_Order</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>unsuccessfuletectmsg</name>
+                </fields>
+                <name>DraftQuoteCreate_Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>QuoteCreateSuccess</name>
+                </fields>
+                <name>DraftQuoteCreate_Succes</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ErrorText</name>
+                </fields>
+                <name>Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>MissingDealerText</name>
+                </fields>
+                <name>MissingDealer_c</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>HasQuote</name>
+                </fields>
+                <name>Quote_Exists</name>
+            </screens>
+        </flows>
+        <fullName>Create_Quote_Flow_With_Display_Errors</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Create_Task_when_Case_is_created_via_Dataloader</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>columns</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>minRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectionMode</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Asset_table</name>
+                </fields>
+                <fields>
+                    <name>Error_notes</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>dependencyWrapperApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middleLabel</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middlePicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middleRequired</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topLabel</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topPicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topRequired</name>
+                        <value/>
+                    </inputParameters>
+                    <name>errors</name>
+                </fields>
+                <name>Create_asset_error</name>
+            </screens>
+        </flows>
+        <fullName>Create_initiation_asset_error</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Number_of_initiation_assets</name>
+                </fields>
+                <name>Create_initiation_assets</name>
+            </screens>
+        </flows>
+        <fullName>Create_initiation_assets</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Create_short_VIN</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Do_Nothing</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Email_Message_Handler</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>FR_Entitlement_error</developerName>
+            </customErrorMessages>
+            <customErrorMessages>
+                <developerName>UK_IE_Entitlement_error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>Entitlement_Assignment_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>FO_Changes_notification_to_the_opportunity_owner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>FO_to_Opportunity_Name_update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Factory_Order_Dealer_Change</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Factory_Order_to_Opportunity</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_app_Add_Stamped_Customer_name_to_Initiation</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_app_Add_Stamped_agreement_number</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_app_Initiation_Closed_date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_app_Is_Delivered_time_date_stamp</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_app_assign_asset_id</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_app_update_currency_based_on_country</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiation_record_update_status_when_all_delivered</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiations_App_With_activations_Time_date_stamp</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiations_Deposit_Allocated</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Initiations_app_linking_the_contract</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>InvoiceResultText</name>
+                </fields>
+                <name>Invoice_Call_Result</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ErrorText</name>
+                </fields>
+                <name>Partial_Success</name>
+            </screens>
+        </flows>
+        <fullName>Invoke_Invoice_API</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Last_Email_Message_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Currency_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Code</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>EnterOTPValue</name>
+                </fields>
+                <name>Email_Sent</name>
+            </screens>
+        </flows>
+        <fullName>Login_OTP</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_Create_Follow_Up_Cases</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_On_Closed_Loop_Case_Creation</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_On_Closed_Loop_Case_Owner_Change</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_On_Closed_Loop_Case_Status_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_On_Closed_Loop_Problem_Area_and_Action_Taken_Field_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <textTemplates>
+                <name>ClosedLoopEscalatedOverdueNotificationBody</name>
+            </textTemplates>
+            <textTemplates>
+                <name>ClosedLoopNewAlertNotificationBody</name>
+            </textTemplates>
+            <textTemplates>
+                <name>ClosedLoopNotificationTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>ClosedLoopNotificationTitle</name>
+            </textTemplates>
+        </flows>
+        <fullName>MEDALLIACLF_Send_Custom_Notification_To_Case_Owners</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_Sync_CLF_Case_Updates_To_Medallia</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MEDALLIACLF_Update_Alert_Status_From_Response</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Manual_Lead_To_Opportunity_Field_Mapping</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Manual_opportunity_factory_orders</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>OpportunityInlineAmountUpdate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_Currency_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Display_Errror</name>
+                </fields>
+                <name>Previous</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Errror_0</name>
+                </fields>
+                <name>Previous_0</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Errror_0_0</name>
+                </fields>
+                <name>Previous_0_0</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>dependencyWrapperApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middlePicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>middleValue</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topPicklistApiName</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>topValue</name>
+                        <value/>
+                    </inputParameters>
+                    <name>FinanceHouses</name>
+                </fields>
+                <fields>
+                    <name>Heading</name>
+                </fields>
+                <fields>
+                    <name>Interest_Rate</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Not_needed</name>
+                </fields>
+                <name>Reason</name>
+            </screens>
+        </flows>
+        <fullName>Opportunity_Lost_Reason_Interest_Rate</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_update_Currency</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Route_to_VFSBR_WhatsApp_Service_Bot</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Set_Company_Registration_Number_2_On_Bank_Account</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Set_Lead_Country</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Sync_Opportunity_Data_For_Quote</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Account_Owner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Bank_Rating</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Case_Origin_and_Brand_Fields_On_Case_Create</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Contact_unique_Id</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Customer_Registration_Number</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Has_Attachment_Field_On_EmailMessage_Create</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Has_Attachment_Field_on_Case_when_Email_Message_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Net_Sales_Price_Field_On_Opportunity</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Opp_Close_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Opp_Stage</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Opportunity_Currency</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Oppty_Fields_When_Factory_Order_Is_Cancelled</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Stage_to_Closed_Won</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_case_Type_for_UK_IE</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>VFSBR_MIAWService_Omni_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>VFSBR_WhatsApp_Service_Omni_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>VFSGLB_Create_Messaging_End_User_Records_on_Account_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>Country_Brazil</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>CountryPicklist</name>
+                </fields>
+                <name>County_Selection_Screen</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>No_Account_Selected</name>
+                </fields>
+                <name>No_Account_Selected_Error_Screen</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>No_Messaging_User_Error</name>
+                </fields>
+                <name>No_Messaging_Users_Exists</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>columns</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>maxRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>minRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectionMode</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>shouldDisplayLabel</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Recipient_List</name>
+                </fields>
+                <name>Recipient_List_Screen</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>columns</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>maxRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>minRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectionMode</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>shouldDisplayLabel</name>
+                        <value/>
+                    </inputParameters>
+                    <name>WhatsApp_Template_List</name>
+                </fields>
+                <name>Select_Template</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>accountMessagingUserDetail</name>
+                </fields>
+                <name>Selected_Account_Screen</name>
+            </screens>
+        </flows>
+        <fullName>VFSGLB_WhatsApp_Outbound_Message_on_Account_List_View_Screen_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>S_043f2c6f_3f66_4caa_a12e_fac8f7f30f4d</name>
+            </choices>
+            <choices>
+                <name>S_09cbe416_b76e_428a_9057_532591f37ad8</name>
+            </choices>
+            <choices>
+                <name>S_68f85722_14f8_4f3e_ab91_c3dc11afe9bb</name>
+            </choices>
+            <choices>
+                <name>S_96201536_1d5b_4d21_b34e_8a9d13fa5e1c</name>
+            </choices>
+            <choices>
+                <name>S_b76efa00_a4ad_43df_a60b_416e76cc18c7</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>q_baba329f_e416_44ac_a8e6_0b26da74b180</name>
+                </fields>
+                <fields>
+                    <name>q_eb13e35c_bb3d_42c9_9dc3_48aa8db358cd</name>
+                </fields>
+                <name>surveyQuestionPage</name>
+            </screens>
+            <textTemplates>
+                <name>thankYouDescriptionTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>thankYouLabelTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>customer_satisfaction</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>display_output_text</name>
+                </fields>
+                <name>Output_display</name>
+            </screens>
+        </flows>
+        <fullName>display_Text_toast_message_on_UI</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Flow_Send_Invitation_60_Days_After_Opportunity_is_Won</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Flow_Send_Invitation_When_Case_Closes</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Flow_Send_Invitation_When_Opportunity_Closes</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Flow_Send_Update_When_Case_Closes</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Non_respondents_lookup</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Open_Cases_on_Account</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Send_Invitation_When_Case_Closes</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Send_Invitation_When_Opportunity_Closes</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Send_Invitation_When_Opportunity_Closes_Won</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>medallia_xm__Send_Update_When_Case_Closes</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>q_514f3088_964a_43a0_b2cf_4f8c0947c24f</name>
+                </fields>
+                <fields>
+                    <name>q_a1655ac8_1829_4272_b4d5_c7b12ef5cd59</name>
+                </fields>
+                <name>surveyQuestionPage</name>
+            </screens>
+            <textTemplates>
+                <name>thankYouDescriptionTextTemplate</name>
+            </textTemplates>
+            <textTemplates>
+                <name>thankYouLabelTextTemplate</name>
+            </textTemplates>
+        </flows>
+        <fullName>net_promoter_score</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>setCaseType</fullName>
+    </flowDefinitions>
+    <identityVerificationCustomFieldLabels>
+        <name>SamplePostalCode</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>SamplePhoneNumber</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>SamplePhone</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>AccountNumberSample</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>SampleAccountName</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>SampleAccountNumber</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>SampleAccount</name>
+    </identityVerificationCustomFieldLabels>
     <quickActions>
         <aspect>Master</aspect>
         <label>suivre</label>
@@ -573,4 +1711,381 @@
         <label><!-- Snapins_Contact_PrechatQuickAction_08h2p000000Cayp --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h2p000000Cayp</name>
     </quickActions>
+    <reportTypes>
+        <description><!-- AccountsWithDuplicates --></description>
+        <label><!-- AccountsWithDuplicates --></label>
+        <name>AccountsWithDuplicates</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Duplicate Record Items --></label>
+            <name>Duplicate Record Items</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts and Bank Accounts --></description>
+        <label><!-- Accounts and Bank Accounts --></label>
+        <name>Accounts_and_Bank_Accounts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Bank Accounts --></label>
+            <name>Bank Accounts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Bank Account Mandates --></description>
+        <label><!-- Accounts with Bank Account Mandates --></label>
+        <name>Accounts_with_Bank_Account_Mandates</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Bank Account Mandates --></label>
+            <name>Bank Account Mandates</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Contacts --></description>
+        <label><!-- Accounts with Contacts --></label>
+        <name>Accounts_with_Contacts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>compte avec contrat et échéancier ?</description>
+        <label>compte avec contrat et échéancier ?</label>
+        <name>Accounts_with_Contracts_with_Payment_Plans</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contracts --></label>
+            <name>Contracts</name>
+        </sections>
+        <sections>
+            <label><!-- Payment Plans --></label>
+            <name>Payment Plans</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Entitlements with Contacts --></description>
+        <label><!-- Accounts with Entitlements with Contacts --></label>
+        <name>Accounts_with_Entitlements_with_Contacts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+        <sections>
+            <label><!-- Entitlements --></label>
+            <name>Entitlements</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Bot Metrics Daily Spring &apos;24 --></description>
+        <label><!-- Bot Metrics Daily Spring &apos;24 --></label>
+        <name>Bot_Metrics_Daily_v6</name>
+        <sections>
+            <label><!-- Conversation Definition Dialog Daily Metrics --></label>
+            <name>Conversation Definition Dialog Daily Metrics</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Bot Metrics Hourly Spring &apos;24 --></description>
+        <label><!-- Bot Metrics Hourly Spring &apos;24 --></label>
+        <name>Bot_Metrics_Hourly_v6</name>
+        <sections>
+            <label><!-- Conversation Definition Dialog Hourly Metrics --></label>
+            <name>Conversation Definition Dialog Hourly Metrics</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Session Metrics Spring &apos;24 --></description>
+        <label><!-- Session Metrics Spring &apos;24 --></label>
+        <name>Bot_Sessions_v6</name>
+        <sections>
+            <label><!-- Conversation Definition Session Metrics --></label>
+            <name>Conversation Definition Session Metrics</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Cases and Case Feed --></description>
+        <label><!-- Cases and Case Feed --></label>
+        <name>Cases_and_Case_Feed</name>
+        <sections>
+            <label><!-- Case Feed --></label>
+            <name>Case Feed</name>
+        </sections>
+        <sections>
+            <label><!-- Cases --></label>
+            <name>Cases</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Contacts Report --></description>
+        <label><!-- Contacts Report --></label>
+        <name>Contacts_Report</name>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>objet du contrat personnalisé</description>
+        <label>contrats (personnalisés)</label>
+        <name>Contracts_Custom</name>
+        <sections>
+            <label><!-- Contracts --></label>
+            <name>Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Initiations with Initiations Assets w/wo errors --></description>
+        <label><!-- Initiations with Initiations Assets w/wo errors --></label>
+        <name>Initiations_with_Initiations_Assets_w_wo_errors</name>
+        <sections>
+            <label><!-- Initiation --></label>
+            <name>Initiation</name>
+        </sections>
+        <sections>
+            <label><!-- Initiation Errors --></label>
+            <name>Initiation Errors</name>
+        </sections>
+        <sections>
+            <label><!-- Initiation assets --></label>
+            <name>Initiation assets</name>
+        </sections>
+        <sections>
+            <label><!-- Initiations --></label>
+            <name>Initiations</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Service Contracts with Contract Line Items --></description>
+        <label><!-- Service Contracts with Contract Line Items --></label>
+        <name>Service_Contracts_with_Contract_Line_Items</name>
+        <sections>
+            <label><!-- Contract Line Items --></label>
+            <name>Contract Line Items</name>
+        </sections>
+        <sections>
+            <label><!-- Service Contracts --></label>
+            <name>Service Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Service Contracts with Entitlements --></description>
+        <label><!-- Service Contracts with Entitlements --></label>
+        <name>Service_Contracts_with_Entitlements</name>
+        <sections>
+            <label><!-- Entitlements --></label>
+            <name>Entitlements</name>
+        </sections>
+        <sections>
+            <label><!-- Service Contracts --></label>
+            <name>Service Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- User Groups --></description>
+        <label><!-- User Groups --></label>
+        <name>User_Groups</name>
+        <sections>
+            <label><!-- Group Member --></label>
+            <name>Group Member</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- User Permission Set --></description>
+        <label><!-- User Permission Set --></label>
+        <name>User_Permission_Set</name>
+        <sections>
+            <label><!-- User Permission Sets --></label>
+            <name>User Permission Sets</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>Certains champs utilisateur ne sont pas disponibles dans la présentation de type de rapport standard</description>
+        <label>utilisateurs (personalisé ? clients ?)</label>
+        <name>Users_Custom</name>
+        <sections>
+            <columns>
+                <label><!-- Licenses Count --></label>
+                <name>Licenses Count</name>
+            </columns>
+            <columns>
+                <label><!-- User License --></label>
+                <name>User License</name>
+            </columns>
+            <columns>
+                <label><!-- User License Master Label --></label>
+                <name>User License Master Label</name>
+            </columns>
+            <columns>
+                <label><!-- User License Name --></label>
+                <name>User License Name</name>
+            </columns>
+            <label><!-- License --></label>
+            <name>License</name>
+        </sections>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Users with FedID --></description>
+        <label><!-- Users with FedID --></label>
+        <name>Users_with_FedID</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Messaging Sessions --></description>
+        <label><!-- Messaging Sessions --></label>
+        <name>VFSBR_Messaging_Sessions</name>
+        <sections>
+            <label><!-- Messaging Sessions --></label>
+            <name>Messaging Sessions</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Messaging Users with Messaging Sessions --></description>
+        <label><!-- Messaging Users with Messaging Sessions --></label>
+        <name>VFSBR_Messaging_Users_with_Messaging_Sessions</name>
+        <sections>
+            <label><!-- Messaging Sessions --></label>
+            <name>Messaging Sessions</name>
+        </sections>
+        <sections>
+            <label><!-- Messaging Users --></label>
+            <name>Messaging Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Run Logs Spring &apos;24 --></description>
+        <label><!-- Orchestration Run Logs Spring &apos;24 --></label>
+        <name>flow_orchestration_log_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Run Log --></label>
+            <name>Orchestration Run Log</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Runs --></label>
+            <name>Orchestration Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Stage Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Stage Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_stage_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Stage Runs --></label>
+            <name>Orchestration Stage Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Step Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Step Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_step_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Step Runs --></label>
+            <name>Orchestration Step Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Work Items Spring &apos;24 --></description>
+        <label><!-- Orchestration Work Items Spring &apos;24 --></label>
+        <name>flow_orchestration_work_item_ootb_crt_two_four_eight</name>
+        <sections>
+            <columns>
+                <label><!-- Orchestration Step Run: Label --></label>
+                <name>Orchestration Step Run: Label</name>
+            </columns>
+            <columns>
+                <label><!-- Orchestration Step Run: Name --></label>
+                <name>Orchestration Step Run: Name</name>
+            </columns>
+            <columns>
+                <label><!-- Orchestration Step Run: Status --></label>
+                <name>Orchestration Step Run: Status</name>
+            </columns>
+            <label><!-- Orchestration Step Runs --></label>
+            <name>Orchestration Step Runs</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Assigned Group or Queue --></label>
+                <name>Assigned Group or Queue</name>
+            </columns>
+            <columns>
+                <label><!-- Assigned User --></label>
+                <name>Assigned User</name>
+            </columns>
+            <label><!-- Orchestration Work Items --></label>
+            <name>Orchestration Work Items</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Login History for Experience Cloud Site Users --></description>
+        <label><!-- Login History for Experience Cloud Site Users --></label>
+        <name>prm_total_portal_login_crt</name>
+        <sections>
+            <label><!-- Login History --></label>
+            <name>Login History</name>
+        </sections>
+        <sections>
+            <label><!-- Network Members --></label>
+            <name>Network Members</name>
+        </sections>
+        <sections>
+            <label><!-- Networks --></label>
+            <name>Networks</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- User Details --></description>
+        <label><!-- User Details --></label>
+        <name>prm_unique_portal_crt</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description>trouver quels flux ont ete réalisés et combien de temps chaque utilisateur met à renseigner l&apos;écran ?</description>
+        <label>flux d&apos;écran</label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow Interview Log Entries --></label>
+            <name>Flow Interview Log Entries</name>
+        </sections>
+        <sections>
+            <label><!-- Flow Interview Logs --></label>
+            <name>Flow Interview Logs</name>
+        </sections>
+    </reportTypes>
 </Translations>

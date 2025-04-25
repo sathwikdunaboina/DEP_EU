@@ -30,6 +30,21 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Austria_Case_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule is used for Sharing case of Austria Market</description>
+        <label>Austria Case Sharing Rule</label>
+        <sharedTo>
+            <group>Austria_Case_Sharing</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Austria</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>BE_CustomerService_Access</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Grant Read/Write access to BE Cases. To customer service agents of BE Market.</description>
@@ -41,6 +56,21 @@
             <field>Country__c</field>
             <operation>equals</operation>
             <value>Belgium</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>BR_CustomerService_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grant Read/Write access to BR Cases. To customer service agents of BR Market.</description>
+        <label>BR CustomerService Access</label>
+        <sharedTo>
+            <group>Brazil_CustomerService</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Brazil</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -108,12 +138,12 @@
         <description>Grant Read/Write access to DE Cases. To customer service agents of DE Market.</description>
         <label>DE CustomerService Access</label>
         <sharedTo>
-            <group>Denmark_CustomerService</group>
+            <group>Germany_CustomerService</group>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
-            <value>Denmark</value>
+            <value>Germany</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -220,6 +250,35 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Netherlands_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This sharing setting is used for Netherlands case sharing</description>
+        <label>Netherlands Cases</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Netherlands</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Netherlands</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>South_Africa_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>South Africa Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>South_Africa</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Spain_Case</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Spain Case</label>
@@ -281,5 +340,20 @@
             <value>United Kingdom,Ireland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>ZA_CustomerService_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grant Read/Write access to ZA Cases. To customer service agents of ZA Market.</description>
+        <label>ZA CustomerService Access</label>
+        <sharedTo>
+            <group>South_Africa_CustomerService</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

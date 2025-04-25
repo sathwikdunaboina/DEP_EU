@@ -1,0 +1,37 @@
+<apex:page standardController="Contact" extensions="medallia_xm.MedAddToProgramDialogControllerListView,medallia_xm.LightningOutExtension" recordSetVar="contacts" label="Medallia Add To Program Dialog Detail" >
+  <apex:includeLightning />
+  <apex:includeScript value="/lightning/lightning.out.js" />
+  <div id="myDivId"></div>
+  <style>
+    body,
+    html {
+      padding: 0!important;
+    }
+
+  </style>
+  <script>   
+    var selectedIds = '{! JSENCODE(selectedIds) }';
+    var parsedIds = JSON.parse(selectedIds);
+
+    var classicContactUrl = '{!URLFOR($Action.Contact.List, $ObjectType.Contact)}';
+
+    // Determine Classic or Lightning Experience
+    var isLightning = typeof sforce !== 'undefined' && sforce.one && true;
+
+    $Lightning.use("{!ns}:MedAddToProgramDialogApp", function () {
+      //$Lightning.createComponent(String type, Object attributes, String locator, function callback) */
+      $Lightning.createComponent("{!ns}:MedAddToProgramDialog",
+        {
+          view: 'list',
+          selectedIds: parsedIds,
+          isLightning: isLightning,
+          classicOriginUrl: classicContactUrl,
+          origin: 'Contact',
+        },
+        "myDivId",
+        function (component) {
+          // supporting setup
+        });
+    });
+  </script>
+</apex:page>

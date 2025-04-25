@@ -32,14 +32,6 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
-            <inputField>Factory_Order__c</inputField>
-            <outputField>Factory_Order__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>Financing_Specification__c</inputField>
-            <outputField>Financing_Specification__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>General_Description__c</inputField>
             <outputField>General_Description__c</outputField>
         </mappingFields>
@@ -76,6 +68,30 @@
             <outputField>Lead_VIN_Number__c</outputField>
         </mappingFields>
         <mappingFields>
+            <inputField>Credit_Rate__c</inputField>
+            <outputField>Credit_Rate__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Dealer_Name__c</inputField>
+            <outputField>Dealer_Name__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Dealer_Sales_Person_contact_ref__c</inputField>
+            <outputField>Dealer_Sales_Person__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Detailed_Specification__c</inputField>
+            <outputField>Detailed_Specification__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Factory_Order__c</inputField>
+            <outputField>Factory_Order__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Financing_Specification__c</inputField>
+            <outputField>Financing_Specification__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>AdditionalServices__c</inputField>
             <outputField>Additional_Services__c</outputField>
         </mappingFields>
@@ -100,20 +116,8 @@
             <outputField>Contact_Role__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>Credit_Rate__c</inputField>
-            <outputField>Credit_Rate__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>Dealer_Name__c</inputField>
-            <outputField>Dealer_Name__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>Dealer_Sales_Person__c</inputField>
-            <outputField>Lead_Dealer_Sales_Person__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>Detailed_Specification__c</inputField>
-            <outputField>Detailed_Specification__c</outputField>
+            <inputField>Credit_Assessment_Date__c</inputField>
+            <outputField>Credit_Assessment_Date__c</outputField>
         </mappingFields>
         <outputObject>Opportunity</outputObject>
     </objectMapping>

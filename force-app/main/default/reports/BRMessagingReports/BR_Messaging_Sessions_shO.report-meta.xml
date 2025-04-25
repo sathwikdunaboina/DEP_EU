@@ -3,45 +3,8 @@
     <columns>
         <field>MessagingSession$Name</field>
     </columns>
-    <columns>
-        <field>MessagingSession$Owner</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$MessagingChannel</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$MessagingEndUser</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$First_Name__c</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$Last_Name__c</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$Email__c</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$CPF_CNPJ__c</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$Empresa__c</field>
-    </columns>
-    <columns>
-        <field>MessagingSession$CreatedDate</field>
-    </columns>
     <currency>EUR</currency>
     <description>This report contains open BR Messaging Sessions.</description>
-    <filter>
-        <criteriaItems>
-            <column>MessagingSession$Status</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,0,1,2,3,4,5,6,7</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>BR - Messaging Sessions</name>
     <params>
@@ -53,10 +16,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>MessagingSession$CreatedDate</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>MessagingSession$AcceptTime</dateColumn>
+        <dateColumn>MessagingSession$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

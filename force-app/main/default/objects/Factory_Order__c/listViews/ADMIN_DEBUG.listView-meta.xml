@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ADMIN_DEBUG</fullName>
+    <columns>Account__c</columns>
+    <columns>Dealer_Number__c</columns>
+    <columns>Dealer_Id__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Brand__c</columns>
+    <columns>Finance_Opportunity__c</columns>
+    <columns>End_Customer_Name__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country__c</field>
+        <operation>equals</operation>
+        <value>AT</value>
+    </filters>
+    <label>ADMIN DEBUG</label>
+    <sharedTo>
+        <group>The_Dream_Team</group>
+    </sharedTo>
+</ListView>

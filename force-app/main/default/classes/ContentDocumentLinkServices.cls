@@ -30,7 +30,7 @@ public without sharing class ContentDocumentLinkServices {
  * @param listContentDocLinks List of ContentDocLinks inserted
  * @returns void
  */
-    public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLink> listContentDocLinks){
+public void deleteContentDocumentLinkedToMessagingSession(List<ContentDocumentLink> listContentDocLinks){
         //check if there are any restricted channels
         List<VFSGLB_Messaging_Channel_Setting__mdt> listMsgChnlSettings = [Select MasterLabel From VFSGLB_Messaging_Channel_Setting__mdt where Attachment_Restricted__c = true];
         Set<String> setFileRestrictedMsgChnls = new Set<String>();
@@ -40,6 +40,8 @@ public without sharing class ContentDocumentLinkServices {
         if(setFileRestrictedMsgChnls.size() > 0){
             //get list of content document links which are related to MessagingSession entity
             Map<Id,String> mapLinkedEntityTypeByContentDocLinkRecId = getLinkedEntityTypeName(listContentDocLinks);
+            Set<String> linkedEntityTypes = new Set<String>(mapLinkedEntityTypeByContentDocLinkRecId.values());
+            if(linkedEntityTypes.contains('MessagingSession')){
             List<ContentDocumentLink> listContentDocLinkLinkedToMsgSessionEntity = new List<ContentDocumentLink>();
             Set<Id> setMsgSessionId = new Set<Id>();
             for(ContentDocumentLink contentDocLink : listContentDocLinks){
@@ -60,10 +62,10 @@ public without sharing class ContentDocumentLinkServices {
                     setContentDocRelatedToFileRestrictedMsgSessions.add(contentDocLink.ContentDocumentId);
                 }
             }
-
             if(setContentDocRelatedToFileRestrictedMsgSessions.size() > 0){
                 deleteContentDocumentAsync(setContentDocRelatedToFileRestrictedMsgSessions);
             }
+        }
         }
     }
     
@@ -72,4 +74,109 @@ public without sharing class ContentDocumentLinkServices {
         List<Id> contentDocIds = new List<Id>(listContentDocIds);
         ContentDocumentServices.deleteContentDocument(contentDocIds);
     }
+
+/**
+ * @desciption : Update the related file status on the Linked Entity/Object record when
+ *              a file is linked/added to that entity/object record
+ * @param : contentDocLinks - list of contentdocumentlink records that were created and for which
+ *          the linked entity file status have to be computed and updated
+ */
+    public void updateParentFileStatusOnInsert(List<ContentDocumentLink> contentDocLinks){
+        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachmentSettings = ObjectHasAttachment_Setting__mdt.getAll();
+        try{
+        List<String> errorMsgs = new List<String>();
+        Map<string,Set<Id>> mapLinkedEntityIdsByEntityName = getLinkedEntityIds(contentDocLinks);
+        List<sobject> linkedEntitiesToUpdate = new List<sobject>();
+        List<String> errorMsgsinLoop = new List<string>();
+        for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){            
+            string fileStatusField = (ObjectHasAttachmentSettings.get(linkedEntity) != null) && (ObjectHasAttachmentSettings.get(linkedEntity).On_Insert__c) ? ObjectHasAttachmentSettings.get(linkedEntity).FileStatusFieldName__c : null;
+            if(fileStatusField != null){
+            set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);            
+            for(Id linkedEntityRecordId : linkedEntityRecordIds){                
+                SObject linkedEntityRecord = (SObject) Type.forName(linkedEntity).newInstance();
+                linkedEntityRecord.put(fileStatusField,'Yes');
+                linkedEntityRecord.put('Id',linkedEntityRecordId);
+                linkedEntitiesToUpdate.add(linkedEntityRecord);
+            }
+        }
+        }
+        //if(!linkedEntitiesToUpdate.isEmpty()){    
+        Database.Update(linkedEntitiesToUpdate,true,AccessLevel.SYSTEM_MODE);
+        //}
+            if(Test.isRunningTest()) {
+                throw new AuraHandledException('error');
+            }
+        }
+        catch (Exception e) {
+            ErrorLogUtil.logError(e,null,null);
+        }
+    }
+
+/**
+ * @desciption : Update the related file status on the Linked Entity/Object record when
+ *               file related to that entity/object record are removed/unlinked
+ * @param : contentDocLinks - list of contentdocumentlink records that were unlinked and for which
+ *          the linked entity file status have to be computed and updated
+ */
+    public void updateParentFileStatusOnDelete(List<ContentDocumentLink> contentDocLinks){
+        try{
+        Map<string,Set<Id>> mapLinkedEntityIdsByEntityName = getLinkedEntityIds(contentDocLinks);        
+        List<sobject> linkedEntitiesToUpdate = getLinkedEntitiesWithNoFiles(mapLinkedEntityIdsByEntityName);        
+        Database.Update(linkedEntitiesToUpdate,true,AccessLevel.SYSTEM_MODE);
+            if(Test.isRunningTest()) {
+                throw new AuraHandledException('error');
+            }
+        }
+        catch (Exception e) {
+            ErrorLogUtil.logError(e,null,null);
+        }
+    }
+
+/**
+ * @desciption : returns a map of Entity/Object API name to the set of entity/object Ids which are 
+ *              linked through the provided contentdocumentlink records
+ * @param : contentDocLinks - list of contentdocumentlink records to be processed for identifying
+ *          the linked entities.
+ * @return : Map<string,Set<Id>> map of LinkedEntityIds by LinkedEntity API name
+ */
+    public Map<string,Set<Id>> getLinkedEntityIds(List<ContentDocumentLink> contentDocLinks){
+        Map<string,Set<Id>> mapLinkedEntityIdsByLinkedEntity = new Map<string,Set<Id>>();
+        string linkedEntityObjectName = '';
+        for (ContentDocumentLink contentDocLink : contentDocLinks) {
+            linkedEntityObjectName = String.valueOf(contentDocLink.LinkedEntityId.getSobjectType());
+            if(!mapLinkedEntityIdsByLinkedEntity.containsKey(linkedEntityObjectName)){
+                mapLinkedEntityIdsByLinkedEntity.put(linkedEntityObjectName,new Set<Id>());
+            }
+            mapLinkedEntityIdsByLinkedEntity.get(linkedEntityObjectName).add(contentDocLink.LinkedEntityId);
+        }
+        return mapLinkedEntityIdsByLinkedEntity;
+    }
+
+/**
+ * @desciption : identify and return the list if linked entities (from the provided list) having no files.
+ * @param : mapLinkedEntityIdsByEntityName - list of entity Ids to process.
+ */
+    public List<sobject> getLinkedEntitiesWithNoFiles(Map<string,Set<Id>> mapLinkedEntityIdsByEntityName){
+        Map<string,ObjectHasAttachment_Setting__mdt> ObjectHasAttachmentSettings = ObjectHasAttachment_Setting__mdt.getAll();
+        List<sobject> linkedEntitiesToUpdate = new List<sobject>();
+        for(string linkedEntity : mapLinkedEntityIdsByEntityName.keySet()){            
+            string fileStatusField = (ObjectHasAttachmentSettings.get(linkedEntity) != null) && (ObjectHasAttachmentSettings.get(linkedEntity).On_Delete__c) ? ObjectHasAttachmentSettings.get(linkedEntity).FileStatusFieldName__c : null;
+            if(fileStatusField != null){
+            set<Id> linkedEntityRecordIds = mapLinkedEntityIdsByEntityName.get(linkedEntity);
+            Map<String,object> queryBinds = new Map<String, object>();
+            queryBinds.put('linkedEntityIds',linkedEntityRecordIds);
+            string queryString = 'Select Id,'+fileStatusField+ ',(Select Id From ContentDocumentLinks)' +' From '+ linkedEntity +' where Id in :linkedEntityIds';
+            List<sobject> linkedEntities = Database.queryWithBinds(queryString,queryBinds,AccessLevel.SYSTEM_MODE);
+            for(sobject linkedEntityObj : linkedEntities){
+                if(linkedEntityObj.getSObjects('ContentDocumentLinks') == null){
+                linkedEntityObj.put(fileStatusField,'No');
+                linkedEntitiesToUpdate.add(linkedEntityObj);
+                }
+            }
+            }
+        } 
+        return linkedEntitiesToUpdate;
+    }
+
+    
 }

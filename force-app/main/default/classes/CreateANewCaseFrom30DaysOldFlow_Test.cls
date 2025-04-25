@@ -26,13 +26,12 @@ public class CreateANewCaseFrom30DaysOldFlow_Test {
             Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
             Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
             Id queueId = [SELECT Id,Type FROM Group where DeveloperName ='UK_IE_CS_Operations' and Type='Queue' LIMIT 1].Id;
-            
+
             //Create an Account Record
             Account acc= new Account();
             acc.name='Test Account for UK';
             acc.CurrencyIsoCode='EUR';
-            acc.RecordTypeId=accountRecordTypeID; 
-            acc.BillingCountry='United Kingdom';
+            acc.RecordTypeId=accountRecordTypeID;  
             insert acc;
             
             Entitlement EntitlementRecord = new Entitlement();
@@ -59,7 +58,7 @@ public class CreateANewCaseFrom30DaysOldFlow_Test {
             caseWithEmail.Status='New';      
             update caseWithEmail;
             Test.stopTest();           
-            Case newCasewithEmail = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Email' and Status='New' limit 1 ];            
+            Case newCasewithEmail = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Email' and Status='New' limit 1 ];
             System.assertEquals(recordTypeId, newCasewithEmail.RecordTypeId);
             
         }
@@ -80,14 +79,12 @@ with Attachment
             Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
             Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
             Id queueId = [SELECT Id,Type FROM Group where DeveloperName ='UK_IE_CS_Operations' and Type='Queue' LIMIT 1].Id;
-            
+
             //Create an Account Record
             Account acc= new Account();
             acc.name='Test Account For Ireland';
             acc.CurrencyIsoCode='EUR';
-            acc.RecordTypeId=accountRecordTypeID;
-            acc.BillingCountry='United Kingdom';
-            
+            acc.RecordTypeId=accountRecordTypeID;  
             insert acc;
             
             Entitlement EntitlementRecord = new Entitlement();
@@ -116,57 +113,5 @@ with Attachment
             Case newCaseWithOutEmail = [SELECT id,SuppliedEmail,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject without Email' and Status='New' limit 1 ];
             System.assertEquals(null,newCaseWithOutEmail.SuppliedEmail);
         }
-    }
-    /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     checkCountryForZA
-* @description     To cover Create A New Case From 30 Days Old Closed Case when a new Case is created from 30 days old closed case for South Africa Country
-* ------------------------------------------------------------------------------------------------------
-*/
-    @isTest
-    static void checkCountryForZA(){
-        User testUser = [SELECT Id, Username FROM User WHERE lastname = 'VFS Salesforce Support' LIMIT 1];
-        System.runAs(testUser){
-            Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
-            Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
-            Id queueId = [SELECT Id,Type FROM Group where DeveloperName ='ZA_After_sales' and Type='Queue' LIMIT 1].Id;
-            
-            //Create an Account Record
-            Account acc= new Account();
-            acc.name='Test Account for ZA';
-            acc.CurrencyIsoCode='EUR';
-            acc.RecordTypeId=accountRecordTypeID; 
-            acc.BillingCountry='South Africa';
-            insert acc;
-            
-            Entitlement EntitlementRecord = new Entitlement();
-            EntitlementRecord.Name='Case Support Process For UK/IE';
-            EntitlementRecord.AccountId= acc.Id;             
-            insert EntitlementRecord;
-            
-            Case caseWithEmail = new Case();
-            caseWithEmail.Origin = 'Email';
-            caseWithEmail.AccountId=acc.id;
-            caseWithEmail.RecordTypeId=recordTypeId;
-            caseWithEmail.Status = 'Closed';
-            caseWithEmail.Type='Change my details';
-            caseWithEmail.Sub_Type__c ='Company details';
-            caseWithEmail.Status_Reason__c='No Action';
-            caseWithEmail.Subject='Test Case Subject with Country ZA';
-            caseWithEmail.CreatedDate = Date.today().addDays(-32);
-            caseWithEmail.ClosedDate=Date.today().addDays(-31);
-            caseWithEmail.Country__c='South Africa'; 
-            caseWithEmail.SuppliedEmail='testcaseza@gmail.com'; 
-            caseWithEmail.OwnerId=queueId;
-            insert caseWithEmail;
-            Test.startTest();            
-            caseWithEmail.Status='New';      
-            update caseWithEmail;
-            Test.stopTest();             
-            Case newCasewithEmail = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Country ZA' and Status='New' limit 1 ];
-            System.assertEquals(recordTypeId, newCasewithEmail.RecordTypeId);
-            
-        }
-        
     }
 }

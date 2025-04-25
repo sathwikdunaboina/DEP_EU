@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Create_shorten_VIN</name>
+        <label>Create shorten VIN</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Short_VIN__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ShortenVIN</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Records_1</targetReference>
+        </connector>
+    </assignments>
+    <description>Flow that takes the VIN, takes the last 6 characters and adds to the Shortened VIN filed on the Initiations asset</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula that takes the last 6 characters of the VIN to support global search</description>
+        <name>ShortenVIN</name>
+        <dataType>String</dataType>
+        <expression>RIGHT({!$Record.VIN__c}, 6)</expression>
+    </formulas>
+    <interviewLabel>Create short VIN {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Initiation app: Asset Create short VIN</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Records_1</name>
+        <label>Update Records 1</label>
+        <locationX>176</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Short_VIN__c</field>
+            <value>
+                <elementReference>ShortenVIN</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_shorten_VIN</targetReference>
+        </connector>
+        <object>Initiation_asset__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

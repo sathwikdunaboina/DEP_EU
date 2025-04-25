@@ -6,55 +6,55 @@
         <ruleEntry>
             <assignedTo>MEDALLIACLF_ClosedLoop_UK_Purchase_New</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(ISPICKVAL(Status,&apos;New&apos;),
-medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
-ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;),
-RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <formula>AND(ISPICKVAL(Status,&apos;New&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
             <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_New_Case_Alert_Email</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MEDALLIACLF_ClosedLoop_UK_Pur_Escalated</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;),
-medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
-ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;),
-RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
             <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Escalated_Case_Alert_Email</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MEDALLIACLF_ClosedLoop_UK_Pur_Overdue</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;),
-medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
-ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;),
-RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Purchase - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
             <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Overdue_Case_Alert_Email</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MEDALLIACLF_ClosedLoop_UK_Rel_Escalated</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;),
-medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
-ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;),
-RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
             <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Escalated_Case_Alert_Email</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MEDALLIACLF_ClosedLoop_UK_Relship_New</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(ISPICKVAL(Status,&apos;New&apos;),
-medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
-ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;),
-RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <formula>AND(ISPICKVAL(Status,&apos;New&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
             <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_New_Case_Alert_Email</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>MEDALLIACLF_ClosedLoop_UK_Rel_Overdue</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;),
-medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;,
-ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;),
-RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;UK&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Overdue_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_CH_Relship_New</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;New&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;Switzerland&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_New_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_CH_Rel_Escalated</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;Escalated&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;Switzerland&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
+            <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Escalated_Case_Alert_Email</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MEDALLIACLF_ClosedLoop_CH_Rel_Overdue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(ISPICKVAL(Status,&apos;Overdue&apos;), medallia_xm__Medallia_Feedback_id__r.alert_country__c =&apos;Switzerland&apos;, ISPICKVAL(MEDALLIACLF_alert_type__c, &apos;Relationship - Contact Me&apos;), RecordType.DeveloperName=&apos;MEDALLIACLF_Alert_Cases&apos;)</formula>
             <template>MEDALLIACLF_Email_Alerts/MEDALLIACLF_Overdue_Case_Alert_Email</template>
         </ruleEntry>
         <ruleEntry>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset_record_ID__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Used to generate a number beginning 5, or 8 depending on the parent record type. And concatenates with the asset ID autonumber</description>
+    <externalId>false</externalId>
+    <formula>IF(  OR(Initiation__r.RecordType.DeveloperName =&quot;Stane_Alone_Service&quot;,Initiation__r.RecordType.DeveloperName =&quot;Stand_Alone_Finance&quot;) , &quot;5&quot;, &quot;8&quot;)&amp; Asset_record_ID_count__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Asset_record_ID</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

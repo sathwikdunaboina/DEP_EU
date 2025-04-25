@@ -17,9 +17,17 @@ public class ContentDocumentLinkTriggerHandler {
     }
 
     public void onAfterInsert(Map<Id,ContentDocumentLink> mapNewContentDocLinksById){
-
         ContentDocumentLinkServices contentDocLinkService = new ContentDocumentLinkServices();
-        contentDocLinkService.deleteContentDocumentLinkedToMessagingSession(mapNewContentDocLinksById.values());
+        contentDocLinkService.deleteContentDocumentLinkedToMessagingSession(mapNewContentDocLinksById.values()); 
+        contentDocLinkService.updateParentFileStatusOnInsert(mapNewContentDocLinksById.values());
+    }
 
+    public void onBeforeDelete(Map<Id,ContentDocumentLink> mapOldContentDocLinksById){
+        //do nothing
+    }
+
+    public void onAfterDelete(Map<Id,ContentDocumentLink> mapOldContentDocLinksById){
+        ContentDocumentLinkServices contentDocLinkService = new ContentDocumentLinkServices();
+        contentDocLinkService.updateParentFileStatusOnDelete(mapOldContentDocLinksById.values());
     }
 }

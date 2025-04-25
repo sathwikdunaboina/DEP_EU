@@ -41,7 +41,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech</value>
+            <value>tech,bart</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -49,6 +49,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>rt</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATEONLY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2023 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

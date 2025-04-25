@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>This flow is used for mapping manual lead to opportunity fields</description>
     <environments>Default</environments>
     <formulas>
@@ -30,35 +31,12 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <description>Element to get the Finance Opportunity Record Type</description>
-        <name>Get_Finance_Opportunity_Record_Type</name>
-        <label>Get Finance Opportunity Record Type</label>
-        <locationX>176</locationX>
-        <locationY>323</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>OpportunityFieldUpdate</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Finance</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <queriedFields>Id</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
         <description>This element updates the opportunity fields which are not mapped by standard lead to opportunity mapping screen</description>
         <name>OpportunityFieldUpdate</name>
         <label>Opportunity Field Update</label>
         <locationX>176</locationX>
-        <locationY>431</locationY>
+        <locationY>323</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -163,19 +141,13 @@
                 <elementReference>$Record.Company</elementReference>
             </value>
         </inputAssignments>
-        <inputAssignments>
-            <field>RecordTypeId</field>
-            <value>
-                <elementReference>Get_Finance_Opportunity_Record_Type.Id</elementReference>
-            </value>
-        </inputAssignments>
         <object>Opportunity</object>
     </recordUpdates>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Finance_Opportunity_Record_Type</targetReference>
+            <targetReference>OpportunityFieldUpdate</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>or</filterLogic>

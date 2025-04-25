@@ -125,7 +125,7 @@ export default class SearchQuoteCalloutUI2 extends LightningElement {
                                 message: 'Success'
                             }
                         }));
-                        setTimeout(() => { document.location.reload(); }, 2000);
+                        //setTimeout(() => { document.location.reload(); }, 1000);
                         this.dispatchEvent(new CloseActionScreenEvent());
                     }
                 })

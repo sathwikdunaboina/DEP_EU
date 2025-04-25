@@ -14,16 +14,47 @@
     <defaultCaseOwnerType>User</defaultCaseOwnerType>
     <defaultCaseUser>vfs.support.salesforce@volvo.com</defaultCaseUser>
     <emailToCase>
-        <enableE2CAttachmentAsFile>false</enableE2CAttachmentAsFile>
+        <enableE2CAttachmentAsFile>true</enableE2CAttachmentAsFile>
+        <enableE2CDeduplicateAttachments>false</enableE2CDeduplicateAttachments>
+        <enableE2CExternalServer>false</enableE2CExternalServer>
         <enableE2CSourceTracking>true</enableE2CSourceTracking>
         <enableEmailToCase>true</enableEmailToCase>
         <enableHtmlEmail>true</enableHtmlEmail>
+        <enableNewToReadTriggers>false</enableNewToReadTriggers>
         <enableOnDemandEmailToCase>true</enableOnDemandEmailToCase>
-        <enableThreadIDInBody>true</enableThreadIDInBody>
-        <enableThreadIDInSubject>true</enableThreadIDInSubject>
+        <enableThreadTokenInBody>false</enableThreadTokenInBody>
+        <enableThreadTokenInSubject>false</enableThreadTokenInSubject>
+        <movingEmailEnabled>false</movingEmailEnabled>
         <notifyOwnerOnNewCaseEmail>false</notifyOwnerOnNewCaseEmail>
         <overEmailLimitAction>Requeue</overEmailLimitAction>
         <preQuoteSignature>true</preQuoteSignature>
+        <replyWithNewContentOnly>false</replyWithNewContentOnly>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>BE_Operations</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.operations.be@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>BE-Operations</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>VFSBR_BR_General</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>support.atendimentoaocliente@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>BR – Paschoalotto</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
             <caseOrigin>Email</caseOrigin>
@@ -32,7 +63,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>info.ch@vfsco.com</emailAddress>
-            <emailServicesAddress>info.ch@u-9zrfo731qf627szi0cewrcn894ftsiezj7tmohd0wngphbjz1.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>CH - CS Administration</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -45,7 +76,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.info.ch@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.info.ch@2kupbupa4vc56hr0n82p0eb9s961b86twncij8yr6jmnbfc1ai.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>CH - CS Operations Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -58,7 +89,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.customerservice.ie@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.customerservice.ie@t-f1nju2iuhmnzhin0xxoqzwtfg2c96a4ishjxdknp2xjzr1ovf.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>Customer Services IE Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -71,7 +102,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.customerservice.ie@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.customerservice.ie@11vm2prv274sqn6ao28i05il5aubp4gh0v00v0kdp7zaiyewip.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>Customer Services IE Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -84,7 +115,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.operations.de@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.operations.de@wrzydh5gg8z146jrkj9rqn4pkbo9qioerflwyagx11crngdiz.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>DE - Contract Performance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -97,9 +128,22 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.eot.de@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.eot.de@2sk2uewuc5ad2qiip8d0lf61kucdrqfv5tw8m0fw7ffxn70wgx.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>DE - End of Term</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>DE_Insurance</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.insurance.de@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>DE - Insurance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -110,9 +154,22 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.sales.de@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.sales.de@9-1mnk0dgobr1diw5gjof1o3eyuros5rnpaqn4ag4kovzj1oa71w.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>DE - Sales Desk</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>DE_Repossession</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.repossession.de@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>DE-Repossession</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -123,7 +180,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.clientes.es@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.clientes.es@3scl8y88uoewslwqdwwng78sap2sygy93zfkp3y5jxrkryvda.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>ES - Client Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -136,35 +193,87 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.clientes.es@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.clientes.es@n-2a4zs9hbv2d56ozwfokfq6ugbho2bdmqu2sb71crj79nm6yc3e.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>ES - Client Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Email</caseOrigin>
-            <caseOwner>FR_CS_Administration</caseOwner>
+            <caseOrigin>Email - Renault</caseOrigin>
+            <caseOwner>FR_Service_Assurances_Renault</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>vfs_services@vfsco.com</emailAddress>
-            <emailServicesAddress>vfs_services@2x2gudws4lnixb8xcn3jo48j3uyrfegmggfttaejckpirgvwlb.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <emailAddress>rtfs.assurances@renault-trucks.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
-            <routingName>FR - CS Administration</routingName>
+            <routingName>FR - Service Assurances Renault</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email - Volvo</caseOrigin>
+            <caseOwner>FR_Service_Assurances_Volvo</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.assurances@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>FR - Service Assurances Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
             <caseOrigin>Email - Renault</caseOrigin>
-            <caseOwner>FR_CS_Administration</caseOwner>
+            <caseOwner>FR_Service_Clients_Renault</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs_services@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs_services@311fke2u18kdiep11w8g6gsv4cwrbdwb72j0kbwxenfplp06cz.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
-            <routingName>FR CS Administration Renault</routingName>
+            <routingName>FR - Service Clients Renault</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email - Volvo</caseOrigin>
+            <caseOwner>FR_Volvo_Truck_Rental</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>rental@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>FR - Service Clients Volvo</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email - Renault</caseOrigin>
+            <caseOwner>FR_Service_R_clamations_Renault</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>rtfs.reclamations.clients@renault-trucks.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>FR - Service Réclamations Renault</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email - Volvo</caseOrigin>
+            <caseOwner>FR_Service_R_clamations_Volvo</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.reclamations.clients@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>FR - Service Réclamations Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -175,7 +284,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs_services@volvo.com</emailAddress>
-            <emailServicesAddress>vfs_services@p-2zivl651zp4peb71sd8qk6m2mdtzfqjymme0vqcnzy54ucmvp9.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>FR CS Administration Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -188,7 +297,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>clienti@vfsco.com</emailAddress>
-            <emailServicesAddress>clienti@2y2s4vml53fsa83u1pi4vqudgtyz81r3xxjj59qje8802uybvr.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>Italy - Client Support</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -201,7 +310,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.clienti.it@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.clienti.it@1cm4g4noqpju6lj9vtonfy3kmukfvniacaawl1c77gtj0ey5yn.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>Italy Client Support Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -214,7 +323,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.clienti.it@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.clienti.it@2atovkqbnyf39flima93u4cdheo3d72l24jtbuqmjqzzjd5lep.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>Italy Client Support Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -222,27 +331,118 @@
         <routingAddresses>
             <addressType>EmailToCase</addressType>
             <caseOrigin>Email</caseOrigin>
-            <caseOwner>UK_IE_CS_Service</caseOwner>
+            <caseOwner>NL_Collections</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>adm.service@vfsco.com</emailAddress>
-            <emailServicesAddress>adm.service@h-29ehk6s8yqljwh418o3j8njya9ii7phg169n1ut63722d1mk3c.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <emailAddress>vfs.collections.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
-            <routingName>UK - Service Support</routingName>
+            <routingName>NL-Collections</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
             <caseOrigin>Email</caseOrigin>
-            <caseOwner>UK_IE_CS_tech_Tool</caseOwner>
+            <caseOwner>NL_Credit_Retail</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>adm.techtool@vfsco.com</emailAddress>
-            <emailServicesAddress>adm.techtool@d-105y6ypz0hpbxgts86jhqtzcczutwxi2yjuln9widm93qbov9s.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <emailAddress>vfs.retailcredit.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
-            <routingName>UK - Tech Tool</routingName>
+            <routingName>NL-Credit Retail</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_EOT</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.endofterm.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-EOT</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_Insurance</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.insurance.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-Insurance</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_Operations</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.operations.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-Operations</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_Salesdesk</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.sales.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-Salesdesk</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_Salessupport</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.salessupport.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-Salessupport</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_Stockplan</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.stockplan.nl@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-Stockplan</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>NL_Subsidies</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>subsidies@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>NL-Subsidies</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -253,7 +453,7 @@
             <casePriority>Low</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.customerfeedback@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.customerfeedback@m-2bl3miuniedrehr766t8vpjrd8ag5xiu27x2op3ducqh20tqx2.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE - Customer Services</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -266,7 +466,7 @@
             <casePriority>Low</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.customerfeedback@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.customerfeedback@14zrfu64xw1q8ixoapj2dxsgxkltholygj995p3shx8gffg49k.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE - Customer Services</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -279,7 +479,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.customerservice.uk@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.customerservice.uk@1jl1fwhuv7vt6cdxs69p6sd5589y70xdsx37gab2rj2k30o04n.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE - Customer Services Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -292,22 +492,61 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.xsmadmin@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.xsmadmin@2q4snth77486be62x1c8pkif6bv4c7mr3jtqpsjh8195kl4j0x.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE - Renault XSM</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Email - Volvo</caseOrigin>
-            <caseOwner>UK_IE_CS_tech_Tool</caseOwner>
+            <caseOrigin>Email - Renault</caseOrigin>
+            <caseOwner>Medallia_CLF_Cases</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>vfs.techtool@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.techtool@1bxl9hnnjic3ars3tcyqjxjb0zjkpmhhg4b9agk1qg717i1qua.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <emailAddress>rtfs.customerexperience.uk-ie@renault-trucks.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
-            <routingName>UK/IE - Tech Tool Volvo</routingName>
+            <routingName>UK/IE - Service Connect Renault</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email - Volvo</caseOrigin>
+            <caseOwner>Medallia_CLF_Cases</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.customerexperience.uk-ie@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>UK/IE - Service Connect Volvo</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>UK_IE_Service_Desk</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.service.uk-ie@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>UK/IE - Service Desk</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>UK_IE_Service_Desk_Self_Billers</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfs.selfbiller@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>false</isVerified>
+            <routingName>UK/IE - Service Desk Self Billers</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -318,7 +557,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>volvo.xsmadmin@volvo.com</emailAddress>
-            <emailServicesAddress>volvo.xsmadmin@d6k7xnvlnsjxr96gyx4rmtwbm1txdu7tcljvqgs530c61agh3.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE - Volvo XSM</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -331,7 +570,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.customerservice.uk@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.customerservice.uk@cqdmbybax4xj2j9f8gdqbl1il1pa93nt5z73ntsaw8c10hh8r.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE Customer Services Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -344,7 +583,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>support.utextensions@volvo.com</emailAddress>
-            <emailServicesAddress>support.utextensions@k-29dbfvw8pzrtw1vdfhqvn5fqwu1pa9huda8ytjvhdnzu2f9uz7.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -357,7 +596,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>adm.brs.eot@vfsco.com</emailAddress>
-            <emailServicesAddress>adm.brs.eot@z-2v9rgux71cg72md1p622medvgukb7td3sfoltjckhwiqw40f83.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions BRS</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -370,7 +609,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.extensions.brs@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.extensions.brs@b-2po20vas0swrfcge2ec870i5u0wjlzxwb10ieyrzoz8hih7cjh.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions BRS Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -383,7 +622,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>adm.rtfs.eot@vfsco.com</emailAddress>
-            <emailServicesAddress>adm.rtfs.eot@d-2arokn90v941omq629qnzyt7b86xqpcikcp87gdtaozgmmkpmw.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions RT</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -396,7 +635,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.extensions.rt@renault-trucks.com</emailAddress>
-            <emailServicesAddress>rtfs.extensions.rt@psd35idtg48eay2qofh73mow3y3e7gq6jtzsu715o5cejl2dm.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions RT Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -409,7 +648,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>adm.vce.eot@vfsco.com</emailAddress>
-            <emailServicesAddress>adm.vce.eot@1wtdxq4xiwbjyxs2lb1meke4416olciiw81q4nehuczw5q0fdj.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions VCE</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -422,7 +661,7 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vfs.extensions.vce@volvo.com</emailAddress>
-            <emailServicesAddress>vfs.extensions.vce@r-18inq8m96belbeeli8ae13spax6lf0cti5zfuef22lf5n2o5mw.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>UK/IE-Contract Extensions VCE Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -430,14 +669,53 @@
         <routingAddresses>
             <addressType>EmailToCase</addressType>
             <caseOrigin>Email</caseOrigin>
-            <caseOwner>UK_IE_CS_Operations</caseOwner>
+            <caseOwner>ZA_Activation_request</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>High</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfsactivationsza@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>ZA - Activation request</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>ZA_After_sales</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>adm.vfs.uk@vfsco.com</emailAddress>
-            <emailServicesAddress>adm.vfs.uk@pd38arwmr2z07h95olsyfvpntg499b2zgxdzoqk4hl10gefsc.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <emailAddress>vfscustomerserviceza@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
-            <routingName>adm.vfs.uk@vfsco.com</routingName>
+            <routingName>ZA - After sales</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>ZA_Drafting_and_administration_queues</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfscontractsza@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>ZA - Drafting and administration queues</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>ZA_Restucture</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>vfsrestructureza@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <routingName>ZA - Restucture</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -448,12 +726,13 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customerservice.ie@vfsco.com</emailAddress>
-            <emailServicesAddress>customerservice.ie@v-2ek2e3zf6vfcrin8vmicasgg36onioqbse0k6z1ry4zdtsblu1.2p-pbrleak.eu26.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
             <routingName>customerservice.ie@vfsco.com</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <unauthorizedSenderAction>Bounce</unauthorizedSenderAction>
+        <useEmailHeadersForThreading>true</useEmailHeadersForThreading>
     </emailToCase>
     <enableCaseFeed>true</enableCaseFeed>
     <enableCaseSwarming>false</enableCaseSwarming>
@@ -480,6 +759,7 @@
     <notifyDefaultCaseOwner>false</notifyDefaultCaseOwner>
     <notifyOwnerOnCaseComment>false</notifyOwnerOnCaseComment>
     <notifyOwnerOnCaseOwnerChange>false</notifyOwnerOnCaseOwnerChange>
+    <rtaCaseComment>false</rtaCaseComment>
     <showEmailAttachmentsInCaseAttachmentsRL>true</showEmailAttachmentsInCaseAttachmentsRL>
     <showFewerCloseActions>false</showFewerCloseActions>
     <systemUserEmail>automatedcase@00d2p000000pbrleak.ext</systemUserEmail>

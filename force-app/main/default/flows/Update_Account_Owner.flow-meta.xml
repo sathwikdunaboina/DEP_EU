@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Add the User ID</description>
+        <name>Add_the_User_ID</name>
+        <label>Add the User ID</label>
+        <locationX>710</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>TerritoryManager</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Through_Territory_Managers.User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Group_Members</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign the derived Market to the Market variable</description>
+        <name>Assign_Derived_Market</name>
+        <label>Assign Derived Market</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>Market</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>DeriveMarket</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Retrieve_Group</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <description>The name of the Dealer Account Record Type</description>
+        <name>DealerAccountRecordType</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Dealer_Account</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Contains the Territory Manager Role name</description>
+        <name>TerritoryManagerRole</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Territory_Manager</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if this is a dealer or customer account</description>
+        <name>AccountType</name>
+        <label>AccountType</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Customer Account</defaultConnectorLabel>
+        <rules>
+            <name>Dealer_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>DealerAccountRecordTypeId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Derived_Market</targetReference>
+            </connector>
+            <label>Dealer Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check to see who is the Territory manager of the group</description>
+        <name>Check_to_see_who_is_the_Territory_manager_of_the_group</name>
+        <label>Check to see who is the Territory manager of the group</label>
+        <locationX>842</locationX>
+        <locationY>1187</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Through_Group_Members</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_this_the_TM</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_Territory_Managers.User.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Loop_Through_Group_Members.UserOrGroupId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_the_User_ID</targetReference>
+            </connector>
+            <label>Is this the TM?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if we have a Territory Manager</description>
+        <name>Territory_Manager_Check</name>
+        <label>Territory Manager Check</label>
+        <locationX>182</locationX>
+        <locationY>1655</locationY>
+        <defaultConnectorLabel>No Territory Manager</defaultConnectorLabel>
+        <rules>
+            <name>Establised_Territory_Manager</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TerritoryManager</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Owner</targetReference>
+            </connector>
+            <label>Establised Territory Manager</label>
+        </rules>
+    </decisions>
+    <description>Update the Account Owner based on the Territory Manager established from the group (market) and role from AccountTeamMember</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Derive a market value by using the country and brand on the account</description>
+        <name>DeriveMarket</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.BillingCountry} &amp; &apos;-&apos; &amp; TEXT({!$Record.Branding__c})</expression>
+    </formulas>
+    <interviewLabel>Update Account Owner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Account Owner</label>
+    <loops>
+        <description>Loop Through Group Members</description>
+        <name>Loop_Through_Group_Members</name>
+        <label>Loop Through Group Members</label>
+        <locationX>622</locationX>
+        <locationY>1079</locationY>
+        <collectionReference>GroupMembers</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_to_see_who_is_the_Territory_manager_of_the_group</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Loop_Through_Territory_Managers</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Loop Through Territory Managers</description>
+        <name>Loop_Through_Territory_Managers</name>
+        <label>Loop Through Territory Managers</label>
+        <locationX>182</locationX>
+        <locationY>971</locationY>
+        <collectionReference>Get_the_Account_Team_Territory_Manager</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Loop_Through_Group_Members</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Territory_Manager_Check</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get the Account Team Territory Manager</description>
+        <name>Get_the_Account_Team_Territory_Manager</name>
+        <label>Get the Account Team Territory Manager</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Territory_Managers</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Territory Manager</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>UserAccountTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the correlating id of the &quot;Dealer Account&quot; record type</description>
+        <name>Retrieve_Dealer_Account_Type</name>
+        <label>Retrieve Dealer Account Type</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AccountType</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>DealerAccountRecordType</elementReference>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>DealerAccountRecordTypeId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieve the correct Group based on the market</description>
+        <name>Retrieve_Group</name>
+        <label>Retrieve Group</label>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Retrieve_Group_Members</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Market</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieve the group members for the group</description>
+        <name>Retrieve_Group_Members</name>
+        <label>Retrieve Group Members</label>
+        <locationX>182</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_the_Account_Team_Territory_Manager</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Retrieve_Group.Id</elementReference>
+            </value>
+        </filters>
+        <object>GroupMember</object>
+        <outputReference>GroupMembers</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>UserOrGroupId</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update the Owner of the Account with the Territory Manager Id</description>
+        <name>Update_Account_Owner</name>
+        <label>Update Account Owner</label>
+        <locationX>50</locationX>
+        <locationY>1763</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>TerritoryManager</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Retrieve_Dealer_Account_Type</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>BillingCountry</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Branding__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>A place holder for the Dealer Account RecordTypeId</description>
+        <name>DealerAccountRecordTypeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Contains Group Members</description>
+        <name>GroupMembers</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>GroupMember</objectType>
+    </variables>
+    <variables>
+        <description>Holds the derived market value</description>
+        <name>Market</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Contains Roled from UserRoles</description>
+        <name>RoleIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This is the Territory Manager</description>
+        <name>TerritoryManager</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Contains UserOrGroupId from GroupMembers</description>
+        <name>UserIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>This flow creates factory orders which has basically asset ,dealer and customer information from manual opportunities which are created as part of manual leads</description>
     <environments>Default</environments>
     <interviewLabel>Manual opportunity factory orders {!$Flow.CurrentDateTime}</interviewLabel>
@@ -142,12 +143,54 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</filterLogic>
         <filters>
             <field>LeadSource</field>
-            <operator>NotEqualTo</operator>
+            <operator>EqualTo</operator>
             <value>
-                <stringValue>Factory Order</stringValue>
+                <stringValue>Personal contact</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Phone</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>volvoselected.com</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>End-of-term</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Personal contact</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Other</stringValue>
             </value>
         </filters>
         <object>Opportunity</object>

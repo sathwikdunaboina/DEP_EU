@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Validate_Approval_Date</fullName>
+    <active>true</active>
+    <description>Approval date has to be equal / greater than Create date.</description>
+    <errorConditionFormula>CLA_Approval_Date__c &lt; DATEVALUE( CreatedDate )</errorConditionFormula>
+    <errorDisplayField>CLA_Approval_Date__c</errorDisplayField>
+    <errorMessage>Approval date has to be equal / greater than Create date.</errorMessage>
+</ValidationRule>

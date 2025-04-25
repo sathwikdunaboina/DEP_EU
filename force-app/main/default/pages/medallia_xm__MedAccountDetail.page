@@ -1,0 +1,180 @@
+<apex:page standardController="Account" extensions="medallia_xm.MedAccountDetailController,medallia_xm.LightningOutExtension" 
+            showHeader="true" tabStyle="account" label="Medallia Account Detail" >
+    <apex:slds />
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <apex:includeLightning />
+    <style>
+        .slds-tabs_default__content {
+            overflow: hidden;
+        }
+
+    </style>
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_7-of-12">
+            <div class="slds-tabs_default main">
+                <ul class="slds-tabs_default__nav main" role="tablist">
+                    <li class="slds-tabs_default__item slds-is-active" title="Medallia Insights" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1"
+                            id="main-tab-1__item">Medallia Insights</a>
+                    </li>
+                    <li class="slds-tabs_default__item" title="Timeline" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2"
+                            id="main-tab-2__item">Feedback Timeline</a>
+                    </li>
+                    <li class="slds-tabs_default__item" title="Details" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3"
+                            id="main-tab-3__item">Details</a>
+                    </li>
+                </ul>
+                <div id="main-tab-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+                    <div id="acctDriversChart"></div>
+                    <apex:relatedList subject="{!account}" list="cases" />
+                </div>
+                <div id="main-tab-2" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
+                    <div id="timeline"></div>
+                </div>
+                <div id="main-tab-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
+                    <apex:detail relatedList="false" title="true" />
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_5-of-12">
+            <div class="slds-tabs_default sidebar">
+                <ul class="slds-tabs_default__nav sidebar" role="tablist">
+                    <li class="slds-tabs_default__item slds-is-active" title="NPS" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" id="side-tab-1__item" role="tab" tabindex="0" aria-selected="true"
+                            aria-controls="side-tab-1">NPS</a>
+                    </li>
+                    <li class="slds-tabs_default__item" title="Related" role="presentation" style="{!if(JSENCODE(personAccountsEnabled) = 'true','display:none;', '')}">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="side-tab-2"
+                            id="side-tab-2__item">Related</a>
+                    </li>
+                    <li class="slds-tabs_default__item" title="Chatter" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="side-tab-3"
+                            id="side-tab-3__item">Chatter</a>
+                    </li>
+                </ul>
+                <div id="side-tab-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="side-tab-1__item">
+                    <div id="npsResponseRate"></div>
+                </div>
+                <div id="side-tab-2" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="side-tab-2__item" style="width:96%;">
+                    <apex:relatedList subject="{!account}" list="contacts" rendered="{! JSENCODE(personAccountsEnabled) = 'false' }" />
+                </div>
+                <div id="side-tab-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="side-tab-3__item">Chatter</div>
+            </div>
+        </div>
+    </div>
+
+    <script>   
+        var recordId = "{! $CurrentPage.parameters.id }";
+
+        // Determine Classic or Lightning Experience
+        var isLightning = typeof sforce !== 'undefined' && sforce.one && true;
+
+        $Lightning.use("{!ns}:MedAcctRecordApp", function () {
+            //$Lightning.createComponent(String type, Object attributes, String locator, function callback) */
+            $Lightning.createComponent('{!ns}:MedAcctTimeline',
+                {
+                    recordId: recordId,
+                    isLightning: false,
+                },
+                "timeline",
+                function (component) {
+                    // supporting setup
+                });
+
+            $Lightning.createComponent('{!ns}:MedAcctDriversChart',
+                {
+                    recordId: recordId,
+                    isLightning:isLightning,
+                    chartLabel: "Selected Drivers Over Time",
+                    selectedDateRange: "past6mo",
+                    displayDriver1: "true",
+                    displayDriver2: "true",
+                    displayDriver3: "true",
+                    displayDriver4: "true",
+                    displayDriver5: "true",
+                    displayDriver6: "true",
+                    displayDriver7: "true",
+                    displayDriver8: "true"
+                },
+                "acctDriversChart",
+                function (component) {
+                    //supporting setup
+                });
+
+            $Lightning.createComponent('{!ns}:MedAcctNPSDetails',
+                {
+                    recordId: recordId,
+                    isLightning:isLightning,
+                    npsLabel: "NPS",
+                    respLabel: "Response Rate",
+                    selectedDateRangeNPS: "past6mo",
+                    selectedDateRangeResp: "past6mo",
+                    display: "See Both",
+                    npsPromoterThreshold: "9",
+                    npsDetractorThreshold: "6"
+                },
+                "npsResponseRate",
+                function (component) {
+                    //supporting setup   
+                });
+        });
+
+        window.addEventListener('load', function () {
+            // store tabs variable
+            var mainTabs = document.querySelectorAll('ul.main > li');
+            var mainPanes = document.querySelectorAll('.main .slds-tabs_default__content');
+
+            var sidebarTabs = document.querySelectorAll('ul.sidebar > li');
+            var sidebarPanes = document.querySelectorAll('.sidebar .slds-tabs_default__content');
+
+            function myTabClicks(tabs, panes) {
+                return function (e) {
+                    e.preventDefault();
+
+                    // clear all
+                    [].forEach.call(tabs, function (tab) {
+                        tab.classList.remove('slds-is-active');
+                        tab.setAttribute('aria-selected', false);
+
+                        [].forEach.call(tab.children, function (aTag) {
+                            aTag.setAttribute('tabindex', '-1');
+                        });
+                    });
+
+                    var clickedTab = e.currentTarget;
+                    console.log(clickedTab);
+                    clickedTab.classList.add('slds-is-active');
+                    clickedTab.setAttribute('aria-selected', true);
+                    [].forEach.call(clickedTab.children, function (aTag) {
+                        aTag.setAttribute('tabindex', '0');
+                    });
+
+                    [].forEach.call(panes, function (pane) {
+                        pane.classList.remove('slds-show');
+                        pane.classList.add('slds-hide');
+                    });
+
+                    var anchorReference = e.currentTarget.getElementsByTagName('a')[0];
+                    if (anchorReference.classList.contains('slds-tabs_default__link')) {
+                        var activePaneId = anchorReference.getAttribute('id').split('__item')[0];
+                        var activePane = document.getElementById(activePaneId);
+                        activePane.classList.add('slds-show');
+                        activePane.classList.remove('slds-hide');
+                    }
+                }
+            }
+
+            [].forEach.call(mainTabs, function (tab) {
+                tab.addEventListener('click', myTabClicks(mainTabs, mainPanes))
+            });
+
+            [].forEach.call(sidebarTabs, function (tab) {
+                tab.addEventListener('click', myTabClicks(sidebarTabs, sidebarPanes))
+            });
+        });
+
+    </script>
+</apex:page>

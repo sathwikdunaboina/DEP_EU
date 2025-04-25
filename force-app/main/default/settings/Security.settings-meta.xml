@@ -6,8 +6,35 @@
     <enableAuraSecureEvalPref>true</enableAuraSecureEvalPref>
     <enableCoepHeader>false</enableCoepHeader>
     <enableCoopHeader>false</enableCoopHeader>
+    <enableCrossOrgRedirects>false</enableCrossOrgRedirects>
+    <enablePermissionsPolicy>false</enablePermissionsPolicy>
     <enableRequireHttpsConnection>true</enableRequireHttpsConnection>
-    <networkAccess/>
+    <networkAccess>
+        <ipRanges>
+            <end>35.234.89.246</end>
+            <start>35.234.89.246</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.141.10.40</end>
+            <start>34.141.10.40</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.107.90.223</end>
+            <start>34.107.90.223</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.91.173.111</end>
+            <start>34.91.173.111</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.91.55.187</end>
+            <start>34.91.55.187</start>
+        </ipRanges>
+        <ipRanges>
+            <end>34.90.11.138</end>
+            <start>34.90.11.138</start>
+        </ipRanges>
+    </networkAccess>
     <passwordPolicies>
         <complexity>SpecialCharacters</complexity>
         <expiration>NinetyDays</expiration>
@@ -20,6 +47,7 @@
         <questionRestriction>DoesNotContainPassword</questionRestriction>
     </passwordPolicies>
     <redirectBlockModeEnabled>false</redirectBlockModeEnabled>
+    <sendCspForUncommonClients>false</sendCspForUncommonClients>
     <sessionSettings>
         <allowUserAuthenticationByCertificate>false</allowUserAuthenticationByCertificate>
         <allowUserCertBasedAuthenticationWithOcspValidation>false</allowUserCertBasedAuthenticationWithOcspValidation>
@@ -42,17 +70,19 @@
         <enableLightningLoginOnlyWithUserPerm>false</enableLightningLoginOnlyWithUserPerm>
         <enableMFADirectUILoginOptIn>false</enableMFADirectUILoginOptIn>
         <enableOauthCorsPolicy>false</enableOauthCorsPolicy>
+        <enablePermissionsPolicy>false</enablePermissionsPolicy>
         <enablePostForSessions>false</enablePostForSessions>
         <enableSMSIdentity>true</enableSMSIdentity>
         <enableU2F>false</enableU2F>
-        <enableXssProtection>true</enableXssProtection>
         <enforceIpRangesEveryRequest>true</enforceIpRangesEveryRequest>
         <enforceUserDeviceRevoked>false</enforceUserDeviceRevoked>
         <forceLogoutOnSessionTimeout>true</forceLogoutOnSessionTimeout>
         <forceRelogin>true</forceRelogin>
+        <grantCameraAccess>TrustedUrls</grantCameraAccess>
+        <grantMicrophoneAccess>TrustedUrls</grantMicrophoneAccess>
         <hasRetainedLoginHints>false</hasRetainedLoginHints>
         <hasUserSwitching>true</hasUserSwitching>
-        <identityConfirmationOnEmailChange>true</identityConfirmationOnEmailChange>
+        <identityConfirmationOnEmailChange>false</identityConfirmationOnEmailChange>
         <identityConfirmationOnTwoFactorRegistrationEnabled>true</identityConfirmationOnTwoFactorRegistrationEnabled>
         <lockSessionsToDomain>true</lockSessionsToDomain>
         <lockSessionsToIp>false</lockSessionsToIp>
@@ -62,16 +92,21 @@
         <redirectBlockModeEnabled>false</redirectBlockModeEnabled>
         <redirectionWarning>true</redirectionWarning>
         <referrerPolicy>true</referrerPolicy>
+        <referrerPolicyDirective>origin-when-cross-origin</referrerPolicyDirective>
         <requireHttpOnly>true</requireHttpOnly>
+        <sendCspForUncommonClients>false</sendCspForUncommonClients>
         <sessionTimeout>TwoHours</sessionTimeout>
         <sidToken3rdPartyAuraApp>false</sidToken3rdPartyAuraApp>
+        <skipSFAWhenMFADirectUILogin>false</skipSFAWhenMFADirectUILogin>
+        <terminateUserSessionsWhenAdminResetsPassword>false</terminateUserSessionsWhenAdminResetsPassword>
+        <useEAPIRateLimitForConnectAPI>false</useEAPIRateLimitForConnectAPI>
         <useLocalStorageForLogoutUrl>false</useLocalStorageForLogoutUrl>
     </sessionSettings>
     <singleSignOnSettings>
-        <enableCaseInsensitiveFederationID>false</enableCaseInsensitiveFederationID>
+        <enableCaseInsensitiveFederationID>true</enableCaseInsensitiveFederationID>
         <enableMultipleSamlConfigs>true</enableMultipleSamlConfigs>
         <enableSamlJitProvisioning>false</enableSamlJitProvisioning>
-        <enableSamlLogin>true</enableSamlLogin>
+        <enableSamlLogin>false</enableSamlLogin>
         <isLoginWithSalesforceCredentialsDisabled>false</isLoginWithSalesforceCredentialsDisabled>
     </singleSignOnSettings>
 </SecuritySettings>
