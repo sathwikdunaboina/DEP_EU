@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FULL_NAME</groupingColumn>
+        <groupingColumn>STAGE_NAME</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -29,9 +29,6 @@
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>FISCAL_QUARTER</field>
@@ -69,13 +66,6 @@
     <currency>EUR</currency>
     <filter>
         <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Peter Muntermann</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Opportunity.Dealer_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -83,21 +73,26 @@
             <value>A+T Nutzfahrzeuge Sued-West GmbH</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FK_$Factory_Order__c.Dealer_Number__c</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>90027</value>
+            <value>Torsten Macke-Igelmann</value>
         </criteriaItems>
         <language>de</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <field>Opportunity.Sales_Person_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Peter_A+T_1_Opportunities</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Torsten_A+T_SW_Opportunities</name>
     <params>
         <name>open</name>
         <value>all</value>

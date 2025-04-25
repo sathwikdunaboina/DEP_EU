@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Limt_Max_Unit_Price</fullName>
+    <active>true</active>
+    <description>Prevent Maximum value in Max Unit Price, Max allowed limit is 100 M.</description>
+    <errorConditionFormula>CLA_Max_Unit_Price__c &gt; 100000000</errorConditionFormula>
+    <errorMessage>Maximum limit is 100M.</errorMessage>
+</ValidationRule>

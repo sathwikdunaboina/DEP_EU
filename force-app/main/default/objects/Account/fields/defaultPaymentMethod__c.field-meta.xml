@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>defaultPaymentMethod__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Dictionary /enum value</description>
+    <label>defaultPaymentMethod</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Invoice</fullName>
+                <default>false</default>
+                <label>Invoice</label>
+            </value>
+            <value>
+                <fullName>Bank transfer</fullName>
+                <default>false</default>
+                <label>Bank transfer</label>
+            </value>
+            <value>
+                <fullName>Cheque</fullName>
+                <default>false</default>
+                <label>Cheque</label>
+            </value>
+            <value>
+                <fullName>Direct debit</fullName>
+                <default>false</default>
+                <label>Direct debit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

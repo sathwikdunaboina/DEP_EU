@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Fields</name>
+        <label>Assign Fields</label>
+        <locationX>309</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Company_Identification_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>companyIdentificationNumber</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_VFS_Customer_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>VFSCustomerNumber</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PrimaryCustomerName</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assign validation type field to pending</description>
+        <name>Assign_Validation_Type_to_Pending</name>
+        <label>Assign Validation Type to Pending</label>
+        <locationX>1567</locationX>
+        <locationY>759</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Validation_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Credit_Bureau_Number__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Capture_Change_in_Primary_Customer_Fields</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <description>Show Customer information invalid error</description>
+        <name>Customer_Information_not_valid_error</name>
+        <label>Error</label>
+        <locationX>795</locationX>
+        <locationY>990</locationY>
+        <customErrorMessages>
+            <errorMessage>Customer information is invalid.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Capture_Change_in_Primary_Customer_Fields</name>
+        <label>Capture Change in Primary Customer Fields</label>
+        <locationX>1207</locationX>
+        <locationY>761</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PrimaryFieldsChange</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Account__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_VFS_Customer_Number__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Company_Identification_Number__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Name</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_Present</targetReference>
+            </connector>
+            <label>Primary Fields Change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Capture change in fields.</description>
+        <name>Capture_Field_Change</name>
+        <label>Capture Field Change</label>
+        <locationX>1441</locationX>
+        <locationY>406</locationY>
+        <defaultConnector>
+            <targetReference>Capture_Change_in_Primary_Customer_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Field_change_and_validation_type_Manual_or_Credit_Service</name>
+            <conditionLogic>(1 OR 2) AND ( 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Account__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Company_Identification_Number__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Validation_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Manual</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Validation_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Credit Service</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Validation_Type_to_Pending</targetReference>
+            </connector>
+            <label>Field change and validation type Manual or Credit Service</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Account_Present</name>
+        <label>Check Account Present</label>
+        <locationX>323</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Required_Fields_for_Credit_Line_Customer</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Account__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account</targetReference>
+            </connector>
+            <label>Account Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks parent credit line status field</description>
+        <name>Check_Credit_Line_Status</name>
+        <label>Check Credit Line Status</label>
+        <locationX>1021</locationX>
+        <locationY>396</locationY>
+        <defaultConnector>
+            <targetReference>Capture_Change_in_Primary_Customer_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_Draft</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Credit_Line__r.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Capture_Field_Change</targetReference>
+            </connector>
+            <label>Status is Draft</label>
+        </rules>
+        <rules>
+            <name>Status_is_Under_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Credit_Line__r.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Under Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Capture_Field_Change</targetReference>
+            </connector>
+            <label>Status is Under Review</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check whether record is inserted or updated.</description>
+        <name>Insert_or_Update</name>
+        <label>Insert or Update</label>
+        <locationX>768</locationX>
+        <locationY>400</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Record_Primary_Customer</targetReference>
+            </connector>
+            <label>Is Insert</label>
+        </rules>
+        <rules>
+            <name>Is_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Credit_Line_Status</targetReference>
+            </connector>
+            <label>Is Update</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if record is primary customer or not.</description>
+        <name>Is_Record_Primary_Customer</name>
+        <label>Is Record Primary Customer</label>
+        <locationX>518</locationX>
+        <locationY>413</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Primary_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Is_Primary__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_Present</targetReference>
+            </connector>
+            <label>Not Primary Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if record is primary customer or not</description>
+        <name>IsRecordPrimaryCustomer</name>
+        <label>Is Record Primary Customer</label>
+        <locationX>512</locationX>
+        <locationY>985</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Primary_False</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Is_Primary__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Fields</targetReference>
+            </connector>
+            <label>Not Primary Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validate required fields for credit line customer</description>
+        <name>Required_Fields_for_Credit_Line_Customer</name>
+        <label>Required Fields for Credit Line Customer</label>
+        <locationX>625</locationX>
+        <locationY>737</locationY>
+        <defaultConnector>
+            <targetReference>Customer_Information_not_valid_error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Company_Identification_Number_And_Primary_Customer_Name_Not_blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CompanyRegistrationNumber</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>PrimaryCustomerName</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>IsRecordPrimaryCustomer</targetReference>
+            </connector>
+            <label>Company Identification Number And Primary Customer Name Not blank</label>
+        </rules>
+    </decisions>
+    <description>Handles field update on field change, e.i reset company identification number and Primary Customer Name etc on account change , 
+Update Credit bureau to blank and validation type to blank upon account/company identification changes.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>companyIdentificationNumber</name>
+        <dataType>String</dataType>
+        <expression>IF( {!CompanyIdentificationNumberAccount} != &apos;&apos; , {!CompanyIdentificationNumberAccount}     ,  {!$Record.CLA_Company_Identification_Number__c}   )</expression>
+    </formulas>
+    <formulas>
+        <name>CompanyIdentificationNumberAccount</name>
+        <dataType>String</dataType>
+        <expression>CASE( TEXT( {!$Record.CLA_Credit_Line__r.CLA_Country__c}) , &apos;ES&apos;,  {!Get_Account.VATNumber__c} ,
+                                                                  &apos;BE&apos;, {!Get_Account.VATNumber__c} , 
+                                                                   &apos;DE&apos;  ,{!Get_Account.Customer_Number__c} , 
+                                                                   &apos;CH&apos; ,{!Get_Account.Customer_Number__c}  , 
+                                                                   &apos;AT&apos; ,{!Get_Account.Customer_Number__c} , 
+                                                                   &apos;DK&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+   &apos;LV&apos; , {!Get_Account.CompanyRegistrationNumber__c} , 
+   &apos;LT&apos; , {!Get_Account.CompanyRegistrationNumber__c}  , 
+   &apos;EE&apos; , {!Get_Account.CompanyRegistrationNumber__c} , 
+    &apos;FI&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;NL&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;SE&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;NO&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+   &apos;GB&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+    &apos;IT&apos; , {!Get_Account.CompanyRegistrationNumber__c},
+     &apos;&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>CompanyRegistrationNumber</name>
+        <dataType>String</dataType>
+        <expression>IF( {!CompanyIdentificationNumberAccount} != &apos;&apos; , {!CompanyIdentificationNumberAccount}     ,  {!$Record.CLA_Company_Identification_Number__c}   )</expression>
+    </formulas>
+    <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>PrimaryCustomerName</name>
+        <dataType>String</dataType>
+        <expression>IF( NOT (  ISBLANK(  {!Get_Account.Name} ) )  ,   {!Get_Account.Name}, {!$Record.Name})</expression>
+    </formulas>
+    <formulas>
+        <name>VFSCustomerNumber</name>
+        <dataType>String</dataType>
+        <expression>IF(  NOT (  ISBLANK({!Get_Account.Customer_Number__c}) )  , {!Get_Account.Customer_Number__c}  , {!$Record.CLA_VFS_Customer_Number__c})</expression>
+    </formulas>
+    <interviewLabel>Reset Fields ON {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reset Fields On Credit Line Customer Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Account to access Vat Number , Company Registration Number , Customer Number</description>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>329</locationX>
+        <locationY>812</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Required_Fields_for_Credit_Line_Customer</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CLA_Account__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>VATNumber__c</queriedFields>
+        <queriedFields>Customer_Number__c</queriedFields>
+        <queriedFields>CompanyRegistrationNumber__c</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Insert_or_Update</targetReference>
+        </connector>
+        <object>CLA_Credit_Line_Account__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -35,6 +35,9 @@
     <columns>
         <field>Opportunity.Country__c</field>
     </columns>
+    <columns>
+        <field>FK_$Factory_Order__c.CDD_Date__c</field>
+    </columns>
     <currency>EUR</currency>
     <format>Summary</format>
     <groupingsDown>
@@ -60,8 +63,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>FK_$Factory_Order__c.CDD_Date__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURPREV1</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

@@ -396,6 +396,48 @@
             <field>Golden_Copy_User__c</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>UserRole.Name</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Profile.Name</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User License Name</displayNameOverride>
+            <field>Profile.UserLicense.Name</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User License</displayNameOverride>
+            <field>Profile.UserLicense</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User License Master Label</displayNameOverride>
+            <field>Profile.UserLicense.MasterLabel</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Profile.UserLicense.ExpirationDate</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Licenses Count</displayNameOverride>
+            <field>Profile.UserLicense.TotalLicenses</field>
+            <table>User</table>
+        </columns>
+        <masterLabel>License</masterLabel>
     </sections>
 </ReportType>

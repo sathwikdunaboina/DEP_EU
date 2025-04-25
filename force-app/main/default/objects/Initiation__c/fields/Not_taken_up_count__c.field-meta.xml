@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_taken_up_count__c</fullName>
+    <deprecated>false</deprecated>
+    <description>number of assets not taken up- Used for calculating asset completeness</description>
+    <label>Not_taken_up_count</label>
+    <summaryFilterItems>
+        <field>Initiation_asset__c.NOT_TAKEN_UP__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Initiation_asset__c.Initiation__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

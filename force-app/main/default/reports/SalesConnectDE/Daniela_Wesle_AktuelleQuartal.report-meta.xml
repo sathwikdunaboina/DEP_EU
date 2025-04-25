@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Sales_Person_Name__c</groupingColumn>
+        <groupingColumn>Opportunity.Dealer_Delivery_Date__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -26,6 +26,9 @@
     </chart>
     <columns>
         <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -70,7 +73,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Daniela Panneck</value>
+            <value>Torsten Macke-Igelmann</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Dealer_Name__c</column>
@@ -83,16 +86,16 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Sales_Person_Name__c</field>
+        <dateGranularity>Month</dateGranularity>
+        <field>Opportunity.Dealer_Delivery_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Sales_Person_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Daniela_Wesle_AktuelleQuartal</name>
+    <name>Torsten_Wesle_AktuelleQuartal</name>
     <params>
         <name>open</name>
         <value>all</value>
@@ -112,6 +115,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Dealer_Delivery_Date__c</dateColumn>
-        <interval>INTERVAL_CURNEXTQ</interval>
+        <interval>INTERVAL_CURNEXT1</interval>
     </timeFrameFilter>
 </Report>

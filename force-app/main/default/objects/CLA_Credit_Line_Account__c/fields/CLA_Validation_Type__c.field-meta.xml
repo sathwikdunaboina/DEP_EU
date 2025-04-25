@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Validation_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Determines whether record is manually validated or validated by credit bureau API  ,
+How Populated: UI-Manual/Automated ,
+Process : Populated when record gets validated against credit bureau API.  
+Is UI field : Yes</description>
+    <label>Validation Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pending</fullName>
+                <default>true</default>
+                <label>Pending</label>
+            </value>
+            <value>
+                <fullName>Manual</fullName>
+                <default>false</default>
+                <label>Manual</label>
+            </value>
+            <value>
+                <fullName>Credit Service</fullName>
+                <default>false</default>
+                <label>Credit Service</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

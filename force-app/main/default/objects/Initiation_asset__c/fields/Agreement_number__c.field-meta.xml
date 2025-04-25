@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agreement_number__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <deprecated>false</deprecated>
+    <description>The agreement number is used to help users identify the asset as per the CMS ID (Vienna and TSA).
+The format of the agreement number is as follows
+Stand alone finance, Contract hire, Lease with R&amp;M= VFS Connect Contract Number &amp; asset ID in format or _0001 (concatenated).
+For stand alone maintenance= Initiations Asset ID (beginning with a 5 and with 7 unique sequential numeric characters).
+This number is also used to link the contract to the initiation asset</description>
+    <externalId>false</externalId>
+    <formula>IF(   Initiation__r.RecordType.DeveloperName =&quot;Stane_Alone_Service&quot;,  Name  ,IF( Initiation__r.Number_of_asset__c =1,Initiation__r.Connect_Delivery_ID__c,Initiation__r.Connect_Delivery_ID__c +&apos;_&apos;+Lpad(TEXT(AssetCount__c),4,&apos;0&apos;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Agreement number</label>
+    <required>false</required>
+    <securityClassification>Public</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

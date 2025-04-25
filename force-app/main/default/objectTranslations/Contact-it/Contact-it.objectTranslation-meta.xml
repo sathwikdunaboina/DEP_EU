@@ -8,11 +8,18 @@
         <plural>true</plural>
         <value>Contatti</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- medalliaOutbound_createSurvey --></label>
+        <name>medallia_xm__medalliaOutbound_createSurvey</name>
+    </fieldSets>
     <gender>Masculine</gender>
-    <recordTypes>
-        <label><!-- Contact --></label>
-        <name>GCContact</name>
-    </recordTypes>
+    <layouts>
+        <layout>Contact Layout New</layout>
+        <sections>
+            <label><!-- Progress --></label>
+            <section>Progress</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Please enter correct Country. --></errorMessage>
@@ -25,5 +32,13 @@
     <webLinks>
         <label><!-- GoogleSearch --></label>
         <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_Detail --></label>
+        <name>medallia_xm__Add_To_Program_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_ListView --></label>
+        <name>medallia_xm__Add_To_Program_ListView</name>
     </webLinks>
 </CustomObjectTranslation>

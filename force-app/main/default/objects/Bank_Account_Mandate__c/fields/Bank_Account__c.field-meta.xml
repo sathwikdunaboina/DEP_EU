@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bank_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Associated Bank Account</description>
+    <label>Bank Account</label>
+    <referenceTo>Bank_Account__c</referenceTo>
+    <relationshipLabel>Bank Account Mandates</relationshipLabel>
+    <relationshipName>Bank_Account_Mandates</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

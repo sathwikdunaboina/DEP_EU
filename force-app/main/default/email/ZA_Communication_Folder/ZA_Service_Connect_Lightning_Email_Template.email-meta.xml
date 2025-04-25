@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template is sent to the customers for acknowledging that their case has been created in the system for South-Africa</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>ZA - Service Connect Lightning Email Template</name>
+    <style>none</style>
+    <subject>Case created with VFS Service Team, Case Number: {!Case.CaseNumber}</subject>
+    <textOnly>Thank you for contacting our Service Team at Volvo Financial Services.
+
+Your case number is: {!Case.CaseNumber} : {!Case.Subject}
+
+We will aim to respond to your enquiry within 48 working hours.
+
+Please note our opening hours are 08:30 – 16:30 Monday to Friday (excluding bank holidays)</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

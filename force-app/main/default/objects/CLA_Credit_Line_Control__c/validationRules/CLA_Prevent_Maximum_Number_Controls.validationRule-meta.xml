@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Prevent_Maximum_Number_Controls</fullName>
+    <active>true</active>
+    <description>Max 25 controls can be added to a credit line.</description>
+    <errorConditionFormula>AND(CLA_Credit_Line__r.CLA_Credit_Line_Control_Count__c &gt;= 25 , 
+ ISNEW() )</errorConditionFormula>
+    <errorMessage>Max 25 controls can be added to a credit line.</errorMessage>
+</ValidationRule>

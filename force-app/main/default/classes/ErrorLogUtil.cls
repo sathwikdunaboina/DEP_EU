@@ -2,11 +2,37 @@
 public class ErrorLogUtil {
 
     public static final String DMLEXCEPTIONTYPE = 'DmlException';
+    public static void asyncLogError(Exception e,String objectRecordName,String objectRecordId){
+        String stackTrace = e.getStackTraceString().substringBefore('\n');
+        string errorMessage = e.getMessage();
+        decimal errorLineNumber = e.getLineNumber();
+        string errorType = e.getTypeName();
+        asyncCreateErrorLog(stackTrace,errorMessage,errorLineNumber,objectRecordName,objectRecordId,errorType);
+    }
+    public static void asyncLogErrorForNonCatch(String className,String MethodName,String ErrorMessage,String objectRecordName,String objectRecordId,Decimal lineNumber,string errorType){
+        asyncCreateErrorLog(className+'.'+MethodName,ErrorMessage,lineNumber,objectRecordName,objectRecordId,errorType);
+    }
+    @future
+    private static void asyncCreateErrorLog(string stackTrace,string errorMsg,decimal errorLineNumber,String objectRecordName,String objectRecordId,string errorType){
+        String className = stackTrace.substringAfter('.').substringBefore('.');
+        String methodName = stackTrace.substringBefore(':').substringAfter(className).substringAfter('.');
+        Error_Log__c errorLog = new Error_Log__c(
+            Class_Name__c = className,
+            Error_Message__c = errorMsg,
+            Line_Number__c = errorLineNumber,
+            Method_Name__c = methodName,
+            Stack_Trace__c = stackTrace,
+            Associated_Record__c = objectRecordId + ' - '+objectRecordName,
+            Type__c = 'error',
+            ExceptionType__c = errorType
+        );
+        Database.Insert(errorLog,true,AccessLevel.SYSTEM_MODE);
+    }
 
     public static void logError(Exception e,String objectRecordName,String objectRecordId){
        
         String stackTrace = e.getStackTraceString().substringBefore('\n');
-        String className = stackTrace.substringAfter('.').substringBefore('.');	
+        String className = stackTrace.substringAfter('.').substringBefore('.');  
         String methodName = stackTrace.substringBefore(':').substringAfter(className).substringAfter('.');
         
         Error_Log__c errorLog = new Error_Log__c(

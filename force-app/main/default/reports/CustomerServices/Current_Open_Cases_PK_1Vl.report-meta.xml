@@ -31,16 +31,28 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
+        <field>LAST_UPDATE_BY_ALIAS</field>
+    </columns>
+    <columns>
+        <field>PARENT_CASE_NUMBER</field>
+    </columns>
+    <columns>
         <field>Case.Indicator__c</field>
     </columns>
     <columns>
-        <field>SUBJECT</field>
+        <field>STATUS</field>
     </columns>
     <columns>
         <field>TYPE</field>
@@ -55,7 +67,7 @@
         <field>OPEN</field>
     </columns>
     <columns>
-        <field>STATUS</field>
+        <field>Case.Status_Reason__c</field>
     </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
@@ -72,14 +84,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>ext,waring,eot,billing,collections</value>
+            <value>waring,collections,Beverley,laura</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Truslove,james,jayne</value>
+            <value>james,jayne,ilsley</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -107,20 +119,6 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>thay</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>service</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
             <value>helen</value>
         </criteriaItems>
         <criteriaItems>
@@ -135,28 +133,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>lovepreet</value>
+            <value>lovepreet,holleyhead</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>XSM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>purchase order,PO</value>
+            <operator>contains</operator>
+            <value>adam,molly,bart,jordan,andy,callum,Operations,2nd</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -180,6 +164,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>STATUS</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

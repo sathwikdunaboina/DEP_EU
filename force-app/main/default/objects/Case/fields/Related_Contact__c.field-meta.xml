@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This custom field will be used to fill customer contact on dealer recordtype page layout implemented as part of UK cases user story</description>
+    <inlineHelpText>Customer Contact</inlineHelpText>
+    <label>Related Contact</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>$Source.Related_Account__c</field>
+            <operation>equals</operation>
+            <valueField>Contact.Account.Id</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Customer Cases</relationshipLabel>
+    <relationshipName>CustomerCases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

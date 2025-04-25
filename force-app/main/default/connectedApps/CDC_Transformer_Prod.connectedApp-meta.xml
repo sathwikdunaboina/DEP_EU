@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>erin.antonson@consultant.volvo.com</contactEmail>
+    <description>This is the CDC Transformer Integration settings</description>
+    <label>CDC Transformer Prod</label>
+    <oauthConfig>
+        <callbackUrl>https://login.salesforce.com/services/oauth2/success</callbackUrl>
+        <certificate>MIIDvzCCAqcCFFgKU2xWCeStTVcFzLIvwDh9qlIWMA0GCSqGSIb3DQEBCwUAMIGbMQswCQYDVQQGEwJBVTEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExETAPBgNVBAcMCFN5cmFjdXNlMQwwCgYDVQQKDANWRlMxDTALBgNVBAsMBEFyY2gxEDAOBgNVBAMMB0NEQ0NlcnQxMTAvBgkqhkiG9w0BCQEWImVyaW4uYW50b25zb25AY29uc3VsdGFudC52b2x2by5jb20wHhcNMjMxMDA5MTUxMzQwWhcNMjQxMDA4MTUxMzQwWjCBmzELMAkGA1UEBhMCQVUxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMREwDwYDVQQHDAhTeXJhY3VzZTEMMAoGA1UECgwDVkZTMQ0wCwYDVQQLDARBcmNoMRAwDgYDVQQDDAdDRENDZXJ0MTEwLwYJKoZIhvcNAQkBFiJlcmluLmFudG9uc29uQGNvbnN1bHRhbnQudm9sdm8uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ot2N654TK2cwE+zGBJRCj/C3iFX/xHQepW1M2dJ+NSVX8aqFH1FpW180BqsBxoKoMnHN1b8ZXmb9M2L+sktB2DBv6WfsxDTadkzWQlQAFO8QN9nChFb0RbTZLqDAy2BPCDSFi5F055B5HpY1zjaYc6CtSIyWx8eV1dIuoxXHuziscHEOPrwZFr7GXrUZ7MYE+jJoJksm8IGptIDk3XCVAD7MRmPVZrhKXBMdWstIE856PqhBGcaQFCJJ42x/loK/nIKDtMas/6cgi1/hfQa7VLBrNZDJAZ3TKlGZyT0CKbaCb2NJMQsURBGtEzmxcKpalQJ0cS61DeSrfWGQAXCWQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQDRR6oRMN2tWdM7Y6pcVVzbIRIVSJBO5vX8NOp+xZJ3/fDNU9lw0ad8Y7xfAcL+H35WxO0GCr6eqPJDO0JwBNEhf3I7bHUpPtyh47EJjKflTM1NrTmLq3334OOk9GUCGj55cMV6qomQMpkB42+5z64F/gpzzwIfXJIisgf6rJq7R8Gn5WzCia/yWkP8MUzzUrPDDn3qoxQD5upswXB7s46g4iz/d3Ro5TSsdxZdrsBGq8q53lG/0NaFfAJy78A+3NNLCe9SqMgFWBXhtM7MVL5KIMFFvLW6de90W2xsmA+2SuN4eWV299UM0sAswIf5KBsyWtK0cDbvv/5Kmj6dizA3</certificate>
+        <consumerKey>3MVG9sSN_PMn8tjQQ_b.JK9zyemzwuxI1FkEQT.prgNgABjrVWIa4WR47J4UZVUIDOj0978szf3SylSDiyVlT</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Customer Management Application Access Admin</permissionSetName>
+    <permissionSetName>Customer Management Application Access</permissionSetName>
+    <profileName>System Administrator</profileName>
+</ConnectedApp>

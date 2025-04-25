@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Branding__c</fullName>
-    <externalId>false</externalId>
+    <deprecated>false</deprecated>
     <label>Branding</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <type>Picklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
@@ -22,16 +21,24 @@
                 <label>Renault</label>
             </value>
             <value>
+                <fullName>Construction Equipment</fullName>
+                <default>false</default>
+                <label>Construction Equipment</label>
+            </value>
+            <value>
                 <fullName>Mack</fullName>
                 <default>false</default>
-                <isActive>false</isActive>
                 <label>Mack</label>
             </value>
             <value>
-                <fullName>Transport Funding</fullName>
+                <fullName>Bus</fullName>
                 <default>false</default>
-                <isActive>false</isActive>
-                <label>Transport Funding</label>
+                <label>Bus</label>
+            </value>
+            <value>
+                <fullName>UD</fullName>
+                <default>false</default>
+                <label>UD</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -64,7 +64,7 @@
         <filterLogic>and</filterLogic>
         <filters>
             <field>Email_Address__c</field>
-            <operator>EqualTo</operator>
+            <operator>In</operator>
             <value>
                 <elementReference>$Record.ToAddress</elementReference>
             </value>
@@ -117,5 +117,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>
