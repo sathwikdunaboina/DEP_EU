@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>This flow is used for mapping manual lead to opportunity fields</description>
     <environments>Default</environments>
     <formulas>
@@ -80,24 +81,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Contact_Email__c</field>
-            <value>
-                <elementReference>$Record.Email</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Contact_Mobile__c</field>
-            <value>
-                <elementReference>$Record.MobilePhone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Contact_Name__c</field>
-            <value>
-                <elementReference>ContactName</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Country__c</field>
             <value>
                 <elementReference>$Record.Country</elementReference>
@@ -161,6 +144,12 @@
             <field>Customer_Address__Street__s</field>
             <value>
                 <elementReference>$Record.Street</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Contact__c</field>
+            <value>
+                <elementReference>$Record.ConvertedContactId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

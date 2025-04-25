@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="User Management" icon-name="standard:user">
+        <!-- Search Bar -->
+        <div class="slds-m-around_medium">
+            <lightning-input type="search" 
+                             label="Search Users" 
+                             placeholder="Enter name or email..." 
+                             onchange={handleSearch}></lightning-input>
+        </div>
+
+        <!-- User List Table -->
+        <div class="slds-m-around_medium">
+            <lightning-datatable
+                key-field="Id"
+                data={users}
+                columns={columns}
+                selected-rows={selectedUserIds}
+                onrowselection={handleRowSelection}>
+            </lightning-datatable>
+        </div>
+
+        <!-- Selected Users Table -->
+        <template if:true={selectedUsers.length}>
+            <div class="slds-m-around_medium">
+                <h3 class="slds-text-heading_small">Selected Users</h3>
+                <lightning-datatable
+                    key-field="Id"
+                    data={selectedUsers}
+                    columns={columns}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </div>
+        </template>
+
+        <!-- Action Buttons -->
+        <div if:true={selectedUsers.length} class="slds-m-around_medium">
+            <lightning-button variant="brand" 
+                              label="Activate" 
+                              onclick={activateUsers} 
+                              class="slds-m-right_small">
+            </lightning-button>
+            <lightning-button variant="destructive" 
+                              label="Deactivate" 
+                              onclick={deactivateUsers}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

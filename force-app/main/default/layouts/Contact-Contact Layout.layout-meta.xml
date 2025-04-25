@@ -139,11 +139,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>0</sortOrder>
@@ -152,6 +147,11 @@
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>LogACall</actionName>
@@ -237,8 +237,8 @@
     </relatedLists>
     <relatedLists>
         <fields>ACCOUNT.NAME</fields>
-        <fields>VATNumber__c</fields>
-        <fields>FiscalCode__c</fields>
+        <fields>Account.VATNumber__c</fields>
+        <fields>Account.FiscalCode__c</fields>
         <fields>ACCOUNT.ADDRESS1_COUNTRY</fields>
         <relatedList>RelatedContactAccountRelationList</relatedList>
     </relatedLists>

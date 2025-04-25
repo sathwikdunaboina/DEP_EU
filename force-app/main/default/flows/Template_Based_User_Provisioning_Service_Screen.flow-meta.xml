@@ -3,10 +3,16 @@
     <actionCalls>
         <name>revoke_access</name>
         <label>revoke access</label>
-        <locationX>515</locationX>
-        <locationY>579</locationY>
+        <locationX>313</locationX>
+        <locationY>478</locationY>
         <actionName>UserProvisioningScreenFlowController</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Provisioned_Users</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error</targetReference>
+        </faultConnector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>federationId</name>
@@ -28,15 +34,20 @@
         </inputParameters>
         <nameSegment>UserProvisioningScreenFlowController</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>user_Provisioning</name>
         <label>user Provisioning</label>
-        <locationX>709</locationX>
-        <locationY>616</locationY>
+        <locationX>966</locationX>
+        <locationY>477</locationY>
         <actionName>UserProvisioningScreenFlowController</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Provisioned_Users</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error</targetReference>
+        </faultConnector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>brand</name>
@@ -100,9 +111,9 @@
         </inputParameters>
         <nameSegment>UserProvisioningScreenFlowController</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <choices>
         <name>Add</name>
         <choiceText>Add</choiceText>
@@ -291,6 +302,64 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Provisioned_Users</name>
+        <label>Get Provisioned Users</label>
+        <locationX>611</locationX>
+        <locationY>587</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>User_Provision_Summary</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>FederationIdentifier</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Federation_Identifier</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>FederationIdentifier</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Federation_Identifier_0</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>FederationIdentifier</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <queriedFields>FederationIdentifier</queriedFields>
+        <queriedFields>Username</queriedFields>
+        <queriedFields>templateUserId__c</queriedFields>
+        <queriedFields>IsActive</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>610</locationX>
+        <locationY>467</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErrorMessage</name>
+            <fieldText>&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <screens>
         <name>User_Creation_Screen</name>
         <label>User Creation Screen</label>
@@ -305,7 +374,7 @@
         <fields>
             <name>first_Name</name>
             <dataType>String</dataType>
-            <fieldText>first Name</fieldText>
+            <fieldText>First Name</fieldText>
             <fieldType>InputField</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
@@ -313,7 +382,7 @@
         <fields>
             <name>last_Name</name>
             <dataType>String</dataType>
-            <fieldText>last Name</fieldText>
+            <fieldText>Last Name</fieldText>
             <fieldType>InputField</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
@@ -359,7 +428,6 @@
             <choiceReferences>OperationalManager</choiceReferences>
             <choiceReferences>OperationalTeamLead</choiceReferences>
             <choiceReferences>ServiceRepresentativeCustomerServices</choiceReferences>
-            <choiceReferences>ServiceRepresentativeContractServices</choiceReferences>
             <dataType>String</dataType>
             <fieldText>Role Name</fieldText>
             <fieldType>DropdownBox</fieldType>
@@ -435,6 +503,70 @@
             <isRequired>false</isRequired>
         </fields>
         <nextOrFinishButtonLabel>Submit</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>User_Provision_Summary</name>
+        <label>User Provision Summary</label>
+        <locationX>611</locationX>
+        <locationY>709</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ImportantNote</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Below user configurations not supported and should be manually done :&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;1. Omni-Channel : User Presence Configuration&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>ProvisionResult</name>
+            <dataTypeMappings>
+                <typeName>T</typeName>
+                <typeValue>User</typeValue>
+            </dataTypeMappings>
+            <extensionName>flowruntime:datatable</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>User Provisioning Result</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectionMode</name>
+                <value>
+                    <stringValue>MULTI_SELECT</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>minRowSelection</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>shouldDisplayLabel</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>Get_Provisioned_Users</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columns</name>
+                <value>
+                    <stringValue>[{&quot;apiName&quot;:&quot;Id&quot;,&quot;guid&quot;:&quot;column-c804&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;User ID&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-b184&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Full Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Email&quot;,&quot;guid&quot;:&quot;column-b71a&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;Email&quot;,&quot;type&quot;:&quot;email&quot;},{&quot;apiName&quot;:&quot;FederationIdentifier&quot;,&quot;guid&quot;:&quot;column-9d33&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:3,&quot;label&quot;:&quot;SAML Federation ID&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Username&quot;,&quot;guid&quot;:&quot;column-28eb&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:4,&quot;label&quot;:&quot;Username&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;IsActive&quot;,&quot;guid&quot;:&quot;column-3d18&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:5,&quot;label&quot;:&quot;Active&quot;,&quot;type&quot;:&quot;boolean&quot;}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>This flow creates factory orders which has basically asset ,dealer and customer information from manual opportunities which are created as part of manual leads</description>
     <environments>Default</environments>
     <interviewLabel>Manual opportunity factory orders {!$Flow.CurrentDateTime}</interviewLabel>

@@ -32,11 +32,13 @@ public class FormulaAsDefaultForSepa_Test {
             Account oAccount = new Account();
             oAccount.Name = 'Test Account';
             oAccount.companyRegistrationNumber2__c = '666';
+            oAccount.BillingCountry='France';
             testAccounts.add(oAccount);
             
             Account oAccountWithFR94 = new Account();
             oAccountWithFR94.sourceSystemID__c = 'FR94-SF';
             oAccountWithFR94.Name = 'Test Account with FR94-SF';
+            oAccountWithFR94.BillingCountry='France';
             oAccountWithFR94.companyRegistrationNumber2__c = '777';
             testAccounts.add(oAccountWithFR94);
             insert testAccounts;

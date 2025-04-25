@@ -8,13 +8,11 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>HorizontalBarStacked</chartType>
+        <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Initiation_Error__c.Error__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
+        <groupingColumn>FK_$Initiation_asset__c.Commercial_owner__c</groupingColumn>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>FK_$Initiation_asset__c.Commercial_owner__c</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -68,14 +66,16 @@
             <operator>equals</operator>
             <value>Wholesale</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Initiation_Error__c.Error__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FK_$Initiation_asset__c.Commercial_owner__c</field>

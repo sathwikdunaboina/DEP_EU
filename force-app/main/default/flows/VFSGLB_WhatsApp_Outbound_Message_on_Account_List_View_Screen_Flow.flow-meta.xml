@@ -51,7 +51,6 @@
         <nameSegment>sendConversationMessages</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>Sends Before due date 1 day before WhatsApp Notification</description>
@@ -104,7 +103,6 @@
         <nameSegment>sendConversationMessages</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>Sends BR Before due date 5 days before notification.</description>
@@ -157,9 +155,33 @@
         <nameSegment>sendConversationMessages</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Adds Account Ids to String</description>
+        <name>Add_Ids_to_String</name>
+        <label>Add Ids to String</label>
+        <locationX>463</locationX>
+        <locationY>435</locationY>
+        <assignmentItems>
+            <assignToReference>AccountIdsString</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Iterate_Over_Account_Ids</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>AccountIdsString</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>-</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_Account_Ids</targetReference>
+        </connector>
+    </assignments>
     <assignments>
         <name>Assign_Messaging_Users</name>
         <label>Assign Messaging Users</label>
@@ -263,7 +285,7 @@
                 <operator>NotEqualTo</operator>
             </conditions>
             <connector>
-                <targetReference>Selected_Account_Screen</targetReference>
+                <targetReference>Iterate_Over_Account_Ids</targetReference>
             </connector>
             <label>Accounts Selected</label>
         </rules>
@@ -338,6 +360,21 @@
             <targetReference>County_Selection_Screen</targetReference>
         </noMoreValuesConnector>
     </loops>
+    <loops>
+        <description>This loop iterate over Account Ids to add ids in string to prepare input for LWC.</description>
+        <name>Iterate_Over_Account_Ids</name>
+        <label>Iterate Over Account Ids</label>
+        <locationX>562</locationX>
+        <locationY>242</locationY>
+        <collectionReference>ids</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Ids_to_String</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Selected_Account_Screen</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -373,10 +410,6 @@
             <value>
                 <elementReference>ids</elementReference>
             </value>
-        </filters>
-        <filters>
-            <field>Name</field>
-            <operator>NotEqualTo</operator>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Account</object>
@@ -502,7 +535,7 @@
         <locationX>1311</locationX>
         <locationY>562</locationY>
         <allowBack>true</allowBack>
-        <allowFinish>false</allowFinish>
+        <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <backButtonLabel>Back</backButtonLabel>
         <fields>
@@ -510,6 +543,7 @@
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(251, 8, 8); font-size: 18px;&quot;&gt;Messaging user does not exist for selected accounts.&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Make sure that messaging user exists for selected accounts.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
+        <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
@@ -668,53 +702,13 @@
             <targetReference>Get_Messaging_Users</targetReference>
         </connector>
         <fields>
-            <name>accountTable</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>Account</typeValue>
-            </dataTypeMappings>
-            <extensionName>flowruntime:datatable</extensionName>
+            <name>accountMessagingUserDetail</name>
+            <extensionName>c:accountMessagingUserDetail</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
-                <name>label</name>
+                <name>listAccountIds</name>
                 <value>
-                    <stringValue>Selected Accounts</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>selectionMode</name>
-                <value>
-                    <stringValue>NO_SELECTION</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>minRowSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>shouldDisplayLabel</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>Get_Account_Records</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>maxRowSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>columns</name>
-                <value>
-                    <stringValue>[{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-2b9f&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:true,&quot;customHeaderLabel&quot;:&quot;{!$Label.Account_Name}&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Account Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Phone&quot;,&quot;guid&quot;:&quot;column-0f2f&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:true,&quot;customHeaderLabel&quot;:&quot;{!$Label.Account_Phone}&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Account Phone&quot;,&quot;type&quot;:&quot;phone&quot;},{&quot;apiName&quot;:&quot;Website&quot;,&quot;guid&quot;:&quot;column-b332&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:true,&quot;customHeaderLabel&quot;:&quot;{!$Label.Account_Website}&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;Website&quot;,&quot;type&quot;:&quot;url&quot;}]</stringValue>
+                    <elementReference>AccountIdsString</elementReference>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -732,7 +726,15 @@
             <targetReference>Get_Account_Records</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
+    <variables>
+        <description>Adds Account Ids to String to send to LWC</description>
+        <name>AccountIdsString</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <description>Need to add ids in small else flow will not work.</description>
         <name>ids</name>

@@ -6,11 +6,20 @@
 * @Used By           
 * @Test Covered By    CLA_CreditLineSearchService_Test
 * @SystemLayer        Service
-* @URL Mapping        credit-lines/search
+* @URL Mapping        credit-lines/search 
 * ------------------------------------------------------------------------------------------
 * @description        This class is used to get creditline records based of matching conditions.
 * ------------------------------------------------------------------------------------------
-*/
+* Update 
+* @Date               12-16-2024
+* @author             By Sourabh Sharma <sourabh.sharma@consultant.volvo.com>
+* Description         Updated getMatchedCreditLines empty reponse condtion to 200 with empty respnse instead of 404 error previously.
+* Update 
+* @Date               01-07-2025
+* @author             By Sourabh Sharma <sourabh.sharma@consultant.volvo.com>
+* Description         Adds creditBureauCompanyIdentificationNumber for the credit line customer search parameter
+*/  
+
 
 @RestResource(urlMapping='/credit-lines/search')
 global with sharing class CLA_CreditLineSearchService {
@@ -41,8 +50,9 @@ global static void getMatchedCreditLines() {
         }
 
         List<CLA_Credit_Line__c> listCreditLineRecords = fetchCreditLineRecords(mapRequestParamValueByKey);
+        
         if (listCreditLineRecords.isEmpty()) {
-            setResponse(response, 404, '{"error":"Credit line not found"}');
+            setResponse(response, 200, '[]');
             return;
         }
 
@@ -71,8 +81,9 @@ private static Boolean validateRequestBody( Map<String, Object> mapRequestParamV
     String sCountry = mapRequestParamValueByKey.get('country') != null ?  String.valueOf(mapRequestParamValueByKey.get('country')) : '';
     String sCompanyIdentificationNumber = mapRequestParamValueByKey.get('companyIdentificationNumber') != null ?  String.valueOf(mapRequestParamValueByKey.get('companyIdentificationNumber')) : '';
     String sVfsCustomerNumber = mapRequestParamValueByKey.get('vfsCustomerNumber') != null ?  String.valueOf(mapRequestParamValueByKey.get('vfsCustomerNumber')) : '';
-
-     if ( sBussinessArea != '' && sCountry != '' && (sCompanyIdentificationNumber != '' || sVfsCustomerNumber != '')  ) {
+    String sCreditBureauCompanyIdentificationNumber = mapRequestParamValueByKey.get('creditBureauCompanyIdentificationNumber') != null ?  String.valueOf(mapRequestParamValueByKey.get('creditBureauCompanyIdentificationNumber')) : '';
+   
+     if ( sBussinessArea != '' && sCountry != '' && (sCompanyIdentificationNumber != '' || sVfsCustomerNumber != '' || sCreditBureauCompanyIdentificationNumber != '')  ) {
         return false;
      }
      else{
@@ -126,49 +137,12 @@ private static List<SObject> getTransformedCreditLineRecords(List<CLA_Credit_Lin
 
 private static List<CLA_Credit_Line__c> fetchCreditLineRecords(Map<String, Object> mapRequestParamValueByKey) {
 
-    String sBussinessArea = mapRequestParamValueByKey.get('businessArea') != null ?  String.valueOf(mapRequestParamValueByKey.get('businessArea')) : '';
-    String sCountry = mapRequestParamValueByKey.get('country') != null ?  String.valueOf(mapRequestParamValueByKey.get('country')) : '';
-    String sCompanyIdentificationNumber = mapRequestParamValueByKey.get('companyIdentificationNumber') != null ?  String.valueOf(mapRequestParamValueByKey.get('companyIdentificationNumber')) : '';
-    String sVfsCustomerNumber = mapRequestParamValueByKey.get('vfsCustomerNumber') != null ?  String.valueOf(mapRequestParamValueByKey.get('vfsCustomerNumber')) : '';
-
+    mapRequestParamValueByKey.put('Approved','Approved');
     List<CLA_Credit_Line__c> listCreditLineRecords = new List<CLA_Credit_Line__c>();
+    String sSearchQuery = getSearchQuery(mapRequestParamValueByKey);
     
-    if(sCompanyIdentificationNumber != '' && sVfsCustomerNumber != ''){
-         listCreditLineRecords = [
-            SELECT Id ,
-            (SELECT CLA_Credit_Line__c,CLA_VFS_Customer_Number__c,CLA_Company_Identification_Number__c  FROM Credit_Line_Customers__r 
-             WHERE CLA_Company_Identification_Number__c =: sCompanyIdentificationNumber OR CLA_VFS_Customer_Number__c =: sVfsCustomerNumber) ,
-            (SELECT Id  FROM Credit_Line_Controls__r WHERE CLA_Business_Area__c =: sBussinessArea ) 
-             FROM CLA_Credit_Line__c 
-             WHERE CLA_Country__c =: sCountry AND CLA_Activation_Date__c <= TODAY AND CLA_Status__c = 'Approved' AND
-             CLA_Remaining_Amount__c > 0 AND CLA_Expiry_Date__c > TODAY WITH USER_MODE LIMIT 49999
-        ];
-       }
-    else if(sCompanyIdentificationNumber != '' && sVfsCustomerNumber == ''){
-       
-        listCreditLineRecords = [
-            SELECT Id ,
-            (SELECT CLA_Credit_Line__c,CLA_VFS_Customer_Number__c,CLA_Company_Identification_Number__c  FROM Credit_Line_Customers__r 
-             WHERE CLA_Company_Identification_Number__c =: sCompanyIdentificationNumber) ,
-            (SELECT Id  FROM Credit_Line_Controls__r WHERE CLA_Business_Area__c =: sBussinessArea ) 
-             FROM CLA_Credit_Line__c 
-             WHERE CLA_Country__c =: sCountry AND CLA_Activation_Date__c <= TODAY AND CLA_Status__c = 'Approved' AND
-             CLA_Remaining_Amount__c > 0 AND CLA_Expiry_Date__c > TODAY  WITH USER_MODE LIMIT 49999
-        ];
-    }
-    else if(sVfsCustomerNumber != '' && sCompanyIdentificationNumber == ''){
-        listCreditLineRecords = [
-            SELECT Id ,
-            (SELECT CLA_Credit_Line__c,CLA_VFS_Customer_Number__c,CLA_Company_Identification_Number__c  FROM Credit_Line_Customers__r 
-             WHERE CLA_VFS_Customer_Number__c =: sVfsCustomerNumber) ,
-            (SELECT Id  FROM Credit_Line_Controls__r WHERE CLA_Business_Area__c =: sBussinessArea ) 
-             FROM CLA_Credit_Line__c 
-             WHERE CLA_Country__c =: sCountry AND CLA_Activation_Date__c <= TODAY AND CLA_Status__c = 'Approved' AND
-             CLA_Remaining_Amount__c > 0 AND CLA_Expiry_Date__c > TODAY  WITH USER_MODE LIMIT 49999
-        ];
-    }
-    
-    
+    listCreditLineRecords =  Database.queryWithBinds(sSearchQuery, mapRequestParamValueByKey,  AccessLevel.USER_MODE);
+
     List<CLA_Credit_Line__c> listCreditLineFilteredRecords = new List<CLA_Credit_Line__c>();
     if(listCreditLineRecords.IsEmpty()){
       return listCreditLineFilteredRecords;
@@ -226,4 +200,47 @@ private static void setResponse(RestResponse response, Integer iStatusCode, Stri
     response.statusCode = iStatusCode;
     response.responseBody = Blob.valueOf(sResponseBody);
 }
+
+
+/*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     getSearchQuery
+* @description     This method generate query for credit line search.
+* ------------------------------------------------------------------------------------------------------
+* @param           mapCustomersQueryParamByApiName              Map of credit line customer param by api name
+* @return          String
+* ------------------------------------------------------------------------------------------------------ 
+*/
+
+private static String getSearchQuery(Map<String,Object>mapRequestParamValueByKey) {
+
+    
+    String sCreditLineCustomerQueryCondition = '';
+    Map<String,String>mapCustomersQueryParamByApiName = new map<String,String>();
+    mapCustomersQueryParamByApiName.put('companyIdentificationNumber','CLA_Company_Identification_Number__c');
+    mapCustomersQueryParamByApiName.put('vfsCustomerNumber','CLA_VFS_Customer_Number__c');
+    mapCustomersQueryParamByApiName.put('creditBureauCompanyIdentificationNumber','CLA_Credit_Bureau_Number__c');
+    
+    
+    List<String>listCustomerQueryConditons = new List<String>();
+    for(String param :mapCustomersQueryParamByApiName.keySet() ){
+        if(mapRequestParamValueByKey.get(param) != null && mapRequestParamValueByKey.get(param) != ''){
+            listCustomerQueryConditons.add(mapCustomersQueryParamByApiName.get(param) + ' =: ' + param);
+        }
+    }
+
+    sCreditLineCustomerQueryCondition =  String.join(listCustomerQueryConditons, ' OR ');
+
+    // country , businessArea are validated for not being null in validateRequestBody method before query formation.
+    String sSearchQuery = 'SELECT Id ,(SELECT CLA_Credit_Line__c,CLA_VFS_Customer_Number__c,CLA_Company_Identification_Number__c  FROM Credit_Line_Customers__r WHERE ' +  sCreditLineCustomerQueryCondition;
+           sSearchQuery += ') , (SELECT Id  FROM Credit_Line_Controls__r WHERE CLA_Business_Area__c =: businessArea ) FROM CLA_Credit_Line__c';
+           sSearchQuery += ' WHERE CLA_Country__c =: country AND CLA_Activation_Date__c <= TODAY AND CLA_Status__c =: Approved AND CLA_Remaining_Amount__c > 0 AND CLA_Expiry_Date__c > TODAY LIMIT 49999';
+    
+    system.debug('sSearchQuery ==> '+sSearchQuery);
+
+    return sSearchQuery;
+}
+
+
+
 }

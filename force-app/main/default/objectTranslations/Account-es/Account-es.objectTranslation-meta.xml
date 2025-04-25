@@ -52,6 +52,10 @@
         <errorMessage><!-- Le numéro SIRET doit comporter 14 caractères --></errorMessage>
         <name>Siret_Can_only_be_14_Digits</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Billing country is required. --></errorMessage>
+        <name>Validate_Account_BillingCountry_OnCreate</name>
+    </validationRules>
     <webLinks>
         <label>Mapas Google</label>
         <name>GoogleMaps</name>

@@ -22,12 +22,13 @@ public class InitiationAppFlowTests {
         Account acc = new Account();
         acc.Name = 'TestAccount';
         acc.RecordTypeId = accountRecordTypeId;
+        acc.BillingCountry = 'United Kingdom';//Added country by aswin
         insert acc;
         //Initiation Creation
         Initiation__c initiation = new Initiation__c();
         initiation.Country__c = 'GB';
         initiation.RecordTypeId = initiationRecordTypeIdService;
-        initiation.Status__c = 'Closed';
+        initiation.Status__c = 'In progress';//changed the status from Close to in progress by aswin
         initiation.Connect_Delivery_ID__c='111';
         initiation.Brand__c = 'Volvo Truck';
         initiation.Box_ID__c = 'test';

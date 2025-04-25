@@ -47,9 +47,11 @@ public with sharing class VFSCORE_AccountChangeEventTriggerHandler {
             Set<Id> setAllAccountIdsTemp = new Set<Id>();
             for (AccountChangeEvent accountChange : this.accountChangeEvents) {
                 // Get all Record Ids for this change and add to the set
-                List<Id> recordIds = (List<Id>)accountChange.ChangeEventHeader.getRecordIds();            
+                List<Id> recordIds = (List<Id>)accountChange.ChangeEventHeader.getRecordIds();       
+                System.debug('recordIds');
                 setAllAccountIdsTemp.addAll(recordIds);
             }
+            System.debug('qwerty');
             for(Account acc : [SELECT Id,sourceSystemID__c FROM Account WHERE Id IN: setAllAccountIdsTemp WITH SECURITY_ENFORCED]) {
                 associatedRecord = acc.Id;
                 if(acc.sourceSystemID__c != null){

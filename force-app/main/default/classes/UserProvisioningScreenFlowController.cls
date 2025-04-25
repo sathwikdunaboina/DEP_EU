@@ -43,12 +43,13 @@ public with sharing class UserProvisioningScreenFlowController {
             ups.createUsers(createUserReqs);
         }
         if(deActivateUserReqs.size()>0){
-            ups.deActivateUsers(deActivateUserReqs);
+            ups.deActivateUsers(deActivateUserReqs);         	
         }
     }
     catch (Exception e) {
         System.debug('Error: ' + e.getMessage());
         ErrorLogUtil.asyncLogError(e, 'UserProvisionRequest', '-');
+        throw e;
         }
     }
 

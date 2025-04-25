@@ -10,12 +10,12 @@ public class CustomerControllerTest {
         // Add a customer account
         Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
         
-        Account singleTestAcc = new Account (Name='TestCustomerAccount', RecordTypeId = AccountRecordType);
+        Account singleTestAcc = new Account (Name='TestCustomerAccount', RecordTypeId = AccountRecordType,BillingCountry = 'United Kingdom');
         insert singleTestAcc;
         
         // Add a dealer account
         accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Dealer Account').getRecordTypeId();        
-        singleTestAcc = new Account (Name='TestDealerAccount', RecordTypeId = AccountRecordType);
+        singleTestAcc = new Account (Name='TestDealerAccount', RecordTypeId = AccountRecordType,BillingCountry = 'United Kingdom');
         insert singleTestAcc;
         
         // Add a factory order with a valid End_Customer_Name

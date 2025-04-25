@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Case.CASE_AGE_DAY__c:AVG</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel># CASE AGE DAY AVG</masterLabel>
+        <scale>2</scale>
+    </aggregates>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -8,10 +17,16 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Case.Number_of_Agreements__c</column>
+        </chartSummaries>
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>OWNER</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -29,6 +44,10 @@
     </columns>
     <columns>
         <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
@@ -64,6 +83,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>,New,In Progress,On Hold,Escalated,Chasing marketing company</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Bart Wisniewski,Callum Scully,Jordan Mulholland,Medcalf,Molly White,Adam King,Heather Molloy,Rumeysa Belibagli,Paul Kennedy,Ben Townsend,Sareena Jordamovic,Jenny Jackson,Harry Ashman,Laura Restall,CS,2nd</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

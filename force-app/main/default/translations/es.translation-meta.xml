@@ -57,12 +57,20 @@
         <name>Start_Conversation_Message_Component</name>
     </conversationMessageDefinitions>
     <customApplications>
+        <label><!-- Admin App --></label>
+        <name>Admin_App</name>
+    </customApplications>
+    <customApplications>
         <label><!-- VFS Credit Line --></label>
         <name>CLA_VFS_Credit_Line</name>
     </customApplications>
     <customApplications>
         <label><!-- Customer Management --></label>
         <name>Customer_Management</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Permission Set Compare --></label>
+        <name>Infybots__Permission_Set_Compare</name>
     </customApplications>
     <customApplications>
         <label><!-- Initiations Process --></label>
@@ -87,6 +95,10 @@
     <customApplications>
         <label>Operaciones de ventas</label>
         <name>Sales_Operations</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Org Check --></label>
+        <name>orgcheck__OrgCheck_APP</name>
     </customApplications>
     <customLabels>
         <label><!-- Account Name Label Used in Screen Flow --></label>
@@ -629,8 +641,24 @@
         <name>EM_Container_Base_ZeroUnseenMessagesAssistiveText_04IKA000000000L_3235349</name>
     </customLabels>
     <customLabels>
+        <label><!-- Enable Used in LWC --></label>
+        <name>EnableLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enabled Used in LWC --></label>
+        <name>EnabledLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Integration User DBB Username --></label>
+        <name>Integration_User_DBB_Username</name>
+    </customLabels>
+    <customLabels>
         <label>Facturas obtenidas</label>
         <name>Invoice_API_Result</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Is Enabled For Messaging Used in LWC --></label>
+        <name>IsEnabledForMessagingLabel</name>
     </customLabels>
     <customLabels>
         <label><!-- Meta Data Label Used in Screen Flow --></label>
@@ -741,16 +769,32 @@
         <name>medallia_xm__oAuth_NoMockFound</name>
     </customLabels>
     <customTabs>
+        <label><!-- Activate/ Deactivate Users --></label>
+        <name>Activate_Deactivate_Users</name>
+    </customTabs>
+    <customTabs>
         <label><!-- Bulk Lead Converter --></label>
         <name>Bulk_Lead_Converter</name>
     </customTabs>
     <customTabs>
+        <label><!-- Permission Set Compare --></label>
+        <name>Infybots__Permission_Set_Compare</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- User Management --></label>
+        <name>User_Management</name>
+    </customTabs>
+    <customTabs>
         <label><!-- Medallia --></label>
-        <name>Medallia</name>
+        <name>medallia_xm__Medallia</name>
     </customTabs>
     <customTabs>
         <label><!-- Medallia Setup --></label>
-        <name>Medallia_Setup</name>
+        <name>medallia_xm__Medallia_Setup</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Home --></label>
+        <name>orgcheck__OrgCheck_App_TAB</name>
     </customTabs>
     <flowDefinitions>
         <flows>
@@ -774,6 +818,17 @@
     <flowDefinitions>
         <flows/>
         <fullName>Auto_Closure_Case_On_Create</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <textTemplates>
+                <name>BulkFailureNotificaitonEmail</name>
+            </textTemplates>
+            <textTemplates>
+                <name>BulkJobLoginFailureNotificaiton</name>
+            </textTemplates>
+        </flows>
+        <fullName>Bulk_Job_Failure_Notification_Flow</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows>
@@ -881,6 +936,121 @@
     <flowDefinitions>
         <flows/>
         <fullName>Case_Last_changed_Date</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <choices>
+                <name>Add</name>
+            </choices>
+            <choices>
+                <name>CollectionsOfficer</name>
+            </choices>
+            <choices>
+                <name>CreditAnalyst</name>
+            </choices>
+            <choices>
+                <name>OperationalManager</name>
+            </choices>
+            <choices>
+                <name>OperationalTeamLead</name>
+            </choices>
+            <choices>
+                <name>RT</name>
+            </choices>
+            <choices>
+                <name>Revoke</name>
+            </choices>
+            <choices>
+                <name>SalesDirector</name>
+            </choices>
+            <choices>
+                <name>SalesManager</name>
+            </choices>
+            <choices>
+                <name>ServiceRepresentativeContractServices</name>
+            </choices>
+            <choices>
+                <name>ServiceRepresentativeCustomerServices</name>
+            </choices>
+            <choices>
+                <name>TerritoryManager</name>
+            </choices>
+            <choices>
+                <name>VCE</name>
+            </choices>
+            <choices>
+                <name>VT</name>
+            </choices>
+            <choices>
+                <name>VTandRT</name>
+            </choices>
+            <screens>
+                <fields>
+                    <name>ErrorMessage</name>
+                </fields>
+                <name>Error</name>
+            </screens>
+            <screens>
+                <fields>
+                    <inputParameters>
+                        <name>required</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Email</name>
+                </fields>
+                <fields>
+                    <name>Federation_Identifier</name>
+                </fields>
+                <fields>
+                    <name>ReferenceUsername</name>
+                </fields>
+                <fields>
+                    <name>first_Name</name>
+                </fields>
+                <fields>
+                    <name>last_Name</name>
+                </fields>
+                <name>User_Creation_Screen</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>ImportantNote</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>columns</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>isShowSearchBar</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>maxRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>minRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectionMode</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>shouldDisplayLabel</name>
+                        <value/>
+                    </inputParameters>
+                    <name>ProvisionResult</name>
+                </fields>
+                <name>User_Provision_Summary</name>
+            </screens>
+        </flows>
+        <fullName>CloneUserBot</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -1087,10 +1257,6 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
-        <fullName>FO_Currency_Update</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
         <fullName>FO_to_Opportunity_Name_update</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -1161,10 +1327,6 @@
     <flowDefinitions>
         <flows/>
         <fullName>Last_Email_Message_Date</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>LeadSource_Handler</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -1323,10 +1485,6 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
-        <fullName>Set_brand_from_email_to_case</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
         <fullName>Sync_Opportunity_Data_For_Quote</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -1378,6 +1536,12 @@
             </choices>
             <screens>
                 <fields>
+                    <name>ErrorMessage</name>
+                </fields>
+                <name>Error</name>
+            </screens>
+            <screens>
+                <fields>
                     <name>Brand</name>
                 </fields>
                 <fields>
@@ -1419,6 +1583,35 @@
                 </fields>
                 <name>User_Creation_Screen_0_0</name>
             </screens>
+            <screens>
+                <fields>
+                    <name>ImportantNote</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>columns</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>minRowSelection</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectionMode</name>
+                        <value/>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>shouldDisplayLabel</name>
+                        <value/>
+                    </inputParameters>
+                    <name>ProvisionResult</name>
+                </fields>
+                <name>User_Provision_Summary</name>
+            </screens>
         </flows>
         <fullName>Template_Based_User_Provisioning_Service_Screen</fullName>
     </flowDefinitions>
@@ -1432,7 +1625,7 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
-        <fullName>Update_Brand_On_Case</fullName>
+        <fullName>Update_Case_Origin_and_Brand_Fields_On_Case_Create</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -1449,6 +1642,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Update_Has_Attachment_Field_on_Case_when_Email_Message_Create_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Net_Sales_Price_Field_On_Opportunity</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -1571,31 +1768,7 @@
             </screens>
             <screens>
                 <fields>
-                    <inputParameters>
-                        <name>columns</name>
-                        <value/>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>label</name>
-                        <value/>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>maxRowSelection</name>
-                        <value/>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>minRowSelection</name>
-                        <value/>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>selectionMode</name>
-                        <value/>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>shouldDisplayLabel</name>
-                        <value/>
-                    </inputParameters>
-                    <name>accountTable</name>
+                    <name>accountMessagingUserDetail</name>
                 </fields>
                 <name>Selected_Account_Screen</name>
             </screens>
@@ -1713,26 +1886,32 @@
         <fullName>setCaseType</fullName>
     </flowDefinitions>
     <identityVerificationCustomFieldLabels>
-        <name>SamplePostalCode</name>
-    </identityVerificationCustomFieldLabels>
-    <identityVerificationCustomFieldLabels>
-        <name>SamplePhoneNumber</name>
+        <name>SampleAccountName</name>
     </identityVerificationCustomFieldLabels>
     <identityVerificationCustomFieldLabels>
         <name>SamplePhone</name>
     </identityVerificationCustomFieldLabels>
     <identityVerificationCustomFieldLabels>
-        <name>AccountNumberSample</name>
+        <name>SamplePostalCode</name>
     </identityVerificationCustomFieldLabels>
     <identityVerificationCustomFieldLabels>
-        <name>SampleAccountName</name>
+        <name>SampleAccount</name>
+    </identityVerificationCustomFieldLabels>
+    <identityVerificationCustomFieldLabels>
+        <name>SamplePhoneNumber</name>
     </identityVerificationCustomFieldLabels>
     <identityVerificationCustomFieldLabels>
         <name>SampleAccountNumber</name>
     </identityVerificationCustomFieldLabels>
     <identityVerificationCustomFieldLabels>
-        <name>SampleAccount</name>
+        <name>AccountNumberSample</name>
     </identityVerificationCustomFieldLabels>
+    <prompts>
+        <name>orgcheck__OrgCheck_App_IAG</name>
+        <promptVersions>
+            <name>Org Check InApp Guidance</name>
+        </promptVersions>
+    </prompts>
     <quickActions>
         <aspect>Master</aspect>
         <label>Seguimiento</label>
@@ -1851,14 +2030,290 @@
         <label>Cuentas con contratos con planes de pago</label>
         <name>Accounts_with_Contracts_with_Payment_Plans</name>
         <sections>
+            <columns>
+                <label><!-- Account ID --></label>
+                <name>Account ID</name>
+            </columns>
+            <columns>
+                <label><!-- Account Name --></label>
+                <name>Account Name</name>
+            </columns>
+            <columns>
+                <label><!-- Account Owner --></label>
+                <name>Account Owner</name>
+            </columns>
+            <columns>
+                <label><!-- Account Source --></label>
+                <name>Account Source</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Address --></label>
+                <name>Billing Address</name>
+            </columns>
+            <columns>
+                <label><!-- Billing City --></label>
+                <name>Billing City</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Country (text only) --></label>
+                <name>Billing Country (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Geocode Accuracy --></label>
+                <name>Billing Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Latitude --></label>
+                <name>Billing Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Longitude --></label>
+                <name>Billing Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Billing State/Province (text only) --></label>
+                <name>Billing State/Province (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Street --></label>
+                <name>Billing Street</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Zip/Postal Code --></label>
+                <name>Billing Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Branding --></label>
+                <name>Branding</name>
+            </columns>
+            <columns>
+                <label><!-- Company Registration Number --></label>
+                <name>Company Registration Number</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Customer ID --></label>
+                <name>Customer ID</name>
+            </columns>
+            <columns>
+                <label><!-- Data.com Key --></label>
+                <name>Data.com Key</name>
+            </columns>
+            <columns>
+                <label><!-- Description --></label>
+                <name>Description</name>
+            </columns>
+            <columns>
+                <label><!-- Employees --></label>
+                <name>Employees</name>
+            </columns>
+            <columns>
+                <label><!-- Fiscal Code --></label>
+                <name>Fiscal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Industry --></label>
+                <name>Industry</name>
+            </columns>
+            <columns>
+                <label><!-- Last Activity --></label>
+                <name>Last Activity</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Parent Account --></label>
+                <name>Parent Account</name>
+            </columns>
+            <columns>
+                <label><!-- Phone --></label>
+                <name>Phone</name>
+            </columns>
+            <columns>
+                <label><!-- SIC Description --></label>
+                <name>SIC Description</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Address --></label>
+                <name>Shipping Address</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping City --></label>
+                <name>Shipping City</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Country (text only) --></label>
+                <name>Shipping Country (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Geocode Accuracy --></label>
+                <name>Shipping Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Latitude --></label>
+                <name>Shipping Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Longitude --></label>
+                <name>Shipping Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping State/Province (text only) --></label>
+                <name>Shipping State/Province (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Street --></label>
+                <name>Shipping Street</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Zip/Postal Code --></label>
+                <name>Shipping Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Type --></label>
+                <name>Type</name>
+            </columns>
+            <columns>
+                <label><!-- VAT Number --></label>
+                <name>VAT Number</name>
+            </columns>
+            <columns>
+                <label><!-- Website --></label>
+                <name>Website</name>
+            </columns>
             <label><!-- Accounts --></label>
             <name>Accounts</name>
         </sections>
         <sections>
+            <columns>
+                <label><!-- Account --></label>
+                <name>Account</name>
+            </columns>
+            <columns>
+                <label><!-- Amount (Including Tax) --></label>
+                <name>Amount (Including Tax)</name>
+            </columns>
+            <columns>
+                <label><!-- Balance --></label>
+                <name>Balance</name>
+            </columns>
+            <columns>
+                <label><!-- Contract --></label>
+                <name>Contract</name>
+            </columns>
+            <columns>
+                <label><!-- Contract ID --></label>
+                <name>Contract ID</name>
+            </columns>
+            <columns>
+                <label><!-- Contract Id --></label>
+                <name>Contract Id</name>
+            </columns>
+            <columns>
+                <label><!-- Contract Number --></label>
+                <name>Contract Number</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- DealerId --></label>
+                <name>DealerId</name>
+            </columns>
+            <columns>
+                <label><!-- End Date --></label>
+                <name>End Date</name>
+            </columns>
+            <columns>
+                <label><!-- End of Term --></label>
+                <name>End of Term</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Net Investment --></label>
+                <name>Net Investment</name>
+            </columns>
+            <columns>
+                <label><!-- Remaining Balance --></label>
+                <name>Remaining Balance</name>
+            </columns>
+            <columns>
+                <label><!-- Start Date --></label>
+                <name>Start Date</name>
+            </columns>
+            <columns>
+                <label><!-- Term --></label>
+                <name>Term</name>
+            </columns>
+            <columns>
+                <label><!-- Type --></label>
+                <name>Type</name>
+            </columns>
+            <columns>
+                <label><!-- VIN Number --></label>
+                <name>VIN Number</name>
+            </columns>
             <label><!-- Contracts --></label>
             <name>Contracts</name>
         </sections>
         <sections>
+            <columns>
+                <label><!-- Balance --></label>
+                <name>Balance</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Due Date --></label>
+                <name>Due Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Payment Plan ID --></label>
+                <name>Payment Plan ID</name>
+            </columns>
+            <columns>
+                <label><!-- Payment Plan No --></label>
+                <name>Payment Plan No</name>
+            </columns>
             <label><!-- Payment Plans --></label>
             <name>Payment Plans</name>
         </sections>
@@ -1925,6 +2380,258 @@
         <label><!-- Contacts Report --></label>
         <name>Contacts_Report</name>
         <sections>
+            <columns>
+                <label><!-- Account Name --></label>
+                <name>Account Name</name>
+            </columns>
+            <columns>
+                <label><!-- Agreed To Terms --></label>
+                <name>Agreed To Terms</name>
+            </columns>
+            <columns>
+                <label><!-- Assistant --></label>
+                <name>Assistant</name>
+            </columns>
+            <columns>
+                <label><!-- Asst. Phone --></label>
+                <name>Asst. Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Birthdate --></label>
+                <name>Birthdate</name>
+            </columns>
+            <columns>
+                <label><!-- Contact Currency --></label>
+                <name>Contact Currency</name>
+            </columns>
+            <columns>
+                <label><!-- Contact ID --></label>
+                <name>Contact ID</name>
+            </columns>
+            <columns>
+                <label><!-- Contact Owner --></label>
+                <name>Contact Owner</name>
+            </columns>
+            <columns>
+                <label><!-- ContactId --></label>
+                <name>ContactId</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Data.com Key --></label>
+                <name>Data.com Key</name>
+            </columns>
+            <columns>
+                <label><!-- Department --></label>
+                <name>Department</name>
+            </columns>
+            <columns>
+                <label><!-- Description --></label>
+                <name>Description</name>
+            </columns>
+            <columns>
+                <label><!-- Do Not Call --></label>
+                <name>Do Not Call</name>
+            </columns>
+            <columns>
+                <label><!-- Email --></label>
+                <name>Email</name>
+            </columns>
+            <columns>
+                <label><!-- Email Bounced Date --></label>
+                <name>Email Bounced Date</name>
+            </columns>
+            <columns>
+                <label><!-- Email Bounced Reason --></label>
+                <name>Email Bounced Reason</name>
+            </columns>
+            <columns>
+                <label><!-- Email Opt Out --></label>
+                <name>Email Opt Out</name>
+            </columns>
+            <columns>
+                <label><!-- Fax --></label>
+                <name>Fax</name>
+            </columns>
+            <columns>
+                <label><!-- Fax Opt Out --></label>
+                <name>Fax Opt Out</name>
+            </columns>
+            <columns>
+                <label><!-- First Name --></label>
+                <name>First Name</name>
+            </columns>
+            <columns>
+                <label><!-- Full Name --></label>
+                <name>Full Name</name>
+            </columns>
+            <columns>
+                <label><!-- Home Phone --></label>
+                <name>Home Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Individual --></label>
+                <name>Individual</name>
+            </columns>
+            <columns>
+                <label><!-- Is Email Bounced --></label>
+                <name>Is Email Bounced</name>
+            </columns>
+            <columns>
+                <label><!-- Last Activity --></label>
+                <name>Last Activity</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Name --></label>
+                <name>Last Name</name>
+            </columns>
+            <columns>
+                <label><!-- Last Stay-in-Touch Request Date --></label>
+                <name>Last Stay-in-Touch Request Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Stay-in-Touch Save Date --></label>
+                <name>Last Stay-in-Touch Save Date</name>
+            </columns>
+            <columns>
+                <label><!-- Lead Source --></label>
+                <name>Lead Source</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Address --></label>
+                <name>Mailing Address</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing City --></label>
+                <name>Mailing City</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Country --></label>
+                <name>Mailing Country</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Country (text only) --></label>
+                <name>Mailing Country (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Geocode Accuracy --></label>
+                <name>Mailing Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Latitude --></label>
+                <name>Mailing Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Longitude --></label>
+                <name>Mailing Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing State/Province --></label>
+                <name>Mailing State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing State/Province (text only) --></label>
+                <name>Mailing State/Province (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Street --></label>
+                <name>Mailing Street</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Zip/Postal Code --></label>
+                <name>Mailing Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Middle Name --></label>
+                <name>Middle Name</name>
+            </columns>
+            <columns>
+                <label><!-- Mobile --></label>
+                <name>Mobile</name>
+            </columns>
+            <columns>
+                <label><!-- Other Address --></label>
+                <name>Other Address</name>
+            </columns>
+            <columns>
+                <label><!-- Other City --></label>
+                <name>Other City</name>
+            </columns>
+            <columns>
+                <label><!-- Other Country --></label>
+                <name>Other Country</name>
+            </columns>
+            <columns>
+                <label><!-- Other Country (text only) --></label>
+                <name>Other Country (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Other Geocode Accuracy --></label>
+                <name>Other Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Other Latitude --></label>
+                <name>Other Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Other Longitude --></label>
+                <name>Other Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Other Phone --></label>
+                <name>Other Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Other State/Province --></label>
+                <name>Other State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Other State/Province (text only) --></label>
+                <name>Other State/Province (text only)</name>
+            </columns>
+            <columns>
+                <label><!-- Other Street --></label>
+                <name>Other Street</name>
+            </columns>
+            <columns>
+                <label><!-- Other Zip/Postal Code --></label>
+                <name>Other Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Phone --></label>
+                <name>Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Reports To --></label>
+                <name>Reports To</name>
+            </columns>
+            <columns>
+                <label><!-- Salutation --></label>
+                <name>Salutation</name>
+            </columns>
+            <columns>
+                <label><!-- Suffix --></label>
+                <name>Suffix</name>
+            </columns>
+            <columns>
+                <label><!-- Title --></label>
+                <name>Title</name>
+            </columns>
             <label><!-- Contacts --></label>
             <name>Contacts</name>
         </sections>
@@ -1934,8 +2641,479 @@
         <label>Contratos (personalizados)</label>
         <name>Contracts_Custom</name>
         <sections>
+            <label><!-- Account --></label>
+            <name>Account</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Account --></label>
+                <name>Account</name>
+            </columns>
+            <columns>
+                <label><!-- Amount (Including Tax) --></label>
+                <name>Amount (Including Tax)</name>
+            </columns>
+            <columns>
+                <label><!-- Balance --></label>
+                <name>Balance</name>
+            </columns>
+            <columns>
+                <label><!-- Contract --></label>
+                <name>Contract</name>
+            </columns>
+            <columns>
+                <label><!-- Contract ID --></label>
+                <name>Contract ID</name>
+            </columns>
+            <columns>
+                <label><!-- Contract Id --></label>
+                <name>Contract Id</name>
+            </columns>
+            <columns>
+                <label><!-- Contract Number --></label>
+                <name>Contract Number</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Currency --></label>
+                <name>Currency</name>
+            </columns>
+            <columns>
+                <label><!-- DealerId --></label>
+                <name>DealerId</name>
+            </columns>
+            <columns>
+                <label><!-- End Date --></label>
+                <name>End Date</name>
+            </columns>
+            <columns>
+                <label><!-- End of Term --></label>
+                <name>End of Term</name>
+            </columns>
+            <columns>
+                <label><!-- Equipment Cost --></label>
+                <name>Equipment Cost</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Net Investment --></label>
+                <name>Net Investment</name>
+            </columns>
+            <columns>
+                <label><!-- On Balance Sheet --></label>
+                <name>On Balance Sheet</name>
+            </columns>
+            <columns>
+                <label><!-- Regulated --></label>
+                <name>Regulated</name>
+            </columns>
+            <columns>
+                <label><!-- Remaining Balance --></label>
+                <name>Remaining Balance</name>
+            </columns>
+            <columns>
+                <label><!-- Residual --></label>
+                <name>Residual</name>
+            </columns>
+            <columns>
+                <label><!-- Start Date --></label>
+                <name>Start Date</name>
+            </columns>
+            <columns>
+                <label><!-- Term --></label>
+                <name>Term</name>
+            </columns>
+            <columns>
+                <label><!-- TerminationDate --></label>
+                <name>TerminationDate</name>
+            </columns>
+            <columns>
+                <label><!-- Type --></label>
+                <name>Type</name>
+            </columns>
+            <columns>
+                <label><!-- VIN Number --></label>
+                <name>VIN Number</name>
+            </columns>
+            <columns>
+                <label><!-- Vehicle Registration Number --></label>
+                <name>Vehicle Registration Number</name>
+            </columns>
             <label><!-- Contracts --></label>
             <name>Contracts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Custom Account Notes --></description>
+        <label><!-- Custom Account Notes --></label>
+        <name>Custom_Account_Notes</name>
+        <sections>
+            <label><!-- Account --></label>
+            <name>Account</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Account --></label>
+                <name>Account</name>
+            </columns>
+            <columns>
+                <label><!-- Account Note ID --></label>
+                <name>Account Note ID</name>
+            </columns>
+            <columns>
+                <label><!-- CREATION_TIMESTAMP --></label>
+                <name>CREATION_TIMESTAMP</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Currency --></label>
+                <name>Currency</name>
+            </columns>
+            <columns>
+                <label><!-- EMPLOYEE_CODE --></label>
+                <name>EMPLOYEE_CODE</name>
+            </columns>
+            <columns>
+                <label><!-- FILE_NAME --></label>
+                <name>FILE_NAME</name>
+            </columns>
+            <columns>
+                <label><!-- IS_PRIVATE_FLAG --></label>
+                <name>IS_PRIVATE_FLAG</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- NOTE TYPE --></label>
+                <name>NOTE TYPE</name>
+            </columns>
+            <columns>
+                <label><!-- NOTE_ID --></label>
+                <name>NOTE_ID</name>
+            </columns>
+            <columns>
+                <label><!-- NOTE_TEXT --></label>
+                <name>NOTE_TEXT</name>
+            </columns>
+            <columns>
+                <label><!-- Name --></label>
+                <name>Name</name>
+            </columns>
+            <columns>
+                <label><!-- Owner --></label>
+                <name>Owner</name>
+            </columns>
+            <columns>
+                <label><!-- RECORD_SOURCE --></label>
+                <name>RECORD_SOURCE</name>
+            </columns>
+            <columns>
+                <label><!-- SORT_ORDER --></label>
+                <name>SORT_ORDER</name>
+            </columns>
+            <columns>
+                <label><!-- TOBE_ARCHIVED_AFTER_DATE --></label>
+                <name>TOBE_ARCHIVED_AFTER_DATE</name>
+            </columns>
+            <label><!-- Account Notes --></label>
+            <name>Account Notes</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Custom Email Messages --></description>
+        <label><!-- Custom Email Messages --></label>
+        <name>Custom_Email_Messages</name>
+        <sections>
+            <columns>
+                <label><!-- Email Message : Parent Case : Case Number --></label>
+                <name>Email Message : Parent Case : Case Number</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message : Parent Case : Case Record Type --></label>
+                <name>Email Message : Parent Case : Case Record Type</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message : Parent Case : Closed --></label>
+                <name>Email Message : Parent Case : Closed</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message : Parent Case : Country --></label>
+                <name>Email Message : Parent Case : Country</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message : Parent Case : Name --></label>
+                <name>Email Message : Parent Case : Name</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message : Parent Case : Status --></label>
+                <name>Email Message : Parent Case : Status</name>
+            </columns>
+            <label><!-- Case --></label>
+            <name>Case</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Automation Type --></label>
+                <name>Automation Type</name>
+            </columns>
+            <columns>
+                <label><!-- BCC Address --></label>
+                <name>BCC Address</name>
+            </columns>
+            <columns>
+                <label><!-- Bounced? --></label>
+                <name>Bounced?</name>
+            </columns>
+            <columns>
+                <label><!-- CC Address --></label>
+                <name>CC Address</name>
+            </columns>
+            <columns>
+                <label><!-- Client Thread ID --></label>
+                <name>Client Thread ID</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- DATE TEST EMAIL --></label>
+                <name>DATE TEST EMAIL</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message ID --></label>
+                <name>Email Message ID</name>
+            </columns>
+            <columns>
+                <label><!-- Email Message Name --></label>
+                <name>Email Message Name</name>
+            </columns>
+            <columns>
+                <label><!-- First Opened --></label>
+                <name>First Opened</name>
+            </columns>
+            <columns>
+                <label><!-- From Address --></label>
+                <name>From Address</name>
+            </columns>
+            <columns>
+                <label><!-- From Name --></label>
+                <name>From Name</name>
+            </columns>
+            <columns>
+                <label><!-- HTML Body --></label>
+                <name>HTML Body</name>
+            </columns>
+            <columns>
+                <label><!-- Has Attachment --></label>
+                <name>Has Attachment</name>
+            </columns>
+            <columns>
+                <label><!-- Has Attachment --></label>
+                <name>Has Attachment</name>
+            </columns>
+            <columns>
+                <label><!-- Headers --></label>
+                <name>Headers</name>
+            </columns>
+            <columns>
+                <label><!-- Is Client Managed --></label>
+                <name>Is Client Managed</name>
+            </columns>
+            <columns>
+                <label><!-- Is Externally Visible --></label>
+                <name>Is Externally Visible</name>
+            </columns>
+            <columns>
+                <label><!-- Is Incoming --></label>
+                <name>Is Incoming</name>
+            </columns>
+            <columns>
+                <label><!-- Is Private Draft --></label>
+                <name>Is Private Draft</name>
+            </columns>
+            <columns>
+                <label><!-- Is Tracked --></label>
+                <name>Is Tracked</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Opened --></label>
+                <name>Last Opened</name>
+            </columns>
+            <columns>
+                <label><!-- Message Date --></label>
+                <name>Message Date</name>
+            </columns>
+            <columns>
+                <label><!-- Message ID --></label>
+                <name>Message ID</name>
+            </columns>
+            <columns>
+                <label><!-- Message Size --></label>
+                <name>Message Size</name>
+            </columns>
+            <columns>
+                <label><!-- Parent Case --></label>
+                <name>Parent Case</name>
+            </columns>
+            <columns>
+                <label><!-- Reply-to Email Message --></label>
+                <name>Reply-to Email Message</name>
+            </columns>
+            <columns>
+                <label><!-- Status --></label>
+                <name>Status</name>
+            </columns>
+            <columns>
+                <label><!-- Subject --></label>
+                <name>Subject</name>
+            </columns>
+            <columns>
+                <label><!-- Text Body --></label>
+                <name>Text Body</name>
+            </columns>
+            <columns>
+                <label><!-- Thread ID --></label>
+                <name>Thread ID</name>
+            </columns>
+            <columns>
+                <label><!-- To Address --></label>
+                <name>To Address</name>
+            </columns>
+            <label><!-- Email Messages --></label>
+            <name>Email Messages</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Custom Error Log --></description>
+        <label><!-- Custom Error Log --></label>
+        <name>Custom_Error_Log</name>
+        <sections>
+            <columns>
+                <label><!-- Associated Record --></label>
+                <name>Associated Record</name>
+            </columns>
+            <columns>
+                <label><!-- Class Name --></label>
+                <name>Class Name</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Currency --></label>
+                <name>Currency</name>
+            </columns>
+            <columns>
+                <label><!-- Description --></label>
+                <name>Description</name>
+            </columns>
+            <columns>
+                <label><!-- Error Log Number --></label>
+                <name>Error Log Number</name>
+            </columns>
+            <columns>
+                <label><!-- Error Logs ID --></label>
+                <name>Error Logs ID</name>
+            </columns>
+            <columns>
+                <label><!-- Error Message --></label>
+                <name>Error Message</name>
+            </columns>
+            <columns>
+                <label><!-- ExceptionType --></label>
+                <name>ExceptionType</name>
+            </columns>
+            <columns>
+                <label><!-- HTTP Status Code --></label>
+                <name>HTTP Status Code</name>
+            </columns>
+            <columns>
+                <label><!-- Last Activity Date --></label>
+                <name>Last Activity Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Line Number --></label>
+                <name>Line Number</name>
+            </columns>
+            <columns>
+                <label><!-- Method Name --></label>
+                <name>Method Name</name>
+            </columns>
+            <columns>
+                <label><!-- Owner --></label>
+                <name>Owner</name>
+            </columns>
+            <columns>
+                <label><!-- Request --></label>
+                <name>Request</name>
+            </columns>
+            <columns>
+                <label><!-- Request Headers --></label>
+                <name>Request Headers</name>
+            </columns>
+            <columns>
+                <label><!-- Stack Trace --></label>
+                <name>Stack Trace</name>
+            </columns>
+            <columns>
+                <label><!-- Type --></label>
+                <name>Type</name>
+            </columns>
+            <label><!-- Error Logs --></label>
+            <name>Error Logs</name>
         </sections>
     </reportTypes>
     <reportTypes>

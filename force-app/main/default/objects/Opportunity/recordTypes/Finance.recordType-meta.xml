@@ -6,6 +6,33 @@
     <description>Record Type For Financing</description>
     <label>Finance</label>
     <picklistValues>
+        <picklist>Asset_Type__c</picklist>
+        <values>
+            <fullName>Master E-Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Red</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic E-tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic Exclusive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic Red</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Country__c</picklist>
         <values>
             <fullName>Australia</fullName>
@@ -1232,6 +1259,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Finance_Type__c</picklist>
+        <values>
+            <fullName>Contract Hire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hire Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hire Purchase VR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operating Lease</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>ForecastCategoryName</picklist>
         <values>
             <fullName>Best Case</fullName>
@@ -1257,11 +1307,31 @@
     <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End-of-term</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Factory Order</fullName>
             <default>true</default>
         </values>
         <values>
             <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>volvoselected%2Ecom</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1452,6 +1522,33 @@
         </values>
         <values>
             <fullName>Personal Guarantee</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Stage__c</picklist>
+        <values>
+            <fullName>Awaiting Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Start Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Docs Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-qualifying customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>With Credit</fullName>
             <default>false</default>
         </values>
     </picklistValues>

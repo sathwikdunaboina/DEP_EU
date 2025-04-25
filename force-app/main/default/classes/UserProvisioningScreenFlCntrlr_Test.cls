@@ -76,5 +76,23 @@ public class UserProvisioningScreenFlCntrlr_Test {
         upsList.add(upr);
         UserProvisioningServiceTestExtension upst = new UserProvisioningServiceTestExtension();
         upst.createUsers(upsList);
+        string userName;
+        if(runningInASandbox){
+            userName = 'sm_gb_vt@template.user.'+sandboxName.getSandboxName();
+        }
+        else{
+            userName = 'sm_gb_vt@template.user';
+        }
+        //string userName = 'sm_gb_vt@template.user.'+sandboxName.getSandboxName();
+        CloneUserBotScreenFlowController.UserProvisioningScreenInput userProScrInp = new CloneUserBotScreenFlowController.UserProvisioningScreenInput();
+        List<CloneUserBotScreenFlowController.UserProvisioningScreenInput>usrList = new List<CloneUserBotScreenFlowController.UserProvisioningScreenInput>();
+        userProScrInp.firstName = 'testUser';
+        userProScrInp.lastName = 'testLastName';
+        userProScrInp.email = 'test@testUserCreation.com';
+        userProScrInp.federationId = 'testUserfedId';
+        userProScrInp.requestType = 'Add';
+        userProScrInp.username = userName;
+        usrList.add(userProScrInp);
+        CloneUserBotScreenFlowController.provisionUsers(usrList);
     }
 }

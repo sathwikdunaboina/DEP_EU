@@ -32,6 +32,7 @@ public inherited sharing class Users{
                     System.Debug('psa >>'+psa); 
                     if(!psa.PermissionSet.IsOwnedByProfile){                   
                         PermissionSetAssignment psaCloned = psa.Clone(false,true,false,false); 
+                        psaCloned.PermissionSetId = (psaCloned.PermissionSetId != null && psaCloned.PermissionSetGroupId!=null)?null:psa.PermissionSetId;
                         psaCloned.AssigneeId = u.Id;
                         this.permSetAssignments.add(psaCloned);
                     }

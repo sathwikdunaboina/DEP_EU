@@ -88,10 +88,6 @@
         <name>MEDALLIACLF_Alert_Cases</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Tech Tool --></label>
-        <name>Tech_Tool</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- This record type has been created for Customer Case Management for handling cases for customer accounts and contacts across all the countries --></description>
         <label><!-- VFS Customer --></label>
         <name>VFS_Customer</name>
@@ -114,12 +110,12 @@
         <name>Case_Reassign_Country_Restriction_User</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Invalid type. --></errorMessage>
-        <name>Invalid_Case_Check</name>
-    </validationRules>
-    <validationRules>
         <errorMessage>Veuillez remplir le cas parent lorsque le statut est en double</errorMessage>
         <name>Mandatory_parent_if_casetype_Duplicate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case Brand is mandatory when closing a case --></errorMessage>
+        <name>Prevent_Closure_of_Case_Without_Brand</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Select Contact associated with Customer account --></errorMessage>

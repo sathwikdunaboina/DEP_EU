@@ -780,21 +780,5 @@
             <senderName>DE-Repossession</senderName>
             <template>DE_AT_Communication_Folder/DE_Repossession</template>
         </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>aswin</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Brand__c</field>
-                <operation>equals</operation>
-                <value>Volvo Truck</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <senderEmail>paul.kennedy@volvo.com</senderEmail>
-            <senderName>UK/IE Customer Services Support Renault</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo</template>
-        </ruleEntry>
     </autoResponseRule>
 </AutoResponseRules>

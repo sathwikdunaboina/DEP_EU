@@ -21,17 +21,14 @@ private class MessagingEndUserTriggerHandler_Test {
 */ 
     @testSetup static void setUpData() {
         
-        MessagingEndUser  oMsgUser = new MessagingEndUser();
-        oMsgUser.MessagingPlatformKey = '554112345679';
-        oMsgUser.MessageType = 'WhatsApp';
-        oMsgUser.MessagingConsentStatus = 'ExplicitlyOptedIn';
-        oMsgUser.Name = 'test user';
-        
-        try{
-            insert oMsgUser;
-        }
-        catch(exception e){
-        }
+        MessagingChannel messagingChannel = new MessagingChannel();
+        messagingChannel.MasterLabel = 'Test Channel';
+        messagingChannel.DeveloperName = 'Test_Channel';
+        messagingChannel.IsActive = true;
+        messagingChannel.MessageType = 'Text'; 
+        messagingChannel.MessagingPlatformKey = '71823b51-1111-2222-3333-211e1143ce85';
+
+        insert messagingChannel;
     }
     
 /*
@@ -55,11 +52,18 @@ private class MessagingEndUserTriggerHandler_Test {
         oMsgUser.Name = 'test user';
         
         listMessagingEndUser.add(oMsgUser);
+          System.runAs(new User(Id = UserInfo.getUserId())){
+              Test.startTest();
+              MessagingEndUserTriggerHandler messagingEndUserTriggerHandlerInstance = new MessagingEndUserTriggerHandler();
+              messagingEndUserTriggerHandlerInstance.handleBeforeInsert(listMessagingEndUser);
+              
+              List<MessagingEndUser> oMessagingEndUser = [Select Id,MessagingPlatformKey FROM MessagingEndUser LIMIT 1];
+              Test.stopTest();
+              
+              
+          }
         
-        Test.startTest();
-        MessagingEndUserTriggerHandler messagingEndUserTriggerHandlerInstance = new MessagingEndUserTriggerHandler();
-        messagingEndUserTriggerHandlerInstance.handleBeforeInsert(listMessagingEndUser);
-        Test.stopTest();
+       
         
     }
     

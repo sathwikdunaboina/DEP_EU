@@ -143,6 +143,18 @@ public  class CLA_TestDataFactory {
         oCreditLineControl.CLA_Allow_Non_Standard_Payment__c = 'Yes' ;
         oCreditLineControl.CLA_Allowed_Maximum_RV_Percent__c = 10;
         oCreditLineControl.CLA_Financial_Product_Type__c = 'InstallmentCredit';
+        oCreditLineControl.CLA_Asset_Category__c = 'Truck';
+        oCreditLineControl.CLA_Asset_Segment__c = 'Heavy';
+        oCreditLineControl.CLA_Chassis__c = 'Tractor';
+        oCreditLineControl.CLA_Allowed_Minimum_Down_Payment_Percent__c = 20;
+        oCreditLineControl.CLA_Max_Unit_Price__c = 200;
+        
+        	
+        
+        
+        
+        
+        
         
             
         
