@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Indicator for which CMS to process the contract on. Ie Vienna UK or Vienna Euro</description>
+    <label>Country</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GB</fullName>
+                <color>#0B6FCE</color>
+                <default>true</default>
+                <label>UK</label>
+            </value>
+            <value>
+                <fullName>IE</fullName>
+                <color>#33CC00</color>
+                <default>false</default>
+                <label>IE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

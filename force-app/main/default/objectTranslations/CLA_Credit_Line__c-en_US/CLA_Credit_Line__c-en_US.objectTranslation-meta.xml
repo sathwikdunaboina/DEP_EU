@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Credit Line</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Credit Lines</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Maximum limit is 100B. --></errorMessage>
+        <name>CLA_Prevent_Maximam_Amount_Limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Negative value not allowed. --></errorMessage>
+        <name>CLA_Prevent_Negative_Approved_Limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Negative value not allowed. --></errorMessage>
+        <name>CLA_Prevent_Negative_Max_Allowed_Group</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Can not change status to approved. --></errorMessage>
+        <name>CLA_Prevent_Status_Change_To_Approval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Country , Type , Currency , Activation Date can not be changed in Approved status. --></errorMessage>
+        <name>CLA_Prevent_Update_In_Approved_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Primary Customer section can not be edited. --></errorMessage>
+        <name>CLA_Prevent_Update_Primary_Customer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status can only changed to Suspended or Expired from Approved Status. --></errorMessage>
+        <name>CLA_Status_Change_From_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status can only changed to Under Review from Draft Status. --></errorMessage>
+        <name>CLA_Status_Change_From_Draft</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status can only changed to Under Review  from Expired status. --></errorMessage>
+        <name>CLA_Status_Change_From_Expired</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status can only changed to Approved or Expired or Under Review from Suspended Status. --></errorMessage>
+        <name>CLA_Status_Change_From_Suspended</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status can only changed to Approved or Draft from Under Review Status. --></errorMessage>
+        <name>CLA_Status_Change_From_UnderReview</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activation date has to be equal / greater than Approval Date. --></errorMessage>
+        <name>CLA_Validate_Activation_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approval date has to be equal / greater than Create date. --></errorMessage>
+        <name>CLA_Validate_Approval_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one credit line control is required for status Approved. --></errorMessage>
+        <name>CLA_Validate_Control_Count_Approved_CL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one credit line control is required for status Under Review. --></errorMessage>
+        <name>CLA_Validate_Control_Count_UR_CL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry Date has to be greater than Activation Date. --></errorMessage>
+        <name>CLA_Validate_Expiry_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry date can not be greater than current date. --></errorMessage>
+        <name>CLA_Validate_Expiry_Date_Expired_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry Date should be greater than current date. --></errorMessage>
+        <name>CLA_Validate_Expiry_Date_Other_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Activation Date is required. --></errorMessage>
+        <name>CLA_Validate_Req_Fields_For_Approved_CL</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_69963829</developerName>
+        <masterLabel>Service Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Cameron Riley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chris Haywood</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emma Cummins</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emma Wyatt</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Karen Spence</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Katy van der Heijden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Katie Dealtry</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liberty Fernie</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pav Dhaliwal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rowan Galloway</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK/IE - Service Desk</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Linda Tromans</sourceValue>
+            </sourceValues>
+            <value>Service Team</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <currency>GBP</currency>
+    <filter>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Pav Dhaliwal,Emma Wyatt,Emma Cummins,Rowan Galloway,Katie Dealtry,Liberty Fernie,Chris Haywood,Katy van der Heijden,Karen Spence,Linda Tromans,Cameron Riley,UK/IE - Service Desk</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPEN</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Brand__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Service Open Cases by Origin</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

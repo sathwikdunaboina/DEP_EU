@@ -1,0 +1,38 @@
+<apex:page standardController="medallia_xm__Invitation__c" recordSetVar="invitations" extensions="medallia_xm.LightningOutExtension" label="Medallia Uninvite Contact Dialog">
+  <apex:includeLightning />
+  <apex:includeScript value="/lightning/lightning.out.js" />
+  <div id="myDivId"></div>
+  <style>
+    body,
+    html {
+      padding: 0!important;
+    }
+
+  </style>
+  <script>   
+     var selectedIds = "{! selected }";
+    var parsedIds = !!selectedIds ? selectedIds.slice(1, -1).split(',').map(function (id) {
+      return id.trim();
+    }) : [];
+    
+    var classicUrl = '{!URLFOR($Action.Invitation__c.List, $ObjectType.Invitation__c)}';
+    
+    // Determine Classic or Lightning Experience
+    var isLightning = typeof sforce !== 'undefined' && sforce.one && true;
+
+    $Lightning.use("{!ns}:MedUninviteContactDialogApp", function () {
+      //$Lightning.createComponent(String type, Object attributes, String locator, function callback)
+      
+      $Lightning.createComponent("{!ns}:MedUninviteContactDialog",
+        {
+          selectedIds: parsedIds,
+          isLightning: isLightning,
+          classicContactUrl: classicUrl
+        },
+        "myDivId",
+        function (component) {
+          // supporting setup
+        });
+    }); 
+  </script>
+</apex:page>

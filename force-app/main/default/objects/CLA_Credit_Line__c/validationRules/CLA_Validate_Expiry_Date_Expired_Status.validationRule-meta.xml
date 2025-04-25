@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Validate_Expiry_Date_Expired_Status</fullName>
+    <active>true</active>
+    <description>Expiry date should be in  past or today when changed to expired state.</description>
+    <errorConditionFormula>AND( TEXT(CLA_Status__c) = &apos;Expired&apos; ,   CLA_Expiry_Date__c &gt;  TODAY() )</errorConditionFormula>
+    <errorDisplayField>CLA_Expiry_Date__c</errorDisplayField>
+    <errorMessage>Expiry date can not be greater than current date.</errorMessage>
+</ValidationRule>

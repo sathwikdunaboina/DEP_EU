@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_delivered__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Formula field populated dependent on Parent record type and the Asset Status, Asset Status (Service) or the Not Taken up field being flagged</description>
+    <formula>IF(
+   OR(
+        Initiation__r.RecordType.DeveloperName =&quot;Contract_Hire&quot;,
+        Initiation__r.RecordType.DeveloperName=&quot;Lease_with_R_M&quot;
+      ),
+         AND( 
+               ISPICKVAL( Asset_status__c , &apos;Pack ready&apos;),
+                ISPICKVAL(Asset_status_service__c , &apos;Second checks complete&apos;)
+             ),
+   IF (
+          Initiation__r.RecordType.DeveloperName =&quot;Stand_Alone_Finance&quot;, ISPICKVAL( Asset_status__c , &apos;Pack ready&apos;),
+          IF (
+                Initiation__r.RecordType.DeveloperName =&quot;Stane_Alone_Service&quot;, ISPICKVAL(Asset_status_service__c , &apos;Second checks complete&apos;),
+          TRUE
+              )
+      )
+   )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is delivered</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

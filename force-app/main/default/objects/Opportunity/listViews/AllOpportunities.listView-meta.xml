@@ -3,21 +3,20 @@
     <fullName>AllOpportunities</fullName>
     <columns>OPPORTUNITY.NAME</columns>
     <columns>ACCOUNT.NAME</columns>
-    <columns>OPPORTUNITY.AMOUNT</columns>
     <columns>OPPORTUNITY.CLOSE_DATE</columns>
     <columns>OPPORTUNITY.STAGE_NAME</columns>
-    <columns>OPPORTUNITY.PROBABILITY</columns>
     <columns>Factory_Order__c</columns>
     <columns>OPPORTUNITY.TYPE</columns>
     <columns>OPPORTUNITY.LEAD_SOURCE</columns>
     <columns>CORE.USERS.FULL_NAME</columns>
     <columns>OPPORTUNITY.LAST_UPDATE</columns>
     <columns>NetSalesPrice__c</columns>
+    <columns>Country__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>OPPORTUNITY.RECORDTYPE</field>
+        <field>Country__c</field>
         <operation>equals</operation>
-        <value>Opportunity.Finance</value>
+        <value>United Kingdom</value>
     </filters>
     <label>All Opportunities</label>
 </ListView>

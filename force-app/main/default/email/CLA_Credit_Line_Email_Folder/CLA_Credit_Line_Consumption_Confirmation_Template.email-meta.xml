@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is used upon credit line consumption creation with confirmation to notify approver of credit line.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Credit Line Consumption Confirmation Template</name>
+    <style>none</style>
+    <subject>Credit line consumption from {!CLA_Credit_Line_Consumption__c.CLA_Quote_Origin__c} for the quote - {!CLA_Credit_Line_Consumption__c.CLA_Quote_Number__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

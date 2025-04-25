@@ -47,13 +47,6 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>VFS - CMS</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
             <value>EXT,credit</value>
         </criteriaItems>
         <criteriaItems>
@@ -61,14 +54,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>barber,Tracy,Thay</value>
+            <value>barber</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech tool,xsm,lovepreet,jenny,helen,claire,EOT</value>
+            <value>tech tool,xsm,lovepreet,jenny,EOT</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -78,18 +71,25 @@
             <value>Paul james</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ORIGIN</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>CMS</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Salesforce Support</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>musgreave</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>king,tracy,helen,molly,jordan,bart,medcalf,thay,callum,claire</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -104,7 +104,7 @@
         <field>CREATED</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Origin of Cases opened in this month</name>
+    <name>New Cases Volumes</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -122,6 +122,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_THISMONTH</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

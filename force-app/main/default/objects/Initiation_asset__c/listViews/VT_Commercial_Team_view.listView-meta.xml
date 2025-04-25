@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VT_Commercial_Team_view</fullName>
+    <columns>NAME</columns>
+    <columns>Commercial_owner__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Agreement_number__c</columns>
+    <columns>Desired_payout_date__c</columns>
+    <columns>Use_this_record_to_clone__c</columns>
+    <columns>Asset_status__c</columns>
+    <columns>Asset_status_service__c</columns>
+    <columns>Reg_number__c</columns>
+    <columns>VIN__c</columns>
+    <columns>Parent_Record_type__c</columns>
+    <columns>Initiation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Parent_Record_type__c</field>
+        <operation>notContain</operation>
+        <value>Maintenance</value>
+    </filters>
+    <filters>
+        <field>Parent_Brand__c</field>
+        <operation>contains</operation>
+        <value>Volvo</value>
+    </filters>
+    <filters>
+        <field>Asset_status__c</field>
+        <operation>equals</operation>
+        <value>PM Activated,File in query,File with front office</value>
+    </filters>
+    <label>VT Commercial Team view</label>
+</ListView>

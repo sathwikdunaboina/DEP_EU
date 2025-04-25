@@ -20,4 +20,53 @@
         <minutesToComplete>510</minutesToComplete>
         <useCriteriaStartTime>true</useCriteriaStartTime>
     </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>AND( Owner:Queue.DeveloperName = &apos;UK_IE_Service_Desk&apos;, NOT(ISPICKVAL(Status , &apos;New&apos;)), NOT(ISPICKVAL(Status , &apos;Closed&apos;)))</milestoneCriteriaFormula>
+        <milestoneName>UK/IE - Service Desk</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>AND( Owner:Queue.DeveloperName = &apos;UK_IE_CS_Operations&apos;, NOT(ISPICKVAL(Status , &apos;New&apos;)), NOT(ISPICKVAL(Status , &apos;Closed&apos;)))</milestoneCriteriaFormula>
+        <milestoneName>UK/IE - CS Operation</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>AND( Owner:Queue.DeveloperName = &apos;UK_IE_CS_Collections&apos;, NOT(ISPICKVAL(Status , &apos;New&apos;)), NOT(ISPICKVAL(Status , &apos;Closed&apos;)))</milestoneCriteriaFormula>
+        <milestoneName>UK/IE - CS Collections</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>AND( Owner:Queue.DeveloperName = &apos;UK_IE_CS_Credit&apos;, NOT(ISPICKVAL(Status , &apos;New&apos;)), NOT(ISPICKVAL(Status , &apos;Closed&apos;)))</milestoneCriteriaFormula>
+        <milestoneName>UK/IE - CS Credit</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>AND( Owner:Queue.DeveloperName = &apos;UK_IE_CS_tech_Tool&apos;, NOT(ISPICKVAL(Status , &apos;New&apos;)), NOT(ISPICKVAL(Status , &apos;Closed&apos;)))</milestoneCriteriaFormula>
+        <milestoneName>UK/IE - CS tech Tool</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>AND( Owner:Queue.DeveloperName = &apos;IE_CS_Operations&apos;, NOT(ISPICKVAL(Status , &apos;New&apos;)), NOT(ISPICKVAL(Status , &apos;Closed&apos;)))</milestoneCriteriaFormula>
+        <milestoneName>IE - CS Operations</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Entitlement Business Hours UK/IE</businessHours>
+        <milestoneCriteriaFormula>BEGINS(OwnerId, &apos;005&apos;)</milestoneCriteriaFormula>
+        <milestoneName>User Owner</milestoneName>
+        <minutesToComplete>510</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
 </EntitlementProcess>

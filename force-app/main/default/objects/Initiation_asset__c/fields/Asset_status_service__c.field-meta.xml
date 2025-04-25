@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset_status_service__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The initiation Asset status is used the Service team.
+It captures the status of the maintenance side of a Stand alone maintenance or Contract hire contract.
+This is used to help filter Initiation assets in multiple listing pages.
+This needs to be set to Complete for the Initiation to be progress to be signed</description>
+    <label>Asset status (service)</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Future Loading</fullName>
+                <default>true</default>
+                <label>Future Loading (CH only)</label>
+            </value>
+            <value>
+                <fullName>Documents received</fullName>
+                <default>false</default>
+                <label>Documents received</label>
+            </value>
+            <value>
+                <fullName>Contract Checked Problems Found</fullName>
+                <default>false</default>
+                <label>Contract Checked Problems Found</label>
+            </value>
+            <value>
+                <fullName>Passed for TSA loading</fullName>
+                <default>false</default>
+                <label>TSA loading</label>
+            </value>
+            <value>
+                <fullName>TSA activate</fullName>
+                <default>false</default>
+                <label>Vienna loading</label>
+            </value>
+            <value>
+                <fullName>Vienna Activated (Service only)</fullName>
+                <default>false</default>
+                <label>Awaiting 2nd checking</label>
+            </value>
+            <value>
+                <fullName>Second checks complete</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

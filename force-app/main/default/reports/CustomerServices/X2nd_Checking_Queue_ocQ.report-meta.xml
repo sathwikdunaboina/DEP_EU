@@ -28,13 +28,14 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
+        <field>Case.Brand__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
         <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>TYPE</field>
@@ -43,10 +44,14 @@
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
-        <field>AGE</field>
+        <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>OPEN</field>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.CASE_AGE_DAY__c</field>
     </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
@@ -120,6 +125,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>UK/IE - EOT Billing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

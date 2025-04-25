@@ -3,9 +3,7 @@
     <fullName>Lead_Country_Restriction</fullName>
     <active>true</active>
     <description>The country is now not defaulted, so when the user selects the country, its checked against users country</description>
-    <errorConditionFormula>$Permission.GoldenCopy = false
-&amp;&amp;
-$Permission.Allow_Lead_conversion = false
+    <errorConditionFormula>$Permission.Allow_Lead_conversion = false
 &amp;&amp;
 $Profile.Name != &apos;System Administrator&apos;
 &amp;&amp;

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>BUSINESS_DURATION:SUM/CASE_NUMBER:UNIQUE/8</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Average Spent Time</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_38991046</developerName>
+        <masterLabel>CO Customer Service</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>HOWNERNAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam King</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bart Wisniewski</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IE - CS Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jordan Mulholland</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Molly White</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK/IE - 2nd Checking</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK/IE - Contract Processing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>UK/IE - CS Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Molloy</sourceValue>
+            </sourceValues>
+            <value>CO Customer Service</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>BUSINESS_DURATION</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CASE_NUMBER</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>BUSINESS_DURATION</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>HOWNERNAME</field>
+    </columns>
+    <currency>GBP</currency>
+    <filter>
+        <criteriaItems>
+            <column>BUSINESS_HOURS_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Default</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>HLASTUPDATEBY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>credit,jayne,charlotte,ajay,george,allison,christopher,natasha</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Heather Molloy</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CASE_NUMBER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Credit Lifecycle Report Closed Cases</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>CaseHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>HLAST_UPDATE</dateColumn>
+        <interval>INTERVAL_LASTMONTH</interval>
+    </timeFrameFilter>
+</Report>

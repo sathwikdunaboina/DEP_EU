@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__Detractor_Count__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Count of anyone who scores experience is less than 6</description>
+    <inlineHelpText>Count of anyone who scores experience is less than 6</inlineHelpText>
+    <label>Detractor Count</label>
+    <summaryFilterItems>
+        <field>medallia_xm__Medallia_Feedback__c.medallia_xm__Response_Main_score__c</field>
+        <operation>lessThan</operation>
+        <value>6</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>medallia_xm__Medallia_Feedback__c.medallia_xm__Record_Status__c</field>
+        <operation>equals</operation>
+        <value>Completed</value>
+    </summaryFilterItems>
+    <summaryForeignKey>medallia_xm__Medallia_Feedback__c.medallia_xm__Medallia_Feedback_Header__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>
