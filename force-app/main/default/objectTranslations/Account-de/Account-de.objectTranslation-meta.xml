@@ -1,36 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <layouts>
-        <layout>Golden Dealer Layout</layout>
-        <sections>
-            <label><!-- Account Information --></label>
-            <section>Account Information</section>
-        </sections>
-        <sections>
-            <label><!-- Adress Information --></label>
-            <section>Adress Information</section>
-        </sections>
-        <sections>
-            <label><!-- Custom Links --></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label><!-- System Information --></label>
-            <section>System Information</section>
-        </sections>
-    </layouts>
-    <quickActions>
-        <label><!-- Bulk Update --></label>
-        <name>Change_TM_On_Account</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- Child Account --></label>
-        <name>Child_Account</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- Get Invoices --></label>
-        <name>Get_Invoices</name>
-    </quickActions>
     <recordTypes>
         <description><!-- Record type for Customer Account Data --></description>
         <label><!-- Customer Account --></label>
@@ -41,16 +10,6 @@
         <label><!-- Dealer Account --></label>
         <name>Dealer_Account</name>
     </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Customer Account Data --></description>
-        <label><!-- Customer --></label>
-        <name>GCAccountCustomer</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Dealer Account Data --></description>
-        <label><!-- Dealer --></label>
-        <name>GCAccountDealer</name>
-    </recordTypes>
     <validationRules>
         <errorMessage>Kundendaten können nur in Charisma geändert werden. Änderungen sind am nächsten Tag sichtbar</errorMessage>
         <name>Cannot_Edit_Integrated_Customer_Records</name>
@@ -58,6 +17,14 @@
     <validationRules>
         <errorMessage><!-- The customerId field is used for integration. So, once filled, it cannot be edited. --></errorMessage>
         <name>Cannot_change_CustomerId</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Le numéro SIRET doit comporter 14 caractères --></errorMessage>
+        <name>Siret_Can_only_be_14_Digits</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Billing country is required. --></errorMessage>
+        <name>Validate_Account_BillingCountry_OnCreate</name>
     </validationRules>
     <webLinks>
         <label><!-- GoogleMaps --></label>
@@ -70,5 +37,13 @@
     <webLinks>
         <label>Google Suche</label>
         <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_Detail --></label>
+        <name>medallia_xm__Add_To_Program_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_ListView --></label>
+        <name>medallia_xm__Add_To_Program_ListView</name>
     </webLinks>
 </CustomObjectTranslation>

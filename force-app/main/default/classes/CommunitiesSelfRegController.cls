@@ -42,8 +42,8 @@ public class CommunitiesSelfRegController {
         u.FirstName = firstName;
         u.LastName = lastName;
         u.CommunityNickname = communityNickname;
-        u.ProfileId = profileId;
-        
+		u.ProfileId = profileId;
+		
         String userId;
 
         try {
@@ -63,11 +63,11 @@ public class CommunitiesSelfRegController {
             if (password != null && password.length() > 1) {
                 return Site.login(userName, password, ApexPages.currentPage().getParameters().get('startURL'));
             }
-           // else {
-                //PageReference page = System.Page.CommunitiesSelfRegConfirm;
-                //page.setRedirect(true);
-                //return page;
-            //}
+           /* else {
+                PageReference page = System.Page.CommunitiesSelfRegConfirm;
+                page.setRedirect(true);
+                return page;
+            }*/
         }
         return null;
     }

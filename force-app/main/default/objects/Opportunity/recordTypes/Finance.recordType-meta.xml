@@ -6,7 +6,38 @@
     <description>Record Type For Financing</description>
     <label>Finance</label>
     <picklistValues>
+        <picklist>Asset_Type__c</picklist>
+        <values>
+            <fullName>Master E-Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Red</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic E-tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic Exclusive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic Red</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Country__c</picklist>
+        <values>
+            <fullName>Australia</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Austria</fullName>
             <default>false</default>
@@ -44,7 +75,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Israel</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kazakhstan</fullName>
             <default>false</default>
         </values>
         <values>
@@ -60,7 +99,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia</fullName>
             <default>false</default>
         </values>
         <values>
@@ -81,6 +136,10 @@
         </values>
         <values>
             <fullName>Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ukraine</fullName>
             <default>false</default>
         </values>
         <values>
@@ -499,6 +558,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>De Lage Landen Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>De Lage Landen%2F AGCO Finance</fullName>
             <default>false</default>
         </values>
@@ -652,6 +715,10 @@
         </values>
         <values>
             <fullName>ING Lease Polska Sp%2E z o%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ikano Bank</fullName>
             <default>false</default>
         </values>
         <values>
@@ -843,11 +910,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Nordea Equipment Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Nordea Finance</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Nordea Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordic Finance</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1031,6 +1106,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Siemens Financial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Singers Corporation</fullName>
             <default>false</default>
         </values>
@@ -1159,6 +1238,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Wasa Kredit</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Wesbank</fullName>
             <default>false</default>
         </values>
@@ -1172,6 +1255,29 @@
         </values>
         <values>
             <fullName>Šiauliu bank</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Finance_Type__c</picklist>
+        <values>
+            <fullName>Contract Hire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hire Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hire Purchase VR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operating Lease</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1201,6 +1307,14 @@
     <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End-of-term</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Factory Order</fullName>
             <default>true</default>
         </values>
@@ -1208,27 +1322,27 @@
             <fullName>Other</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Personal contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>volvoselected%2Ecom</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LossReason__c</picklist>
+        <picklist>Lead_Brand__c</picklist>
         <values>
-            <fullName>Lost to Competitor</fullName>
+            <fullName>RT</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>No Budget %2F Lost Funding</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>No Decision %2F Non-Responsive</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Other</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Price</fullName>
+            <fullName>VT</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1256,29 +1370,37 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LostReason__c</picklist>
+        <picklist>Lost_Reason__c</picklist>
         <values>
-            <fullName>Competition - Interest rate</fullName>
+            <fullName>Approached the customer too late</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Competition - Lack of Product</fullName>
+            <fullName>Bodybuilder</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Deal Structure - Down Payment</fullName>
+            <fullName>Declined for credit reasons</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Deal Structure - Residual Value</fullName>
+            <fullName>Down payment was too high</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Deal Structure - Term %2F Tenor</fullName>
+            <fullName>Guarantee requested%2C but not accepted</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>No Truck Sale</fullName>
+            <fullName>Interest rate was too high</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Negative view of VFS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not available for financing</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1286,75 +1408,156 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Alternative quoted</fullName>
+            <fullName>Required finance product was not available</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Deal not quoted</fullName>
+            <fullName>Residual value was too low</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Declined %2F Cancelled by Credit</fullName>
+            <fullName>Term%2Ftenor was too short</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Speed of Execution</fullName>
+            <fullName>Too poor speed of execution</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Lost_Reason__c</picklist>
+        <picklist>Opportunity_Type__c</picklist>
         <values>
-            <fullName>Competition - Interest rate</fullName>
+            <fullName>Insurance</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Competition - Lack of Product</fullName>
+            <fullName>New vehicle%2Fmachine</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Deal Structure - Down Payment</fullName>
+            <fullName>Parts</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Deal Structure - Residual Value</fullName>
+            <fullName>Service</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Deal Structure - Term %2F Tenor</fullName>
+            <fullName>Used vehicle%2Fmachine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason__c</picklist>
+        <values>
+            <fullName>Credit</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>No Truck Sale</fullName>
+            <fullName>Demo unit</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Paid Cash</fullName>
+            <fullName>Exposure too high</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Alternative quoted</fullName>
+            <fullName>Order cancelled</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Deal not quoted</fullName>
+            <fullName>Other</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Declined %2F Cancelled by Credit</fullName>
+            <fullName>Part of larger deal with non-Volvo Group products</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>VFS - Speed of Execution</fullName>
+            <fullName>Poor dealer relationship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sold to government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too poor customer credit grade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too risky asset</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unit being flagged out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unit intended for OEM rental fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unit sold to bodybuilder to resell</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Requested_guarantee__c</picklist>
+        <values>
+            <fullName>Cross Company Guarantee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Holding Company Guarantee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal Guarantee</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Stage__c</picklist>
+        <values>
+            <fullName>Awaiting Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Start Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Docs Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-qualifying customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>With Credit</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
         <picklist>Type</picklist>
-        <values>
-            <fullName>Dealer inventory</fullName>
-            <default>false</default>
-        </values>
         <values>
             <fullName>Finance</fullName>
             <default>false</default>

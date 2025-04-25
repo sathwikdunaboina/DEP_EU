@@ -42,15 +42,8 @@
             <column>LOGIN_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2023 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>LOGIN_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessOrEqual</operator>
-            <value>TODAY</value>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -70,7 +63,7 @@
         <field>USERNAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>NC &amp; SW Weekly Activity Usage Report</name>
+    <name>NC &amp; SW Six Months Activity Usage Report</name>
     <params>
         <name>active</name>
         <value>active</value>

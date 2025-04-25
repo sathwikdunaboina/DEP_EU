@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_94025832</developerName>
+        <masterLabel>In-Life</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam King</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Andy Medcalf</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bart Wisniewski</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jordan Mulholland</sourceValue>
+            </sourceValues>
+            <value>In-Life</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_84357621</developerName>
+        <masterLabel>Service</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Cameron Riley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emma Cummins</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emma Wyatt</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Katie Dealtry</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Katy van der Heijden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Karen Spence</sourceValue>
+            </sourceValues>
+            <value>Service</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATE</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Case.Indicator__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.Sub_Type__c</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>OPEN</field>
+    </columns>
+    <columns>
+        <field>Case.Status_Reason__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <currency>GBP</currency>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    OR(
+        OWNER = &quot;Pav Dhaliwal&quot;,
+        OWNER = &quot;Emma Wyatt&quot;,
+        OWNER = &quot;Emma Cummins&quot;,
+        OWNER = &quot;Rowan Galloway&quot;,
+        OWNER = &quot;Katie Dealtry&quot;,
+        OWNER = &quot;Liberty Fernie&quot;,
+        OWNER = &quot;Chris Haywood&quot;,
+        OWNER = &quot;Katy van der Heijden&quot;,
+        OWNER = &quot;Karen Spence&quot;,
+        OWNER = &quot;Linda Tromans&quot;,
+        OWNER = &quot;Cameron Riley&quot;,
+        OWNER = &quot;UK/IE - Service Desk&quot;
+    ),
+    &quot;Service&quot;,
+    IF(
+        OR(
+            OWNER = &quot;IE - CS Operations&quot;,
+            OWNER = &quot;UK/IE - CS Operations&quot;,
+            OWNER = &quot;UK/IE - Contract Processing&quot;,
+            OWNER = &quot;UK/IE - 2nd Checking&quot;,
+            OWNER = &quot;Adam King&quot;,
+            OWNER = &quot;Bart Wisniewski&quot;,
+            OWNER = &quot;Jordan Mulholland&quot;,
+            OWNER = &quot;Molly White&quot;,
+            OWNER = &quot;Rumeysa Belibagli&quot;,
+            OWNER = &quot;Callum Scully&quot;,
+            OWNER = &quot;Andy Medcalf&quot;,
+            OWNER = &quot;Claire Fawkner&quot;,
+            OWNER = &quot;Helen Fulford&quot;,
+            OWNER = &quot;Rob Thay&quot;,
+            OWNER = &quot;Tracy Truslove&quot;
+        ),
+        &quot;In-Life&quot;,
+        &quot;Other&quot;
+    )
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Department</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf,Pav Dhaliwal,Emma Wyatt,Emma Cummins,Rowan Galloway,Katie Dealtry,Liberty Fernie,Chris Haywood,Katy van der Heijden,Karen Spence,Linda Tromans,Cameron Riley,UK/IE - Service Desk,Helen Fulford,Callum Scully,Claire Fawkner,Rob Thay,Tracy Truslove</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Spam/Junk</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ORIGIN</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Service Case Volume</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2024-07-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-04-01</startDate>
+    </timeFrameFilter>
+</Report>

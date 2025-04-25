@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_Notification</name>
         <label>Send Notification</label>
-        <locationX>873</locationX>
-        <locationY>376</locationY>
+        <locationX>50</locationX>
+        <locationY>971</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -39,14 +39,14 @@
             </value>
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>54.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_Owner_Ids</name>
         <label>Assign Owner Ids</label>
-        <locationX>1007</locationX>
-        <locationY>385</locationY>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>GetOwnerIds</assignToReference>
             <operator>Add</operator>
@@ -61,11 +61,11 @@
     <decisions>
         <name>IsCheck_user_notification_is_enabled</name>
         <label>IsCheck user notification is enabled</label>
-        <locationX>956</locationX>
-        <locationY>567</locationY>
+        <locationX>182</locationX>
+        <locationY>755</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Check_If_True</name>
+            <name>Outcome_1_of_Decision_1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Assignment_premission</leftValueReference>
@@ -84,7 +84,7 @@
             <connector>
                 <targetReference>Assign_Owner_Ids</targetReference>
             </connector>
-            <label>Check If True</label>
+            <label>Check if True</label>
         </rules>
     </decisions>
     <description>This flow is used to update the related Opportunity on a factory order when the factory order is updated to canceled.</description>
@@ -105,7 +105,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -118,8 +118,8 @@
     <recordLookups>
         <name>Get_Assignment_premission</name>
         <label>Get Assignment premission</label>
-        <locationX>745</locationX>
-        <locationY>552</locationY>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IsCheck_user_notification_is_enabled</targetReference>
@@ -146,8 +146,8 @@
     <recordLookups>
         <name>Get_custom_notification</name>
         <label>Get custom notification</label>
-        <locationX>543</locationX>
-        <locationY>616</locationY>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Assignment_premission</targetReference>
@@ -167,8 +167,8 @@
     <recordLookups>
         <name>get_notification_record</name>
         <label>get notification record</label>
-        <locationX>374</locationX>
-        <locationY>630</locationY>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_custom_notification</targetReference>
@@ -189,8 +189,8 @@
         <description>Update Related Financial Opportunity</description>
         <name>Update_Financial_Opportunity</name>
         <label>Update Financial Opportunity</label>
-        <locationX>584</locationX>
-        <locationY>371</locationY>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
         <connector>
             <targetReference>get_notification_record</targetReference>
         </connector>
@@ -199,7 +199,7 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record__Prior.Finance_Opportunity__r.Id</elementReference>
+                <elementReference>$Record.Finance_Opportunity__r.Id</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -223,8 +223,8 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>458</locationX>
-        <locationY>48</locationY>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Update_Financial_Opportunity</targetReference>
         </connector>
@@ -263,12 +263,5 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>Opportunity</objectType>
-    </variables>
-    <variables>
-        <name>OwnerIds</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
     </variables>
 </Flow>

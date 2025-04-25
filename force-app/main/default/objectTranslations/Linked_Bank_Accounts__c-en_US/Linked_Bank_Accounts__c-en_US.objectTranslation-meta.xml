@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Linked Bank Accounts</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Linked Bank Accounts</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This account cannot be associated with this bank account. --></errorMessage>
+        <name>Account_CRN2s_must_match</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Bank accounts must only be shared with child accounts. --></errorMessage>
+        <name>Bank_Account_Sharing</name>
+    </validationRules>
+</CustomObjectTranslation>

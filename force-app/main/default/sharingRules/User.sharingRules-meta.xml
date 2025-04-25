@@ -183,6 +183,20 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>South_Africa_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>South Africa User</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>South_Africa</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Spain_Users</fullName>
         <accessLevel>Read</accessLevel>
         <label>Spain Users</label>
@@ -207,21 +221,6 @@
             <field>Country</field>
             <operation>equals</operation>
             <value>Sweden</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>UserPoland</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>Sharing Rule for Polish Users</description>
-        <label>UserPoland</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>VFSPoland</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country</field>
-            <operation>equals</operation>
-            <value>Poland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

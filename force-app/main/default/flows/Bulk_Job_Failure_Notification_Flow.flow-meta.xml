@@ -98,6 +98,7 @@
         <offset>0</offset>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>Check_for_no_login_record_for_the_date</name>
         <label>Check for no login record for the date</label>
@@ -243,7 +244,7 @@ The bulk job is scheduled after the bulk job integration completes on salesforce
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <textTemplates>
         <name>BulkFailureNotificaitonEmail</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>

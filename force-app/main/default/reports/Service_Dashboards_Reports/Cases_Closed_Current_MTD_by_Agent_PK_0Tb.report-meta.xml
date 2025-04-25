@@ -71,12 +71,31 @@
             <operator>notContain</operator>
             <value>thay</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Adam King</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Additional Services query,CLF – Purchase,CLF – Relationship,Change my details,Claims,Contact with Sales rep,Contract Hire,Customer Feedback,Customer Portal,End of term query,Excess Meterage Query,Extraction,Financial Contract query,General Service Enquiry,General Services query,General query / Miscellaneous,Insurance query,Invoice or payment or tax query,Problems with Web Portal,RFL,Request Copy Document,Sales Support,Service - Initiation / New,Service 3rd Party,Service Consent Query,Service Extension Request,Service Termination Request,Service Third Party,Settlement Query,Sevice Conset Query,Spam/Junk</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>TYPE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Cases Closed Current MTD by Agent - PK</name>

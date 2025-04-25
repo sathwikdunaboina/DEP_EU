@@ -4,22 +4,6 @@
         <label><!-- PersonalInfo_EPIM --></label>
         <name>PersonalInfo_EPIM</name>
     </fieldSets>
-    <layouts>
-        <layout>User Profile Layout</layout>
-        <layoutType>UserAlt</layoutType>
-        <sections>
-            <label><!-- About --></label>
-            <section>About</section>
-        </sections>
-        <sections>
-            <label><!-- Background --></label>
-            <section>Background</section>
-        </sections>
-        <sections>
-            <label><!-- Contact --></label>
-            <section>Contact</section>
-        </sections>
-    </layouts>
     <validationRules>
         <errorMessage>No se puede crear usuario para este pais</errorMessage>
         <name>Portal_User_Creation_Restriction</name>
@@ -28,4 +12,8 @@
         <errorMessage>Introducir identificador de la federacion en el formato siguiente a12345. Solo en minusculas</errorMessage>
         <name>VFS_Federation_Id</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Clone_User --></label>
+        <name>Clone_User</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Validate_Control_Count_UR_CL</fullName>
+    <active>true</active>
+    <description>At least one credit line control is required to move status to Under Review.</description>
+    <errorConditionFormula>AND( TEXT( CLA_Status__c ) = &apos;Under Review&apos; ,  CLA_Credit_Line_Control_Count__c &lt; 1 )</errorConditionFormula>
+    <errorDisplayField>CLA_Status__c</errorDisplayField>
+    <errorMessage>At least one credit line control is required for status Under Review.</errorMessage>
+</ValidationRule>

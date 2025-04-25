@@ -15,6 +15,7 @@
     <columns>
         <field>STATUS</field>
     </columns>
+    <currency>EUR</currency>
     <filter>
         <criteriaItems>
             <column>OPEN</column>
@@ -29,6 +30,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ORIGIN</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Brand__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Cases Currently Open by Origin</name>

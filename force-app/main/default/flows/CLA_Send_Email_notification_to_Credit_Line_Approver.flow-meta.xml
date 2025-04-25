@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sends email to credit line approver</description>
+        <name>Send_Email_to_Credit_Line_Approver</name>
+        <label>Send Email to Credit Line Approver</label>
+        <locationX>597</locationX>
+        <locationY>361</locationY>
+        <actionName>CLA_Credit_Line_Consumption__c.CLA_Credit_Line_Consumption_Confirmation_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CLA_Credit_Line_Consumption__c.CLA_Credit_Line_Consumption_Confirmation_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Schedule_Email</name>
+        <label>Send Schedule Email</label>
+        <locationX>188</locationX>
+        <locationY>389</locationY>
+        <actionName>CLA_Credit_Line_Consumption__c.CLA_Credit_Line_Consumption_Confirmation_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CLA_Credit_Line_Consumption__c.CLA_Credit_Line_Consumption_Confirmation_Alert</nameSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Send Email Notification to Credit Line Approver</description>
+    <environments>Default</environments>
+    <interviewLabel>Send Email notification to Credit Line Approver {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Email notification to Credit Line Approver</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>369</locationX>
+        <locationY>48</locationY>
+        <object>CLA_Credit_Line_Consumption__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Send_Email</name>
+            <connector>
+                <targetReference>Send_Schedule_Email</targetReference>
+            </connector>
+            <label>Send Email</label>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

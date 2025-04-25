@@ -5,7 +5,6 @@
     <columns>ACCOUNT.NAME</columns>
     <columns>VATNumber__c</columns>
     <columns>CustomerID__c</columns>
-    <columns>Territory_Manager__c</columns>
     <columns>ACCOUNT.ADDRESS1_STATE</columns>
     <columns>ACCOUNT.PHONE1</columns>
     <columns>ACCOUNT.TYPE</columns>
@@ -18,6 +17,11 @@
         <field>ACCOUNT.ADDRESS1_COUNTRY</field>
         <operation>equals</operation>
         <value>United Kingdom,Ireland</value>
+    </filters>
+    <filters>
+        <field>Is_Deleted_From_Backbone__c</field>
+        <operation>equals</operation>
+        <value>0</value>
     </filters>
     <label>UK/IE Accounts</label>
     <sharedTo>

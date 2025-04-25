@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>PL_Access</fullName>
+        <fullName>AT_Access</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>PL Access</label>
+        <label>AT Access</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>East_Europe</roleAndSubordinatesInternal>
+            <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
-            <value>PL</value>
+            <value>AT</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -29,74 +29,16 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>FI</fullName>
+        <fullName>CH_Access</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>FI</label>
+        <label>CH Access</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>Finland</roleAndSubordinatesInternal>
+            <roleAndSubordinatesInternal>Switzerland</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
-            <value>FI</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>IT_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>IT Access</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Italy</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>IT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>DE_Sharing_Rule</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>This is sharing rule for German Market</description>
-        <label>DE Sharing Rule</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>DE_Managing_Director</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>DE</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>France_Quote_Sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>This sharing rule is used by french market</description>
-        <label>France Quote Sharing</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>France</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>FR</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>ES_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>ES Access</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Spain</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>ES</value>
+            <value>CH</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -129,10 +71,51 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Italian_Quote_Sharing_Rule</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>This rule is used for Italy Market</description>
-        <label>Italian Quote Sharing Rule</label>
+        <fullName>ES_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>ES Access</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Spain</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>ES</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FI</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FI</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Finland</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>FI</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FR_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FR Access</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>France</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>IT Access</label>
         <sharedTo>
             <roleAndSubordinatesInternal>Italy</roleAndSubordinatesInternal>
         </sharedTo>
@@ -144,22 +127,30 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>UK_IE_Sharing_Rule</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>UK /IE Sharing Rule</label>
+        <fullName>NL_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>NL Access</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>UK_IE</roleAndSubordinatesInternal>
+            <roleAndSubordinatesInternal>Netherlands</roleAndSubordinatesInternal>
         </sharedTo>
-        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
-            <value>GB</value>
+            <value>NL</value>
         </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PL_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PL Access</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>East_Europe</roleAndSubordinatesInternal>
+        </sharedTo>
         <criteriaItems>
             <field>Country__c</field>
             <operation>equals</operation>
-            <value>IE</value>
+            <value>PL</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -188,132 +179,6 @@
             <field>Country__c</field>
             <operation>equals</operation>
             <value>United Kingdom,UK,GB,Ireland,IE</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>FR_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>FR Access</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>France</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>FR</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>CH_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>CH Access</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Switzerland</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>CH</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>NL_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>NL Access</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Netherlands</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>NL</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>AT_Access</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>AT Access</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>AT</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSCQ_VT_ZA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>VFSCQ_VT_ZA</label>
-        <sharedTo>
-            <group>South_Africa_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>ZA,South Africa</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSCQ_VT_ZA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>VFSCQ_VT_ZA</label>
-        <sharedTo>
-            <group>South_Africa_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>ZA,South Africa</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSCQ_VT_ZA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>VFSCQ_VT_ZA</label>
-        <sharedTo>
-            <group>South_Africa_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>ZA,South Africa</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSCQ_VT_ZA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>VFSCQ_VT_ZA</label>
-        <sharedTo>
-            <group>South_Africa_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>ZA,South Africa</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VFSCQ_VT_ZA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>VFSCQ_VT_ZA</label>
-        <sharedTo>
-            <group>South_Africa_Volvo</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Country__c</field>
-            <operation>equals</operation>
-            <value>ZA,South Africa</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

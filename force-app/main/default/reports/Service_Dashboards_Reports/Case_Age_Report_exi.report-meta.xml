@@ -17,11 +17,12 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
+        <title>Durée moyenne de gestion des cas</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -61,7 +62,7 @@
             <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
+            <operator>equals</operator>
             <value>Closed</value>
         </criteriaItems>
         <criteriaItems>
@@ -69,7 +70,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,New,In Progress,On Hold,Escalated,Closed,Stage 1 - No Extension,Stage 2 - Paperwork being arranged,Stage 3 - Awaiting signature,Stage 4 - No response,Chasing marketing company</value>
+            <value>Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -89,11 +90,14 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
         <dateGranularity>Day</dateGranularity>
         <field>OWNER</field>
-        <sortOrder>Asc</sortOrder>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
     </groupingsDown>
-    <name>Case Age Report</name>
+    <name>Case Age Report - YTD</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -109,6 +113,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURPREVQ</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

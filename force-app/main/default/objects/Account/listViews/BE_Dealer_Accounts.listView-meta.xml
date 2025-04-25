@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BE_Dealer_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Branding__c</columns>
+    <columns>CustomerID__c</columns>
+    <columns>ACCOUNT.ADDRESS1_CITY</columns>
+    <columns>VATNumber__c</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
+        <operation>equals</operation>
+        <value>BE</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Dealer_Account</value>
+    </filters>
+    <filters>
+        <field>Is_Deleted_From_Backbone__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>BE Dealer Accounts</label>
+    <sharedTo>
+        <group>Belgium_Renault</group>
+        <group>Belgium_Volvo</group>
+    </sharedTo>
+</ListView>

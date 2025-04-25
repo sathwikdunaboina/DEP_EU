@@ -11,8 +11,15 @@
     <columns>Axle_Arrangement__c</columns>
     <columns>Main_Dealer_Name__c</columns>
     <columns>Vehicle_Status__c</columns>
+    <columns>Order_Status_Description__c</columns>
+    <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
     <columns>Country__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country__c</field>
+        <operation>contains</operation>
+        <value>GB</value>
+    </filters>
     <label>All</label>
 </ListView>

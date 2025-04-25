@@ -91,7 +91,7 @@ public class UpdateFieldOnCase_Test {
     
     /*
 * ------------------------------------------------------------------------------------------------------
-* @Method Name     insertAttachment
+* @Method Name     emailHasAttachment
 * @description     To cover Update Case File Status On Email Message Update Flow when a Case is created through Email-to-case with Attachment and Case record 
 without Attachment
 * ------------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ without Attachment
     
     /*
 * ------------------------------------------------------------------------------------------------------
-* @Method Name     insertAttachment
+* @Method Name     emailWithoutAttachment
 * @description     To cover Update Case File Status On Email Message Update Flow when a Case is created through Email-to-case without Attachment and Case record 
 with Attachment
 * ------------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ with Attachment
     
     /*
 * ------------------------------------------------------------------------------------------------------
-* @Method Name     insertAttachment
+* @Method Name     caseAndEmailWithoutAttachment
 * @description     To cover Update Case File Status On Email Message Update Flow when a Case is created through Email-to-case without Attachment and Case record 
 without Attachment
 * ------------------------------------------------------------------------------------------------------
