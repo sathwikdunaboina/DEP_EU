@@ -23,7 +23,7 @@ public class EntitlementAssignmentFlow_Test {
             mapSLANameToSLAProcess.put(sla.Name, sla);
         }
         // creating account
-        Account acc = new Account(Name='Demo Acc');
+        Account acc = new Account(Name='Demo Acc',BillingCountry = 'United Kingdom');
         Insert acc;
 
         // creating entitlement records
