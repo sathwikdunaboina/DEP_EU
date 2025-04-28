@@ -31,10 +31,10 @@ private class MilestoneTest {
     static testMethod void TestCompleteMilestoneCase(){
 
         List<Account> acts = new List<Account>();
-        Account myAcc = new Account(Name='TestAct', phone='1001231234');
+        Account myAcc = new Account(Name='TestAct', phone='1001231234',BillingCountry='United Kingdom');
         acts.add(myAcc);
         
-        Account busAcc = new Account(Name = 'TestForMS', phone='4567890999');
+        Account busAcc = new Account(Name = 'TestForMS', phone='4567890999',BillingCountry='United Kingdom');
         acts.add(busAcc);
         insert acts;
         Contact cont = new Contact(FirstName = 'Test', LastName = 'LastName', phone='4567890999', accountid = busAcc.id);
