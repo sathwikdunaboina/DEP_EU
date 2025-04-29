@@ -30,6 +30,7 @@ private class ContentDocumentLinkServices_Test {
         
         Account oAccount = new Account();
         oAccount.Name = 'test account';
+        oAccount.BillingCountry = 'France';
         oAccount.RecordTypeId = accountRecordTypeId;
         insert oAccount; 
         
