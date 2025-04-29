@@ -184,5 +184,4 @@ private static void testGetMatchedCreditLinesInvalidRequestBody(){
     System.assert(res.responseBody.toString().contains('Bad Request'), 'Expected "Bad Request" in response body.');
     }
 }
-
 }
