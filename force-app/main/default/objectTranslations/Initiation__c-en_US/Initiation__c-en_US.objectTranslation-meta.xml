@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Initiation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Initiations</value>
+    </caseValues>
+    <recordTypes>
+        <description><!-- Finance and Service Contract --></description>
+        <label><!-- Contract Hire --></label>
+        <name>Contract_Hire</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Lease with R and M --></description>
+        <label><!-- Lease with R&amp;M --></label>
+        <name>Lease_with_R_M</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Finance Only --></description>
+        <label><!-- Standalone Finance --></label>
+        <name>Stand_Alone_Finance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Service Only --></description>
+        <label><!-- Standalone Maintenance --></label>
+        <name>Stane_Alone_Service</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please resolve the Hotpots in order to close the initiation --></errorMessage>
+        <name>Cannotcloseifhotpots</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill in the box ID --></errorMessage>
+        <name>Do_not_allow_closed_status_for_empty_box</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please change the statuses of the assets in initiation to &quot;complete&quot; or put &quot;not taken up&quot; flag to proceed --></errorMessage>
+        <name>Do_not_allow_to_be_filed_when_assets_inc</name>
+    </validationRules>
+</CustomObjectTranslation>

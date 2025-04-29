@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Credit Line Control</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Credit Line Controls</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Can not create/update record as Credit line is expired. --></errorMessage>
+        <name>CLA_Prevent_Create_Update_Expired_CL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Maximum limit is 100M. --></errorMessage>
+        <name>CLA_Prevent_Limt_Max_Unit_Price</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Max 25 controls can be added to a credit line. --></errorMessage>
+        <name>CLA_Prevent_Maximum_Number_Controls</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Negative value is not allowed. --></errorMessage>
+        <name>CLA_Prevent_Negative_Max_Unit_Price</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Negative value is not allowed. --></errorMessage>
+        <name>CLA_Prevent_Negative_Term_From</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Negative value is not allowed. --></errorMessage>
+        <name>CLA_Prevent_Negative_Term_To</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Percentage must be between 0 and 100%. --></errorMessage>
+        <name>CLA_Validate_Allowed_Maximum_RV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Percentage must be between 0 and 100%. --></errorMessage>
+        <name>CLA_Validate_Allowed_Minimum_Down_Paymen</name>
+    </validationRules>
+</CustomObjectTranslation>

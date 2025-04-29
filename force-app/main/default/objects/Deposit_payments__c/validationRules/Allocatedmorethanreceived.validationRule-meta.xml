@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocatedmorethanreceived</fullName>
+    <active>true</active>
+    <description>Allocated amount can not exceed amount received</description>
+    <errorConditionFormula>Payment_recieved__c &lt; Allocated_to_this_Contract__c</errorConditionFormula>
+    <errorMessage>Allocated amount can not exceed amount received</errorMessage>
+</ValidationRule>

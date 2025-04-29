@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enter_Payout_date</fullName>
+    <active>true</active>
+    <description>Prompt user to populate payout date</description>
+    <errorConditionFormula>AND( ISBLANK( Desired_payout_date__c ) , ISPICKVAL( Asset_status__c , &quot;With back office for activation&quot;))</errorConditionFormula>
+    <errorDisplayField>Asset_status__c</errorDisplayField>
+    <errorMessage>Please enter a payout date on all assets. This is to help guide the activations team and help with reporting</errorMessage>
+</ValidationRule>

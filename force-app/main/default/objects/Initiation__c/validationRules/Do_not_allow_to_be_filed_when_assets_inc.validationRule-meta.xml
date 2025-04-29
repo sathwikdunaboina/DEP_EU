@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Do_not_allow_to_be_filed_when_assets_inc</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND
+(
+OR
+(
+ISPICKVAL(Status__c, &quot;closed&quot;),
+ISPICKVAL(Status__c, &quot;to be filed&quot;),
+ISPICKVAL(Status__c, &quot;to be signed&quot;)
+),
+NOT( All_assets_consumed_flag__c )
+)</errorConditionFormula>
+    <errorMessage>Please change the statuses of the assets in initiation to &quot;complete&quot; or put &quot;not taken up&quot; flag to proceed</errorMessage>
+</ValidationRule>

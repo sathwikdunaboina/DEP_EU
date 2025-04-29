@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bank_Account__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>This is the actual bank account record.  Linked bank accounts allow you to connect multiple bank accounts to multiple customer accounts.</description>
+    <inlineHelpText>This is the actual bank account record.</inlineHelpText>
+    <label>Bank Account</label>
+    <referenceTo>Bank_Account__c</referenceTo>
+    <relationshipLabel>Bank Accounts</relationshipLabel>
+    <relationshipName>Bank_Accounts</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

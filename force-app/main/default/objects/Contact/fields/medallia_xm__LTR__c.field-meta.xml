@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>medallia_xm__LTR__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Sum_of_Scores__c / Completed_Survey_Count__c</description>
+    <externalId>false</externalId>
+    <formula>IF(ISNULL(medallia_xm__Completed_Survey_Count__c), 0, medallia_xm__Sum_of_Scores__c / medallia_xm__Completed_Survey_Count__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Sum_of_Scores__c / Completed_Survey_Count__c</inlineHelpText>
+    <label>LTR</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

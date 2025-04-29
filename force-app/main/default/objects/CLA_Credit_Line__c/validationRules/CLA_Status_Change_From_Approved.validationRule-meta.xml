@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Status_Change_From_Approved</fullName>
+    <active>true</active>
+    <description>Status can only changed to Suspended or Expired from Approved Status.</description>
+    <errorConditionFormula>AND( TEXT( PRIORVALUE( CLA_Status__c ) ) = &apos;Approved&apos; ,
+     TEXT( CLA_Status__c ) &lt;&gt; &apos;Suspended&apos; , 
+     TEXT( CLA_Status__c ) &lt;&gt; &apos;Expired&apos;,
+     TEXT( CLA_Status__c ) &lt;&gt; &apos;Approved&apos;)</errorConditionFormula>
+    <errorDisplayField>CLA_Status__c</errorDisplayField>
+    <errorMessage>Status can only changed to Suspended or Expired from Approved Status.</errorMessage>
+</ValidationRule>

@@ -60,6 +60,13 @@
             <operator>equals</operator>
             <value>Closed</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_ON_CREATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -84,6 +91,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-03-01</startDate>
     </timeFrameFilter>
 </Report>

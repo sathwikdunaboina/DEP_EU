@@ -4,20 +4,20 @@
         <fullName>AT_Account</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
-            <caseAccessLevel>Read</caseAccessLevel>
+            <caseAccessLevel>Edit</caseAccessLevel>
             <contactAccessLevel>Edit</contactAccessLevel>
             <opportunityAccessLevel>Edit</opportunityAccessLevel>
         </accountSettings>
-        <label>AT_Account</label>
+        <label>AT Account</label>
         <sharedTo>
             <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
-            <field>BillingCountryCode</field>
+            <field>BillingCountry</field>
             <operation>equals</operation>
             <value>Austria</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>AT_CustomerService_Access</fullName>
@@ -73,7 +73,7 @@
         <fullName>Austria_Account</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
+            <caseAccessLevel>Read</caseAccessLevel>
             <contactAccessLevel>Edit</contactAccessLevel>
             <opportunityAccessLevel>Edit</opportunityAccessLevel>
         </accountSettings>
@@ -82,11 +82,11 @@
             <roleAndSubordinatesInternal>Austria</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
-            <field>BillingCountry</field>
+            <field>BillingCountryCode</field>
             <operation>equals</operation>
             <value>Austria</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>BE_Account</fullName>
@@ -96,7 +96,7 @@
             <contactAccessLevel>Edit</contactAccessLevel>
             <opportunityAccessLevel>Edit</opportunityAccessLevel>
         </accountSettings>
-        <label>BE_Account</label>
+        <label>BE Account</label>
         <sharedTo>
             <roleAndSubordinatesInternal>Belgium</roleAndSubordinatesInternal>
         </sharedTo>
@@ -105,7 +105,7 @@
             <operation>equals</operation>
             <value>Belgium,Luxembourg</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>BE_Cases</fullName>
@@ -182,7 +182,7 @@
             <operation>equals</operation>
             <value>Switzerland,Liechtenstein</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>CH_CustomerService_Access</fullName>
@@ -299,6 +299,25 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>FR_Account</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>FR Account</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>France</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>FR_Account_France</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -372,7 +391,7 @@
             <operation>equals</operation>
             <value>Germany</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Germany_Sharing_for_Pierre</fullName>
@@ -432,6 +451,25 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>IT_SharingRule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>IT SharingRule</label>
+        <sharedTo>
+            <roleAndSubordinates>Italy</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Italy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Italy_Account</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -449,6 +487,25 @@
             <value>Italy</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>NL_Account</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>Read</opportunityAccessLevel>
+        </accountSettings>
+        <label>NL Account</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Netherlands</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Netherlands,NL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>NL_Accounts</fullName>
@@ -529,6 +586,25 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Netherlands_Account</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>Netherlands Account</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>NL_Sales_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>Netherlands</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Read_only_for_All_Market</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -551,9 +627,9 @@
         <fullName>Spain_Account</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
+            <caseAccessLevel>None</caseAccessLevel>
             <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
         </accountSettings>
         <label>Spain Account</label>
         <sharedTo>
@@ -564,7 +640,7 @@
             <operation>equals</operation>
             <value>Spain</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Sweden_RT_Access</fullName>
@@ -620,6 +696,31 @@
             <field>BillingCountry</field>
             <operation>equals</operation>
             <value>Switzerland</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>UK_Account</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>UK Account</label>
+        <sharedTo>
+            <roleAndSubordinates>UK_IE</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>United Kingdom</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Ireland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

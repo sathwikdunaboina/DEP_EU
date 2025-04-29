@@ -19,16 +19,6 @@
         <label>Cuenta del Concesionario</label>
         <name>Dealer_Account</name>
     </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Customer Account Data --></description>
-        <label><!-- Customer --></label>
-        <name>GCAccountCustomer</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record type for Dealer Account Data --></description>
-        <label><!-- Dealer --></label>
-        <name>GCAccountDealer</name>
-    </recordTypes>
     <validationRules>
         <errorMessage><!-- Cannot edit a customer once its integrated with CMS. Any changes has to be done in CMS, and it will reflect the next day. --></errorMessage>
         <name>Cannot_Edit_Integrated_Customer_Records</name>
@@ -36,6 +26,14 @@
     <validationRules>
         <errorMessage>&quot;ID cliente es usado para integracion. Una vez relleno, no puede ser editado&quot;</errorMessage>
         <name>Cannot_change_CustomerId</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Le numéro SIRET doit comporter 14 caractères --></errorMessage>
+        <name>Siret_Can_only_be_14_Digits</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Billing country is required. --></errorMessage>
+        <name>Validate_Account_BillingCountry_OnCreate</name>
     </validationRules>
     <webLinks>
         <label>Mapas Google</label>
@@ -48,5 +46,17 @@
     <webLinks>
         <label>Busqueda Google</label>
         <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Message --></label>
+        <name>Send_Message</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_Detail --></label>
+        <name>medallia_xm__Add_To_Program_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Program_ListView --></label>
+        <name>medallia_xm__Add_To_Program_ListView</name>
     </webLinks>
 </CustomObjectTranslation>

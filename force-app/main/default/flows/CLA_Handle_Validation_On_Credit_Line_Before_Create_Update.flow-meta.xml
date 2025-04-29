@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Country_Blank_Error</name>
+        <label>Error</label>
+        <locationX>718</locationX>
+        <locationY>559</locationY>
+        <customErrorMessages>
+            <errorMessage>Country is required.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Shows Primary Customer required field error.</description>
+        <name>Primary_Customer_required_field_missing_error</name>
+        <label>Error</label>
+        <locationX>651</locationX>
+        <locationY>883</locationY>
+        <customErrorMessages>
+            <errorMessage>Check Primary Customer Fields.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Status_Expired_Error</name>
+        <label>Status Expired Error</label>
+        <locationX>1237</locationX>
+        <locationY>353</locationY>
+        <customErrorMessages>
+            <errorMessage>Record can not be updated in Expired status.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Decision check credit line status.</description>
+        <name>Check_Credit_Line_Status</name>
+        <label>Check Credit Line Status</label>
+        <locationX>945</locationX>
+        <locationY>428</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_Expired</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Expired</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Expired</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Status_Expired_Error</targetReference>
+            </connector>
+            <label>Status is Expired</label>
+        </rules>
+        <rules>
+            <name>Country_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Country__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Country_Blank_Error</targetReference>
+            </connector>
+            <label>Country Blank</label>
+        </rules>
+        <rules>
+            <name>Status_Changed_to_Under_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Under Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Primary_Customer_Record</targetReference>
+            </connector>
+            <label>Status is  Under Review</label>
+        </rules>
+        <rules>
+            <name>Status_is_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CLA_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Primary_Customer_Record</targetReference>
+            </connector>
+            <label>Status  is  Approved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Primary_Customer_Record_Fields</name>
+        <label>Check Primary Customer Record Fields</label>
+        <locationX>971</locationX>
+        <locationY>885</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Required_field_missing</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Primary_Customer_Record.Name</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Primary_Customer_Record.CLA_Company_Identification_Number__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Primary_Customer_Record.CLA_Credit_line_Grade__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Primary_Customer_Record.CLA_Validation_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Primary_Customer_Record.CLA_Validation_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Primary_Customer_required_field_missing_error</targetReference>
+            </connector>
+            <label>Required field missing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decision for checking whether before insert event or before update event.</description>
+        <name>Is_Insert_or_Update</name>
+        <label>Is Insert or Update</label>
+        <locationX>662</locationX>
+        <locationY>361</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Credit_Line_Status</targetReference>
+            </connector>
+            <label>Is Insert</label>
+        </rules>
+        <rules>
+            <name>Is_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Credit_Line_Status</targetReference>
+            </connector>
+            <label>Is Update</label>
+        </rules>
+    </decisions>
+    <description>Runs on before insert/update event  on credit line , handle validations e.i Check whether primary credit line customer fields are present before changing stage to under review  , prevent record update in expired state.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Handle Validation On Credit Line Before Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Handle Validation On Credit Line Before Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Primary Credit Line Customer record</description>
+        <name>Get_Primary_Customer_Record</name>
+        <label>Get Primary Customer Record</label>
+        <locationX>978</locationX>
+        <locationY>685</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Primary_Customer_Record_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CLA_Is_Primary__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CLA_Credit_Line__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CLA_Credit_Line_Account__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <queriedFields>CLA_Company_Identification_Number__c</queriedFields>
+        <queriedFields>CLA_Credit_Line__c</queriedFields>
+        <queriedFields>CLA_Validation_Type__c</queriedFields>
+        <queriedFields>CLA_Credit_line_Grade__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Is_Insert_or_Update</targetReference>
+        </connector>
+        <object>CLA_Credit_Line__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>400</triggerOrder>
+</Flow>
