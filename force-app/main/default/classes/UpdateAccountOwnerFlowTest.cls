@@ -110,12 +110,12 @@ public class UpdateAccountOwnerFlowTest {
         
         // Add a customer account
         Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
-        Account cTestAcc = new Account (Name='TestCustomerAccount', RecordTypeId = accountRecordType);
+        Account cTestAcc = new Account (Name='TestCustomerAccount', RecordTypeId = accountRecordType, BillingCountry = 'United Kingdom');
         insert cTestAcc;
         
         // Add a dealer account
         accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Dealer Account').getRecordTypeId();        
-        Account dTestAcc = new Account (Name='TestDealerAccount', RecordTypeId = accountRecordType);
+        Account dTestAcc = new Account (Name='TestDealerAccount', RecordTypeId = accountRecordType, BillingCountry = 'United Kingdom');
         insert dTestAcc;
     }
     
