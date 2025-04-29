@@ -10,11 +10,6 @@
     <columns>CORE.USERS.ALIAS</columns>
     <columns>LAST_UPDATE</columns>
     <columns>UPDATEDBY_USER.ALIAS</columns>
-    <filterScope>Mine</filterScope>
-    <filters>
-        <field>IS_RECURRENCE</field>
-        <operation>equals</operation>
-        <value>1</value>
-    </filters>
-    <label>ENCODED:{!FilterNames.Task_RecurringTasks}</label>
+    <filterScope>Everything</filterScope>
+    <label>Recurring Tasks</label>
 </ListView>

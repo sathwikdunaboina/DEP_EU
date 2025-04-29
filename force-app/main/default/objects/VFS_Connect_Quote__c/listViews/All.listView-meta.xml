@@ -6,5 +6,10 @@
     <columns>CREATEDBY_USER</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>notEqual</operation>
+        <value>Integration User</value>
+    </filters>
     <label>All</label>
 </ListView>

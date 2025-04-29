@@ -91,7 +91,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>helen,xsm,lovepreet,claire,jenny,tracy,rob</value>
+            <value>xsm,lovepreet,jenny</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>king,tracy,helen,molly,jordan,bart,medcalf,thay,callum,claire</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>musgreave,ben,george,emily,2nd,ext,harry,Gary,Beverley</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATE</column>
+            <columnToColumn>true</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>CREATED_DATE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -101,7 +122,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MTD Average Case Time</name>
+    <name>Average Case Time</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -117,6 +138,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_THISMONTH</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

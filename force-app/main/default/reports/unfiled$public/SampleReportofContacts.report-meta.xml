@@ -47,10 +47,25 @@
     </columns>
     <currency>EUR</currency>
     <description>How many contacts do we have in Salesforce?</description>
+    <filter>
+        <criteriaItems>
+            <column>CONTACT_CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Integration User</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>CREATED_DATE</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CONTACT_CREATED</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Sample Report: # of Contacts</name>
