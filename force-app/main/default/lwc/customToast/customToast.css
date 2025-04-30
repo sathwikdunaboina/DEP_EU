@@ -1,0 +1,18 @@
+.slds-notify_container {
+    position: fixed;
+    top: 10px; /* Moves it to the top */
+    left: 40%;
+    transform: translateX(-50%); /* Centers it */
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+ 
+.slds-notify_toast {
+    max-width: 400px;
+    min-width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}

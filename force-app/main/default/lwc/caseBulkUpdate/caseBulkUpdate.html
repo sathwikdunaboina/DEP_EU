@@ -1,0 +1,111 @@
+<template>
+
+<template if:true={showError}>
+    <div class="slds-notify slds-notify_toast slds-theme_error center-error ">
+        <span class="slds-assistive-text">Error</span>
+        <span>{error}</span>
+    </div>
+</template>
+<template if:true={showFields}>
+<p class="large-text">Bulk Update</p>
+    <lightning-layout multiple-rows="true">
+    <lightning-layout-item size="5" padding="around-small">
+        
+        <lightning-combobox
+            label="Type"
+            value={typeValue}
+            options={typeOptions}
+            onchange={handleTypeChange}>
+        </lightning-combobox>
+
+        <lightning-combobox
+            label="Status"
+            value={statusValue}
+            options={statusOptions}
+            onchange={handleStatusChange}
+            required>
+        </lightning-combobox>
+
+        <template if:true={isBrandFieldVisible}>
+            <lightning-combobox
+                label="Brand"
+                value={brandValue}
+                options={brandOptions}
+                onchange={handleBrandChange}
+                required={isBrandFieldRequired}>
+            </lightning-combobox>
+        </template>
+    </lightning-layout-item>
+
+    <lightning-layout-item size="5" padding="around-small">
+        <div class="slds-p-right_xxx-large">
+            <lightning-combobox
+                label="Sub Type"
+                value={subtypeValue}
+                placeholder= "--None--"
+                options={filteredSubtypeOptions}
+                onchange={handleSubtypeChange}
+                disabled={isSubtypeDisabled}>
+            </lightning-combobox>
+
+            <lightning-combobox
+                label="Status Reason"
+                value={statusReasonValue}
+                placeholder= "--None--"
+                options={filteredStatusReasonOptions}
+                onchange={handleStatusReasonChange}
+                disabled={isStatusReasonDisabled}>
+            </lightning-combobox>
+        </div>
+    </lightning-layout-item>
+</lightning-layout>
+
+<lightning-button label="Save" variant="brand" disabled={isSaveDisabled} onclick={handleUpdateCase}></lightning-button>
+<template if:true={showModal}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading_medium">Confirm Update</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium">
+                <p>{modalMessage}</p>
+            </div>
+            <footer class="slds-modal__footer">
+                <div class="button-container">
+                <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                <lightning-button label="OK" variant="brand" onclick={handleConfirm}></lightning-button>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+<lightning-button label="Cancel" variant="neutral" onclick={handleCancelButton} class="slds-m-left_small"></lightning-button>
+<div class="slds-m-top_medium">
+    <p><strong>Fields to update</strong></p>
+    <p>Selected Type: {typeValue}</p>
+<p>Selected Sub Type: {subtypeValue}</p>
+<p>Selected Status: {statusValue}</p>
+<p>Selected Status Reason: {statusReasonValue}</p>
+<template if:true={isBrandFieldVisible}>
+    <p>Selected Brand: {brandValue}</p>
+</template>
+
+</div>
+<template if:true={caseNumbers}>
+    <p class="medium-text">Selected Case Numbers: {caseNumbers}</p>
+</template>
+<template if:false={caseNumbers}>
+    <p><strong>No Case Selected</strong></p>
+    <p>It is Mandatory to select at least one case in order to proceed.</p>
+</template>
+<template if:true={showToast}>
+    <c-toast-message message={toastMessage} variant={toastVariant} duration="4000"></c-toast-message>
+    </template>
+    
+</template>
