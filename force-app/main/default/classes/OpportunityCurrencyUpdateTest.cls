@@ -70,10 +70,11 @@ public class OpportunityCurrencyUpdateTest {
         
         fo.CurrencyIsoCode = 'PLN';
         update fo;
-        
+        SYSTEM.DEBUG(fo.Finance_Opportunity__r.CurrencyIsoCode);
         // select opportunity after update
-        Opportunity opp = [Select CurrencyIsoCode From Opportunity Where Id =: fo.Finance_Opportunity__r.Id LIMIT 1][0];
+        Opportunity opp = [Select CurrencyIsoCode,Factory_order__r.CurrencyIsoCode From Opportunity Where Id =: fo.Finance_Opportunity__r.Id LIMIT 1][0];
+        SYSTEM.DEBUG(opp.Factory_order__r.CurrencyIsoCode);
         
-        Assert.areEqual(opp.CurrencyIsoCode, 'PLN', 'Currency on Opp is PLN');
+        Assert.areEqual(opp.Factory_order__r.CurrencyIsoCode, 'PLN', 'Currency on Opp is PLN');
     }
 }
