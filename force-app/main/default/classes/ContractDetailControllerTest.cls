@@ -1,4 +1,5 @@
 @isTest
+//Due to portal user is not been used. This test class is modified to run as admin
 public class ContractDetailControllerTest {
     @TestSetup
     static void setup() 
@@ -23,7 +24,8 @@ public class ContractDetailControllerTest {
         {
             Account accObj = new Account();
             accObj.Name = 'testAcc';
-            accObj.CustomerID__c = 'test123';           
+            accObj.CustomerID__c = 'test123';
+            accObj.BillingCountry = 'United Kingdom';
             insert accObj;
             
             Contact conObj = new Contact();
@@ -41,7 +43,7 @@ public class ContractDetailControllerTest {
             payPlnObj.Contract__c = contObj.Id;
             insert payPlnObj;            
             
-            Profile portalProfile = [SELECT Id FROM Profile WHERE Name='Self Service Portal User' Limit 1];
+            /*Profile portalProfile = [SELECT Id FROM Profile WHERE Name='Self Service Portal User' Limit 1];
             User portalUser = new User(
                 ProfileId = portalProfile.Id,
                 LastName = 'last',
@@ -56,12 +58,12 @@ public class ContractDetailControllerTest {
                 LanguageLocaleKey = 'en_US',
                 LocaleSidKey = 'en_US'
             );
-            insert portalUser;
+            insert portalUser;*/
         }
     }
     
     static testMethod void getContractDetailTest(){
-        User portalUser = [SELECT Id FROM User WHERE Email = 'testuser@testclass.org' LIMIT 1];
+        User portalUser = [SELECT Id FROM User WHERE Email = 'admin@testclass.org' LIMIT 1];
         System.runAs(portalUser){
             Contract__c contObj =  [SELECT Id FROM Contract__c WHERE Contract_Id__c = 'cont1234' LIMIT 1];
             Test.startTest();
