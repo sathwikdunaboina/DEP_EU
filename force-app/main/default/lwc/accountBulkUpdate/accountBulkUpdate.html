@@ -57,28 +57,24 @@
                                                         </lightning-layout-item>
                                                         </lightning-layout>
                                                     <template for:each={accounts} for:item="account">
-                                                        <lightning-layout key={account.Id} class="account-row account-row:hover">
-                                                            <lightning-layout-item flexibility="auto" padding="around-small"
-                                                        >
-                                                                <div class="header-column">
-                                                                    <p>{account.Name}</p>
-                                                                </div>
-                                                                </lightning-layout-item>
-                                                            
-                                                                    <lightning-layout-item flexibility="auto" padding="around-small"
-                                                                    >
-                                                                        <div class="header-column">
-                                                                            <p>{account.RecordType.Name}</p>
+                                                            <lightning-layout key={account.Id} class="account-row account-row:hover">
+                                                                    <lightning-layout-item flexibility="auto" style="width: 50%; padding: 6px 10px;"
+                                                                >
+                                                                        <div class="header-column" style="word-wrap: break-word; white-space: normal; overflow-wrap: break-word;">
+                                                                            <p style="margin: 0; line-height:1.0;">{account.Name}</p>
                                                                         </div>
                                                                         </lightning-layout-item>
-
-                                                                        </lightning-layout>
+                                                                            <lightning-layout-item flexibility="auto" style="width: 50%; padding: 6px 10px;"
+                                                                            >
+                                                                                <div class="header-column"  style="word-wrap: break-word; white-space: normal; overflow-wrap: break-word;">
+                                                                                    <p style="margin: 0; line-height:1.0;">{account.RecordType.Name}</p>
+                                                                                </div>
+                                                                                </lightning-layout-item>
+                                                                                </lightning-layout>
                                                                 </template>
 </div>
 </lightning-card>
-
 </template>
-
 <div class="slds-m-around_medium">
     <template if:true={showFields}>
                         <lightning-button label="Save" onclick={handleSave}></lightning-button>
