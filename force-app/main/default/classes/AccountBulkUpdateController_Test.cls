@@ -2,7 +2,7 @@
 * -----------------------------------------------------------------------------------------
 * Apex Class Name     AccountBulkUpdateController_Test
 * @author             Sugapriya Vanjiyappan <sugapriya.vanjiyappan@consultant.volvo.com> 
-* @Created Date       01-20-2025        
+* @Created Date       30-04-2025        
 * ------------------------------------------------------------------------------------------
 * @description        This class is used to test AccountBulkUpdateController
 * ------------------------------------------------------------------------------------------

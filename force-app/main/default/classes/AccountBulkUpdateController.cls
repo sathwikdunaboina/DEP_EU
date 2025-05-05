@@ -2,7 +2,7 @@
 * -----------------------------------------------------------------------------------------
 * Apex Class Name     AccountBulkUpdateController
 * @author             Sugapriya Vanjiyappan <sugapriya.vanjiyappan@consultant.volvo.com> 
-* @Created Date       03-10-2025         
+* @Created Date       28-04-2025         
 * ------------------------------------------------------------------------------------------
 * @description        This class is used as controller for accountBulkUpdate LWC Component
 * ------------------------------------------------------------------------------------------

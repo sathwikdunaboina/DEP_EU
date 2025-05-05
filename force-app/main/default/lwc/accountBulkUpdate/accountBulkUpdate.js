@@ -21,7 +21,6 @@ export default class AccountBulkUpdate extends LightningElement {
     @track transferOpportunities = false;
     @track isSaving = false;
     @track error;
-    @track isFinance = false;
     @track showToast = false;
     @track toastMessage = '';
     @track toastVariant = 'success';
