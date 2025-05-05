@@ -46,13 +46,18 @@
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
-        <field>AGE</field>
-    </columns>
-    <columns>
         <field>OPEN</field>
     </columns>
     <columns>
         <field>ORIGIN</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.CASE_AGE_DAY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
     </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>

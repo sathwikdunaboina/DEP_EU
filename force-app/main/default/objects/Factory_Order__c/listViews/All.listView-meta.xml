@@ -16,5 +16,10 @@
     <columns>LAST_UPDATE</columns>
     <columns>Country__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Order_Id__c</field>
+        <operation>notContain</operation>
+        <value>Manual</value>
+    </filters>
     <label>All</label>
 </ListView>
