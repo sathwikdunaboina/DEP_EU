@@ -18,10 +18,10 @@
                             <tr> 
                                 <th style="width:15%;"><lightning-input class="slds-p-left_xxx-small"  type="checkbox" label=" Select all" onclick={selectAll}  ></lightning-input></th>    
                                    
-                                <th style="width:15%;">Quote Id</th>
-                                <th style="width:5%;">Amount</th>
-                                <th style="width:2%;">VIN Number</th> <!--Task-7323-->
-                                <th style="width:2%;">Asset</th> <!--Task-7323-->
+                                <!-- <th style="width:10%;">Quote Id</th> -->
+                                <th style="width:20%;">Amount</th>
+                                <th style="width:25%;">VIN Number</th> <!--Task-7323-->
+                                <th style="width:25%;">Asset</th> <!--Task-7323-->
                                 <!-- <th style="width:25%;">Dealer Name</th> -->
                                 <th style="width:20%;">Dealer Delivery Date</th>
                                 <!-- <th style="width:10%;">Brand</th> -->
@@ -32,21 +32,21 @@
                         <tbody>
                             <template for:each={data} for:item="item" if:false={isLoaded}>
                                 <tr key={item.Id} style="border-bottom: 1px solid #ddd;" data-id={item.Id} id={item.Id}>
-                                    <td style="width: 10%;">
+                                    <td style="width: 15%;">
                                         <template if:true={item.checkbox}>
                                             <lightning-input style="color:blue;" data-id="checkbox1" onchange={handleChange} type="checkbox" checked={item.firstRecordCheckByDefault} disabled={item.firstRecordCheckByDefault} data-amount={item.Amount} name={item.Id} value={item.Id}>
                                             </lightning-input>
                                         </template></td>
 <!-- <td style="width:25%;text-overflow:ellipsis;">{item.Name}</td> -->
-<td style="width:10%;text-overflow:ellipsis;">{item.Quote_Id__c}</td>
+<!-- <td style="width:10%;text-overflow:ellipsis;">{item.Quote_Id__c}</td> -->
 <td style="width:20%;text-overflow:ellipsis;">
     <lightning-formatted-number value={item.Amount} format-style="currency" currency-code={item.CurrencyIsoCode}>
     </lightning-formatted-number>
 </td>
 <!--Task-7323-->
-<td style="width:20%;text-overflow:ellipsis;">{item.vinNumber}</td>
+<td style="width:25%;text-overflow:ellipsis;">{item.vinNumber}</td>
 <!--Task-7323-->
-<td style="width:20%;text-overflow:ellipsis;">{item.marketType}</td>
+<td style="width:25%;text-overflow:ellipsis;">{item.marketType}</td>
 <!-- <td style="width:10%;text-overflow:ellipsis;">{item.Brand__c}</td> -->
 <!-- <td style="width:25%;text-overflow:ellipsis;">{item.Dealer_Name__c}</td> -->
 <td style="width:20%;text-overflow:ellipsis;">{item.Dealer_Delivery_Date__c}</td>
