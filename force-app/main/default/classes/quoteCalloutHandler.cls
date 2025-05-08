@@ -118,7 +118,8 @@ public with sharing class quoteCalloutHandler {
     
     private static VFS_Connect_Quote__c quoteRecordCreate(Opportunity oppList,String quoteNumber,String uniqueId){
         VFS_Connect_Quote__c vfsConnectQuote = new VFS_Connect_Quote__c();
-        vfsConnectQuote.Account_CMS_Number__c = oppList.Account.Customer_Number__c;
+        //vfsConnectQuote.Account_CMS_Number__c = oppList.Account.Customer_Number__c;//Customer Id excluding the prefix of Country code and - done below
+        vfsConnectQuote.Account_CMS_Number__c = oppList.Customer_Account__r.CustomerID__c.replaceAll('(^[A-Z]{2}[-]*)', '');
         vfsConnectQuote.Quote_Number__c = quoteNumber;
         vfsConnectQuote.Quote_Unique_Id__c = uniqueId;
         vfsConnectQuote.Name = quoteNumber;
