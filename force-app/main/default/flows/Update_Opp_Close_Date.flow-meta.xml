@@ -2,6 +2,53 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_If_The_Opportunity_Is_linked_with_Factory_Order_and_FO_Has_Delivery_Date</name>
+        <label>Check If The Opportunity Is linked with Factory Order and FO Has Delivery Date</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Update_Close_Date_To_Current_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_Close_Date_For_Opportunities_In_Stage_Closed</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Close_Date_To_Current_Date_To_Date_On_Which_Opportuity_Is_Closed</targetReference>
+            </connector>
+            <label>Update Close Date For Opportunities In Stage Closed</label>
+        </rules>
+        <rules>
+            <name>Check_FO</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Factory_Order__r.CDD_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Close_Date_With_CDD_Date</targetReference>
+            </connector>
+            <label>Check FO</label>
+        </rules>
+    </decisions>
     <description>Set a default Close Date on opportunity creation</description>
     <environments>Default</environments>
     <interviewLabel>Update Opp Close Date {!$Flow.CurrentDateTime}</interviewLabel>
@@ -26,11 +73,11 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <description>Set a default Close Date on opportunity creation</description>
-        <name>Update_Close_Date</name>
-        <label>Update Close Date</label>
-        <locationX>176</locationX>
-        <locationY>287</locationY>
+        <description>Set a default Close Date on opportunity creation for OPP whose FOs doesn&apos;t have CDD date .</description>
+        <name>Update_Close_Date_To_Current_Date</name>
+        <label>Update Close Date To Current Date</label>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
         <inputAssignments>
             <field>CloseDate</field>
             <value>
@@ -39,14 +86,42 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
-    <start>
+    <recordUpdates>
+        <description>Set close Date on opportunity close date for all types of  OPP</description>
+        <name>Update_Close_Date_To_Current_Date_To_Date_On_Which_Opportuity_Is_Closed</name>
+        <label>Update Close Date To Date On Which Opportunity Is Closed</label>
         <locationX>50</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Close Date With CDD Date of FO</description>
+        <name>Update_Close_Date_With_CDD_Date</name>
+        <label>Update Close Date With CDD Date</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Record.Factory_Order__r.CDD_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Update_Close_Date</targetReference>
+            <targetReference>Check_If_The_Opportunity_Is_linked_with_Factory_Order_and_FO_Has_Delivery_Date</targetReference>
         </connector>
         <object>Opportunity</object>
-        <recordTriggerType>Create</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
