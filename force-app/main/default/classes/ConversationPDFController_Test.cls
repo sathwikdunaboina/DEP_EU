@@ -90,7 +90,7 @@ private class ConversationPDFController_Test {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
 
         // Set the session ID as a parameter (simulate VF call)
-        PageReference pageRef = Page.ConversationExportVF;
+        PageReference pageRef = Page.ConversationExportPage;
         Test.setCurrentPage(pageRef);
         ApexPages.currentPage().getParameters().put('id', session.Id);
 
