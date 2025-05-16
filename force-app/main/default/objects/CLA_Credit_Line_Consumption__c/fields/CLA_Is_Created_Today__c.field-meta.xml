@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Is_Created_Today__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Purpose: Return true is consumption is created today or not .Field is used as entry condition of approver notification flow.
+Is UI field : No</description>
+    <formula>IF(   DATEVALUE(CreatedDate) =  TODAY()  , true, false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Created Today</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

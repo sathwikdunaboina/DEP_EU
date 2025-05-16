@@ -8,139 +8,199 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract ID</displayNameOverride>
             <field>Id</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Contract</displayNameOverride>
             <field>Name</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Currency</displayNameOverride>
             <field>CurrencyIsoCode</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
             <field>Account__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amount (Including Tax)</displayNameOverride>
             <field>Amount_Including_Tax__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Balance</displayNameOverride>
             <field>Balance__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Id</displayNameOverride>
             <field>Contract_Id__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DealerId</displayNameOverride>
             <field>DealerId__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Date</displayNameOverride>
             <field>End_Date__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End of Term</displayNameOverride>
             <field>End_of_Term__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Equipment Cost</displayNameOverride>
             <field>Equipment_Cost__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Investment</displayNameOverride>
             <field>Net_Investment__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Remaining Balance</displayNameOverride>
             <field>Remaining_Balance__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Residual</displayNameOverride>
             <field>Residual__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Date</displayNameOverride>
             <field>Start_Date__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Term</displayNameOverride>
             <field>Term__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>TerminationDate</displayNameOverride>
             <field>TerminationDate__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Type</displayNameOverride>
             <field>Type__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>VIN Number</displayNameOverride>
             <field>VIN_Number__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Number</displayNameOverride>
             <field>Contract_Number__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Registration Number</displayNameOverride>
             <field>Vehicle_Registration_Number__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>On Balance Sheet</displayNameOverride>
             <field>On_Balance_Sheet__c</field>
             <table>Contract__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Regulated</displayNameOverride>
             <field>Regulated__c</field>
             <table>Contract__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contract_Status__c</field>
+            <table>Contract__c</table>
+        </columns>
         <masterLabel>Contracts</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.Name</field>
+            <table>Contract__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.BillingCountryCode</field>
+            <table>Contract__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.DBB_Reference__c</field>
+            <table>Contract__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.Id</field>
+            <table>Contract__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.CustomerID__c</field>
+            <table>Contract__c</table>
+        </columns>
+        <masterLabel>Account</masterLabel>
     </sections>
 </ReportType>

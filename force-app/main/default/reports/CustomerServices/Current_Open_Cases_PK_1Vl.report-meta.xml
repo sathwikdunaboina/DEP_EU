@@ -8,10 +8,16 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Case.Number_of_Agreements__c</column>
+        </chartSummaries>
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>OWNER</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -61,7 +67,12 @@
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
-        <field>AGE</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.CASE_AGE_DAY__c</field>
     </columns>
     <columns>
         <field>OPEN</field>
