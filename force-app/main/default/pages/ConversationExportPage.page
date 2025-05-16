@@ -1,0 +1,56 @@
+<apex:page controller="ConversationPDFController" renderAs="pdf">
+    <h2 style="font-family: Arial; font-size: 16px; text-align: center; margin-bottom: 20px;">
+        Conversation History
+    </h2>
+    
+     <table width="100%" cellpadding="5" style="font-family: Arial; font-size: 12px; margin-bottom: 20px; border: 1px solid #ccc;">
+        
+        <tr>
+            <td><b>Created Date:</b></td>
+            <td>{!dCreatedDate}</td>
+        </tr>
+        <tr>
+            <td><b>End User:</b></td>
+            <td>{!sEndUserName}</td>
+        </tr>
+        <tr>
+            <td><b>Agent:</b></td>
+            <td>{!sAgentName}</td>
+        </tr>
+    </table>
+
+    <table width="100%" border="1" cellspacing="0" cellpadding="8" 
+           style="font-family: Arial; font-size: 12px; border-collapse: collapse;">
+         <tr>
+                <th width="15%" style="font-weight: bold; vertical-align: top;">
+                    Role
+                </th>
+                <th style="line-height: 1.5;">
+                    Message
+                </th>
+                 <th style="line-height: 1.5;">
+                     Date/Time
+                 </th>
+                
+            </tr>
+        <apex:repeat value="{!listEntries}" var="entry">
+           
+            <tr>
+                <td width="15%" style="font-weight: bold; vertical-align: top;">
+                    {!entry.sRole}
+                </td>
+                <td style="line-height: 1.5;">
+                    {!entry.sMessageText}
+                </td>
+                 <td style="line-height: 1.5;">
+                    {!entry.dtConvTimeStamp}
+                </td>
+                
+            </tr>
+        </apex:repeat>
+    </table>
+
+    <p style="font-size: 10px; font-family: Arial; margin-top: 30px; text-align: center;">
+        Generated on {!NOW()}
+    </p>
+</apex:page>
