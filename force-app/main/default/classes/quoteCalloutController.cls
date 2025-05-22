@@ -41,6 +41,7 @@ public with sharing class quoteCalloutController {
                     AND StageName !='Closed Won' AND StageName != 'Closed Lost' // if the opportunity is already closed (won or lost) it won't be quoted anymore
                     AND Account.CustomerID__c != null // CustomerID__c on Dealer Account
                     AND Customer_Account__r.Id != null
+                    AND Customer_Account__r.CustomerID__c != null
                     AND Quote_Id__c = null
                     AND Amount != null]; // Id of related Customer Account
              
@@ -77,10 +78,10 @@ public with sharing class quoteCalloutController {
     public static List<VFS_Connect_Quote__c> getQuotes(String oppId){
         List <String> oppIdsList = new List<String>();
         //String customerNumber = [Select Id,Account.Customer_Number__c From Opportunity Where Id =: oppId].Account.Customer_Number__c;
-        String customerNumber = [Select Customer_Account__r.Customer_Number__c From Opportunity Where Id =: oppId].Customer_Account__r.Customer_Number__c;
-        system.debug('Opp.Account.Customer_Number__c'+customerNumber);
-        if(customerNumber != null){
-            return [SELECT Name,Account_CMS_Number__c,Quote_Status__c,Vin_Number__c,Financed_Amount__c,Delivery_Date__c,Make__c,Model__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerNumber AND Quote_Status__c !='Cancelled'];  
+        String customerId = [Select Customer_Account__r.Customer_Number__c,Customer_Account__r.CustomerID__c From Opportunity Where Id =: oppId].Customer_Account__r.CustomerID__c.replaceAll('(^[A-Z]{2}[-]*)', '');
+        system.debug('Opp.Account.Customer_Number__c'+customerId);
+        if(customerId != null || customerId !=''){
+            return [SELECT Name,Account_CMS_Number__c,Quote_Status__c,Vin_Number__c,Financed_Amount__c,Delivery_Date__c,Make__c,Model__c FROM VFS_Connect_Quote__c WHERE Account_CMS_Number__c =:customerId AND Quote_Status__c !='Cancelled'];  
         }
         else{
             return null;
