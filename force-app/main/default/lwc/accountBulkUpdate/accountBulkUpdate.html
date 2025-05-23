@@ -1,0 +1,88 @@
+<template>
+    <template if:true={error}>
+    <div class="error-message"> {error} </div>
+    </template>
+
+<template if:true={showFields}>
+        <lightning-card >
+            <div class="slds-align_absolute-center">
+        <!-- Opportunity Owner Lookup -->
+                    <div class="lookup-container help-text-container" >
+                            <label class="slds-form-element__label">Account Owner</label>
+                            <lightning-helptext content={accountOwnerHelpText}></lightning-helptext>
+        <lightning-input class="field-size" type="search" name="OwnerId"
+        value={selectedOwnerName}
+        onchange={handleOwnerSearch}>
+    </lightning-input>
+    
+    <!-- Show dropdown results properly -->
+    <template if:true={ownerOptions.length}>
+            <div class="dropdown">
+                <template for:each={ownerOptions} for:item="owner">
+    
+    <div key={owner.Id} class="dropdown-item"
+        data-id={owner.Id}
+        data-name={owner.Name}
+                            onclick={selectOwner}>
+            {owner.Name}
+                    </div>
+                </template>
+</div>
+</template>
+</div>
+</div>
+<div class="slds-align_absolute-center slds-m-top_medium slds-m-bottom_medium">
+    <lightning-input type="checkbox" label="Transfer open opportunities owned by others" checked={transferOpportunities} onchange={handleCheckboxChange}>
+    </lightning-input>
+</div>
+</lightning-card>
+</template>
+<template if:true={showFields}>
+        <p>Dealer Accounts: {recordTypeCounts.Dealer}</p>
+<p>Customer Accounts: {recordTypeCounts.Customer}</p>
+</template>
+<template if:true={showFields}>
+                                    <lightning-card >
+                                        <div class="slds-m-around_medium">
+                                                <lightning-layout>
+                                                    <lightning-layout-item padding="around-small" class="account-container">
+                                                        <div class="header-column">
+                                                            <p class="field-title header" title="Account Name">ACCOUNT NAME</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                        <lightning-layout-item padding="around-small" class="account-container">
+                                                            <div class="header-column">
+                                                                <p class="field-title header" title="Record Type">RECORD TYPE</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                        </lightning-layout>
+                                                    <template for:each={accounts} for:item="account">
+                                                            <lightning-layout key={account.Id} class="account-row account-row:hover">
+                                                                    <lightning-layout-item flexibility="auto" style="width: 50%; padding: 6px 10px;"
+                                                                >
+                                                                        <div class="header-column" style="word-wrap: break-word; white-space: normal; overflow-wrap: break-word;">
+                                                                            <p style="margin: 0; line-height:1.0;">{account.Name}</p>
+                                                                        </div>
+                                                                        </lightning-layout-item>
+                                                                            <lightning-layout-item flexibility="auto" style="width: 50%; padding: 6px 10px;"
+                                                                            >
+                                                                                <div class="header-column"  style="word-wrap: break-word; white-space: normal; overflow-wrap: break-word;">
+                                                                                    <p style="margin: 0; line-height:1.0;">{account.RecordType.Name}</p>
+                                                                                </div>
+                                                                                </lightning-layout-item>
+                                                                                </lightning-layout>
+                                                                </template>
+</div>
+</lightning-card>
+</template>
+<div class="slds-m-around_medium">
+    <template if:true={showFields}>
+                        <lightning-button label="Save" onclick={handleSave}></lightning-button>
+                        
+                        <template if:true={showToast}>
+                            <c-custom-toast message={toastMessage} variant={toastVariant} duration="4000"></c-custom-toast>
+                        </template>
+    </template>
+    <lightning-button label="Cancel" variant="neutral" onclick={handleCancel} class="slds-m-left_small"></lightning-button>
+</div>
+</template>

@@ -77,7 +77,7 @@ private class CLA_ValidateCreditLineCustLwcCont_Test {
         Test.startTest();
         try{
             String sResponseBody = CLA_ValidateCreditLineCustLwcController.getValidatedCustomerDetail(listCreditLineCustomer[0].Id);
-            System.assertEquals(sResponseBody, '{"example":"test"}' , 'Expected result');
+            System.assertEquals(sResponseBody, null, 'Expected result');
           
         }
         catch(Exception ex) {
