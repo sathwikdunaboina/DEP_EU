@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title={label.Send_Email_to_Contacts} icon-name="utility:email">
+        <div class="slds-p-around_medium">
+
+            <div class="slds-m-bottom_medium">
+                <lightning-input
+                    label={label.Subject}
+                    value={emailSubject}
+                    onchange={handleSubjectChange}>
+                </lightning-input>
+            </div>
+
+            <div class="slds-m-bottom_medium">
+                <lightning-input-rich-text
+                    value={emailBody}
+                    label="Email Message"
+                    onchange={handleBodyChange}>
+                </lightning-input-rich-text>
+            </div>
+
+            
+            <div class="slds-grid slds-justify-center slds-align_absolute-center slds-m-top_medium">
+                <template if:true={isSending}>
+                    <lightning-spinner alternative-text="Sending..." size="small"></lightning-spinner>
+                </template>
+                <template if:false={isSending}>
+                    <lightning-button
+                        variant="brand"
+                        label={label.Send_Email}
+                        onclick={handleSendEmail}>
+                    </lightning-button>
+                </template>
+            </div>
+
+            
+            <template if:true={showSuccess}>
+                <div class="slds-text-align_center slds-text-color_success slds-m-top_medium">
+                    {label.Emails_Sent_Successfully}  
+                </div>
+            </template>
+
+            
+            <template if:true={showError}>
+                <div class="slds-text-align_center slds-text-color_error slds-m-top_medium">
+                    {label.Failed_to_send_Emails}  {errorMessage}  
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
