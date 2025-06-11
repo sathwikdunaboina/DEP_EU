@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>VTContractRecordSharingCriteria</label>
+    <protected>false</protected>
+    <values>
+        <field>SelectQuery__c</field>
+        <value xsi:type="xsd:string">SELECT Id, Contract_Number__c, Type__c, Start_Date__c, End_Date__c, Contract_Status__c, Asset_Usage_Allowance__c, Asset_Contract_Start_Usage_Amount__c, Asset_Usage_Amount_Unit_Of_Measure__c,Asset_Usage_Allowance_Type__c, VIN_Number__c, Territory_Manager_Name__c FROM Contract__c</value>
+    </values>
+    <values>
+        <field>WhereClause__c</field>
+        <value xsi:type="xsd:string">Type__c IN (&apos;Purchase Plan - fixed rate&apos;, &apos;Purchase Plan - variable rate&apos;, &apos;Operating Lease&apos;, &apos;Operating Lease - fixed rate&apos;, &apos;Finance Lease - fixed rate&apos;, &apos;Contract Hire&apos;, &apos;Hire Purchase IE&apos;, &apos;Finance Lease&apos;, &apos;EaaS Operating Lease NGC&apos;, &apos;Financial Lease NGC&apos;, &apos;Full service leasing NGC&apos;, &apos;Operating Lease NGC&apos;) AND Business_Area__c = &apos;VT&apos; AND Account__r.BillingCountryCode IN (&apos;GB&apos;,&apos;DK&apos;)</value>
+    </values>
+</CustomMetadata>
