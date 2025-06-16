@@ -1,6 +1,6 @@
 @IsTest
 public class VFS_VT_ContractRESTSERVICE_Test {
-    @TestSetup
+
     public static void testDataSetup(){
         Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
         User usr = [SELECT Id FROM User WHERE Name = 'VT Integration User'];
@@ -22,23 +22,22 @@ public class VFS_VT_ContractRESTSERVICE_Test {
     static void testDoGetWithLastNDays(){
         // Set up the mock request
         // setup test data
+        VFS_VT_ContractRESTSERVICE_Test.testDataSetup();
         User usr = [SELECT Id FROM User WHERE Name = 'VT Integration User'];
         System.runAs(usr) {
             Contract__c contractTestRecord = [SELECT Id,Contract_Number__c FROM Contract__c WHERE Contract_Id__c ='testconVFSVTTest'];
             System.debug(contractTestRecord);
             RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
-            req.requestUri = '/services/apexrest/contracts2';
+            req.requestUri = '/services/apexrest/contracts';
             req.httpMethod = 'GET';
             req.addParameter('last_n_days', '4');
-            req.addParameter('limit', '1');
             req.addParameter('recordId', contractTestRecord.Id);
             RestContext.request = req;
             RestContext.response = res;
             //Calling the Rest Method
-            VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = new VFS_VT_ContractRESTSERVICE.ContractPageResponse();
-            contResp.hasMore = true;
-            VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            System.assertEquals(1,contResp.recordSize , 'Size should match');
         }
     }
     
@@ -46,19 +45,19 @@ public class VFS_VT_ContractRESTSERVICE_Test {
     static void testDoGetWithOutLastNDays(){
         // Set up the mock request
         // setup test data
+        VFS_VT_ContractRESTSERVICE_Test.testDataSetup();
         User usr = [SELECT Id FROM User WHERE Name = 'VT Integration User'];
         System.runAs(usr) {
             RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
-            req.requestUri = '/services/apexrest/contracts2';
+            req.requestUri = '/services/apexrest/contracts';
             req.httpMethod = 'GET';
             req.addParameter('last_n_days', '');
-            req.addParameter('limit', '10');
-            req.addParameter('recordId', '');
             RestContext.request = req;
             RestContext.response = res;
             //Calling the Rest Method
-            VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            System.assertEquals('Missing Arguments. Please check the request',contResp.errorMessage , 'Missing Arguments.');
         }
     }
     
@@ -70,35 +69,33 @@ public class VFS_VT_ContractRESTSERVICE_Test {
         System.runAs(usr) {
             RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
-            req.requestUri = '/services/apexrest/contracts2';
+            req.requestUri = '/services/apexrest/contracts';
             req.httpMethod = 'GET';
             req.addParameter('last_n_days', '10');
-            req.addParameter('limit', '10');
-            req.addParameter('recordId', '');
             RestContext.request = req;
             RestContext.response = res;
             //Calling the Rest Method
-            VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            System.assertEquals('Not a valid user. Contact Admin.',contResp.errorMessage , 'No Data Found due to anonymous user');
         }
     }
     
-        @isTest
-    static void testDoGetWithoutContract(){
+    @isTest
+    static void testDoGetWithInvalidFormatRequest(){
         // Set up the mock request
         // setup test data
         User usr = [SELECT Id FROM User WHERE Name = 'VT Integration User'];
         System.runAs(usr) {
             RestRequest req = new RestRequest();
             RestResponse res = new RestResponse();
-            req.requestUri = '/services/apexrest/contracts2';
+            req.requestUri = '/services/apexrest/contracts';
             req.httpMethod = 'GET';
-            req.addParameter('last_n_days', '2');
-            req.addParameter('limit', '10');
-            req.addParameter('recordId', '');
+            req.addParameter('last_n_days', 'bsa');
             RestContext.request = req;
             RestContext.response = res;
             //Calling the Rest Method
-            VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            System.debug(contResp.errorMessage);
         }
     }
 }
