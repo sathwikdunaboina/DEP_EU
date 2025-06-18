@@ -34,7 +34,8 @@ public class CreateTaskOnCaseCreationFlow_Test {
         {
             Account accObj = new Account();
             accObj.Name = 'demoAcc';
-            accObj.CustomerID__c = 'demo123';           
+            accObj.CustomerID__c = 'demo123';  
+            accObj.BillingCountry = 'United Kingdom';
             insert accObj;
             
             Contact conObj = new Contact();
