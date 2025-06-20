@@ -4,16 +4,18 @@
     <columns>FULL_NAME</columns>
     <columns>LEAD.EMAIL</columns>
     <columns>LEAD.COMPANY</columns>
-    <columns>LEAD.STATE_CODE</columns>
+    <columns>Insurer_Policy_Number__c</columns>
+    <columns>Insurance_Type__c</columns>
     <columns>LEAD.STATUS</columns>
     <columns>LEAD.UNREAD</columns>
+    <columns>LEAD.PHONE</columns>
     <columns>LEAD.CREATED_DATE</columns>
     <columns>CORE.USERS.ALIAS</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Lead_Type__c</field>
+        <field>LEAD.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Insurance</value>
+        <value>Lead.Insurance</value>
     </filters>
     <label>Insurance Leads</label>
 </ListView>
