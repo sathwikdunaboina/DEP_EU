@@ -1,0 +1,290 @@
+<template>
+<template if:true={showForm}>
+<template if:true={selectedAccountName}>
+<header class="slds-modal__header" style="margin-bottom: 24px;">
+<h2 class="slds-modal__title">Edit {selectedAccountName}</h2>
+</header> 
+</template>
+<div class="wide-form">
+<lightning-record-edit-form object-api-name = "Account"
+record-id={recordId}
+onsuccess={handleSuccess}
+onsubmit={handleSubmit}
+onerror={handleError} >
+          <template if:true={recordTypeName}>     
+<template if:true={isCustomerAccount}>
+<div class="slds-box slds-m-around_medium">
+<div class="slds-grid slds-wrap full-row-background">                                   
+<h3 class="slds-text-heading_small ">Account Information</h3>
+</div>  
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-2">            
+<lightning-input-field field-name ="Name"></lightning-input-field>
+</div> 
+      <div class="slds-col slds-size_1-of-2">  
+<lightning-input-field field-name ="VATNumber__c"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+
+<lightning-input-address  
+address-label="Billing Address"
+readonly country-label="Billing Country"
+street-label="Billing Street"
+city-label="Billing City"
+province-label="Billing State/Province"
+postal-code-label="Billing Zip/PostalCode"
+country={selectedAccountBillingCountry}
+street={selectedBillingStreet}
+city={selectedBillingCity}
+province={selectedBillingState}
+postal-code={selectedBillingPostalCode}
+show-address-lookup
+data-id="billingAddressDetails"
+required-fields="country"
+onchange={handleAddressChange}>
+</lightning-input-address>
+
+</div>
+<div class="slds-col slds-size_1-of-2">
+
+                    <lightning-input-field field-name="CompanyRegistrationNumber__c"></lightning-input-field>
+                </div>
+      <div class="slds-col slds-size_1-of-2">  
+<lightning-input-field field-name ="Type"></lightning-input-field>
+</div>
+      <div class="slds-col slds-size_1-of-2">  
+<lightning-input-field field-name ="Customer_Number__c"></lightning-input-field>
+</div>
+      <div class="slds-col slds-size_1-of-2">  
+<lightning-input-field field-name ="Email__c"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="CustomerID__c"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="Phone"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="Is_Deleted_From_Backbone__c"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="Website"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="OwnerId" readonly></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="Industry"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="CurrencyIsoCode"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="NumberOfEmployees"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+    <lightning-input-field field-name ="ParentId"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name ="Fleet_Size__c"></lightning-input-field>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field field-name ="Dealer_Account__c"></lightning-input-field>
+            </div><div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name ="Credit_Rate__c"></lightning-input-field>
+                </div><div class="slds-col slds-size_1-of-2">
+                    <lightning-input-field field-name ="General_Information__c"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name ="Credit_Assessment_Date__c"></lightning-input-field>
+                        </div>                           
+                        <div class="slds-grid slds-wrap full-row-background">                                   
+                            <h3 class="slds-text-heading_small ">System Information</h3>
+                            </div>                                                
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input-field field-name ="Invoices_Fetched_On__c"></lightning-input-field>
+                        </div>    
+                            <div class="slds-col slds-size_1-of-2">
+                                <label class="slds-form-element__label">Account Record Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <lightning-formatted-text class="large-text" value={recordTypeName}></lightning-formatted-text>   
+                                                        </div>                                       
+                            <div class="slds-col slds-size_1-of-2">
+                                <label class="slds-form-element__label">Created By &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <lightning-formatted-text class="large-text" value={createdByDetails}></lightning-formatted-text>   
+    </div>
+<div class="slds-col slds-size_1-of-2">
+<label class="slds-form-element__label">Last Modified By  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<lightning-formatted-text class="large-text"  value={lastModifiedByDetails}></lightning-formatted-text>   
+</div>
+</div>
+</div>
+</template>
+<template if:true={isDealerAccount}>
+<div class="slds-box slds-m-around_medium">
+<div class="slds-grid slds-wrap full-row-background">                                   
+<h3 class="slds-text-heading_small ">Account Information</h3>
+</div>                           
+          <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-2">
+<lightning-input-field field-name ="Name"></lightning-input-field>
+</div> 
+      <div class="slds-col slds-size_1-of-2">  
+<lightning-input-field field-name ="Customer_Number__c"></lightning-input-field>
+</div>
+<div class="slds-col slds-size_1-of-2">
+                    <lightning-input-field field-name="Branding__c"></lightning-input-field>
+                </div>
+<div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="OwnerId"></lightning-input-field>
+                </div>
+<div class="slds-col slds-size_1-of-2">
+
+<label class="slds-form-element__label">Account Record Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<lightning-formatted-text class="large-text" value={recordTypeName}></lightning-formatted-text>   
+                </div>
+<div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="Phone"></lightning-input-field>
+                </div>            <div class="slds-col slds-size_1-of-2">
+
+                            <lightning-input-field field-name="CurrencyIsoCode"></lightning-input-field>
+                    </div>
+    <div class="slds-col slds-size_1-of-2">
+                            <lightning-input-field field-name="ParentId"></lightning-input-field>
+                    </div>
+                        <lightning-input-field field-name="Is_Deleted_From_Backbone__c"></lightning-input-field>
+                        <lightning-input-field field-name="Check_on_dealer_sales_person__c"></lightning-input-field>
+
+    <div class="slds-grid slds-wrap full-row-background">                                   
+        <h3 class="slds-text-heading_small ">Address Information</h3>
+        </div>                    
+        <lightning-input-address  
+        address-label="Billing Address"
+        readonly country-label="Billing Country"
+        street-label="Billing Street"
+        city-label="Billing City"
+        province-label="Billing State/Province"
+        postal-code-label="Billing Zip/PostalCode"
+        country={selectedAccountBillingCountry}
+        street={selectedBillingStreet}
+        city={selectedBillingCity}
+        province={selectedBillingState}
+        postal-code={selectedBillingPostalCode}
+        show-address-lookup
+        data-id="billingAddressDetails"
+        required-fields="country"
+        onchange={handleAddressChange}>
+    </lightning-input-address>
+
+        <div class="slds-grid slds-wrap full-row-background">
+<h3 class="slds-text-heading_small ">System Information</h3>
+</div>          
+<div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name ="Invoices_Fetched_On__c"></lightning-input-field>
+    </div>   
+    <div class="slds-col slds-size_1-of-2">
+        <label class="slds-form-element__label">Last Modified By   &nbsp;&nbsp;&nbsp;</label>
+        <lightning-formatted-text class="large-text" value={lastModifiedByDetails}></lightning-formatted-text>   
+                            </div>
+        <div class="slds-col slds-size_1-of-2">
+            <label class="slds-form-element__label">Created By   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <lightning-formatted-text class="large-text" value={createdByDetails}></lightning-formatted-text>   
+        </div>                 
+            <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input-field field-name="CompanyRegistrationNumber__c"></lightning-input-field>
+                                </div>
+                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input-field field-name="CustomerID__c"></lightning-input-field>                            
+</div>
+</div>
+</div>   
+</template>
+<div class="slds-box slds-m-around_medium">
+<div class="slds-grid slds-wrap full-row-background">                                   
+<h3 class="slds-text-heading_small ">Custom Links</h3>
+</div>  
+<div class="link-container slds-m-top_medium">
+                <a href={googleMapsUrl} target="_blank" onclick={handleGoogleMapsRedirect}>Google Maps</a>      
+            
+                <a href={googleSearchUrl} target="_blank" onclick={handleGoogleSearchRedirect}>Google Search</a>
+            
+
+                <a href={googleNewsUrl} target="_blank" onclick={handleGoogleNewsRedirect}>Google News</a>
+</div>
+</div>
+<template if:true={showDuplicateModal}>
+<div class={alertClass}>
+<div class="alert-header">
+    <lightning-icon icon-name={alertIcon} variant={alertVariant} size="small"></lightning-icon>
+    <span class="alert-title">{duplicateHeaderMessage}</span>
+    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick={handleCloseAlert}>
+        <lightning-icon icon-name="utility:close" alternative-text="Close" size="xx-small"></lightning-icon>
+        <span class="slds-assistive-text">Close</span>
+    </button>
+    </div>
+<br>
+<div class="alert-body">
+    <p>This record looks like an existing record.<br />
+        Make sure to check any potential duplicate records before saving.</p>
+    <a href="#" onclick={handleViewDuplicates}>View Duplicates</a>
+</div>
+</div>
+</template>
+<template if:true={showDuplicateAlert}>
+    <section role="dialog" class="slds-modal slds-fade-in-open slds-modal_large">
+<div class="slds-modal__container">
+    <button class="slds-button slds-modal__close slds-button_icon slds-button_icon-inverse" title="Close" onclick={closeDuplicateModal}>
+        <lightning-icon icon-name="utility:close" alternative-text="Close" size="small"></lightning-icon>
+    </button>
+    <header class={modalHeadeComputedClass}>
+        <h2><strong>View Duplicates</strong></h2>
+    </header>
+                <div class="slds-modal__content slds-p-around_medium">
+        <p class={alertMessageComputedClass}>Use one of these records?</p>
+        <template if:true={duplicateAccounts}>
+            <p> Total duplicates:{duplicateAccounts.length}</p>             
+<br />
+        </template>
+        <template for:each={duplicateAccounts} for:item="acc">
+                 <div key={acc.Id} class="slds-box slds-m-bottom_small">
+                <p><strong>Account Name:</strong> {acc.Name}</p>
+                <p><strong>Customer ID:</strong> {acc.CustomerID__c}</p>
+                <p><strong>Customer Number (CMS ID):</strong> {acc.Customer_Number__c}</p>
+                <p><strong>Phone:</strong> {acc.Phone}</p>
+                <p><strong>Account Owner Alias:</strong> {acc.Owner.Alias}</p>
+                <p><strong>Billing Street:</strong> {acc.BillingStreet}</p>
+                <p><strong>Billing City:</strong> {acc.BillingCity}</p>
+                <p><strong>Billing State/province:</strong> {acc.BillingState}</p>
+                <p><strong>Billing Zip/Postal Code:</strong> {acc.BillingPostalCode}</p>
+                <p><strong>Billing Country:</strong> {acc.BillingCountry}</p>
+            <a href="#" data-id={acc.Id} onclick={handleOpenRecord}>Open this Account</a>
+            </div>
+        </template>
+    </div>
+    <footer class="slds-modal__footer">
+    <lightning-button label="Cancel" onclick={handleCancelAlert} variant="neutral"></lightning-button>
+</footer>
+</div>
+</section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+
+
+<footer class="slds-modal__footer">
+
+            <div class="slds-align_absolute-center slds-m-top_medium">
+                <lightning-button variant="neutral" label="Cancel" onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+                <lightning-button variant="neutral" label="Save & New" onclick={handleSaveAndNew} class="slds-m-right_small"></lightning-button>
+               
+<lightning-button variant="brand"  label="Save"  onclick={handleSave}></lightning-button>
+</div>
+</footer>
+</template>
+
+</lightning-record-edit-form>
+
+</div>
+
+</template>
+
+</template>
