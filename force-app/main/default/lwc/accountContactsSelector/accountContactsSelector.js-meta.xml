@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+<apiVersion>62.0</apiVersion>
+<description>Used in Send Mass Email to Contacts on Account List View Screen Flow to display related contacts with accounts</description>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightning__FlowScreen</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightning__FlowScreen">
+      <property name="accountIds" type="String" label="Account Ids" />
+      <property name="selectedContactIdsList" type="String[]" label="Selected Contact Ids List" role="outputOnly"/>
+    </targetConfig>
+  </targetConfigs>
+  </LightningComponentBundle>

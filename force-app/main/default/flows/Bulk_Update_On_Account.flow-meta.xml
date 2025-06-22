@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Adds Account Ids to String</description>
+        <name>Add_Ids_to_String</name>
+        <label>Add Ids to String</label>
+        <locationX>138</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>AccountIdsString</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Iterate_Over_Account_Ids</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>AccountIdsString</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>-</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_Account_Ids</targetReference>
+        </connector>
+    </assignments>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <description>Check if Accounts are selected or not.</description>
+        <name>Check_Selected_Accounts</name>
+        <label>Check Selected Accounts</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>No_Account_Selected_Error_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Accounts_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Selected_Accounts</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Iterate_Over_Account_Ids</targetReference>
+            </connector>
+            <label>Accounts Selected</label>
+        </rules>
+    </decisions>
+    <description>Flow to pass the selected Account Ids to LWC when User selects Some Accounts and Clicks on Change Owner Button in Accounts list view.</description>
+    <environments>Default</environments>
+    <interviewLabel>Bulk Update On Account {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Bulk Update On Account</label>
+    <loops>
+        <description>This loop iterate over Account Ids to add ids in string to prepare input for LWC.</description>
+        <name>Iterate_Over_Account_Ids</name>
+        <label>Iterate Over Account Ids</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <collectionReference>ids</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Ids_to_String</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Selected_Account_Screen</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Element to get the Selected Account&apos;s ids</description>
+        <name>Get_Selected_Accounts</name>
+        <label>Get Selected Accounts</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Selected_Accounts</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ids</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <description>Displays error screen if no Account is selected.</description>
+        <name>No_Account_Selected_Error_Screen</name>
+        <label>No Account Selected Error Screen</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>No_Account_Selected</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px; color: rgb(234, 13, 13);&quot;&gt;No Account Selected&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;It is mandatory to select at least one Account in order to proceed.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Selected_Account_Screen</name>
+        <label>Selected Account Screen</label>
+        <locationX>50</locationX>
+        <locationY>650</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>accountBulkUpdate</name>
+            <extensionName>c:accountBulkUpdate</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>recordIds</name>
+                <value>
+                    <elementReference>AccountIdsString</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Selected_Accounts</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Adds Account Ids to String to send to LWC</description>
+        <name>AccountIdsString</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

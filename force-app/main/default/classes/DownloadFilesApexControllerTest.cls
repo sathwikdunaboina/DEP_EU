@@ -4,7 +4,7 @@ public class DownloadFilesApexControllerTest
     public static testMethod void testMethod1()
     {
         //Setup basic data
-        Account a = new Account(Name='Test',CustomerID__c='2132131234',CompanyRegistrationNumber__c='23131',CurrencyIsoCode='EUR');
+        Account a = new Account(Name='Test',CustomerID__c='2132131234',CompanyRegistrationNumber__c='23131',CurrencyIsoCode='EUR',BillingCountry='United Kingdom');
         insert a;
         Contract__c c = new Contract__c();
         c.Account__c = a.Id;
