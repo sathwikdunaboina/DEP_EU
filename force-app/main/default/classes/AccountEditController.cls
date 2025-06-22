@@ -66,7 +66,7 @@ public class AccountEditController {
                 continue;
             }
             
-            String queryStr = 'SELECT Id, Name, BillingCity, BillingCountry, Customer_Number__c, CustomerID__c,Owner.Alias,Phone FROM Account WHERE IsDeleted = false';
+            String queryStr = 'SELECT Id, Name, BillingCity, BillingCountry,CompanyRegistrationNumber__c,Customer_Number__c, CustomerID__c,Owner.Alias,Phone FROM Account WHERE IsDeleted = false';
             if (currentRecordId != null) {
                 queryStr += ' AND Id != \'' + currentRecordId + '\'';
             }
