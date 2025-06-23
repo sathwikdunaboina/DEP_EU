@@ -192,48 +192,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.BillingAddress</fieldItem>
-                <identifier>RecordBillingAddressField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-73156b24-6e0e-4906-8b68-cc8096b91a10</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-5ace300d-1ea5-40ab-ae2d-3cf53123202a</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-73156b24-6e0e-4906-8b68-cc8096b91a10</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-5ace300d-1ea5-40ab-ae2d-3cf53123202a</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-0d7fe622-2ed7-4941-9c52-e49c80a957c7</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.overdueBalance__c</fieldItem>
                 <identifier>RecordoverdueBalance_cField</identifier>
             </fieldInstance>
@@ -494,20 +452,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-0d7fe622-2ed7-4941-9c52-e49c80a957c7</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Address Information</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <componentName>accountDynamicRecordPage</componentName>
+                <identifier>c_accountDynamicRecordPage</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -661,6 +607,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-df594e70-f2fd-40dc-9079-83d01f550196</value>
