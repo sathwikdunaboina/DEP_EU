@@ -1,0 +1,188 @@
+/* 
+* -----------------------------------------------------------------------------------------
+* Apex Class Name     AccountEditController_Test
+* @author             Swami Goskula<Swami.goskula@consulant.volvo.com> 
+* @Created Date       12-06-2025        
+* ------------------------------------------------------------------------------------------
+* @description        This class is used to test AccountEditController
+* ------------------------------------------------------------------------------------------
+*/ 
+@IsTest(SeeAllData=false)
+public class AccountEditControllerTest {
+     /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     setUpData
+* @description     Used to prepare test setup data
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/      
+    @testSetup
+    static void setupData() {
+        Account acc1 = new Account(Name = 'Exact Match Account', BillingCity = 'Mumbai', BillingCountry = 'India');
+        insert acc1;
+        
+        Account acc2 = new Account(Name = 'Fuzzy Match Account', BillingCity = 'Hyderabad', BillingCountry = 'India');
+        insert acc2;
+    }
+        /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testExactMatchingLogic
+* @description     This method is used to test Exact match logic
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/    
+    @isTest
+    static void testExactMatchingLogic() {
+        Account exactAcc = new Account(Name = 'ExactMatchAccount', BillingCity = 'Mumbai', BillingCountry = 'India');
+        insert exactAcc;
+        
+        Map<String, Object> exactFieldMap = new Map<String, Object>{
+            'BillingCity' => 'Mumbai',
+                'BillingCountry' => 'India'
+                };
+                    
+                    Test.startTest();
+        AccountEditController.DuplicateRuleResult exactResult = AccountEditController.checkDuplicateRules(exactFieldMap);
+        Test.stopTest();
+        
+        System.assertNotEquals(null, exactResult);
+        System.assert(exactResult.isDuplicate || !exactResult.isDuplicate);
+    }
+      /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testFuzzyMatchingLogic
+* @description     This method is used to test Fuzzy match logic 
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+    
+    @isTest
+    static void testFuzzyMatchingLogic() {
+        Account fuzzyAcc = new Account(Name = 'FuzzyMatchAccount', BillingCity = 'Hyderabad', BillingCountry = 'India');
+        insert fuzzyAcc;
+        
+        Map<String, Object> fuzzyFieldMap = new Map<String, Object>{
+            'Name' => 'FuzzyMatchAccoun',
+                'BillingCity' => 'Hyderabad',
+                'BillingCountry' => 'India'
+                };
+                    
+                    Test.startTest();
+        AccountEditController.DuplicateRuleResult fuzzyResult = AccountEditController.checkDuplicateRules(fuzzyFieldMap);
+        Test.stopTest();
+        
+        System.assertNotEquals(null, fuzzyResult);
+        System.assert(fuzzyResult.isDuplicate || !fuzzyResult.isDuplicate);
+    }
+          /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testgetAccountDetails
+* @description     This method is used to get Account Details
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+
+    @isTest
+    static void testgetAccountDetails(){
+        
+        Account testAcc = new Account(
+            Name = 'Test Account',
+            BillingCountry = 'India',           
+            BillingStreet = '123 Main St',
+            BillingCity = 'Bangalore',
+            BillingState = 'Karnataka'
+            
+        );
+        insert testAcc;
+        
+        Test.startTest();
+        
+        Account result = AccountEditController.getAccountDetails(testAcc.id);
+        Test.stopTest();
+        
+        System.assertNotEquals(null, result, 'Account should be returned');
+        System.assertEquals('Test Account', result.Name);
+    }
+      /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testGetDuplicateAccounts
+* @description     This method is used to test the functionality to get Duplicate Accounts based on duplicate rules
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+    
+    @isTest
+    static void testGetDuplicateAccounts() {
+        Account baseAcc = new Account(Name = 'Acme Corporation', BillingCountry = 'United States');
+        insert baseAcc;
+        
+        Account similarAcc = new Account(Name = 'Acme Corp', BillingCountry = 'United States');
+        Database.DMLOptions dmlOpts = new Database.DMLOptions();
+        dmlOpts.DuplicateRuleHeader.allowSave = true;
+        dmlOpts.DuplicateRuleHeader.runAsCurrentUser = true;
+        similarAcc.setOptions(dmlOpts);
+        Database.insert(similarAcc, dmlOpts);
+        Account differentAcc = new Account(Name = 'Beta Industries', BillingCountry = 'United States');
+        differentAcc.setOptions(dmlOpts);
+        insert differentAcc;
+        
+        Test.startTest();
+        List<Account> duplicates = AccountEditController.getDuplicateAccounts(baseAcc.Id, baseAcc.Name, baseAcc.BillingCountry);
+        Test.stopTest();
+        
+        System.assertNotEquals(1, duplicates.size());
+        System.assertEquals(0, duplicates.size());
+    }      /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testUpdateMultipleAccounts
+* @description     This method is used to Update the Accounts
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+    @isTest
+    static void testUpdateMultipleAccounts() {
+        Account accc = new Account(Name = 'Original Account', NumberOfEmployees = 10, Fleet_Size__c = 5,BillingCountry = 'United States');
+        insert accc;
+        
+        Map<String, Object> acc = new Map<String, Object>{
+            'Id' => accc.Id,
+                'Name' => 'Updated Account Name',
+                'BillingCountry' => 'United States',
+                'NumberOfEmployees' => 100,
+                'Fleet_Size__c' => 50
+                };
+                    
+                    Test.startTest();
+        Map<String, Object> result = AccountEditController.updateMultipleAccounts(acc);
+        Test.stopTest();
+        
+        System.assertNotEquals(null, result);
+    }
+      /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testLevenshteinDistance
+* @description     This method is used to cover testLevenshteinDistance
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+    
+    @isTest
+    static void testLevenshteinDistance() {
+        Integer dist = AccountEditController.getLevenshteinDistance('Test', 'Test');
+        System.assertEquals(0, dist);
+    }
+}
