@@ -11,8 +11,8 @@
 * ------------------------------------------------------------------------------------------
 */ 
 public with sharing class SendEmailsLwcController {
-
-/*
+    
+    /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     sendEmailsToContacts
 * @description     Send emails to Contacts
@@ -26,34 +26,35 @@ public with sharing class SendEmailsLwcController {
     @AuraEnabled
     public static void sendEmailsToContacts(List<Id> listContactIds, String sBaseEmailBody ,   String sSubject) {
         List<Messaging.SingleEmailMessage> listEmailMessage = new List<Messaging.SingleEmailMessage>();
-
-
+        
+        
         List<Contact> listcontacts = [SELECT Id, Email, FirstName , lastname FROM Contact WHERE Id IN :listContactIds AND Email != null WITH USER_MODE];
         OrgWideEmailAddress oOwea = new OrgWideEmailAddress();
         oOwea = [Select Id,Address from OrgWideEmailAddress Where Address = 'vfs.support.salesforce@volvo.com'];
-
+        
         for (Contact con : listcontacts) {
-            String sPersonalizedEmailBody = 'Hi ' + con.FirstName + ' ' +con.lastName +  ',<br/><br/>' + sBaseEmailBody;
-
+             String sPersonalizedEmailBody = System.Label.Hi_Label +' ' + con.FirstName + ' ' +con.lastName +  ',<br/><br/>' + sBaseEmailBody ;
+            
+            // Create and configure email message
             Messaging.SingleEmailMessage oMail = new Messaging.SingleEmailMessage();
-            oMail.setToAddresses(new List<String>{ con.Email });
+            oMail.setTargetObjectId(con.Id); // Link to Contact
+            oMail.setSaveAsActivity(true); // Create EmailMessage record
             oMail.setSubject(sSubject);
             oMail.setHtmlBody(sPersonalizedEmailBody);
-            if(oOwea != null){
+            if (oOwea != null) {
                 oMail.setOrgWideEmailAddressId(oOwea.Id);
             }
             listEmailMessage.add(oMail);
+            
         }
-
-       
-
+        
         if (!listEmailMessage.isEmpty()) {
             Messaging.sendEmail(listEmailMessage);
-        }
+        }        
     }
-
-
-/*
+    
+    
+    /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     getEmailTemplateDetails
 * @description     Get Classic Email Template Details
@@ -70,13 +71,14 @@ public with sharing class SendEmailsLwcController {
             WHERE Id = :templateId WITH USER_MODE
             LIMIT 1
         ];
-
+        
         EmailTemplateWrapper emailTemplateWrap = new EmailTemplateWrapper();
         emailTemplateWrap.sSubject = oEmailTemplate.Subject;
         emailTemplateWrap.sHtmlBody = oEmailTemplate.HtmlValue;
         return emailTemplateWrap;
     }
-
+    
+    
     public class EmailTemplateWrapper {
         @AuraEnabled public String sSubject;
         @AuraEnabled public String sHtmlBody;
