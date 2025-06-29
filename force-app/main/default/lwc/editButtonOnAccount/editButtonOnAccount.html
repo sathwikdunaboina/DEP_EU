@@ -139,7 +139,7 @@ onchange={handleAddressChange}>
                 </div>
 <div class="slds-col slds-size_1-of-2">
 
-<label class="slds-form-element__label">Account Record Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+&nbsp;<label class="slds-form-element__label">Account Record Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 <lightning-formatted-text class="large-text" value={recordTypeName}></lightning-formatted-text>   
                 </div>
 <div class="slds-col slds-size_1-of-2">
@@ -151,12 +151,16 @@ onchange={handleAddressChange}>
     <div class="slds-col slds-size_1-of-2">
                             <lightning-input-field field-name="ParentId"></lightning-input-field>
                     </div>
+        <div class="slds-col slds-size_1-of-2">
                         <lightning-input-field field-name="Is_Deleted_From_Backbone__c"></lightning-input-field>
-                        <lightning-input-field field-name="Check_on_dealer_sales_person__c"></lightning-input-field>
-
+        </div>
+        <div class="slds-col slds-size_1-of-2">               
+     <lightning-input-field field-name="Check_on_dealer_sales_person__c"></lightning-input-field>
+    </div>
     <div class="slds-grid slds-wrap full-row-background">                                   
-        <h3 class="slds-text-heading_small ">Address Information</h3>
-        </div>                    
+       &nbsp;&nbsp; <h3 class="slds-text-heading_small ">Address Information</h3>
+        </div>   
+       <div class="slds-col slds-size_1-of-2">                                
         <lightning-input-address  
         address-label="Billing Address"
         readonly country-label="Billing Country"
@@ -174,9 +178,10 @@ onchange={handleAddressChange}>
         required-fields="country"
         onchange={handleAddressChange}>
     </lightning-input-address>
-
+    </div>
+    
         <div class="slds-grid slds-wrap full-row-background">
-<h3 class="slds-text-heading_small ">System Information</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h3 class="slds-text-heading_small ">System Information</h3>
 </div>          
 <div class="slds-col slds-size_1-of-2">
         <lightning-input-field field-name ="Invoices_Fetched_On__c"></lightning-input-field>
@@ -186,7 +191,7 @@ onchange={handleAddressChange}>
         <lightning-formatted-text class="large-text" value={lastModifiedByDetails}></lightning-formatted-text>   
                             </div>
         <div class="slds-col slds-size_1-of-2">
-            <label class="slds-form-element__label">Created By   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+         &nbsp;<label class="slds-form-element__label">Created By   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <lightning-formatted-text class="large-text" value={createdByDetails}></lightning-formatted-text>   
         </div>                 
             <div class="slds-col slds-size_1-of-2">
