@@ -6,7 +6,7 @@
 * ------------------------------------------------------------------------------------------
 * @description        This class is used to test AccountEditController
 * ------------------------------------------------------------------------------------------
-*/
+*/ 
 @IsTest(SeeAllData=false)
 public class AccountEditControllerTest {
      /*
@@ -151,7 +151,7 @@ public class AccountEditControllerTest {
 * @return          
 * ------------------------------------------------------------------------------------------------------ 
 */  
-    @isTest
+  /*  @isTest
     static void testUpdateMultipleAccounts() {
         Account accc = new Account(Name = 'Original Account', NumberOfEmployees = 10, Fleet_Size__c = 5,BillingCountry = 'United States');
         insert accc;
@@ -169,7 +169,7 @@ public class AccountEditControllerTest {
         Test.stopTest();
         
         System.assertNotEquals(null, result);
-    }
+    }*/
       /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     testLevenshteinDistance
@@ -185,4 +185,67 @@ public class AccountEditControllerTest {
         Integer dist = AccountEditController.getLevenshteinDistance('Test', 'Test');
         System.assertEquals(0, dist);
     }
+      /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     testUpdateMultipleAccounts
+* @description     This method is used to Update the Accounts
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+        @isTest
+    static void testUpdateMultipleAccounts_Success() {
+        Account acc = new Account(Name = 'Test Account', NumberOfEmployees = 10,BillingCountry='Canada');
+        insert acc;
+
+        Map<String, Object> inputMap = new Map<String, Object>{
+            'Id' => acc.Id,
+            'Name' => 'Updated Account',
+            'NumberOfEmployees' => '25',
+            'Fleet_Size__c' => '50',
+            'Credit_Assessment_Date__c' => '2024-12-31',
+            'Invoices_Fetched_On__c' => '2024-12-31T10:15:30Z'
+        };
+
+        Test.startTest();
+        Map<String, Object> result = AccountEditController.updateMultipleAccounts(inputMap);
+        Test.stopTest();
+        System.assertEquals(true, result.get('success'));
+        Account updated = [SELECT Name, NumberOfEmployees, Fleet_Size__c, Credit_Assessment_Date__c, Invoices_Fetched_On__c FROM Account WHERE Id = :acc.Id];
+        System.assertEquals('Updated Account', updated.Name);
+        System.assertEquals(25, updated.NumberOfEmployees);
+        System.assertEquals(50, updated.Fleet_Size__c);
+        System.assertEquals(Date.newInstance(2024, 12, 31), updated.Credit_Assessment_Date__c);
+        System.assertNotEquals(null, updated.Invoices_Fetched_On__c);
+    }
+
+   @isTest
+    static void testUpdateMultipleAccounts_MissingId() {
+        Map<String, Object> inputMap = new Map<String, Object>{
+            'Name' => 'No ID Account'
+        };
+
+        Map<String, Object> result = AccountEditController.updateMultipleAccounts(inputMap);
+        System.assertEquals(false, result.get('success'));
+        System.assert(((List<String>)result.get('errors')).contains('Account Id is missing.'));
+    }
+
+    @isTest
+    static void testUpdateMultipleAccounts_InvalidDate() {
+        Account acc = new Account(Name = 'Invalid Date Account',BillingCountry='Canada');
+        
+        insert acc;
+
+        Map<String, Object> inputMap = new Map<String, Object>{
+            'Id' => acc.Id,
+            'Credit_Assessment_Date__c' => 'invalid-date'
+        };
+
+        Map<String, Object> result = AccountEditController.updateMultipleAccounts(inputMap);
+        System.assertEquals(false, result.get('success'));
+        System.assert(((List<String>)result.get('errors'))[0].contains('Error parsing field Credit_Assessment_Date__c'));
+    }
+
+
 }

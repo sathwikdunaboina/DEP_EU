@@ -187,33 +187,70 @@ public class AccountEditController {
     @AuraEnabled
     public static Map<String, Object> updateMultipleAccounts(Map<String, Object> acc) {
         Map<String, Object> result = new Map<String, Object>();
+        List<String> errors = new List<String>();
         
         if (acc == null || !acc.containsKey('Id')) {
+            result.put('success', false);
+            result.put('errors', new List<String>{'Account Id is missing.'});
             return result;
-        }       
+        }
+        
         Id accId = (Id) acc.get('Id');
         Account existing = new Account(Id = accId);
         
         for (String fieldName : acc.keySet()) {
             if (fieldName != 'Id') {
-                try {             
-                    Object value = acc.get(fieldName);                    
+                try {
+                    Object value = acc.get(fieldName);
+                    if (value == null) continue;
                     if (fieldName == 'NumberOfEmployees' || fieldName == 'Fleet_Size__c') {
                         value = Integer.valueOf(String.valueOf(value));
-                    }                    
-                    existing.put(fieldName, value);
+                    }                   
+                        if (fieldName == 'Invoices_Fetched_On__c') {
+                            String raw = String.valueOf(acc.get('Invoices_Fetched_On__c'));
+                            raw = raw.replace('T', ' ').replace('Z', '');
+                            if (raw.contains('.')) {
+                                raw = raw.substring(0, raw.indexOf('.'));
+                            }
+                            value = Datetime.valueOfGmt(String.valueOf(raw));
+                            
+                        }                   
+                    if (fieldName == 'Credit_Assessment_Date__c') {
+                        value = Date.valueOf(String.valueOf(value));
+                    }
                     
+                    existing.put(fieldName, value);
                 } catch (Exception e) {
+                    errors.add('Error parsing field ' + fieldName + ': ' + e.getMessage());
                 }
             }
-        }       
+        }
+        
+        if (!errors.isEmpty()) {
+            result.put('success', false);
+            result.put('errors', errors);
+            return result;
+        }
+        
+        
         Database.DMLOptions dmlOpts = new Database.DMLOptions();
         dmlOpts.DuplicateRuleHeader.allowSave = true;
         dmlOpts.DuplicateRuleHeader.runAsCurrentUser = true;
-        existing.setOptions(dmlOpts);        
-        Database.update(existing, dmlOpts);
+        existing.setOptions(dmlOpts);
         
-        return result;
+        Database.SaveResult sr = Database.update(existing, dmlOpts); 
+        result.put('success', true);
+        
+        if (sr.isSuccess()) {
+            return result;
+        } else {
+            String errorMsg = ' Save failed: ';
+            for (Database.Error err : sr.getErrors()) {
+                errorMsg += err.getMessage() + ' ';
+            }
+            throw new AuraHandledException(errorMsg.trim());
+            
+        }
+        
     }
-    
 }

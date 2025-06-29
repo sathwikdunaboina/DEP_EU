@@ -168,29 +168,35 @@ async initiateDuplicateCheckAndSave() {
 }
 
 submitForm() {
-        this.successHandled = true;
-        const inputFields = this.template.querySelectorAll('lightning-input-field');
-        let fieldMap = { Id: this.recordId };
-        inputFields.forEach(field => {
-            const apiName = field.fieldName;
-            fieldMap[apiName] = field.value;
-        });
-        fieldMap.BillingStreet = this.selectedBillingStreet;
-        fieldMap.BillingCity = this.selectedBillingCity;
-        fieldMap.BillingPostalCode = this.selectedBillingPostalCode;
-        fieldMap.BillingCountry = this.selectedAccountBillingCountry;
-        const accountName = fieldMap['Name'];
+    this.successHandled = true;
 
-updateMultipleAccounts({ acc: fieldMap })
+    const inputFields = this.template.querySelectorAll('lightning-input-field');
+    let fieldMap = { Id: this.recordId };
+
+    inputFields.forEach(field => {
+        const apiName = field.fieldName;
+        fieldMap[apiName] = field.value;
+    });
+
+    fieldMap.BillingStreet = this.selectedBillingStreet;
+    fieldMap.BillingCity = this.selectedBillingCity;
+    fieldMap.BillingPostalCode = this.selectedBillingPostalCode;
+    fieldMap.BillingCountry = this.selectedAccountBillingCountry;
+
+    const accountName = fieldMap['Name'];
+
+    updateMultipleAccounts({ acc: fieldMap })
         .then((result) => {
-            this.handleUpdateState();
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Success',
-                    message: `Account "${accountName}" was saved.`,
-                    variant: 'success'
-                })
-            );
+            if (result && result.success) {
+                this.handleUpdateState();
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: `Account "${accountName}" was saved.`,
+                        variant: 'success'
+                    })
+                    
+                );
                 this[NavigationMixin.Navigate]({
                     type: 'standard__recordPage',
                     attributes: {
@@ -198,8 +204,12 @@ updateMultipleAccounts({ acc: fieldMap })
                         objectApiName: 'Account',
                         actionName: 'view'
                     }
+                    
                 });
-          if (this.mode === 'saveAndNew') {
+               getRecordNotifyChange([{ recordId: this.recordId }]);
+
+                        }
+                         if (this.mode === 'saveAndNew') {
                 this.showForm = false;               
                 this[NavigationMixin.Navigate]({
                     type: 'standard__objectPage',
@@ -213,18 +223,35 @@ updateMultipleAccounts({ acc: fieldMap })
                     }
                     
                 });
-                } 
-                getRecordNotifyChange([{ recordId: this.recordId }]);
-        })
-    
+            getRecordNotifyChange([{ recordId: this.recordId }]);
 
+                } 
+
+                        
+        })
+        .catch(error => {
+           let message = 'An unexpected error occurred.';
+            if (error && error.body && typeof error.body.message === 'string') {
+                message = error.body.message;
+            }
+
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: message,
+                    variant: 'error',
+                    mode: 'sticky'
+                })
+            );
+        });
 }
+    
   handleUpdateState() {
-  
         const stateUpdate = {};
         stateUpdate[BILLING_STATECODE_FIELD.fieldApiName] = this.selectedBillingState;
         stateUpdate.Id = this.recordId;
         stateUpdate.Name = this.accountName;
+
         updateMultipleAccounts({ acc: stateUpdate})
                 .then((result) => {
              
@@ -372,22 +399,20 @@ window.history.back();
 
 handleError(event) {
     const error = event.detail;
-
     let message = 'An error occurred while saving the record.';
-
     if (error && error.body && error.body.output && error.body.output.errors) {
         const errors = error.body.output.errors;
         message = errors.map(e => e.message).join('\n');
     }
-
     this.dispatchEvent(
         new ShowToastEvent({
-            title: 'Duplicate Detected',
+            title: 'Validation Error',
             message: message,
             variant: 'error',
             mode: 'sticky'
         })
     );
 }
+
 
 }
