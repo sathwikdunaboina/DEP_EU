@@ -136,9 +136,24 @@ updateMultipleAccounts({ acc: accountToUpdate})
  this.handleUpdateState();
       getRecordNotifyChange([{ recordId: this.recordId }]);
         })
-        .catch(error => {
-           
-        });
+        .catch(error => {
+            console.error('Caught error from Apex:', JSON.stringify(error));
+
+           let message = 'An unexpected error occurred.';
+            if (error && error.body && typeof error.body.message === 'string') {
+                message = error.body.message;
+                console.log('message',JSON.stringify(message));
+            }
+
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: message,
+                    variant: 'error',
+                    mode: 'sticky'
+                })
+            );
+        });
 
 }
 handleUpdateState() {
