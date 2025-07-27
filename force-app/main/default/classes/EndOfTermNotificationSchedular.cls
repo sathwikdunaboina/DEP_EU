@@ -10,16 +10,20 @@ global class EndOfTermNotificationSchedular implements Schedulable
     {
         End_of_Term_Notification_Settings__c eot = End_of_Term_Notification_Settings__c.getInstance();
         String daysAhead_String = eot.Number_of_days_for_case_creation__c;
-        System.debug('daysAhead_String ::'+daysAhead_String);
+        System.debug('daysAhead' + daysAhead_String); 
         Integer daysAhead = Integer.valueOf(daysAhead_String);
         //If daysAhead is 90, then calculate the 90 days from now.
-        Date endDt = Date.today().addDays(daysAhead);
-        List<String> typesToexclude = eot.Contract_Types_to_exclude__c.split(',');
-        List<String> countryCodes = eot.Country_Code__c.replaceAll(' ','').split(',');
-        String query = 'SELECT Id,Contract__c.Account__r.Id,End_Date__c,Contract__c.Account__r.BillingCountry FROM Contract__c WHERE End_Date__c =:endDt AND Type__c NOT in :typesToexclude AND Account__r.BillingCountryCode in :countryCodes';
-        System.debug('query ::'+query);   
-        EndOfTermNotificationBatch endterm = new EndOfTermNotificationBatch(query,endDt,typesToexclude, countryCodes);
+        Date endDt = Date.today().addDays(daysAhead); 
+        List<String> typesToexclude = eot.Contract_Types_to_exclude__c.split(' , ');
+        if (String.isBlank(eot.Country_Code__c)) {
+            System.debug('No country codes configured. Skipping batch execution.');
+            return;
+        }
+        List<String> countryCodes = eot.Country_Code__c.replaceAll(' ' , '').split(' , '); 
+        String query = 'SELECT Id,Contract__c.Account__r.Id,End_Date__c,Contract__c.Account__r.BillingCountry ' +
+            'FROM Contract__c WHERE End_Date__c = :endDt AND Type__c NOT IN :typesToexclude AND Account__r.BillingCountryCode in :countryCodes';
+        EndOfTermNotificationBatch endTerm = new EndOfTermNotificationBatch(query, endDt, typesToexclude, countryCodes);
         //Since the creation of case will call potential future methods (CMSAPI_ContractHandler) we restrict the batch size to 50 to avoid "Too Many future Calls 51 EXp"
-        Database.executebatch(endterm,50); 
+        Database.executeBatch(endTerm, 50);
     }
 }
