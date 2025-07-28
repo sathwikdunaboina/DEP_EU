@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Runout Report">
+        <template if:true={customerNumber}>
+            <p class="slds-p-horizontal_small">You Are About To Get Data for <b>{customerName}</b> with Customer Number:<b>{customerNumber}</b> </p>
+            <p class="slds-p-horizontal_small slds-m-top_small">
+                Please Make Sure The Customer Number Is Correct In Order To Get Correct Data?
+            </p>
+
+            <div class="slds-p-around_medium slds-align_absolute-center">
+                <lightning-button
+                    label="Proceed"
+                    variant="brand"
+                    onclick={handleProceed}
+                    class="slds-m-right_small"
+                ></lightning-button>
+                <lightning-button
+                    label="Cancel"
+                    variant="neutral"
+                    onclick={handleCancel}
+                ></lightning-button>
+            </div>
+        </template>
+
+        <template if:false={customerNumber}>
+            <p class="slds-p-horizontal_small slds-text-color_error">
+                Customer Number Should Be Pressent To Run The Report !
+            </p>
+            <div class="slds-p-around_medium slds-align_absolute-center">
+                <lightning-button
+                    label="Close"
+                    variant="neutral"
+                    onclick={handleCancel}
+                ></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>
