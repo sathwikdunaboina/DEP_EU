@@ -57,7 +57,7 @@ public without sharing class MetadataQueryBuilder {//check for more than 10kecor
         List <Contract__c> contractList = new List<Contract__c>();
         if(Test.IsRunningTest()){ // Use predefined records in test context
             contractList = [SELECT Id, Contract_Number__c, Type__c, Start_Date__c, End_Date__c, Contract_Status__c, Asset_Usage_Allowance__c,
-                            Asset_Contract_Start_Usage_Amount__c, Asset_Usage_Amount_Unit_Of_Measure__c,Asset_Usage_Allowance_Type__c, VIN_Number__c,
+                            Asset_Contract_Start_Usage_Amount__c,Asset_Usage_Allowance_Type__c, VIN_Number__c,
                             Territory_Manager_Name__c 
                             FROM Contract__c WHERE Contract_Number__c = 'testconVFSVTTest' OR Contract_Number__c = 'testconVFSVTTest1'];
         }
