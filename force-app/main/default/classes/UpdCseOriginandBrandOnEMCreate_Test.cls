@@ -35,11 +35,16 @@ public class UpdCseOriginandBrandOnEMCreate_Test{
             testCasewithEmailOnMetadata.Brand__c = null;
             testCasewithEmailOnMetadata.Subject = 'Test Case Email Volvo';
             insert testCasewithEmailOnMetadata;
+            testCasewithEmailOnMetadata.Last_Email_Message_Received_Date__c = System.now().addMinutes(5);
+            update testCasewithEmailOnMetadata;
+            Test.setCreatedDate(testCasewithEmailOnMetadata.Id, System.now());
+            
             
             EmailMessage testEmailMessageInMetadata = new EmailMessage();
             testEmailMessageInMetadata.Subject = 'Email Message with Metadata';
             testEmailMessageInMetadata.ParentId = testCasewithEmailOnMetadata.Id;
             testEmailMessageInMetadata.ToAddress = 'vfs.extensions.vce@volvo.com';
+            testEmailMessageInMetadata.Incoming = true;
             insert testEmailMessageInMetadata;
             
             //Create Case and Email Message with To Address of Email not in Custom metadata
@@ -48,11 +53,15 @@ public class UpdCseOriginandBrandOnEMCreate_Test{
             testCasewithoutEmailOnMetadata.Brand__c = null;
             testCasewithoutEmailOnMetadata.Subject = 'Test Case Email';
             insert testCasewithoutEmailOnMetadata;
+            testCasewithoutEmailOnMetadata.Last_Email_Message_Received_Date__c = System.now().addMinutes(5);
+            update testCasewithoutEmailOnMetadata;
+            Test.setCreatedDate(testCasewithoutEmailOnMetadata.Id, System.now());
             
             EmailMessage testEmailMessageNotInMetadata = new EmailMessage();
             testEmailMessageNotInMetadata.Subject = 'Email Message without Metadata';
             testEmailMessageNotInMetadata.ParentId = testCasewithoutEmailOnMetadata.Id;
             testEmailMessageNotInMetadata.ToAddress = 'vfs.operations.be@volvo.com';
+             testEmailMessageNotInMetadata.Incoming = true;
             insert testEmailMessageNotInMetadata;
             
             
