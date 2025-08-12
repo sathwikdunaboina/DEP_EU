@@ -8,7 +8,7 @@ Guarantee requested, but not accepted</description>
 AND( ISPICKVAL(Requested_guarantee__c,&quot;&quot;),
 ISPICKVAL( Lost_Reason__c,&quot;Guarantee requested, but not accepted&quot;)
 ),
-true, false)</errorConditionFormula>
+true, false)&amp;&amp; NOT( $Permission.ByPassValidationRule )</errorConditionFormula>
     <errorDisplayField>Requested_guarantee__c</errorDisplayField>
     <errorMessage>Please select the Requested guarantee.</errorMessage>
 </ValidationRule>
