@@ -3,7 +3,7 @@
     <fullName>Validate_Account_BillingCountry_OnCreate</fullName>
     <active>false</active>
     <description>Validates billing country upon manual account creation.</description>
-    <errorConditionFormula>AND(ISNEW() ,ISBLANK(BillingCountry) , NOT(CONTAINS( $User.Username, $Label.Integration_User_DBB_Username ))
+    <errorConditionFormula>AND(ISNEW() ,ISBLANK(BillingCountry) , NOT(CONTAINS( $User.Username, $Label.Integration_User_DBB_Username )),NOT( $Permission.ByPassValidationRule )
 )</errorConditionFormula>
     <errorDisplayField>BillingCountry</errorDisplayField>
     <errorMessage>Billing country is required.</errorMessage>

@@ -5,9 +5,7 @@
     <description>Because the changes from Salesforce doesnt flow through to CMS, once its integrated with CustomerId, Sales team is not allowed to edit the customer records</description>
     <errorConditionFormula>NOT($Permission.Cannot_Edit_Integrated_Customer_Records)
 &amp;&amp;
-$Profile.Name != &apos;System Administrator&apos;
-&amp;&amp;
-$Profile.Name != &apos;API Only&apos;
+NOT($Permission.ByPassValidationRule)
 &amp;&amp;
 CustomerID__c != &apos;&apos;
 &amp;&amp;

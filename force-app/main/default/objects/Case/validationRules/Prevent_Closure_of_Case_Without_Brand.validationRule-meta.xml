@@ -3,7 +3,7 @@
     <fullName>Prevent_Closure_of_Case_Without_Brand</fullName>
     <active>true</active>
     <description>Brand must be selected, when closing a case</description>
-    <errorConditionFormula>$Profile.Name != &apos;System Administrator&apos;&amp;&amp;&apos;Closed&apos; == text(Status) &amp;&amp; isBlank(text( Brand__c))&amp;&amp; RecordType.DeveloperName !=&apos;MEDALLIACLF_Alert_Cases&apos;</errorConditionFormula>
+    <errorConditionFormula>NOT( $Permission.ByPassValidationRule) &amp;&amp;&apos;Closed&apos; == text(Status) &amp;&amp; isBlank(text( Brand__c))&amp;&amp; RecordType.DeveloperName !=&apos;MEDALLIACLF_Alert_Cases&apos;</errorConditionFormula>
     <errorDisplayField>Brand__c</errorDisplayField>
     <errorMessage>Case Brand is mandatory when closing a case</errorMessage>
 </ValidationRule>
