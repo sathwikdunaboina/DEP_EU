@@ -6,8 +6,8 @@
         <description>Decision element to check whether Get Records contains any record from Brand Setting Custom metadata</description>
         <name>Check_if_Metadata_Records_are_Available</name>
         <label>Check if Metadata Records are Available</label>
-        <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationX>616</locationX>
+        <locationY>479</locationY>
         <defaultConnector>
             <targetReference>Update_Case_Origin_to_Email</targetReference>
         </defaultConnector>
@@ -41,7 +41,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -55,8 +55,8 @@
         <description>Get the Records of the Custom Metadata &apos;Brand Setting</description>
         <name>Get_Custom_Metadata_Records</name>
         <label>Get Custom Metadata Records</label>
-        <locationX>182</locationX>
-        <locationY>323</locationY>
+        <locationX>616</locationX>
+        <locationY>371</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_Metadata_Records_are_Available</targetReference>
@@ -77,8 +77,8 @@
         <description>Based on the Metadata Record Update Brand and Origin field of Case</description>
         <name>Update_Brand_and_Origin_Field_in_Case</name>
         <label>Update Brand and Origin Field in Case</label>
-        <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationX>484</locationX>
+        <locationY>587</locationY>
         <inputAssignments>
             <field>Brand__c</field>
             <value>
@@ -97,8 +97,8 @@
         <description>If no metadata records present Update the Case Origin to Email</description>
         <name>Update_Case_Origin_to_Email</name>
         <label>Update Case Origin to Email</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
+        <locationX>748</locationX>
+        <locationY>587</locationY>
         <inputAssignments>
             <field>Origin</field>
             <value>
@@ -108,11 +108,17 @@
         <inputReference>$Record.Parent</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
-        <locationY>0</locationY>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Get_Custom_Metadata_Records</targetReference>
         </connector>
+        <filterFormula>AND(
+  {!$Record.Incoming} = TRUE,
+  ABS(
+    (DATETIMEVALUE({!$Record.Parent.Last_Email_Message_Received_Date__c}) - DATETIMEVALUE({!$Record.Parent.CreatedDate})) * 86400
+  ) &lt;= 600
+)</filterFormula>
         <object>EmailMessage</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
