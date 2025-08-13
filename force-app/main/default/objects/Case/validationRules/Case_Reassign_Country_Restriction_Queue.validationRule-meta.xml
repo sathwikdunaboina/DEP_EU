@@ -33,6 +33,8 @@ CONTAINS (
 			
         )
     )
-)</errorConditionFormula>
+)
+&amp;&amp;
+ NOT($Permission.ByPassValidationRule)</errorConditionFormula>
     <errorMessage>Cannot reassign to a queue from a different country.</errorMessage>
 </ValidationRule>
