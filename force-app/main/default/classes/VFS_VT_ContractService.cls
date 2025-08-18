@@ -62,9 +62,7 @@ public class VFS_VT_ContractService {
     }
     
     public static List<SObject> getTransformedContractRecords(List<Contract__c> listOfContractRecords) {
-        Set<String> setFields = new Set<String>{'Id', 'Contract_Number__c', 'Type__c', 'Start_Date__c', 'End_Date__c',
-            'Contract_Status__c', 'Asset_Usage_Allowance__c', 'Asset_Contract_Start_Usage_Amount__c', 
-            'Asset_Usage_Amount_Unit_Of_Measure__c','Asset_Usage_Allowance_Type__c', 'VIN_Number__c', 'Territory_Manager_Name__c'};
+        Set<String> setFields = new Set<String>{'Id', 'Contract_Number__c', 'Type__c', 'Start_Date__c', 'End_Date__c','Contract_Status__c', 'Asset_Usage_Allowance__c', 'Asset_Contract_Start_Usage_Amount__c','Asset_Usage_Allowance_Type__c', 'VIN_Number__c', 'Territory_Manager_Name__c'};
                          
         VFS_VT_ContractService.InputParameters inputParametersInstance = new VFS_VT_ContractService.InputParameters();
         inputParametersInstance.sObjectName = 'Contract__c';
