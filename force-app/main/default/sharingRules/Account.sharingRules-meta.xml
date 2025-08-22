@@ -1318,6 +1318,25 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Italy_Account</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Italy Account</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Italy</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Italy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>NL_Account</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -1563,6 +1582,31 @@
             <value>Ireland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>UK_IE_Account</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>UK/IE Account</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>UK_IE</roleAndSubordinatesInternal>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Ireland</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>United Kingdom</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>VFSBR_Renault</fullName>
