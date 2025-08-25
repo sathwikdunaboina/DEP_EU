@@ -1290,14 +1290,14 @@
         </accountSettings>
         <label>IT SharingRule</label>
         <sharedTo>
-            <roleAndSubordinates>Italy</roleAndSubordinates>
+            <roleAndSubordinatesInternal>Italy</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
             <field>BillingCountry</field>
             <operation>equals</operation>
             <value>Italy</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Italy_Account</fullName>
@@ -1525,20 +1525,20 @@
         </accountSettings>
         <label>UK Account</label>
         <sharedTo>
-            <roleAndSubordinates>UK_IE</roleAndSubordinates>
+            <roleAndSubordinatesInternal>UK_IE</roleAndSubordinatesInternal>
         </sharedTo>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>BillingCountry</field>
             <operation>equals</operation>
-            <value>United Kingdom</value>
+            <value>Ireland</value>
         </criteriaItems>
         <criteriaItems>
             <field>BillingCountry</field>
             <operation>equals</operation>
-            <value>Ireland</value>
+            <value>United Kingdom</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>UK_CustomerService_Access</fullName>
