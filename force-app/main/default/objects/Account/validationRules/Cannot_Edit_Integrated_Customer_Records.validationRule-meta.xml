@@ -7,6 +7,8 @@
 &amp;&amp;
 NOT($Permission.ByPassValidationRule)
 &amp;&amp;
+$Profile.Name != &apos;API Only&apos;
+&amp;&amp;
 CustomerID__c != &apos;&apos;
 &amp;&amp;
 ( ISChanged( Name ) || ISChanged (BillingAddress) || IsChanged(VATNumber__c) || IsChanged(CustomerID__c) || IsChanged(ParentId) || IsChanged(Customer_Number__c) || IsChanged(CompanyRegistrationNumber__c) || IsChanged(Phone) )</errorConditionFormula>
