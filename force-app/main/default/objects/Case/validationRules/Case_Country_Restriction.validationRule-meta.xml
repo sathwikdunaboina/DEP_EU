@@ -6,6 +6,8 @@
 UK can can create for Ireland, but not for Italy.</description>
     <errorConditionFormula>AND (
      $Permission.ByPassValidationRule =false,
+$Profile.Name != &apos;API Only&apos;,
+$Profile.Name != &apos;System Integration User Base Profile&apos;,
     $User.Country != TEXT (Country__c),
     OR (
         $User.Country = &apos;&apos;,

@@ -4,6 +4,8 @@
     <active>true</active>
     <errorConditionFormula>$Permission.ByPassValidationRule = false
 &amp;&amp;
+$Profile.Name != &apos;API Only&apos;
+&amp;&amp;
 (AND(ISPICKVAL( StageName , &quot;Closed Lost&quot;), ISBLANK(TEXT(Lost_Reason__c))))</errorConditionFormula>
     <errorDisplayField>Lost_Reason__c</errorDisplayField>
     <errorMessage>When the stage is &apos;Closed Lost&apos;, please enter Lost Reason.</errorMessage>

@@ -4,6 +4,7 @@
     <active>true</active>
     <errorConditionFormula>TEXT(PRIORVALUE(StageName)) = &apos;Cancelled&apos; &amp;&amp;
 NOT($Permission.ByPassValidationRule) &amp;&amp;
+NOT( $Profile.Name =&apos;API Only&apos;) &amp;&amp;
 NOT($Permission.Modify_Cancelled_Opportunity)</errorConditionFormula>
     <errorMessage>Cancelled Opportunity cannot be edited.</errorMessage>
 </ValidationRule>
