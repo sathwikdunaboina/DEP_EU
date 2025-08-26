@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send Email to User if the User Never Logged in and Created Date is more than 60 days or if the Last login Date of the User is more than 60 days and Less than 90 days</description>
+        <name>Send_60_Days_Notification_To_User</name>
+        <label>Send 60 Days Notification To User</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Salesforce access will be disabled in 30 days</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailMessageFor60Days</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>1.0.1</versionString>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Email to User if the User Never Logged in and Created Date is more than 90 days or if the Last login Date of the User is more than 90 Days</description>
+        <name>Send_90_Days_Notification_To_User</name>
+        <label>Send 90 Days Notification To User</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Update_the_User_to_Inactive</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Salesforce Access Disabled</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailMessageFor90Days</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>1.0.1</versionString>
+    </actionCalls>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Decision to check whether the Org is Sandbox or Production</description>
+        <name>Check_The_Organization_As_Production_Or_Sandbox</name>
+        <label>Check The Organization As Production Or Sandbox</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Get_Record_Have_value</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_the_Organization_Where_the_Flow_Runs</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>To_Check_the_User_s_Logged_In_Date</targetReference>
+            </connector>
+            <label>Get Record Have value</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decision to check whether the User Logged in, and if the Logged in Date is more than 60 or 90 Days</description>
+        <name>To_Check_the_User_s_Logged_In_Date</name>
+        <label>To Check the User&apos;s Logged In Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Users_Never_Logged_and_Logged_in_60_days_Ago</name>
+            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LastLoginDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CreatedDate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>FormulaDate60DaysAgo</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LastLoginDate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>FormulaDate60DaysAgo</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_60_Days_Notification_To_User</targetReference>
+            </connector>
+            <label>Users Never Logged and Logged in 60 days Ago</label>
+        </rules>
+        <rules>
+            <name>Users_Logged_in_But_Inactive_for_90_Days</name>
+            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LastLoginDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CreatedDate</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>FormulaDate90DaysAgo</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LastLoginDate</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>FormulaDate90DaysAgo</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_90_Days_Notification_To_User</targetReference>
+            </connector>
+            <label>Users Logged in But Inactive for 90 Days</label>
+        </rules>
+    </decisions>
+    <description>Flow to deactivate User automatically when the User Never Logged in or Login Date is more than 90 days</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>EmailMessageFor60Days</name>
+        <dataType>String</dataType>
+        <expression>&apos;Hi &apos;+{!$Record.FirstName}+&apos; &apos;+{!$Record.LastName}+&apos;,&apos;+BR()+
+&apos;You have not logged into Salesforce for last 60 days.&apos; +BR()+
+&apos;Your access will be automatically disabled if you have not logged into Salesforce for 90 days.&apos; +BR()+
+&apos; &apos;+BR()+
+&apos;Regards,&apos; +BR()+
+&apos;VFS Salesforce Support&apos; +BR()</expression>
+    </formulas>
+    <formulas>
+        <name>EmailMessageFor90Days</name>
+        <dataType>String</dataType>
+        <expression>&apos;Hi &apos;+{!$Record.FirstName}+&apos; &apos;+{!$Record.LastName}+&apos;,&apos;+BR()+
+&apos;Your access to Salesforce platform has been disabled as you have not logged into the platform for last 90 days.&apos; +BR()+
+&apos; &apos;+BR()+
+&apos;Regards,&apos; +BR()+
+&apos;VFS Salesforce Support&apos; +BR()</expression>
+    </formulas>
+    <formulas>
+        <name>FormulaDate60DaysAgo</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() - 60</expression>
+    </formulas>
+    <formulas>
+        <name>FormulaDate90DaysAgo</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() - 90</expression>
+    </formulas>
+    <interviewLabel>User Deactivation Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User Deactivation Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Record Element to check if the flow is running in Production or Sandbox</description>
+        <name>Get_the_Organization_Where_the_Flow_Runs</name>
+        <label>Get the Organization Where the Flow Runs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_The_Organization_As_Production_Or_Sandbox</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsSandbox</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Once the User Not logged into Org for 90 days make the User Inactive</description>
+        <name>Update_the_User_to_Inactive</name>
+        <label>Update the User to Inactive</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>IsActive</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_the_Organization_Where_the_Flow_Runs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>User</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-08-30</startDate>
+            <startTime>05:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
