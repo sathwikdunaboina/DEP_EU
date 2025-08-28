@@ -133,7 +133,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>To_Check_the_User_s_Logged_In_Date</targetReference>
+                <targetReference>Get_the_User_Profile_Need_To_Be_Excluded</targetReference>
             </connector>
             <label>Get Record Have value</label>
         </rules>
@@ -204,6 +204,29 @@
             <label>Users Logged in But Inactive for 90 Days</label>
         </rules>
     </decisions>
+    <decisions>
+        <description>Decision element to check User Profile to exclude System Administrator, API User and Integration User</description>
+        <name>To_Check_User_Profile</name>
+        <label>To Check User Profile</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_User_Profile_Should_Not_Be_Excluded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_the_User_Profile_Need_To_Be_Excluded</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>To_Check_the_User_s_Logged_In_Date</targetReference>
+            </connector>
+            <label>If User Profile Should Not Be Excluded</label>
+        </rules>
+    </decisions>
     <description>Flow to deactivate User automatically when the User Never Logged in or Login Date is more than 90 days</description>
     <environments>Default</environments>
     <formulas>
@@ -234,6 +257,22 @@
         <name>FormulaDate90DaysAgo</name>
         <dataType>Date</dataType>
         <expression>TODAY() - 90</expression>
+    </formulas>
+    <formulas>
+        <name>isAllowedProfile</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(
+OR(
+{!$Record.Profile.Name} = &quot;System Administrator&quot;,
+{!$Record.Profile.Name} =&quot;API Only&quot;,
+{!$Record.Profile.Name} = &quot;System Integration User Base Profile&quot;,
+{!$Record.Profile.Name} = &quot;ESW_VFSBR_Messaging_Web_Em_1726202558288 Profile&quot;,
+{!$Record.Profile.Name} = &quot;VFS EMEA Profile&quot;,
+{!$Record.Profile.Name} = &quot;vfs Profile&quot;,
+{!$Record.Profile.Name} = &quot;Sales Insights Integration User&quot;,
+{!$Record.Profile.Name} = &quot;Integration User USU App&quot;,
+{!$Record.Profile.Name} = &quot;Analytics Cloud Integration User&quot;
+))</expression>
     </formulas>
     <interviewLabel>User Deactivation Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>User Deactivation Flow</label>
@@ -276,6 +315,28 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Record to get the Custom Metadata(UserProfileToExcludeForDeactivation) to Exclude Profile for Deactivation</description>
+        <name>Get_the_User_Profile_Need_To_Be_Excluded</name>
+        <label>Get the User Profile Need To Be Excluded</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>To_Check_User_Profile</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Profile_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Profile.Name</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>UserProfileToExcludeForDeactivation__mdt</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
