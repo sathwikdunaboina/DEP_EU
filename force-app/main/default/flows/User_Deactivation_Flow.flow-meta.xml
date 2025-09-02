@@ -133,7 +133,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_the_User_Profile_Need_To_Be_Excluded</targetReference>
+                <targetReference>Get_the_User_Profile_Need_To_Be_Included</targetReference>
             </connector>
             <label>Get Record Have value</label>
         </rules>
@@ -176,7 +176,7 @@
         </rules>
         <rules>
             <name>Users_Logged_in_But_Inactive_for_90_Days</name>
-            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditionLogic>(1 AND 2) OR (3 AND 4)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.LastLoginDate</leftValueReference>
                 <operator>IsNull</operator>
@@ -189,6 +189,13 @@
                 <operator>LessThanOrEqualTo</operator>
                 <rightValue>
                     <elementReference>FormulaDate90DaysAgo</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LastLoginDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -212,19 +219,19 @@
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>If_User_Profile_Should_Not_Be_Excluded</name>
+            <name>If_User_Profile_Should_Not_Be_Included</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_the_User_Profile_Need_To_Be_Excluded</leftValueReference>
+                <leftValueReference>Get_the_User_Profile_Need_To_Be_Included</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>To_Check_the_User_s_Logged_In_Date</targetReference>
             </connector>
-            <label>If User Profile Should Not Be Excluded</label>
+            <label>If User Profile Should Not Be Included</label>
         </rules>
     </decisions>
     <description>Flow to deactivate User automatically when the User Never Logged in or Login Date is more than 90 days</description>
@@ -318,9 +325,9 @@ OR(
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <description>Get Record to get the Custom Metadata(UserProfileToExcludeForDeactivation) to Exclude Profile for Deactivation</description>
-        <name>Get_the_User_Profile_Need_To_Be_Excluded</name>
-        <label>Get the User Profile Need To Be Excluded</label>
+        <description>Get Record to get the Custom Metadata(UserProfileToIncludeForDeactivation) to Include Profile for Deactivation</description>
+        <name>Get_the_User_Profile_Need_To_Be_Included</name>
+        <label>Get the User Profile Need To Be Included</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
@@ -336,7 +343,7 @@ OR(
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>UserProfileToExcludeForDeactivation__mdt</object>
+        <object>UserProfileToIncludeForDeactivation__mdt</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
@@ -370,10 +377,10 @@ OR(
         <object>User</object>
         <schedule>
             <frequency>Daily</frequency>
-            <startDate>2025-08-30</startDate>
+            <startDate>2025-09-04</startDate>
             <startTime>05:00:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>
