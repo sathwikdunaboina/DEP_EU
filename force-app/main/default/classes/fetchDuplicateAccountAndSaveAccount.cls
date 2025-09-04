@@ -69,6 +69,7 @@ public class fetchDuplicateAccountAndSaveAccount {
             }
             // Build dynamic query string
             String queryStr = 'SELECT Id, Name, BillingCity, BillingCountry,CompanyRegistrationNumber__c,CustomerID__c FROM Account WHERE IsDeleted = false AND (' + String.join(queryConditions, ' OR ') + ')';
+            System.debug(queryStr+'Query Size');
             List<Account> potentialMatches = Database.query(queryStr);
             // Evaluate each account for full match
             for (Account acc : potentialMatches) {
@@ -148,6 +149,7 @@ public class fetchDuplicateAccountAndSaveAccount {
             String baseQuery = 'SELECT Id, Name, Phone,Customer_Number__c,CompanyRegistrationNumber__c,CustomerID__c,OwnerId,Owner.Name,BillingStreet,BillingCity,BillingState,BillingPostalCode,BillingCountry FROM Account WHERE IsDeleted = false';
             String finalQuery = baseQuery + ' AND (' + String.join(conditions, ' AND ') + ')';
             duplicates = Database.query(finalQuery);
+            System.debug(' Found Duplicates: ' + duplicates.size());
         }
         
         return duplicates;
@@ -162,6 +164,7 @@ public class fetchDuplicateAccountAndSaveAccount {
     
     @AuraEnabled
     public static Id saveAccountRecord(Map<String, Object> fields) {
+        System.debug(' Incoming fields: ' + fields);
         Account acc = new Account();
         
         // Get the field describe map once
@@ -175,6 +178,7 @@ public class fetchDuplicateAccountAndSaveAccount {
                 Object value = fields.get(fieldName);
                 
                 if (value == null) continue;
+                System.debug('>> Field Received'+fieldName+'=>'+fields.get(fieldName));
                 try {
                     switch on dtype {
                         when INTEGER {
@@ -211,6 +215,10 @@ public class fetchDuplicateAccountAndSaveAccount {
                         }
                     }
                 } catch (Exception ex) {
+                    System.debug(' Field conversion error for field: ' + fieldName +
+                                 ', Value: ' + value +
+                                 ', Expected Type: ' + dtype +
+                                 ', Error: ' + ex.getMessage());
                 }
             }
         }
@@ -221,11 +229,13 @@ public class fetchDuplicateAccountAndSaveAccount {
         Database.SaveResult sr = Database.insert(acc, dmlOpts); 
         
         if (sr.isSuccess()) {
+            System.debug('Inserted Account with ID: ' + sr.getId());
             return sr.getId();
         } else {
             String errorMsg = ' Save failed: ';
             for (Database.Error err : sr.getErrors()) {
                 errorMsg += err.getMessage() + ' ';
+                System.debug('️ Error Message: ' + err.getMessage());
             }
             throw new AuraHandledException(errorMsg.trim());
         }
@@ -239,6 +249,7 @@ public class fetchDuplicateAccountAndSaveAccount {
     @AuraEnabled
     public static void updateState(Account acc) {
         if (acc == null) {
+            System.debug(' Invalid account object received. Exiting update.');
             return;
         }
         try {
@@ -250,7 +261,9 @@ public class fetchDuplicateAccountAndSaveAccount {
                 existing.BillingStateCode = acc.BillingStateCode;
             }
             update existing;
+            System.debug(' Account updated successfully: ' + existing.Id);
         } catch (Exception e) {
+            System.debug(' Error updating account: ' + e.getMessage());
         }
     }
 }
