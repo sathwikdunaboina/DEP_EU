@@ -25,10 +25,18 @@ onerror={handleError} >
 <lightning-input-field field-name ="VATNumber__c"></lightning-input-field>
 </div>
 <div class="slds-col slds-size_1-of-2">
+    <lightning-combobox
+    label="Country"
+    value={selectCountryValue}
+    options={CountryPicklistOptions}
+    onchange={handleCountrySelect}>>
 
+</lightning-combobox>
 <lightning-input-address  
+class="lightningInputAddress"
 address-label="Billing Address"
-readonly country-label="Billing Country"
+readonly = {isReadOnly} 
+country-label="Billing Country"
 street-label="Billing Street"
 city-label="Billing City"
 province-label="Billing State/Province"
@@ -40,6 +48,7 @@ province={selectedBillingState}
 postal-code={selectedBillingPostalCode}
 show-address-lookup
 data-id="billingAddressDetails"
+country-lookup-filter={selectCountryFilter}
 required-fields="country"
 onchange={handleAddressChange}>
 </lightning-input-address>
@@ -160,10 +169,18 @@ onchange={handleAddressChange}>
     <div class="slds-grid slds-wrap full-row-background">                                   
        &nbsp;&nbsp; <h3 class="slds-text-heading_small ">Address Information</h3>
         </div>   
-       <div class="slds-col slds-size_1-of-2">                                
-        <lightning-input-address  
+       <div class="slds-col slds-size_1-of-2"> 
+    <lightning-combobox
+    label="Country"
+    value={selectCountryValue}
+    options={CountryPicklistOptions}
+    onchange={handleCountrySelect}>>
+</lightning-combobox>                               
+        <lightning-input-address
+        class="lightningInputAddress"  
         address-label="Billing Address"
-        readonly country-label="Billing Country"
+        readonly = {isReadOnly} 
+        country-label="Billing Country"
         street-label="Billing Street"
         city-label="Billing City"
         province-label="Billing State/Province"
@@ -175,6 +192,7 @@ onchange={handleAddressChange}>
         postal-code={selectedBillingPostalCode}
         show-address-lookup
         data-id="billingAddressDetails"
+        country-lookup-filter={selectCountryFilter}
         required-fields="country"
         onchange={handleAddressChange}>
     </lightning-input-address>
