@@ -7,7 +7,7 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
         public Integer recordSize; // to show the current page size
         public Boolean hasMore;
         public String nextRecordsUrl;
-        public String errorMessage;
+        public String message;
     }
     
     @httpGet
@@ -28,7 +28,8 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
             
             
             if(!IsValidId && req.params.containsKey('recordId')){
-                response.errorMessage = 'Not a valid parameter or Invalid Id. Contact your Admin.';
+                RestContext.response.statusCode = 400;
+                response.message = 'Not a valid parameter or Invalid Id. Contact your Admin.';
                 return response;
             }
             if(requestURI == '/contracts' && (req.params.size() == 0 || (req.params.size() == 1 && req.params.containsKey('recordId') && !req.params.containsKey('last_n_days')))){
@@ -39,19 +40,21 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
                 return deltaLoad(lastNDays,String.ValueOf(dynamicSOQLSettingRecord[0].Limit__c),recordId,dynamicSOQLSettingRecord[0].WhereClause__c,dynamicSOQLSettingRecord[0].SelectQuery__c,dynamicSOQLSettingRecord[0].ChildWhereClause__c,req) ;
             }
             else{
-                response.errorMessage = 'Not a valid parameter or Invalid Id. Contact your Admin.';
+                RestContext.response.statusCode = 400;
+                response.message = 'Not a valid parameter or Invalid Id. Contact your Admin.';
                 return response;
             }
         }
         else {
-            response.errorMessage = 'Not a valid user. Contact Admin.';
+            RestContext.response.statusCode = 401;
+            response.message = 'Not a valid user. Contact Admin.';
             return response;
         }
        }
         catch(exception ex){
             RestContext.response.statusCode = 404;
             ErrorLogUtil.logError(ex, String.valueOf(ex.getMessage()), null);
-            response.errorMessage = String.valueOf(ex.getMessage());
+            response.message = String.valueOf(ex.getMessage());
             return response;
         }
     }
@@ -63,8 +66,8 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
             List<Contract__c> contractList = MetadataQueryBuilder.runDynamicQueryForInitialLoad(recordId,initialLoadQueryValue,limitSize);                    
             if(contractList == null || contractList.Isempty()){
                 RestResponse res = RestContext.response;
-                res.statusCode = 201;
-                response.errorMessage = 'No Data Found';
+                res.statusCode = 200;
+                response.message = 'No Data Found';
                 return response;
             }
             else {
@@ -100,8 +103,8 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
             List<Contract__c> contractList = MetadataQueryBuilder.runDynamicQuery(lastNDays,limitSize,recordId,whereclauseValue,selectQueryValue,contractHistoryAllowedFields);                    
             if(contractList == null || contractList.Isempty()){
                 RestResponse res = RestContext.response;
-                res.statusCode = 201;
-                response.errorMessage = 'No Data Found';
+                res.statusCode = 200;
+                response.message = 'No Data Found';
                 return response;
             }
             else{
