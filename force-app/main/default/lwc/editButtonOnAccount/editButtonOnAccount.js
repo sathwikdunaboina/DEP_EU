@@ -7,8 +7,9 @@ import getAccountDetails from '@salesforce/apex/AccountEditController.getAccount
 import updateMultipleAccounts from '@salesforce/apex/AccountEditController.updateMultipleAccounts';
 import checkDuplicateRules from '@salesforce/apex/AccountEditController.checkDuplicateRules';
 import BILLING_STATECODE_FIELD from '@salesforce/schema/Account.BillingStateCode';
+import { COUNTRY_PICKLIST } from 'c/globalCountryPicklist';
 
-const FIELDS = ['Account.RecordTypeId','Account.CreatedBy.Name','Account.Customer_Number__c','Account.CustomerID__c','Account.LastModifiedBy.Name','Account.Owner.Alias','Account.CreatedDate','Account.LastModifiedDate','Account.RecordType.Name','Account.OwnerId','Account.BillingCountry','Account.BillingStreet','Account.BillingCity','Account.BillingStateCode','Account.BillingState','Account.BillingPostalCode','Account.Name'];
+const FIELDS = ['Account.RecordTypeId','Account.CreatedBy.Name','Account.Customer_Number__c','Account.CustomerID__c','Account.LastModifiedBy.Name','Account.Owner.Alias','Account.CreatedDate','Account.LastModifiedDate','Account.RecordType.Name','Account.OwnerId','Account.BillingCountry','Account.BillingStreet','Account.BillingCity','Account.BillingStateCode','Account.BillingState','Account.BillingCountryCode','Account.BillingPostalCode','Account.Name'];
 
 export default class EditButtonOnAccount extends NavigationMixin(LightningElement) {
 @api recordId;
@@ -46,6 +47,11 @@ ownerName;
 isSaveAndNew = false;
 modalHeaderClass = '';
 alertMessageClass = '';
+selectCountryValue = '';
+selectCountryFilter = [];
+CountryPicklistOptions = COUNTRY_PICKLIST;
+isReadOnly = true;
+
 
     
 @wire(getAccountDetails, { recordId: '$recordId' })
@@ -105,14 +111,33 @@ const formatDate = (rawDate) => {
     this.lastModifiedBy = data.fields.LastModifiedBy.value.fields.Name?.value;
     this.createdByDetails = ` ${this.createdBy} , ${this.createdDate}`;
     this.lastModifiedByDetails = ` ${this.lastModifiedBy} , ${this.lastModifiedDate}`;
+                 if(data.fields.BillingCountryCode.value != null){
+                this.selectCountryValue = data.fields.BillingCountryCode.value;
+                // alert(data.fields.BillingCountryCode.value);
+                console.log(data.fields.BillingCountryCode.value+'data.fields.BillingCountryCode.value');
+                this.selectCountryFilter.push(this.selectCountryValue);
+            }
+
         } 
 }
+    handleCountrySelect(event) {
+        this.selectCountryFilter = [];
+        this.selectCountryValue = event.detail.value;
+        if (this.selectCountryValue != '') {
+            this.selectCountryFilter.push(this.selectCountryValue);
+        } else {
+            this.selectCountryFilter = [];
+        }
+    }
 handleAddressChange(event) {
 this.selectedAccountBillingCountry = event.detail.country;
 this.selectedBillingStreet = event.detail.street;
 this.selectedBillingCity = event.detail.city;
 this.selectedBillingState = event.detail.province;
 this.selectedBillingPostalCode = event.detail.postalCode;
+this.isReadOnly = false;
+
+
 }
  handleSave() {
     this.mode = 'save';
@@ -206,6 +231,8 @@ submitForm() {
                     }
                     
                 });
+                this.isReadOnly = true;
+
                getRecordNotifyChange([{ recordId: this.recordId }]);
 
                         }

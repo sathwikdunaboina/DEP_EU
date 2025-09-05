@@ -8,6 +8,9 @@ import saveAccountRecord from '@salesforce/apex/fetchDuplicateAccountAndSaveAcco
 import checkDuplicateRules from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.checkDuplicateRules';
 import getMatchingDuplicates from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.getMatchingDuplicates';
 import updateState from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.updateState';
+import { COUNTRY_PICKLIST } from 'c/globalCountryPicklist';
+import USER_ID from '@salesforce/user/Id';
+import { getRecord } from 'lightning/uiRecordApi';
 
 export default class CustomNewButtonOnAccount extends NavigationMixin(LightningElement) {
     @api recordTypeId;
@@ -24,14 +27,48 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
     @track duplicates = [];
     @track duplicateAccounts = [];
     @track dismissedDuplicateAlert = false;
+    @track allowSaveOnNextClick = false;
     modalHeaderStyle;
     alertMessageStyle;
     modalHeaderClass = '';
     alertMessageClass = '';
-    @track allowSaveOnNextClick = false;
+    selectCountryValue = '';
+    selectCountryFilter = [];
+    CountryPicklistOptions = COUNTRY_PICKLIST;
+    isReadOnly = true;
+
+     // Fetch current user's CountryCode field
+    @wire(getRecord, { recordId: USER_ID, fields: ['User.CountryCode'] })
+    wiredUser({ error, data }) {
+        if (data) {
+            const userCountryCode = data.fields?.CountryCode?.value || '';
+            // Only prefill if user actually has a country code and it matches an option
+            if (userCountryCode && this.CountryPicklistOptions.some(opt => opt.value === userCountryCode)) {
+                this.selectCountryValue = userCountryCode;
+                if (this.selectCountryValue != '') {
+            this.selectCountryFilter.push(this.selectCountryValue);
+        } else {
+            this.selectCountryFilter = [];
+        }
+            }
+        } else if (error) {
+            console.error('Error fetching user country code:', error);
+        }
+    }
+
+    handleCountrySelect(event) {
+        this.selectCountryFilter = [];
+        this.selectCountryValue = event.detail.value;
+        if (this.selectCountryValue != '') {
+            this.selectCountryFilter.push(this.selectCountryValue);
+        } else {
+            this.selectCountryFilter = [];
+        }
+    }
 
     handleAddressChange(event) {
         this.billingAddress = event.detail;
+        this.isReadOnly = false;
     }
 
     @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT })
@@ -62,6 +99,7 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
         let fieldMap = {};
         inputFields.forEach(field => {
             const apiName = field.fieldName;
+            fieldMap['RecordTypeId'] = this.recordTypeId;
             fieldMap[apiName] = field.value;
         });
         // Add address fields
@@ -218,6 +256,7 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
         let fieldMap = {};
         inputFields.forEach(field => {
             const apiName = field.fieldName;
+            fieldMap['RecordTypeId'] = this.recordTypeId;
             fieldMap[apiName] = field.value;
         });
         // Add address fields

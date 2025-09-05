@@ -27,11 +27,17 @@
                                         <lightning-input-field field-name="VATNumber__c"></lightning-input-field>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
-                                        <lightning-input-address address-label="Billing Address" readonly country-label="Billing Country" 
+                                        <lightning-combobox
+    label="Country"
+    value={selectCountryValue}
+    options={CountryPicklistOptions}
+    onchange={handleCountrySelect}>>
+</lightning-combobox>
+                                        <lightning-input-address class="lightningInputAddress" address-label="Billing Address" readonly = {isReadOnly} country-label="Billing Country" 
                                     street-label="Billing Street" city-label="Billing City" 
                                      province-label="Billing State/Province"
                                     postal-code-label="Billing Zip/Postal Code"
-                                    onchange={handleAddressChange} show-address-lookup></lightning-input-address>
+                                    onchange={handleAddressChange} show-address-lookup country-lookup-filter={selectCountryFilter}></lightning-input-address>
                                     </div>
                                     <div class="slds-hide">
                                         <lightning-input-field field-name="BillingStreet" value={billingAddress.street}></lightning-input-field>
@@ -176,11 +182,17 @@
                             <div class="slds-p-around_small slds-theme_shade">
                         <h3 class="slds-text-heading_small">Address Information</h3>
                         </div>
-                            <lightning-input-address address-label="Billing Address" readonly country-label="Billing Country" 
+                        <lightning-combobox
+    label="Country"
+    value={selectCountryValue}
+    options={CountryPicklistOptions}
+    onchange={handleCountrySelect}>>
+</lightning-combobox>
+                            <lightning-input-address class="lightningInputAddress" address-label="Billing Address" readonly = {isReadOnly} country-label="Billing Country" 
                                 street-label="Billing Street" city-label="Billing City" 
                                  province-label="Billing State/Province" 
                                 postal-code-label="Billing Zip/Postal Code"
-                                onchange={handleAddressChange} show-address-lookup></lightning-input-address>
+                                onchange={handleAddressChange} show-address-lookup country-lookup-filter={selectCountryFilter}></lightning-input-address>
                     </div>
                     <div class="slds-hide">
                             <lightning-input-field field-name="BillingStreet" value={billingAddress.street}></lightning-input-field>

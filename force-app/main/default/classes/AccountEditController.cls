@@ -29,17 +29,17 @@ public class AccountEditController {
         result.matchedFieldNames = new List<String>();
         result.matchedAccounts = new List<Account>();
         
-        List<Duplicate_Rule__mdt> rules = [
+        /*List<Duplicate_Rule_Edit__mdt> rules = [
             SELECT Rule_Name__c, Field__c, Match_Type__c, Action_On_Edit__c, Operation__c, Order__c
-            FROM Duplicate_Rule__mdt
+            FROM Duplicate_Rule_Edit__mdt
             WHERE Active__c = true
             ORDER BY Order__c ASC, Rule_Name__c
         ];
         
-        Map<String, List<Duplicate_Rule__mdt>> ruleGroups = new Map<String, List<Duplicate_Rule__mdt>>();
-        for (Duplicate_Rule__mdt rule : rules) {
+        Map<String, List<Duplicate_Rule_Edit__mdt>> ruleGroups = new Map<String, List<Duplicate_Rule_Edit__mdt>>();
+        for (Duplicate_Rule_Edit__mdt rule : rules) {
             if (!ruleGroups.containsKey(rule.Rule_Name__c)) {
-                ruleGroups.put(rule.Rule_Name__c, new List<Duplicate_Rule__mdt>());
+                ruleGroups.put(rule.Rule_Name__c, new List<Duplicate_Rule_Edit__mdt>());
             }
             ruleGroups.get(rule.Rule_Name__c).add(rule);
         }
@@ -47,10 +47,10 @@ public class AccountEditController {
         Id currentRecordId = fieldMap.containsKey('Id') ? (Id)fieldMap.get('Id') : null;
         
         for (String groupName : ruleGroups.keySet()) {
-            List<Duplicate_Rule__mdt> groupRules = ruleGroups.get(groupName);
+            List<Duplicate_Rule_Edit__mdt> groupRules = ruleGroups.get(groupName);
             List<String> queryConditions = new List<String>();
             
-            for (Duplicate_Rule__mdt ruleItem : groupRules) {
+            for (Duplicate_Rule_Edit__mdt ruleItem : groupRules) {
                 if (fieldMap.containsKey(ruleItem.Field__c) && fieldMap.get(ruleItem.Field__c) != null) {
                     String val = String.escapeSingleQuotes(String.valueOf(fieldMap.get(ruleItem.Field__c)).trim());
                     
@@ -79,7 +79,7 @@ public class AccountEditController {
                 Boolean allMatch = true;
                 List<String> matchedFields = new List<String>();
                 
-                for (Duplicate_Rule__mdt ruleItem : groupRules) {
+                for (Duplicate_Rule_Edit__mdt ruleItem : groupRules) {
                     Object inputVal = fieldMap.get(ruleItem.Field__c);
                     Object dbVal = acc.get(ruleItem.Field__c);
                     
@@ -118,7 +118,7 @@ public class AccountEditController {
                 
                 return result;
             }
-        }
+        }*/
         
         return result;
     }
