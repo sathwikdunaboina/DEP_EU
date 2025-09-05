@@ -126,7 +126,7 @@ public class CaseBulkUpdateController_Test {
     
     @isTest
     static void testValidateRecordTypes() {
-        List<Case> cases = [SELECT Id FROM Case LIMIT 5];
+        List<Case> cases = [SELECT Id,Country__c,RecordType.DeveloperName FROM Case LIMIT 5];
         List<Id> caseIds = new List<Id>();
         for (Case c : cases) {
             caseIds.add(c.Id);
@@ -134,6 +134,7 @@ public class CaseBulkUpdateController_Test {
         
         Test.startTest();
         String validationMessage = CaseBulkUpdateController.validateRecordTypes(caseIds);
+        CaseTypeMetadataService.getTypeSubTypes(cases[0].Country__c, cases[0].RecordType.DeveloperName);
         Test.stopTest();
         
         System.assert(validationMessage == null || validationMessage.contains('No cases selected.'));
