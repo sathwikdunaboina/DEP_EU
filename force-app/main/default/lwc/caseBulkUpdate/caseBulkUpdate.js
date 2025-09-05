@@ -13,6 +13,8 @@ import validateParentCase from '@salesforce/apex/CaseBulkUpdateController.valida
 import getCurrentUserProfile from '@salesforce/apex/CaseBulkUpdateController.getCurrentUserProfile';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'; 
 
+import getTypeSubTypes from '@salesforce/apex/CaseTypeMetadataService.getTypeSubTypes';//added sourabh
+
 const CASE_RECORD_TYPE_ID = 'Case.RecordTypeId';
 
 export default class CaseFieldDependency extends LightningElement {
@@ -62,11 +64,19 @@ value = '';
 recordSaved = false; 
 isRecordFetched = false; 
 
+
+@track metadataMap = {}; //added sourabh
+@track metadataFilteredSubtypeOptions = []; //added sourabh
+@track selectedCountry = ''; //added sourabh
+@track selectedRecordTypeDevName = '';//Added Sourabh
+@track selectedRecordTypeId = '';//Added Sourabh
+
 connectedCallback() {
 
 if (this.recordSaved) {
     return; 
 }
+/*
 validateRecordTypes({ caseIds: this.recordIds })
     .then(result => {
         if (result) {
@@ -83,9 +93,52 @@ validateRecordTypes({ caseIds: this.recordIds })
     })
     .catch(error => {
     });
+    */
     getSelectedCases({ caseIds: this.recordIds })
     .then(data => {
+        console.log('getSelectedCases called');
         this.caseNumbers = data.map(caseRecord => caseRecord.CaseNumber).join(', ');
+          
+          // Get first case info
+            const firstCase = data[0];
+            this.selectedCountry = firstCase.Country__c;
+            this.selectedRecordTypeDevName = firstCase.RecordType?.DeveloperName;
+            this.selectedRecordTypeId = firstCase.RecordTypeId;
+
+            const mismatchCountry = data.some(
+            rec => rec.Country__c !== this.selectedCountry
+            );
+
+            const mismatchRecordType = data.some(
+             rec => rec.RecordType?.DeveloperName !== this.selectedRecordTypeDevName
+            );
+
+            console.log('mismatchCountry ==> '+mismatchCountry);
+            console.log('mismatchRecordType ==> '+mismatchRecordType);
+
+            if (mismatchCountry || mismatchRecordType) {
+                console.log('reached error');
+                this.toastMessage = 'All selected cases must have the same Country and Record Type.';
+                this.toastVariant = 'error';
+                this.showToast = true;
+
+                this.error = 'All selected cases must have the same Country and Record Type.';
+                this.showError = true;
+                this.showFields = false;
+                this.isValidationComplete = true; 
+              
+            }
+            else {
+            console.log('data');
+            this.showError = false;
+            this.error = '';
+            this.loadMetadataForCountryAndRecordType();
+            this.showFields = true;
+
+
+        }
+
+           
 
     })
     .catch(error => {
@@ -101,8 +154,36 @@ getCurrentUserProfile()
 })
 .catch(error => {
 });
+
+
+
     
 }  
+
+
+//added sourabh
+loadMetadataForCountryAndRecordType() {
+    if (!this.selectedCountry || !this.selectedRecordTypeDevName) {
+        return;
+    }
+
+    getTypeSubTypes({ country: this.selectedCountry , 
+        recordTypeDevName: this.selectedRecordTypeDevName }) 
+        .then((result) => {
+            this.metadataMap = result;
+            this.typeOptions = Object.keys(result).map(key => ({
+                label: key,
+                value: key
+            }));
+            this.subtypeOptions = []; // empty for now
+        })
+        .catch((error) => {
+            console.error('Metadata fetch error', error);
+        });
+}
+
+
+
 @wire(getRecord, { recordId: '$selectedRecordId', fields: [CASE_RECORD_TYPE_ID,TYPE_FIELD,SUBTYPE_FIELD,STATUS_FIELD,STATUS_REASON_FIELD,BRAND_FIELD] })
 
 wiredRecord({ error, data }) {
@@ -153,6 +234,10 @@ if (uniqueRecordTypeIds.size > 1) {
     this.errorMessage = '';
 }
 }
+
+
+//Commented sourabh
+/*
 @wire(getPicklistValues, { recordTypeId: '$defaultRecordTypeId', fieldApiName: TYPE_FIELD })
 defaultTypePicklistValues({ error, data }) {
 if (!this.selectedRecordType && data) {
@@ -161,6 +246,7 @@ if (!this.selectedRecordType && data) {
 } else if (error) {
 }
 }
+
 @wire(getPicklistValues, { recordTypeId: '$defaultRecordTypeId', fieldApiName: SUBTYPE_FIELD})
 defaultSubTypePicklistValues({ error, data }) {
 if (!this.selectedRecordType && data) {
@@ -172,6 +258,8 @@ if (!this.selectedRecordType && data) {
 
 } 
 }
+
+*/
 
 @wire(getPicklistValues, { recordTypeId: '$defaultRecordTypeId', fieldApiName: STATUS_FIELD })
 defaultStatusPicklistValues({ error, data }) {
@@ -199,10 +287,12 @@ if (!this.selectedRecordType && data) {
 
 } 
 }
-
+//commented sourabh
+/*
 @wire(getPicklistValues, { recordTypeId: '$selectedRecordType', fieldApiName: TYPE_FIELD })
 typePicklistValues({ error, data }) {
 if (data) {
+console.log('data typeOptions =>'+JSON.stringify(data));
 this.typeOptions = [ { label: '--None--', value:''}, ...data.values ];     
 } else if (error) {
 }
@@ -211,6 +301,7 @@ this.typeOptions = [ { label: '--None--', value:''}, ...data.values ];
 @wire(getPicklistValues, { recordTypeId: '$selectedRecordType', fieldApiName: SUBTYPE_FIELD })
 subtypePicklistValues({ error, data }) {
 if (data) {
+    console.log('data subtype =>'+JSON.stringify(data));
 this.subtypeOptions = data.values.map(item => ({
     label: item.label,
     value: item.value,
@@ -219,6 +310,7 @@ this.subtypeOptions = data.values.map(item => ({
 } else if (error) {
 }
 }
+*/
 @wire(getPicklistValues, { recordTypeId: '$selectedRecordType', fieldApiName: STATUS_FIELD })
 statusPicklistValues({ error, data }) {
 if (data) {
@@ -253,11 +345,40 @@ if (data) {
 }
 }
 
+
+/*
+commented sourabh
 handleTypeChange(event) {
 this.typeValue = event.detail.value;
 this.subtypeValue= ''; 
 this.updateFilteredSubtypeOptions();
+}*/
+
+//added sourabh
+handleTypeChange(event) {
+    console.log('handleTypeChange called');
+    this.typeValue = event.detail.value;
+    this.subtypeValue = '';
+    this.filteredSubtypeOptions = [];
+
+    const subtypeList = this.metadataMap[this.typeValue];
+    console.log('subtypeList ==>' + JSON.stringify(subtypeList));
+
+    if (subtypeList && subtypeList.length > 0) {
+        this.filteredSubtypeOptions = [
+            { label: '--None--', value: '' },
+            ...subtypeList.map(val => ({ label: val, value: val }))
+        ];
+        this.isSubtypeDisabled = false;
+    } else {
+        this.filteredSubtypeOptions = [{ label: '--None--', value: '' }];
+        this.isSubtypeDisabled = true;
+    }
 }
+
+
+
+
 
 updateFilteredSubtypeOptions() {
 this.filteredSubtypeOptions = [{ label: '--None--', value: ''}];
@@ -267,8 +388,12 @@ return;
 }
 
 const actualTypeOptions = this.typeOptions.filter(option => option.value !== ''); // Ignore None
-const actualIndex = actualTypeOptions.findIndex(option => option.value === this.typeValue);    
+console.log('actualTypeOptions:', JSON.stringify(actualTypeOptions));
+const actualIndex = actualTypeOptions.findIndex(option => option.value === this.typeValue);  
+console.log('actualIndex:', JSON.stringify(actualIndex));  
 const originalIndex = this.typeOptions.findIndex(option => option.value === this.typeValue);    
+
+console.log('subtypeOptions:', JSON.stringify(this.subtypeOptions));
 
 if (actualIndex !== -1) {
 this.filteredSubtypeOptions = [{ label: '--None--', value: ''}, ...this.subtypeOptions
@@ -278,7 +403,7 @@ label: option.label,
 value: option.value
 }))];
 
-//console.log('Filtered Subtype Options:', JSON.stringify(this.filteredSubtypeOptions));
+console.log('Filtered Subtype Options:', JSON.stringify(this.filteredSubtypeOptions));
         
 this.isSubtypeDisabled = this.filteredSubtypeOptions.length === 0;
 } 
@@ -431,48 +556,67 @@ this.showModal = true;
 
 }
 handleConfirm() {
-console.log('Confirm button clicked');
-this.showModal = false;
+    console.log('Confirm button clicked');
+    this.showModal = false;
 
-this.recordIds.forEach(recordId => {
+    let successfulUpdates = 0;
+    let failedUpdates = 0;
+    let totalRecords = this.recordIds.length;
 
-    const fields = { Id: recordId };
+    this.recordIds.forEach(recordId => {
+        const fields = { Id: recordId };
 
-    if (this.typeValue && this.typeValue !== '') fields[TYPE_FIELD.fieldApiName] = this.typeValue;
-    if (this.statusValue && this.statusValue !== '') fields[STATUS_FIELD.fieldApiName] = this.statusValue;
-    if (this.subtypeValue && this.subtypeValue !== '') fields[SUBTYPE_FIELD.fieldApiName] = this.subtypeValue;
-    if (this.statusReasonValue && this.statusReasonValue !== '') fields[STATUS_REASON_FIELD.fieldApiName] = this.statusReasonValue;
-    if (this.brandValue && this.brandValue !== '') fields[BRAND_FIELD.fieldApiName] = this.brandValue;
+        if (this.typeValue && this.typeValue !== '') fields[TYPE_FIELD.fieldApiName] = this.typeValue;
+        if (this.statusValue && this.statusValue !== '') fields[STATUS_FIELD.fieldApiName] = this.statusValue;
+        if (this.subtypeValue && this.subtypeValue !== '') fields[SUBTYPE_FIELD.fieldApiName] = this.subtypeValue;
+        if (this.statusReasonValue && this.statusReasonValue !== '') fields[STATUS_REASON_FIELD.fieldApiName] = this.statusReasonValue;
+        if (this.brandValue && this.brandValue !== '') fields[BRAND_FIELD.fieldApiName] = this.brandValue;
 
-    if ((this.statusValue === 'New' || this.statusValue === 'On Hold' || this.statusValue === 'In Progress' || this.statusValue === 'Stage 1 - No Extension' || this.statusValue === 'Stage 2 - Paperwork being arranged' || this.statusValue === 'Stage 3 - Awaiting signature' || this.statusValue === 'Stage 4 - No response' || this.statusValue === 'Chasing marketing company' || this.statusValue === 'Overdue') && this.statusReasonValue === '' ) {
-        fields[STATUS_REASON_FIELD.fieldApiName] = null;
-    }
-    if(this.typeValue !== '' && this.subtypeValue ===''){
-        fields[SUBTYPE_FIELD.fieldApiName] = null;
-    }
-    
+        // Null logic
+        if (
+            ['New', 'On Hold', 'In Progress', 'Stage 1 - No Extension', 'Stage 2 - Paperwork being arranged', 'Stage 3 - Awaiting signature', 'Stage 4 - No response', 'Chasing marketing company', 'Overdue'].includes(this.statusValue) &&
+            this.statusReasonValue === ''
+        ) {
+            fields[STATUS_REASON_FIELD.fieldApiName] = null;
+        }
 
+        if (this.typeValue !== '' && this.subtypeValue === '') {
+            fields[SUBTYPE_FIELD.fieldApiName] = null;
+        }
 
+        const recordInput = { fields };
+        this.recordSaved = true;
 
-const recordInput = { fields };
-
-this.recordSaved = true;
-
-
-updateRecord(recordInput)
-.then(() => {
-})
-this.toastMessage = 'Case Record Updated Succesfully';
-    this.toastVariant = 'success';
-this.showToast = false;
-setTimeout(() => {
-        this.showToast = true;
-    }, 200); 
-});
-setTimeout(() => {
-    window.history.back();
-}, 4000);        
+        updateRecord(recordInput)
+            .then(() => {
+                console.log(`Record ${recordId} updated successfully`);
+                successfulUpdates++;
+                if (successfulUpdates + failedUpdates === totalRecords) {
+                    this.toastMessage = `${successfulUpdates} record(s) updated successfully.`;
+                    this.toastVariant = 'success';
+                    this.showToast = false;
+                    setTimeout(() => {
+                        this.showToast = true;
+                        window.history.back(); 
+                    }, 300);
+                }
+            })
+            .catch(error => {
+                console.error(`Error updating record ${recordId}`, error);
+                failedUpdates++;
+                if (successfulUpdates + failedUpdates === totalRecords) {
+                    this.toastMessage = `Some records failed: ${error.body?.message}`;
+                    this.toastVariant = 'error';
+                    this.showToast = false;
+                    setTimeout(() => {
+                        this.showToast = true;
+                    }, 300);
+                }
+            });
+    });
 }
+
+
 handleCancel(){
 this.showModal = false;
 
