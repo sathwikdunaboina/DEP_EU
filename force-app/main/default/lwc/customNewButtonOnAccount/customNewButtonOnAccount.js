@@ -99,6 +99,7 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
         let fieldMap = {};
         inputFields.forEach(field => {
             const apiName = field.fieldName;
+            fieldMap['RecordTypeId'] = this.recordTypeId;
             fieldMap[apiName] = field.value;
         });
         // Add address fields
@@ -255,6 +256,7 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
         let fieldMap = {};
         inputFields.forEach(field => {
             const apiName = field.fieldName;
+            fieldMap['RecordTypeId'] = this.recordTypeId;
             fieldMap[apiName] = field.value;
         });
         // Add address fields
