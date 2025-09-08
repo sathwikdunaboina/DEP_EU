@@ -68,7 +68,8 @@ public class VFSCORE_Bnk_Acc_Con_Test {
             
             Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
             Account custTestAcc = new Account (Name='TestCustomerAccount_VFSCORE', RecordTypeId = accountRecordType, CustomerID__c='1234', 
-                                               OwnerId=territoryManager1.Id, BillingCountry='France', sourceSystemID__c = 'FR94-SF');
+                                               OwnerId=territoryManager1.Id, BillingCountry='France', sourceSystemID__c = 'FR94-SF',CompanyRegistrationNumber__c = '12345678901234'
+ );
             insert custTestAcc;
             
             String cEmail = 'test@contact1.org' + System.currentTimeMillis();
