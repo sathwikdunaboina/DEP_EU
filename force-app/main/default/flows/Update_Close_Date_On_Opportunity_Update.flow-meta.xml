@@ -62,11 +62,15 @@
          ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Lost&quot;)
       )
    ),
-   NOT(ISCHANGED( {!$Record.CloseDate}))
+   NOT(ISCHANGED( {!$Record.CloseDate})),
+OR(
+{!$Record.RecordType.DeveloperName} = &apos;Finance&apos;,
+{!$Record.RecordType.DeveloperName} = &apos;LCV_Opportunity&apos;
+   )
 )</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>
