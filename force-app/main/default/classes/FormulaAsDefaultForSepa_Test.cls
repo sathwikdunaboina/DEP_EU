@@ -39,7 +39,7 @@ public class FormulaAsDefaultForSepa_Test {
             oAccountWithFR94.sourceSystemID__c = 'FR94-SF';
             oAccountWithFR94.Name = 'Test Account with FR94-SF';
             oAccountWithFR94.BillingCountry = 'France';
-            oAccountWithFR94.companyRegistrationNumber2__c = '777';
+            oAccountWithFR94.companyRegistrationNumber2__c = '77712345678989';
             testAccounts.add(oAccountWithFR94);
             insert testAccounts;
         }
@@ -103,7 +103,7 @@ public class FormulaAsDefaultForSepa_Test {
         }
         Bank_Account_Mandate__C oNewBankMandate =[SELECT Id,Reference__c from Bank_Account_Mandate__c WHERE Id=:oBankMandate.Id ];
         System.debug('Reference'+ oNewBankMandate.Reference__c);
-        Assert.areEqual('FR9466612345678989CORE7102024',oNewBankMandate.Reference__c , 'Reference field value is not same as Formula'); 
+        Assert.areEqual('FR9477712345678989CORE7102024',oNewBankMandate.Reference__c , 'Reference field value is not same as Formula');
         
     }
     
