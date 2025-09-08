@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Flow to Update Close Date Field on Opportunity Whenever Stage is updated to Closed Won or Closed Lost</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>TodaysDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Update Close Date On Opportunity Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Close Date On Opportunity Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Element to Update the Close Date field whenever an Opportunity is Updated to Closed Won or Closed Lost</description>
+        <name>Update_Close_Date</name>
+        <label>Update Close Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>TodaysDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Close_Date</targetReference>
+        </connector>
+        <filterFormula>AND(
+   ISCHANGED({!$Record.StageName}),
+   OR(
+      ISPICKVAL({!$Record.StageName}, &quot;Closed Won&quot;),
+      ISPICKVAL({!$Record.StageName}, &quot;Closed Lost&quot;)
+   ),
+   NOT(
+      OR(
+         ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Won&quot;),
+         ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Lost&quot;)
+      )
+   ),
+   NOT(ISCHANGED( {!$Record.CloseDate})),
+OR(
+{!$Record.RecordType.DeveloperName} = &apos;Finance&apos;,
+{!$Record.RecordType.DeveloperName} = &apos;LCV_Opportunity&apos;
+   )
+)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
