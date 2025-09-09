@@ -117,7 +117,10 @@ export default class CaseTypeSelector extends LightningElement {
         updateRecord({ fields })
             .then(() => {
                 this.showToast('Success', 'Case updated successfully', 'success');
-            })
+                setTimeout(() => {
+                                document.location.reload();
+                            }, 1000);
+                })
             .catch(error => {
                 this.showToast('Error', error.body.message, 'error');
             });
