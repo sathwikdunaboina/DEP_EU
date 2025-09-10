@@ -142,49 +142,7 @@ public class AccountEditControllerTest {
         
         System.assertNotEquals(1, duplicates.size());
         System.assertEquals(0, duplicates.size());
-    }      /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     testUpdateMultipleAccounts
-* @description     This method is used to Update the Accounts
-* ------------------------------------------------------------------------------------------------------
-* @param          
-* @return          
-* ------------------------------------------------------------------------------------------------------ 
-*/  
-  /*  @isTest
-    static void testUpdateMultipleAccounts() {
-        Account accc = new Account(Name = 'Original Account', NumberOfEmployees = 10, Fleet_Size__c = 5,BillingCountry = 'United States');
-        insert accc;
-        
-        Map<String, Object> acc = new Map<String, Object>{
-            'Id' => accc.Id,
-                'Name' => 'Updated Account Name',
-                'BillingCountry' => 'United States',
-                'NumberOfEmployees' => 100,
-                'Fleet_Size__c' => 50
-                };
-                    
-                    Test.startTest();
-        Map<String, Object> result = AccountEditController.updateMultipleAccounts(acc);
-        Test.stopTest();
-        
-        System.assertNotEquals(null, result);
-    }*/
-      /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     testLevenshteinDistance
-* @description     This method is used to cover testLevenshteinDistance
-* ------------------------------------------------------------------------------------------------------
-* @param          
-* @return          
-* ------------------------------------------------------------------------------------------------------ 
-*/  
-    
-    @isTest
-    static void testLevenshteinDistance() {
-        Integer dist = AccountEditController.getLevenshteinDistance('Test', 'Test');
-        System.assertEquals(0, dist);
-    }
+    }      
       /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     testUpdateMultipleAccounts
