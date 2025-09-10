@@ -29,7 +29,7 @@ public class AccountEditController {
         result.matchedFieldNames = new List<String>();
         result.matchedAccounts = new List<Account>();
         
-        /*List<Duplicate_Rule_Edit__mdt> rules = [
+        List<Duplicate_Rule_Edit__mdt> rules = [
             SELECT Rule_Name__c, Field__c, Match_Type__c, Action_On_Edit__c, Operation__c, Order__c
             FROM Duplicate_Rule_Edit__mdt
             WHERE Active__c = true
@@ -118,7 +118,7 @@ public class AccountEditController {
                 
                 return result;
             }
-        }*/
+        }
         
         return result;
     }
@@ -136,53 +136,19 @@ public class AccountEditController {
     @AuraEnabled
     public static List<Account> getDuplicateAccounts(String accountId, String accountName, String billingCountry) {
         
-        
-        try {
-            List<Account> potentialMatches = [
-                SELECT Id, Name,CustomerID__c,Customer_Number__c,Phone,Owner.Alias, BillingStreet, BillingCity, BillingCountry, BillingStateCode 
-                FROM Account 
-                WHERE BillingCountry = :billingCountry 
-                AND Id != :accountId
-            ];
-            
-            List<Account> fuzzyMatchedAccounts = new List<Account>();
-            
-            for (Account acc : potentialMatches) {
-                Integer distance = getLevenshteinDistance(accountName.toLowerCase(), acc.Name.toLowerCase());
-                Double similarity = 1 - ((Double)distance / Math.max(accountName.length(), acc.Name.length()));
-                
-                if (similarity >= 0.9) { 
-                    fuzzyMatchedAccounts.add(acc);
-                }
-            }
-            
-            return fuzzyMatchedAccounts;
-        } catch (Exception e) {
-            return new List<Account>();
-        }
+try {
+        return [
+            SELECT Id, Name, CustomerID__c, Customer_Number__c, Phone, Owner.Alias,
+                   BillingStreet, BillingCity, BillingCountry, BillingStateCode
+            FROM Account
+            WHERE BillingCountry = :billingCountry
+            AND Id != :accountId
+            AND Name LIKE :('%' + accountName + '%')
+        ];
+    } catch (Exception e) {
+        return new List<Account>();
     }
-    public static Integer getLevenshteinDistance(String s1, String s2) {
-        if (s1.equals(s2)) return 0;
-        
-        Integer len1 = s1.length(), len2 = s2.length();
-        
-        List<List<Integer>> dp = new List<List<Integer>>();
-        
-        for (Integer i = 0; i <= len1; i++) {
-            dp.add(new List<Integer>()); 
-            for (Integer j = 0; j <= len2; j++) {
-                dp[i].add(j == 0 ? i : (i == 0 ? j : 0));
-            }
-        }
-        
-        for (Integer i = 1; i <= len1; i++) {
-            for (Integer j = 1; j <= len2; j++) {
-                Integer cost = (s1.charAt(i - 1) == s2.charAt(j - 1)) ? 0 : 1;
-                dp[i][j] = Math.min(dp[i - 1][j] + 1, Math.min(dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost));
-            }
-        }
-        return dp[len1][len2];
-    }    
+    }
     
     @AuraEnabled
     public static Map<String, Object> updateMultipleAccounts(Map<String, Object> acc) {

@@ -332,7 +332,7 @@ submitForm() {
         handleCloseAlert(){            
             this.showDuplicateModal = false;
             this.successHandled = true;
-            return;
+           // return;
                 }  
         closeDuplicateModal(){
             this.showDuplicateAlert = false; 
