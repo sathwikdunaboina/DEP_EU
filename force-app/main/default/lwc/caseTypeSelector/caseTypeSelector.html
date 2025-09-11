@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Type and Subtype">
+        <div class="slds-p-around_medium font-wieght-custom">
+            <!-- <template if:true={country}>
+                <p class="slds-text-body_regular">Country: <strong>{country}</strong></p>
+            </template> -->
+
+            <lightning-combobox
+                name="type"
+                label="Type"
+                value={selectedType}
+                options={typeOptions}
+                onchange={handleTypeChange}
+                placeholder="Select Type">
+            </lightning-combobox>
+
+            <lightning-combobox
+                name="subType"
+                label="Sub Type"
+                value={selectedSubType}
+                options={subTypeOptions}
+                onchange={handleSubTypeChange}
+                disabled={isSubTypeDisabled}
+                placeholder="Select Sub Type">
+            </lightning-combobox>
+
+            <template if:true={hasChanged}>
+                <lightning-button
+                    label="Save"
+                    class="slds-m-top_medium"
+                    onclick={handleSave}
+                    variant="brand">
+                </lightning-button>
+            </template>
+        </div>
+    </lightning-card>
+</template>
