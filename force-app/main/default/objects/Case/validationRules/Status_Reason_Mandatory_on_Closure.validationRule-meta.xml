@@ -3,7 +3,7 @@
     <fullName>Status_Reason_Mandatory_on_Closure</fullName>
     <active>true</active>
     <description>Status reason must be selected, when closing a case</description>
-    <errorConditionFormula>$Profile.Name != &apos;System Administrator&apos;&amp;&amp;&apos;Closed&apos; == text(Status) &amp;&amp; isBlank(text(Status_Reason__c))</errorConditionFormula>
+    <errorConditionFormula>NOT( $Permission.ByPassValidationRule) &amp;&amp;&apos;Closed&apos; == text(Status) &amp;&amp; isBlank(text(Status_Reason__c))</errorConditionFormula>
     <errorDisplayField>Status_Reason__c</errorDisplayField>
     <errorMessage>Case Status Reason is mandatory when closing a case</errorMessage>
 </ValidationRule>

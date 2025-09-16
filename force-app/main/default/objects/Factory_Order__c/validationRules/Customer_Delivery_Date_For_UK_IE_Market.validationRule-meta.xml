@@ -3,6 +3,6 @@
     <fullName>Customer_Delivery_Date_For_UK_IE_Market</fullName>
     <active>true</active>
     <description>This is temporary validation rule for  UK/IE market .To prevent the</description>
-    <errorConditionFormula>CDD_Date__c  &lt;=  DATE(2022,12,31) &amp;&amp; ( Country__c = &apos;GB&apos;  || Country__c = &apos;IE&apos;)</errorConditionFormula>
+    <errorConditionFormula>CDD_Date__c  &lt;=  DATE(2022,12,31) &amp;&amp; ( Country__c = &apos;GB&apos;  || Country__c = &apos;IE&apos;) &amp;&amp; NOT( $Permission.ByPassValidationRule )</errorConditionFormula>
     <errorMessage>The Customer Delivery Date Should Be Greater Than 31st Dec 2022 For UK/IE Market</errorMessage>
 </ValidationRule>

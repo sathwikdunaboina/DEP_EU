@@ -5,8 +5,8 @@
     <description>This makes sure, user doesnt CREATE cases to unallowed countries.
 UK can can create for Ireland, but not for Italy.</description>
     <errorConditionFormula>AND (
-    $Profile.Name != &apos;System Administrator&apos;,
-    $Profile.Name != &apos;API Only&apos;,
+     $Permission.ByPassValidationRule =false,
+$Profile.Name != &apos;API Only&apos;,
 $Profile.Name != &apos;System Integration User Base Profile&apos;,
     $User.Country != TEXT (Country__c),
     OR (

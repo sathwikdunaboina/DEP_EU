@@ -31,6 +31,8 @@ public class AutoClosureofCaseOnCreate_Test {
                                        Subject ='Fin de Contrat RTFS – Test'+i, 
                                        SuppliedEmail = 'rtfs_services@renault-trucks.com',
                                        Description = 'Nous vous confirmons la bonne fin de votre contrat de financement - Test'+i,
+                                       Brand__c = 'Volvo Truck',
+                                       Status_Reason__c = 'To be checked',
                                        RecordTypeId= recordTypeId);
                 caseList.add(oCase);
             }

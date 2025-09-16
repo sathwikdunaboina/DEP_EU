@@ -2,7 +2,6 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>UK_IE_CS_Operations</fullName>
     <columns>CASES.CASE_NUMBER</columns>
-    <columns>CASES.ORIGIN</columns>
     <columns>Indicator__c</columns>
     <columns>CASES.PRIORITY</columns>
     <columns>CASES.NAME</columns>
@@ -12,6 +11,8 @@
     <columns>CASES.SUBJECT</columns>
     <columns>CASES.CREATED_DATE</columns>
     <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
+    <columns>CASES.CLOSED_DATE</columns>
+    <columns>CASES.STATUS</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CASES.CLOSED</field>
@@ -25,6 +26,6 @@
     </filters>
     <label>UK/IE - CS Operations</label>
     <sharedTo>
-        <roleAndSubordinates>UK_IE</roleAndSubordinates>
+        <roleAndSubordinatesInternal>UK_IE</roleAndSubordinatesInternal>
     </sharedTo>
 </ListView>

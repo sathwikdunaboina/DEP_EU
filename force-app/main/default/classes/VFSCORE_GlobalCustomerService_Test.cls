@@ -19,7 +19,8 @@ public class VFSCORE_GlobalCustomerService_Test {
             Lastname = 'Admin',
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
-            TimeZoneSidKey = 'Europe/Rome'
+            TimeZoneSidKey = 'Europe/Rome',
+            country = 'France'
         );
         insert usrAdmin;
 

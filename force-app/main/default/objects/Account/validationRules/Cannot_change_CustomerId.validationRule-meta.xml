@@ -5,6 +5,6 @@
     <description>The customerId field is used for integration. So, once filled, it cannot be edited.</description>
     <errorConditionFormula>ISCHANGED(CustomerID__c) 
 &amp;&amp; NOT(ISNEW()) 
-&amp;&amp;  $Profile.Name != &apos;System Administrator&apos;</errorConditionFormula>
+&amp;&amp; $Permission.ByPassValidationRule =false</errorConditionFormula>
     <errorMessage>The customerId field is used for integration. So, once filled, it cannot be edited.</errorMessage>
 </ValidationRule>
