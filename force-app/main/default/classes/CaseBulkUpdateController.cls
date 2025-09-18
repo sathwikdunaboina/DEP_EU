@@ -12,7 +12,7 @@ public with sharing class CaseBulkUpdateController {
     
     @AuraEnabled(cacheable=true)
     public static List<Case> getSelectedCases(List<Id> caseIds) {
-        return [SELECT Id,CaseNumber,RecordTypeId FROM Case WHERE Id IN :caseIds];
+        return [SELECT Id,CaseNumber,RecordTypeId , Country__c , RecordType.DeveloperName  FROM Case WHERE Id IN :caseIds];
     }
         
     @AuraEnabled(cacheable=true)

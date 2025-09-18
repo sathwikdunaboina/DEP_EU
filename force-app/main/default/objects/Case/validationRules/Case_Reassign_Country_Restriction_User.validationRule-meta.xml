@@ -26,6 +26,7 @@ UK can reassign to Ireland, but not to Italy.</description>
             )
         )
     )
-)</errorConditionFormula>
+)
+&amp;&amp; NOT($Permission.ByPassValidationRule)</errorConditionFormula>
     <errorMessage>Cannot reassign case to user from a different country.</errorMessage>
 </ValidationRule>

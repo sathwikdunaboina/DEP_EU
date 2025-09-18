@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Mandatory_Lost_Reason_on_Closed_Stage</fullName>
     <active>true</active>
-    <errorConditionFormula>$Profile.Name != &apos;System Administrator&apos;
+    <errorConditionFormula>$Permission.ByPassValidationRule = false
 &amp;&amp;
 $Profile.Name != &apos;API Only&apos;
 &amp;&amp;
