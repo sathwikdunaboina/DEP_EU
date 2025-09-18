@@ -2,7 +2,7 @@
 global with sharing class VFS_VT_ContractRESTSERVICE { 
     
     global class ContractPageResponse {
-        public List<Contract__c> records = new List<Contract__c>();
+        public List<MetadataQueryBuilder.ContractWrapper> records = new List<MetadataQueryBuilder.ContractWrapper>();
         public Integer pageSize; // requesting size via request
         public Integer recordSize; // to show the current page size
         public Boolean hasMore;
@@ -37,7 +37,7 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
             }
            
             else if( ( !String.IsBlank(lastNDays) && Pattern.matches('^([1-9]|10)$', lastNDays) ) && ((req.params.containsKey('last_n_days') && req.params.size() == 1) || (req.params.containsKey('last_n_days') && req.params.containsKey('recordId') && req.params.size() == 2))){
-                return deltaLoad(lastNDays,String.ValueOf(dynamicSOQLSettingRecord[0].Limit__c),recordId,dynamicSOQLSettingRecord[0].WhereClause__c,dynamicSOQLSettingRecord[0].SelectQuery__c,dynamicSOQLSettingRecord[0].ChildWhereClause__c,req) ;
+                return deltaLoad(lastNDays,String.ValueOf(dynamicSOQLSettingRecord[0].Limit__c),recordId,dynamicSOQLSettingRecord[0].WhereClause__c,dynamicSOQLSettingRecord[0].SelectQuery__c,req) ;
             }
             else{
                 RestContext.response.statusCode = 400;
@@ -62,8 +62,8 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
     public static ContractPageResponse initialLoad(String recordId,String initialLoadQueryValue,String limitSize) {
         ContractPageResponse response = new ContractPageResponse();
         
-            limitSize = String.valueOf(Integer.valueOf(limitSize)+1); //Added by Sourabh 18 July
-            List<Contract__c> contractList = MetadataQueryBuilder.runDynamicQueryForInitialLoad(recordId,initialLoadQueryValue,limitSize);                    
+            limitSize = String.valueOf(Integer.valueOf(limitSize)+1); //Added by Sourabh 18 July//Need to check with Alok
+            List<MetadataQueryBuilder.ContractWrapper> contractList = MetadataQueryBuilder.runDynamicQueryForInitialLoad(recordId,initialLoadQueryValue,limitSize);                    
             if(contractList == null || contractList.Isempty()){
                 RestResponse res = RestContext.response;
                 res.statusCode = 200;
@@ -96,11 +96,11 @@ global with sharing class VFS_VT_ContractRESTSERVICE {
        
     }
     
-    public static ContractPageResponse deltaLoad(String lastNDays,String limitSize, String recordId, String whereclauseValue, String selectQueryValue, String contractHistoryAllowedFields, RestRequest req) {
+    public static ContractPageResponse deltaLoad(String lastNDays,String limitSize, String recordId, String whereclauseValue, String selectQueryValue, RestRequest req) {
         ContractPageResponse response = new ContractPageResponse();
        
             limitSize = String.valueOf(Integer.valueOf(limitSize)+1); 
-            List<Contract__c> contractList = MetadataQueryBuilder.runDynamicQuery(lastNDays,limitSize,recordId,whereclauseValue,selectQueryValue,contractHistoryAllowedFields);                    
+            List<MetadataQueryBuilder.ContractWrapper> contractList = MetadataQueryBuilder.runDynamicQuery(lastNDays,limitSize,recordId,whereclauseValue,selectQueryValue);                    
             if(contractList == null || contractList.Isempty()){
                 RestResponse res = RestContext.response;
                 res.statusCode = 200;
