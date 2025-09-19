@@ -39,6 +39,7 @@
             <label>IsDealer</label>
         </rules>
     </decisions>
+    <description>This flow updates the Contracts which is related to triggered Account.</description>
     <environments>Default</environments>
     <formulas>
         <name>CurrentDateTime</name>
@@ -86,6 +87,13 @@
                 <elementReference>CurrentDateTime</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Business_Area__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>VT</stringValue>
+            </value>
+        </filters>
         <inputAssignments>
             <field>VTContext_LastModifiedDate__c</field>
             <value>
@@ -105,6 +113,13 @@
             <operator>GreaterThanOrEqualTo</operator>
             <value>
                 <elementReference>CurrentDateTime</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Business_Area__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>VT</stringValue>
             </value>
         </filters>
         <inputAssignments>
