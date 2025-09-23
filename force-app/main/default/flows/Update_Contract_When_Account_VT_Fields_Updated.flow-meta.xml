@@ -144,7 +144,7 @@ IF(AND({!$Record.RecordType.Name}==&apos;Customer Account&apos;,ISCHANGED({!$Rec
             </connector>
             <label>Scheduled_After_LastModifiedDate</label>
             <maxBatchSize>2</maxBatchSize>
-            <offsetNumber>5</offsetNumber>
+            <offsetNumber>1</offsetNumber>
             <offsetUnit>Minutes</offsetUnit>
             <recordField>LastModifiedDate</recordField>
             <timeSource>RecordField</timeSource>
