@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurance_Opportunity</fullName>
+    <active>true</active>
+    <businessProcess>Insurance Sales Process</businessProcess>
+    <compactLayoutAssignment>Insurance_Compact_layout</compactLayoutAssignment>
+    <description>Record Type for Insurance</description>
+    <label>Insurance Opportunity</label>
+    <picklistValues>
+        <picklist>Financing__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fuel_Type__c</picklist>
+        <values>
+            <fullName>Diesel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electric</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LNG</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Claims_Status__c</picklist>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Options__c</picklist>
+        <values>
+            <fullName>ASSISTANCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CASCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEGAL PROTECTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MTPL-Motor Third Party Liability</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Product__c</picklist>
+        <values>
+            <fullName>BUSINESS INTERRUPTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CARGO%2FCMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTA - Container trailer assurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FIRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLEET</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MACHINERY BREAKDOWN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PROFESSIONAL LIABILITY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VEHICLE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WORKERS%27 COMPENSATION</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Type__c</picklist>
+        <values>
+            <fullName>LIFE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NON-LIFE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insured_Object__c</picklist>
+        <values>
+            <fullName>Activity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Is_Alive_Y_N__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Brand__c</picklist>
+        <values>
+            <fullName>Mixed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Source_Content__c</picklist>
+        <values>
+            <fullName>End of Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance without insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solo insurance</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lost_Reason__c</picklist>
+        <values>
+            <fullName>Change in client circumstances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient coverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Market competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Negative claims history</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not the decider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium too high</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terms and conditions</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mutation_type__c</picklist>
+        <values>
+            <fullName>Claims Adjustments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coverage Adjustments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Name or Address Changes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Cancellations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Endorsements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Renewals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium Adjustments</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>
