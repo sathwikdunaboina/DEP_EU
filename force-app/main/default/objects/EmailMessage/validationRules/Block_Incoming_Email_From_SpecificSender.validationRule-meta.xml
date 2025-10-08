@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Block_Incoming_Email_From_SpecificSender</fullName>
+    <active>true</active>
+    <description>This validation rule restricts below emails form case creation.</description>
+    <errorConditionFormula>AND(
+  ISNEW(),
+  Incoming = TRUE,
+  CONTAINS(LOWER(ToAddress), &quot;vfs.stockplan.nl@volvo.com&quot;),
+  OR(
+  LOWER(FromAddress) = &quot;support.sap.vce@volvo.com&quot;,
+  LOWER(FromAddress) = &quot;rbe@volvo.com&quot;,
+  LOWER(FromAddress) = &quot;Group.partnerdistribution.sap@volvo.com&quot;
+    )
+)</errorConditionFormula>
+    <errorMessage>Incoming emails from this sender to &apos;vfs.stockplan.nl@volvo.com&apos; are not allowed.</errorMessage>
+</ValidationRule>
