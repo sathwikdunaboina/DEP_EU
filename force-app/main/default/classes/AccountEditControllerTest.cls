@@ -111,7 +111,27 @@ public class AccountEditControllerTest {
         System.assertNotEquals(null, result, 'Account should be returned');
         System.assertEquals('Test Account', result.Name);
     }
-      /*
+  
+@IsTest
+static void testGetAccountRecordTypeDeveloperName() {
+   Account testAc = new Account(
+            Name = 'Test Account',
+            BillingCountry = 'India',           
+            BillingStreet = '123 Main St',
+            BillingCity = 'Bangalore',
+            BillingState = 'Karnataka'
+            );
+    insert testAc;
+
+    
+    Test.startTest();
+    String devName = AccountEditController.getAccountRecordTypeDeveloperName(testAc.Id);
+    Test.stopTest();
+
+    // Assert the result
+    System.assertNotEquals(null, devName, 'Developer Name should be retruned');
+}
+    /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     testGetDuplicateAccounts
 * @description     This method is used to test the functionality to get Duplicate Accounts based on duplicate rules

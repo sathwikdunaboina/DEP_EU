@@ -148,4 +148,29 @@ public class fetchDuplicateAccountAndSaveAccount_Test {
         fetchDuplicateAccountAndSaveAccount.updateState(accountToUpdateState);
         Test.stopTest();
     }
+    /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     fetchRecordTypeDevName
+* @description     This method is used to get the Record Type Developer Name
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/ 
+    @isTest
+    public static void testGetAccountRecordTypeDeveloperName() {
+        String sObjectName = 'Account';
+   Account testAc = new Account(
+            Name = 'Test Account',
+            BillingCountry = 'India',           
+            BillingStreet = '123 Main St',
+            BillingCity = 'Bangalore',
+            BillingState = 'Karnataka'
+            );
+    insert testAc;
+    Test.startTest();
+    fetchDuplicateAccountAndSaveAccount.getRecordTypeDetails('Account');
+    Test.stopTest();
+    
+}
 }

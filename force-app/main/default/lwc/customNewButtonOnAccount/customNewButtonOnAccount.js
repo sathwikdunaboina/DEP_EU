@@ -1,8 +1,6 @@
 import { LightningElement, track, wire, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
-import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import BILLING_STATECODE_FIELD from '@salesforce/schema/Account.BillingStateCode';
 import saveAccountRecord from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.saveAccountRecord';
 import checkDuplicateRules from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.checkDuplicateRules';
@@ -11,10 +9,13 @@ import updateState from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.up
 import { COUNTRY_PICKLIST } from 'c/globalCountryPicklist';
 import USER_ID from '@salesforce/user/Id';
 import { getRecord } from 'lightning/uiRecordApi';
+import getRecordTypeDetails from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.getRecordTypeDetails';
 
 export default class CustomNewButtonOnAccount extends NavigationMixin(LightningElement) {
     @api recordTypeId;
+    @api objectApiName = 'Account';
     @track recordTypeName = '';
+    @track recordTypeLabel = '';
     @track showForm = true;
     @track isCustomer = false;
     @track isDealer = false;
@@ -37,7 +38,13 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
     CountryPicklistOptions = COUNTRY_PICKLIST;
     isReadOnly = true;
 
-     // Fetch current user's CountryCode field
+    // Get recordTypeId from URL
+    connectedCallback() {
+        const urlParams = new URL(window.location.href).searchParams;
+        this.recordTypeId = urlParams.get('recordTypeId');
+    }
+
+    // Fetch current user's CountryCode field
     @wire(getRecord, { recordId: USER_ID, fields: ['User.CountryCode'] })
     wiredUser({ error, data }) {
         if (data) {
@@ -46,10 +53,10 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
             if (userCountryCode && this.CountryPicklistOptions.some(opt => opt.value === userCountryCode)) {
                 this.selectCountryValue = userCountryCode;
                 if (this.selectCountryValue != '') {
-            this.selectCountryFilter.push(this.selectCountryValue);
-        } else {
-            this.selectCountryFilter = [];
-        }
+                    this.selectCountryFilter.push(this.selectCountryValue);
+                } else {
+                    this.selectCountryFilter = [];
+                }
             }
         } else if (error) {
             console.error('Error fetching user country code:', error);
@@ -71,25 +78,24 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
         this.isReadOnly = false;
     }
 
-    @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT })
-    objectInfo({ data, error }) {
-        if (data) {
-            const urlParams = new URL(window.location.href).searchParams;
-            this.recordTypeId = urlParams.get('recordTypeId');
-
-            if (this.recordTypeId && data.recordTypeInfos) {
-                const rtInfo = Object.values(data.recordTypeInfos).find(rt => rt.recordTypeId === this.recordTypeId);
-                if (rtInfo) {
-                    this.recordTypeName = rtInfo.name;
-                    if (this.recordTypeName === 'Customer Account') {
-                        this.isCustomer = true;
-                    } else if (this.recordTypeName === 'Dealer Account') {
-                        this.isDealer = true;
-                    }
+    // Get developerName from Apex
+    @wire(getRecordTypeDetails, { sObjectName: '$objectApiName' })
+    wiredRecordTypes({ error, data }) {
+        if (data && this.recordTypeId) {
+            this.recordTypes = data;
+            const matchedRT = this.recordTypes.find(rt => rt.recordTypeId === this.recordTypeId);
+            if (matchedRT) {
+                this.recordTypeName = matchedRT.developerName;
+                this.recordTypeLabel = matchedRT.label;
+                // Match logic
+                if (this.recordTypeName === 'Customer_Account') {
+                    this.isCustomer = true;
+                } else if (this.recordTypeName === 'Dealer_Account') {
+                    this.isDealer = true;
                 }
             }
         } else if (error) {
-            console.error('Error loading object info:', error);
+            console.error('Error retrieving record types:', error);
         }
     }
 
