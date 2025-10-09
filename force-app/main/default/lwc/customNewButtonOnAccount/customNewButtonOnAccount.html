@@ -6,7 +6,7 @@
                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
                                 <lightning-icon icon-name="utility:close" alternative-text="Close" size="small" class="custom-close-icon"></lightning-icon>
                             </button>
-                    <h2 class="slds-text-heading_medium">New Account: {recordTypeName}</h2>
+                    <h2 class="slds-text-heading_medium">New Account: {recordTypeLabel}</h2>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium">
                     <lightning-record-edit-form
@@ -121,7 +121,7 @@
                                         <span class="slds-form-element__label">Account Record Type</span>
                                     </div>
                                     <div class="slds-col slds-size_6-of-12">
-                                        <lightning-formatted-text value={recordTypeName}></lightning-formatted-text>
+                                        <lightning-formatted-text value={recordTypeLabel}></lightning-formatted-text>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                                                                 <span class="slds-form-element__label">Account Record Type</span>
                                                             </div>
                                                             <div class="slds-col slds-size_1-of-2">
-                                                                <lightning-formatted-text value={recordTypeName}></lightning-formatted-text>
+                                                                <lightning-formatted-text value={recordTypeLabel}></lightning-formatted-text>
                                                             </div>
                                                         </div>
                                                     </div>
