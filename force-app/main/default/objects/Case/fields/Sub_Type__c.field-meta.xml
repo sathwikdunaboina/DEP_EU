@@ -11,7 +11,7 @@
         <controllingField>Type</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>true</sorted>
+            <sorted>false</sorted>
             <value>
                 <fullName>3rd Party Invoice</fullName>
                 <default>false</default>
@@ -213,11 +213,6 @@
                 <label>Early termination</label>
             </value>
             <value>
-                <fullName>Eicher</fullName>
-                <default>false</default>
-                <label>Eicher</label>
-            </value>
-            <value>
                 <fullName>Email Address for Invoicing</fullName>
                 <default>false</default>
                 <label>Email Address for Invoicing</label>
@@ -308,11 +303,6 @@
                 <label>Login Details</label>
             </value>
             <value>
-                <fullName>Mack</fullName>
-                <default>false</default>
-                <label>Mack</label>
-            </value>
-            <value>
                 <fullName>Maintenance Query Account on Stop</fullName>
                 <default>false</default>
                 <label>Maintenance Query Account on Stop</label>
@@ -341,11 +331,6 @@
                 <fullName>Maintenance Query Third Party</fullName>
                 <default>false</default>
                 <label>Maintenance Query Third Party</label>
-            </value>
-            <value>
-                <fullName>Membership</fullName>
-                <default>false</default>
-                <label>Membership</label>
             </value>
             <value>
                 <fullName>Missing Documents</fullName>
@@ -411,11 +396,6 @@
                 <fullName>Overdue Information</fullName>
                 <default>false</default>
                 <label>Overdue Information</label>
-            </value>
-            <value>
-                <fullName>Partial claims</fullName>
-                <default>false</default>
-                <label>Partial claims</label>
             </value>
             <value>
                 <fullName>Payment</fullName>
@@ -493,11 +473,6 @@
                 <label>Sale of Vehicle (SOV)</label>
             </value>
             <value>
-                <fullName>SDLG</fullName>
-                <default>false</default>
-                <label>SDLG</label>
-            </value>
-            <value>
                 <fullName>Secondary Rental Query</fullName>
                 <default>false</default>
                 <label>Secondary Rental Query</label>
@@ -553,11 +528,6 @@
                 <label>Termination Query</label>
             </value>
             <value>
-                <fullName>Total claims</fullName>
-                <default>false</default>
-                <label>Total claims</label>
-            </value>
-            <value>
                 <fullName>Underwrite request</fullName>
                 <default>false</default>
                 <label>Underwrite request</label>
@@ -582,6 +552,271 @@
                 <default>false</default>
                 <label>XSM Fleet Review Request</label>
             </value>
+            <value>
+                <fullName>Mack</fullName>
+                <default>false</default>
+                <label>Mack</label>
+            </value>
+            <value>
+                <fullName>Eicher</fullName>
+                <default>false</default>
+                <label>Eicher</label>
+            </value>
+            <value>
+                <fullName>SDLG</fullName>
+                <default>false</default>
+                <label>SDLG</label>
+            </value>
+            <value>
+                <fullName>Partial claims</fullName>
+                <default>false</default>
+                <label>Partial claims</label>
+            </value>
+            <value>
+                <fullName>Total claims</fullName>
+                <default>false</default>
+                <label>Total claims</label>
+            </value>
+            <value>
+                <fullName>Membership</fullName>
+                <default>false</default>
+                <label>Membership</label>
+            </value>
+            <value>
+                <fullName>Customer legal information</fullName>
+                <default>false</default>
+                <label>Customer legal information</label>
+            </value>
+            <value>
+                <fullName>Postal address</fullName>
+                <default>false</default>
+                <label>Postal address</label>
+            </value>
+            <value>
+                <fullName>Contacts (name, first name, phone, email)</fullName>
+                <default>false</default>
+                <label>Contacts (name, first name, phone, email)</label>
+            </value>
+            <value>
+                <fullName>Billing address (postal and email)</fullName>
+                <default>false</default>
+                <label>Billing address (postal and email)</label>
+            </value>
+            <value>
+                <fullName>Change of bank details</fullName>
+                <default>false</default>
+                <label>Change of bank details</label>
+            </value>
+            <value>
+                <fullName>Technical specifications update</fullName>
+                <default>false</default>
+                <label>Technical specifications update</label>
+            </value>
+            <value>
+                <fullName>Registration / serial number correction</fullName>
+                <default>false</default>
+                <label>Registration / serial number correction</label>
+            </value>
+            <value>
+                <fullName>Fines</fullName>
+                <default>false</default>
+                <label>Fines</label>
+            </value>
+            <value>
+                <fullName>Information pledge / registry / ANTS</fullName>
+                <default>false</default>
+                <label>Information pledge / registry / ANTS</label>
+            </value>
+            <value>
+                <fullName>Invoices / Credit notes</fullName>
+                <default>false</default>
+                <label>Invoices / Credit notes</label>
+            </value>
+            <value>
+                <fullName>Contract / Amendment</fullName>
+                <default>false</default>
+                <label>Contract / Amendment</label>
+            </value>
+            <value>
+                <fullName>Schedule / Welcome Pack</fullName>
+                <default>false</default>
+                <label>Schedule / Welcome Pack</label>
+            </value>
+            <value>
+                <fullName>Sales certificates</fullName>
+                <default>false</default>
+                <label>Sales certificates</label>
+            </value>
+            <value>
+                <fullName>Account statements / General ledgers</fullName>
+                <default>false</default>
+                <label>Account statements / General ledgers</label>
+            </value>
+            <value>
+                <fullName>Miscellaneous</fullName>
+                <default>false</default>
+                <label>Miscellaneous</label>
+            </value>
+            <value>
+                <fullName>Survey</fullName>
+                <default>false</default>
+                <label>Survey</label>
+            </value>
+            <value>
+                <fullName>Anomalies</fullName>
+                <default>false</default>
+                <label>Anomalies</label>
+            </value>
+            <value>
+                <fullName>refund request</fullName>
+                <default>false</default>
+                <label>refund request</label>
+            </value>
+            <value>
+                <fullName>Explanations / invoice correction</fullName>
+                <default>false</default>
+                <label>Explanations / invoice correction</label>
+            </value>
+            <value>
+                <fullName>Payment terms</fullName>
+                <default>false</default>
+                <label>Payment terms</label>
+            </value>
+            <value>
+                <fullName>Payment date</fullName>
+                <default>false</default>
+                <label>Payment date</label>
+            </value>
+            <value>
+                <fullName>Explanation of direct debit</fullName>
+                <default>false</default>
+                <label>Explanation of direct debit</label>
+            </value>
+            <value>
+                <fullName>Indexation</fullName>
+                <default>false</default>
+                <label>Indexation</label>
+            </value>
+            <value>
+                <fullName>Merger &amp; Acquisition</fullName>
+                <default>false</default>
+                <label>Merger &amp; Acquisition</label>
+            </value>
+            <value>
+                <fullName>Novation</fullName>
+                <default>false</default>
+                <label>Novation</label>
+            </value>
+            <value>
+                <fullName>Proforma</fullName>
+                <default>false</default>
+                <label>Proforma</label>
+            </value>
+            <value>
+                <fullName>AML Request / Return</fullName>
+                <default>false</default>
+                <label>AML Request / Return</label>
+            </value>
+            <value>
+                <fullName>Unallocated cash</fullName>
+                <default>false</default>
+                <label>Unallocated cash</label>
+            </value>
+            <value>
+                <fullName>Refund</fullName>
+                <default>false</default>
+                <label>Refund</label>
+            </value>
+            <value>
+                <fullName>Extension</fullName>
+                <default>false</default>
+                <label>Extension</label>
+            </value>
+            <value>
+                <fullName>Invoicing / return form</fullName>
+                <default>false</default>
+                <label>Invoicing / return form</label>
+            </value>
+            <value>
+                <fullName>Early return</fullName>
+                <default>false</default>
+                <label>Early return</label>
+            </value>
+            <value>
+                <fullName>ER Quotation</fullName>
+                <default>false</default>
+                <label>ER Quotation</label>
+            </value>
+            <value>
+                <fullName>Maintenance Quotation</fullName>
+                <default>false</default>
+                <label>Maintenance Quotation</label>
+            </value>
+            <value>
+                <fullName>Client refactoring</fullName>
+                <default>false</default>
+                <label>Client refactoring</label>
+            </value>
+            <value>
+                <fullName>Maintenance payment</fullName>
+                <default>false</default>
+                <label>Maintenance payment</label>
+            </value>
+            <value>
+                <fullName>Excess mileage payment</fullName>
+                <default>false</default>
+                <label>Excess mileage payment</label>
+            </value>
+            <value>
+                <fullName>Termination request</fullName>
+                <default>false</default>
+                <label>Termination request</label>
+            </value>
+            <value>
+                <fullName>Post activation registration</fullName>
+                <default>false</default>
+                <label>Post activation registration</label>
+            </value>
+            <value>
+                <fullName>Total loss</fullName>
+                <default>false</default>
+                <label>Total loss</label>
+            </value>
+            <value>
+                <fullName>Partial loss</fullName>
+                <default>false</default>
+                <label>Partial loss</label>
+            </value>
+            <value>
+                <fullName>Other requests</fullName>
+                <default>false</default>
+                <label>Other requests</label>
+            </value>
+            <value>
+                <fullName>Syndicated contract</fullName>
+                <default>false</default>
+                <label>Syndicated contract</label>
+            </value>
+            <value>
+                <fullName>Commercial request</fullName>
+                <default>false</default>
+                <label>Commercial request</label>
+            </value>
+            <value>
+                <fullName>Debt collection / Litigation</fullName>
+                <default>false</default>
+                <label>Debt collection / Litigation</label>
+            </value>
+            <value>
+                <fullName>Booking</fullName>
+                <default>false</default>
+                <label>Booking</label>
+            </value>
+            <value>
+                <fullName>Restructure</fullName>
+                <default>false</default>
+                <label>Restructure</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Service - Initiation / New</controllingFieldValue>
@@ -597,7 +832,14 @@
         <valueSettings>
             <controllingFieldValue>CLF – Purchase</controllingFieldValue>
             <controllingFieldValue>CLF – Relationship</controllingFieldValue>
-            <valueName>Eicher</valueName>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Renault</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
+            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
+            <controllingFieldValue>Customer Feedback</controllingFieldValue>
+            <valueName>Volvo</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>CLF – Purchase</controllingFieldValue>
@@ -607,19 +849,12 @@
         <valueSettings>
             <controllingFieldValue>CLF – Purchase</controllingFieldValue>
             <controllingFieldValue>CLF – Relationship</controllingFieldValue>
-            <controllingFieldValue>Customer Feedback</controllingFieldValue>
-            <valueName>Renault</valueName>
+            <valueName>Eicher</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>CLF – Purchase</controllingFieldValue>
             <controllingFieldValue>CLF – Relationship</controllingFieldValue>
             <valueName>SDLG</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>CLF – Purchase</controllingFieldValue>
-            <controllingFieldValue>CLF – Relationship</controllingFieldValue>
-            <controllingFieldValue>Customer Feedback</controllingFieldValue>
-            <valueName>Volvo</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Excess Meterage Query</controllingFieldValue>
@@ -924,15 +1159,15 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Insurance query</controllingFieldValue>
-            <valueName>Membership</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Insurance query</controllingFieldValue>
             <valueName>Partial claims</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Insurance query</controllingFieldValue>
             <valueName>Total claims</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance query</controllingFieldValue>
+            <valueName>Membership</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
