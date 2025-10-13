@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
-        <label><!-- medalliaOutbound_closeAlert --></label>
+        <label></label>
         <name>medallia_xm__medalliaOutbound_closeAlert</name>
     </fieldSets>
     <fieldSets>
-        <label><!-- medalliaOutbound_createSurvey --></label>
+        <label></label>
         <name>medallia_xm__medalliaOutbound_createSurvey</name>
     </fieldSets>
     <recordTypes>
-        <label><!-- All Case --></label>
+        <label></label>
         <name>All_Case</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- This record type has been created as part of SFDC to Medallia integration , and should be used for medallia alert cases --></description>
-        <label><!-- MEDALLIACLF Alert Cases --></label>
+        <description></description>
+        <label></label>
         <name>MEDALLIACLF_Alert_Cases</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- This record type has been created for Customer Case Management for handling cases for customer accounts and contacts across all the countries --></description>
-        <label><!-- VFS Customer --></label>
+        <description></description>
+        <label></label>
         <name>VFS_Customer</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- The record type has been created as part of Dealer Case Management , to be used for cases registered for dealers starting from UK/IE region --></description>
-        <label><!-- VFS Dealer --></label>
+        <description></description>
+        <label></label>
         <name>VFS_Dealer</name>
     </recordTypes>
     <validationRules>
@@ -44,19 +44,19 @@
         <name>Mandatory_parent_if_casetype_Duplicate</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Case Brand is mandatory when closing a case --></errorMessage>
+        <errorMessage></errorMessage>
         <name>Prevent_Closure_of_Case_Without_Brand</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Select Contact associated with Customer account --></errorMessage>
+        <errorMessage></errorMessage>
         <name>Select_Related_Customer_Contact</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Case Status Reason is mandatory when closing a case --></errorMessage>
+        <errorMessage></errorMessage>
         <name>Status_Reason_Mandatory_on_Closure</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Case Sub type is mandatory when closing a case. --></errorMessage>
+        <errorMessage></errorMessage>
         <name>SubType_Mandatory_on_Closure</name>
     </validationRules>
     <validationRules>
@@ -64,11 +64,11 @@
         <name>Type_Mandatory_on_Closure</name>
     </validationRules>
     <webLinks>
-        <label><!-- Bulk_Update_LWC --></label>
+        <label></label>
         <name>Bulk_Update_LWC</name>
     </webLinks>
     <webLinks>
-        <label><!-- UpsellCrosssellOpportunity --></label>
+        <label></label>
         <name>medallia_xm__UpsellCrosssellOpportunity</name>
     </webLinks>
 </CustomObjectTranslation>
