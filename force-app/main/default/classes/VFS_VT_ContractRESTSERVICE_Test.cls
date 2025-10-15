@@ -2,10 +2,10 @@
 public class VFS_VT_ContractRESTSERVICE_Test {
     
     public static void testDataSetup(){
-        Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
+        Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Dealer Account').getRecordTypeId();
         User usr = [SELECT Id FROM User WHERE Name = 'VT Integration User'];
         System.runAs(usr) {
-            Account acc = new Account(Name='VFSVT Demo Acc Test', RecordTypeId = accountRecordType,  BillingCountry = 'United Kingdom');
+            Account acc = new Account(Name='VFSVT Demo Acc Test', RecordTypeId = accountRecordType,  BillingCountry = 'United Kingdom',CustomerID__c = 'UKTestvfsVT001');
             Insert acc;
             Contract__c con = new Contract__c();
             con.Account__c = acc.Id;
@@ -14,6 +14,7 @@ public class VFS_VT_ContractRESTSERVICE_Test {
             con.Business_Area__c = 'VT';
             con.CreatedDate = Datetime.now().addDays(-1);
             con.End_Date__c = Date.today().addDays(10);
+            con.DealerId__c = 'UKTestvfsVT001';
             con.Type__c = 'Purchase Plan - fixed rate';//added
             insert con;
             Contract__c con1 = new Contract__c();
@@ -23,6 +24,7 @@ public class VFS_VT_ContractRESTSERVICE_Test {
             con1.Business_Area__c = 'VT';
             con1.CreatedDate = Datetime.now().addDays(-1);
             con1.End_Date__c = Date.today().addDays(10);
+            con.DealerId__c = 'UKTestvfsVT001';
             con1.Type__c = 'Purchase Plan - fixed rate';//added
             insert con1;
         }
@@ -66,6 +68,7 @@ public class VFS_VT_ContractRESTSERVICE_Test {
             RestContext.response = res;
             //Calling the Rest Method
             VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            System.debug(contResp);
             System.assertEquals(1,contResp.recordSize , 'Size should match');
         }
     }
@@ -88,9 +91,6 @@ public class VFS_VT_ContractRESTSERVICE_Test {
             System.assertEquals(null,contResp.recordSize , 'Size should match');
         }
     }
-    
-    
-
     
     @isTest
     static void testGetInitialContractsEmpty(){
@@ -174,5 +174,23 @@ public class VFS_VT_ContractRESTSERVICE_Test {
             VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
             System.assertEquals(null,contResp.recordSize , 'Size should match');
         }
-    }      
+    }
+    
+    @isTest
+    static void testInvalidUserRequest(){
+        // Set up the mock request
+        // setup test data
+        //User usr = [SELECT Id FROM User WHERE Name = 'VT Integration User'];
+        //System.runAs(usr) {
+            RestRequest req = new RestRequest();
+            RestResponse res = new RestResponse();
+            req.requestUri = '/contracts';
+            req.httpMethod = 'GET';
+            RestContext.request = req;
+            RestContext.response = res;
+            //Calling the Rest Method
+            VFS_VT_ContractRESTSERVICE.ContractPageResponse contResp = VFS_VT_ContractRESTSERVICE.getPaginatedContracts();
+            System.assertEquals(null,contResp.recordSize , 'Size should match');
+        //}
+    }    
 }
