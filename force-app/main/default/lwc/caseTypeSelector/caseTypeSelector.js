@@ -27,8 +27,8 @@ export default class CaseTypeSelector extends LightningElement {
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     wiredCase({ error, data }) {
         if (data) {
-            console.log('data'+JSON.stringify(data));
-            console.log('recordId'+this.recordId);
+            console.log('data' + JSON.stringify(data));
+            console.log('recordId' + this.recordId);
             this.country = data.fields.Country__c?.value || '';
             this.selectedType = data.fields.Type?.value || '';
             this.selectedSubType = data.fields.Sub_Type__c?.value || '';
@@ -39,7 +39,7 @@ export default class CaseTypeSelector extends LightningElement {
                 this.loadTypeData();
             }
         } else if (error) {
-            console.log('error'+error);
+            console.log('error' + error);
             this.showToast('Error', 'Error loading case fields', 'error');
         }
     }
@@ -54,54 +54,51 @@ export default class CaseTypeSelector extends LightningElement {
     loadTypeData() {
         getTypeSubTypes({ country: this.country, recordTypeDevName: this.recordTypeName })
             .then(result => {
+                // Save result in a local variable for later use
                 this.typeMap = result;
-                console.log(this.typeMap);
-                // Build Type options
-                this.typeOptions = Object.keys(result).map(type => ({
-                    label: type,
-                    value: type
-                }));
-                if (this.typeOptions.length === 0) {
-                this.showToast('Warning', 'No available Type options for the selected Country and Record Type.', 'warning');
-                }
-                // If existing Type from Case matches, pre-fill subtypes
-                if (this.selectedType && result[this.selectedType]) {
-                    const subTypes = result[this.selectedType];
-                    this.subTypeOptions = subTypes.map(st => ({
-                        label: st,
-                        value: st
-                    }));
 
-                    //Explicitly reset selectedSubType if value exists in options
-                    const match = subTypes.find(st => st === this.selectedSubType);
-                    this.selectedSubType = match || '';
-                } else {
-                    this.subTypeOptions = [];
-                    this.selectedSubType = '';
+                // Build type options
+                this.typeOptions = result.map(t => ({
+                    label: t.typeLabel,   // translated label
+                    value: t.typeMaster   // English master
+                }));
+
+                if (this.selectedType) {
+                    const matchedType = result.find(t => t.typeMaster === this.selectedType);
+                    if (matchedType) {
+                        this.subTypeOptions = matchedType.subTypes.map(st => ({
+                            label: st.subTypeLabel,   // translated label
+                            value: st.subTypeMaster   // English master
+                        }));
+
+                        const match = matchedType.subTypes.find(st => st.subTypeMaster === this.selectedSubType);
+                        this.selectedSubType = match ? match.subTypeMaster : '';
+                    }
                 }
             })
             .catch(error => {
                 this.showToast('Error', error.body.message, 'error');
             });
-
-        console.log('Country:', this.country);
-        console.log('Selected Type:', this.selectedType);
-        console.log('Selected SubType:', this.selectedSubType);
-        console.log('Available subTypes:', this.subTypeOptions);
-        console.log('this.typeOptions:', this.typeOptions);
     }
+
+
 
 
     handleTypeChange(event) {
         this.selectedType = event.detail.value;
         this.selectedSubType = ''; // reset
 
-        const subTypes = this.typeMap[this.selectedType] || [];
-        this.subTypeOptions = subTypes.map(st => ({
-            label: st,
-            value: st
-        }));
+        const matchedType = this.typeMap.find(t => t.typeMaster === this.selectedType);
+        if (matchedType) {
+            this.subTypeOptions = matchedType.subTypes.map(st => ({
+                label: st.subTypeLabel,  // translated
+                value: st.subTypeMaster  // English
+            }));
+        } else {
+            this.subTypeOptions = [];
+        }
     }
+
 
     handleSubTypeChange(event) {
         this.selectedSubType = event.detail.value;
@@ -118,9 +115,9 @@ export default class CaseTypeSelector extends LightningElement {
             .then(() => {
                 this.showToast('Success', 'Case updated successfully', 'success');
                 setTimeout(() => {
-                                document.location.reload();
-                            }, 1000);
-                })
+                    document.location.reload();
+                }, 1000);
+            })
             .catch(error => {
                 this.showToast('Error', error.body.message, 'error');
             });
