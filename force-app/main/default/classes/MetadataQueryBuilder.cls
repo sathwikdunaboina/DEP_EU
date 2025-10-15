@@ -15,14 +15,16 @@ public without sharing class MetadataQueryBuilder {
         if (String.isNotBlank(recordId)) {
             whereClause += ' AND Id > :recordId';
         }
+        if (String.isNotBlank(lastNDays)) {
+            whereClause = whereClause.replace('lastNDays', lastNDays);
+        }
         
         //Prepare dynamic query using above values
         //Sub Where Query
-        //String childWhereClause = (contractHistoryAllowedFields + ' AND createddate' +' ='  + ' last_n_days:'+ String.escapeSingleQuotes(lastNDays));
-        String childQuery = ' AND '+'( '+'VTContext_LastModifiedDate__c' +  ' = '+ 'last_n_days:'+ String.escapeSingleQuotes(lastNDays) + ' OR CreatedDate'+' ='+ ' last_n_days:'+ String.escapeSingleQuotes(lastNDays)+')';
+        //String childQuery = ' AND '+'( '+'VTContext_LastModifiedDate__c' +  ' = '+ 'last_n_days:'+ String.escapeSingleQuotes(lastNDays) + ' OR CreatedDate'+' ='+ ' last_n_days:'+ String.escapeSingleQuotes(lastNDays)+')';
         String orderBy = ' ORDER BY Id ASC';
         String limitClause = ' LIMIT '+limitSize;
-        String finalQuery = selectQueryValue + whereClause + childQuery +' WITH SECURITY_ENFORCED'+ orderBy + limitClause;
+        String finalQuery = selectQueryValue + whereClause + /*childQuery +*/' WITH SECURITY_ENFORCED'+ orderBy + limitClause;
         system.debug('MetadataQueryBuilder Class - finalQuery => '+finalQuery);
         List <Contract__c> contractList = new List<Contract__c>();
         if(Test.IsRunningTest()){
