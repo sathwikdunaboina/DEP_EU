@@ -6,7 +6,7 @@ import TYPE_FIELD from '@salesforce/schema/Case.Type';
 import STATUS_FIELD from '@salesforce/schema/Case.Status';
 import SUBTYPE_FIELD from '@salesforce/schema/Case.Sub_Type__c';
 import STATUS_REASON_FIELD from '@salesforce/schema/Case.Status_Reason__c';
-import BRAND_FIELD from '@salesforce/schema/Case.Brand__c';
+import BRAND_FIELD from '@salesforce/schema/Case.Brand__c'; 
 import getSelectedCases from '@salesforce/apex/CaseBulkUpdateController.getSelectedCases';
 import validateRecordTypes from '@salesforce/apex/CaseBulkUpdateController.validateRecordTypes';
 import validateParentCase from '@salesforce/apex/CaseBulkUpdateController.validateParentCase';
@@ -170,11 +170,12 @@ loadMetadataForCountryAndRecordType() {
     getTypeSubTypes({ country: this.selectedCountry , 
         recordTypeDevName: this.selectedRecordTypeDevName }) 
         .then((result) => {
+            console.log('result => '+JSON.stringify(result));
             this.metadataMap = result;
-            this.typeOptions = Object.keys(result).map(key => ({
-                label: key,
-                value: key
-            }));
+             this.typeOptions = result.map(item => ({
+            label: item.typeLabel,
+            value: item.typeMaster
+        }));
             this.subtypeOptions = []; // empty for now
         })
         .catch((error) => {
@@ -354,8 +355,8 @@ this.subtypeValue= '';
 this.updateFilteredSubtypeOptions();
 }*/
 
-//added sourabh
-handleTypeChange(event) {
+//added sourabh , commented sourabh - 14-10-2025
+/*handleTypeChange(event) {
     console.log('handleTypeChange called');
     this.typeValue = event.detail.value;
     this.subtypeValue = '';
@@ -374,7 +375,42 @@ handleTypeChange(event) {
         this.filteredSubtypeOptions = [{ label: '--None--', value: '' }];
         this.isSubtypeDisabled = true;
     }
+}*/
+
+
+//added sourabh - For Translations - 14-10-2025
+handleTypeChange(event) {
+    console.log('handleTypeChange called');
+    this.typeValue = event.detail.value;
+    this.subtypeValue = '';
+    this.filteredSubtypeOptions = [];
+
+    // Find the selected type object from metadataMap array
+    const selectedType = this.metadataMap.find(
+        item => item.typeMaster === this.typeValue
+    );
+
+    console.log('selectedType ==>', JSON.stringify(selectedType));
+
+    // Extract subtype list safely
+    const subtypeList = selectedType && selectedType.subTypes ? selectedType.subTypes : [];
+    console.log('subtypeList ==>', JSON.stringify(subtypeList));
+
+    if (subtypeList.length > 0) {
+        this.filteredSubtypeOptions = [
+            { label: '--None--', value: '' },
+            ...subtypeList.map(sub => ({
+                label: sub.subTypeLabel,
+                value: sub.subTypeMaster
+            }))
+        ];
+        this.isSubtypeDisabled = false;
+    } else {
+        this.filteredSubtypeOptions = [{ label: '--None--', value: '' }];
+        this.isSubtypeDisabled = true;
+    }
 }
+
 
 
 
