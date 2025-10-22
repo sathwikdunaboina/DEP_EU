@@ -4,7 +4,7 @@
         <name>Send_Notification</name>
         <label>Send Notification</label>
         <locationX>50</locationX>
-        <locationY>971</locationY>
+        <locationY>1487</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -17,7 +17,7 @@
         <inputParameters>
             <name>recipientIds</name>
             <value>
-                <elementReference>GetOwnerIds</elementReference>
+                <elementReference>ActiveOwnerIds</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -39,13 +39,31 @@
             </value>
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>54.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
+        <description>Assign the Opportunity Owner from loop to ActiveOwnerIds Variable</description>
+        <name>Assign_Active_Owner_Ids</name>
+        <label>Assign Active Owner Ids</label>
+        <locationX>270</locationX>
+        <locationY>1187</locationY>
+        <assignmentItems>
+            <assignToReference>ActiveOwnerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Iterate_Over_Active_Opportunity_Owners.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_Active_Opportunity_Owners</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_Owner_Ids</name>
         <label>Assign Owner Ids</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>GetOwnerIds</assignToReference>
@@ -55,13 +73,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Send_Notification</targetReference>
+            <targetReference>Get_Active_Opportunity_Owner</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>IsCheck_user_notification_is_enabled</name>
         <label>IsCheck user notification is enabled</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>755</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -87,6 +105,29 @@
             <label>Check if True</label>
         </rules>
     </decisions>
+    <decisions>
+        <description>Decision element to Check Whether any active opportunity Owners available to send notification</description>
+        <name>To_Check_if_the_Owner_Id_is_Active</name>
+        <label>To Check if the Owner Id is Active</label>
+        <locationX>182</locationX>
+        <locationY>1379</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Owner_is_Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ActiveOwnerIds</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Notification</targetReference>
+            </connector>
+            <label>Owner is Active</label>
+        </rules>
+    </decisions>
     <description>This flow is used to update the related Opportunity on a factory order when the factory order is updated to canceled.</description>
     <environments>Default</environments>
     <formulas>
@@ -96,6 +137,21 @@
     </formulas>
     <interviewLabel>Update Opp Stage {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Opp Stage</label>
+    <loops>
+        <description>Iterate over Active Opportunity Owners from Get Active Opportunity Owner element</description>
+        <name>Iterate_Over_Active_Opportunity_Owners</name>
+        <label>Iterate Over Active Opportunity Owners</label>
+        <locationX>182</locationX>
+        <locationY>1079</locationY>
+        <collectionReference>Get_Active_Opportunity_Owner</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Active_Owner_Ids</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>To_Check_if_the_Owner_Id_is_Active</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -116,9 +172,39 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <description>Get Active Opportunity Owner to Send Notification</description>
+        <name>Get_Active_Opportunity_Owner</name>
+        <label>Get Active Opportunity Owner</label>
+        <locationX>182</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Iterate_Over_Active_Opportunity_Owners</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>GetOwnerIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Assignment_premission</name>
         <label>Get Assignment premission</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -146,7 +232,7 @@
     <recordLookups>
         <name>Get_custom_notification</name>
         <label>Get custom notification</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -167,7 +253,7 @@
     <recordLookups>
         <name>get_notification_record</name>
         <label>get notification record</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -189,7 +275,7 @@
         <description>Update Related Financial Opportunity</description>
         <name>Update_Financial_Opportunity</name>
         <label>Update Financial Opportunity</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>323</locationY>
         <connector>
             <targetReference>get_notification_record</targetReference>
@@ -223,7 +309,7 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Update_Financial_Opportunity</targetReference>
@@ -241,6 +327,13 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>ActiveOwnerIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>GetOwnerIds</name>
         <dataType>String</dataType>
