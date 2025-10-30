@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mutation_Type__c</fullName>
+    <label>Mutation Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Policy Endorsements</fullName>
+                <default>false</default>
+                <label>Policy Endorsements</label>
+            </value>
+            <value>
+                <fullName>Policy Renewals</fullName>
+                <default>false</default>
+                <label>Policy Renewals</label>
+            </value>
+            <value>
+                <fullName>Policy Cancellations</fullName>
+                <default>false</default>
+                <label>Policy Cancellations</label>
+            </value>
+            <value>
+                <fullName>Coverage Adjustments</fullName>
+                <default>false</default>
+                <label>Coverage Adjustments</label>
+            </value>
+            <value>
+                <fullName>Name or Address Changes</fullName>
+                <default>false</default>
+                <label>Name or Address Changes</label>
+            </value>
+            <value>
+                <fullName>Claims Adjustments</fullName>
+                <default>false</default>
+                <label>Claims Adjustments</label>
+            </value>
+            <value>
+                <fullName>Premium Adjustments</fullName>
+                <default>false</default>
+                <label>Premium Adjustments</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
