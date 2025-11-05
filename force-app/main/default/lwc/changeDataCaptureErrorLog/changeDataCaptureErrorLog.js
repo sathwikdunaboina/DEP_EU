@@ -113,9 +113,7 @@ export default class ChangeDataCaptureErrorLog extends LightningElement {
         return !this.loading && !this.hasErrors;
     }
 
-    handleRefresh() {
-        this.fetchErrors();
-    }
+    
 
     showToast(title, message, variant) {
         this.dispatchEvent(
