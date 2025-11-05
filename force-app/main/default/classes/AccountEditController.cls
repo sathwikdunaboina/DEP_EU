@@ -133,6 +133,13 @@ public class AccountEditController {
         }
     }
     
+   @AuraEnabled(cacheable=true)
+    public static String getAccountRecordTypeDeveloperName(Id recordId) {
+        Account acc = [SELECT id,RecordType.DeveloperName FROM Account WHERE Id = :recordId LIMIT 1];
+        return acc.RecordType.DeveloperName;
+    }
+
+    
     @AuraEnabled
     public static List<Account> getDuplicateAccounts(String accountId, String accountName, String billingCountry) {
         
