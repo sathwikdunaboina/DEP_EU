@@ -524,6 +524,13 @@
             <componentInstance>
                 <componentName>caseComments</componentName>
                 <identifier>c_caseComments</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.CaseNumber}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>99999999999999</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-691bccdf-8dd4-4ab7-9b68-c9a36a26203e</name>
