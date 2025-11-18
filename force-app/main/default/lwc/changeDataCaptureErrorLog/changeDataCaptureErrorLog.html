@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="CDC Error Logs" icon-name="utility:error">
+        <div class="cdc-container">
+            <div class="header">
+                
+            </div>
+
+            <template if:true={loading}>
+                <div class="spinner">
+                    <lightning-spinner alternative-text="Loading error logs" size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={hasErrors}>
+                <lightning-datatable
+                    key-field="errorLogId"
+                    data={data.errors}
+                    columns={columns}
+                    hide-checkbox-column
+                    show-row-number-column
+                    sorted-by="errorCreatedDate"
+                    sorted-direction="desc"
+                    class="datatable">
+                </lightning-datatable>
+            </template>
+
+            <template if:true={noErrors}>
+                <p class="no-error-text">No recent errors found after last modification.</p>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">⚠️ Unable to fetch error logs.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
