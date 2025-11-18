@@ -11,44 +11,7 @@
 */
 @isTest
 public class SendEmailToContactEmailFlow_Test {
-    
-    /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     setUpData
-* @description     Used to prepare test setup data
-* ------------------------------------------------------------------------------------------------------
-* @param          
-* @return          
-* ------------------------------------------------------------------------------------------------------ 
-*/
-    
-    @testSetup
-    static void setupData() {
-        Account acc = new Account();
-        acc.BillingCountry= 'United Kingdom';
-        acc.Name = 'Test Account new';
-        acc.CurrencyIsoCode='EUR';
-        
-        insert acc;
-        
-        
-        Contact con = new Contact();
-        con.LastName = 'goskula';
-        con.FirstName= 'swami';
-        con.AccountId = acc.id;
-        con.HasOptedOutOfEmail = false;
-        con.Email = 'TestContact@gmail.com';
-        
-        insert con;
-        
-        Case testCase = new Case();
-        testCase.Subject = 'Test Case';
-        testCase.Status = 'New';
-        testCase.Origin = 'Web';
-        testCase.ContactId = con.id;
-        testCase.AccountId = acc.id;
-        insert testCase;
-    }
+   
     /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     emailMessageTobeSentToContact
@@ -60,11 +23,43 @@ public class SendEmailToContactEmailFlow_Test {
 */ 
     @isTest
     static void emailMessageTobeSentToContact(){
-        Case getCase = [select id,Status from case where Subject='Test Case'  limit 1]; 
+        User testUser = [SELECT Id, Username FROM User WHERE name = 'Customer Portal Integration User' LIMIT 1];
+        System.runAs(testUser){
+            Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
+            Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
+            
+            Account acc = new Account();
+            acc.BillingCountry= 'United Kingdom';
+            acc.Name = 'Test Account new';
+            acc.CurrencyIsoCode='EUR';
+            acc.RecordTypeId = accountRecordTypeID;
+            
+            insert acc;
+            
+            
+            Contact con = new Contact();
+            con.LastName = 'Test Contact';
+            con.FirstName= 'Integration User';
+            con.AccountId = acc.id;
+            con.HasOptedOutOfEmail = false;
+            con.Email = 'TestContact@gmail.com';
+            
+            insert con;
+            
+            Case testCase = new Case();
+            testCase.Subject = 'Test Case for Customer Portal Integration user';
+            testCase.Status = 'New';
+            testCase.Origin = 'Web';
+            testCase.ContactId = con.id;
+            testCase.AccountId = acc.id;
+            testCase.RecordTypeId = recordTypeId;
+            insert testCase;
+        }
+        Case getCase = [select id,Status,createdbyId from case where Subject='Test Case for Customer Portal Integration user'  limit 1]; 
         Test.startTest();            
-        getCase.Status='Closed';      
+        getCase.Status='On Hold';      
         update getCase;
         Test.stopTest();  
-        System.assertEquals('Closed', getCase.status);
+        System.assertEquals('On Hold', getCase.status);
     }
 }
