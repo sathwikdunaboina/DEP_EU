@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CaseReopenDateInFutureValidation</fullName>
+    <active>true</active>
+    <description>This Validation rule is to check if the case reopen date is in future or not</description>
+    <errorConditionFormula>Case_Reopen_Date__c &lt;= TODAY()</errorConditionFormula>
+    <errorMessage>Case Reopen Date should not be today or in the past.
+It must always be a future date.</errorMessage>
+</ValidationRule>
