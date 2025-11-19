@@ -36,6 +36,11 @@ public class SendEmailToContactEmailFlow_Test {
             
             insert acc;
             
+            Entitlement EntitlementRecord = new Entitlement();
+            EntitlementRecord.Name='Case Support Process For UK/IE';
+            EntitlementRecord.AccountId= acc.Id;             
+            insert EntitlementRecord;
+
             
             Contact con = new Contact();
             con.LastName = 'Test Contact';
@@ -52,10 +57,11 @@ public class SendEmailToContactEmailFlow_Test {
             testCase.Origin = 'Web';
             testCase.ContactId = con.id;
             testCase.AccountId = acc.id;
+            testCase.Country__c = 'United Kingdom';
             testCase.RecordTypeId = recordTypeId;
             insert testCase;
         }
-        Case getCase = [select id,Status,createdbyId from case where Subject='Test Case for Customer Portal Integration user'  limit 1]; 
+        Case getCase = [select id,Status from case where Subject='Test Case for Customer Portal Integration user'  limit 1]; 
         Test.startTest();            
         getCase.Status='On Hold';      
         update getCase;
