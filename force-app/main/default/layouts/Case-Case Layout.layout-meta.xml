@@ -16,6 +16,7 @@
         </primaryTabComponents>
     </customConsoleComponents>
     <emailDefault>true</emailDefault>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -60,6 +61,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Status_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Case_Reopen_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -307,6 +312,19 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Task_Status_Formula__c</fields>
+        <fields>Plan_Progress__c</fields>
+        <relatedList>ActionPlan__c.Case__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>ActionPlanState</fields>
+        <fields>Owner</fields>
+        <fields>StartDate</fields>
+        <relatedList>ActionPlan</relatedList>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedEmailMessageList</relatedList>
     </relatedLists>
