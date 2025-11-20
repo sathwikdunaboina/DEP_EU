@@ -31,8 +31,8 @@
         <inputParameters>
             <name>emailTemplateId</name>
             <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>00Xba000001N70DEAS</stringValue>
+                <elementReference>EmailTemplatename</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <inputParameters>
@@ -123,11 +123,34 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Email_Template</name>
+        <label>Get Email Template</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_if_contact_email_is_present</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Send Case Update Email Template</stringValue>
+            </value>
+        </filters>
+        <object>EmailTemplate</object>
+        <outputAssignments>
+            <assignToReference>EmailTemplatename</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>check_if_contact_email_is_present</targetReference>
+            <targetReference>Get_Email_Template</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -149,4 +172,11 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>EmailTemplatename</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>
