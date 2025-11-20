@@ -61,7 +61,9 @@ public class UpdateOppCloseDateFlowTest {
         Opportunity opp = new Opportunity(
             Name = 'Test Opp Closed Won',
             StageName = 'Prospecting',
-            CloseDate = System.today().addDays(10)
+            //CloseDate = System.today().addDays(10)
+            CloseDate = System.today()
+
         );
         insert opp;
 
@@ -80,7 +82,9 @@ public class UpdateOppCloseDateFlowTest {
         Opportunity opp = new Opportunity(
             Name = 'Test Opp Closed Lost',
             StageName = 'Prospecting',
-            CloseDate = System.today().addDays(10)
+           // CloseDate = System.today().addDays(10)
+            CloseDate = System.today()
+
         );
         insert opp;
 
