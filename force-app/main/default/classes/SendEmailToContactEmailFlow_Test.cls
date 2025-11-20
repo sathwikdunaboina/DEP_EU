@@ -21,13 +21,14 @@ public class SendEmailToContactEmailFlow_Test {
 * @return          
 * ------------------------------------------------------------------------------------------------------ 
 */ 
-    @isTest
+
+@isTest
     static void emailMessageTobeSentToContact(){
         User testUser = [SELECT Id, Username FROM User WHERE name = 'Customer Portal Integration User' LIMIT 1];
+
         System.runAs(testUser){
             Id recordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
             Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
-            
             Account acc = new Account();
             acc.BillingCountry= 'United Kingdom';
             acc.Name = 'Test Account new';
@@ -61,7 +62,7 @@ public class SendEmailToContactEmailFlow_Test {
             testCase.RecordTypeId = recordTypeId;
             insert testCase;
         }
-        Case getCase = [select id,Status from case where Subject='Test Case for Customer Portal Integration user'  limit 1]; 
+        Case getCase = [select id,Status,CreatedById from case where Subject='Test Case for Customer Portal Integration user'  limit 1]; 
         Test.startTest();            
         getCase.Status='On Hold';      
         update getCase;
