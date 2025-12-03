@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Flow to create error logs whenever an exception occurs on any Batch Class which implements Database.RaisesPlatformEvents</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>To get Apex Class Name from Stack Trace</description>
+        <name>ClassNameFromStackTrace</name>
+        <dataType>String</dataType>
+        <expression>IF(
+CONTAINS({!$Record.StackTrace}, &quot;Class.&quot;),
+MID(
+{!$Record.StackTrace}, 
+FIND(&quot;Class.&quot;, {!$Record.StackTrace}) +6, 
+FIND(
+&quot;.&quot;,
+{!$Record.StackTrace},
+ FIND(&quot;Class.&quot;, {!$Record.StackTrace}) + 6
+) - (FIND(&quot;Class.&quot;, {!$Record.StackTrace}) + 6)
+),
+&quot;UnknownClass&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Description to assign to Error Logs</description>
+        <name>Description</name>
+        <dataType>String</dataType>
+        <expression>&apos;Error Generated From Batch Class&apos;</expression>
+    </formulas>
+    <interviewLabel>Log Error On Batch Apex Errors {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Log Error On Batch Apex Errors</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Error_Log</name>
+        <label>Create Error Log</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Class_Name__c</field>
+            <value>
+                <elementReference>ClassNameFromStackTrace</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description__c</field>
+            <value>
+                <elementReference>Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Error_Message__c</field>
+            <value>
+                <elementReference>$Record.Message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Stack_Trace__c</field>
+            <value>
+                <elementReference>$Record.StackTrace</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Error_Log</targetReference>
+        </connector>
+        <flowRunAsUser>TriggeringUser</flowRunAsUser>
+        <object>BatchApexErrorEvent</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
