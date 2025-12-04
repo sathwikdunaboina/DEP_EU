@@ -10,7 +10,6 @@
 */
 @IsTest(SeeAllData=false)
 public class RemoveRecordsBatchClass_Test {
-    
     /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     setUpData
@@ -54,17 +53,32 @@ public class RemoveRecordsBatchClass_Test {
     /*
 * ------------------------------------------------------------------------------------------------------
 * @Method Name     delete30DaysOldInfoErrorLogs
-* @description     To cover the delete30DaysOldInfoErrorLogsBatch Class
+* @description     To cover the RemoveRecordsBatchClass
 * ------------------------------------------------------------------------------------------------------
 */
     @isTest
     static void delete30DaysOldInfoErrorLogs(){
         List<Error_Log__c> retrieveCreatedErrorLogs = [SELECT Id FROM Error_Log__c];
-        Test.StartTest();
+        Test.startTest();
         Database.executeBatch(new RemoveRecordsBatchClass(), 200);
-        Test.StopTest();
+        Test.stopTest();
         Integer remainingErrorLogsAfterDeletion = [SELECT COUNT() FROM Error_Log__c];
         System.assertEquals(5, remainingErrorLogsAfterDeletion);
+    }
+    
+    /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     coverScheduler
+* @description     To cover the RemoveRecordsBatchClassScheduler Class
+* ------------------------------------------------------------------------------------------------------
+*/
+    @isTest
+    static void coverScheduler(){
+        RemoveRecordsBatchClassScheduler schedule = new RemoveRecordsBatchClassScheduler();
+        String CRON = '0 0 0 ? * SAT *';
+        Test.startTest();
+        System.schedule('Remove Records', CRON, schedule);
+        Test.stopTest();
     }
     
 }
