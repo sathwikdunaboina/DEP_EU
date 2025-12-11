@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assignment_FO_Fields</name>
+        <label>Assignment FO Fields</label>
+        <locationX>557</locationX>
+        <locationY>325</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.VIN_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Factory_Order__r.VIN_Number__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Customer_Delivery_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Factory_Order__r.CDD_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Market_Type_1_5__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Factory_Order__r.Market_Type_1_5__c</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Update below fields from FO
+VIN Number(TEXT(100))
+Factory Order Status(Pick list)
+CDD Date (Date)
+Market Type(1-5)(Text(100))</description>
+    <environments>Default</environments>
+    <interviewLabel>Update Opportunity fields on Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Opportunity fields on Create/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Assignment_FO_Fields</targetReference>
+        </connector>
+        <filterFormula>AND(!ISNULL({!$Record.Factory_Order__c}),
+ISPICKVAL({!$Record.LeadSource}, &quot;Factory Order&quot;),
+OR(ISCHANGED({!$Record.Factory_Order__c}),ISNEW()))</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
