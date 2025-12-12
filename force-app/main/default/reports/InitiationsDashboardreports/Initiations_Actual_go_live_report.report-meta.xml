@@ -52,6 +52,16 @@
     </columns>
     <currency>GBP</currency>
     <description>Uses imported data from Vienna and TSA solutions</description>
+    <filter>
+        <criteriaItems>
+            <column>Initiation__c.Brand__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Renault Truck</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Month</dateGranularity>

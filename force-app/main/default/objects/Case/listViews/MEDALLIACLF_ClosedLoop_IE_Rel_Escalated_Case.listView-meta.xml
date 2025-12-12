@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MEDALLIACLF_ClosedLoop_IE_Rel_Escalated_Case</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>NAME</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>Escalated</value>
+    </filters>
+    <label>ClosedLoop IE Relationship Escalated</label>
+    <queue>MEDALLIACLF_ClosedLoop_IE_Rel_Escalated</queue>
+    <sharedTo>
+        <group>ClosedLoop_IE_Relationship_Escalated</group>
+    </sharedTo>
+</ListView>

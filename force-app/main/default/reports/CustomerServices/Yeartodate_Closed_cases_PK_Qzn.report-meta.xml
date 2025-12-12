@@ -53,13 +53,6 @@
             <value>credit</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>thay,tracy,george,operations,spam,junk</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>CLOSED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -87,6 +80,13 @@
             <operator>notEqual</operator>
             <value>No Action,No Response,Spam/Housekeeping</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Settlement Query</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -106,8 +106,8 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2024-01-01</startDate>
     </timeFrameFilter>
 </Report>

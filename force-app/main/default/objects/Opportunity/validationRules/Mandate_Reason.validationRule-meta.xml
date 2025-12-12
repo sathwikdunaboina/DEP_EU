@@ -14,7 +14,7 @@ ISPICKVAL( Lost_Reason__c , &quot;Declined for credit reasons&quot;),
 ISPICKVAL( Lost_Reason__c , &quot;Not available for financing&quot;)
 ),
 ISPICKVAL( Reason__c , &quot;&quot;)), 
-true, false)</errorConditionFormula>
+true, false) &amp;&amp; NOT($Permission.ByPassValidationRule)</errorConditionFormula>
     <errorDisplayField>Reason__c</errorDisplayField>
     <errorMessage>Please select the Reason.</errorMessage>
 </ValidationRule>

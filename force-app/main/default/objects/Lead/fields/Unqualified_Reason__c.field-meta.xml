@@ -4,7 +4,7 @@
     <label>Unqualified Reason</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>true</trackHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <controllingField>Status</controllingField>
@@ -25,6 +25,36 @@
                 <default>false</default>
                 <label>Other</label>
             </value>
+            <value>
+                <fullName>Need change</fullName>
+                <default>false</default>
+                <label>Need change</label>
+            </value>
+            <value>
+                <fullName>Financial constraints</fullName>
+                <default>false</default>
+                <label>Financial constraints</label>
+            </value>
+            <value>
+                <fullName>Inadequate coverage needs</fullName>
+                <default>false</default>
+                <label>Inadequate coverage needs</label>
+            </value>
+            <value>
+                <fullName>High risks operations</fullName>
+                <default>false</default>
+                <label>High risks operations</label>
+            </value>
+            <value>
+                <fullName>Customer not responding</fullName>
+                <default>false</default>
+                <label>Customer not responding</label>
+            </value>
+            <value>
+                <fullName>No claims history</fullName>
+                <default>false</default>
+                <label>No claims history</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Unqualified</controllingFieldValue>
@@ -37,6 +67,30 @@
         <valueSettings>
             <controllingFieldValue>Unqualified</controllingFieldValue>
             <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Need change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Financial constraints</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Inadequate coverage needs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>High risks operations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Customer not responding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>No claims history</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

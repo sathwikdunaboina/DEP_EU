@@ -28,6 +28,9 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
+        <field>Case.Indicator__c</field>
+    </columns>
+    <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
@@ -44,6 +47,9 @@
     </columns>
     <columns>
         <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>WEBEMAIL</field>
     </columns>
     <currency>EUR</currency>
     <filter>
@@ -63,7 +69,12 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STATUS</field>

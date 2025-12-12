@@ -69,7 +69,7 @@
         <inputAssignments>
             <field>VIN_Number__c</field>
             <value>
-                <elementReference>$Record.Lead_VIN_Number__c</elementReference>
+                <elementReference>$Record.VIN_Number__c</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record.Factory_Orders__r</inputReference>
@@ -117,7 +117,7 @@
             </value>
         </filters>
         <filters>
-            <field>Lead_VIN_Number__c</field>
+            <field>VIN_Number__c</field>
             <operator>IsChanged</operator>
             <value>
                 <booleanValue>true</booleanValue>

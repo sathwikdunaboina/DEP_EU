@@ -30,6 +30,27 @@
     <columns>
         <field>MessagingSession$CreatedDate</field>
     </columns>
+    <columns>
+        <field>MessagingSession$AcceptTime</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>MessagingSession$Accept_Time_Sec__c</field>
+    </columns>
+    <columns>
+        <field>MessagingSession$StartTime</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>MessagingSession$Start_Time_Sec__c</field>
+    </columns>
+    <columns>
+        <field>MessagingSession$EndTime</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>MessagingSession$End_Time_Sec__c</field>
+    </columns>
     <currency>EUR</currency>
     <description>This report contains open BR Messaging Sessions.</description>
     <filter>

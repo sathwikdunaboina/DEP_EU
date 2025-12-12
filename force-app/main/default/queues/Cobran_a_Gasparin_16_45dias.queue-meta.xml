@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Cobrança Gasparin - 16-45dias ( after 16 days and less than 45 days)</description>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Cobrança Gasparin - 16-45dias</name>
+    <queueMembers>
+        <users>
+            <user>allan.machado@gasparimsantos.com.br</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>VFSBR_Service_High_Priority_RC</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>

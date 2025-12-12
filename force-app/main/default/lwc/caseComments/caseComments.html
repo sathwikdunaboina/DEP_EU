@@ -1,0 +1,97 @@
+<template>
+  <lightning-textarea
+      
+        label="Comments"
+        max-length="4000"     
+       value={caseComments}
+      onchange={handleComments}
+        required
+    message-when-too-long="Comments cannot exceed 4000 characters."
+
+    >
+    
+    </lightning-textarea>
+    <template if:true={errorMessage}>
+        <div class="slds-text-color_error slds-m-top_x-small">
+            {errorMessage}
+        </div>
+    </template>
+
+    </br>
+    <lightning-input 
+                type="checkbox" 
+                label="Publish To Customer" 
+                name="isActive" 
+                checked={publishToCustomerCheckbox} 
+                onchange={handlePublishCheckbox}>
+            </lightning-input>
+            </br>
+            <lightning-input 
+                type="checkbox" 
+                label="Notify Customer by Email" 
+                name="isActive" 
+                checked={notifyCustomerByEmailCheckbox} 
+                onchange={handleEmailCheckbox}>
+            </lightning-input>
+</br>
+                <footer class="slds-grid slds-grid_align-end">
+                    <lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
+                </footer>
+                </br>
+    <lightning-card title="All Case Comments">               
+<div class="slds-p-horizontal_medium slds-p-vertical_small">           
+<div class="slds-grid slds-grid_align-end">
+            <lightning-input 
+                type="search"                
+                onchange={handleSearch} 
+                class="slds-size_small"
+                placeholder="Search this list...">
+            </lightning-input>
+        </div>
+
+        </div>
+<lightning-datatable
+            key-field="Id"
+            data={filteredComments}
+            columns={columns}
+            onrowaction={handleRowAction}
+            hide-checkbox-column
+            show-row-number-column>
+        </lightning-datatable>
+    </lightning-card>
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Case Comment </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+  <lightning-textarea
+                        label="Body"
+                        value={selectedComment.CommentBody}
+                        readonly
+                        class="slds-m-bottom_large bold-label">
+                    </lightning-textarea>
+                    </br>
+                </br>
+
+ <lightning-input 
+                    type="checkbox" 
+                    label="Published" 
+                    checked={selectedComment.IsPublished} 
+                    onchange={handlePublishedChange}>
+                </lightning-input>
+                </br>
+                </br>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button  style="margin-left: 10px;" variant="neutral" label="Close" onclick={closeModal}></lightning-button>
+                   <lightning-button variant="brand" label="Save" onclick={saveModal}></lightning-button>
+
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

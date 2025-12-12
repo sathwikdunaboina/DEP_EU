@@ -1,0 +1,1797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurance_Opportunity</fullName>
+    <active>true</active>
+    <businessProcess>Insurance Sales Process</businessProcess>
+    <compactLayoutAssignment>Insurance_Compact_layout</compactLayoutAssignment>
+    <description>Record Type for Insurance</description>
+    <label>Insurance Opportunity</label>
+    <picklistValues>
+        <picklist>Asset_Type__c</picklist>
+        <values>
+            <fullName>Master E-Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Red</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic E-tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic Exclusive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trafic Red</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brazil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Czech Republic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ireland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Israel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kazakhstan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lithuania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxembourg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovenia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sweden</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ukraine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Kingdom</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Finance_Houses__c</picklist>
+        <values>
+            <fullName>ABANCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ABN Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ABSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AIB Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AL Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANZ t%2Fas Esanda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Afin Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agroprosperis Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Akbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aktia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Albaraka Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aldemore Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alfa Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Allianz Leasing Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Allied Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amstel Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avis Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BANCO POPULAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BANCO SABADELL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BANCO SANTANDER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BANKIA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BANKINTER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BBVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BCR Leasing IFN SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BM Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BMW Australia Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP Paribas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP Paribas Fortis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP Paribas Lease Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP Paribas Leasing Solutions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOQ Equipment Finance NSW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOQ Equipment Finance QLD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOQ Vendor Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BRD Sogelease IFN SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BRE Leasing Sp%2E z o%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BZWBK Leasing S%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bail Actea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Carige%C2%A0 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Carime%C2%A0 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Caripe%C2%A0 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Cassa di Risparmio%C2%A0 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Monte dei Paschi di Siena</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Nazionale del lavoro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Popolare - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Popolare Commercio e Industria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Regionale Europea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca Sella</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca del %22Nome Regione%22 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca di Credito Cooperativo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banca di Credito Cooperativo - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banco Popolare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banco di %22Nome città%22 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Burgenland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank of Ireland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank of Melbourne Automotive Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banque du client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barclays</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bawag PSK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belfius</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biella Leasing Spa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Black Horse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brage Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Branded Financial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Budapest Leasing %28GE%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAIXA BANK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAJA LABORAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAJA RURAL DE NAVARRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAJAMAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAT Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CIB Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CNH Industrial Capital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSOB Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSOB Leasing%2C a%2Es%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Finance- Consumer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capitole Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cassa Rurale%C2%A0 %22Nome Regione%22 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cassa di Risparmio del %22Nome Regione%22 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caterpillar Financial Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caterpillar Financial Services Poland Sp%2E z o%2E o%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Centrafin %28Pty%29 Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Centro Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Citi Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Citibank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Close Asset</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clydesdale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collector</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commerzreal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commonwealth Bank of Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credem Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Agricole Leasing Italia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Suisse %28CS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credito Cooperativo%C2%A0 %22Nome Regione%22 - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credito%C2%A0 %22Nome Città - Filiale zona Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Custom Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DJS Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DNB Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DSK Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dansk Erhvervsfinansiering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Danske</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Danske Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Danske Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>De Lage Landen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>De Lage Landen Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>De Lage Landen%2F AGCO Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DeLage Landen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denizbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deutsche Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deutsche Leasing Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deutsche Leasing CR%2C spol%2E s r%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DnB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DnB Nor finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DnB Nord</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ERB Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EasyKM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Europejski Fundusz Leasingowy S%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finans Nord</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finansbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fineco Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fokus Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Franc Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GE Capital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GE Capital Equipment Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garanti Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ge Money bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gefa %28Societe generale%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Getin Leasing S%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Globus bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HSBC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HSBC Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HVB Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halk Bank AD Skopje</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halk Bankası</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Handelsbanken</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Haydock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hitachi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Housebank Sparkassen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Housebank Volksbanken Raiffeisenbanken</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hypo Alpe-Adria Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IBERCAJA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ING Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ING Lease Polska Sp%2E z o%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ikano Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ikano Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Implus Leasing Romania IFN SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Impuls Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Impuls Leasing Sp%2E Z o%2E o%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interlease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intesa Sanpaolo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investec</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investec Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JCB Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>John Deere Financial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jyske Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KBC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Komatsu Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kredo Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Krone Kapital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kubota Australia Financial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kuehn Leasing Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LHV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LIBERBANK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lantmännen Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Latitude Automotive Financial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Latitude Personal Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leasewise Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leasfinanz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leasing Fyn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leasing SLSP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liberty Financial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lixxbail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lizingova Kompania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lloyds TSB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lombard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Länsförsäkringar Bank %26 försäkring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAN FINANCIAL SERVICES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAN Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAN Financial Services Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MB Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MERCEDES BENZ CREDIT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercedes Benz Financial Services Ceská republika s%2Er%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercedes-Benz Leasing Polska Sp%2E z %2Eo%2E o%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merchant West</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merkantil Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Millennium Leasing Sp%2E z o%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moco Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nedbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nlb Banka</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordea Equipment Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordea Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordea Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nordic Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Northridge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nykredit Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OP-Pohjola</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTP Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ober Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oberbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oberbank Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Optimum Asset Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OtherFinanceCompany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PACCAR FINANCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PKO Leasing S%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PUMB leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paccar Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pekao Leasing Sp%2E z o%2E o%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piraeus Leasing Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pohjola</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pohjola Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Porshe Leasing Ukraine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Privat Bank leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ProLease Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rabobank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Raiffeisen Impuls</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Raiffeisen Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Raiffeisen Leasing IFN SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Raiffeisen Leasing Polska S%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Route Quest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCANIA FINANCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCANIA FINANCE Czech Republic%2C spol%2E s r%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEB Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SEB Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG Equipment Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG Equipment Finance Czech Republic s%2Er%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG Equipment Leasing Polska Sp%2Ez o%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGEF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santander</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scania Credit Ukraine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scania Finance Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scania Finance Polska Sp%2E z o%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scania Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scania Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shawbrook bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Siemens Financial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singers Corporation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sogelease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sparebank1 Finans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sparksasse Lising</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stopanska Banka</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swedbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Syd Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Süd-Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TBI Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TSLeasing Auto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tatraleasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Türk Ekonomi Bankası</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Türkiye İş Bankası</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UBS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UkrExim Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uni Banka</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UniCredit Bank SPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UniCredit Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UniCredit Leasing CZ%2C a%2Es%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unicredit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unicredit Leasing Corporation IFN SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VB Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VB Leasing CZ%2C spol%2E s r%2Eo%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VB Leasing Polska S%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VB Leasing Romania IFB SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VakıfBank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvofinans Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VÚB Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wasa Credit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wasa Kredit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wesbank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yapı ve Kredi Bankası</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZKB %28Zürcher Kantonalbank%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Šiauliu bank</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Finance_Type__c</picklist>
+        <values>
+            <fullName>Contract Hire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hire Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hire Purchase VR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operating Lease</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Financing__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fuel_Type__c</picklist>
+        <values>
+            <fullName>Diesel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electric</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LNG</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Claims_Status__c</picklist>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Options__c</picklist>
+        <values>
+            <fullName>ASSISTANCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CASCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEGAL PROTECTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MTPL-Motor Third Party Liability</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Product__c</picklist>
+        <values>
+            <fullName>BUSINESS INTERRUPTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CARGO%2FCMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTA - Container trailer assurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FIRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLEET</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MACHINERY BREAKDOWN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PROFESSIONAL LIABILITY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VEHICLE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WORKERS%27 COMPENSATION</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Type__c</picklist>
+        <values>
+            <fullName>LIFE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NON-LIFE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insured_Object__c</picklist>
+        <values>
+            <fullName>Activity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Is_Alive_Y_N__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer-Stockbook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer-Wagonex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End-of-term</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Factory Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance Broker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PowerBI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>volvoselected%2Ecom</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Brand__c</picklist>
+        <values>
+            <fullName>Mixed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Source_Content__c</picklist>
+        <values>
+            <fullName>End of Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance without insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solo insurance</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loss_Reason__c</picklist>
+        <values>
+            <fullName>Lost to Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget %2F Lost Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Decision %2F Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lost_Reason__c</picklist>
+        <values>
+            <fullName>Change in client circumstances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient coverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Market competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Negative claims history</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not the decider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium too high</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terms and conditions</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mutation_type__c</picklist>
+        <values>
+            <fullName>Claims Adjustments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coverage Adjustments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Name or Address Changes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Cancellations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Endorsements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Renewals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium Adjustments</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Opportunity_Type__c</picklist>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New vehicle%2Fmachine</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Used vehicle%2Fmachine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason__c</picklist>
+        <values>
+            <fullName>Credit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demo unit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exposure too high</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Part of larger deal with non-Volvo Group products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poor dealer relationship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sold to government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too poor customer credit grade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too risky asset</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unit being flagged out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unit intended for OEM rental fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unit sold to bodybuilder to resell</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Requested_guarantee__c</picklist>
+        <values>
+            <fullName>Cross Company Guarantee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Holding Company Guarantee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal Guarantee</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Stage__c</picklist>
+        <values>
+            <fullName>Awaiting Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Start Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Docs Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-qualifying customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>With Credit</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>R%26M</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -9,9 +9,14 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>CORE.USERS.ALIAS</columns>
     <filterScope>Queue</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>Overdue</value>
+    </filters>
     <label>ClosedLoop CH Relationship Overdue</label>
     <queue>MEDALLIACLF_ClosedLoop_CH_Rel_Overdue</queue>
     <sharedTo>
-        <roleAndSubordinatesInternal>Switzerland</roleAndSubordinatesInternal>
+        <group>ClosedLoop_CH_Relationship_Overdue</group>
     </sharedTo>
 </ListView>

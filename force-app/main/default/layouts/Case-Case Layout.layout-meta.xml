@@ -67,6 +67,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Case_Reopen_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Contract__c</field>
             </layoutItems>
             <layoutItems>
@@ -307,6 +311,19 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Task_Status_Formula__c</fields>
+        <fields>Plan_Progress__c</fields>
+        <relatedList>ActionPlan__c.Case__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>ActionPlanState</fields>
+        <fields>Owner</fields>
+        <fields>StartDate</fields>
+        <relatedList>ActionPlan</relatedList>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedEmailMessageList</relatedList>
     </relatedLists>

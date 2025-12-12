@@ -21,6 +21,10 @@
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
         <field>STATUS</field>
     </columns>
     <columns>
@@ -42,6 +46,13 @@
         <field>OPEN</field>
     </columns>
     <currency>GBP</currency>
+    <customDetailFormulas>
+        <calculatedFormula> today() - datevalue(LAST_UPDATEONLY)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>7 Days SLA</label>
+        <scale>0</scale>
+    </customDetailFormulas>
     <description>To show all current open cases within the in-life team</description>
     <filter>
         <criteriaItems>
@@ -58,10 +69,52 @@
             <operator>notContain</operator>
             <value>waring,tech tool</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>callum scully,helen,collections,laura,NonPersonalAccount VFS Salesforce Support,volvo xsm,chris,pav,service,emma,fiona,lauren,dealtry,katy,karen,liberty,gary,anya,richard,metcalfe,CX,Andrew David,CLF,Jemma,credit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SUBJECT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Changes to Brake Testing and R&amp;M Contract Options</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>On Hold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CDF1</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>7</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>NL-Salessupport</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>All Operations Open Cases</name>
+    <name>Ana&apos;s Team Open Cases (not on hold)</name>
     <params>
         <name>units</name>
         <value>d</value>

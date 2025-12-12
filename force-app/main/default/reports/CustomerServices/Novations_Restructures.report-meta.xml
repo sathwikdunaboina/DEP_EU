@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>LAST_UPDATE</field>
+        <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT.NAME</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
         <field>Case.Sub_Type__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATE</field>
     </columns>
     <currency>GBP</currency>
     <description>Show all open Novations &amp; Restructures across all teams</description>
@@ -20,24 +27,12 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Amendment Agreement Unwind,Amendment Dealer Error,Amendment European Authorisation,Amendment Extended Term,Amendment OLIs / kms,Amendment Other,Amendment Payment Date Change,Amendment Restructure,Amendment Start date change,Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process,Novation Request</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>king,tracy,helen,molly,jordan,bart,medcalf,thay,callum,claire</value>
+            <value>Novation - Finance Novation Completion,Novation - Finance Novation Process,Novation - Maintenance Novation Completion,Novation - Maintenance Novation Process,Novation Request,Novation</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Amendment/Novations/Restructures per TM</name>
+    <format>Tabular</format>
+    <name>Amendment Audit</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -53,6 +48,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

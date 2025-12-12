@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Expiry_passed</fullName>
+    <active>true</active>
+    <description>Prompt that preventing moving to activations if credit check has expired</description>
+    <errorConditionFormula>and( Initiation__r.Credit_Expiry_Date__c &lt;=TODAY(),ISPICKVAL( Asset_status__c,&quot;With back office for activation&quot;))</errorConditionFormula>
+    <errorDisplayField>Asset_status__c</errorDisplayField>
+    <errorMessage>Credit check has expired, please gain credit approval.</errorMessage>
+</ValidationRule>

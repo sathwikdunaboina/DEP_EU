@@ -18,15 +18,17 @@
     <columns>
         <field>LAST_NAME</field>
     </columns>
-    <columns>
-        <field>ADDRESS_COUNTRY_CODE</field>
-    </columns>
     <currency>EUR</currency>
     <description>Who are my active users?</description>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACTIVE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ADDRESS_COUNTRY_CODE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -47,8 +49,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>ADDRESS_COUNTRY_CODE</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>LAST_LOGIN</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

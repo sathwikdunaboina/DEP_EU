@@ -2,8 +2,112 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_If_The_Opportunity_Is_linked_with_Factory_Order_and_FO_Has_Delivery_Date</name>
+        <label>Check If The Opportunity Is linked with Factory Order and FO Has Delivery Date</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Update_Close_Date_To_Current_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_FO</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Factory_Order__r.CDD_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Close_Date_With_CDD_Date</targetReference>
+            </connector>
+            <label>Check FO</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decision Element to check if the Opportunity is created or updated.</description>
+        <name>To_check_if_the_Opportunity_is_Created_or_Updated</name>
+        <label>To check if the Opportunity is Created or Updated</label>
+        <locationX>644</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_the_Opportunity_Is_created</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_If_The_Opportunity_Is_linked_with_Factory_Order_and_FO_Has_Delivery_Date</targetReference>
+            </connector>
+            <label>If the Opportunity Is created</label>
+        </rules>
+        <rules>
+            <name>If_the_Opportunity_is_Updated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>To_check_if_the_Update_Record_condition_is_true</targetReference>
+            </connector>
+            <label>If the Opportunity is Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decision To check the criteria to Update Close Date on Opportunity Update</description>
+        <name>To_check_if_the_Update_Record_condition_is_true</name>
+        <label>To check if the Update Record condition is true</label>
+        <locationX>710</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>To_Update_Close_Date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaToCheckUpdateCondition</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Close_Date</targetReference>
+            </connector>
+            <label>To Update Close Date</label>
+        </rules>
+    </decisions>
     <description>Set a default Close Date on opportunity creation</description>
     <environments>Default</environments>
+    <formulas>
+        <name>FormulaToCheckUpdateCondition</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+   ISCHANGED({!$Record.StageName}),
+   OR(
+      ISPICKVAL({!$Record.StageName}, &quot;Closed Won&quot;),
+      ISPICKVAL({!$Record.StageName}, &quot;Closed Lost&quot;)
+   ),
+   NOT(
+      OR(
+         ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Won&quot;),
+         ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Lost&quot;)
+      )
+   ),
+   NOT(ISCHANGED( {!$Record.CloseDate}))
+)</expression>
+    </formulas>
     <interviewLabel>Update Opp Close Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Opp Close Date</label>
     <processMetadataValues>
@@ -26,11 +130,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <description>Set a default Close Date on opportunity creation</description>
         <name>Update_Close_Date</name>
         <label>Update Close Date</label>
-        <locationX>176</locationX>
-        <locationY>287</locationY>
+        <locationX>578</locationX>
+        <locationY>503</locationY>
         <inputAssignments>
             <field>CloseDate</field>
             <value>
@@ -39,14 +142,42 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
-    <start>
+    <recordUpdates>
+        <description>Set a default Close Date on opportunity creation for OPP whose FOs doesn&apos;t have CDD date .</description>
+        <name>Update_Close_Date_To_Current_Date</name>
+        <label>Update Close Date To Current Date</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Close Date With CDD Date of FO</description>
+        <name>Update_Close_Date_With_CDD_Date</name>
+        <label>Update Close Date With CDD Date</label>
         <locationX>50</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Record.Factory_Order__r.CDD_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>518</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Update_Close_Date</targetReference>
+            <targetReference>To_check_if_the_Opportunity_is_Created_or_Updated</targetReference>
         </connector>
         <object>Opportunity</object>
-        <recordTriggerType>Create</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>

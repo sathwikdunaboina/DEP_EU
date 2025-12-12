@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send Case Update email to the case contact when case status is updated</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Send Case Update Email Template</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>Your Case Status has changed</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+The Case Status of the below case has been updated to {{{Case.Status}}}.
+
+Case Number : {{{Case.CaseNumber}}}
+
+Case Subject : {{{Case.Subject}}}
+
+Thanks,
+
+VFS Support</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

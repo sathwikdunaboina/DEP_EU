@@ -11,7 +11,7 @@ $ObjectType.ExcludeCaseSubtypeValidation__c.Fields.Name,
 text(Country__c)
 )=
 text(Country__c)
-))</errorConditionFormula>
+))&amp;&amp; NOT($Permission.ByPassValidationRule)</errorConditionFormula>
     <errorDisplayField>Sub_Type__c</errorDisplayField>
     <errorMessage>Case Sub type is mandatory when closing a case.</errorMessage>
 </ValidationRule>

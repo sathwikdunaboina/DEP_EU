@@ -71,7 +71,6 @@
             <aggregateTypes>Sum</aggregateTypes>
             <field>FK_$Account.overdueBalance__c</field>
         </columns>
-        <currency>EUR</currency>
         <filter>
             <booleanFilter>1</booleanFilter>
             <criteriaItems>
@@ -82,7 +81,7 @@
                 <value>FR94-SF</value>
             </criteriaItems>
         </filter>
-        <format>Tabular</format>
+        <format>Summary</format>
         <name>Bank Account Mandates with Account</name>
         <params>
             <name>co</name>
@@ -108,8 +107,7 @@
         <columns>
             <field>FK_$Bank_Account__c.BIC__c</field>
         </columns>
-        <currency>EUR</currency>
-        <format>Tabular</format>
+        <format>Summary</format>
         <name>Bank Account Mandates with Bank Accounts</name>
         <params>
             <name>co</name>

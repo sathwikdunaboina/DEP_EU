@@ -51,10 +51,17 @@ public class VFSCORE_ContactChangeEventTriggerHandler {
             for(Contact con : [Select AccountId,Account.sourceSystemID__c From Contact Where Id IN: setAllContactIds WITH SYSTEM_MODE]) {
 
                 associatedRecord = con.Id;
-                String sourceSystemId = VFSCORE_Customer_ManagementCountryChecks__mdt.getInstance(con.Account.sourceSystemID__c.SubStringBefore('-')).DeveloperName;
-                if(sourceSystemId != null) {
-                    setAllAccountIds.add(con.AccountId);
+                //** Bug Fix 1245524 START **/  
+                    if(con.AccountId != null && String.isNotBlank(con.Account.sourceSystemID__c)){
+                    String sysIdPrefix = con.Account.sourceSystemID__c.SubStringBefore('-');
+                    VFSCORE_Customer_ManagementCountryChecks__mdt country = VFSCORE_Customer_ManagementCountryChecks__mdt.getInstance(sysIdPrefix);
+                    if(country!= null && String.isNotBlank(country.DeveloperName)){
+                        String sourceSystemID = country.DeveloperName;
+                        setAllAccountIds.add(con.AccountId);
+                        System.debug('Added AccountId to sync list' + con.AccountId);
+                    }
                 }
+               //** Bug Fix 1245524 END **/   
             }
             System.debug('Size of accountids'+ setAllAccountIds.Size());
         } catch(Exception e) { ErrorLogUtil.createErrorLog('VFSCORE_ContactChangeEventTriggerHandler', e.getMessage(), '', e.getLineNumber(), 'getAccountIds', e.getStackTraceString(), '', '', associatedRecord); }

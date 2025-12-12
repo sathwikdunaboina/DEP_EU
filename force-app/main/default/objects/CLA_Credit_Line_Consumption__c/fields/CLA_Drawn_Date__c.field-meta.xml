@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CLA_Drawn_Date__c</fullName>
+    <defaultValue>TEXT(YEAR(TODAY())) &amp; &quot;-&quot; &amp; 
+LPAD(TEXT(MONTH(TODAY())), 2, &quot;0&quot;) &amp; &quot;-&quot; &amp; 
+LPAD(TEXT(DAY(TODAY())), 2, &quot;0&quot;)</defaultValue>
     <deprecated>false</deprecated>
     <description>Purpose: Capture amount drawn date,
 How Populated:Automated,
 Process : POST API request responsible for populating value while record creation.
 Is UI field : Yes</description>
     <externalId>false</externalId>
-    <inlineHelpText>DD-MM-YYYY</inlineHelpText>
+    <inlineHelpText>YYYY-MM-DD</inlineHelpText>
     <label>Drawn Date</label>
     <length>255</length>
     <required>true</required>

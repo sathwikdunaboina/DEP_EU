@@ -3,9 +3,9 @@
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <description>Assign Approval Date</description>
-        <name>Assign_Approval_Date</name>
-        <label>Assign Approval Date</label>
+        <description>Assign Approval Date/Approver</description>
+        <name>Assign_Approval_Date_Approver</name>
+        <label>Assign Approval Date/Approver</label>
         <locationX>1190</locationX>
         <locationY>560</locationY>
         <assignmentItems>
@@ -13,6 +13,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>TodayDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CLA_Approver__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
             </value>
         </assignmentItems>
     </assignments>
@@ -73,7 +80,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_Approval_Date</targetReference>
+                <targetReference>Assign_Approval_Date_Approver</targetReference>
             </connector>
             <label>Status is Approved</label>
         </rules>

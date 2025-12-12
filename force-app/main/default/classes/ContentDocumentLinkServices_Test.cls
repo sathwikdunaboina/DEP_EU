@@ -102,7 +102,7 @@ private class ContentDocumentLinkServices_Test {
         oMessagingEndUser.Name = 'Test';
         oMessagingEndUser.MessagingChannelId = oMessagingChannel.Id;
         oMessagingEndUser.MessageType = 'Whatsapp';
-        oMessagingEndUser.MessagingPlatformKey = 'Test';
+        oMessagingEndUser.MessagingPlatformKey = '1234';
         insert oMessagingEndUser;
         
         MessagingSession oMessagingSession = new MessagingSession();

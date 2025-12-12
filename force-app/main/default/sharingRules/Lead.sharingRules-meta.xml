@@ -32,7 +32,7 @@
         <sharedTo>
             <group>Belgium_Renault</group>
         </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>(1 OR 2) AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <field>Country</field>
             <operation>equals</operation>
@@ -46,7 +46,12 @@
         <criteriaItems>
             <field>Brand__c</field>
             <operation>equals</operation>
-            <value>RT</value>
+            <value>Other,Mixed,RT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value></value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -301,6 +306,32 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Leads_VCE_BE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule is to share access to Users for Lead records of Brand VCE</description>
+        <label>Leads_VCE_BE</label>
+        <sharedTo>
+            <group>Belgium_VCE</group>
+        </sharedTo>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Country</field>
+            <operation>equals</operation>
+            <value>Belgium,Luxembourg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CountryCode</field>
+            <operation>equals</operation>
+            <value>Belgium,Luxembourg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VCE</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Leads_VT_AT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Leads_VT_AT</label>
@@ -332,7 +363,7 @@
         <sharedTo>
             <group>Belgium_Volvo</group>
         </sharedTo>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>(1 OR 2) AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <field>Country</field>
             <operation>equals</operation>
@@ -346,7 +377,12 @@
         <criteriaItems>
             <field>Brand__c</field>
             <operation>equals</operation>
-            <value>VT</value>
+            <value>Other,VT,Mixed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value></value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

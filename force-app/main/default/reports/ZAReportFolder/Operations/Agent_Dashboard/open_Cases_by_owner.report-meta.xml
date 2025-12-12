@@ -10,22 +10,22 @@
         <field>Case.Indicator__c</field>
     </columns>
     <columns>
-        <field>Case.First_Owner__c</field>
-    </columns>
-    <columns>
         <field>STATUS</field>
     </columns>
     <columns>
         <field>Case.Status_Reason__c</field>
     </columns>
     <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.First_Owner__c</field>
+    </columns>
+    <columns>
         <field>CONTACT.NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>SUBJECT</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
@@ -38,6 +38,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>$QUEUE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>ZA -</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

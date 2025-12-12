@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CaseSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAutoProcUser>false</caseAutoProcUser>
+    <caseCommentNotificationTemplate>unfiled$public/Case_Comment_Notification_Email</caseCommentNotificationTemplate>
     <caseFeedItemSettings>
         <characterLimit>400</characterLimit>
         <displayFormat>Default</displayFormat>
@@ -26,6 +27,7 @@
         <enableThreadTokenInSubject>false</enableThreadTokenInSubject>
         <movingEmailEnabled>false</movingEmailEnabled>
         <notifyOwnerOnNewCaseEmail>false</notifyOwnerOnNewCaseEmail>
+        <notifySenderE2CError>false</notifySenderE2CError>
         <overEmailLimitAction>Requeue</overEmailLimitAction>
         <preQuoteSignature>true</preQuoteSignature>
         <replyWithNewContentOnly>false</replyWithNewContentOnly>
@@ -39,6 +41,7 @@
             <emailAddress>vfs.operations.be@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>BE-Operations</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -52,6 +55,7 @@
             <emailAddress>support.atendimentoaocliente@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>BR – Paschoalotto</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -65,6 +69,7 @@
             <emailAddress>info.ch@vfsco.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>CH - CS Administration</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -78,6 +83,7 @@
             <emailAddress>vfs.info.ch@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>CH - CS Operations Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -91,6 +97,7 @@
             <emailAddress>rtfs.customerservice.ie@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>Customer Services IE Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -104,6 +111,7 @@
             <emailAddress>vfs.customerservice.ie@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>Customer Services IE Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -117,6 +125,7 @@
             <emailAddress>vfs.operations.de@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>DE - Contract Performance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -130,6 +139,7 @@
             <emailAddress>vfs.eot.de@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>DE - End of Term</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -143,6 +153,7 @@
             <emailAddress>vfs.insurance.de@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>DE - Insurance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -156,6 +167,7 @@
             <emailAddress>vfs.sales.de@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>DE - Sales Desk</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -169,6 +181,7 @@
             <emailAddress>vfs.repossession.de@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>DE-Repossession</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -182,6 +195,7 @@
             <emailAddress>rtfs.clientes.es@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>ES - Client Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -195,6 +209,7 @@
             <emailAddress>vfs.clientes.es@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>ES - Client Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -208,6 +223,7 @@
             <emailAddress>rtfs.assurances@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR - Service Assurances Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -221,6 +237,7 @@
             <emailAddress>vfs.assurances@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR - Service Assurances Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -234,6 +251,7 @@
             <emailAddress>rtfs_services@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR - Service Clients Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -247,6 +265,7 @@
             <emailAddress>rental@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR - Service Clients Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -260,6 +279,7 @@
             <emailAddress>rtfs.reclamations.clients@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR - Service Réclamations Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -273,6 +293,7 @@
             <emailAddress>vfs.reclamations.clients@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR - Service Réclamations Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -286,6 +307,7 @@
             <emailAddress>vfs_services@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>FR CS Administration Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -299,6 +321,7 @@
             <emailAddress>clienti@vfsco.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>Italy - Client Support</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -312,6 +335,7 @@
             <emailAddress>rtfs.clienti.it@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>Italy Client Support Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -325,6 +349,7 @@
             <emailAddress>vfs.clienti.it@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>Italy Client Support Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -338,6 +363,7 @@
             <emailAddress>vfs.collections.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Collections</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -351,6 +377,7 @@
             <emailAddress>vfs.retailcredit.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Credit Retail</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -364,6 +391,7 @@
             <emailAddress>vfs.endofterm.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-EOT</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -377,6 +405,7 @@
             <emailAddress>vfs.insurance.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Insurance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -390,6 +419,7 @@
             <emailAddress>vfs.operations.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Operations</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -403,6 +433,7 @@
             <emailAddress>vfs.sales.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Salesdesk</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -416,6 +447,7 @@
             <emailAddress>vfs.salessupport.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Salessupport</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -429,6 +461,7 @@
             <emailAddress>vfs.stockplan.nl@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Stockplan</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -442,20 +475,8 @@
             <emailAddress>subsidies@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>NL-Subsidies</routingName>
-            <saveEmailHeaders>false</saveEmailHeaders>
-        </routingAddresses>
-        <routingAddresses>
-            <addressType>EmailToCase</addressType>
-            <caseOrigin>Email</caseOrigin>
-            <caseOwner>UK_IE_CS_Operations</caseOwner>
-            <caseOwnerType>Queue</caseOwnerType>
-            <casePriority>Low</casePriority>
-            <createTask>false</createTask>
-            <emailAddress>rtfs.customerfeedback@renault-trucks.com</emailAddress>
-            <isPermsetControlled>false</isPermsetControlled>
-            <isVerified>true</isVerified>
-            <routingName>UK/IE - Customer Services</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -468,6 +489,21 @@
             <emailAddress>vfs.customerfeedback@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
+            <routingName>UK/IE - Customer Services</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>UK_IE_CS_Operations</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Low</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>rtfs.customerfeedback@renault-trucks.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Customer Services</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -481,19 +517,21 @@
             <emailAddress>rtfs.customerservice.uk@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Customer Services Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
             <caseOrigin>Email - Renault</caseOrigin>
-            <caseOwner>Renault_XSM</caseOwner>
+            <caseOwner>UK_IE_VFS_XSM</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>rtfs.xsmadmin@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Renault XSM</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -507,6 +545,7 @@
             <emailAddress>rtfs.customerexperience.uk-ie@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Service Connect Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -520,7 +559,22 @@
             <emailAddress>vfs.customerexperience.uk-ie@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Service Connect Volvo</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>scott.holleyhead@volvo.com</caseOwner>
+            <caseOwnerType>User</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>contractadmin.uk-ie@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <newEntityRecordType>Case.VFS_Dealer</newEntityRecordType>
+            <routingName>UK/IE - Service Desk</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -533,6 +587,7 @@
             <emailAddress>vfs.service.uk-ie@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.VFS_Dealer</newEntityRecordType>
             <routingName>UK/IE - Service Desk</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -546,6 +601,7 @@
             <emailAddress>vfs.selfbiller@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>false</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Service Desk Self Billers</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -559,6 +615,7 @@
             <emailAddress>volvo.xsmadmin@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE - Volvo XSM</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -572,6 +629,7 @@
             <emailAddress>vfs.customerservice.uk@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE Customer Services Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -585,6 +643,7 @@
             <emailAddress>support.utextensions@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -598,6 +657,7 @@
             <emailAddress>adm.brs.eot@vfsco.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions BRS</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -611,6 +671,7 @@
             <emailAddress>rtfs.extensions.brs@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions BRS Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -624,6 +685,7 @@
             <emailAddress>adm.rtfs.eot@vfsco.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions RT</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -637,6 +699,7 @@
             <emailAddress>rtfs.extensions.rt@renault-trucks.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions RT Renault</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -650,6 +713,7 @@
             <emailAddress>adm.vce.eot@vfsco.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions VCE</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -663,6 +727,7 @@
             <emailAddress>vfs.extensions.vce@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>UK/IE-Contract Extensions VCE Volvo</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -676,6 +741,7 @@
             <emailAddress>vfsactivationsza@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>ZA - Activation request</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -689,6 +755,7 @@
             <emailAddress>vfscustomerserviceza@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>ZA - After sales</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -702,7 +769,22 @@
             <emailAddress>vfscontractsza@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>ZA - Drafting and administration queues</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>ZA_Paid_Ups</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>function.vfspaidupsza@volvo.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
+            <routingName>ZA - Paid Ups</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -715,6 +797,7 @@
             <emailAddress>vfsrestructureza@volvo.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>ZA - Restucture</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -728,6 +811,7 @@
             <emailAddress>customerservice.ie@vfsco.com</emailAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.All_Case</newEntityRecordType>
             <routingName>customerservice.ie@vfsco.com</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
@@ -753,13 +837,15 @@
     <enableSuggestedArticlesPartnerPortal>false</enableSuggestedArticlesPartnerPortal>
     <enableSuggestedSolutions>true</enableSuggestedSolutions>
     <escalateCaseBefore>false</escalateCaseBefore>
+    <hidePublicInCaseComment>false</hidePublicInCaseComment>
     <keepCaseMergeRecords>true</keepCaseMergeRecords>
     <keepRecordTypeOnAssignmentRule>true</keepRecordTypeOnAssignmentRule>
-    <notifyContactOnCaseComment>false</notifyContactOnCaseComment>
+    <notifyContactOnCaseComment>true</notifyContactOnCaseComment>
     <notifyDefaultCaseOwner>false</notifyDefaultCaseOwner>
     <notifyOwnerOnCaseComment>false</notifyOwnerOnCaseComment>
     <notifyOwnerOnCaseOwnerChange>false</notifyOwnerOnCaseOwnerChange>
     <rtaCaseComment>false</rtaCaseComment>
+    <rtaCaseDescription>false</rtaCaseDescription>
     <showEmailAttachmentsInCaseAttachmentsRL>true</showEmailAttachmentsInCaseAttachmentsRL>
     <showFewerCloseActions>false</showFewerCloseActions>
     <systemUserEmail>automatedcase@00d2p000000pbrleak.ext</systemUserEmail>

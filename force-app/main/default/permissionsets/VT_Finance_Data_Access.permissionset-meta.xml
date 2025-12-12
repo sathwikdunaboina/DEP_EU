@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Dynamic_SOQL_Setting__mdt</name>
+    </customMetadataTypeAccesses>
     <description>The Permission set to grant finance information access for Volvo truck integration.</description>
     <fieldPermissions>
         <editable>false</editable>
@@ -23,7 +27,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Contract__c.Asset_Usage_Amount_Unit_Of_Measure__c</field>
+        <field>Contract__c.Business_Area__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

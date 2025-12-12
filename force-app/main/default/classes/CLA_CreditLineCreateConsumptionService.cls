@@ -10,6 +10,11 @@
 * ------------------------------------------------------------------------------------------
 * @description        This class is used to get consumption records.
 * ------------------------------------------------------------------------------------------
+* @Updates             Added Credit Line Description field upon consumption creation.
+* Date                 15-07-2025
+*----------------------------------------------------------------------------------------
+* @Updates             Added Consumption Type field upon consumption creation.
+* Date                 01-08-2025
 */
 
 @RestResource(urlMapping='/credit-lines/*/consumption')
@@ -116,8 +121,10 @@ private static SObject createCreditLineConsumptionRecord(List<CLA_Credit_Line__c
     oConsumption.CLA_Status__c = 'Confirmed';
     oConsumption.CLA_Credit_Line__c = listCreditLineRecords[0].Id;
     oConsumption.CLA_Drawn_Amount__c = dDrawnAmount;
+    oConsumption.CLA_Consumption_Type__c = 'Automatic';
+    oConsumption.CLA_Credit_Line_Description__c = listCreditLineRecords[0].CLA_Credit_Line_Description__c;
     
-
+    
     try{
         SObjectAccessDecision securityDecision = Security.stripInaccessible(AccessType.CREATABLE, new CLA_Credit_Line_Consumption__c[] { oConsumption });
         system.debug(LoggingLevel.INFO,'securityDecision ==> '+securityDecision);
@@ -143,7 +150,7 @@ private static SObject createCreditLineConsumptionRecord(List<CLA_Credit_Line__c
 
 private static List<CLA_Credit_Line__c> fetchCreditLineRecords(String sCreditLineIdentificationNumber) {
     return [
-        SELECT Id,CLA_Credit_Line_identification_number__c,CLA_Status__c,CLA_Remaining_Amount__c,CLA_Total_Drawn_Amount__c,	CLA_Max_Allowed_Group_Exposure__c,CLA_Expiry_Date__c
+        SELECT Id,CLA_Credit_Line_identification_number__c,CLA_Status__c,CLA_Remaining_Amount__c,CLA_Total_Drawn_Amount__c,	CLA_Max_Allowed_Group_Exposure__c,CLA_Expiry_Date__c , CLA_Credit_Line_Description__c
         FROM CLA_Credit_Line__c WHERE CLA_Credit_Line_identification_number__c =: sCreditLineIdentificationNumber WITH USER_MODE  LIMIT 1
     ];
 }

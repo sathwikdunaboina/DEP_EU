@@ -387,6 +387,11 @@
             <field>Actual_Initiations_Date__c</field>
             <table>Initiation__c.Initiation_assets__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contract_Check_Sheet__c</field>
+            <table>Initiation__c.Initiation_assets__r</table>
+        </columns>
         <masterLabel>Initiation assets</masterLabel>
     </sections>
     <sections>
@@ -511,6 +516,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Activations_Count__c</field>
+            <table>Initiation__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Credit_Expiry_Date__c</field>
             <table>Initiation__c</table>
         </columns>
         <masterLabel>Initiations</masterLabel>

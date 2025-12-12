@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Parties__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Contracts include multiple invoicee’s and related parties. Each of these parties need to be listed on Vienna to ensure invoices are raised.</description>
+    <inlineHelpText>List of business parties</inlineHelpText>
+    <label>Business Parties</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Subsidiser</fullName>
+                <default>false</default>
+                <label>Subsidiser</label>
+            </value>
+            <value>
+                <fullName>EOT/SOV/RV</fullName>
+                <default>false</default>
+                <label>EOT/SOV/RV</label>
+            </value>
+            <value>
+                <fullName>RFL dealers</fullName>
+                <default>false</default>
+                <label>Road Tax dealers</label>
+            </value>
+            <value>
+                <fullName>Maintaining dealer</fullName>
+                <default>false</default>
+                <label>Maintaining dealer</label>
+            </value>
+            <value>
+                <fullName>3rd Parties / Additional parties</fullName>
+                <default>false</default>
+                <label>Additional Supplier(s)/3rd Party</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

@@ -33,63 +33,25 @@
     <description>To show the average time in days a case takes from opening to closing</description>
     <filter>
         <criteriaItems>
-            <column>TYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>end of term</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>operations</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>linda</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Sub_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>techtool</value>
+            <value>Rob Thay,Tracy Truslove,Kennedy,Sim,Scott,UK/IE,Paul James,Ruth Murray,Heather Molloy,Gary,Anya,Bev,Fawkner,Cummins,Lunn,Katy,Molly,Ana Dotto,Closed,Fiona,Dhaliwal,Spence,Jayne,Restall,Waring,Galloway,Grover,XSM,Haywood,Dealtry,Fulford,Operations,Service,CLF,Wyatt,Steventon</value>
         </criteriaItems>
         <criteriaItems>
             <column>TYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>tech</value>
+            <value>sales support,Service - Initiation / New,Service,New,Spam/Junk</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
+    <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>TYPE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Case.Sub_Type__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Average Case Resolution Time - PK</name>
@@ -108,8 +70,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2022-02-09</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-07-01</startDate>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

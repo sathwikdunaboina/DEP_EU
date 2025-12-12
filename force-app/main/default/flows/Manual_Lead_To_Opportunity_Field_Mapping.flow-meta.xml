@@ -2,6 +2,78 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>61.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Elements assign value for opportunity record type for Finance.</description>
+        <name>Assign_Opportunity_Finance_Record_Type</name>
+        <label>Assign Opportunity Finance Record Type</label>
+        <locationX>570</locationX>
+        <locationY>587</locationY>
+        <assignmentItems>
+            <assignToReference>OppRecordType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Finance_Opportunity_Record_Type.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OpportunityFieldUpdate</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign Opportunity Insurance Record Type</description>
+        <name>Assign_Opportunity_Insurance_Record_Type</name>
+        <label>Assign Opportunity Insurance Record Type</label>
+        <locationX>306</locationX>
+        <locationY>587</locationY>
+        <assignmentItems>
+            <assignToReference>OppRecordType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Insurance_Opportunity_Record_Type.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Insurance_Opportunity_Field_Update</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check Lead&apos;s Record Type</description>
+        <name>Check_Lead_s_Record_Type</name>
+        <label>Check Lead&apos;s Record Type</label>
+        <locationX>570</locationX>
+        <locationY>371</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Insurance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Insurance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Insurance_Opportunity_Record_Type</targetReference>
+            </connector>
+            <label>Insurance</label>
+        </rules>
+        <rules>
+            <name>Finance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Finance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Finance_Opportunity_Record_Type</targetReference>
+            </connector>
+            <label>Finance</label>
+        </rules>
+    </decisions>
     <description>This flow is used for mapping manual lead to opportunity fields</description>
     <environments>Default</environments>
     <formulas>
@@ -21,7 +93,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -35,11 +107,11 @@
         <description>Element to get the Finance Opportunity Record Type</description>
         <name>Get_Finance_Opportunity_Record_Type</name>
         <label>Get Finance Opportunity Record Type</label>
-        <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationX>894</locationX>
+        <locationY>462</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>OpportunityFieldUpdate</targetReference>
+            <targetReference>Assign_Opportunity_Finance_Record_Type</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -54,12 +126,35 @@
         <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <description>Element to get the Insurance Opportunity Record Type</description>
+        <name>Get_Insurance_Opportunity_Record_Type</name>
+        <label>Get Insurance Opportunity Record Type</label>
+        <locationX>306</locationX>
+        <locationY>479</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Opportunity_Insurance_Record_Type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Insurance_Opportunity</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <description>This element updates the opportunity fields which are not mapped by standard lead to opportunity mapping screen</description>
-        <name>OpportunityFieldUpdate</name>
-        <label>Opportunity Field Update</label>
-        <locationX>176</locationX>
-        <locationY>431</locationY>
+        <name>Insurance_Opportunity_Field_Update</name>
+        <label>Insurance Opportunity Field Update</label>
+        <locationX>254</locationX>
+        <locationY>765</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -153,6 +248,196 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Financing__c</field>
+            <value>
+                <elementReference>$Record.Financing__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fuel_Type__c</field>
+            <value>
+                <elementReference>$Record.Fuel_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Claims_Status__c</field>
+            <value>
+                <elementReference>$Record.Insurance_Claims_Status__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Options__c</field>
+            <value>
+                <elementReference>$Record.Insurance_Options__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Product__c</field>
+            <value>
+                <elementReference>$Record.Insurance_Product__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Type__c</field>
+            <value>
+                <elementReference>$Record.Insurance_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insured_Object__c</field>
+            <value>
+                <elementReference>$Record.Insured_Object__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Is_Alive_Y_N__c</field>
+            <value>
+                <elementReference>$Record.Is_Alive__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Brand__c</field>
+            <value>
+                <elementReference>$Record.Brand__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Creation_Date__c</field>
+            <value>
+                <elementReference>$Record.CreatedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Source_Content__c</field>
+            <value>
+                <elementReference>$Record.Lead_Source_Content__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mutation_type__c</field>
+            <value>
+                <elementReference>$Record.Mutation_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Company</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>OppRecordType</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>This element updates the opportunity fields which are not mapped by standard lead to opportunity mapping screen</description>
+        <name>OpportunityFieldUpdate</name>
+        <label>Opportunity Field Update</label>
+        <locationX>689</locationX>
+        <locationY>748</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ConvertedOpportunityId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.Dealer_Account__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Amount</field>
+            <value>
+                <elementReference>$Record.Net_Sales_Price__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>$Record.Country</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <elementReference>$Record.CurrencyIsoCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Account__c</field>
+            <value>
+                <elementReference>$Record.ConvertedAccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__City__s</field>
+            <value>
+                <elementReference>$Record.City</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__CountryCode__s</field>
+            <value>
+                <elementReference>$Record.CountryCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__GeocodeAccuracy__s</field>
+            <value>
+                <elementReference>$Record.GeocodeAccuracy</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__Latitude__s</field>
+            <value>
+                <elementReference>$Record.Latitude</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__Longitude__s</field>
+            <value>
+                <elementReference>$Record.Longitude</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__PostalCode__s</field>
+            <value>
+                <elementReference>$Record.PostalCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__StateCode__s</field>
+            <value>
+                <elementReference>$Record.StateCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Address__Street__s</field>
+            <value>
+                <elementReference>$Record.Street</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Contact__c</field>
+            <value>
+                <elementReference>$Record.ConvertedContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Brand__c</field>
+            <value>
+                <elementReference>$Record.Brand__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Lead_Creation_Date__c</field>
             <value>
                 <elementReference>$Record.CreatedDate</elementReference>
@@ -167,16 +452,16 @@
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>Get_Finance_Opportunity_Record_Type.Id</elementReference>
+                <elementReference>OppRecordType</elementReference>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>444</locationX>
+        <locationY>48</locationY>
         <connector>
-            <targetReference>Get_Finance_Opportunity_Record_Type</targetReference>
+            <targetReference>Check_Lead_s_Record_Type</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>or</filterLogic>
@@ -192,4 +477,11 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>OppRecordType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>
