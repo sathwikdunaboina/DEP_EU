@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
@@ -175,6 +176,7 @@
         <fields>CLA_Quote_Origin__c</fields>
         <fields>CLA_Quote_Market__c</fields>
         <fields>CLA_Quote_Number__c</fields>
+        <fields>CLA_Consumption_Type__c</fields>
         <relatedList>CLA_Credit_Line_Consumption__c.CLA_Credit_Line__c</relatedList>
     </relatedLists>
     <relatedLists>

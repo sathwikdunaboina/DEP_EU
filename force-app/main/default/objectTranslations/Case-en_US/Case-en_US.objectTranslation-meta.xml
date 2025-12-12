@@ -8,6 +8,79 @@
         <label><!-- medalliaOutbound_createSurvey --></label>
         <name>medallia_xm__medalliaOutbound_createSurvey</name>
     </fieldSets>
+    <layouts>
+        <layout>Case Layout</layout>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MEDALLIACLF Case Layout</layout>
+        <sections>
+            <label><!-- Closed Loop Feedback --></label>
+            <section>Closed Loop Feedback</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>VFS Dealer Case Layout</layout>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Related to Customer --></label>
+            <section>Related to Customer</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Bulk_Update</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Case --></label>
+        <name>CaseSummary</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- CloseCaseLightning --></label>
+        <name>CloseCaseLightning</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewChildCase --></label>
+        <name>NewChildCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Note --></label>
+        <name>Note</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- SendEmail --></label>
+        <name>SendEmail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update CLF Case --></label>
+        <name>UpdateCLFCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Case --></label>
+        <name>UpdateCaseCustom</name>
+    </quickActions>
     <recordTypes>
         <label><!-- All Case --></label>
         <name>All_Case</name>
@@ -27,6 +100,13 @@
         <label><!-- VFS Dealer --></label>
         <name>VFS_Dealer</name>
     </recordTypes>
+    <validationRules>
+        <errorMessage>
+            <!-- Case Reopen Date should not be empty and should not be in the past.
+It must always be a future date. -->
+        </errorMessage>
+        <name>CaseReopenDateInFutureValidation</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot create cases for this country. --></errorMessage>
         <name>Case_Country_Restriction</name>
@@ -66,6 +146,14 @@
     <webLinks>
         <label><!-- Bulk_Update_LWC --></label>
         <name>Bulk_Update_LWC</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plan --></label>
+        <name>Create_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plans --></label>
+        <name>Create_Action_Plans</name>
     </webLinks>
     <webLinks>
         <label><!-- UpsellCrosssellOpportunity --></label>

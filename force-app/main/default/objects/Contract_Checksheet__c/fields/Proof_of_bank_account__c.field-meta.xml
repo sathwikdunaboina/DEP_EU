@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Proof_of_bank_account__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is a check undertaken by the Commercial team prior to activation. They will also set up the new bank details on Vienna for new customers.
+The activations team will check the bank details against the signed agreement and DD mandate. If incorrect, an initiation error will be created. The bank details checks by activations are between Vienna and the customer contract docs (unlike deposit which is checking bank account details vs bank statement).</description>
+    <label>Proof of bank account</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Customer – Proof of bank account required</fullName>
+                <default>false</default>
+                <label>New Customer – Proof of bank account required</label>
+            </value>
+            <value>
+                <fullName>Existing Mandate</fullName>
+                <default>false</default>
+                <label>Existing Mandate</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

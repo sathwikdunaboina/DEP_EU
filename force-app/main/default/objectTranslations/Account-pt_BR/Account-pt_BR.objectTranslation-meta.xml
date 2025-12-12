@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Customer Management Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Bulk Update --></label>
+        <name>Change_TM_On_Account</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Child Account --></label>
+        <name>Child_Account</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Edit --></label>
+        <name>Edit_LWC</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Get Invoices --></label>
+        <name>Get_Invoices</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Runout report --></label>
+        <name>Runout_report</name>
+    </quickActions>
     <recordTypes>
         <description><!-- Record type for Customer Account Data --></description>
         <label><!-- Customer Account --></label>
@@ -27,6 +54,18 @@
         <name>Validate_Account_BillingCountry_OnCreate</name>
     </validationRules>
     <webLinks>
+        <label><!-- Change_Owner --></label>
+        <name>Change_Owner</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plan --></label>
+        <name>Create_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plans --></label>
+        <name>Create_Action_Plans</name>
+    </webLinks>
+    <webLinks>
         <label><!-- GoogleMaps --></label>
         <name>GoogleMaps</name>
     </webLinks>
@@ -37,6 +76,10 @@
     <webLinks>
         <label><!-- GoogleSearch --></label>
         <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Email --></label>
+        <name>Send_Email</name>
     </webLinks>
     <webLinks>
         <label>Enviar mensagem</label>

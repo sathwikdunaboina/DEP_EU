@@ -214,6 +214,20 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>UK_IE_Service_Connect_Read_Only_Cases</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>UK/IE Service Connect Read Only Cases</label>
+        <sharedTo>
+            <group>UK_IE_Service_Connect_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>United Kingdom,Ireland</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>ZA_CustomerService_Access</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Grant Read/Write access to ZA Cases. To customer service agents of ZA Market.</description>

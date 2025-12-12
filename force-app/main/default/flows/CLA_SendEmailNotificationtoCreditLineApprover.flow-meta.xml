@@ -15,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>CLA_Credit_Line_Consumption__c.CLA_Credit_Line_Consumption_Confirmation_Alert</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -66,6 +65,13 @@
         <filters>
             <field>CLA_Credit_Line_Approver_s_Email__c</field>
             <operator>NotEqualTo</operator>
+        </filters>
+        <filters>
+            <field>CLA_Consumption_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Automatic</stringValue>
+            </value>
         </filters>
         <object>CLA_Credit_Line_Consumption__c</object>
         <schedule>

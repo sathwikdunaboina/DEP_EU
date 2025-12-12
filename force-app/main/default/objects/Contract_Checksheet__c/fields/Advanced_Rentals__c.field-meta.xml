@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Advanced_Rentals__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Are Advanced payments been paid?</description>
+    <label>Advanced Rentals</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Advanced Rentals</fullName>
+                <default>true</default>
+                <label>No Advanced Rentals</label>
+            </value>
+            <value>
+                <fullName>DD</fullName>
+                <default>false</default>
+                <label>DD</label>
+            </value>
+            <value>
+                <fullName>TT</fullName>
+                <default>false</default>
+                <label>TT</label>
+            </value>
+            <value>
+                <fullName>SO</fullName>
+                <default>false</default>
+                <label>SO</label>
+            </value>
+            <value>
+                <fullName>Contra</fullName>
+                <default>false</default>
+                <label>Contra</label>
+            </value>
+            <value>
+                <fullName>Split</fullName>
+                <default>false</default>
+                <label>Split</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

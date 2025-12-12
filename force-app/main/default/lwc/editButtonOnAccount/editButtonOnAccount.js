@@ -6,12 +6,19 @@ import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 import getAccountDetails from '@salesforce/apex/AccountEditController.getAccountDetails';
 import updateMultipleAccounts from '@salesforce/apex/AccountEditController.updateMultipleAccounts';
 import checkDuplicateRules from '@salesforce/apex/AccountEditController.checkDuplicateRules';
+import getAccountRecordTypeDeveloperName from '@salesforce/apex/AccountEditController.getAccountRecordTypeDeveloperName';
 import BILLING_STATECODE_FIELD from '@salesforce/schema/Account.BillingStateCode';
+import { COUNTRY_PICKLIST } from 'c/globalCountryPicklist';
+import { CloseActionScreenEvent } from 'lightning/actions';
 
-const FIELDS = ['Account.RecordTypeId','Account.CreatedBy.Name','Account.Customer_Number__c','Account.CustomerID__c','Account.LastModifiedBy.Name','Account.Owner.Alias','Account.CreatedDate','Account.LastModifiedDate','Account.RecordType.Name','Account.OwnerId','Account.BillingCountry','Account.BillingStreet','Account.BillingCity','Account.BillingStateCode','Account.BillingState','Account.BillingPostalCode','Account.Name'];
+
+
+const FIELDS = ['Account.RecordTypeId','Account.RecordType.DeveloperName','Account.CreatedBy.Name','Account.Customer_Number__c','Account.CustomerID__c','Account.LastModifiedBy.Name','Account.Owner.Alias','Account.CreatedDate','Account.LastModifiedDate','Account.RecordType.Name','Account.OwnerId','Account.BillingCountry','Account.BillingStreet','Account.BillingCity','Account.BillingStateCode','Account.BillingState','Account.BillingCountryCode','Account.BillingPostalCode','Account.Name'];
 
 export default class EditButtonOnAccount extends NavigationMixin(LightningElement) {
 @api recordId;
+@api recordTypeId;
+objectApiName = 'Account';
 @track showDuplicateAlert = false;
 @track duplicateAccounts = [];
 @track isDuplicate = false;
@@ -21,9 +28,12 @@ export default class EditButtonOnAccount extends NavigationMixin(LightningElemen
 @track billingAddress = {}; 
 @track showDuplicateModal = false; 
 @track duplicateBlock = false;
+@track isCustomerAccount = false;
+@track isDealerAccount = false;
 
 recordTypeId;
 recordTypeName;
+recordtypeDeveloperName;
 selectedAccountName;
 accountName;
 selectedCompanyRegistrationNumber;
@@ -46,6 +56,11 @@ ownerName;
 isSaveAndNew = false;
 modalHeaderClass = '';
 alertMessageClass = '';
+selectCountryValue = '';
+selectCountryFilter = [];
+CountryPicklistOptions = COUNTRY_PICKLIST;
+isReadOnly = true;
+
 
     
 @wire(getAccountDetails, { recordId: '$recordId' })
@@ -62,9 +77,28 @@ if (data) {
   
 } 
 }
-    
-connectedCallback() {
+     
+@wire(getAccountRecordTypeDeveloperName, { recordId: '$recordId' })
 
+ wiredRecordType({ error, data }) {
+        if (data) {
+            this.developerName = data;
+            console.log('Developer Name:', this.developerName);
+             if (this.developerName === 'Customer_Account') {
+                    this.isCustomerAccount = true;
+                    console.log('this.isCustomerAccount',this.isCustomerAccount);
+                } else if (this.developerName === 'Dealer_Account') {
+                    this.isDealerAccount = true;
+                                        console.log('this.isDealerAccount',this.isDealerAccount);
+
+                }
+        } else if (error) {
+            this.error = error;
+            console.error('Error:', error);
+        }
+    }
+
+connectedCallback() {
 }
 
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
@@ -92,6 +126,8 @@ const formatDate = (rawDate) => {
     this.lastModifiedDate = formatDate(modifiedRaw);
     this.ownerName = data.fields.Owner.value.fields.Name?.value; 
     this.recordTypeName = data.fields.RecordType?.displayValue;
+    this.recordtypeId = data.fields.RecordTypeId?.value;
+    this.recordTypeDeveloperName = data.fields.RecordType.value.fields.DeveloperName.value;
     this.selectedAccountName = data.fields.Name?.value;
     this.selectedCompanyRegistrationNumber = data.fields.CompanyRegistrationNumber__c?.value;
     this.selectedCustomerId = data.fields.CustomerID__c?.value;
@@ -105,14 +141,31 @@ const formatDate = (rawDate) => {
     this.lastModifiedBy = data.fields.LastModifiedBy.value.fields.Name?.value;
     this.createdByDetails = ` ${this.createdBy} , ${this.createdDate}`;
     this.lastModifiedByDetails = ` ${this.lastModifiedBy} , ${this.lastModifiedDate}`;
+                 if(data.fields.BillingCountryCode.value != null){
+                this.selectCountryValue = data.fields.BillingCountryCode.value;
+                this.selectCountryFilter.push(this.selectCountryValue);
+            }
+
         } 
 }
+    handleCountrySelect(event) {
+        this.selectCountryFilter = [];
+        this.selectCountryValue = event.detail.value;
+        if (this.selectCountryValue != '') {
+            this.selectCountryFilter.push(this.selectCountryValue);
+        } else {
+            this.selectCountryFilter = [];
+        }
+    }
 handleAddressChange(event) {
 this.selectedAccountBillingCountry = event.detail.country;
 this.selectedBillingStreet = event.detail.street;
 this.selectedBillingCity = event.detail.city;
 this.selectedBillingState = event.detail.province;
 this.selectedBillingPostalCode = event.detail.postalCode;
+this.isReadOnly = false;
+
+
 }
  handleSave() {
     this.mode = 'save';
@@ -197,6 +250,10 @@ submitForm() {
                     })
                     
                 );
+                
+        this.dispatchEvent(new CloseActionScreenEvent());
+
+                console.log('Navigating to recordId:', this.recordId);
                 this[NavigationMixin.Navigate]({
                     type: 'standard__recordPage',
                     attributes: {
@@ -206,6 +263,8 @@ submitForm() {
                     }
                     
                 });
+                this.isReadOnly = true;
+
                getRecordNotifyChange([{ recordId: this.recordId }]);
 
                         }
@@ -305,7 +364,7 @@ submitForm() {
         handleCloseAlert(){            
             this.showDuplicateModal = false;
             this.successHandled = true;
-            return;
+           // return;
                 }  
         closeDuplicateModal(){
             this.showDuplicateAlert = false; 
@@ -384,13 +443,6 @@ handleGoogleSearchRedirect(event) {
     if (userConfirmedSearch) {
         window.open(this.googleSearchUrl, '_blank');
     }
-}
-get isCustomerAccount() {
-    return this.recordTypeName === 'Customer Account';
-}
-
-get isDealerAccount() {
-    return this.recordTypeName === 'Dealer Account';
 }
 
 handleCancel() {

@@ -32,7 +32,7 @@ public class ErrorLogUtil {
     public static void logError(Exception e,String objectRecordName,String objectRecordId){
        
         String stackTrace = e.getStackTraceString().substringBefore('\n');
-        String className = stackTrace.substringAfter('.').substringBefore('.');	
+        String className = stackTrace.substringAfter('.').substringBefore('.');  
         String methodName = stackTrace.substringBefore(':').substringAfter(className).substringAfter('.');
         
         Error_Log__c errorLog = new Error_Log__c(

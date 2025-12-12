@@ -8,6 +8,17 @@
         <plural>true</plural>
         <value>Credit Line Customers</value>
     </caseValues>
+    <layouts>
+        <layout>Credit Line Customer Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Validate --></label>
+        <name>Validate</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Can not create/update record as Credit line is expired. --></errorMessage>

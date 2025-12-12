@@ -8,10 +8,25 @@
         <plural>true</plural>
         <value>Initiation assets</value>
     </caseValues>
+    <layouts>
+        <layout>Initiation asset Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Update --></label>
+        <name>Bulkupdatea</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- In order to update status to &quot;Complete&quot; , you need to have the PO and Reg. Please uncheck the PO Hotpot and Reg hotpot flags if you have them --></errorMessage>
         <name>Can_not_complete_if_no_reg_or_PO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Credit check has expired, please gain credit approval. --></errorMessage>
+        <name>Credit_Expiry_passed</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please enter a payout date on all assets. This is to help guide the activations team and help with reporting --></errorMessage>

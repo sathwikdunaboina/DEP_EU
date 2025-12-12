@@ -2,6 +2,7 @@
 * Name of the class    VFSCORE_AccountChangeEventTriggerHandler
 * Author               Alok Kumar
 * Create Date  		   03-14-2024
+* Updated Date         28-04-2025
 * Used by 			   Trigger
 * Trigger Name		   VFSCORE_AccountChangeEventTrigger
 * SystemLayer		   Handler
@@ -20,7 +21,7 @@ public with sharing class VFSCORE_AccountChangeEventTriggerHandler {
     public void SyncCustomersToVFSSystems() {
         
         try {
-
+            System.debug('I am here');
             List<Id> listAccountIds =  new List<Id>(getAccountIds());       
             Integer iCountofAccountIds = listAccountIds.size();
             Integer iNumOfFutureCalls = iCountofAccountIds/100;
@@ -47,16 +48,35 @@ public with sharing class VFSCORE_AccountChangeEventTriggerHandler {
             Set<Id> setAllAccountIdsTemp = new Set<Id>();
             for (AccountChangeEvent accountChange : this.accountChangeEvents) {
                 // Get all Record Ids for this change and add to the set
-                List<Id> recordIds = (List<Id>)accountChange.ChangeEventHeader.getRecordIds();            
-                setAllAccountIdsTemp.addAll(recordIds);
+                
+                List<Id> recordIds = (List<Id>)accountChange.ChangeEventHeader.getRecordIds();  
+                //25-04-2025 Update , send only accounts which has actual change in the record to external service
+                EventBus.ChangeEventHeader header = accountChange.ChangeEventHeader;
+                List<String> changedFieldsString=header.changedFields;
+                            
+                if (header.changeType == 'UPDATE' && changedFieldsString.contains('LastModifiedDate') && changedFieldsString.size() == 1) {
+                    //Do Nothing
+                }
+                
+                else{
+                    setAllAccountIdsTemp.addAll(recordIds);
+                }
             }
+                  System.debug('I am here at line 55');
+            System.debug('This is the record list at the end '+setAllAccountIdsTemp);
+            System.debug('And This is the size of the list ' +setAllAccountIdsTemp.size());
+
             for(Account acc : [SELECT Id,sourceSystemID__c FROM Account WHERE Id IN: setAllAccountIdsTemp WITH SECURITY_ENFORCED]) {
                 associatedRecord = acc.Id;
                 if(acc.sourceSystemID__c != null){
-                    String sourceSystemId = VFSCORE_Customer_ManagementCountryChecks__mdt.getInstance(acc.sourceSystemID__c.SubStringBefore('-')).DeveloperName;
-                    if(sourceSystemId != null){
+                    //** Bug Fix 1245524 START **/  
+                    String sysIdPrefix = acc.sourceSystemID__c.SubStringBefore('-');
+                    VFSCORE_Customer_ManagementCountryChecks__mdt country = VFSCORE_Customer_ManagementCountryChecks__mdt.getInstance(sysIdPrefix);
+                    if(country!= null && String.isNotBlank(country.DeveloperName)){
+                        String sourceSystemID = country.DeveloperName;
                         setAllAccountIds.add(acc.Id);
                     }
+               //** Bug Fix 1245524 END **/    
                 }
             }
             System.debug('setAllAccountIds >> '+ setAllAccountIds);

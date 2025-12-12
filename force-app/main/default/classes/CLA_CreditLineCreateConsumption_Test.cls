@@ -57,8 +57,7 @@ private class CLA_CreditLineCreateConsumption_Test {
                                                    FROM CLA_Credit_Line__c 
                                                    WHERE CLA_Status__c = 'Approved' LIMIT 1];
 
-        String requestBody = '{"consumptionIdentificationNumber": "","quoteNumber": "956878","quoteMarket": "NL-VT","companyIdentificationNumber": "2342424234","origin": "ACE","drawnDate": "2024-03-01","drawnAmount": 100.00,"drawnStatus": "Confirmed"}';
-        String sRequestURI = '/services/apexrest/credit-lines/'+listCreditLine[0].CLA_Credit_Line_identification_number__c+'/consumption';
+        String requestBody = '{"consumptionIdentificationNumber": "","quoteNumber": "956878","quoteMarket": "NL-VT","companyIdentificationNumber": "2342424234","origin": "ACE","drawnDate":' +  '"'+String.ValueOf(DateTime.newInstance(Date.today()+5, Time.newInstance(0, 0, 0, 0)).format('yyyy-MM-dd'))+'"'+ ',"drawnAmount": 100.00,"drawnStatus": "Confirmed"}'; String sRequestURI = '/services/apexrest/credit-lines/'+listCreditLine[0].CLA_Credit_Line_identification_number__c+'/consumption';
         RestResponse res =  CLA_TestUtility.getTestResponse(sRequestURI , 'POST',requestBody);
 
         Test.startTest();

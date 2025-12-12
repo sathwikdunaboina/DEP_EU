@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessagingChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <response>Esta sessão de chat foi encerrada pelo agente. Se sua dúvida não for resolvida, você poderá iniciar uma nova conversa. Obrigado !</response>
+        <type>AgentEndEngagementResponse</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <response>Olá, você deseja receber mensagens? Se sim, responda sim.</response>
+        <type>OptInPrompt</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>pt_BR</language>
+        <response>Você optou por não receber mais mensagens nossas, então não entraremos em contato com você novamente.</response>
+        <type>OptOutConfirmation</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>pt_BR</language>
+        <response>Envie a palavra STOP para cancelar o recebimento de mais mensagens.</response>
+        <type>HelpResponse</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>pt_BR</language>
+        <response>Obrigado por optar por participar e nos permitir enviar mensagens para você.</response>
+        <type>OptInConfirmation</type>
+    </automatedResponses>
+    <channelUsages>
+        <channelConsentType>ExplicitOptIn</channelConsentType>
+        <deploymentType>DigitalEngagementConversation</deploymentType>
+    </channelUsages>
+    <countryCode>US</countryCode>
+    <externalAccountId>424885914042755</externalAccountId>
+    <masterLabel>+55 41 8445-1139</masterLabel>
+    <messagingChannelType>WhatsApp</messagingChannelType>
+    <messagingKeywords>
+        <keyword>sim</keyword>
+        <keyword>yes</keyword>
+        <keywordType>OptIn</keywordType>
+        <language>pt_BR</language>
+    </messagingKeywords>
+    <messagingKeywords>
+        <keyword>cancel</keyword>
+        <keyword>cancelar</keyword>
+        <keyword>cancelar inscrição</keyword>
+        <keyword>desistir</keyword>
+        <keyword>end</keyword>
+        <keyword>fim</keyword>
+        <keyword>parar</keyword>
+        <keyword>quit</keyword>
+        <keyword>stop</keyword>
+        <keyword>stopall</keyword>
+        <keyword>unsubscribe</keyword>
+        <keywordType>OptOut</keywordType>
+        <language>pt_BR</language>
+    </messagingKeywords>
+    <messagingKeywords>
+        <keyword>help</keyword>
+        <keywordType>Help</keywordType>
+        <language>pt_BR</language>
+    </messagingKeywords>
+    <platformKey>417199108144439</platformKey>
+    <sessionHandlerFlow>Route_to_VFSBR_WhatsApp_Service_Bot</sessionHandlerFlow>
+    <sessionHandlerQueue>VFSBR_Whatsapp_Service_Queue</sessionHandlerQueue>
+    <sessionHandlerType>Flow</sessionHandlerType>
+</MessagingChannel>

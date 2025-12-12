@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Security Awareness</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;One wrong click can expose company data, systems, and your account. Attackers often use phishing, social engineering, or fake apps to trick you. Awareness is our best defense.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(163, 1, 1);&quot;&gt;Everyday Actions&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Regarding emails, embedded links or attachments in Salesforce e.g. in emails related to cases:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Pause before clicking a link or downloading an attachment – attackers create urgency&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Hover over links to check real URLs&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Verify sender addresses carefully&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Report suspicious emails/messages to vfs.support.salesforce@volvo.com&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Avoid downloading unknown attachments&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(163, 1, 1);&quot;&gt;Red Flags to Watch&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Calls pretending to be Salesforce/IT asking for login or approvals&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Emails urging password reset via unknown links&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Requests to install “fix” apps or plugins (Salesforce support will never ask users to install any app)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;Login alerts from unfamiliar devices/locations&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;If in doubt, always verify with Salesforce Support Team ( &lt;/span&gt;&lt;strong style=&quot;color: rgb(13, 24, 167);&quot;&gt;vfs.support.salesforce@volvo.com&lt;/strong&gt;&lt;span style=&quot;color: rgb(163, 1, 1);&quot;&gt;)&lt;/span&gt;&lt;/p&gt;</body>
+        <delayDays>7</delayDays>
+        <displayType>DockedComposer</displayType>
+        <experience>Lightning</experience>
+        <header>Security Awareness</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Security Awareness</masterLabel>
+        <publishedDate>2025-10-24</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2025-10-24</startDate>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Safe &amp; Secure Daily Actions</title>
+        <uiFormulaRule>
+            <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_sales</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_sales manager</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_cs operations sales</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_cs operations</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>Admin</rightValue>
+            </criteria>
+            <criteria>
+                <leftValue>{!$User.Profile.Key}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>custom_read only access for developers</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>SpecificProfiles</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -6,13 +6,19 @@
     <columns>Country__c</columns>
     <columns>Dealer_Id__c</columns>
     <columns>Main_Dealer_Name__c</columns>
-    <columns>CREATED_DATE</columns>
+    <columns>Finance_Opportunity__c</columns>
+    <columns>Account__c</columns>
     <columns>LAST_UPDATE</columns>
+    <columns>Sales_Person_Name__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Order_Id__c</field>
-        <operation>notContain</operation>
-        <value>Manual</value>
+        <field>Main_Dealer_Name__c</field>
+        <operation>equals</operation>
+        <value>Wist Last &amp; Buss AB</value>
+    </filters>
+    <filters>
+        <field>Finance_Opportunity__c</field>
+        <operation>equals</operation>
     </filters>
     <label>My View</label>
     <sharedTo>

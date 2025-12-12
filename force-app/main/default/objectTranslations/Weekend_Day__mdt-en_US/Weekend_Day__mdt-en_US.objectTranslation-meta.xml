@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Weekend Day</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Weekend Days</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- A task can only be moved away from a weekend a maximum of 6 days. --></errorMessage>
+        <name>Days_moved_must_be_less_than_7</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>CreateQuote</label>
+    <namedCredentialReference>VFS_Global_APIs</namedCredentialReference>
+    <operations>
+        <active>true</active>
+        <name>generatecreatedraftquotation</name>
+    </operations>
+    <registrationProviderType>Custom</registrationProviderType>
+    <schema>{
+  &quot;swagger&quot;: &quot;2.0&quot;,
+  &quot;info&quot;: {
+    &quot;title&quot;: &quot;CreateDraftQuotation&quot;,
+    &quot;x-ibm-name&quot;: &quot;createdraftquotation&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;description&quot;: &quot;Creates Draft Quotation for Consumers&quot;
+  },
+  &quot;schemes&quot;: [
+    &quot;https&quot;
+  ],
+  &quot;basePath&quot;: &quot;/CreateDraftQuotation/v1.0&quot;,
+  &quot;produces&quot;: [
+    &quot;application/json&quot;
+  ],
+  &quot;consumes&quot;: [
+    &quot;application/json&quot;
+  ],
+  &quot;security&quot;: [
+    {}
+  ],
+  &quot;securityDefinitions&quot;: {
+    &quot;OAuth2.0&quot;: {
+      &quot;type&quot;: &quot;oauth2&quot;,
+      &quot;description&quot;: &quot;OAuth for CreateDraftQuotation&quot;,
+      &quot;flow&quot;: &quot;application&quot;,
+      &quot;x-ibm-oauth-provider&quot;: &quot;tppingoauthprovider&quot;,
+      &quot;tokenUrl&quot;: &quot;https://federate-qa.volvo.com/as/token.oauth2&quot;,
+      &quot;scopes&quot;: {
+        &quot;readcontract&quot;: &quot;Read Contract&quot;
+      }
+    },
+    &quot;clientSecret&quot;: {
+      &quot;type&quot;: &quot;apiKey&quot;,
+      &quot;in&quot;: &quot;header&quot;,
+      &quot;x-key-type&quot;: &quot;client_secret&quot;,
+      &quot;name&quot;: &quot;X-IBM-Client-Secret&quot;
+    },
+    &quot;clientID&quot;: {
+      &quot;type&quot;: &quot;apiKey&quot;,
+      &quot;in&quot;: &quot;header&quot;,
+      &quot;x-key-type&quot;: &quot;client_id&quot;,
+      &quot;name&quot;: &quot;X-IBM-Client-Id&quot;
+    }
+  },
+  &quot;x-ibm-configuration&quot;: {
+    &quot;type&quot;: &quot;rest&quot;,
+    &quot;phase&quot;: &quot;realized&quot;,
+    &quot;enforced&quot;: true,
+    &quot;testable&quot;: true,
+    &quot;cors&quot;: {
+      &quot;enabled&quot;: true
+    },
+    &quot;application-authentication&quot;: {
+      &quot;certificate&quot;: false
+    },
+    &quot;servers&quot;: [
+      {
+        &quot;url&quot;: &quot;https://api-test.volvo.com/vfs/qa/glb/CreateDraftQuotation/v1.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;type&quot;: [
+          &quot;Production&quot;,
+          &quot;Development&quot;
+        ]
+      }
+    ]
+  },
+  &quot;definitions&quot;: {
+    &quot;CreateDraftQuotationResponse&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;success&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;description&quot;: &quot;Flag indicating whether quotation creation is success or failure&quot;
+        },
+        &quot;quoteId&quot;: {
+          &quot;description&quot;: &quot;Generated quotation identifier&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 20
+        },
+        &quot;vfsConnectQuoteURL&quot;: {
+          &quot;description&quot;: &quot;Quotation URL from VFS Connect&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        }
+      }
+    },
+    &quot;SystemErrorResponse&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;success&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;description&quot;: &quot;Flag indicating whether quotation creation is success or failure&quot;
+        },
+        &quot;errorMessage&quot;: {
+          &quot;description&quot;: &quot;Error message from System of Records&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        }
+      }
+    },
+    &quot;errorResponse&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;httpCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;minimum&quot;: 0,
+          &quot;maximum&quot;: 500,
+          &quot;format&quot;: &quot;number&quot;
+        },
+        &quot;httpMessage&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;moreInformation&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;&quot;,
+          &quot;maxLength&quot;: 1000
+        }
+      }
+    },
+    &quot;CreateDraftQuotationRequest&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;required&quot;: [
+        &quot;externalId&quot;,
+        &quot;countryCode&quot;,
+        &quot;brand&quot;,
+        &quot;requestedBy&quot;,
+        &quot;source&quot;,
+        &quot;order&quot;,
+        &quot;customer&quot;,
+        &quot;dealer&quot;,
+        &quot;asset&quot;,
+        &quot;financials&quot;
+      ],
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;externalId&quot;: {
+          &quot;description&quot;: &quot;Salesforce External Id&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 50
+        },
+        &quot;countryCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 2
+        },
+        &quot;brand&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 20
+        },
+        &quot;requestedBy&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 50
+        },
+        &quot;source&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 50
+        },
+        &quot;order&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/order&quot;,
+          &quot;description&quot;: &quot;Order details&quot;
+        },
+        &quot;customer&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/customer&quot;,
+          &quot;description&quot;: &quot;Customer details&quot;
+        },
+        &quot;dealer&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/dealer&quot;,
+          &quot;description&quot;: &quot;Dealer details&quot;
+        },
+        &quot;asset&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/asset&quot;,
+          &quot;description&quot;: &quot;Asset details&quot;
+        },
+        &quot;financials&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/financials&quot;,
+          &quot;description&quot;: &quot;Finance Details&quot;
+        }
+      }
+    },
+    &quot;order&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;number&quot;,
+        &quot;statusDescription&quot;,
+        &quot;registrationDate&quot;,
+        &quot;cddDate&quot;,
+        &quot;disStatusCode&quot;
+      ],
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;number&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;statusDescription&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 20
+        },
+        &quot;registrationDate&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;format&quot;: &quot;date&quot;
+        },
+        &quot;cddDate&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;format&quot;: &quot;date&quot;
+        },
+        &quot;disStatusCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 20
+        }
+      }
+    },
+    &quot;customer&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;required&quot;: [
+        &quot;name&quot;,
+        &quot;address&quot;,
+        &quot;phone&quot;,
+        &quot;city&quot;,
+        &quot;postalCode&quot;,
+        &quot;countryCode&quot;
+      ],
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;name&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;address&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;phone&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 20
+        },
+        &quot;city&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;postalCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;countryCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 50
+        }
+      }
+    },
+    &quot;dealer&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;number&quot;,
+        &quot;mainDealerName&quot;,
+        &quot;salesPersonName&quot;
+      ],
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;number&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;mainDealerName&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;salesPersonName&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        }
+      }
+    },
+    &quot;asset&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;required&quot;: [
+        &quot;axleArrangement&quot;,
+        &quot;chassisType&quot;,
+        &quot;engineVersion&quot;,
+        &quot;VINNumber&quot;,
+        &quot;tChassis&quot;,
+        &quot;marketType&quot;,
+        &quot;assemblyFactoryCode&quot;,
+        &quot;assemblyFactoryName&quot;
+      ],
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;axleArrangement&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;chassisType&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;engineVersion&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;VINNumber&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;tChassis&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;marketType&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        },
+        &quot;assemblyFactoryCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 20
+        },
+        &quot;assemblyFactoryName&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        }
+      }
+    },
+    &quot;financials&quot;: {
+      &quot;description&quot;: &quot;&quot;,
+      &quot;required&quot;: [
+        &quot;amount&quot;,
+        &quot;currencyCode&quot;
+      ],
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;amount&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;format&quot;: &quot;int64&quot;,
+          &quot;minimum&quot;: 1,
+          &quot;maximum&quot;: 100
+        },
+        &quot;currencyCode&quot;: {
+          &quot;description&quot;: &quot;&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;maxLength&quot;: 100
+        }
+      }
+    }
+  },
+  &quot;paths&quot;: {
+    &quot;/&quot;: {
+      &quot;post&quot;: {
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;body&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/CreateDraftQuotationRequest&quot;
+            },
+            &quot;in&quot;: &quot;body&quot;,
+            &quot;required&quot;: true
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;successful CreateDraftQuotation response&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/CreateDraftQuotationResponse&quot;
+            }
+          },
+          &quot;400&quot;: {
+            &quot;description&quot;: &quot;Bad Request&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/SystemErrorResponse&quot;
+            }
+          },
+          &quot;500&quot;: {
+            &quot;description&quot;: &quot;Server Error&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/errorResponse&quot;
+            }
+          },
+          &quot;default&quot;: {
+            &quot;description&quot;: &quot;unexpected error&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/errorResponse&quot;
+            }
+          }
+        },
+        &quot;operationId&quot;: &quot;generateCreateDraftQuotation&quot;,
+        &quot;summary&quot;: &quot;Create Draft Quotation based on Input Parameters&quot;,
+        &quot;consumes&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ]
+      }
+    }
+  },
+  &quot;host&quot;: &quot;api-test.volvo.com&quot;
+}</schema>
+    <schemaType>OpenApi</schemaType>
+    <serviceBinding>{&quot;host&quot;:&quot;api-test.volvo.com&quot;,&quot;basePath&quot;:&quot;/CreateDraftQuotation/v1.0&quot;,&quot;allowedSchemes&quot;:[&quot;HTTPS&quot;],&quot;requestMediaTypes&quot;:[&quot;application/json&quot;],&quot;responseMediaTypes&quot;:[&quot;application/json&quot;],&quot;compatibleMediaTypes&quot;:{},&quot;extensions&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>2</systemVersion>
+</ExternalServiceRegistration>

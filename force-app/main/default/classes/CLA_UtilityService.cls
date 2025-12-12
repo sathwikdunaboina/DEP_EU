@@ -132,6 +132,7 @@ public with sharing class CLA_UtilityService {
         Map<String, Schema.SObjectField> mapSchemaObjectFieldByFieldName = oSobj.getSObjectType().getDescribe().fields.getMap();
         Map<String,Object> mapDefaultValueByFieldApiName = new Map<String,Object>();
 
+        
         for (String sField : setfields) {
             mapDefaultValueByFieldApiName.put(sField , MAP_DEFAULT_VALUES_BY_SCHEMA_TYPE.get(mapSchemaObjectFieldByFieldName.get(sField).getDescribe().getType())); 
         }

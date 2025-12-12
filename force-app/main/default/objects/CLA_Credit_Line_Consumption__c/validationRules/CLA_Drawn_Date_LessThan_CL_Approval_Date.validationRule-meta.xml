@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Drawn_Date_LessThan_CL_Approval_Date</fullName>
+    <active>true</active>
+    <description>Drawn Date cannot be less than Credit Line Approval Date.</description>
+    <errorConditionFormula>DATE(
+  VALUE(LEFT(CLA_Drawn_Date__c, 4)),        
+  VALUE(MID(CLA_Drawn_Date__c, 6, 2)),     
+  VALUE(MID(CLA_Drawn_Date__c, 9, 2))       
+) &lt; CLA_Credit_Line__r.CLA_Approval_Date__c</errorConditionFormula>
+    <errorMessage>Drawn Date cannot be less than Credit Line Approval Date.</errorMessage>
+</ValidationRule>

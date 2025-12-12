@@ -344,6 +344,14 @@
             <name>schduelJobDispalytext</name>
             <fieldText>&lt;p&gt;&lt;strong&gt;Message:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!ControllerMessage}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;{!scheduledJobURLFlow}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Check Scheduled Jobs Home Page for the Scheduled job&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -368,11 +376,27 @@
             <fieldType>DropdownBox</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>DisplayTextForRefresh</name>
             <fieldText>&lt;p&gt;&lt;em style=&quot;color: rgb(215, 56, 17);&quot;&gt;**Too many refresh schedules can delay the execution of other Asynchronous jobs and impact org performance ,hence choose the schedule frequency judiciously**&lt;/em&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>hours_of_Day</name>
@@ -404,6 +428,14 @@
             <fieldType>MultiSelectPicklist</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>days_of_Week</name>
@@ -419,6 +451,14 @@
             <fieldType>MultiSelectPicklist</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <nextOrFinishButtonLabel>Schedule Refresh</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConversationMessageDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <constants>
+        <constantType>Image</constantType>
+        <primitiveValues>
+            <type>ImageAsset</type>
+        </primitiveValues>
+    </constants>
+    <constants>
+        <constantType>Title</constantType>
+        <primitiveValues>
+            <textValue>Your Link Title Here</textValue>
+            <type>Text</type>
+        </primitiveValues>
+    </constants>
+    <constants>
+        <constantType>Url</constantType>
+        <primitiveValues>
+            <type>Url</type>
+            <urlValue>https://www.example.com</urlValue>
+        </primitiveValues>
+    </constants>
+    <description>WhatsApp messaging template for BR Market(After payment confirmation)</description>
+    <label>BR WhatsApp After payment confirmation Notification</label>
+    <language>en_US</language>
+    <messageLayouts>
+        <externalTemplates>
+            <accountIdentifier>424885914042755</accountIdentifier>
+            <accountName>Banco Volvo BR Production</accountName>
+            <language>pt_BR</language>
+            <status>Pending</status>
+            <templateName>aps_a_confirmao_de_pagamento</templateName>
+            <templateVersionIdentifier>8129316153836928</templateVersionIdentifier>
+            <type>Legacy</type>
+        </externalTemplates>
+        <formatType>ExternalTemplate</formatType>
+        <layoutItems>
+            <collectionType>None</collectionType>
+            <compositeValues>
+                <compositeTypeName>ExternalTemplate</compositeTypeName>
+                <layoutItems>
+                    <collectionType>None</collectionType>
+                    <name>languageCode</name>
+                    <primitiveValues>
+                        <literalValue>pt_BR</literalValue>
+                        <type>Literal</type>
+                    </primitiveValues>
+                </layoutItems>
+                <layoutItems>
+                    <collectionType>None</collectionType>
+                    <name>name</name>
+                    <primitiveValues>
+                        <literalValue>aps_a_confirmao_de_pagamento</literalValue>
+                        <type>Literal</type>
+                    </primitiveValues>
+                </layoutItems>
+            </compositeValues>
+            <name>externalTemplate</name>
+        </layoutItems>
+        <messageType>StaticContent</messageType>
+    </messageLayouts>
+    <messageLayouts>
+        <formatType>Text</formatType>
+        <layoutItems>
+            <collectionType>None</collectionType>
+            <name>text</name>
+            <primitiveValues>
+                <formulaTemplate>BR WhatsApp After payment confirmation Notification</formulaTemplate>
+                <type>FormulaTemplate</type>
+            </primitiveValues>
+        </layoutItems>
+        <messageType>StaticContent</messageType>
+    </messageLayouts>
+    <type>Notification</type>
+</ConversationMessageDefinition>

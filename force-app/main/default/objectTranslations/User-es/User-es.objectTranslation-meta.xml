@@ -4,6 +4,29 @@
         <label><!-- PersonalInfo_EPIM --></label>
         <name>PersonalInfo_EPIM</name>
     </fieldSets>
+    <layouts>
+        <layout>User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>User Profile Layout</layout>
+        <layoutType>UserAlt</layoutType>
+        <sections>
+            <label><!-- About --></label>
+            <section>About</section>
+        </sections>
+        <sections>
+            <label><!-- Background --></label>
+            <section>Background</section>
+        </sections>
+        <sections>
+            <label><!-- Contact --></label>
+            <section>Contact</section>
+        </sections>
+    </layouts>
     <validationRules>
         <errorMessage>No se puede crear usuario para este pais</errorMessage>
         <name>Portal_User_Creation_Restriction</name>

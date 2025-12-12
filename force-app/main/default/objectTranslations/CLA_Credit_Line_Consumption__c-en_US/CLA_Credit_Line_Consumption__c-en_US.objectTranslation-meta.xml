@@ -8,7 +8,22 @@
         <plural>true</plural>
         <value>Credit Line Consumptions</value>
     </caseValues>
+    <layouts>
+        <layout>Credit Line Consumption Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Drawn Date cannot be greater than Credit Line Expiry Date. --></errorMessage>
+        <name>CLA_Drawn_Date_Greater_Than_CL_Expiry</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Drawn Date cannot be less than Credit Line Approval Date. --></errorMessage>
+        <name>CLA_Drawn_Date_LessThan_CL_Approval_Date</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Can not create/update record as Credit line status is Draft. --></errorMessage>
         <name>CLA_Prevent_Create_Update_Draft_CL</name>
@@ -32,5 +47,9 @@
     <validationRules>
         <errorMessage><!-- Credit Line remaining balance can not be negative. --></errorMessage>
         <name>CLA_Validate_Drawn_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter valid Drawn Date. --></errorMessage>
+        <name>CLA_Validate_Drawn_Date_Format</name>
     </validationRules>
 </CustomObjectTranslation>
