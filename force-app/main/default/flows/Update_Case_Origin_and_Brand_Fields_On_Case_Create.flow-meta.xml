@@ -5,11 +5,6 @@
     <description>When a case is created through email-to-case, Case Origin will be updated to &apos;Email&apos; and Brand Field will be updated based on the Case Prior Origin.</description>
     <environments>Default</environments>
     <formulas>
-        <name>CaptureEmailMessageToAddress</name>
-        <dataType>String</dataType>
-        <expression>{!$Record.Source:EmailMessage.ToAddress}</expression>
-    </formulas>
-    <formulas>
         <description>Set the Brand Value based on the Case Origin</description>
         <name>SetTheBrand</name>
         <dataType>String</dataType>
@@ -36,36 +31,16 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_The_Custom_metadata_Record</name>
-        <label>Get The Custom metadata Record</label>
+    <recordUpdates>
+        <description>Update Case Origin(Email) and Brand Field(From the Formula Resource)</description>
+        <name>Update_Case_Origin_as_Email_and_Brand_based_on_Case_Origin</name>
+        <label>Update Case Origin as Email and Brand based on Case Origin</label>
         <locationX>176</locationX>
         <locationY>323</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Update_Case_with_Case_Origin_as_Email</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Email_Address__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>CaptureEmailMessageToAddress</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Brand_Setting__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordUpdates>
-        <name>Update_Case_with_Case_Origin_as_Email</name>
-        <label>Update Case with Case Origin as Email</label>
-        <locationX>176</locationX>
-        <locationY>431</locationY>
         <inputAssignments>
             <field>Brand__c</field>
             <value>
-                <elementReference>Get_The_Custom_metadata_Record.Brand_Value__c</elementReference>
+                <elementReference>SetTheBrand</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -80,13 +55,12 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_The_Custom_metadata_Record</targetReference>
+            <targetReference>Update_Case_Origin_as_Email_and_Brand_based_on_Case_Origin</targetReference>
         </connector>
         <filterFormula>AND(
 OR(
 ISPICKVAL({!$Record.Origin}, &apos;Email - Renault&apos;),
-ISPICKVAL({!$Record.Origin}, &apos;Email - Volvo&apos;),
-ISPICKVAL({!$Record.Origin}, &apos;Email&apos;)
+ISPICKVAL({!$Record.Origin}, &apos;Email - Volvo&apos;)
 ),
 OR({!$Record.RecordType.DeveloperName} = &apos;All_Case&apos;,
 {!$Record.RecordType.DeveloperName} = &apos;VFS_Dealer&apos;)

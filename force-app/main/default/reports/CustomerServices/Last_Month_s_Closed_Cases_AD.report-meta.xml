@@ -31,6 +31,12 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
@@ -38,12 +44,6 @@
     </columns>
     <columns>
         <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>CLOSED_DATE</field>
     </columns>
     <columns>
         <field>Case.Sub_Type__c</field>
@@ -58,6 +58,9 @@
     <columns>
         <field>ORIGIN</field>
     </columns>
+    <columns>
+        <field>Case.Brand__c</field>
+    </columns>
     <currency>GBP</currency>
     <filter>
         <criteriaItems>
@@ -66,13 +69,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>LAST_N_WEEKS:2</value>
         </criteriaItems>
         <criteriaItems>
             <column>ORIGIN</column>
@@ -93,7 +89,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf,Callum Scully</value>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf,Joe Brown,Daniel Holtom</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -118,7 +114,9 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <endDate>2025-09-11</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-09-10</startDate>
     </timeFrameFilter>
 </Report>

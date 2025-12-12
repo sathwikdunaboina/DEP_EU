@@ -2,24 +2,17 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All</fullName>
     <columns>NAME</columns>
-    <columns>End_Customer_Name__c</columns>
-    <columns>End_Customer_Phone__c</columns>
     <columns>CDD_Date__c</columns>
-    <columns>Chassis_Type__c</columns>
-    <columns>Market_Type_1_5__c</columns>
-    <columns>Engine_Version__c</columns>
-    <columns>Axle_Arrangement__c</columns>
     <columns>Main_Dealer_Name__c</columns>
-    <columns>Vehicle_Status__c</columns>
     <columns>Order_Status_Description__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
     <columns>Country__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Order_Id__c</field>
-        <operation>notContain</operation>
-        <value>Manual</value>
+        <field>Brand__c</field>
+        <operation>equals</operation>
+        <value>VCE</value>
     </filters>
     <label>All</label>
 </ListView>

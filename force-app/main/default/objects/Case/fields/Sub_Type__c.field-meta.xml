@@ -817,6 +817,56 @@
                 <default>false</default>
                 <label>Restructure</label>
             </value>
+            <value>
+                <fullName>Change of details</fullName>
+                <default>false</default>
+                <label>Change of details</label>
+            </value>
+            <value>
+                <fullName>Asset details</fullName>
+                <default>false</default>
+                <label>Asset details</label>
+            </value>
+            <value>
+                <fullName>Document request</fullName>
+                <default>false</default>
+                <label>Document request</label>
+            </value>
+            <value>
+                <fullName>Client feedback</fullName>
+                <default>false</default>
+                <label>Client feedback</label>
+            </value>
+            <value>
+                <fullName>Financial request</fullName>
+                <default>false</default>
+                <label>Financial request</label>
+            </value>
+            <value>
+                <fullName>Financial Lease</fullName>
+                <default>false</default>
+                <label>Financial Lease</label>
+            </value>
+            <value>
+                <fullName>Operating Lease</fullName>
+                <default>false</default>
+                <label>Operating Lease</label>
+            </value>
+            <value>
+                <fullName>Supplier payment</fullName>
+                <default>false</default>
+                <label>Supplier payment</label>
+            </value>
+            <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Material-related requests</fullName>
+                <default>false</default>
+                <label>Material-related requests</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Service - Initiation / New</controllingFieldValue>
@@ -857,6 +907,26 @@
             <valueName>SDLG</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Change of details</controllingFieldValue>
+            <valueName>Customer legal information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Change of details</controllingFieldValue>
+            <valueName>Postal address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Change of details</controllingFieldValue>
+            <valueName>Contacts (name, first name, phone, email)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Change of details</controllingFieldValue>
+            <valueName>Billing address (postal and email)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Change of details</controllingFieldValue>
+            <valueName>Change of bank details</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Excess Meterage Query</controllingFieldValue>
             <valueName>Aggregation request</valueName>
         </valueSettings>
@@ -885,8 +955,49 @@
             <valueName>XSM Fleet Review Request</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Asset details</controllingFieldValue>
+            <valueName>Technical specifications update</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asset details</controllingFieldValue>
+            <valueName>Registration / serial number correction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asset details</controllingFieldValue>
+            <valueName>Fines</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asset details</controllingFieldValue>
+            <valueName>Information pledge / registry / ANTS</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Spam/Junk</controllingFieldValue>
             <valueName>Spam/Junk</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Document request</controllingFieldValue>
+            <valueName>Invoices / Credit notes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Document request</controllingFieldValue>
+            <valueName>Contract / Amendment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Document request</controllingFieldValue>
+            <valueName>Schedule / Welcome Pack</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Document request</controllingFieldValue>
+            <valueName>Sales certificates</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Document request</controllingFieldValue>
+            <valueName>Account statements / General ledgers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Document request</controllingFieldValue>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Miscellaneous</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Sales Support</controllingFieldValue>
@@ -897,12 +1008,49 @@
             <valueName>General Request</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Client feedback</controllingFieldValue>
+            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
+            <valueName>Complaint</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Client feedback</controllingFieldValue>
+            <valueName>Survey</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Client feedback</controllingFieldValue>
+            <valueName>Anomalies</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Customer Feedback</controllingFieldValue>
             <valueName>Bus</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Feedback</controllingFieldValue>
             <valueName>VCE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial request</controllingFieldValue>
+            <valueName>refund request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial request</controllingFieldValue>
+            <valueName>Explanations / invoice correction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial request</controllingFieldValue>
+            <valueName>Payment terms</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial request</controllingFieldValue>
+            <valueName>Payment date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial request</controllingFieldValue>
+            <valueName>Explanation of direct debit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial request</controllingFieldValue>
+            <valueName>Indexation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
@@ -949,6 +1097,10 @@
             <valueName>Statement of Accounts</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Restructure</controllingFieldValue>
+            <valueName>Restructure</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Change address / contact details</valueName>
         </valueSettings>
@@ -993,8 +1145,24 @@
             <valueName>Dealer Claims</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Novation</controllingFieldValue>
+            <valueName>Merger &amp; Acquisition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Novation</controllingFieldValue>
+            <valueName>Novation</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Contact with Sales rep</controllingFieldValue>
             <valueName>Commercial Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Lease</controllingFieldValue>
+            <valueName>Proforma</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Lease</controllingFieldValue>
+            <valueName>AML Request / Return</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>End of term query</controllingFieldValue>
@@ -1028,6 +1196,14 @@
             <controllingFieldValue>General Services query</controllingFieldValue>
             <controllingFieldValue>General Service Enquiry</controllingFieldValue>
             <valueName>Cross border letter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unallocated cash</controllingFieldValue>
+            <valueName>Unallocated cash</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unallocated cash</controllingFieldValue>
+            <valueName>Refund</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Financial Contract query</controllingFieldValue>
@@ -1143,10 +1319,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
-            <valueName>Complaint</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
             <valueName>Other questions</valueName>
         </valueSettings>
         <valueSettings>
@@ -1214,6 +1386,74 @@
         <valueSettings>
             <controllingFieldValue>Problems with Web Portal</controllingFieldValue>
             <valueName>Problems with Web Portal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operating Lease</controllingFieldValue>
+            <valueName>Extension</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operating Lease</controllingFieldValue>
+            <valueName>Invoicing / return form</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operating Lease</controllingFieldValue>
+            <valueName>Early return</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operating Lease</controllingFieldValue>
+            <valueName>ER Quotation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operating Lease</controllingFieldValue>
+            <valueName>Maintenance Quotation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operating Lease</controllingFieldValue>
+            <valueName>Client refactoring</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Supplier payment</controllingFieldValue>
+            <valueName>Maintenance payment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Supplier payment</controllingFieldValue>
+            <valueName>Excess mileage payment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Termination request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Post activation registration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Total loss</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Partial loss</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Miscellaneous</controllingFieldValue>
+            <valueName>Other requests</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Miscellaneous</controllingFieldValue>
+            <valueName>Syndicated contract</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Miscellaneous</controllingFieldValue>
+            <valueName>Commercial request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Miscellaneous</controllingFieldValue>
+            <valueName>Debt collection / Litigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Miscellaneous</controllingFieldValue>
+            <valueName>Booking</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Request Copy Document</controllingFieldValue>

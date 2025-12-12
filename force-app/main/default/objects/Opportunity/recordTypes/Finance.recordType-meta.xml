@@ -1282,6 +1282,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Financing__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>ForecastCategoryName</picklist>
         <values>
             <fullName>Best Case</fullName>
@@ -1301,6 +1312,147 @@
         </values>
         <values>
             <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fuel_Type__c</picklist>
+        <values>
+            <fullName>Diesel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electric</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LNG</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Claims_Status__c</picklist>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Options__c</picklist>
+        <values>
+            <fullName>ASSISTANCE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CASCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEGAL PROTECTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MTPL-Motor Third Party Liability</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Product__c</picklist>
+        <values>
+            <fullName>BUSINESS INTERRUPTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CARGO%2FCMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTA - Container trailer assurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FIRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLEET</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MACHINERY BREAKDOWN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PROFESSIONAL LIABILITY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VEHICLE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WORKERS%27 COMPENSATION</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insurance_Type__c</picklist>
+        <values>
+            <fullName>LIFE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NON-LIFE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Insured_Object__c</picklist>
+        <values>
+            <fullName>Activity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Is_Alive_Y_N__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1343,6 +1495,21 @@
         </values>
         <values>
             <fullName>VT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Source_Content__c</picklist>
+        <values>
+            <fullName>End of Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance without insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solo insurance</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1417,6 +1584,37 @@
         </values>
         <values>
             <fullName>Too poor speed of execution</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mutation_type__c</picklist>
+        <values>
+            <fullName>Claims Adjustments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coverage Adjustments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Name or Address Changes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Cancellations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Endorsements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Renewals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium Adjustments</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1528,7 +1726,27 @@
     <picklistValues>
         <picklist>Sub_Stage__c</picklist>
         <values>
+            <fullName>Awaiting Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Start Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Docs Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-qualifying customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>With Credit</fullName>
             <default>false</default>
         </values>
     </picklistValues>

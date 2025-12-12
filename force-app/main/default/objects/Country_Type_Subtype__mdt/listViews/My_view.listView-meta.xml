@@ -8,6 +8,11 @@
     <columns>MasterLabel</columns>
     <columns>DeveloperName</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country__c</field>
+        <operation>equals</operation>
+        <value>France</value>
+    </filters>
     <label>My view</label>
     <language>en_US</language>
 </ListView>

@@ -10,6 +10,8 @@
 * ------------------------------------------------------------------------------------------
 * @description        This class is used for getting cusumption records for a credit line.
 * ------------------------------------------------------------------------------------------
+* @Updates             Added Consumption Type field in API.
+* Date                 01-08-2025
 */
 
 @RestResource(urlMapping='/credit-lines/*/consumptions')
@@ -83,7 +85,7 @@ private static List<CLA_Credit_Line_Consumption__c> fetchConsumptionRecords(Stri
     return [
         SELECT Id, CLA_Company_Identification_Number__c, CLA_Consumption_Identification_Number__c, CLA_Drawn_Amount__c, 
                CLA_Drawn_Date__c, CLA_Quote_Market__c, CLA_Quote_Number__c, CLA_Quote_Origin__c, CLA_Status__c, 
-               CLA_Credit_Line__r.CLA_Credit_Line_identification_number__c
+               CLA_Credit_Line__r.CLA_Credit_Line_identification_number__c,CLA_Consumption_Type__c
         FROM CLA_Credit_Line_Consumption__c 
         WHERE CLA_Credit_Line__r.CLA_Credit_Line_identification_number__c = :sCreditLineIdentificationNumber AND 
               CLA_Status__c = 'Confirmed'
@@ -105,7 +107,7 @@ private static List<CLA_Credit_Line_Consumption__c> fetchConsumptionRecords(Stri
 private static List<SObject> getTransformedConsumptionRecords(List<CLA_Credit_Line_Consumption__c> listConsumptionRecords) {
     Set<String> setFields = new Set<String>{
         'Id', 'CLA_Company_Identification_Number__c', 'CLA_Consumption_Identification_Number__c', 'CLA_Drawn_Amount__c', 
-        'CLA_Drawn_Date__c', 'CLA_Quote_Market__c', 'CLA_Quote_Number__c', 'CLA_Quote_Origin__c', 'CLA_Status__c'
+        'CLA_Drawn_Date__c', 'CLA_Quote_Market__c', 'CLA_Quote_Number__c', 'CLA_Quote_Origin__c', 'CLA_Status__c' , 'CLA_Consumption_Type__c'
     };
 
     CLA_UtilityService.InputParameters inputParametersInstance = new CLA_UtilityService.InputParameters();

@@ -19,10 +19,10 @@
         <groupingColumn>OWNER</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <showAxisLabels>false</showAxisLabels>
+        <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -37,7 +37,14 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
         <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Case.Indicator__c</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
@@ -55,9 +62,6 @@
         <field>PARENT_CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>Case.Indicator__c</field>
-    </columns>
-    <columns>
         <field>STATUS</field>
     </columns>
     <columns>
@@ -67,18 +71,16 @@
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Case.Number_of_Agreements__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Case.CASE_AGE_DAY__c</field>
+        <field>Case.Status_Reason__c</field>
     </columns>
     <columns>
         <field>OPEN</field>
     </columns>
     <columns>
-        <field>Case.Status_Reason__c</field>
+        <field>Case.Brand__c</field>
+    </columns>
+    <columns>
+        <field>Case.Contract__c</field>
     </columns>
     <currency>GBP</currency>
     <description>To show all current open cases within the in-life team</description>
@@ -102,7 +104,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>james,jayne,ilsley</value>
+            <value>james,jayne</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -151,7 +153,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>adam,molly,bart,jordan,andy,callum,Operations,2nd</value>
+            <value>adam,molly,bart,jordan,andy,liberty,lauren,Operations,2nd,Gary,joe brown,daniel holtom</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Brand__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Volvo Truck,Renault Truck,Bus,VCE,UD</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -175,7 +184,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>STATUS</sortColumn>
+    <sortColumn>LAST_UPDATE</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>

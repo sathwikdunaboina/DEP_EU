@@ -19,9 +19,6 @@
         <field>EMAIL</field>
     </columns>
     <columns>
-        <field>ADDRESS_COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>TIMEZONE</field>
     </columns>
     <columns>
@@ -66,12 +63,17 @@
             <column>PROFILE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
+            <operator>equals</operator>
             <value>CS operations</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ADDRESS_COUNTRY_CODE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Number of Users Logged in year 2024</name>
     <params>
         <name>active</name>
@@ -89,7 +91,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>LAST_LOGIN</dateColumn>
-        <endDate>2024-11-27</endDate>
+        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2024-01-01</startDate>
     </timeFrameFilter>

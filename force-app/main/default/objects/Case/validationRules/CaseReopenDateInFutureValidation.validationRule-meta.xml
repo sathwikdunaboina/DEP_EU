@@ -3,7 +3,22 @@
     <fullName>CaseReopenDateInFutureValidation</fullName>
     <active>true</active>
     <description>This Validation rule is to check if the case reopen date is in future or not</description>
-    <errorConditionFormula>Case_Reopen_Date__c &lt;= TODAY()</errorConditionFormula>
-    <errorMessage>Case Reopen Date should not be today or in the past.
+    <errorConditionFormula>AND(
+/* 1. Only apply when Country is United Kingdom or Ireland */
+OR(
+ISPICKVAL(Country__c, &quot;United Kingdom&quot;),
+ISPICKVAL(Country__c, &quot;Ireland&quot;)
+),
+
+/* 2. Only apply when Status Reason is Postpone Action */
+ISPICKVAL(Status_Reason__c, &quot;Postponed Action&quot;),
+
+/* 3. Reopen Date must be present and in the future */
+OR(
+ISBLANK(Case_Reopen_Date__c),
+Case_Reopen_Date__c &lt;= TODAY()
+)
+)</errorConditionFormula>
+    <errorMessage>Case Reopen Date should not be empty and should not be in the past.
 It must always be a future date.</errorMessage>
 </ValidationRule>

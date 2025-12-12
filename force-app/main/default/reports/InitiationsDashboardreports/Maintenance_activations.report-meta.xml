@@ -8,11 +8,13 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>Initiation_asset__c.Actual_Initiations_Date__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Initiation_asset__c.Userserv__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -48,6 +50,13 @@
             <operator>equals</operator>
             <value>Initiation__c.Stane_Alone_Service</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Initiation__c.Brand__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Renault Truck</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -58,7 +67,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Initiation_asset__c.Useract__c</field>
+        <field>Initiation_asset__c.Userserv__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Maintenance activations</name>

@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>WhereClause__c</field>
-        <value xsi:type="xsd:string">Type__c IN (&apos;Purchase Plan - fixed rate&apos;, &apos;Purchase Plan - variable rate&apos;, &apos;Operating Lease&apos;, &apos;Operating Lease - fixed rate&apos;, &apos;Finance Lease - fixed rate&apos;, &apos;Contract Hire&apos;, &apos;Hire Purchase IE&apos;, &apos;Finance Lease&apos;, &apos;EaaS Operating Lease NGC&apos;, &apos;Financial Lease NGC&apos;, &apos;Full service leasing NGC&apos;, &apos;Operating Lease NGC&apos;) AND Business_Area__c = &apos;VT&apos; AND Account__r.BillingCountryCode IN (&apos;GB&apos;,&apos;DK&apos;,&apos;IE&apos;)</value>
+        <value xsi:type="xsd:string">Type__c IN (&apos;Purchase Plan - fixed rate&apos;, &apos;Purchase Plan - variable rate&apos;, &apos;Operating Lease&apos;, &apos;Operating Lease - fixed rate&apos;, &apos;Finance Lease - fixed rate&apos;, &apos;Contract Hire&apos;, &apos;Hire Purchase IE&apos;, &apos;Finance Lease&apos;, &apos;EaaS Operating Lease NGC&apos;, &apos;Financial Lease NGC&apos;, &apos;Full service leasing NGC&apos;, &apos;Operating Lease NGC&apos;) AND Business_Area__c = &apos;VT&apos; AND Account__r.BillingCountryCode IN (&apos;GB&apos;,&apos;DK&apos;,&apos;IE&apos;) AND (VTContext_LastModifiedDate__c = last_n_days:lastNDays OR CreatedDate = last_n_days:lastNDays)</value>
     </values>
 </CustomMetadata>

@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>STAGE_NAME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Opportunity.Lost_Reason__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
@@ -19,10 +45,13 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <field>Opportunity.Reason__c</field>
     </columns>
     <columns>
-        <field>LEAD_SOURCE</field>
+        <field>Opportunity.Finance_Houses__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Interest_Rate__c</field>
     </columns>
     <currency>EUR</currency>
     <description>Report to show Opportunity Conversion(Closed) only when Lead Source is &apos;Dealer-Stockbook&apos; and &apos;Dealer-Wagonex&apos;</description>
@@ -40,6 +69,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Lost_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunity Conversion (closed)</name>

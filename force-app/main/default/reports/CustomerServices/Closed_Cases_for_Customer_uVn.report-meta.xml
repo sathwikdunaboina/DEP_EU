@@ -77,6 +77,9 @@
     <columns>
         <field>AGE</field>
     </columns>
+    <columns>
+        <field>REASON</field>
+    </columns>
     <currency>GBP</currency>
     <filter>
         <criteriaItems>
@@ -104,8 +107,8 @@
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Andy Medcalf,Rumeysa Belibagli</value>
+            <operator>contains</operator>
+            <value>Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Andy Medcalf,Rumeysa Belibagli,Scully,liberty,lauren,gary,joe brown,daniel</value>
         </criteriaItems>
         <criteriaItems>
             <column>ORIGIN</column>

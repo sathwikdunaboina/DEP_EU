@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Check_Sheet_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>To track progress of check sheet completion for reporting purposes</description>
+    <label>Contract Check Sheet Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Doc Raise</fullName>
+                <default>true</default>
+                <label>Doc Raise</label>
+            </value>
+            <value>
+                <fullName>Docs Sent</fullName>
+                <default>false</default>
+                <label>Docs Sent</label>
+            </value>
+            <value>
+                <fullName>Doc Check</fullName>
+                <default>false</default>
+                <label>Doc Check</label>
+            </value>
+            <value>
+                <fullName>Awaiting Info</fullName>
+                <default>false</default>
+                <label>Awaiting Info</label>
+            </value>
+            <value>
+                <fullName>Payout/Pre Load</fullName>
+                <default>false</default>
+                <label>Payout/Pre Load</label>
+            </value>
+            <value>
+                <fullName>Paid Out</fullName>
+                <default>false</default>
+                <label>Paid Out</label>
+            </value>
+            <value>
+                <fullName>With Service</fullName>
+                <default>false</default>
+                <label>With Service</label>
+            </value>
+            <value>
+                <fullName>Lost Deal</fullName>
+                <default>false</default>
+                <label>Lost Deal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

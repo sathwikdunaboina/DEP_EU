@@ -67,6 +67,9 @@
     <columns>
         <field>Case.Status_Reason__c</field>
     </columns>
+    <columns>
+        <field>Case.Brand__c</field>
+    </columns>
     <currency>GBP</currency>
     <description>To show all current open novations</description>
     <filter>
@@ -89,7 +92,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Bart Wisniewski,Callum Scully,Jordan Mulholland,Medcalf,Molly White,Adam King,Heather Molloy,Rumeysa Belibagli,Paul Kennedy,Ben Townsend,Sareena Jordamovic,Jenny Jackson,Harry Ashman,Laura Restall,CS,2nd</value>
+            <value>Bart Wisniewski,Jordan Mulholland,Medcalf,Molly White,Adam King,Heather Molloy,liberty,lauren,CS,2nd</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Brand__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Volvo Truck,Renault Truck,Bus,VCE,UD</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

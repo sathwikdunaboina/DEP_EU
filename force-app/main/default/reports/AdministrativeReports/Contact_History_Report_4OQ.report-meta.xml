@@ -24,8 +24,20 @@
     <columns>
         <field>LAST_NAME</field>
     </columns>
+    <columns>
+        <field>CONTACT_CREATED</field>
+    </columns>
+    <columns>
+        <field>CONTACT_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CONTACT_LAST_UPDATE_BY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
     <currency>EUR</currency>
-    <description>Report to analysis if DBB ( Integration User ) is overwriting the user changes in the Contact records</description>
+    <description>Report to analyze if DBB feed ( Integration User ) is overwriting the user changes in the Contact records</description>
     <filter>
         <criteriaItems>
             <column>CONTACT_LAST_UPDATE_BY</column>
@@ -46,10 +58,15 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>ADDRESS2_COUNTRY_CODE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>CONTACT_ID</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Contact History Report</name>
+    <name>Contact-UserChangesOverwrittenByDBBFeed</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -63,6 +80,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_LAST30</interval>
     </timeFrameFilter>
 </Report>

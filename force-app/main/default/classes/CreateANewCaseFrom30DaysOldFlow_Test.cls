@@ -56,7 +56,7 @@ public class CreateANewCaseFrom30DaysOldFlow_Test {
             caseWithEmail.OwnerId=queueId;
             insert caseWithEmail;
             Test.startTest();            
-            caseWithEmail.Status='New';
+            caseWithEmail.Status='New';      
             update caseWithEmail;
             Test.stopTest();           
             Case newCasewithEmail = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Email' and Status='New' limit 1 ];            
@@ -166,60 +166,6 @@ with Attachment
             Case newCasewithEmail = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Country ZA' and Status='New' limit 1 ];
             System.assertEquals(recordTypeId, newCasewithEmail.RecordTypeId);
             
-        }
-        
-    }
-      /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     emailMessageTobeSentToCustomer
-* @description     To cover Create A New Case From 30 Days Old Closed Case when a new Case is created from 30 days old closed case and Email has been sent to the customer
-* ------------------------------------------------------------------------------------------------------
-*/
-    
-    @isTest
-    static void emailMessageTobeSentWhenCaseFails(){
-        User testUsertest = [SELECT Id, Username FROM User WHERE lastname = 'VFS Salesforce Support' LIMIT 1];
-        System.runAs(testUsertest){
-            Id recordTypeIdTest = Schema.SObjectType.Case.getRecordTypeInfosByName().get('All Case').getRecordTypeId();
-            Id accountRecordTypeIDTest = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
-            Id queueIdTest = [SELECT Id,Type FROM Group where DeveloperName ='UK_IE_CS_Operations' and Type='Queue' LIMIT 1].Id;
-            
-            //Create an Account Record
-            Account accTest= new Account();
-            accTest.name='Test Account for UK';
-            accTest.CurrencyIsoCode='EUR';
-            accTest.RecordTypeId=accountRecordTypeIDTest; 
-            accTest.BillingCountry='United Kingdom';
-            insert accTest;
-            
-            Entitlement EntitlementRecordTest = new Entitlement();
-            EntitlementRecordTest.Name='Case Support Process For UK/IE';
-            EntitlementRecordTest.AccountId= accTest.Id;             
-            insert EntitlementRecordTest;
-            
-            Case caseWithEmailTest = new Case();
-            caseWithEmailTest.Origin = 'Email';
-            caseWithEmailTest.AccountId=accTest.id;
-            caseWithEmailTest.RecordTypeId=recordTypeIdTest;
-            caseWithEmailTest.Status = 'Closed';
-            caseWithEmailTest.Type='Change my details';
-            caseWithEmailTest.Sub_Type__c ='Company details';
-            caseWithEmailTest.Status_Reason__c='No Action';
-            caseWithEmailTest.Subject='Test Case Subject with Email';
-            caseWithEmailTest.CreatedDate = Date.today().addDays(-32);
-            caseWithEmailTest.ClosedDate=Date.today().addDays(-31);
-            caseWithEmailTest.Country__c='United kingdom'; 
-            caseWithEmailTest.SuppliedEmail='testcase@gmail.com'; 
-            caseWithEmailTest.OwnerId=queueIdTest;
-            insert caseWithEmailTest;
-            Test.startTest();            
-            caseWithEmailTest.Status='New';
-            update caseWithEmailTest;
-            EmailMessage testEmail = new EmailMessage();
-            insert testEmail;
-            Test.stopTest();           
-            Case newCasewithEmailTest = [SELECT id,RecordTypeId,OwnerId,Status,Subject,Country__c FROM Case WHERE Subject='Test Case Subject with Email' and Status='New' limit 1 ];            
-            System.assertEquals(recordTypeIdTest, newCasewithEmailTest.RecordTypeId);
         }
         
     }

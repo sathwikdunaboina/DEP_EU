@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>vfs.support.salesforce@volvo.com</contactEmail>
+    <label>VFS VT Connected App</label>
+    <oauthConfig>
+        <callbackUrl>https://localhost:8080/oauthcallback.html</callbackUrl>
+        <certificate>MIIEkDCCA3igAwIBAgIOAZb78oBsAAAAAD4474MwDQYJKoZIhvcNAQELBQAwgYcxHzAdBgNVBAMMFlZGU19WVF9BcHBfQ2VydGlmaWNhdGUxGDAWBgNVBAsMDzAwRDJwMDAwMDAwUGJSbDEXMBUGA1UECgwOU2FsZXNmb3JjZS5jb20xFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xCzAJBgNVBAgMAkNBMQwwCgYDVQQGEwNVU0EwHhcNMjUwNTIzMDcwMTM1WhcNMjYwNTIzMDAwMDAwWjCBhzEfMB0GA1UEAwwWVkZTX1ZUX0FwcF9DZXJ0aWZpY2F0ZTEYMBYGA1UECwwPMDBEMnAwMDAwMDBQYlJsMRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALA+BLZVXw6G8AM2MXlENDbrJ1r3EVoz19Aep7wFgHtWFQMzZzI+wasPAK4k8BQur8VypVeJEUjrRt/tRzT4Vzn7KMvDBtotDuDFM70M/ZXawF47Zxs5xVwEBJXRsaABdLacksTTeKDE6/z2j4TiVNaOd3J0nmBHcJOB2wsBmiTeGjorGB171ugS18zA+hByqREgO3C8N0iNDnGjSuVvL1xYPjzoPR84W2VVA1RazeUYeyaTpnGIzTE2nfjoK7Mi/LBBtiZ/Qzyhg4LlDT4+GUrHQn6c1WfSTYkobNShyZ1JRe2h/KGEPe/ouNLuSvU6xa3hlaeeh+U0Tp93zQjjbCECAwEAAaOB9zCB9DAdBgNVHQ4EFgQU8tZThZlkze0QhAoriM+e+5dQrjcwDwYDVR0TAQH/BAUwAwEB/zCBwQYDVR0jBIG5MIG2gBTy1lOFmWTN7RCECiuIz577l1CuN6GBjaSBijCBhzEfMB0GA1UEAwwWVkZTX1ZUX0FwcF9DZXJ0aWZpY2F0ZTEYMBYGA1UECwwPMDBEMnAwMDAwMDBQYlJsMRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQYIOAZb78oBsAAAAAD4474MwDQYJKoZIhvcNAQELBQADggEBADKeVqJsKeQo4OUS26qWj0EfbPtH6zj9+GipEBVNgshzoymGbDRjaGZpsYS4jpHit9nFqfR5I08kgJQchW9l+YCDtzS3qMZGpHieKM3kEmh7YIWtePM/cQYESCL+EXS0MrodikXGdf3Y7LiqEjNb0TRsJjxN6rtkn5LgjqlXKxuaszFdamtFIWteYpFUywiqvdERT9L0qpM+VX45ut3ixpyvj9gYa3i9lfxkGtl8VyZK1S17qY5ZvrbYutbTIww+5ss4NBZk0nhf3iLexD2DYLGNYso4wBWa7HiWHE3xBqNeCnrDaJpO8ZpqXoDHDLEGWDhDphEiu29FS2wp+iO89WA=</certificate>
+        <consumerKey>3MVG9Iuu5rVmxszwBKbFDI7ihc6vyQEcSCNGDuIAy7Hw6XfK0wXmhv8PgcFMYI1HhL7RxKpozFkANdjhiIms_</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>System Integration User Base Profile</profileName>
+</ConnectedApp>

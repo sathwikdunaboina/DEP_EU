@@ -4,17 +4,6 @@
         <fullName>Case Auto Response</fullName>
         <active>true</active>
         <ruleEntry>
-            <criteriaItems>
-                <field>Case.OwnerId</field>
-                <operation>equals</operation>
-                <value>NL-Subsidies</value>
-            </criteriaItems>
-            <notifyCcRecipients>false</notifyCcRecipients>
-            <senderEmail>vfs.no-reply.nl@volvo.com</senderEmail>
-            <senderName>VFS NL - Service Team</senderName>
-            <template>NL_Communication_Folder/NL_Subsidies</template>
-        </ruleEntry>
-        <ruleEntry>
             <booleanFilter>1 OR 2 OR 3</booleanFilter>
             <criteriaItems>
                 <field>Case.OwnerId</field>
@@ -226,7 +215,7 @@
             <replyToEmail>rtfs.customerservice.uk@renault-trucks.com</replyToEmail>
             <senderEmail>paul.kennedy@volvo.com</senderEmail>
             <senderName>UK/IE Customer Services Support Renault</senderName>
-            <template>UKIEautoresponseemailtemplates/UK_IE_Customer_Service_Renault_1729147354729</template>
+            <template>UK_IE_Communication_Folder/UK_IE_CustomerService_Renault</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
@@ -260,7 +249,7 @@
             <replyToEmail>rtfs.customerservice.ie@renault-trucks.com</replyToEmail>
             <senderEmail>paul.kennedy@volvo.com</senderEmail>
             <senderName>IE Customer Service Support Renault</senderName>
-            <template>UKIEautoresponseemailtemplates/UK_IE_Customer_Service_Volvo_Renault_1728971336272</template>
+            <template>UK_IE_Communication_Folder/UK_IE_CustomerService_Renault</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
@@ -277,7 +266,7 @@
             <replyToEmail>vfs.customerservice.ie@volvo.com</replyToEmail>
             <senderEmail>paul.kennedy@volvo.com</senderEmail>
             <senderName>IE Customer Service Support Volvo</senderName>
-            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo_Renault</template>
+            <template>UK_IE_Communication_Folder/UK_IE_Customer_Service_Volvo</template>
         </ruleEntry>
         <ruleEntry>
             <criteriaItems>
@@ -681,8 +670,8 @@
                 <value>ZA - Activation Request</value>
             </criteriaItems>
             <notifyCcRecipients>true</notifyCcRecipients>
-            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
-            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <replyToEmail>function.vfspaidupsza@volvo.com</replyToEmail>
+            <senderEmail>api.vfs.za@volvo.com</senderEmail>
             <senderName>VFS ZA - Service Team</senderName>
             <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
         </ruleEntry>
@@ -709,8 +698,8 @@
                 <value>1100</value>
             </criteriaItems>
             <notifyCcRecipients>true</notifyCcRecipients>
-            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
-            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <replyToEmail>function.vfspaidupsza@volvo.com</replyToEmail>
+            <senderEmail>api.vfs.za@volvo.com</senderEmail>
             <senderName>VFS ZA - Service Team</senderName>
             <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
         </ruleEntry>
@@ -731,8 +720,8 @@
                 <value>ZA - Drafting and administration queues</value>
             </criteriaItems>
             <notifyCcRecipients>true</notifyCcRecipients>
-            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
-            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <replyToEmail>function.vfspaidupsza@volvo.com</replyToEmail>
+            <senderEmail>api.vfs.za@volvo.com</senderEmail>
             <senderName>VFS ZA - Service Team</senderName>
             <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
         </ruleEntry>
@@ -753,8 +742,8 @@
                 <value>ZA - Restucture</value>
             </criteriaItems>
             <notifyCcRecipients>true</notifyCcRecipients>
-            <replyToEmail>daryl.verrinder@volvo.com</replyToEmail>
-            <senderEmail>daryl.verrinder@volvo.com</senderEmail>
+            <replyToEmail>function.vfspaidupsza@volvo.com</replyToEmail>
+            <senderEmail>api.vfs.za@volvo.com</senderEmail>
             <senderName>VFS ZA - Service Team</senderName>
             <template>unfiled$public/ZA_Service_Connect_Email_Template_1708499954421</template>
         </ruleEntry>
@@ -779,6 +768,28 @@
             <senderEmail>vfs.info.de@volvo.com</senderEmail>
             <senderName>DE-Repossession</senderName>
             <template>DE_AT_Communication_Folder/DE_Repossession</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Country__c</field>
+                <operation>equals</operation>
+                <value>South Africa</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>ZA Paid Ups</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>function.vfspaidupsza@volvo.com</replyToEmail>
+            <senderEmail>api.vfs.za@volvo.com</senderEmail>
+            <senderName>VFS ZA - Service Team</senderName>
+            <template>ZA_Communication_Folder/ZA_Service_Connect_Lightning_Email_Template</template>
         </ruleEntry>
     </autoResponseRule>
 </AutoResponseRules>

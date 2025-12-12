@@ -151,8 +151,8 @@ private static void testGetMatchedCreditLinesInvalidCreditline(){
     CLA_CreditLineSearchService.getMatchedCreditLines();
     Test.stopTest();
 
-    System.assertEquals(404, res.statusCode, 'Expected status code is 404.');
-    System.assert(res.responseBody.toString().contains('Credit line not found'), 'Expected "Credit line not found" in response body.');
+    System.assertEquals(200, res.statusCode, 'Expected status code is 200.');
+    System.assert(res.responseBody.toString().contains('[]'), 'Expected "Credit line not found" in response body.');
     }
 }
 

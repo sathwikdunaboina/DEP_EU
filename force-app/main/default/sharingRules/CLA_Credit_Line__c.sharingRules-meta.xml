@@ -246,4 +246,19 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CLA_ZA_Market_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Provides Read/Write access of Credit Line with country ZA with Credit Line ZA members.</description>
+        <label>CLA ZA Market Sharing Rule</label>
+        <sharedTo>
+            <group>CLA_Credit_Line_ZA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CLA_Country__c</field>
+            <operation>equals</operation>
+            <value>ZA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
 </SharingRules>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>Initiation__c.Dealership_Account__c</field>
+    </columns>
+    <columns>
         <field>Initiation__c.Customer_Account__c</field>
     </columns>
     <columns>
@@ -14,6 +17,9 @@
     </columns>
     <columns>
         <field>CUST_CREATED_NAME</field>
+    </columns>
+    <columns>
+        <field>Initiation_asset__c.Useract__c</field>
     </columns>
     <crossFilters>
         <criteriaItems>
@@ -34,7 +40,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Contract Hire,Finance Lease,Hire Purchase,Hire Purchase VR,Operational Lease</value>
+            <value>,Contract Hire,Operational Lease,Finance Lease,Hire Purchase,Hire Purchase VR</value>
         </criteriaItems>
         <criteriaItems>
             <column>Initiation__c.RT_finance_type__c</column>
@@ -43,9 +49,27 @@
             <operator>equals</operator>
             <value>,BRS Contract Hire,Contract Hire,Finance Lease,Hire Purchase,Hire Purchase VR,Operational Lease,Vertellus Contract Hire</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Initiation_asset__c.Use_this_record_to_clone__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Initiation_asset__c.Desired_payout_date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <field>Initiation_asset__c.Desired_payout_date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Initiation__c.Country__c</field>
@@ -54,11 +78,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Initiation__c.Brand__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Initiation__c.Dealership_Account__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Commercial Error Reporting</name>

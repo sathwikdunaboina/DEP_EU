@@ -76,6 +76,13 @@
             <operator>equals</operator>
             <value>Initiation__c.Contract_Hire,Initiation__c.Lease_with_R_M,Initiation__c.Stane_Alone_Service</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Initiation_asset__c.Parent_Brand__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Renault</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

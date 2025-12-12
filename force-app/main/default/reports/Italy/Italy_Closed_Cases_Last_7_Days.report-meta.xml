@@ -8,14 +8,15 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>VerticalColumn</chartType>
+        <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>CLOSED_DATEONLY</groupingColumn>
+        <expandOthers>false</expandOthers>
+        <groupingColumn>Case.Brand__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <showAxisLabels>false</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>true</showTotal>
         <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
@@ -39,21 +40,8 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>AGE</field>
-    </columns>
-    <columns>
-        <field>CLOSED</field>
-    </columns>
     <currency>EUR</currency>
     <filter>
-        <criteriaItems>
-            <column>CLOSED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
@@ -62,27 +50,21 @@
             <value>Automatic end of term notification</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER</column>
+            <column>Case.Brand__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Italy - CS Operations</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Italy - CS Operations</value>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>UD</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <field>CLOSED_DATEONLY</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Brand__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IT - Closed Cases Last 7 Days</name>
+    <name>IT - Total Ticket per Brand</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -97,7 +79,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_LAST7</interval>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

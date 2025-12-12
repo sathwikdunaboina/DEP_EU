@@ -12,11 +12,12 @@
     <columns>CASES.EMAIL</columns>
     <columns>CASES.NAME</columns>
     <columns>Adjusted_Time__c</columns>
+    <columns>CASES.RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Adjusted_Time__c</field>
-        <operation>notEqual</operation>
-        <value>Days hr min</value>
+        <field>CASES.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Case.MEDALLIACLF_Alert_Cases</value>
     </filters>
     <label>My view</label>
     <sharedTo>

@@ -46,6 +46,9 @@
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
+        <field>Case.Status_Reason__c</field>
+    </columns>
+    <columns>
         <field>AGE</field>
     </columns>
     <columns>
@@ -66,20 +69,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>ext,eot,billing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Truslove</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -114,13 +103,6 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>thay</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
             <value>service</value>
         </criteriaItems>
         <criteriaItems>
@@ -135,21 +117,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Claire</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
             <value>lovepreet,jenny</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>XSM</value>
         </criteriaItems>
         <criteriaItems>
             <column>STATUS</column>
@@ -162,15 +130,15 @@
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>UK/IE - EOT Billing</value>
+            <operator>contains</operator>
+            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Andy Medcalf,Liberty,Lauren,joe brown,daniel holtom,eot,xsm,thay,claire</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER</column>
+            <column>Case.Status_Reason__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>IE - CS Operations,UK/IE - CS Operations,UK/IE - Contract Processing,UK/IE - 2nd Checking,Adam King,Bart Wisniewski,Jordan Mulholland,Molly White,Rumeysa Belibagli,Andy Medcalf</value>
+            <operator>notEqual</operator>
+            <value>Postponed Action</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -180,7 +148,7 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Open Cases On Hold</name>
+    <name>CA Team Active Cases On Hold</name>
     <params>
         <name>units</name>
         <value>d</value>

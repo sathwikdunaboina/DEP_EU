@@ -30,13 +30,26 @@
         <field>SUBJECT</field>
     </columns>
     <columns>
-        <field>TYPE</field>
-    </columns>
-    <columns>
         <field>Case.Sub_Type__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Number_of_Agreements__c</field>
+    </columns>
+    <columns>
         <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Status_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.Indicator__c</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE_BY_ALIAS</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

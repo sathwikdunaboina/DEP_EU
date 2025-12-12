@@ -143,7 +143,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Billing / Invoice query,Contract Information Required,Copy Contract,Copy Credit Note,Copy Invoice,Explanation of Invoices,Invoice,Invoice Query,Settlement Query</value>
+            <value>Billing / Invoice query,Contract Information Required,Copy Contract,Copy Credit Note,Copy Invoice,Explanation of Invoices,Invoice,Invoice Query</value>
         </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
@@ -151,6 +151,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>StreamServe,VFS Financial Services Ltd Invoice</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CASE_COMMENT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -178,8 +185,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2025-01-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2024-01-01</startDate>
+        <startDate>2024-12-01</startDate>
     </timeFrameFilter>
 </Report>
