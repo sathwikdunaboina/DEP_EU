@@ -46,7 +46,7 @@ public class VFSCORE_BnkAccChangeEventTriggerHandler {
             Set<Id> setAllBankAccountIds = new Set<Id>();
             for (Bank_Account__ChangeEvent bankAccountChange : this.bankAccountChangeEvents) {
                 // Get all Record Ids for this change and add to the set
-                List<Id> listBnkAccRecordId = (List<Id>)bankAccountChange.ChangeEventHeader.getRecordIds(); 
+                List<Id> listBnkAccRecordId = (List<Id>)bankAccountChange.ChangeEventHeader.getRecordIds();           
                 setAllBankAccountIds.addAll(listBnkAccRecordId);
             }
             for(Linked_Bank_Accounts__c linkedBankAccounts : [SELECT Id,Account__c,Bank_Account__c,Account__r.sourceSystemID__c From Linked_Bank_Accounts__c Where Bank_Account__c IN: setAllBankAccountIds WITH SYSTEM_MODE]){

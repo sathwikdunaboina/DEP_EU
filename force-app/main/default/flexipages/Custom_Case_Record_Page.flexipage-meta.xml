@@ -229,12 +229,12 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Case_Reopen_Date__c</fieldItem>
                 <identifier>RecordCase_Reopen_Date_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Status_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -244,6 +244,11 @@
                         <leftValue>{!Record.Country__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -700,11 +705,16 @@
                 <componentName>flowruntime:interview</componentName>
                 <identifier>flowruntime_interview3</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>(1 OR 2 ) AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Country__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Status_Reason__c}</leftValue>
@@ -754,6 +764,16 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>showLegacyActivityComposer</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>runtime_sales_activities:activityPanel</componentName>
+                <identifier>runtime_sales_activities_activityPanel</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -942,6 +962,32 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Case.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Action_Plans__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer4</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

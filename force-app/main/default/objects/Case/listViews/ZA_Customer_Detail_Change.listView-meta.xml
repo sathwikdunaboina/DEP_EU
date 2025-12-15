@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ZA_Customer_Detail_Change</fullName>
-    <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7)) AND 8</booleanFilter>
+    <booleanFilter>1 AND ((2 AND 3) OR 4 OR 5) AND 6</booleanFilter>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>Indicator__c</columns>
     <columns>CASES.PRIORITY</columns>
@@ -31,19 +31,9 @@
         <value>Change address / contact details,Change Business Name,Company details,Email Address for Invoicing,FICA Check,Vehicle information</value>
     </filters>
     <filters>
-        <field>CASES.TYPE</field>
-        <operation>equals</operation>
-        <value>Techtool - Change my details</value>
-    </filters>
-    <filters>
         <field>Sub_Type__c</field>
         <operation>equals</operation>
-        <value>Access Level Update,Email Address for Invoicing,New Users,Password Reset</value>
-    </filters>
-    <filters>
-        <field>CASES.TYPE</field>
-        <operation>equals</operation>
-        <value>Techtool - General query</value>
+        <value>Email Address for Invoicing</value>
     </filters>
     <filters>
         <field>Sub_Type__c</field>
@@ -57,10 +47,6 @@
     </filters>
     <label>ZA - Customer Detail Change</label>
     <sharedTo>
-        <group>South_Africa_Volvo</group>
-        <group>ZA_Activation_request</group>
-        <group>ZA_After_sales</group>
-        <group>ZA_Drafting_and_administration_queues</group>
-        <group>ZA_Restucture</group>
+        <group>Admin_Public_Group</group>
     </sharedTo>
 </ListView>

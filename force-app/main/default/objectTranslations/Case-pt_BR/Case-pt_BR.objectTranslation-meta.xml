@@ -59,6 +59,10 @@
         <name>CaseSummary</name>
     </quickActions>
     <quickActions>
+        <label><!-- CloseCaseLightning --></label>
+        <name>CloseCaseLightning</name>
+    </quickActions>
+    <quickActions>
         <label><!-- NewChildCase --></label>
         <name>NewChildCase</name>
     </quickActions>
@@ -99,6 +103,11 @@
         <name>VFS_Dealer</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Case Reopen Date should not be empty and should not be in the past.
+It must always be a future date. --></errorMessage>
+        <name>CaseReopenDateInFutureValidation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>Não é possível criar casos para este país.</errorMessage>
         <name>Case_Country_Restriction</name>
     </validationRules>
@@ -134,6 +143,18 @@
         <errorMessage>O tipo de caso é obrigatório ao encerrar um caso.</errorMessage>
         <name>Type_Mandatory_on_Closure</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Bulk_Update_LWC --></label>
+        <name>Bulk_Update_LWC</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plan --></label>
+        <name>Create_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plans --></label>
+        <name>Create_Action_Plans</name>
+    </webLinks>
     <webLinks>
         <label><!-- UpsellCrosssellOpportunity --></label>
         <name>medallia_xm__UpsellCrosssellOpportunity</name>

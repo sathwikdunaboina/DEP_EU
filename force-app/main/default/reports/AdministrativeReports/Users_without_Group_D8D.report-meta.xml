@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.Id</field>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User</field>
     </columns>
     <columns>
         <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.Profile</field>
@@ -16,12 +16,27 @@
         <field>GroupMember-QueuePublicGroupMembership$Group.Name</field>
     </columns>
     <columns>
-        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.FederationIdentifier</field>
-    </columns>
-    <columns>
-        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.IsActive</field>
     </columns>
     <currency>EUR</currency>
+    <filter>
+        <criteriaItems>
+            <column>GroupMember-QueuePublicGroupMembership$GroupMember-User.CountryCode</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IE,GB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>GroupMember-QueuePublicGroupMembership$GroupMember-User.Profile</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>system administrator</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Tabular</format>
     <name>Users without Group</name>
     <params>

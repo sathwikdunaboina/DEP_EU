@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLA_Drawn_Date_Greater_Than_CL_Expiry</fullName>
+    <active>true</active>
+    <description>Drawn Date cannot be greater than Credit Line Expiry Date.</description>
+    <errorConditionFormula>DATE(
+VALUE(LEFT(CLA_Drawn_Date__c, 4)),
+VALUE(MID(CLA_Drawn_Date__c, 6, 2)),
+VALUE(MID(CLA_Drawn_Date__c, 9, 2))
+) &gt;  CLA_Credit_Line__r.CLA_Expiry_Date__c</errorConditionFormula>
+    <errorMessage>Drawn Date cannot be greater than Credit Line Expiry Date.</errorMessage>
+</ValidationRule>

@@ -381,10 +381,6 @@ private class ActionPlansObjectTriggersTest {
 		System.runAs(new User(Id = UserInfo.getUserId())) {
 			testutil.createNewActionPlan('lead', 1, null);
 		}
-        //Adding New Lines 
-          PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name='Action_Plans_Test_Class_Bypass_Permission_Set' LIMIT 1];
-    insert new PermissionSetAssignment(AssigneeId=u.Id, PermissionSetId=ps.Id);
-        //new lines end
 
 		Test.startTest();
 		System.runAs(u) {

@@ -35,9 +35,6 @@
         <field>SUBJECT</field>
     </columns>
     <columns>
-        <field>Case.Sub_Type__c</field>
-    </columns>
-    <columns>
         <field>AGE</field>
     </columns>
     <columns>
@@ -60,6 +57,11 @@
         <field>TYPE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Sub_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>IT - Opened Cases (MTD)</name>
     <params>
         <name>units</name>
@@ -74,8 +76,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Sub_Type__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_THISMONTH</interval>

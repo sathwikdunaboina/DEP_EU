@@ -37,15 +37,15 @@
         <label>Formula-OpenedDate</label>
         <scale>2</scale>
     </customDetailFormulas>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Year</dateGranularity>
-        <field>CDF1</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
+    <format>Summary</format>
     <groupingsDown>
         <dateGranularity>MonthInYear</dateGranularity>
         <field>CREATED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Year</dateGranularity>
+        <field>CDF1</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>CaseYearWiseAnalysis</name>

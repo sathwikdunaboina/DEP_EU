@@ -4,10 +4,10 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
+        <field>Opportunity.Asset_Type__c</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -23,6 +23,18 @@
     </columns>
     <columns>
         <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Number_of_Assets__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.NetSalesPrice__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Average_Value_Per_Asset__c</field>
     </columns>
     <currency>EUR</currency>
     <description>Report to show Opportunities by Dealer for Lead Sources &apos;Dealer-Stockbook&apos; and &apos;Dealer-Wagonex&apos;</description>
@@ -40,6 +52,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunities by Dealer</name>

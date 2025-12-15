@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All</fullName>
+    <columns>NAME</columns>
+    <columns>Contract_Check_Sheet_Status__c</columns>
+    <columns>Checksheet_Contract_Number__c</columns>
+    <columns>Number_of_Assets__c</columns>
+    <columns>Checksheet_Customer_Name__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Initiation__c</columns>
+    <columns>Dealer__c</columns>
+    <columns>Contract_notes__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Territory_Manager__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Contract_Check_Sheet_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Lost Deal,Paid Out</value>
+    </filters>
+    <label>My Open checksheets</label>
+</ListView>

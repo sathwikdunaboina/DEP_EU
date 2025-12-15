@@ -657,6 +657,11 @@
             <field>Activations_Count__c</field>
             <table>Case.Initiations__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Credit_Expiry_Date__c</field>
+            <table>Case.Initiations__r</table>
+        </columns>
         <masterLabel>Initiations</masterLabel>
     </sections>
     <sections>
@@ -893,6 +898,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>with_activations_date__c</field>
+            <table>Case.Initiations__r.Initiation_assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contract_Check_Sheet__c</field>
             <table>Case.Initiations__r.Initiation_assets__r</table>
         </columns>
         <masterLabel>Initiation assets</masterLabel>

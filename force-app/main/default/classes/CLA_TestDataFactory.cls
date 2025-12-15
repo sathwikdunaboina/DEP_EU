@@ -299,7 +299,7 @@ public  class CLA_TestDataFactory {
        
         CLA_Credit_Line_Consumption__c oCreditLineConsumption = new CLA_Credit_Line_Consumption__c();
         oCreditLineConsumption.CLA_Company_Identification_Number__c = '123456789';
-        oCreditLineConsumption.CLA_Drawn_Date__c = '16-06-2024';
+        oCreditLineConsumption.CLA_Drawn_Date__c = DateTime.newInstance(Date.today()+5, Time.newInstance(0, 0, 0, 0)).format('yyyy-MM-dd'); 
         oCreditLineConsumption.CLA_Status__c = 'Confirmed';
         oCreditLineConsumption.CLA_Quote_Market__c = 'market';
         oCreditLineConsumption.CLA_Quote_Number__c = 'test number';

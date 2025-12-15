@@ -9,9 +9,14 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>CORE.USERS.ALIAS</columns>
     <filterScope>Queue</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>New</value>
+    </filters>
     <label>ClosedLoop CH Relationship New</label>
     <queue>MEDALLIACLF_ClosedLoop_CH_Relship_New</queue>
     <sharedTo>
-        <roleAndSubordinatesInternal>Switzerland</roleAndSubordinatesInternal>
+        <group>ClosedLoop_CH_Relationship_New</group>
     </sharedTo>
 </ListView>

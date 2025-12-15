@@ -9,16 +9,13 @@
             <axisBinding>y</axisBinding>
             <column>Initiation_asset__c.Use_this_record_to_clone__c</column>
         </chartSummaries>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>Line</chartType>
+        <chartType>LineGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>Initiation_asset__c.Desired_payout_date__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>CDF1</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -95,17 +92,24 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Initiation__c.Status__c</column>
+            <column>Initiation_asset__c.NOT_TAKEN_UP__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Closed,In progress,To be filed,to be signed</value>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Initiation_asset__c.Asset_status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,File in query,With back office for activation,File with front office,Pack ready</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Month</dateGranularity>
+        <dateGranularity>MonthInYear</dateGranularity>
         <field>Initiation_asset__c.Desired_payout_date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New</fullName>
+    <availability>online</availability>
+    <description>New button to override standard create button.</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>New</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/flow/CLA_Create_Credit_Control_Security_Screen?controlId={!CLA_Credit_Line_Control__c.Id}&amp;creditLineId={!CLA_Credit_Line_Control__c.CLA_Credit_LineId__c}&amp;retURL={!CLA_Credit_Line_Control__c.Id}</url>
+</WebLink>
