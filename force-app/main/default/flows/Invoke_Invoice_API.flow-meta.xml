@@ -3,13 +3,17 @@
     <actionCalls>
         <name>CallInvoiceAPI</name>
         <label>CallInvoiceAPI</label>
-        <locationX>182</locationX>
-        <locationY>158</locationY>
+        <locationX>578</locationX>
+        <locationY>350</locationY>
         <actionName>CMSAPI_InvoiceHandler</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>Is_success</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Something_Went_Wrong</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>accountIds</name>
             <value>
@@ -17,17 +21,51 @@
             </value>
         </inputParameters>
         <nameSegment>CMSAPI_InvoiceHandler</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
+        <description>This element checks if the customer id or billing country is null</description>
+        <name>Customer_Id_Billing_Country_Null_Check</name>
+        <label>Customer Id Billing Country Null Check</label>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>CallInvoiceAPI</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CustomerIdorBillingCountryNullCheck</name>
+            <conditionLogic>1 OR 2</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_Record.CustomerID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Account_Record.BillingCountryCode</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CustomerIDOrBillingCountryNUll</targetReference>
+            </connector>
+            <label>CustomerIdorBillingCountryNullCheck</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_success</name>
         <label>Is success?</label>
-        <locationX>182</locationX>
-        <locationY>278</locationY>
+        <locationX>578</locationX>
+        <locationY>458</locationY>
         <defaultConnector>
-            <targetReference>Partial_Success</targetReference>
+            <targetReference>No_Invoices_Screen</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Somethings wrong</defaultConnectorLabel>
         <rules>
@@ -45,7 +83,30 @@
             </connector>
             <label>API Success</label>
         </rules>
+        <rules>
+            <name>Partial_Success_Screen</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CallInvoiceAPI.totalInvoicesSaved</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>CallInvoiceAPI.totalInvoicesFromAPI</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CallInvoiceAPI.isSuccess</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Partial_Success</targetReference>
+            </connector>
+            <label>Partial Success</label>
+        </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <name>ResultText</name>
         <dataType>String</dataType>
@@ -72,11 +133,56 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Account_Record</name>
+        <label>Get Account Record</label>
+        <locationX>314</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Customer_Id_Billing_Country_Null_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>CustomerIDOrBillingCountryNUll</name>
+        <label>CustomerIDOrBillingCountryNUll</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>NullCheck</name>
+            <fieldText>&lt;p&gt;The Customer ID or Billing Country Should Not Be Empty  For Fetching The Invoices&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
     <screens>
         <name>Invoice_Call_Result</name>
         <label>Invoice Call Result</label>
-        <locationX>50</locationX>
-        <locationY>398</locationY>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -84,6 +190,38 @@
             <name>InvoiceResultText</name>
             <fieldText>&lt;p&gt;Invoices fetched successfully.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>No_Invoices_Screen</name>
+        <label>No Invoices Screen</label>
+        <locationX>842</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>No_Invoice_Message</name>
+            <fieldText>&lt;p&gt;There are no invoices present for this account&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -91,8 +229,8 @@
     <screens>
         <name>Partial_Success</name>
         <label>Partial Success</label>
-        <locationX>314</locationX>
-        <locationY>398</locationY>
+        <locationX>578</locationX>
+        <locationY>566</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -100,15 +238,47 @@
             <name>ErrorText</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;Invoices fetched with errors. CMS returned {!CallInvoiceAPI.totalInvoicesFromAPI}&amp;nbsp; invoices but only {!CallInvoiceAPI.totalInvoicesSaved}  invoices are saved.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
+    <screens>
+        <name>Something_Went_Wrong</name>
+        <label>Something Went Wrong</label>
+        <locationX>1106</locationX>
+        <locationY>458</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErrorMessage</name>
+            <fieldText>&lt;p&gt;Something went wrong please contact admin&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
-        <locationX>56</locationX>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>CallInvoiceAPI</targetReference>
+            <targetReference>Get_Account_Record</targetReference>
         </connector>
     </start>
     <status>Active</status>
