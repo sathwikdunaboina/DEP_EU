@@ -6,7 +6,7 @@ static void makeData(){
     //Create customer account.
     Account acc = new Account();
     acc.BillingCountryCode = 'IE';
-    acc.CustomerId__c = 'IE-Z0000000000000000000000514448687';
+    acc.CustomerId__c = 'IE-C6496BBC1023435A8AA904431C0541BD';
     acc.Name = 'Test Irish Customer';
     insert acc;
 }
@@ -14,7 +14,7 @@ static void makeData(){
 @IsTest
 static void fetchInvoicesFromAPITest(){
 
-    Account acc = [SELECT Id FROM Account WHERE CustomerId__c = 'IE-Z0000000000000000000000514448687' limit 1];
+    Account acc = [SELECT Id FROM Account WHERE CustomerId__c = 'IE-C6496BBC1023435A8AA904431C0541BD' limit 1];
     Test.setMock(System.HttpCalloutMock.class, new CMSAPI_CalloutMock());
     Test.startTest();
     CMSAPI_InvoiceHandler.fetchInvoicesFromAPI(new List<Id> {acc.Id});    
