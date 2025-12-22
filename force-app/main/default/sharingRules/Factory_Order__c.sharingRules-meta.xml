@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>FO_NL_VCE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing rule for sharing NL VCE factory order with all NL users sales connect</description>
+        <label>FO_NL_VCE</label>
+        <sharedTo>
+            <group>Netherlands_VCE</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Netherlands,NL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VCE</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>FO_RT_AT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>FO_RT_AT</label>
