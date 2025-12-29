@@ -5691,6 +5691,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Factory_Order__c.Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Factory_Order__c.Dis_Status_Code__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -6317,6 +6322,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Integrtion_Parameter__mdt.URL3__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Invoice_Country_To_Source_Mapper__mdt.Source_System_Code1__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Invoice_Country_To_Source_Mapper__mdt.Source_System_Code2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7420,6 +7435,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Factory_Order_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Factory_Order__c</field>
         <readable>true</readable>
@@ -7570,11 +7590,6 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.Lead_VIN_Number__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Loss_Reason__c</field>
         <readable>true</readable>
@@ -7583,6 +7598,11 @@
         <editable>true</editable>
         <field>Opportunity.Lost_Reason__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Market_Type_1_5__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7748,6 +7768,11 @@
         <editable>false</editable>
         <field>Opportunity.VFS_Connect_Quote__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.VIN_Number__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -10188,6 +10213,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Update_Opportunity_fields_on_Create_Update</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>Update_Oppty_Fields_When_Factory_Order_Is_Cancelled</flow>
     </flowAccesses>
     <flowAccesses>
@@ -10628,6 +10657,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Integrtion_Parameter__mdt-Integrtion Parameter Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Invoice_Country_To_Source_Mapper__mdt-Invoice Country To Source Mapper Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Invoice__c-Invoice Layout</layout>
