@@ -5690,6 +5690,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Factory_Order__c.Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Factory_Order__c.Dis_Status_Code__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -6316,6 +6321,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Integrtion_Parameter__mdt.URL3__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Invoice_Country_To_Source_Mapper__mdt.Source_System_Code1__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Invoice_Country_To_Source_Mapper__mdt.Source_System_Code2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7419,6 +7434,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Factory_Order_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Factory_Order__c</field>
         <readable>true</readable>
@@ -7577,6 +7597,11 @@
         <editable>true</editable>
         <field>Opportunity.Lost_Reason__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Market_Type_1_5__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7742,6 +7767,11 @@
         <editable>false</editable>
         <field>Opportunity.VFS_Connect_Quote__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.VIN_Number__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -9713,6 +9743,81 @@
         <field>medallia_xm__QueueItem__c.medallia_xm__System_Error__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__APIBaseUrl__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__ConnectedAppCallbackURL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__ConnectedAppConsumerKey__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__ConnectedAppName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__ConnectedAppScopes__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__MedBaseURL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__PKPassword__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__Principal__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthAuthorizeURL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthClientId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthClientSecret__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthFlowType__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthRevokeURL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthTokenMedURL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>medallia_xm__oAuthSettings__mdt.medallia_xm__oAuthTokenURL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <flowAccesses>
         <enabled>false</enabled>
         <flow>AccountContractUrgentNotesOnCase</flow>
@@ -10104,6 +10209,10 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Update_Opportunity_Currency</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Update_Opportunity_fields_on_Create_Update</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
@@ -10535,6 +10644,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Integrtion_Parameter__mdt-Integrtion Parameter Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Invoice_Country_To_Source_Mapper__mdt-Invoice Country To Source Mapper Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Invoice__c-Invoice Layout</layout>
@@ -12545,6 +12657,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>Idea.InternalIdeasIdeaRecordType</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>Initiation__c.Contract_Hire</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -12986,6 +13103,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-LiveAgentSession</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-LiveAgentSupervisor</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
