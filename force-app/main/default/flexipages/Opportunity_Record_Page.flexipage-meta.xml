@@ -251,6 +251,23 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.General_Description__c</fieldItem>
+                <identifier>RecordGeneral_Description_cField2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Brand__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-204cc5fb-20a3-4216-b556-0751235d1e6a</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -931,7 +948,7 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Lead_VIN_Number__c</fieldItem>
+                <fieldItem>Record.VIN_Number__c</fieldItem>
                 <identifier>RecordLead_VIN_Number_cField</identifier>
                 <visibilityRule>
                     <criteria>
