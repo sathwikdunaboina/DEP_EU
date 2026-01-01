@@ -456,6 +456,16 @@
                 <identifier>RecordProbabilityField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.General_Description__c</fieldItem>
+                <identifier>RecordGeneral_Description_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-ef32438a-a804-4890-b12d-dc28026bd44f</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1038,23 +1048,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Detailed_Specification__c</fieldItem>
                 <identifier>RecordDetailed_Specification_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.General_Description__c</fieldItem>
-                <identifier>RecordGeneral_Description_cField</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.LeadSource}</leftValue>
