@@ -176,6 +176,23 @@
         <connector>
             <targetReference>To_check_if_the_Opportunity_is_Created_or_Updated</targetReference>
         </connector>
+        <filterFormula>OR(
+  ISBLANK({!$Record__Prior.Id}),
+AND(
+   ISCHANGED({!$Record.StageName}),
+   OR(
+      ISPICKVAL({!$Record.StageName}, &quot;Closed Won&quot;),
+      ISPICKVAL({!$Record.StageName}, &quot;Closed Lost&quot;)
+   ),
+   NOT(
+      OR(
+         ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Won&quot;),
+         ISPICKVAL({!$Record__Prior.StageName}, &quot;Closed Lost&quot;)
+      )
+   ),
+   NOT(ISCHANGED( {!$Record.CloseDate}))
+)
+)</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
