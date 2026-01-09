@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>BR Service Messaging PS</label>
+    <hasActivationRequired>false</hasActivationRequired>
     <classAccesses>
         <apexClass>AccountContactsSelectorController</apexClass>
         <enabled>true</enabled>
@@ -59,8 +61,6 @@ https://help.salesforce.com/s/articleView?id=sf.messaging_permissions_parent.htm
         <field>MessagingSession.OpportunityId</field>
         <readable>true</readable>
     </fieldPermissions>
-    <hasActivationRequired>false</hasActivationRequired>
-    <label>BR Service Messaging PS</label>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
