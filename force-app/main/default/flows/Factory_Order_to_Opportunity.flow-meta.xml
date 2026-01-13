@@ -20,8 +20,8 @@
         <description>Check if we have retrieved and account record before creating the Opportunity</description>
         <name>Account_Record_Retrieved</name>
         <label>Account Record Retrieved</label>
-        <locationX>660</locationX>
-        <locationY>508</locationY>
+        <locationX>611</locationX>
+        <locationY>431</locationY>
         <defaultConnectorLabel>Account Not Retrieved</defaultConnectorLabel>
         <rules>
             <name>Account_Successfully_Retrieved</name>
@@ -43,8 +43,8 @@
         <description>If this field is check on Account, we need to relate the dealer sales person to a contact in order to get the owner. This owner will be used as the owner of the opportunity created in the previous step.</description>
         <name>Check_sales_person</name>
         <label>Check sales person</label>
-        <locationX>509</locationX>
-        <locationY>975</locationY>
+        <locationX>380</locationX>
+        <locationY>971</locationY>
         <defaultConnectorLabel>Do not relate sales person</defaultConnectorLabel>
         <rules>
             <name>True</name>
@@ -73,8 +73,8 @@
         <description>Check if we have a contact with a owner specified</description>
         <name>Contacts_exists</name>
         <label>Has Contact</label>
-        <locationX>240</locationX>
-        <locationY>1127</locationY>
+        <locationX>182</locationX>
+        <locationY>1187</locationY>
         <defaultConnectorLabel>No contact exists</defaultConnectorLabel>
         <rules>
             <name>Contact_exists</name>
@@ -115,7 +115,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -129,8 +129,8 @@
         <description>Create an Opportunity</description>
         <name>Create_an_Opportunity</name>
         <label>Create an Opportunity</label>
-        <locationX>439</locationX>
-        <locationY>695</locationY>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
         <connector>
             <targetReference>Update_Original_Factory_Order</targetReference>
         </connector>
@@ -165,6 +165,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <elementReference>$Record.Description__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Name</field>
             <value>
                 <stringValue>{!$Record.End_Customer_Name__c}_{!$Record.Order_Id__c}</stringValue>
@@ -195,8 +201,8 @@
         <description>Get the contact by the Sales person name on Factory order</description>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>240</locationX>
-        <locationY>1019</locationY>
+        <locationX>182</locationX>
+        <locationY>1079</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Contacts_exists</targetReference>
@@ -217,8 +223,8 @@
         <description>This uses the Dealer Id to get the Dealer Account associated with this Factory Order.</description>
         <name>Get_Dealer_Account</name>
         <label>Get Dealer Account</label>
-        <locationX>669</locationX>
-        <locationY>371</locationY>
+        <locationX>611</locationX>
+        <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Account_Record_Retrieved</targetReference>
@@ -239,8 +245,8 @@
         <description>Get the opportunity finance record type to set on the opportunity</description>
         <name>Get_Finance_Record_Type</name>
         <label>Get Finance Record Type</label>
-        <locationX>394</locationX>
-        <locationY>501</locationY>
+        <locationX>380</locationX>
+        <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Metadata_for_currency</targetReference>
@@ -263,8 +269,8 @@
         <description>Get custom metadata records based on country code</description>
         <name>Get_Metadata_for_currency</name>
         <label>Get Metadata for currency</label>
-        <locationX>253</locationX>
-        <locationY>616</locationY>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_an_Opportunity</targetReference>
@@ -285,8 +291,8 @@
         <description>Update the opportunity owner with the owner of the contact</description>
         <name>Update_opportunity_owner</name>
         <label>Update opportunity owner</label>
-        <locationX>108</locationX>
-        <locationY>1235</locationY>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -299,8 +305,8 @@
         <description>Update Original Factory Order</description>
         <name>Update_Original_Factory_Order</name>
         <label>Update Original Factory Order</label>
-        <locationX>610</locationX>
-        <locationY>821</locationY>
+        <locationX>380</locationX>
+        <locationY>863</locationY>
         <connector>
             <targetReference>Check_sales_person</targetReference>
         </connector>
@@ -319,8 +325,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>543</locationX>
-        <locationY>48</locationY>
+        <locationX>485</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Get_Dealer_Account</targetReference>
         </connector>

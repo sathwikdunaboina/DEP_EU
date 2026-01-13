@@ -498,6 +498,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <elementReference>$Record.Description__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Name</field>
             <value>
                 <stringValue>{!$Record.End_Customer_Name__c}_{!$Record.Order_Id__c}</stringValue>
