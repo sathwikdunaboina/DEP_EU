@@ -40,8 +40,8 @@ private class ContractNovationAfterInsertHandlerTest {
         // Both of these produce the same formula key "IE-111"
         // Country part: "IE-" (LEFT includes the dash)
         // Last part: "111"
-        Contract__c oldC = makeOldContract(oldAcc.Id, 'IE-111-111');
-        Contract__c newC = makeNewContract(newAcc.Id, 'IE-222-111');
+        Contract__c oldC = makeOldContract(oldAcc.Id, 'HH-111-111');
+        Contract__c newC = makeNewContract(newAcc.Id, 'HH-222-111');
 
         Test.startTest();
         insert newC; // should invoke after-insert handler via trigger
@@ -56,10 +56,10 @@ private class ContractNovationAfterInsertHandlerTest {
         System.debug('This is the old contract id'+oldAfter.Account__c);
         System.debug('This is new contract id'+newAcc.Id);
 
-        //System.assertEquals(newAcc.Id, oldAfter.Account__c, 'Old contract should now point to new account');
-        //System.assertEquals('IE-222-111', oldAfter.Contract_Id__c, 'Old contract external id should be replaced with new one');
-        //System.assertEquals(9999, oldAfter.Down_Payment__c, 'Old contract field should copy from new');
-        //System.assertEquals(999, oldAfter.Amount_Including_Tax__c, 'Old contract field should copy from new');
+        System.assertEquals(newAcc.Id, oldAfter.Account__c, 'Old contract should now point to new account');
+        System.assertEquals('HH-222-111', oldAfter.Contract_Id__c, 'Old contract external id should be replaced with new one');
+        System.assertEquals(9999, oldAfter.Down_Payment__c, 'Old contract field should copy from new');
+        System.assertEquals(999, oldAfter.Amount_Including_Tax__c, 'Old contract field should copy from new');
 
         // New should be deleted
         System.assertEquals(

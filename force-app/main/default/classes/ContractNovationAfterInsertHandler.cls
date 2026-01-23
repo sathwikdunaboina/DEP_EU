@@ -98,9 +98,10 @@ public with sharing class ContractNovationAfterInsertHandler {
                 newContractIdsToDelete.add(newContractVersion.Id);                
             }
             
-            // 7) DML (update first, then delete duplicates)            
+            // 7) DML (update first, then delete duplicates)     
+                        if (!newContractIdsToDelete.isEmpty()) Database.delete(newContractIdsToDelete, false);
+       
             if (!oldContractsToUpdate.isEmpty()) Database.update(oldContractsToUpdate, false);
-            if (!newContractIdsToDelete.isEmpty()) Database.delete(newContractIdsToDelete, false);
 
         }
         catch(Exception e)
