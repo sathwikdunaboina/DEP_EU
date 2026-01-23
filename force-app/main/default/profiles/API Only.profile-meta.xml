@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Profile xmlns="http://soap.sforce.com/2006/04/metadata">
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata"
+      xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
     <applicationVisibilities>
         <application>Admin_App</application>
         <default>false</default>
@@ -458,6 +459,14 @@
     <classAccesses>
         <apexClass>ContractDetailControllerTest</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ContractNovationAfterInsertHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ContractNovationAfterInsertHandlerTest</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CreateANewCaseFrom30DaysOldFlow_Test</apexClass>
@@ -3749,6 +3758,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract__c.Country_Code_CMSID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Contract__c.DealerId__c</field>
         <readable>true</readable>
@@ -3770,6 +3784,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract__c.Duplicate_Reason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contract__c.End_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3786,6 +3805,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract__c.Financed_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract__c.IsDuplicate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8548,6 +8572,7 @@
     <layoutAssignments>
         <layout>WorkThanks-Thanks Layout</layout>
     </layoutAssignments>
+    <loginHours n1:nil="true" />
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
@@ -10810,10 +10835,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>Packaging2</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>Packaging2PromoteVersion</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
