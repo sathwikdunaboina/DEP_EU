@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_Code_CMSID__c</fullName>
+    <description>This field has country code and CMSId used for filtering contracts based on these two things</description>
+    <externalId>false</externalId>
+    <formula>LEFT(Contract_Id__c,FIND(&apos;-&apos;,Contract_Id__c))&amp;RIGHT(Contract_Id__c, FIND(&apos;-&apos;, REVERSE(Contract_Id__c))-1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Country Code CMSID</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
