@@ -1,11 +1,13 @@
 import { LightningElement, track, wire, api } from 'lwc';
+import {getObjectInfo} from 'lightning/uiObjectInfoApi';
+import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import BILLING_STATECODE_FIELD from '@salesforce/schema/Account.BillingStateCode';
+import BILLING_STATE_FIELD from '@salesforce/schema/Account.BillingState';
 import saveAccountRecord from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.saveAccountRecord';
 import checkDuplicateRules from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.checkDuplicateRules';
 import getMatchingDuplicates from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.getMatchingDuplicates';
-import updateState from '@salesforce/apex/fetchDuplicateAccountAndSaveAccount.updateState';
 import { COUNTRY_PICKLIST } from 'c/globalCountryPicklist';
 import USER_ID from '@salesforce/user/Id';
 import { getRecord } from 'lightning/uiRecordApi';
@@ -21,6 +23,7 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
     @track isDealer = false;
     @track saveAndNew = false;
     @track billingAddress = {};
+    @track objectInfo;
     mode = '';
     @track showDuplicateAlert = false;
     @track showDuplicateList = false;
@@ -60,6 +63,15 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
             }
         } else if (error) {
             console.error('Error fetching user country code:', error);
+        }
+    }
+
+    @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT})
+    wiredObjectInfo({ error, data}){
+        if(data){
+            this.objectInfo = data;
+        } else if(error){
+            console.error('Error fetching object info:', error);
         }
     }
 
@@ -308,11 +320,11 @@ export default class CustomNewButtonOnAccount extends NavigationMixin(LightningE
 
     async performSave(fieldMap) {
         try {
-            const result = await saveAccountRecord({ fields: fieldMap });
-            const stateUpdate = {};
-            stateUpdate[BILLING_STATECODE_FIELD.fieldApiName] = this.billingAddress.province;
-            stateUpdate.Id = result;
-            updateState({ acc: stateUpdate })
+            const rawStateValue = this.billingAddress.province; 
+            const result = await saveAccountRecord({
+                fields:fieldMap,
+                stateValue:rawStateValue
+            });
             if (result) {
                 this.dispatchEvent(
                     new ShowToastEvent({
