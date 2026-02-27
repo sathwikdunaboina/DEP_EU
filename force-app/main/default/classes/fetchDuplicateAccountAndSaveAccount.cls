@@ -184,103 +184,97 @@ public class fetchDuplicateAccountAndSaveAccount {
 * @description     This method is used by LWC component(customNewButtonOnAccount) when user clicks on Save button to allow the users to save the record
 * ------------------------------------------------------------------------------------------------------
 */
-    
     @AuraEnabled
-    public static Id saveAccountRecord(Map<String, Object> fields) {
+public static Id saveAccountRecord(Map<String, Object> fields, String stateValue) {
+    // 1. Create a Savepoint to roll back everything if any part fails
+    Savepoint sp = Database.setSavepoint();
+    
+    try {
         Account acc = new Account();
-        
-        // Get the field describe map once
         Map<String, SObjectField> fieldDefs = Schema.SObjectType.Account.fields.getMap();
         
         for (String fieldName : fields.keySet()) {
-            if (fieldName == 'Id') continue;
+            if (fieldName == 'Id' || fieldName == 'BillingState' || fieldName == 'BillingStateCode') continue;
             
             if (fieldDefs.containsKey(fieldName)) {
                 Schema.DisplayType dtype = fieldDefs.get(fieldName).getDescribe().getType();
                 Object value = fields.get(fieldName);
-                
                 if (value == null) continue;
-                try {
-                    switch on dtype {
-                        when INTEGER {
-                            acc.put(fieldName, Integer.valueOf(String.valueOf(value)));
-                        }
-                        when DOUBLE {
-                            acc.put(fieldName, Double.valueOf(String.valueOf(value)));
-                        }
-                        when CURRENCY {
-                            acc.put(fieldName, Decimal.valueOf(String.valueOf(value)));
-                        }
-                        when BOOLEAN {
-                            acc.put(fieldName, Boolean.valueOf(String.valueOf(value)));
-                        }
-                        when DATE {
-                            acc.put(fieldName, Date.valueOf(String.valueOf(value)));
-                        }
-                        when DATETIME {
-                            try {
-                                String rawValue = String.valueOf(value);
-                                // Remove the 'Z' and replace 'T' with space
-                                rawValue = rawValue.replace('T', ' ').replace('Z', '');
-                                // Remove milliseconds if present
-                                if (rawValue.contains('.')) {
-                                    rawValue = rawValue.substring(0, rawValue.indexOf('.'));
-                                }
-                                acc.put(fieldName, Datetime.valueOfGmt(rawValue));
-                            } catch (Exception e) {
-                                throw new AuraHandledException('Invalid datetime format for field ' + fieldName + ': ' + String.valueOf(value));
-                            }
-                        }
-                        when else {
-                            acc.put(fieldName, value);
-                        }
+
+                switch on dtype {
+                    when INTEGER { acc.put(fieldName, Integer.valueOf(String.valueOf(value))); }
+                    when DOUBLE { acc.put(fieldName, Double.valueOf(String.valueOf(value))); }
+                    when CURRENCY { acc.put(fieldName, Decimal.valueOf(String.valueOf(value))); }
+                    when BOOLEAN { acc.put(fieldName, Boolean.valueOf(String.valueOf(value))); }
+                    when DATE { acc.put(fieldName, Date.valueOf(String.valueOf(value))); }
+                    when DATETIME {
+                        String rawValue = String.valueOf(value).replace('T', ' ').replace('Z', '');
+                        if (rawValue.contains('.')) rawValue = rawValue.substring(0, rawValue.indexOf('.'));
+                        acc.put(fieldName, Datetime.valueOfGmt(rawValue));
                     }
-                } catch (Exception ex) {
-                    System.debug(' Field conversion error for field: ' + fieldName +
-                                 ', Value: ' + value +
-                                 ', Expected Type: ' + dtype +
-                                 ', Error: ' + ex.getMessage());
+                    when else { acc.put(fieldName, value); }
                 }
             }
         }
-        
-        // Insert with duplicate rule override
+
+        // 2. Initial Insert
         Database.DMLOptions dmlOpts = new Database.DMLOptions();
         dmlOpts.DuplicateRuleHeader.AllowSave = true;
-        Database.SaveResult sr = Database.insert(acc, dmlOpts); 
-        
+        Database.SaveResult sr = Database.insert(acc, dmlOpts);
+
         if (sr.isSuccess()) {
-            return sr.getId();
+            Id accId = sr.getId();
+            
+            // 3. Handle State Logic within the same transaction
+            if (String.isNotBlank(stateValue)) {
+                try {
+                    // Try to update as State Code first
+                    Account updateCode = [SELECT Id,BillingStateCode FROM Account WHERE Id = :accId LIMIT 1];
+                    updateCode.BillingStateCode = stateValue;
+                    update updateCode;
+                } catch (Exception codeEx) {
+                    try {
+                        // Fallback to State Name
+                        Account updateName = [SELECT Id,BillingState FROM Account WHERE Id = :accId LIMIT 1];
+                        updateName.BillingState = stateValue;
+                update updateName;
+                    } catch (Exception nameEx) {
+                        Database.rollback(sp);
+                        // Construct the exception and explicitly set the message
+                        String msg = 'Invalid State/Province: ' + stateValue;
+                        AuraHandledException stateEx = new AuraHandledException(msg);
+                        stateEx.setMessage(msg); 
+                        throw stateEx;
+                    }
+                }
+            }
+            return accId;
         } else {
-            String errorMsg = ' Save failed: ';
+            //throw new AuraHandledException(sr.getErrors()[0].getMessage());
+            Database.rollback(sp);
+            String errorMsg = 'Save failed: ';
             for (Database.Error err : sr.getErrors()) {
                 errorMsg += err.getMessage() + ' ';
             }
-            throw new AuraHandledException(errorMsg.trim());
+            AuraHandledException dmlEx = new AuraHandledException(errorMsg);
+            dmlEx.setMessage(errorMsg);
+            throw dmlEx;
+        
         }
+    } catch (Exception ex) {
+        // Rollback on any error to prevent partial data
+        Database.rollback(sp);
+        if (ex instanceof AuraHandledException) {
+            throw ex;
+        }
+
+        // Otherwise, wrap the system exception and expose the message
+        String finalMessage = ex.getMessage();
+        AuraHandledException auraEx = new AuraHandledException(finalMessage);
+        auraEx.setMessage(finalMessage);
+        throw auraEx;
     }
-    /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     updateState
-* @description     This method is used to update the state name on Account after Account creation
-* ------------------------------------------------------------------------------------------------------
-*/
-    @AuraEnabled
-    public static void updateState(Account acc) {
-        if (acc == null) {
-            return;
-        }
-        try {
-            Account existing = [SELECT Id,BillingState FROM Account WHERE Id = :acc.Id LIMIT 1];
-            if (acc.BillingState != null) {
-                existing.BillingState = acc.BillingState;
-            }
-            if (acc.BillingStateCode != null) {
-                existing.BillingStateCode = acc.BillingStateCode;
-            }
-            update existing;
-        } catch (Exception e) {
-            System.debug(' Error updating account: ' + e.getMessage());
-        }
-    }
+}
+  
+    
 }
