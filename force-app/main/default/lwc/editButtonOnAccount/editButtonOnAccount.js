@@ -8,6 +8,7 @@ import updateMultipleAccounts from '@salesforce/apex/AccountEditController.updat
 import checkDuplicateRules from '@salesforce/apex/AccountEditController.checkDuplicateRules';
 import getAccountRecordTypeDeveloperName from '@salesforce/apex/AccountEditController.getAccountRecordTypeDeveloperName';
 import BILLING_STATECODE_FIELD from '@salesforce/schema/Account.BillingStateCode';
+import BILLING_STATE_FIELD from '@salesforce/schema/Account.BillingState';
 import { COUNTRY_PICKLIST } from 'c/globalCountryPicklist';
 import { CloseActionScreenEvent } from 'lightning/actions';
 
@@ -241,7 +242,7 @@ submitForm() {
     updateMultipleAccounts({ acc: fieldMap })
         .then((result) => {
             if (result && result.success) {
-                this.handleUpdateState();
+                this.handleUpdateState('code');
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Success',
@@ -305,9 +306,15 @@ submitForm() {
         });
 }
     
-  handleUpdateState() {
+  handleUpdateState(stateval) {
         const stateUpdate = {};
-        stateUpdate[BILLING_STATECODE_FIELD.fieldApiName] = this.selectedBillingState;
+        if(stateval === 'code'){
+            stateUpdate[BILLING_STATECODE_FIELD.fieldApiName] = this.selectedBillingState;
+        }
+        else{
+            console.log('inside BILLING_STATE_FIELD');
+            stateUpdate[BILLING_STATE_FIELD.fieldApiName] = this.selectedBillingState;
+        }
         stateUpdate.Id = this.recordId;
         stateUpdate.Name = this.accountName;
 
@@ -318,8 +325,24 @@ submitForm() {
  this.showDuplicateModal = false; 
  this.duplicateAccounts = []; 
  this.showSaveButton = false;
-}
-);
+})
+.catch(error => {
+    const errorMsg =  JSON.stringify(error);
+                console.error('Caught error from Apex:', errorMsg);
+                if(errorMsg.includes("Save failed: The BillingStateCode field contains") &&  errorMsg.includes("which isn't an available state. Your administrator can add it for you.")){
+                    this.handleUpdateState('name');
+                }
+                else{
+                this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Save failed:Billing State/Province value is not valid.',
+                    variant: 'error'
+                })
+            );
+            return;
+                } 
+});
           }
         handleOpenRecord(event) {
             const recordId = event.target.dataset.id;
