@@ -152,12 +152,11 @@ export default class AccountInlineEdit extends LightningElement {
         updateMultipleAccounts({ acc: accountToUpdate })
             .then((result) => {
 
-                this.handleUpdateState();
+                this.handleUpdateState('code');
                 getRecordNotifyChange([{ recordId: this.recordId }]);
             })
-            .catch(error => {
+            .catch(error => {                
                 console.error('Caught error from Apex:', JSON.stringify(error));
-
                 let message = 'An unexpected error occurred.';
                 if (error && error.body && typeof error.body.message === 'string') {
                     message = error.body.message;
@@ -175,9 +174,18 @@ export default class AccountInlineEdit extends LightningElement {
             });
 
     }
-    handleUpdateState() {
+  
+    handleUpdateState(stateval) {
         const stateUpdate = {};
-        stateUpdate[BILLING_STATECODE_FIELD.fieldApiName] = this.getState;
+        if(stateval === 'code'){
+            console.log('inside BILLING_STATE_FIELD');
+            stateUpdate[BILLING_STATECODE_FIELD.fieldApiName] = this.getState;
+        }
+        else{
+            console.log('inside BILLING_STATE_FIELD');
+            stateUpdate[BILLING_STATE_FIELD.fieldApiName] = this.getState;
+        }
+               
         stateUpdate.Id = this.recordId;
         console.log(this.getState+'this.getState');
         updateMultipleAccounts({ acc: stateUpdate })
@@ -208,8 +216,27 @@ export default class AccountInlineEdit extends LightningElement {
                     title: 'SelectedLocation',
                     description: this.getStreet + ', ' + this.getCity + ', ' + this.getState + ', ' + this.getZipCode + ', ' + this.getCountry
                 }];
-            });
+            }).catch(error => {
+                const errorMsg =  JSON.stringify(error);
+                console.error('Caught error from Apex:', errorMsg);
+                if(errorMsg.includes("Save failed: The BillingStateCode field contains") &&  errorMsg.includes("which isn't an available state. Your administrator can add it for you.")){
+                    this.handleUpdateState('name');
+                }
+                else{
+                this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Save failed:Billing State/Province value is not valid.',
+                    variant: 'error'
+                })
+            );
+            return;
+                } 
+            });             
+                
     }
+
+    
 
     handleOpenRecord(event) {
         const recordId = event.target.dataset.id;
