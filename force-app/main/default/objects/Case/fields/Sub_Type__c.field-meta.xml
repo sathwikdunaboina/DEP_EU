@@ -450,7 +450,7 @@
             <value>
                 <fullName>Renewals Queries</fullName>
                 <default>false</default>
-                <label>Renewals</label>
+                <label>Renewals Queries</label>
             </value>
             <value>
                 <fullName>Request For Documentation</fullName>
@@ -1002,6 +1002,11 @@
                 <default>false</default>
                 <label>R&amp;M Novation</label>
             </value>
+            <value>
+                <fullName>Renewals</fullName>
+                <default>false</default>
+                <label>Renewals</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>R&amp;M - EOT</controllingFieldValue>
@@ -1056,6 +1061,38 @@
         <valueSettings>
             <controllingFieldValue>Settlement</controllingFieldValue>
             <valueName>HP/FL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R&amp;M - Claims / 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Claims</controllingFieldValue>
+            <valueName>3rd Party Invoice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R&amp;M - Claims / 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Claims</controllingFieldValue>
+            <valueName>3rd Party Query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R&amp;M - Claims / 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Claims</controllingFieldValue>
+            <valueName>Dealer Claims</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R&amp;M - Claims / 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Claims</controllingFieldValue>
+            <controllingFieldValue>Service Third Party</controllingFieldValue>
+            <controllingFieldValue>Service 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <valueName>Invoice Query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R&amp;M - Claims / 3rd Party</controllingFieldValue>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <controllingFieldValue>Claims</controllingFieldValue>
+            <controllingFieldValue>RFL</controllingFieldValue>
+            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
+            <controllingFieldValue>Finance Amendments</controllingFieldValue>
+            <valueName>Other</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Excess Meterage Query</controllingFieldValue>
@@ -1151,14 +1188,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
-            <controllingFieldValue>Claims</controllingFieldValue>
-            <controllingFieldValue>RFL</controllingFieldValue>
-            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
-            <controllingFieldValue>Finance Amendments</controllingFieldValue>
-            <valueName>Other</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Payment</valueName>
         </valueSettings>
         <valueSettings>
@@ -1168,25 +1197,6 @@
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Statement of Accounts</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Claims</controllingFieldValue>
-            <valueName>3rd Party Invoice</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Claims</controllingFieldValue>
-            <valueName>3rd Party Query</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Claims</controllingFieldValue>
-            <valueName>Dealer Claims</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Claims</controllingFieldValue>
-            <controllingFieldValue>Service Third Party</controllingFieldValue>
-            <controllingFieldValue>Service 3rd Party</controllingFieldValue>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <valueName>Invoice Query</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Contract Hire</controllingFieldValue>
@@ -1216,6 +1226,10 @@
         <valueSettings>
             <controllingFieldValue>RFL</controllingFieldValue>
             <valueName>Renewals Queries</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RFL</controllingFieldValue>
+            <valueName>Renewals</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Problems with Web Portal</controllingFieldValue>
@@ -1721,7 +1735,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Additional Services query</controllingFieldValue>
-            <controllingFieldValue>R&amp;M- New</controllingFieldValue>
+            <controllingFieldValue>R&amp;M - New</controllingFieldValue>
             <valueName>Maintenance Query Loading Error</valueName>
         </valueSettings>
         <valueSettings>
@@ -1733,11 +1747,11 @@
             <valueName>Road Fund Licence Query</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>R&amp;M- New</controllingFieldValue>
+            <controllingFieldValue>R&amp;M - New</controllingFieldValue>
             <valueName>Initiations Request</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>R&amp;M- New</controllingFieldValue>
+            <controllingFieldValue>R&amp;M - New</controllingFieldValue>
             <valueName>Contract Hire</valueName>
         </valueSettings>
         <valueSettings>
