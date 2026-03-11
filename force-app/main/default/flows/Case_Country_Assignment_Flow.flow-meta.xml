@@ -158,8 +158,14 @@
         <connector>
             <targetReference>Check_Whether_Case_Owner_is_Queue_or_User</targetReference>
         </connector>
-        <filterFormula>AND(OR({!$Record.RecordType.DeveloperName}=&apos;All_Case&apos;,
-{!$Record.RecordType.DeveloperName}=&apos;VFS_Dealer&apos;),OR(ISCHANGED({!$Record.OwnerId}),ISNEW()))</filterFormula>
+        <filterFormula>AND(
+	{!$Record.RecordType.DeveloperName}=&apos;All_Case&apos;,
+OR(
+ISCHANGED(
+{!$Record.OwnerId}),
+ISNEW()
+)
+)</filterFormula>
         <object>Case</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
