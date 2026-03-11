@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Profile xmlns="http://soap.sforce.com/2006/04/metadata"
-      xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
     <applicationVisibilities>
         <application>Admin_App</application>
         <default>false</default>
@@ -686,10 +685,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>UK_IE_Fos_Delete_TestClass</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UpdCseOriginandBrandFldsOnCseCreate_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -8218,10 +8213,6 @@
         <recordType>Case.VFS_Customer</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Case-VFS Dealer Case Layout</layout>
-        <recordType>Case.VFS_Dealer</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>CaseClose-Close Case Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8549,7 +8540,7 @@
     <layoutAssignments>
         <layout>WorkThanks-Thanks Layout</layout>
     </layoutAssignments>
-    <loginHours n1:nil="true" />
+    <loginHours n1:nil="true"></loginHours>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
