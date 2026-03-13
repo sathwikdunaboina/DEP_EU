@@ -630,29 +630,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Customer_Delivery_Date__c</fieldItem>
-                <identifier>RecordCustomer_Delivery_Date_cField2</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>VCE</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>SMT</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
                 <identifier>RecordCredit_Assessment_Date__cField</identifier>
                 <visibilityRule>
@@ -774,6 +751,29 @@
                         <leftValue>{!Record.LeadSource}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dealer_DeliveryDate__c</fieldItem>
+                <identifier>RecordDealer_DeliveryDate_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>SMT</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
