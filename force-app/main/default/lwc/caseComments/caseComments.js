@@ -15,7 +15,6 @@ comments;
 @track comments;
 @track caseComments;
 @track publishToCustomerCheckbox = false;
-@track notifyCustomerByEmailCheckbox = false;
 wiredCommentsResult; 
 errorMessage;
 
@@ -101,15 +100,7 @@ handlePublishCheckbox(event){
     this.publishToCustomerCheckbox = event.target.checked;
 }
 
-handleEmailCheckbox(event){
- this.notifyCustomerByEmailCheckbox = event.target.checked;
-    if(this.notifyCustomerByEmailCheckbox === true){
-       this.publishToCustomerCheckbox=true;
-}
-   if(this.notifyCustomerByEmailCheckbox === false){
-       this.publishToCustomerCheckbox=false;
-}
-}
+
 handlePublishedChange(event) {
 
 const isChecked = event.target.checked;
@@ -136,7 +127,7 @@ handleSubmit(){
     
 
 
-createPrivateCommentWithEmail ({caseId:this.recordId, commentBody: this.caseComments,IsPublished:this.publishToCustomerCheckbox,IsNotificationSelected: this.notifyCustomerByEmailCheckbox })
+createPrivateCommentWithEmail ({caseId:this.recordId, commentBody: this.caseComments,IsPublished:this.publishToCustomerCheckbox})
     .then(result => {
     if (result.startsWith('Success')) {
         this.dispatchEvent(
@@ -148,7 +139,6 @@ createPrivateCommentWithEmail ({caseId:this.recordId, commentBody: this.caseComm
             this.caseComments = '';
 this.errorMessage =false;
                 this.publishToCustomerCheckbox = false;
-                this.notifyCustomerByEmailCheckbox = false;
                 return refreshApex(this.wiredCommentsResult);  
     }  
 
