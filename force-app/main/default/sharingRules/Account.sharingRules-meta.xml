@@ -1129,6 +1129,37 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>DK_VCE_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <description>This sharing rule is for sharing the accounts for DK VCE brand</description>
+        <label>DK VCE Sharing Rule</label>
+        <sharedTo>
+            <group>Denmark_VCE</group>
+        </sharedTo>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Denmark</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Construction Equipment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Denmark</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>ES_CustomerService_Access</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -1144,6 +1175,37 @@
             <field>BillingCountryCode</field>
             <operation>equals</operation>
             <value>Spain</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FI_VCE_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <description>This sharing rule is for sharing the accounts for FI VCE brand</description>
+        <label>FI VCE Sharing Rule</label>
+        <sharedTo>
+            <group>Finland_VCE</group>
+        </sharedTo>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Finland</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Construction Equipment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Finland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -1180,6 +1242,37 @@
         </sharedTo>
         <criteriaItems>
             <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>Italy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IT_VCE_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <description>This sharing rule is for sharing the accounts for IT VCE brand</description>
+        <label>IT VCE Sharing Rule</label>
+        <sharedTo>
+            <group>Italy_VCE</group>
+        </sharedTo>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Italy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Construction Equipment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountry</field>
             <operation>equals</operation>
             <value>Italy</value>
         </criteriaItems>
