@@ -6,8 +6,8 @@
  
  */
 
+@IsTest(SeeAllData=true)
 
-@IsTest
 private class AgentEmailResponseTimeCalculatorFlowTest {
 
     @IsTest
@@ -17,7 +17,8 @@ private class AgentEmailResponseTimeCalculatorFlowTest {
         Case c = new Case(
             Subject = 'Test Case',
             Status = 'New',
-            Origin = 'Email'
+            Origin = 'Email',
+            Country__c='United Kingdom'
         );
         insert c;
        //Adding another Email Message 

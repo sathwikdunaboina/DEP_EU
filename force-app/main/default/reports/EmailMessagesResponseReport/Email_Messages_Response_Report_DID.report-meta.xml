@@ -24,7 +24,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>3</value>
+            <value>0,3</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.EmailMessages$Incoming</column>
@@ -32,6 +32,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$CaseNumber</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>00369949</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
