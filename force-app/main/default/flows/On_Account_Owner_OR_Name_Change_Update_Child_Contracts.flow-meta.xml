@@ -2,43 +2,6 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <decisions>
-        <name>Check_if_Name_Or_Owner_Changed</name>
-        <label>Check if Name Or Owner Changed</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IsNameChanged_Field_Is_True</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.IsNameChanged__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Related_Contracts</targetReference>
-            </connector>
-            <label>IsNameChanged Field Is True</label>
-        </rules>
-        <rules>
-            <name>IsOwnerChanged_Field_is_True</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.IsOwnerChanged__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Contracts_based_on_dealer_Account</targetReference>
-            </connector>
-            <label>IsOwnerChanged Field is True</label>
-        </rules>
-    </decisions>
     <description>When Account.IsOwnerChanged__c or Account.IsNameChanged_c fields are set to true then update the child contracts</description>
     <environments>Default</environments>
     <formulas>
@@ -68,63 +31,12 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <name>Update_Contracts_based_on_dealer_Account</name>
-        <label>Update Contracts based on dealer Account</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Update_IsOwnerChanged_Field_Back</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DealerId__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Customer_Code__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>End_Date__c</field>
-            <operator>GreaterThanOrEqualTo</operator>
-            <value>
-                <elementReference>CurrentDateTime</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Business_Area__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>VT</stringValue>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>VTContext_LastModifiedDate__c</field>
-            <value>
-                <elementReference>CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Contract__c</object>
-    </recordUpdates>
-    <recordUpdates>
         <name>Update_IsNameChanged_Field_Back</name>
         <label>Update IsNameChanged Field Back</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <inputAssignments>
             <field>IsNameChanged__c</field>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_IsOwnerChanged_Field_Back</name>
-        <label>Update IsOwnerChanged Field Back</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputAssignments>
-            <field>IsOwnerChanged__c</field>
             <value>
                 <booleanValue>false</booleanValue>
             </value>
@@ -168,13 +80,6 @@
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>or</filterLogic>
         <filters>
-            <field>IsOwnerChanged__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
             <field>IsNameChanged__c</field>
             <operator>EqualTo</operator>
             <value>
@@ -186,7 +91,7 @@
         <scheduledPaths>
             <name>Schedule_After_a_min</name>
             <connector>
-                <targetReference>Check_if_Name_Or_Owner_Changed</targetReference>
+                <targetReference>Update_Related_Contracts</targetReference>
             </connector>
             <label>Schedule After a min</label>
             <offsetNumber>1</offsetNumber>
