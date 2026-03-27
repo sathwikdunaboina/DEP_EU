@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agent_Name_Who_Replied__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This field contains the reference of the user who replied to the customer email</description>
+    <label>Agent Name Who Replied</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Email_Messages</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>
