@@ -96,25 +96,4 @@ public class MetadataQueryBuilder_Test {
         
     }
    
-    // ---------------------------------------------------------
-    // TEST filtering logic (dealer missing / private)
-    // ---------------------------------------------------------
-    /*@IsTest
-    static void testDealerFilterLogic() {
-        
-        User testUser = [SELECT Id FROM User WHERE Name='VT Integration User' LIMIT 1];
-            List<MetadataQueryBuilder.ContractWrapper> result =
-                MetadataQueryBuilder.runDynamicQuery(
-                    null,
-                    '20',
-                    null,
-                    'Contract_Number__c LIKE \'testcon%\'',
-                    'SELECT Id FROM Contract__c'
-                );
-            
-            // Expect only 1 valid contract (DealerId != null AND dealer is not private)
-            System.assertEquals(2, result.size(), 'Filtering logic failed');
-        
-    }*/
-    
 }
