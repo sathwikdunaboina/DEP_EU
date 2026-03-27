@@ -21,18 +21,32 @@ public class CaseCommentController_Test {
 
    @testSetup
     static void setupData() {
+         Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
+            Account acc = new Account();
+            acc.BillingCountry= 'United Kingdom';
+            acc.Name = 'Test Account new';
+            acc.CurrencyIsoCode='EUR';
+            acc.RecordTypeId = accountRecordTypeID;
+            
+            insert acc;
+            
+            Entitlement EntitlementRecord = new Entitlement();
+            EntitlementRecord.Name='Case Support Process For UK/IE';
+            EntitlementRecord.AccountId= acc.Id;             
+            insert EntitlementRecord;
         Case testCase = new Case(
             Subject = 'Test Case',
             Status = 'New',
-            Origin = 'Web'
+            Origin = 'Web',
+           AccountId = acc.id
+
         );
         insert testCase;
 
         CaseComment comment = new CaseComment(
             ParentId = testCase.Id,
             CommentBody = 'Initial comment',
-            IsPublished = false,
-            IsNotificationSelected = false
+            IsPublished = false
         );
         insert comment;
     }
@@ -70,8 +84,7 @@ public class CaseCommentController_Test {
         String result = CaseCommentController.createPrivateCommentWithEmail(
             testCase.Id,
             'New private comment',
-            false,
-            true
+            false
         );
 
         System.assert(result.startsWith('Success'), 'Expected success message');
@@ -90,7 +103,6 @@ public class CaseCommentController_Test {
         String result = CaseCommentController.createPrivateCommentWithEmail(
             null,
             '',
-            false,
             false
         );
 
@@ -105,26 +117,38 @@ public class CaseCommentController_Test {
 * @return          
 * ------------------------------------------------------------------------------------------------------ 
 */   
-@isTest
-static void testCreatePrivateCommentWithEmail_InsertFailure() {
-   Case testCase1 = new Case(
-            Subject = 'Test Case',
-            Status = 'New',
-            Origin = 'Web'
+
+    @IsTest
+    static void testExceptionPath() {
+
+        // Create and delete Case to force DML exception
+        Case c = new Case(
+            Subject = 'Deleted Case',
+            Status  = 'New',
+            Origin  = 'Phone'
         );
-        insert testCase1;
-    
-    delete testCase1;
+        insert c;
+        delete c;
 
-    Id fakeCaseId = testCase1.id;
-    String result = CaseCommentController.createPrivateCommentWithEmail(
-        fakeCaseId,
-        'Valid comment',
-        false,
-        false
-    );
+        Test.startTest();
+        String result = CaseCommentController.createPrivateCommentWithEmail(
+            c.Id,
+            'This will throw exception',
+            false
+        );
+        system.debug('result'+result);
+        Test.stopTest();
 
-    System.assert(result.startsWith('Error:'), 'Expected error message due to invalid Case ID');
-}
- 
+        // Assert exception response
+        System.assert(
+            result.startsWith('Error:') || result.startsWith('Exception:'),
+            'Expected error/exception but got: ' + result
+        );
+
+        System.assert(
+            result.contains('entity is deleted'),
+            'Expected entity is deleted error but got: ' + result
+        );
+    }
+
 }
