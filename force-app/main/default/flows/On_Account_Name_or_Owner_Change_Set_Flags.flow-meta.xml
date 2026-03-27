@@ -102,7 +102,7 @@
         <filterFormula>OR(
 AND(
 ISCHANGED({!$Record.OwnerId}),
-!ISNULL({!$Record.CustomerID__c})
+NOT(ISBLANK({!$Record.CustomerID__c}))
 ),
 ISCHANGED({!$Record.Name})
 )</filterFormula>
