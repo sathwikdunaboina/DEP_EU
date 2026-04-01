@@ -90,14 +90,19 @@ public without sharing class MetadataQueryBuilder {
     
     public static List<ContractWrapper> getDealerAndSetWrapper(Set<String>dealerIds,List<Contract__c>contractTransformedList) {
         Map<String, Account> dealerToAccountMap = new Map<String, Account>();
-        Id accountRecordType = Schema.SObjectType.account.getRecordTypeInfosByName().get('Dealer Account').getRecordTypeId();
-        for (Account acc : [
-            SELECT Id, Name,Owner.Name, Customer_Code__c FROM Account WHERE Customer_Code__c IN : dealerIds AND RecordTypeId =: accountRecordType]) {
-                dealerToAccountMap.put(acc.Customer_Code__c, acc);
-                System.debug(dealerToAccountMap);
-            }
+        for(Account acc : [
+            SELECT Id, Name,Owner.Name,Customer_Code__c,IsPrivate__c FROM Account WHERE Customer_Code__c IN : dealerIds
+        ]){
+            dealerToAccountMap.put(acc.Customer_Code__c, acc);
+        }
+        
         List<ContractWrapper> responseList = new List<ContractWrapper>();
         for (Contract__c c : contractTransformedList) {
+           Account acc = dealerToAccountMap.get(c.DealerId__c);
+            //Filter
+            if(acc!=null && acc.IsPrivate__c == true){
+                continue;
+            }
             ContractWrapper cw = new ContractWrapper();
             cw.Id = c.Id;
             cw.Contract_Number = c.Contract_Number__c;
