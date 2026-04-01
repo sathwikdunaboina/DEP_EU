@@ -8,11 +8,9 @@
     </values>
     <values>
         <field>Initial_Load_Query__c</field>
-        <value xsi:type="xsd:string">SELECT Id, Contract_Number__c, Type__c, Start_Date__c, End_Date__c, Contract_Status__c, Asset_Usage_Allowance__c, Asset_Contract_Start_Usage_Amount__c,Asset_Usage_Allowance_Type__c, VIN_Number__c,DealerId__c,Account__c,Account__r.Name FROM Contract__c WHERE 
-Business_Area__c = &apos;VT&apos; AND IsDuplicate__c = false  AND End_Date__c &gt; TODAY AND ((
-Type__c IN (&apos;EaaS Operating Lease NGC&apos;,&apos;Financial Lease NGC&apos;,&apos;Instalment credit NGC&apos;,&apos;Operating Lease NGC&apos;
-) AND Account__r.BillingCountryCode =&apos;SE&apos; ) OR (
-Type__c IN (&apos;Comfort Lease&apos;,&apos;Credit&apos;,&apos;Financiële Lease&apos;,&apos;Flexirent / Truck Rent&apos;,&apos;Global Truck / Service Rent&apos;) AND Account__r.BillingCountryCode =&apos;BE&apos; ))</value>
+        <value xsi:type="xsd:string">SELECT Id, Contract_Number__c, Type__c, Start_Date__c, End_Date__c, Contract_Status__c, Asset_Usage_Allowance__c, Asset_Contract_Start_Usage_Amount__c,Asset_Usage_Allowance_Type__c, VIN_Number__c,DealerId__c,Account__c,Account__r.Name FROM Contract__c WHERE
+Business_Area__c = &apos;VT&apos; AND IsDuplicate__c = false AND End_Date__c &gt; TODAY AND
+Type__c IN (&apos;Financiële Lease&apos;,&apos;Financiële Lease met Koopoptie&apos;,&apos;Financiële Service Lease&apos;,&apos;Operationele Lease&apos;) AND Account__r.BillingCountryCode =&apos;NL&apos;</value>
     </values>
     <values>
         <field>Limit__c</field>
@@ -24,39 +22,45 @@ Type__c IN (&apos;Comfort Lease&apos;,&apos;Credit&apos;,&apos;Financiële Lease
     </values>
     <values>
         <field>WhereClause__c</field>
-        <value xsi:type="xsd:string">business_area__c = &apos;VT&apos; 
+        <value xsi:type="xsd:string">business_area__c = &apos;VT&apos;
 AND IsDuplicate__c = false
-    
+
 AND ((type__c IN (&apos;Purchase Plan - fixed rate&apos;,
-                          &apos;Purchase Plan - variable rate&apos;,
-                          &apos;Operating Lease&apos;,
-                          &apos;Operating Lease - fixed rate&apos;,
-                          &apos;Finance Lease - fixed rate&apos;,
-                          &apos;Contract Hire&apos;,
-                          &apos;Hire Purchase IE&apos;,
-                          &apos;Finance Lease&apos;,
-                          &apos;EaaS Operating Lease NGC&apos;,
-                          &apos;Financial Lease NGC&apos;,
-                          &apos;Full service leasing NGC&apos;,
-                          &apos;Operating Lease NGC&apos;)
-       AND    account__r.billingcountrycode IN (&apos;GB&apos;,
-                                                &apos;DK&apos;,
-                                                &apos;IE&apos;))
-OR     (
-              type__c IN (&apos;EaaS Operating Lease NGC&apos;,
-                          &apos;Financial Lease NGC&apos;,
-                          &apos;Instalment credit NGC&apos;,
-                          &apos;Operating Lease NGC&apos; ) 
-       AND    account__r.billingcountrycode =&apos;SE&apos; )
-OR     (
-              type__c IN (&apos;Comfort Lease&apos;,
-                          &apos;Credit&apos;,
-                          &apos;Financiële Lease&apos;,
-                          &apos;Flexirent / Truck Rent&apos;,
-                          &apos;Global Truck / Service Rent&apos;)
-       AND    account__r.billingcountrycode =&apos;BE&apos; ))
-AND    (
-              vtcontext_lastmodifieddate__c = last_n_days:lastNDays
-       OR     createddate = last_n_days:lastNDays)</value>
+&apos;Purchase Plan - variable rate&apos;,
+&apos;Operating Lease&apos;,
+&apos;Operating Lease - fixed rate&apos;,
+&apos;Finance Lease - fixed rate&apos;,
+&apos;Contract Hire&apos;,
+&apos;Hire Purchase IE&apos;,
+&apos;Finance Lease&apos;,
+&apos;EaaS Operating Lease NGC&apos;,
+&apos;Financial Lease NGC&apos;,
+&apos;Full service leasing NGC&apos;,
+&apos;Operating Lease NGC&apos;)
+AND account__r.billingcountrycode IN (&apos;GB&apos;,
+&apos;DK&apos;,
+&apos;IE&apos;))
+OR (
+type__c IN (&apos;EaaS Operating Lease NGC&apos;,
+&apos;Financial Lease NGC&apos;,
+&apos;Instalment credit NGC&apos;,
+&apos;Operating Lease NGC&apos; )
+AND account__r.billingcountrycode =&apos;SE&apos; )
+OR (
+type__c IN (&apos;Comfort Lease&apos;,
+&apos;Credit&apos;,
+&apos;Financiële Lease&apos;,
+&apos;Flexirent / Truck Rent&apos;,
+&apos;Global Truck / Service Rent&apos;)
+AND account__r.billingcountrycode =&apos;BE&apos; )
+OR (
+type__c IN (&apos;Financiële Lease&apos;,
+&apos;Financiële Lease met Koopoptie&apos;,
+&apos;Financiële Service Lease&apos;,
+&apos;Operationele Lease&apos;)
+AND account__r.billingcountrycode =&apos;NL&apos; ))
+AND (
+vtcontext_lastmodifieddate__c = last_n_days:lastNDays
+OR createddate = last_n_days:lastNDays)</value>
     </values>
 </CustomMetadata>
