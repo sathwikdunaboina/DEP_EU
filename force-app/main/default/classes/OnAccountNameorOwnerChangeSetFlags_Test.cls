@@ -47,6 +47,7 @@ public class OnAccountNameorOwnerChangeSetFlags_Test{
             oTestAccountOwnerChange.Name = 'Owner Test Account';
             oTestAccountOwnerChange.IsOwnerChanged__c = false;
             oTestAccountOwnerChange.BillingCountry = 'United Kingdom';
+            oTestAccountOwnerChange.CustomerID__c = 'GB-67890';
             oTestAccountOwnerChange.OwnerId = oTestUser1.Id;
             insert oTestAccountOwnerChange;
             
