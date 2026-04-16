@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Data_Quality_Description__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  Case_Data_Quality_Score__c = 100,
+  &quot;All Case Details Captured&quot;,
+
+  IF(
+    RIGHT(
+      (
+        &quot;Missing:&quot; &amp;
+        IF(ISBLANK(AccountId), &quot; Account,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(TEXT(Brand__c)), &quot; Brand,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(ContactId), &quot; Contact,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(Contract__c), &quot; Contract,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(TEXT(Country__c)), &quot; Country,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(OwnerId), &quot; Owner,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(TEXT(Status_Reason__c)), &quot; Status Reason,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(Subject), &quot; Subject,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(SuppliedEmail), &quot; Email,&quot;, &quot;&quot;)
+      ),
+      1
+    ) = &quot;,&quot;,
+
+    LEFT(
+      (
+        &quot;Missing:&quot; &amp;
+        IF(ISBLANK(AccountId), &quot; Account,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(TEXT(Brand__c)), &quot; Brand,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(ContactId), &quot; Contact,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(Contract__c), &quot; Contract,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(TEXT(Country__c)), &quot; Country,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(OwnerId), &quot; Owner,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(TEXT(Status_Reason__c)), &quot; Status Reason,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(Subject), &quot; Subject,&quot;, &quot;&quot;) &amp;
+        IF(ISBLANK(SuppliedEmail), &quot; Email,&quot;, &quot;&quot;)
+      ),
+      LEN(
+        (
+          &quot;Missing:&quot; &amp;
+          IF(ISBLANK(AccountId), &quot; Account,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(TEXT(Brand__c)), &quot; Brand,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(ContactId), &quot; Contact,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(Contract__c), &quot; Contract,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(TEXT(Country__c)), &quot; Country,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(OwnerId), &quot; Owner,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(TEXT(Status_Reason__c)), &quot; Status Reason,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(Subject), &quot; Subject,&quot;, &quot;&quot;) &amp;
+          IF(ISBLANK(SuppliedEmail), &quot; Email,&quot;, &quot;&quot;)
+        )
+      ) - 1
+    ),
+
+    /* Else return as-is */
+    &quot;Missing:&quot; &amp;
+    IF(ISBLANK(AccountId), &quot; Account,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(TEXT(Brand__c)), &quot; Brand,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(ContactId), &quot; Contact,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(Contract__c), &quot; Contract,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(TEXT(Country__c)), &quot; Country,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(OwnerId), &quot; Owner,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(TEXT(Status_Reason__c)), &quot; Status Reason,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(Subject), &quot; Subject,&quot;, &quot;&quot;) &amp;
+    IF(ISBLANK(SuppliedEmail), &quot; Email,&quot;, &quot;&quot;)
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Data Quality Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
