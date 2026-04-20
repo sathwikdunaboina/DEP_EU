@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Quality_Score__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(LEN(AccountId) = 0, 0, 30)
++ IF(LEN(TEXT(Brand__c)) = 0, 0, 10)
++ IF(LEN(ContactId) = 0, 0, 20)
++ IF(LEN(Contract__c) = 0, 0, 10)
++ IF(LEN(TEXT(Country__c)) = 0, 0, 5)
++ IF(LEN(OwnerId) = 0, 0, 5)
++ IF(LEN(TEXT(Status_Reason__c)) = 0, 0, 5)
++ IF(LEN(Subject) = 0, 0, 5)
++ IF(LEN(SuppliedEmail) = 0, 0, 10)</formula>
+    <label>Data Quality Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

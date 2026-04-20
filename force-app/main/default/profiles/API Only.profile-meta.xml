@@ -3566,6 +3566,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.Data_Quality_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Data_Quality_Score__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.Dealer_Account_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10120,15 +10130,15 @@
         <layout>Knowledge__kav-FAQ Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Lead-Insurance Lead Layout</layout>
-        <recordType>Lead.Insurance</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Lead-Lead Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Lead-Lead Layout</layout>
         <recordType>Lead.Finance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-Insurance Lead Layout</layout>
+        <recordType>Lead.Insurance</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Linked_Bank_Accounts__c-Bank Accounts Layout</layout>
@@ -10182,19 +10192,19 @@
         <layout>ObjectHasAttachment_Setting__mdt-ObjectHasAttachmentSetting Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Opportunity-Opportunity Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Opportunity Layout</layout>
+        <recordType>Opportunity.Finance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Opportunity-Insurance opportunity Layout</layout>
         <recordType>Opportunity.Insurance_Opportunity</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-LCV Opportunity Layout</layout>
         <recordType>Opportunity.LCV_Opportunity</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Opportunity Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Opportunity Layout</layout>
-        <recordType>Opportunity.Finance</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>OpportunityContactRole-Opportunity Contact Role Layout</layout>
@@ -13334,10 +13344,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>SelectFilesFromSalesforce</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>SendExternalEmailAvailable</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
