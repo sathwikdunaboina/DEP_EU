@@ -113,14 +113,22 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Case_Data_Quality_Score__c</fieldItem>
-                <identifier>RecordCase_Data_Quality_Score__cField</identifier>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Data_Quality_Score__c</fieldItem>
+                <identifier>RecordData_Quality_Score_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Case_Data_Quality_Description__c</fieldItem>
-                <identifier>RecordCase_Data_Quality_Description__cField</identifier>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Data_Quality_Description__c</fieldItem>
+                <identifier>RecordData_Quality_Description_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e1d58277-312c-4dda-ba19-3553ba4ccc06</name>
@@ -946,6 +954,10 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>tabs</value>
                 </componentInstanceProperties>
@@ -1121,6 +1133,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>rightSidebarTabs</value>
