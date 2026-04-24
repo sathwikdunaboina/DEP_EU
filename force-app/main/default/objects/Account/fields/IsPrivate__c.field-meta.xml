@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsPrivate__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Use this field to mark an account as Private so that the direct or related information e.g. contracts etc. can be further restricted from being shared based on defined business logic e.g. do not share with VT the contracts that are related to a dealer marked as private</description>
-    <inlineHelpText>Can be used to restrict sharing related information e.g. related contracts with VT</inlineHelpText>
-    <label>IsPrivate</label>
+    <description>Use this field to mark to not share with VT the contracts that are related to this dealer account</description>
+    <inlineHelpText>To restrict sharing related VT contracts with VT</inlineHelpText>
+    <label>Prevent Contract sharing with VT</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <type>Checkbox</type>
