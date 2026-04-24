@@ -59,12 +59,12 @@
         <connector>
             <targetReference>Check_Whether_Owner_Changed_Or_Not</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>(1 OR 4) AND 2 AND 3</filterLogic>
         <filters>
             <field>DealerId__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.Customer_Code__c</elementReference>
+                <elementReference>$Record.CustomerID__c</elementReference>
             </value>
         </filters>
         <filters>
@@ -79,6 +79,13 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>VT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DealerId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Customer_Code__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -122,5 +129,5 @@ AND(ISCHANGED({!$Record.IsPrivate__c}),{!$Record.IsPrivate__c} = FALSE))</filter
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>
