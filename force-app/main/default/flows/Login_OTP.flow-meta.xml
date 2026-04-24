@@ -100,6 +100,14 @@ Round (((NOW()-{!$System.OriginDateTime}) * 864) ^ 2 , 0)
             <name>EnterOTPValue</name>
             <fieldText>&lt;p&gt;Ola Admin!&lt;/p&gt;&lt;p&gt;We have sent a code to your email address {!MaskedEmail}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Code</name>
@@ -108,6 +116,14 @@ Round (((NOW()-{!$System.OriginDateTime}) * 864) ^ 2 , 0)
             <fieldType>InputField</fieldType>
             <helpText>&lt;p&gt;Code is sent to your email.&lt;/p&gt;</helpText>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Invalid code !!&lt;/p&gt;</errorMessage>
                 <formulaExpression>{!Code} == {!OTPValue} ||  {!Code} == {!MasterKey}</formulaExpression>
@@ -123,7 +139,7 @@ Round (((NOW()-{!$System.OriginDateTime}) * 864) ^ 2 , 0)
             <targetReference>Generate_OTP</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>EmailBody</name>
         <dataType>String</dataType>
