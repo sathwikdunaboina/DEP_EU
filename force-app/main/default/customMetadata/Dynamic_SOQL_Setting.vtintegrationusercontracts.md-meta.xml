@@ -9,8 +9,8 @@
     <values>
         <field>Initial_Load_Query__c</field>
         <value xsi:type="xsd:string">SELECT Id, Contract_Number__c, Type__c, Start_Date__c, End_Date__c, Contract_Status__c, Asset_Usage_Allowance__c, Asset_Contract_Start_Usage_Amount__c,Asset_Usage_Allowance_Type__c, VIN_Number__c,DealerId__c,Account__c,Account__r.Name FROM Contract__c WHERE
-Business_Area__c = &apos;VT&apos; AND IsDuplicate__c = false AND End_Date__c &gt; TODAY AND
-Type__c IN (&apos;Financiële Lease&apos;,&apos;Financiële Lease met Koopoptie&apos;,&apos;Financiële Service Lease&apos;,&apos;Operationele Lease&apos;) AND Account__r.BillingCountryCode =&apos;NL&apos;</value>
+Business_Area__c = &apos;VT&apos; AND IsDuplicate__c = false AND End_Date__c &gt; TODAY AND ((
+Type__c IN (&apos;Financiële Lease&apos;,&apos;Financiële Lease met Koopoptie&apos;,&apos;Financiële Service Lease&apos;,&apos;Operationele Lease&apos;) AND Account__r.BillingCountryCode =&apos;NL&apos; AND DealerId__c!=null) OR (Type__c IN (&apos;Financial Lease NGC&apos;,&apos;Installment Credits NGC&apos;,&apos;Operating Lease NGC&apos;) AND Account__r.BillingCountryCode =&apos;FI&apos;))</value>
     </values>
     <values>
         <field>Limit__c</field>
@@ -24,7 +24,6 @@ Type__c IN (&apos;Financiële Lease&apos;,&apos;Financiële Lease met Koopoptie&
         <field>WhereClause__c</field>
         <value xsi:type="xsd:string">business_area__c = &apos;VT&apos;
 AND IsDuplicate__c = false
-
 AND ((type__c IN (&apos;Purchase Plan - fixed rate&apos;,
 &apos;Purchase Plan - variable rate&apos;,
 &apos;Operating Lease&apos;,
@@ -58,7 +57,11 @@ type__c IN (&apos;Financiële Lease&apos;,
 &apos;Financiële Lease met Koopoptie&apos;,
 &apos;Financiële Service Lease&apos;,
 &apos;Operationele Lease&apos;)
-AND account__r.billingcountrycode =&apos;NL&apos; ))
+AND account__r.billingcountrycode =&apos;NL&apos;
+AND DealerId__c !=null )
+OR (
+type__c IN (&apos;Financial Lease NGC&apos;,&apos;Installment Credits NGC&apos;,&apos;Operating Lease NGC&apos;)
+AND account__r.billingcountrycode =&apos;FI&apos; ))
 AND (
 vtcontext_lastmodifieddate__c = last_n_days:lastNDays
 OR createddate = last_n_days:lastNDays)</value>
