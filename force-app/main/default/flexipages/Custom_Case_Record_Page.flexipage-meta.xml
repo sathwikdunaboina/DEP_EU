@@ -91,6 +91,26 @@
                 <identifier>RecordLast_Email_Message_Received_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Data_Quality_Score__c</fieldItem>
+                <identifier>RecordData_Quality_Score_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Data_Quality_Description__c</fieldItem>
+                <identifier>RecordData_Quality_Description_cField2</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-efd7d5cb-bb70-4a32-8179-c1355011e7ad</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -552,13 +572,6 @@
             <componentInstance>
                 <componentName>caseComments</componentName>
                 <identifier>c_caseComments</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.CaseNumber}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>99999999999999</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-691bccdf-8dd4-4ab7-9b68-c9a36a26203e</name>
@@ -609,6 +622,19 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Origin}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Web</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>customerportal@integration.volvo.com</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>tabs</name>
