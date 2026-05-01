@@ -8,8 +8,9 @@
 * Description          Preparing SOQL Query through custom metadata and get the list of contracts
 */
 public without sharing class MetadataQueryBuilder {
-    
-    public static List<ContractWrapper> runDynamicQuery(String lastNDays,String limitSize, String recordId, String whereclauseValue, String selectQueryValue) {
+    public static List<ContractWrapper> runDynamicQuery(String lastNDays,String limitSize, String
+                                                        recordId, String whereclauseValue, String selectQueryValue) 
+    {
         string whereClause = null;
         whereClause = (' WHERE ' + whereclauseValue);
         if (String.isNotBlank(recordId)) {
@@ -18,13 +19,11 @@ public without sharing class MetadataQueryBuilder {
         if (String.isNotBlank(lastNDays)) {
             whereClause = whereClause.replace('lastNDays', lastNDays);
         }
-        
         //Prepare dynamic query using above values
-        //Sub Where Query
-        //String childQuery = ' AND '+'( '+'VTContext_LastModifiedDate__c' +  ' = '+ 'last_n_days:'+ String.escapeSingleQuotes(lastNDays) + ' OR CreatedDate'+' ='+ ' last_n_days:'+ String.escapeSingleQuotes(lastNDays)+')';
+        String excludePrivateDealerWhereClause =  getPrivateDealersExclusionWhereClause(); 
         String orderBy = ' ORDER BY Id ASC';
         String limitClause = ' LIMIT '+limitSize;
-        String finalQuery = selectQueryValue + whereClause + /*childQuery +*/' WITH SECURITY_ENFORCED'+ orderBy + limitClause;
+        String finalQuery = selectQueryValue + whereClause +excludePrivateDealerWhereClause+ /*childQuery +*/' WITH SECURITY_ENFORCED'+ orderBy + limitClause;
         system.debug('MetadataQueryBuilder Class - finalQuery => '+finalQuery);
         List <Contract__c> contractList = new List<Contract__c>();
         if(Test.IsRunningTest()){
@@ -51,17 +50,16 @@ public without sharing class MetadataQueryBuilder {
             return getDealerAndSetWrapper(dealerIds,contractList);
         }
     }
-    
     public static List<ContractWrapper> runDynamicQueryForInitialLoad(String recordId, String selectQueryValue, String limitSize) {
         if (String.isBlank(selectQueryValue) || String.isBlank(limitSize)) {//Checking if any values are blank
             throw new IllegalArgumentException('Query or limit cannot be blank.');
         }
-        
-        // Build the dynamic query
+        String excludePrivateDealerWhereClause =  getPrivateDealersExclusionWhereClause();   
+        //Build the dynamic query
         String orderByClause = ' ORDER BY Id ASC';
         String limitClause = ' LIMIT ' + limitSize;
         String whereClause = String.isNotBlank(recordId) ? ' AND Id > :recordId' : '';
-        String finalQuery = selectQueryValue + whereClause + ' WITH SECURITY_ENFORCED' + orderByClause + limitClause;
+        String finalQuery = selectQueryValue + whereClause + excludePrivateDealerWhereClause + ' WITH SECURITY_ENFORCED' + orderByClause + limitClause;
         List <Contract__c> contractList = new List<Contract__c>();
         if(Test.IsRunningTest()){ // Use predefined records in test context
             contractList = [SELECT Id, Contract_Number__c, Type__c, Start_Date__c, End_Date__c, Contract_Status__c, Asset_Usage_Allowance__c,
@@ -84,25 +82,32 @@ public without sharing class MetadataQueryBuilder {
                     dealerIds.add(c.DealerId__c);
                 }
             }
+            System.debug(dealerIds.size()+'Size of Dealer Id');
             return getDealerAndSetWrapper(dealerIds,contractList);
         }
     }
-    
     public static List<ContractWrapper> getDealerAndSetWrapper(Set<String>dealerIds,List<Contract__c>contractTransformedList) {
         Map<String, Account> dealerToAccountMap = new Map<String, Account>();
         for(Account acc : [
-            SELECT Id, Name,Owner.Name,Customer_Code__c,IsPrivate__c FROM Account WHERE Customer_Code__c IN : dealerIds
+            SELECT Id, Name,Owner.Name,CustomerID__c,Customer_Code__c FROM Account WHERE CustomerID__c IN : dealerIds OR Customer_Code__c IN:dealerIds
         ]){
-            dealerToAccountMap.put(acc.Customer_Code__c, acc);
+            // dealerToAccountMap.put(acc.CustomerID__c, acc);
+            if(acc.CustomerID__c != null && dealerIds.contains(acc.CustomerID__c))
+            {
+                dealerToAccountMap.put(acc.CustomerID__c, acc);
+            }
+            else if (acc.Customer_Code__c != null && dealerIds.contains(acc.Customer_Code__c))
+            {
+                dealerToAccountMap.put(acc.Customer_Code__c, acc);
+            }
         }
-        
         List<ContractWrapper> responseList = new List<ContractWrapper>();
         for (Contract__c c : contractTransformedList) {
-           Account acc = dealerToAccountMap.get(c.DealerId__c);
-            //Filter
-            if(acc!=null && acc.IsPrivate__c == true){
-                continue;
-            }
+            /* Account acc = dealerToAccountMap.get(c.DealerId__c);
+//Filter
+if(acc!=null && acc.IsPrivate__c == true){
+continue;
+}*/
             ContractWrapper cw = new ContractWrapper();
             cw.Id = c.Id;
             cw.Contract_Number = c.Contract_Number__c;
@@ -123,7 +128,6 @@ public without sharing class MetadataQueryBuilder {
         }
         return responseList;
     }
-    
     public class ContractWrapper {
         public String Id;
         public String Contract_Number;
@@ -138,5 +142,54 @@ public without sharing class MetadataQueryBuilder {
         //public String Account;
         public String Asset_Usage_Allowance_Type;
         public String Customer_Name; // custom field for integration
+    }
+    
+    private static string getPrivateDealersExclusionWhereClause(){
+        //Prepare exclusion WHERE clause for private dealers
+        Set<String> privateDealersList=new Set<String>();
+        List<Account> privateDealerAccountsList = new List<Account>();
+        privateDealerAccountsList = [Select CustomerId__c,Id from Account where CustomerId__c like 'NL-%' and IsPrivate__c=true];
+        for(Account acc:privateDealerAccountsList)   
+        {
+            privateDealersList.add(String.escapeSingleQuotes(acc.CustomerID__c));
+        } 
+        
+        Set<String> dealerContracts = new Set<String>();
+        List<Contract__c> contractDealers = new List<Contract__c>();
+        //contractDealers = [SELECT Id,DealerId__c FROM Contract__c WHERE DealerId__c LIKE 'NL-%' ];
+        contractDealers = [SELECT Id,DealerId__c FROM Contract__c WHERE Account__r.BillingCountryCode ='NL' AND Type__c IN ('Financiële Lease','Financiële Lease met Koopoptie','Financiële Service Lease','Operationele Lease') AND Business_Area__c = 'VT' AND IsDuplicate__c = false ];
+        for(Contract__c con :contractDealers)
+        {
+            if(con.DealerId__c !=null){
+                dealerContracts.add(con.DealerId__c);
+            }
+        }
+        Set<String> dealersWithAccount = new Set<String>();
+        List<Account> dealerAccounts = new List<Account>();
+        dealerAccounts = [SELECT Id,CustomerID__c,Customer_Code__c FROM Account WHERE CustomerID__c IN:dealerContracts OR Customer_Code__c IN:dealerContracts];
+        for(Account acc:dealerAccounts){
+            if(acc.CustomerID__c!=null && dealerContracts.contains(acc.CustomerID__c)){
+                dealersWithAccount.add(acc.CustomerID__c);
+            }
+            if(acc.Customer_Code__c!=null && dealerContracts.contains(acc.Customer_Code__c)){
+                dealersWithAccount.add(acc.Customer_Code__c);
+            }
+        }
+        /*List<Account> dealerAccountsWithCode = new List<Account>();
+        dealerAccountsWithCode = [SELECT Id,Customer_Code__c FROM Account WHERE Customer_Code__c IN:dealerContracts];
+        for(Account acc:dealerAccountsWithCode){
+            if(acc.Customer_code__c!=null){
+                dealersWithAccount.add(acc.Customer_Code__c);
+            }
+        }*/
+        for(String dealerId : dealerContracts){
+            if(!dealersWithAccount.contains(dealerId)){
+                privateDealersList.add(String.escapeSingleQuotes(dealerId));
+            }
+        }
+        String privateDealersListInClause = '(\'' + String.join(privateDealersList, '\',\'') + '\')'; 
+        String excludePrivateDealerWhereClause =  '  AND DealerId__c NOT IN ' + privateDealersListInClause;
+        //----Prepare exclusion WHERE clause for private dealers---
+        return excludePrivateDealerWhereClause;
     }
 }
