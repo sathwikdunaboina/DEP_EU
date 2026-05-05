@@ -76,7 +76,7 @@
         <inputParameters>
             <name>ccRecipientAddressList</name>
             <value>
-                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
+                <stringValue>kalpana.barangule@consultant.volvo.com</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -229,9 +229,38 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>To_Check_the_User_s_Logged_In_Date</targetReference>
+                <targetReference>Get_Latest_Reactivation</targetReference>
             </connector>
             <label>If User Profile Should Be Included</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Within_90_Day_Post_Reactivation_Grace</name>
+        <label>Within 90-Day Post-Reactivation Grace?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>To_Check_the_User_s_Logged_In_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Grace Period Over OR Never Reactivated</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Still_in_Grace_Period</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Latest_Reactivation.CreatedDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Days_Since_Reactivation</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>90.0</numberValue>
+                </rightValue>
+            </conditions>
+            <label>Yes – Still in Grace Period</label>
         </rules>
     </decisions>
     <description>Flow to deactivate User automatically when the User Never Logged in or Login Date is more than 90 days</description>
@@ -241,6 +270,12 @@
         <name>CreatedDateDateValue</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!$Record.CreatedDate})</expression>
+    </formulas>
+    <formulas>
+        <name>Days_Since_Reactivation</name>
+        <dataType>Number</dataType>
+        <expression>TODAY() - DATEVALUE({!Get_Latest_Reactivation.CreatedDate})</expression>
+        <scale>0</scale>
     </formulas>
     <formulas>
         <description>Email Message to send to User who haven&apos;t logged in for 60 days</description>
@@ -302,6 +337,36 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Latest_Reactivation</name>
+        <label>Get Latest Reactivation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Within_90_Day_Post_Reactivation_Grace</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>UserId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Field</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>IsActive</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>UserHistory</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <description>Get Record Element to check if the flow is running in Production or Sandbox</description>
         <name>Get_the_Organization_Where_the_Flow_Runs</name>
@@ -376,8 +441,10 @@
         </filters>
         <object>User</object>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
-            <startDate>2025-09-05</startDate>
+            <frequencyNumber>0</frequencyNumber>
+            <startDate>2026-05-08</startDate>
             <startTime>05:00:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
