@@ -23,15 +23,15 @@ public with sharing class OpportunityBulkUpdateController {
     public static List<Opportunity> getOpportunities(String sSelectedOpportunityIds) {
         System.debug(sSelectedOpportunityIds);
         try{
-        Integer iLastOccurence = sSelectedOpportunityIds.lastIndexOf('-');
-        String sSelectedOpportunityIdsSanitized = sSelectedOpportunityIds.left(iLastOccurence)+sSelectedOpportunityIds.right(sSelectedOpportunityIds.length()-iLastOccurence-1);
-        System.debug('sSelectedOpportunityIdsSanitized' + sSelectedOpportunityIdsSanitized);
-        List<String> listSelectedOpportunityIds = sSelectedOpportunityIdsSanitized.split('-');
-        System.debug('listSelectedOpportunityIds' + listSelectedOpportunityIds);
-        
+            Integer iLastOccurence = sSelectedOpportunityIds.lastIndexOf('-');
+            String sSelectedOpportunityIdsSanitized = sSelectedOpportunityIds.left(iLastOccurence)+sSelectedOpportunityIds.right(sSelectedOpportunityIds.length()-iLastOccurence-1);
+            System.debug('sSelectedOpportunityIdsSanitized' + sSelectedOpportunityIdsSanitized);
+            List<String> listSelectedOpportunityIds = sSelectedOpportunityIdsSanitized.split('-');
+            System.debug('listSelectedOpportunityIds' + listSelectedOpportunityIds);
+            
             return [SELECT Id, Name, StageName, OwnerId, AccountId, RecordType.Name,
-                    Lost_Reason__c, Opportunity_Type__c, Reason__c,
-                    Amount, Probability, Sub_Stage__c
+                    Lost_Reason__c, Opportunity_Type__c, Reason__c,Country__c,
+                    Amount, Probability, Sub_Stage__c,Finance_Houses__c,Additional_Details__c
                     FROM Opportunity
                     WHERE Id IN :listSelectedOpportunityIds];
         } catch (Exception e) {
@@ -95,5 +95,29 @@ public with sharing class OpportunityBulkUpdateController {
                 WHERE Name LIKE :searchTerm
                 ORDER BY Name
                 LIMIT 10];
+    }
+    
+    /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     getStageProbabilities
+* @description     This method is to get the Probability of Each stage 
+* ------------------------------------------------------------------------------------------------------
+* @return          Map of Stage with its corresponding Probability value
+* ------------------------------------------------------------------------------------------------------ 
+*/
+    
+    @AuraEnabled(cacheable=true)
+    public static Map<String, Integer> getStageProbabilities() {
+        Map<String, Integer> probMap = new Map<String, Integer>();
+        
+        for (OpportunityStage stage : [
+            SELECT MasterLabel, DefaultProbability
+            FROM OpportunityStage
+            WHERE IsActive = true
+        ]) {
+            probMap.put(stage.MasterLabel, Integer.valueOf(stage.DefaultProbability));
+        }
+        
+        return probMap;
     }
 }
