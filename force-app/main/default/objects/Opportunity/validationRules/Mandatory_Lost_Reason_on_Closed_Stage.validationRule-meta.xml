@@ -6,7 +6,7 @@
 &amp;&amp;
 $Profile.Name != &apos;API Only&apos;
 &amp;&amp;
-RecordType.DeveloperName &lt;&gt; &apos;Finance&apos;
+(RecordType.DeveloperName &lt;&gt; &apos;Finance&apos; ||RecordType.DeveloperName &lt;&gt;  &apos;LCV_Opportunity&apos;)
 &amp;&amp;
 AND(
     ISPICKVAL(StageName, &quot;Closed Lost&quot;),
