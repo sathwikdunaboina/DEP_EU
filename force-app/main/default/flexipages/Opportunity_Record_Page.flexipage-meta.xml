@@ -353,38 +353,21 @@
                 <fieldItem>Record.Reason__c</fieldItem>
                 <identifier>RecordReason_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.StageName}</leftValue>
+                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Closed Lost</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Finance_Houses__c</fieldItem>
-                <identifier>RecordFinance_Houses_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Paid Cash</rightValue>
+                        <rightValue>Too poor speed of execution</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>NE</operator>
+                        <operator>EQUAL</operator>
+                        <rightValue>Declined for credit reasons</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
+                        <operator>EQUAL</operator>
                         <rightValue>Not available for financing</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.StageName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Closed Lost</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -398,16 +381,10 @@
                 <fieldItem>Record.Financing_product_missing__c</fieldItem>
                 <identifier>RecordFinancing_product_missing_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Product offer</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Reason__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Finance product not available</rightValue>
+                        <rightValue>Required finance product was not available</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -438,16 +415,38 @@
                 <fieldItem>Record.Interest_Rate__c</fieldItem>
                 <identifier>RecordInterest_Rate_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Pricing</rightValue>
+                        <rightValue>Interest rate was too high</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Finance_Houses__c</fieldItem>
+                <identifier>RecordFinance_Houses_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Paid Cash</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.Reason__c}</leftValue>
+                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Not available for financing</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Interest rate (too high)</rightValue>
+                        <rightValue>Closed Lost</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -492,12 +491,12 @@
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>NE</operator>
-                        <rightValue>Closed Lost</rightValue>
+                        <rightValue>Closed Won</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>NE</operator>
-                        <rightValue>Closed Won</rightValue>
+                        <rightValue>Closed Lost</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1611,21 +1610,16 @@
                 <componentName>flowruntime:interview</componentName>
                 <identifier>flowruntime_interview</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Pricing</rightValue>
+                        <rightValue>Competition - Interest rate</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Not_Needed__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Reason__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Interest rate (too high)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
