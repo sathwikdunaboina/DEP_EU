@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contract__c$Name</field>
+    </columns>
+    <columns>
+        <field>Contract__c$VIN_Number__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Contract_Id__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Business_Area__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$End_Date__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Contract_Number__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Account__c.BillingCountryCode</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>Report to monitor Invalid VINs of Contracts</description>
+    <filter>
+        <criteriaItems>
+            <column>Contract__c$VIN_Format_Valid__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Report to Monitor Invalid VINs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Contracts_Custom__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contract__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
