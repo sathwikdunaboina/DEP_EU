@@ -25,9 +25,7 @@ public with sharing class OpportunityBulkUpdateController {
         try{
             Integer iLastOccurence = sSelectedOpportunityIds.lastIndexOf('-');
             String sSelectedOpportunityIdsSanitized = sSelectedOpportunityIds.left(iLastOccurence)+sSelectedOpportunityIds.right(sSelectedOpportunityIds.length()-iLastOccurence-1);
-            System.debug('sSelectedOpportunityIdsSanitized' + sSelectedOpportunityIdsSanitized);
             List<String> listSelectedOpportunityIds = sSelectedOpportunityIdsSanitized.split('-');
-            System.debug('listSelectedOpportunityIds' + listSelectedOpportunityIds);
             
             return [SELECT Id, Name, StageName, OwnerId, AccountId, RecordType.Name,
                     Lost_Reason__c, Opportunity_Type__c, Reason__c,Country__c,
@@ -58,7 +56,6 @@ public with sharing class OpportunityBulkUpdateController {
             update opportunities;
             return 'Records updated successfully.';
         } catch (Exception e) {
-            System.debug('Update failed:'+e.getMessage());
             throw new AuraHandledException('Error updating records: ' + e.getMessage());
         }
     }
