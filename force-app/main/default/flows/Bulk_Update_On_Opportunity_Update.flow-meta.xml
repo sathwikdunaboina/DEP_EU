@@ -7,7 +7,7 @@
         <name>Add_Ids_to_String</name>
         <label>Add Ids to String</label>
         <locationX>138</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>OpportunityIdsString</assignToReference>
             <operator>Add</operator>
@@ -37,10 +37,7 @@
         <name>Check_Selected_Opportunities</name>
         <label>Check Selected Opportunities</label>
         <locationX>182</locationX>
-        <locationY>242</locationY>
-        <defaultConnector>
-            <targetReference>No_Opportunity_Selected_Error_Screen</targetReference>
-        </defaultConnector>
+        <locationY>350</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Opportunities_Selected</name>
@@ -55,6 +52,32 @@
             <label>Opportunities Selected</label>
         </rules>
     </decisions>
+    <decisions>
+        <description>Decision element to check if Bulk update button is clicked after selected any Opportunity or Not</description>
+        <name>Check_Whether_User_Selected_Any_Opportunity</name>
+        <label>Check Whether User Selected Any Opportunity</label>
+        <locationX>380</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>No_Opportunity_Selected_Error_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ids</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Opportunity_Records</targetReference>
+            </connector>
+            <label>Opportunity Selected</label>
+        </rules>
+    </decisions>
     <description>Screen Flow to Fetch Opportunity Ids and Give it to LWC(opportunityBulkUpdate)</description>
     <environments>Default</environments>
     <interviewLabel>Bulk Update On Opportunity Update {!$Flow.CurrentDateTime}</interviewLabel>
@@ -64,7 +87,7 @@
         <name>Iterate_Over_Opportunity_Ids</name>
         <label>Iterate Over Opportunity Ids</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <collectionReference>ids</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -98,7 +121,7 @@
         <name>Get_Opportunity_Records</name>
         <label>Get Opportunity Records</label>
         <locationX>182</locationX>
-        <locationY>134</locationY>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Selected_Opportunities</targetReference>
@@ -119,8 +142,8 @@
         <description>Displays error screen if no opportunity is selected.</description>
         <name>No_Opportunity_Selected_Error_Screen</name>
         <label>No Opportunity Selected Error Screen</label>
-        <locationX>314</locationX>
-        <locationY>350</locationY>
+        <locationX>578</locationX>
+        <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -128,6 +151,14 @@
             <name>No_Opportunity_Selected</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px; color: rgb(234, 13, 13);&quot;&gt;No Opportunity Selected&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;It is mandatory to select at least one opportunity in order to proceed.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -136,7 +167,7 @@
         <name>Selected_Opportunity_Screen</name>
         <label>Selected Opportunity Screen</label>
         <locationX>50</locationX>
-        <locationY>650</locationY>
+        <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -154,16 +185,24 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
         <showFooter>false</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>56</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Opportunity_Records</targetReference>
+            <targetReference>Check_Whether_User_Selected_Any_Opportunity</targetReference>
         </connector>
     </start>
     <status>Active</status>

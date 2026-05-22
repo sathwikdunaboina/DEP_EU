@@ -47,8 +47,8 @@ public class OpportunityBulkUpdateController_Test {
     
     /*
 * ------------------------------------------------------------------------------------------------------
-* @Method Name     testAccountMessagingUserController
-* @description     This method is used to test AccountMessagingUserController class
+* @Method Name     testOpportunityBulkUpdateController
+* @description     This method is used to test OpportunityBulkUpdateController class
 * ------------------------------------------------------------------------------------------------------
 * @param          
 * @return          
@@ -81,6 +81,7 @@ public class OpportunityBulkUpdateController_Test {
         try{
             OpportunityBulkUpdateController.updateOpportunities(null);
             OpportunityBulkUpdateController.updateOpportunities(testOpportunities);
+            
         }
         catch(Exception e){
         }
@@ -89,4 +90,22 @@ public class OpportunityBulkUpdateController_Test {
         OpportunityBulkUpdateController.updateOpportunities(listOpportunities);
         Test.stopTest();
     }
+    
+    
+    /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     OpportunityBulkUpdateControllerTest
+* @description     This method is used to test the method to get Opportunity Stage
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+    
+   @isTest
+    public static void OpportunityBulkUpdateControllerTest(){
+        Test.startTest();
+        Map<String,Integer> result = OpportunityBulkUpdateController.getStageProbabilities();
+        Test.stopTest();
+}
 }
