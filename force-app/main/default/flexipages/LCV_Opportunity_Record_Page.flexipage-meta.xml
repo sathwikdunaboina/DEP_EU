@@ -276,21 +276,10 @@
                 <fieldItem>Record.Reason__c</fieldItem>
                 <identifier>RecordReason_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
+                        <leftValue>{!Record.StageName}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Too poor speed of execution</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Declined for credit reasons</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Not available for financing</rightValue>
+                        <rightValue>Closed Lost</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -304,10 +293,16 @@
                 <fieldItem>Record.Financing_product_missing__c</fieldItem>
                 <identifier>RecordFinancing_product_missing_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Required finance product was not available</rightValue>
+                        <rightValue>Product offer</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Reason__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Finance product not available</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -338,10 +333,16 @@
                 <fieldItem>Record.Interest_Rate__c</fieldItem>
                 <identifier>RecordInterest_Rate_cField</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Interest rate was too high</rightValue>
+                        <rightValue>Pricing</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Reason__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Interest rate (too high)</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -355,17 +356,6 @@
                 <fieldItem>Record.Finance_Houses__c</fieldItem>
                 <identifier>RecordFinance_Houses_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Paid Cash</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Not available for financing</rightValue>
-                    </criteria>
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>EQUAL</operator>
@@ -443,6 +433,16 @@
             <fieldInstance>
                 <fieldItem>Record.Customer_Account__r.BillingAddress</fieldItem>
                 <identifier>RecordCustomer_Account_rBillingAddressField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Country__c</fieldItem>
+                <identifier>RecordCountry_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-f4817694-2807-4415-b0e4-1a19c36177ba</name>
@@ -933,16 +933,21 @@
                 <componentName>flowruntime:interview</componentName>
                 <identifier>flowruntime_interview</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Competition - Interest rate</rightValue>
-                    </criteria>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Not_Needed__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Pricing</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Reason__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Interest rate (too high)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
