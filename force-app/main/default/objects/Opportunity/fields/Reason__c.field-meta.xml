@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reason__c</fullName>
-    <description>Reason field will be enabled when the lost deal selected the specific lost reason.</description>
-    <inlineHelpText>1. Reason for causing the delay -&gt; When selecting &quot;Too poor speed of execution&quot;
-2. Reason for declining the credit request -&gt; When selecting &quot;Declined for credit reasons&quot;
-3. Reason why not available for financing by VFS -&gt; When selecting &quot;Not available for financing&quot;</inlineHelpText>
-    <label>Reason</label>
+    <description>Secondary Reason for the main lost reason</description>
+    <label>Detail</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
@@ -86,6 +83,171 @@
                 <default>false</default>
                 <label>Other</label>
             </value>
+            <value>
+                <fullName>Existing relationship with bank</fullName>
+                <default>false</default>
+                <label>Existing relationship with bank</label>
+            </value>
+            <value>
+                <fullName>Other bank or leasing provider</fullName>
+                <default>false</default>
+                <label>Other bank or leasing provider</label>
+            </value>
+            <value>
+                <fullName>Other brand/OEM</fullName>
+                <default>false</default>
+                <label>Other brand/OEM</label>
+            </value>
+            <value>
+                <fullName>Name bank or leasing provider</fullName>
+                <default>false</default>
+                <label>Name bank or leasing provider</label>
+            </value>
+            <value>
+                <fullName>Residual value</fullName>
+                <default>false</default>
+                <label>Residual value</label>
+            </value>
+            <value>
+                <fullName>Down payment</fullName>
+                <default>false</default>
+                <label>Down payment</label>
+            </value>
+            <value>
+                <fullName>Balloon</fullName>
+                <default>false</default>
+                <label>Balloon</label>
+            </value>
+            <value>
+                <fullName>Collateral requirements</fullName>
+                <default>false</default>
+                <label>Collateral requirements</label>
+            </value>
+            <value>
+                <fullName>Interest rate (too high)</fullName>
+                <default>false</default>
+                <label>Interest rate (too high)</label>
+            </value>
+            <value>
+                <fullName>Bundled price (too high)</fullName>
+                <default>false</default>
+                <label>Bundled price (too high)</label>
+            </value>
+            <value>
+                <fullName>Competitor financing subsidies</fullName>
+                <default>false</default>
+                <label>Competitor financing subsidies</label>
+            </value>
+            <value>
+                <fullName>Currency/FX disadvantage</fullName>
+                <default>false</default>
+                <label>Currency/FX disadvantage</label>
+            </value>
+            <value>
+                <fullName>Finance product not available</fullName>
+                <default>false</default>
+                <label>Finance product not available</label>
+            </value>
+            <value>
+                <fullName>Speed of execution</fullName>
+                <default>false</default>
+                <label>Speed of execution</label>
+            </value>
+            <value>
+                <fullName>Approach too late</fullName>
+                <default>false</default>
+                <label>Approach too late</label>
+            </value>
+            <value>
+                <fullName>Not interested</fullName>
+                <default>false</default>
+                <label>Not interested</label>
+            </value>
+            <value>
+                <fullName>Alternative payment (cash)</fullName>
+                <default>false</default>
+                <label>Alternative payment (cash)</label>
+            </value>
+            <value>
+                <fullName>Negative perception of captive</fullName>
+                <default>false</default>
+                <label>Negative perception of captive</label>
+            </value>
+            <value>
+                <fullName>Quote expired/No reaction</fullName>
+                <default>false</default>
+                <label>Quote expired/No reaction</label>
+            </value>
+            <value>
+                <fullName>Credit/Risk concerns</fullName>
+                <default>false</default>
+                <label>Credit/Risk concerns</label>
+            </value>
+            <value>
+                <fullName>Regulatory/compliance issues</fullName>
+                <default>false</default>
+                <label>Regulatory/compliance issues</label>
+            </value>
+            <value>
+                <fullName>Deal structure constraints</fullName>
+                <default>false</default>
+                <label>Deal structure constraints</label>
+            </value>
+            <value>
+                <fullName>Major account</fullName>
+                <default>false</default>
+                <label>Major account</label>
+            </value>
+            <value>
+                <fullName>Direct sales</fullName>
+                <default>false</default>
+                <label>Direct sales</label>
+            </value>
+            <value>
+                <fullName>Trader</fullName>
+                <default>false</default>
+                <label>Trader</label>
+            </value>
+            <value>
+                <fullName>Tender</fullName>
+                <default>false</default>
+                <label>Tender</label>
+            </value>
+            <value>
+                <fullName>Subsidized by government</fullName>
+                <default>false</default>
+                <label>Subsidized by government</label>
+            </value>
+            <value>
+                <fullName>Not aware of asset sale</fullName>
+                <default>false</default>
+                <label>Not aware of asset sale</label>
+            </value>
+            <value>
+                <fullName>Interest rate (in)flexibility</fullName>
+                <default>false</default>
+                <label>Interest rate (in)flexibility</label>
+            </value>
+            <value>
+                <fullName>Factory order cancelled</fullName>
+                <default>false</default>
+                <label>Factory order cancelled</label>
+            </value>
+            <value>
+                <fullName>Residual value risk taken by bank</fullName>
+                <default>false</default>
+                <label>Residual value risk taken by bank</label>
+            </value>
+            <value>
+                <fullName>Term/Tenor</fullName>
+                <default>false</default>
+                <label>Term/Tenor</label>
+            </value>
+            <value>
+                <fullName>Consumer</fullName>
+                <default>false</default>
+                <label>Consumer</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Not available for financing</controllingFieldValue>
@@ -121,29 +283,135 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Not available for financing</controllingFieldValue>
-            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
-            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
             <valueName>Other</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
-            <valueName>Sales</valueName>
+            <controllingFieldValue>Competition</controllingFieldValue>
+            <valueName>Existing relationship with bank</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Too poor speed of execution</controllingFieldValue>
-            <valueName>Credit</valueName>
+            <controllingFieldValue>Competition</controllingFieldValue>
+            <valueName>Other bank or leasing provider</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
-            <valueName>Too poor customer credit grade</valueName>
+            <controllingFieldValue>Competition</controllingFieldValue>
+            <valueName>Other brand/OEM</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
-            <valueName>Too risky asset</valueName>
+            <controllingFieldValue>Competition</controllingFieldValue>
+            <valueName>Residual value risk taken by bank</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Declined for credit reasons</controllingFieldValue>
-            <valueName>Exposure too high</valueName>
+            <controllingFieldValue>Deal structure</controllingFieldValue>
+            <valueName>Residual value</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal structure</controllingFieldValue>
+            <valueName>Down payment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal structure</controllingFieldValue>
+            <valueName>Balloon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal structure</controllingFieldValue>
+            <valueName>Collateral requirements</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal structure</controllingFieldValue>
+            <valueName>Term/Tenor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Interest rate (too high)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Bundled price (too high)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Competitor financing subsidies</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Currency/FX disadvantage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product offer</controllingFieldValue>
+            <valueName>Finance product not available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product offer</controllingFieldValue>
+            <valueName>Interest rate (in)flexibility</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Turnaround time</controllingFieldValue>
+            <valueName>Speed of execution</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Turnaround time</controllingFieldValue>
+            <valueName>Approach too late</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer choice</controllingFieldValue>
+            <valueName>Not interested</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer choice</controllingFieldValue>
+            <valueName>Alternative payment (cash)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer choice</controllingFieldValue>
+            <valueName>Negative perception of captive</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer choice</controllingFieldValue>
+            <valueName>Quote expired/No reaction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rejected by VFS</controllingFieldValue>
+            <valueName>Credit/Risk concerns</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rejected by VFS</controllingFieldValue>
+            <valueName>Regulatory/compliance issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rejected by VFS</controllingFieldValue>
+            <valueName>Deal structure constraints</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Major account</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Direct sales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Trader</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Tender</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Subsidized by government</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Factory order cancelled</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unable to quote</controllingFieldValue>
+            <valueName>Consumer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Not aware</controllingFieldValue>
+            <valueName>Not aware of asset sale</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
