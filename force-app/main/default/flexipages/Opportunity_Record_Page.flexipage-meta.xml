@@ -387,17 +387,6 @@
                 <fieldItem>Record.Finance_Houses__c</fieldItem>
                 <identifier>RecordFinance_Houses_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Paid Cash</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Lost_Reason__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Not available for financing</rightValue>
-                    </criteria>
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>EQUAL</operator>
@@ -584,36 +573,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Country__c</fieldItem>
                 <identifier>RecordCountry_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Country__c</fieldItem>
-                <identifier>RecordCountry_cField2</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.LeadSource}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Factory Order</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>VCE</rightValue>
-                    </criteria>
-                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
