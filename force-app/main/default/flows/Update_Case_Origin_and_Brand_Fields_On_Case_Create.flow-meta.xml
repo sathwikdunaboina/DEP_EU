@@ -8,7 +8,19 @@
         <description>Set the Brand Value based on the Case Origin</description>
         <name>SetTheBrand</name>
         <dataType>String</dataType>
-        <expression>IF(TEXT({!$Record.Origin}) = &apos;Email - Renault&apos;,&apos;Renault Truck&apos;,IF(TEXT({!$Record.Origin}) = &apos;Email - Volvo&apos;, &apos;Volvo Truck&apos;, TEXT({!$Record.Origin})))</expression>
+        <expression>IF(
+  TEXT({!$Record.Origin}) = &apos;Email - Renault&apos;,
+  &apos;Renault Truck&apos;,
+  IF(
+    TEXT({!$Record.Origin}) = &apos;Email - Volvo&apos;,
+    &apos;Volvo Truck&apos;,
+    IF(
+      TEXT({!$Record.Origin}) = &apos;VFS - CMS&apos;,
+      &apos;Volvo Truck&apos;,
+      TEXT({!$Record.Origin})
+    )
+  )
+)</expression>
     </formulas>
     <interviewLabel>Update Case Origin and Brand Fields On Case Create {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Case Origin and Brand Fields On Case Create</label>
@@ -36,7 +48,7 @@
         <name>Update_Case_Origin_as_Email_and_Brand_based_on_Case_Origin</name>
         <label>Update Case Origin as Email and Brand based on Case Origin</label>
         <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationY>287</locationY>
         <inputAssignments>
             <field>Brand__c</field>
             <value>
@@ -60,14 +72,15 @@
         <filterFormula>AND(
 OR(
 ISPICKVAL({!$Record.Origin}, &apos;Email - Renault&apos;),
-ISPICKVAL({!$Record.Origin}, &apos;Email - Volvo&apos;)
+ISPICKVAL({!$Record.Origin}, &apos;Email - Volvo&apos;),
+ISPICKVAL({!$Record.Origin}, &apos;VFS - CMS&apos;)
 ),
 OR({!$Record.RecordType.DeveloperName} = &apos;All_Case&apos;,
 {!$Record.RecordType.DeveloperName} = &apos;VFS_Dealer&apos;)
 )</filterFormula>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
-        <triggerType>RecordAfterSave</triggerType>
+        <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>
