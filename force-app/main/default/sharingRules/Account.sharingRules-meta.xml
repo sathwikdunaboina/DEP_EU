@@ -1336,6 +1336,78 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Portugal_RT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <description>Portugal RT brand sharing setting</description>
+        <label>Portugal_RT_Access</label>
+        <sharedTo>
+            <group>Portugal_Renault</group>
+        </sharedTo>
+        <booleanFilter>(1 OR 2) AND (3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Portugal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>Portugal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Renault</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Portugal_VT_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <description>This sharing setting is for sharing the accounts with billing country portugal for   VT brand</description>
+        <label>Portugal_VT_Access</label>
+        <sharedTo>
+            <group>Portugal_Volvo</group>
+        </sharedTo>
+        <booleanFilter>(1 OR 2 ) AND ( 3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>Portugal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>Portugal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Volvo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Spain_RT_Accounts</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -1351,7 +1423,7 @@
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
-            <value>Spain,Portugal</value>
+            <value>Spain</value>
         </criteriaItems>
         <criteriaItems>
             <field>Branding__c</field>
@@ -1381,7 +1453,7 @@
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
-            <value>Spain,Portugal</value>
+            <value>Spain</value>
         </criteriaItems>
         <criteriaItems>
             <field>Branding__c</field>
