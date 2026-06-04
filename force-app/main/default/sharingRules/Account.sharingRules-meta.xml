@@ -12,6 +12,7 @@
         <sharedTo>
             <group>Austria_CustomerService</group>
         </sharedTo>
+        <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
@@ -200,37 +201,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Accounts_RT_FR</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Read</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>Edit</opportunityAccessLevel>
-        </accountSettings>
-        <description>Account Opportunity read write access for the sales connect users</description>
-        <label>Accounts_RT_FR</label>
-        <sharedTo>
-            <group>France_Renault</group>
-        </sharedTo>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
-        <criteriaItems>
-            <field>BillingCountryCode</field>
-            <operation>equals</operation>
-            <value>France</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Accounts_RT_IT</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -336,7 +306,7 @@
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
-            <value>Ireland,United Kingdom</value>
+            <value>United Kingdom,Ireland</value>
         </criteriaItems>
         <criteriaItems>
             <field>Branding__c</field>
@@ -531,37 +501,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Accounts_VT_FR</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Read</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>Edit</opportunityAccessLevel>
-        </accountSettings>
-        <description>Account Opportunity read write access for the sales connect users</description>
-        <label>Accounts_VT_FR</label>
-        <sharedTo>
-            <group>France_Volvo</group>
-        </sharedTo>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
-        <criteriaItems>
-            <field>BillingCountryCode</field>
-            <operation>equals</operation>
-            <value>France</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Accounts_VT_IT</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>
@@ -667,7 +606,7 @@
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
-            <value>United Kingdom,Ireland</value>     
+            <value>United Kingdom,Ireland</value>
         </criteriaItems>
         <criteriaItems>
             <field>Branding__c</field>
@@ -769,6 +708,25 @@
             <value>Belgium,Netherlands,Luxembourg</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>BR_CustomerService_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>BR CustomerService Access</label>
+        <sharedTo>
+            <group>Brazil_CustomerService</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>Brazil</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>CH_CustomerService_Access</fullName>
@@ -1119,12 +1077,12 @@
         </accountSettings>
         <label>DE CustomerService Access</label>
         <sharedTo>
-            <group>Denmark_CustomerService</group>
+            <group>Germany_CustomerService</group>
         </sharedTo>
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
-            <value>Denmark</value>
+            <value>Germany</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -1229,6 +1187,66 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>France_RT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>France RT</label>
+        <sharedTo>
+            <group>France_Renault</group>
+        </sharedTo>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Renault</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>France_VT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <label>France VT</label>
+        <sharedTo>
+            <group>France_Volvo</group>
+        </sharedTo>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value>Volvo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Branding__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>IT_CustomerService_Access</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -1277,25 +1295,6 @@
             <value>Italy</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Italy_Account</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <label>Italy Account</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>Italy</roleAndSubordinatesInternal>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Italy</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>NL_Cases</fullName>
@@ -1424,7 +1423,7 @@
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
-            <value>Portugal,Spain</value>
+            <value>Spain</value>
         </criteriaItems>
         <criteriaItems>
             <field>Branding__c</field>
@@ -1554,31 +1553,6 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>UK_IE_Account</fullName>
-        <accessLevel>Edit</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>Edit</caseAccessLevel>
-            <contactAccessLevel>Edit</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <label>UK/IE Account</label>
-        <sharedTo>
-            <roleAndSubordinatesInternal>UK_IE</roleAndSubordinatesInternal>
-        </sharedTo>
-        <booleanFilter>1 OR 2</booleanFilter>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>Ireland</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>BillingCountry</field>
-            <operation>equals</operation>
-            <value>United Kingdom</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>UK_IE_VCE_Sharing_Rule</fullName>
         <accessLevel>Read</accessLevel>
         <accountSettings>
@@ -1595,7 +1569,7 @@
         <criteriaItems>
             <field>BillingCountry</field>
             <operation>equals</operation>
-            <value>Ireland,United Kingdom</value>
+            <value>United Kingdom,Ireland</value>
         </criteriaItems>
         <criteriaItems>
             <field>Branding__c</field>
@@ -1605,7 +1579,7 @@
         <criteriaItems>
             <field>BillingCountry</field>
             <operation>equals</operation>
-            <value>Ireland,United Kingdom</value>
+            <value>United Kingdom,Ireland</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -1627,11 +1601,6 @@
             <operation>equals</operation>
             <value>Brazil</value>
         </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Renault</value>
-        </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -1651,51 +1620,6 @@
             <field>BillingCountry</field>
             <operation>equals</operation>
             <value>Brazil</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Branding__c</field>
-            <operation>equals</operation>
-            <value>Volvo</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VT_Integration_Account_Sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Sharing rule to share account and child contract with VT Integration user</description>
-        <label>VT Integration Account Sharing</label>
-        <sharedTo>
-            <group>ClosedLoop_UK_Purchase_Escalated</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountryCode</field>
-            <operation>equals</operation>
-            <value>United Kingdom,Denmark</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>VT_Integration_Account_Sharing_Rule</fullName>
-        <accessLevel>Read</accessLevel>
-        <accountSettings>
-            <caseAccessLevel>None</caseAccessLevel>
-            <contactAccessLevel>Read</contactAccessLevel>
-            <opportunityAccessLevel>None</opportunityAccessLevel>
-        </accountSettings>
-        <description>Share Accounts and related child contracts with VT Integration user for sync to VT system</description>
-        <label>VT Integration Account Sharing Rule</label>
-        <sharedTo>
-            <group>VT_Integration_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>BillingCountryCode</field>
-            <operation>equals</operation>
-            <value>United Kingdom,Denmark</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -1792,6 +1716,25 @@
             <operation>equals</operation>
             <value>South Africa,ZA</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
+            <operation>equals</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>ZA_CustomerService_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Edit</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ZA CustomerService Access</label>
+        <sharedTo>
+            <group>South_Africa_CustomerService</group>
+        </sharedTo>
         <criteriaItems>
             <field>BillingCountryCode</field>
             <operation>equals</operation>
