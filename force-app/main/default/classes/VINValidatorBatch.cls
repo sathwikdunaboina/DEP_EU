@@ -18,6 +18,10 @@ public class VINValidatorBatch implements Database.Batchable<SObject>, Database.
     //Store Failed record details for CSV
     public List<String> failedRecordsCsv = new List<String>();
     
+    //Test-only flag
+    @TestVisible
+    private static Boolean forceDmlError = false;
+    
     //Constructor
     public VINValidatorBatch(){
         
@@ -56,19 +60,35 @@ public class VINValidatorBatch implements Database.Batchable<SObject>, Database.
         // FIX: count DML-level errors separately so they are visible in finish()
         for(Integer i=0; i<saveResults.size();i++){
             Database.SaveResult sr= saveResults[i];
-            if (!sr.isSuccess()) {
+            if (!sr.isSuccess() || Test.isRunningTest() && forceDmlError) {
+                
                 totalDmlErrors++;
-                for (Database.Error e : sr.getErrors()) {
-                    String errorMessage = e.getMessage() != null
-                        ?e.getMessage().replace('"', '""')
-                        :'';
+                
+                if (Test.isRunningTest() && forceDmlError) {
                     
-                    String csvRow =
-                        '"'+contracts[i].Id + '",'+
-                        '"'+contracts[i].VIN_Number__c + '",'+
-                        '"'+String.valueOf(e.getStatusCode()) + '",'+
-                        '"'+ errorMessage + '"';
-                    failedRecordsCsv.add(csvRow);
+                    failedRecordsCsv.add(
+                        '"' + contracts[i].Id + '",' +
+                        '"' + contracts[i].VIN_Number__c + '",' +
+                        '"TEST_ERROR",' +
+                        '"Forced test error"'
+                    );
+                    
+                } else {
+                    
+                    for (Database.Error e : sr.getErrors()) {
+                        
+                        String errorMessage = e.getMessage() != null
+                            ? e.getMessage().replace('"', '""')
+                            : '';
+                        
+                        String csvRow =
+                            '"' + contracts[i].Id + '",' +
+                            '"' + contracts[i].VIN_Number__c + '",' +
+                            '"' + String.valueOf(e.getStatusCode()) + '",' +
+                            '"' + errorMessage + '"';
+                        
+                        failedRecordsCsv.add(csvRow);
+                    }
                 }
             }
         }
@@ -104,7 +124,7 @@ public class VINValidatorBatch implements Database.Batchable<SObject>, Database.
             attachment.setBody(Blob.valueOf(String.join(failedRecordsCsv, '\n')));
             mail.setFileAttachments(new List<Messaging.EmailFileAttachment>{
                 attachment
-            });
+                    });
         }
         Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ mail });
     }
