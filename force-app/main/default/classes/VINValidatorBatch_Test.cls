@@ -55,11 +55,26 @@ public class VINValidatorBatch_Test {
 */
     @isTest
     static void validateVINNumber(){
-        List<Contract__c> retrieveExistingContract = [SELECT Id,VIN_Number__c,VIN_Format_Valid__c FROM Contract__c];
+        List<Contract__c> retrieveExistingContract = [SELECT Id,VIN_Number__c,VIN_Format_Valid__c FROM Contract__c WHERE Contract_Number__c = 'TestContract'];
         Test.startTest();
         Database.executeBatch(new VINValidatorBatch(), 200);
         Test.stopTest();
-        Contract__c afterValidation = [SELECT Id,VIN_Number__c,VIN_Format_Valid__c FROM Contract__c];
+        Contract__c afterValidation = [SELECT Id,VIN_Number__c,VIN_Format_Valid__c FROM Contract__c WHERE Contract_Number__c = 'TestContract'];
         System.assertEquals(TRUE, afterValidation.VIN_Format_Valid__c);
+    }
+    
+    /*
+* ------------------------------------------------------------------------------------------------------
+* @Method Name     validateVINNumber_DmlErrorCoverage
+* @description     To cover the VINValidatorBatch DML Errors
+* ------------------------------------------------------------------------------------------------------
+*/
+    @isTest
+    static void validateVINNumber_DmlErrorCoverage() {
+        VINValidatorBatch.forceDmlError = true;
+        Test.startTest();
+        Database.executeBatch(new VINValidatorBatch(), 1);
+        Test.stopTest();
+        VINValidatorBatch.forceDmlError = false;
     }
 }
