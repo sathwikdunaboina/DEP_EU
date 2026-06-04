@@ -15,6 +15,20 @@ public class VINValidatorBatch implements Database.Batchable<SObject>, Database.
     public Integer totalInvalid = 0;
     public Integer totalDmlErrors = 0; // records rejected by the partial update
     
+    //Store Failed record details for CSV
+    public List<String> failedRecordsCsv = new List<String>();
+    
+    //Test-only flag
+    @TestVisible
+    private static Boolean forceDmlError = false;
+    
+    //Constructor
+    public VINValidatorBatch(){
+        
+        //CSV Header
+        failedRecordsCsv.add('RecordId,VIN,ErrorCode,ErrorMessage');
+    }
+    
     // ── 1. Fetch all Contracts with a VIN ────────────────────────────────────
     public Database.QueryLocator start(Database.BatchableContext bc) {
         return Database.getQueryLocator([
@@ -42,14 +56,39 @@ public class VINValidatorBatch implements Database.Batchable<SObject>, Database.
         // allOrNone = false: one bad record will not roll back the whole chunk
         List<Database.SaveResult> saveResults = Database.update(contracts, false);
         
+        
         // FIX: count DML-level errors separately so they are visible in finish()
-        for (Database.SaveResult sr : saveResults) {
-            if (!sr.isSuccess()) {
+        for(Integer i=0; i<saveResults.size();i++){
+            Database.SaveResult sr= saveResults[i];
+            if (!sr.isSuccess() || Test.isRunningTest() && forceDmlError) {
+                
                 totalDmlErrors++;
-                for (Database.Error e : sr.getErrors()) {
-                    System.debug(LoggingLevel.ERROR,
-                                 'VINValidatorBatch DML error on record ' + sr.getId() +
-                                 ': [' + e.getStatusCode() + '] ' + e.getMessage());
+                
+                if (Test.isRunningTest() && forceDmlError) {
+                    
+                    failedRecordsCsv.add(
+                        '"' + contracts[i].Id + '",' +
+                        '"' + contracts[i].VIN_Number__c + '",' +
+                        '"TEST_ERROR",' +
+                        '"Forced test error"'
+                    );
+                    
+                } else {
+                    
+                    for (Database.Error e : sr.getErrors()) {
+                        
+                        String errorMessage = e.getMessage() != null
+                            ? e.getMessage().replace('"', '""')
+                            : '';
+                        
+                        String csvRow =
+                            '"' + contracts[i].Id + '",' +
+                            '"' + contracts[i].VIN_Number__c + '",' +
+                            '"' + String.valueOf(e.getStatusCode()) + '",' +
+                            '"' + errorMessage + '"';
+                        
+                        failedRecordsCsv.add(csvRow);
+                    }
                 }
             }
         }
@@ -73,9 +112,20 @@ public class VINValidatorBatch implements Database.Batchable<SObject>, Database.
         mail.setPlainTextBody('TotalRecordsProcessed : '+ totalProcessed  + '\n' +
                               'Valid VINs : ' + totalValid + '\n'+
                               'InValid VINs : ' + totalInvalid + '\n'+
+                              'DML Failures : ' + totalDmlErrors + '\n\n'+
                               'Please Refer the Report : Report to Monitor Invalid VINs'+'\n\n'+
                               'Regards,\n' +
                               'VFS Salesforce Support');
+        //Attach CSV only if Failure Exist
+        if(failedRecordsCsv.size()>1){
+            Messaging.EmailFileAttachment attachment = new Messaging.EmailFileAttachment();
+            attachment.setFileName('VIN_Validation_Errors.csv');
+            attachment.setContentType('text/csv');
+            attachment.setBody(Blob.valueOf(String.join(failedRecordsCsv, '\n')));
+            mail.setFileAttachments(new List<Messaging.EmailFileAttachment>{
+                attachment
+                    });
+        }
         Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ mail });
     }
 }
