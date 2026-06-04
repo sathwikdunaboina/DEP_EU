@@ -30,6 +30,14 @@
         <label>Update Related Finance Opportunity</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Finance_Opportunity__r.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>VIN_Number__c</field>
             <value>
@@ -63,5 +71,5 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>
