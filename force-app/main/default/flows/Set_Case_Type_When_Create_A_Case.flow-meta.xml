@@ -3,9 +3,8 @@
     <apiVersion>66.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <description>This is used to check the Case owner for the created case.</description>
         <name>Check_Owner</name>
-        <label>Check Case Owner</label>
+        <label>Check Owner</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -20,7 +19,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Case_Type_and_Sub_Type4</targetReference>
+                <targetReference>Update_Case_Type</targetReference>
             </connector>
             <label>UK/IE - End of Term</label>
         </rules>
@@ -48,9 +47,8 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <description>This will update case type , subtype and country if case owner match.</description>
-        <name>Update_Case_Type_and_Sub_Type4</name>
-        <label>Update Case Type and Sub Type</label>
+        <name>Update_Case_Type</name>
+        <label>Update Case Type</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <inputAssignments>
