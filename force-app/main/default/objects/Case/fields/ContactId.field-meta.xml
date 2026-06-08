@@ -3,13 +3,12 @@
     <fullName>ContactId</fullName>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Select the contact associated with the account on Case</errorMessage>
         <filterItems>
             <field>Contact.AccountId</field>
             <operation>equals</operation>
             <valueField>$Source.AccountId</valueField>
         </filterItems>
-        <isOptional>false</isOptional>
+        <isOptional>true</isOptional>
     </lookupFilter>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
