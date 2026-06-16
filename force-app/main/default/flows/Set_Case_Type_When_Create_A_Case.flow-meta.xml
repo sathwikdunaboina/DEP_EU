@@ -9,64 +9,19 @@
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>UK_IE_Contract_Ext_VT</name>
+            <name>UK_IE_End_of_Term</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>UK/IE-Contract Ext VT</stringValue>
+                    <stringValue>UK/IE - End of Term</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Case_Type_and_Sub_Type</targetReference>
+                <targetReference>Update_Case_Type</targetReference>
             </connector>
-            <label>UK/IE-Contract Ext VT</label>
-        </rules>
-        <rules>
-            <name>UK_IE_Contract_Ext_VCE</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>UK/IE-Contract Ext VCE</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Case_Type_and_Sub_Type1</targetReference>
-            </connector>
-            <label>UK/IE-Contract Ext VCE</label>
-        </rules>
-        <rules>
-            <name>UK_IE_Contract_Ext_RT</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>UK/IE-Contract Ext RT</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Case_Type_and_Sub_Type2</targetReference>
-            </connector>
-            <label>UK/IE-Contract Ext RT</label>
-        </rules>
-        <rules>
-            <name>UK_IE_Contract_Ext_BRS</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>UK/IE-Contract Ext BRS</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Case_Type_and_Sub_Type3</targetReference>
-            </connector>
-            <label>UK/IE-Contract Ext BRS</label>
+            <label>UK/IE - End of Term</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -92,97 +47,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <name>Update_Case_Type_and_Sub_Type</name>
-        <label>Update Case Type and Sub Type</label>
+        <name>Update_Case_Type</name>
+        <label>Update Case Type</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <stringValue>United Kingdom</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Sub_Type__c</field>
-            <value>
-                <stringValue>Extension request</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Type</field>
-            <value>
-                <stringValue>Finance - EOT</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Case_Type_and_Sub_Type1</name>
-        <label>Update Case Type and Sub Type</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <stringValue>United Kingdom</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Sub_Type__c</field>
-            <value>
-                <stringValue>Extension request</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Type</field>
-            <value>
-                <stringValue>Finance - EOT</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Case_Type_and_Sub_Type2</name>
-        <label>Update Case Type and Sub Type</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <stringValue>United Kingdom</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Sub_Type__c</field>
-            <value>
-                <stringValue>Extension request</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Type</field>
-            <value>
-                <stringValue>Finance - EOT</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Case_Type_and_Sub_Type3</name>
-        <label>Update Case Type and Sub Type</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <stringValue>United Kingdom</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Sub_Type__c</field>
-            <value>
-                <stringValue>Extension request</stringValue>
-            </value>
-        </inputAssignments>
         <inputAssignments>
             <field>Type</field>
             <value>
