@@ -2,10 +2,13 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Indicator__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( AND(NOT ( Read_All_Emails__c ), ISPICKVAL(Status, &quot;New&quot;)) , IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000008ZxH8&quot;,&quot;New Email&quot;) ,
-IF( AND(NOT ( Read_All_Emails__c ), ISPICKVAL(Status, &quot;Escalated&quot;)) , IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000008ZxH8&quot;,&quot;New Email&quot;) ,
-IF( AND(NOT ( Read_All_Emails__c ), ISPICKVAL(Status, &quot;In Progress&quot;)) , IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000008ZxH8&quot;,&quot;New Email&quot;) ,
-IF( NOT ( Read_All_Emails__c ) , Image(&quot;/img/samples/flag_red.gif&quot;,&quot;Email Received&quot;) , &quot;&quot; ))))</formula>
+    <formula>/* Web Customer Comments */
+IF(AND(ISPICKVAL(Origin, &quot;Web&quot;),NOT(Read_All_Customer_Comments__c),OR(ISPICKVAL(Status, &quot;New&quot;),ISPICKVAL(Status,&quot;Escalated&quot;),ISPICKVAL(Status, &quot;In Progress&quot;))),IMAGE(&quot;/resource/web_icon&quot;, &quot;New Web&quot;, 20, 20),
+IF(AND(ISPICKVAL(Origin, &quot;Web&quot;),NOT(Read_All_Customer_Comments__c)),IMAGE(&quot;/img/samples/flag_red.gif&quot;,&quot;Unread Web Comment&quot;),
+/* Email Indicator for NON-WEB */
+IF(AND(NOT(ISPICKVAL(Origin, &quot;Web&quot;)),NOT(Read_All_Emails__c),OR(ISPICKVAL(Status, &quot;New&quot;),ISPICKVAL(Status, &quot;Escalated&quot;),ISPICKVAL(Status, &quot;In Progress&quot;))),IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000008ZxH8&quot;,&quot;New Email&quot;),
+
+IF(AND(NOT(ISPICKVAL(Origin, &quot;Web&quot;)),NOT(Read_All_Emails__c)),IMAGE(&quot;/img/samples/flag_red.gif&quot;,&quot;Email Received&quot;),&quot;&quot;)) ))</formula>
     <label>Indicator</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
