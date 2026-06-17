@@ -27,6 +27,9 @@ public with sharing class ActionPlanCreationController {
 	 * Max taskIndex for this Action Plan
 	 */
 	private Double taskIndex;
+    
+private String marketValue;
+
 	/**
 	 * Page Action Plan
 	 */
@@ -112,6 +115,34 @@ public with sharing class ActionPlanCreationController {
 	 * @author {@link [David Schach](https://github.com/dschach)}
 	 * @param  stdController `ActionPlan__c` standard controller
 	 */
+    
+public Boolean showYesNoColumn {get; set;}
+    
+    
+private void initMarketConfig() {
+
+    showYesNoColumn = false;
+
+    if (String.isBlank(marketValue)) {
+        return;
+    }
+
+    List<Action_Plan_Market_Config__mdt> config = [
+        SELECT One_by_One__c, Market__c
+        FROM Action_Plan_Market_Config__mdt
+    ];
+
+    for (Action_Plan_Market_Config__mdt cfg : config) {
+
+        if (cfg.Market__c != null &&
+            cfg.Market__c.trim().toLowerCase() == marketValue.trim().toLowerCase()) {
+
+            showYesNoColumn = cfg.One_by_One__c;
+            break;
+        }
+    }
+}
+
 	public ActionPlanCreationController(ApexPages.StandardController stdController) {
 		this.inVisualforceContext = true;
 
@@ -124,10 +155,17 @@ public with sharing class ActionPlanCreationController {
 		if (!Test.isRunningTest()) {
 			stdController.addFields(getAllRelationshipFields());
 		}
-		this.actionPlan = (ActionPlan__c) stdController.getRecord();
-
-		this.apTasks = getAPTasks();
-
+        this.actionPlan = (ActionPlan__c) stdController.getRecord();
+        if (stdController.getId() != null) {
+    ActionPlan__c ap = [
+        SELECT case__r.country__c
+        FROM ActionPlan__c
+        WHERE Id = :stdController.getId()
+        LIMIT 1
+    ];
+    marketValue = ap.case__r.country__c;
+}
+        this.apTasks = getAPTasks();
 		this.cloneParam = ActionPlansUtilities.getEscapedPageParameter('clone');
 		this.templateId = ActionPlansUtilities.getEscapedPageParameter('templateId');
 		this.refId = ActionPlansUtilities.getEscapedPageParameter('refId');
@@ -147,7 +185,8 @@ public with sharing class ActionPlanCreationController {
 
 		this.canDisplayReminder = ActionPlansUtilities.getCanDisplayReminder();
 		this.relatedFieldName = getRelatedObjectOptions()[0].getValue();
-	}
+initMarketConfig();
+    }
 
 	/**
 	 * Initalize controller for editing an Action Plan
@@ -976,6 +1015,7 @@ public with sharing class ActionPlanCreationController {
 		List<APTask__c> myList = [
 			SELECT
 				Subject__c,
+                Yes_No__c,
 				ActivityDate__c,
 				Priority__c,
 				Status__c,

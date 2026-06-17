@@ -181,7 +181,22 @@ private class ActionPlanCreateInvocableTest {
 
 	@IsTest
 	private static void relatedCase() {
+     Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
+
 		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+        //Create an Account Record
+            Account acc= new Account();
+            acc.name='Test Account for UK';
+            acc.CurrencyIsoCode='EUR';
+            acc.RecordTypeId=accountRecordTypeID; 
+            acc.BillingCountry='United Kingdom';
+            insert acc;
+            
+            Entitlement EntitlementRecord = new Entitlement();
+            EntitlementRecord.Name='Case Support Process For UK/IE';
+            EntitlementRecord.AccountId= acc.Id;             
+            insert EntitlementRecord;
+            
 		Case a = testUtil.createNewCase();
 
 		Test.startTest();

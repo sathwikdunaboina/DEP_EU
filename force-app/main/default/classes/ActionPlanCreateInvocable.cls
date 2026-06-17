@@ -42,7 +42,6 @@ global without sharing class ActionPlanCreateInvocable {
 	global static List<Id> makeActionPlanFromTemplate(List<CreateActionPlanRequest> requests) {
 		List<ActionPlan__c> actionPlansToInsert = new List<ActionPlan__c>();
 		Set<Id> createdAPIDs = new Set<Id>();
-
 		// * Collect template IDs & handle parents
 		Set<String> templateNamesOrIDs = new Set<String>();
 		Set<Id> relatedIDs = new Set<Id>();
@@ -67,6 +66,7 @@ global without sharing class ActionPlanCreateInvocable {
 					SELECT
 						Type__c,
 						Subject__c,
+                        Yes_No__c,
 						Priority__c,
 						Dependent__c,
 						Name,
@@ -172,6 +172,7 @@ global without sharing class ActionPlanCreateInvocable {
 					apTask.User__c = ActionPlansBuilderUtilities.getAPTaskTemplateUser(ap, relObjectOwners, aptTask.User__c);
 					apTask.Type__c = aptTask.Type__c;
 					apTask.Subject__c = aptTask.Subject__c;
+                    aptask.Yes_No__c = aptTask.Yes_No__c;
 					apTask.Priority__c = aptTask.Priority__c;
 					apTask.Dependent__c = aptTask.Dependent__c;
 					apTask.TaskIndex__c = aptTask.TaskIndex__c;
@@ -243,8 +244,6 @@ global without sharing class ActionPlanCreateInvocable {
 			Task t = new Task();
 			t.Subject = apTask.Subject__c;
 			t.Priority = apTask.Priority__c;
-			//t.OwnerId = apTask?.User__c == null ? UserInfo.getUserId() : apTask.User__c;
-			 t.OwnerId=apTask?.Assigned_To_Id__c == null ? UserInfo.getUserId() : apTask.Assigned_To_Id__c;
 		    //t.OwnerId = apTask.Assigned_To_Id__c;
 			t.TaskAPTask__c = apTask.Id;
 

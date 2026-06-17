@@ -100,6 +100,7 @@ public with sharing class ActionPlanTemplateDetailController {
 		return [
 			SELECT
 				Subject__c,
+                Yes_No__c,
 				Priority__c,
 				Dependent__c,
 				Name,
