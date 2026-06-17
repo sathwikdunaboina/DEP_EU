@@ -135,6 +135,29 @@
                 <identifier>RecordFirst_Owner_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Read_All_Customer_Comments__c</fieldItem>
+                <identifier>RecordRead_All_Customer_Comments__cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Origin}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Web</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>customerportal@integration.volvo.com</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-d80b3d34-83b6-4e1d-9636-4ff847fec100</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -762,6 +785,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
