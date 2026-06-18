@@ -15,6 +15,7 @@ comments;
 @track comments;
 @track caseComments;
 @track publishToCustomerCheckbox = false;
+@track isPublishedChecked = true;
 wiredCommentsResult; 
 errorMessage;
 
@@ -90,6 +91,7 @@ handleRowAction(event) {
     const row = event.detail.row;
     if (actionName === 'view') {
     this.selectedComment = { ...row };
+    this.isPublishedChecked = true;
     this.isModalOpen = true;
         
 
@@ -103,11 +105,11 @@ handlePublishCheckbox(event){
 
 handlePublishedChange(event) {
 
-const isChecked = event.target.checked;
+this.isPublishedChecked = event.target.checked;
 
 this.selectedComment = {
     ...this.selectedComment,
-    IsPublished: isChecked
+    IsPublished: this.isPublishedChecked
 };
 
 }
@@ -172,7 +174,7 @@ saveModal() {
 
 const fields = {
     Id: this.selectedComment.Id,
-    IsPublished: this.selectedComment.IsPublished
+    IsPublished: this.isPublishedChecked
 };
 
 
