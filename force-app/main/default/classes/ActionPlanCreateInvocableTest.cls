@@ -186,7 +186,7 @@ private class ActionPlanCreateInvocableTest {
 		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
         //Create an Account Record
             Account acc= new Account();
-            acc.name='Test Account for UK';
+            acc.name='Test Account for United Kingdom';
             acc.CurrencyIsoCode='EUR';
             acc.RecordTypeId=accountRecordTypeID; 
             acc.BillingCountry='United Kingdom';
