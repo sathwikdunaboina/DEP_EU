@@ -277,7 +277,7 @@ private class ActionPlanDetailControllerTest {
 @IsTest
 static void testOneByOneTaskLogic() {
 
-    // ✅ Force One-by-One behavior
+    //Force One-by-One behavior
     ActionPlanDetailController.forceOneByOne = true;
 
     ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
@@ -293,7 +293,7 @@ static void testOneByOneTaskLogic() {
         ORDER BY TaskIndex__c
     ];
 
-    // ✅ Apply logic
+    //Apply logic
     tasks[0].Yes_No__c = 'Yes';  // continue
     tasks[1].Yes_No__c = 'No';   // stop here
     tasks[2].Yes_No__c = 'Yes';  // should NOT be shown
@@ -309,7 +309,6 @@ static void testOneByOneTaskLogic() {
         ctrl.getActionPlanTasks();
     Test.stopTest();
 
-    // ✅ Now this WILL pass
     System.assertEquals(2, result.size(),
         'Should stop after second task because Yes_No = No');
 }
@@ -343,28 +342,28 @@ static void testClosedTaskAlwaysVisible() {
  @IsTest
 static void testInitMarketConfig_Covered() {
 
-    // ✅ Step 1: Create Case
+    
     Case c = new Case(
         Subject = 'Test Case',
         Country__c = 'United Kingdom'
     );
     insert c;
 
-    // ✅ Step 2: Create Action Plan
+   
     ActionPlan__c ap = new ActionPlan__c(
         Name = 'Test AP',
         Case__c = c.Id
     );
     insert ap;
 
-    // ✅ 🔥 IMPORTANT: Re-query with relationship
+   
     ap = [
         SELECT Id, Case__c, Case__r.Country__c
         FROM ActionPlan__c
         WHERE Id = :ap.Id
     ];
 
-    // ✅ Step 3: Force test flag
+    
     ActionPlanDetailController.forceShowYesNo = true;
 
     ApexPages.StandardController sc =
@@ -376,7 +375,7 @@ static void testInitMarketConfig_Covered() {
     ctrl.initMarketConfig();
     Test.stopTest();
 
-    // ✅ Now this WILL PASS
+    
     System.assertEquals(true, ctrl.showYesNoColumn);
 
     // cleanup
@@ -397,10 +396,10 @@ static void testClosedTaskBranch() {
         ORDER BY TaskIndex__c
     ];
 
-    // ✅ Make first task CLOSED
+    
     tasks[0].IsClosed__c = true;
 
-    // ✅ second controls flow
+   
     tasks[1].Yes_No__c = 'No';
 
     update tasks;
