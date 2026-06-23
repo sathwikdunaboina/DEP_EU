@@ -39,6 +39,8 @@ private class ActionPlanCreateInvocableTest {
 
 		Account a = new Account();
 		a.Name = 'TestAcct';
+        a.BillingCountry = 'United Kingdom';
+
 		insert a;
 
 		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
@@ -252,6 +254,7 @@ private class ActionPlanCreateInvocableTest {
 		}
 		for (Account a : toInsert) {
 			a.Type = null;
+            a.BillingCountry ='United Kingdom';
 		}
 		insert toInsert;
 
@@ -301,6 +304,8 @@ private class ActionPlanCreateInvocableTest {
 
 		Account a = new Account();
 		a.Name = 'TestAcct';
+        a.BillingCountry = 'United Kingdom';
+
 		insert a;
 
 		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
@@ -353,6 +358,8 @@ private class ActionPlanCreateInvocableTest {
 
 		Account a = new Account();
 		a.Name = 'TestAcct';
+        a.BillingCountry = 'United Kingdom';
+
 		insert a;
 
 		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
