@@ -1248,9 +1248,14 @@
         <sharedTo>
             <group>France_VCE</group>
         </sharedTo>
-        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <booleanFilter>(1 OR 2) AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <field>BillingCountry</field>
+            <operation>equals</operation>
+            <value>France</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>BillingCountryCode</field>
             <operation>equals</operation>
             <value>France</value>
         </criteriaItems>
@@ -1260,9 +1265,9 @@
             <value>Construction Equipment</value>
         </criteriaItems>
         <criteriaItems>
-            <field>BillingCountryCode</field>
+            <field>Branding__c</field>
             <operation>equals</operation>
-            <value>France</value>
+            <value></value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
