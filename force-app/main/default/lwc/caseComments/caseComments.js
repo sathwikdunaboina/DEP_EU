@@ -6,10 +6,6 @@ import getCaseComments from '@salesforce/apex/CaseCommentController.getCaseComme
 import createPrivateCommentWithEmail from '@salesforce/apex/CaseCommentController.createPrivateCommentWithEmail';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import READ_ALL_FIELD from '@salesforce/schema/Case.Read_All_Customer_Comments__c';
-//import updateReadAllFlag from '@salesforce/apex/CaseCommentController.updateReadAllFlag';
-
-import ID_FIELD from '@salesforce/schema/Case.Id';
-
 
 export default class CaseComments extends NavigationMixin(LightningElement) {
 @api recordId; 
@@ -50,13 +46,12 @@ wiredCaseResult;
 
 @wire(getRecord, { recordId: '$recordId', fields: [READ_ALL_FIELD] })
 wiredCase(result) {
-    this.wiredCaseResult = result;   // ✅ store for refresh
+    this.wiredCaseResult = result;  
 
     if (result.data) {
         this.readAllCustomerComments =
             result.data.fields.Read_All_Customer_Comments__c.value;
     } else if (result.error) {
-        console.error(result.error);
     }
 }
 
@@ -130,8 +125,7 @@ handleReadAllCheckbox(event) {
 
     updateRecord({ fields })
         .then(() => {
-            this.readAllCustomerComments = value; // keep UI synced
-
+            this.readAllCustomerComments = value; 
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Success',
@@ -141,8 +135,6 @@ handleReadAllCheckbox(event) {
             );
         })
         .catch(error => {
-            console.error('FULL ERROR:', JSON.stringify(error));
-
             let message = 'Update failed';
 
             if (error?.body?.message) {
@@ -200,7 +192,6 @@ createPrivateCommentWithEmail ({caseId:this.recordId, commentBody: this.caseComm
             this.caseComments = '';
 this.errorMessage =false;
                 this.publishToCustomerCheckbox = false;
-               // this.readAllCustomerComments = false;
                 return refreshApex(this.wiredCommentsResult);  
     }  
 
