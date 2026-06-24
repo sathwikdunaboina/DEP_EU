@@ -26,6 +26,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <description>This will update the Read All Customer Comment to false when a customer added comment.</description>
         <name>Update_Read_All_Customer_Comments_to_False</name>
         <label>Update Read All Customer Comments to False</label>
         <locationX>0</locationX>
@@ -36,13 +37,6 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>$Record.ParentId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>MasterRecordId</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <inputAssignments>
@@ -56,6 +50,7 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <filterFormula>{!$Record.Parent.Read_All_Customer_Comments__c} = TRUE</filterFormula>
         <object>CaseComment</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
