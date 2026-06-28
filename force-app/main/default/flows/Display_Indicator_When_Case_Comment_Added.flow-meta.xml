@@ -50,7 +50,7 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <filterFormula>{!$Record.Parent.Read_All_Customer_Comments__c} = TRUE</filterFormula>
+        <filterFormula>AND(BEGINS({!$Record.Parent.CreatedBy.Username}, &quot;customerportal@integration&quot;),{!$Record.Parent.Read_All_Customer_Comments__c} = TRUE)</filterFormula>
         <object>CaseComment</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
