@@ -133,7 +133,7 @@
     <formulas>
         <name>Notificationmessage</name>
         <dataType>String</dataType>
-        <expression>&apos;The factory order &apos;+{!$Record.Name}+ &apos; for customer &apos; +{!$Record.End_Customer_Name__c}+ &apos; was cancelled and the opportunity moved to closed lost.&apos;</expression>
+        <expression>&apos;The factory order &apos;+{!$Record.Name}+ &apos; for customer &apos; +{!$Record.End_Customer_Name__c}+ &apos; was cancelled and the opportunity moved to Closed FO Cancelled.&apos;</expression>
     </formulas>
     <interviewLabel>Update Opp Stage {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Opp Stage</label>
@@ -289,21 +289,9 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>Lost_Reason__c</field>
-            <value>
-                <stringValue>Unable to quote</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Reason__c</field>
-            <value>
-                <stringValue>Factory order cancelled</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>StageName</field>
             <value>
-                <stringValue>Closed Lost</stringValue>
+                <stringValue>Closed FO Cancelled</stringValue>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
