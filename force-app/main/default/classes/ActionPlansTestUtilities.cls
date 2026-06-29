@@ -185,10 +185,27 @@ public inherited sharing class ActionPlansTestUtilities {
 	 * @return new `Case`
 	 */
 	public Case createNewCase(Boolean insertRecord) {
+             Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
+
+		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+        //Create an Account Record
+            Account acc= new Account();
+            acc.name='Test Account for UK';
+            acc.CurrencyIsoCode='EUR';
+            acc.RecordTypeId=accountRecordTypeID; 
+            acc.BillingCountry='United Kingdom';
+            insert acc;
+            
+            Entitlement EntitlementRecord = new Entitlement();
+            EntitlementRecord.Name='Case Support Process For UK/IE';
+            EntitlementRecord.AccountId= acc.Id;             
+            insert EntitlementRecord;
+
 		Case newCase = new Case();
 		newCase.Status = (String) Case.Status.getDescribe().getDefaultValue();
 		newCase.Origin = 'Email';
         newCase.Country__c='Netherlands';
+        newCase.AccountId = acc.id;
 
 		if (insertRecord) {
 			insert newCase;
