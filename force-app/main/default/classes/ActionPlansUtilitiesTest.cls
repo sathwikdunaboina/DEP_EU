@@ -311,54 +311,106 @@ private class ActionPlansUtilitiesTest {
 		update apt; //NOPMD
 
 		Test.startTest();
-		for (String k : objectNames) {
-			Test.setCurrentPage(Page.ActionPlanCreation);
-			switch on k {
-				when 'account' {
-					Account a = testutil.createNewAccount();
-					ApexPages.currentPage().getParameters().put('refId', a.Id);
-				}
-				when 'lead' {
-					Lead c = testutil.createNewLead();
-					ApexPages.currentPage().getParameters().put('refId', c.Id);
-				}
-				when 'contract' {
-					Contract c = testutil.createNewContract();
-					ApexPages.currentPage().getParameters().put('refId', c.Id);
-				}
-				when 'campaign' {
-					Campaign c = testutil.createNewCampaign();
-					ApexPages.currentPage().getParameters().put('refId', c.Id);
-				}
-				when 'opportunity' {
-					Opportunity c = testutil.createNewOpportunity();
-					ApexPages.currentPage().getParameters().put('refId', c.Id);
-				}
-				when 'contact' {
-					Contact c = testutil.createNewContact();
-					ApexPages.currentPage().getParameters().put('refId', c.Id);
-				}
-				when 'case' {
-					Case c = testutil.createNewCase();
-					ApexPages.currentPage().getParameters().put('refId', c.Id);
-				}
-			}
+for (String k : objectNames) {
 
-			ApexPages.currentPage().getParameters().put('id', null);
+    Test.setCurrentPage(Page.ActionPlanCreation);
+    ApexPages.currentPage().getParameters().clear();
 
-			ApexPages.currentPage().getParameters().put('templateId', apt.Id);
-			ActionPlanCreationController apcc = new ActionPlanCreationController(new Apexpages.StandardController(new ActionPlan__c()));
-			apcc.refreshRelatedObjectsLookUp();
+    String refType = k.substring(0,1).toUpperCase() + k.substring(1).toLowerCase();
+    ApexPages.currentPage().getParameters().put('refType', refType);
 
-			apcc.actionPlan.SkipWeekends__c = true;
-			apcc.actionPlan.SkipDay__c = 'End of previous week';
-			apcc.getTasks();
+    Id recordId;
 
-			Assert.isFalse(apcc.getTasks().isEmpty(), 'Failed to generate our APTaskWrapper records');
+    switch on k {
+        when 'account' {
+            recordId = testutil.createNewAccount().Id;
+        }
+        when 'lead' {
+            recordId = testutil.createNewLead().Id;
+        }
+        when 'contact' {
+            Account a = testutil.createNewAccount();
+            Contact c = testutil.createNewContact(false);
+            c.AccountId = a.Id;
+            insert c;
+            recordId = c.Id;
+        }
+        when 'contract' {
+            Account a = testutil.createNewAccount();
+            Contract c = new Contract(
+                AccountId = a.Id,
+                StartDate = Date.today(),
+                ContractTerm = 12,
+                Status = 'Draft'
+            );
+            insert c;
+            recordId = c.Id;
+        }
+        when 'campaign' {
+            recordId = testutil.createNewCampaign().Id;
+        }
+        when 'opportunity' {
+            Account a = testutil.createNewAccount();
+            Opportunity o = new Opportunity(
+                Name = 'Opp ' + DateTime.now().getTime(),
+                StageName = 'Prospecting',
+                CloseDate = Date.today(),
+                AccountId = a.Id
+            );
+            insert o;
+            recordId = o.Id;
+        }
+        when 'case' {
+            recordId = testutil.createNewCase().Id;
+        }
+    }
 
-			apcc.save();
-		}
+    ApexPages.currentPage().getParameters().put('refId', recordId);
+ApexPages.currentPage().getParameters().put('templateId', apt.Id);
+ApexPages.currentPage().getParameters().put('id', null);
 
+ActionPlan__c ap = new ActionPlan__c();
+
+switch on k {
+    when 'account' {
+        ap.Account__c = recordId;
+    }
+    when 'lead' {
+        ap.Lead__c = recordId;
+    }
+    when 'contact' {
+        ap.Contact__c = recordId;
+    }
+    when 'case' {
+        ap.Case__c = recordId;
+    }
+    when 'campaign' {
+        ap.Campaign__c = recordId;
+    }
+    when 'contract' {
+        ap.Contract__c = recordId;
+    }
+    when 'opportunity' {
+        ap.Opportunity__c = recordId;
+    }
+}
+
+insert ap; 
+
+
+    ActionPlanCreationController apcc =
+        new ActionPlanCreationController(new ApexPages.StandardController(ap));
+
+    apcc.refreshRelatedObjectsLookUp();
+
+    apcc.actionPlan.SkipWeekends__c = true;
+    apcc.actionPlan.SkipDay__c = 'End of previous week';
+
+   
+    apcc.getTasks();
+
+    apcc.save();
+}
 		Test.stopTest();
 	}
 

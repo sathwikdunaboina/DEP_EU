@@ -54,8 +54,10 @@ public inherited sharing class ActionPlansTestUtilities {
 	 * test123456
 	 */
 	public String createRandomWord(String prefix) {
-		String ret = prefix + math.rint(math.random() * 10000000);
-		return ret;
+
+ String unique = String.valueOf(DateTime.now().getTime()) 
+                  + Math.abs(Crypto.getRandomLong());
+    return prefix + '_' + unique;
 	}
 
 	/**
@@ -81,12 +83,17 @@ public inherited sharing class ActionPlansTestUtilities {
 	 */
 	public User createTestUser(Profile p) {
 		String namePrefix = this.createRandomWord('un');
+        String unique = String.valueOf(DateTime.now().getTime());
+
 
 		User testUser = new User();
-		testUser.Email = 'test@aptest.com';
-		testUser.Username = namePrefix + 'test@Testuser.com';
+		
+testUser.Email = 'test' + unique + '@aptest.com';
+testUser.Username = namePrefix + unique + '@testuser.com';
+testUser.Alias = unique.substring(0, 5);
+
 		testUser.LastName = 'test';
-		testUser.Alias = 'test';
+		//testUser.Alias = 'test';
 		testUser.ProfileId = p.Id;
 		testUser.LanguageLocaleKey = 'en_US';
 		testUser.LocaleSidKey = 'en_US';
@@ -190,7 +197,8 @@ public inherited sharing class ActionPlansTestUtilities {
 		ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
         //Create an Account Record
             Account acc= new Account();
-            acc.name='Test Account for UK';
+            acc.Name = 'Test Account ' + DateTime.now().getTime();
+
             acc.CurrencyIsoCode='EUR';
             acc.RecordTypeId=accountRecordTypeID; 
             acc.BillingCountry='United Kingdom';
