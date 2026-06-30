@@ -4,7 +4,7 @@
     <active>true</active>
     <errorConditionFormula>AND( ISPICKVAL( StageName , &quot;Closed FO Cancelled&quot;) ,
  AND( RecordType.DeveloperName = &quot;Finance&quot; , NOT( ISPICKVAL( LeadSource , &quot;Factory Order&quot;) ) ) 
-)</errorConditionFormula>
+) &amp;&amp; NOT( $Permission.ByPassValidationRule )</errorConditionFormula>
     <errorDisplayField>StageName</errorDisplayField>
     <errorMessage>Closed FO Cancelled is only for Finance Opportunity with Lead Source as Factory Order</errorMessage>
 </ValidationRule>
