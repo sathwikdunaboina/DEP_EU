@@ -1,21 +1,21 @@
 import { LightningElement, api, wire,track } from 'lwc';
-import { updateRecord } from 'lightning/uiRecordApi';
+import { updateRecord,getRecord } from 'lightning/uiRecordApi';
 import { NavigationMixin } from 'lightning/navigation';
 import { refreshApex } from '@salesforce/apex';
 import getCaseComments from '@salesforce/apex/CaseCommentController.getCaseComments';
 import createPrivateCommentWithEmail from '@salesforce/apex/CaseCommentController.createPrivateCommentWithEmail';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-
+import READ_ALL_FIELD from '@salesforce/schema/Case.Read_All_Customer_Comments__c';
 
 export default class CaseComments extends NavigationMixin(LightningElement) {
 @api recordId; 
-comments;
 @track selectedComment = {};
 @track filteredComments;
 @track comments;
 @track caseComments;
 @track publishToCustomerCheckbox = false;
 @track isPublishedChecked = true;
+@track readAllCustomerComments = false;
 wiredCommentsResult; 
 errorMessage;
 
@@ -41,6 +41,20 @@ columns = [
 ];
 connectedCallback() {
 }
+
+wiredCaseResult;
+
+@wire(getRecord, { recordId: '$recordId', fields: [READ_ALL_FIELD] })
+wiredCase(result) {
+    this.wiredCaseResult = result;  
+
+    if (result.data) {
+        this.readAllCustomerComments =
+            result.data.fields.Read_All_Customer_Comments__c.value;
+    } else if (result.error) {
+    }
+}
+
 
 @wire(getCaseComments, { caseId: '$recordId' })
 wiredComments(result) {
@@ -101,6 +115,42 @@ handleRowAction(event) {
 handlePublishCheckbox(event){
     this.publishToCustomerCheckbox = event.target.checked;
 }
+handleReadAllCheckbox(event) {
+    const value = event.target.checked;
+
+    const fields = {
+        Id: this.recordId,
+        Read_All_Customer_Comments__c: value
+    };
+
+    updateRecord({ fields })
+        .then(() => {
+            this.readAllCustomerComments = value; 
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Checkbox was Saved',
+                    variant: 'success'
+                })
+            );
+        })
+        .catch(error => {
+            let message = 'Update failed';
+
+            if (error?.body?.message) {
+                message = error.body.message;
+            }
+
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: message,
+                    variant: 'error',
+                    mode: 'sticky'
+                })
+            );
+        });
+}
 
 
 handlePublishedChange(event) {
@@ -124,6 +174,7 @@ handleSubmit(){
                 variant: 'Error'
             })
         );
+      
         return;
     }
     
