@@ -153,6 +153,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Dealer_Account_Billing_Country__c</field>
+            <value>
+                <elementReference>Get_Dealer_Account.BillingCountry</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Dealer_Name__c</field>
             <value>
                 <elementReference>$Record.Main_Dealer_Name__c</elementReference>
@@ -168,6 +174,12 @@
             <field>General_Description__c</field>
             <value>
                 <elementReference>$Record.Description__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Brand__c</field>
+            <value>
+                <elementReference>$Record.Brand__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
