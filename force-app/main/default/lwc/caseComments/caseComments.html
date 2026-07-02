@@ -27,6 +27,7 @@
             </lightning-input>
  
 </br>
+
                 <footer class="slds-grid slds-grid_align-end">
                     <lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
                 </footer>
@@ -43,6 +44,13 @@
         </div>
 
         </div>
+<lightning-input
+    type="checkbox"
+    label="Read All Customer Comments"
+    checked={readAllCustomerComments}
+    onchange={handleReadAllCheckbox}>
+</lightning-input>
+</br>        
 <lightning-datatable
             key-field="Id"
             data={filteredComments}
