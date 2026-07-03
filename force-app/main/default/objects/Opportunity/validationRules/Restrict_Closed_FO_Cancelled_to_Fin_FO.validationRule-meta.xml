@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Closed_FO_Cancelled_to_Fin_FO</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL( StageName , &quot;Closed FO Cancelled&quot;) ,
+ AND( RecordType.DeveloperName = &quot;Finance&quot; , NOT( ISPICKVAL( LeadSource , &quot;Factory Order&quot;) ) ) 
+) &amp;&amp; NOT( $Permission.ByPassValidationRule )</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>Closed FO Cancelled is only for Finance Opportunity with Lead Source as Factory Order</errorMessage>
+</ValidationRule>
