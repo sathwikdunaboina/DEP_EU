@@ -1,36 +1,20 @@
 trigger AccountUpdateUserCountryTrigger on Account (before insert) {
- 
+    
+    // Bypass integration user by Name
+    if(UserInfo.getName() == 'Integration User') {
+        return;
+    }
+    
     User currentUser = [
-        SELECT Profile.Name
+        SELECT Country
         FROM User
         WHERE Id = :UserInfo.getUserId()
         LIMIT 1
     ];
- 
-    // Bypass for Integration User (API Only Profile)
-    if (currentUser.Profile.Name == 'API Only') {
-        return;
-    }
- 
-    Set<Id> ownerIds = new Set<Id>();
- 
-    for (Account acc : Trigger.new) {
-        if (acc.OwnerId != null) {
-            ownerIds.add(acc.OwnerId);
-        }
-    }
- 
-    Map<Id, User> userMap = new Map<Id, User>(
-        [SELECT Id, Country
-         FROM User
-         WHERE Id IN :ownerIds]
-    );
- 
-    for (Account acc : Trigger.new) {
-        User owner = userMap.get(acc.OwnerId);
- 
-        if (owner != null) {
-            acc.BillingCountry = owner.Country;
+    
+    for(Account acc : Trigger.new) {
+        if(String.isBlank(acc.BillingCountry)) {
+            acc.BillingCountry = currentUser.Country;
         }
     }
 }
