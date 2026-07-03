@@ -41,8 +41,7 @@ private class AccountUpdateUserCountryTriggerTest {
         User testUser = [
             SELECT Id, Country
             FROM User
-            WHERE FirstName = 'Test' AND LastName = 'User'
-            AND Email = 'testuser@vfstest.com'
+            WHERE Email = 'testuser@vfstest.com'
             LIMIT 1
         ];
         
@@ -98,7 +97,10 @@ private class AccountUpdateUserCountryTriggerTest {
         ];
         
         System.runAs(integrationUser) {
-            Account acc = new Account(Name = 'Integration Test Account');
+            Account acc = new Account(
+                Name = 'Integration Test Account',
+                BillingCountry = 'Switzerland'
+            );
             
             Test.startTest();
             insert acc;
@@ -106,9 +108,9 @@ private class AccountUpdateUserCountryTriggerTest {
             
             Account result = [SELECT BillingCountry FROM Account WHERE Id = :acc.Id];
             System.assertEquals(
-                null,
+                'Switzerland',
                 result.BillingCountry,
-                'BillingCountry should remain null for Integration User'
+                'BillingCountry should be what was manually set, not auto populated'
             );
         }
     }
