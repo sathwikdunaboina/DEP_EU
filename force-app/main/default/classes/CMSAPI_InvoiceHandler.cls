@@ -3,7 +3,7 @@
 * 
 * */
 
-public without sharing class CMSAPI_InvoiceHandler {
+public inherited sharing class CMSAPI_InvoiceHandler {
 
 
  
@@ -178,8 +178,9 @@ customerIdBlock + '\n' +
 '            }\n' +
           'issueDate: { ge: "' + twoYearsBack + '" }\n'+
 '        }\n' +
-'        first: 50\n' +
+'        first: 4000\n' +
 '        pageNo: 0\n' +
+'        orderBy: { issueDate: DESC }'+    
 '    ) {\n' +
 '        edges {\n' +
 '            node {\n' +

@@ -5,7 +5,7 @@
 * 2. ContractDetail resource
 * 
 */
-public class CMSAPI_ContractHandler {
+public without sharing class CMSAPI_ContractHandler {
     @future(callout=true)
     public static void fetchContractList(String customerId){
         try{
