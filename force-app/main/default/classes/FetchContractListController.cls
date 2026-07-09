@@ -1,4 +1,4 @@
-public class FetchContractListController {
+public with sharing class FetchContractListController {
 	@AuraEnabled
     public static void getContractList(Id accountId){
         Account account = [Select CustomerId__c FROM Account WHERE Id =:accountId LIMIT 1];

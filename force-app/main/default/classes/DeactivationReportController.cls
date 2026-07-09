@@ -7,7 +7,7 @@
  *
 */
 
-public class DeactivationReportController{
+public without sharing class DeactivationReportController{
     
     //Generate report Based on parameter
   @future(callout=true)  public Static void generateReport(string reportDevName)

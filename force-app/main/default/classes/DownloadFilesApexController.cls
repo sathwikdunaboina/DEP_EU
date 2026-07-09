@@ -1,4 +1,4 @@
-public class DownloadFilesApexController {
+public with sharing class DownloadFilesApexController {
     @AuraEnabled
     public static List<FileDetail> getContentDocs(Id contractID){
         
