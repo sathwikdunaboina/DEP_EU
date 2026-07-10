@@ -1,4 +1,4 @@
-global class DeactivationReportSchedulerClass Implements Schedulable
+global without sharing class DeactivationReportSchedulerClass Implements Schedulable
     {
         global void execute(SchedulableContext sc)
         {
