@@ -7,6 +7,7 @@
 *******************************************   Changelog   **************************************************
 S.No.    Date                    Developer Name         Azure Item Number
 (1)      13th Feb 2024           Infosys                User Story-7640: Second Milestone SCTASK102119711
+(2)      10th July 2026          Infosys                User Story 1485127: SCTASK104107612 Configuration change on milestones
 ***********************************************************************************************************/
 public class MilestoneUtils {
     
@@ -21,7 +22,8 @@ public class MilestoneUtils {
         'UK/IE - CS Credit',
         'User Owner',
         'IE - CS Operations',
-        'UK/IE - CS tech Tool'
+        'UK/IE - CS tech Tool',
+        'UK/IE - 2nd Checking'
     };
 
     public static void completeMilestone(List<Id> caseIds, 

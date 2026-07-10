@@ -100,11 +100,10 @@ private class MilestoneTest {
                 c.SlaStartDate=System.now();
             
             }
-            update updateCase;
-
             updateCase[0].Type = 'Settlement Query';
+            updateCase[0].Brand__c = 'Volvo Truck';
             updateCase[0].Status = 'Closed';
-            updateCase[0].Status_Reason__c = 'Auto Closed' ;
+            updateCase[0].Status_Reason__c = 'Auto Closed';
             update updateCase;
         }
     }

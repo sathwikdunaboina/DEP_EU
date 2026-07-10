@@ -48,7 +48,7 @@ trigger CompletePickupTimeMilestone on Case (before update, after update) {
         for(Case cs: trigger.New) {
 
             if(cs.EntitlementId != Null && 
-            (trigger.oldMap.get(cs.Id).OwnerId != cs.OwnerId) && (cs.Status != 'New' && cs.Status != 'Closed')) {
+            (trigger.oldMap.get(cs.Id).OwnerId != cs.OwnerId) && (cs.Status != 'Closed')) {
 
                     setCaseIdForCaseMilestoneToComplete.add(cs.Id);
             }
