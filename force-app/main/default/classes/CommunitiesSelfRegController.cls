@@ -1,7 +1,7 @@
 /**
  * An apex page controller that supports self registration of users in communities that allow self registration
  */
-public class CommunitiesSelfRegController {
+public with sharing class CommunitiesSelfRegController {
 
     public String firstName {get; set;}
     public String lastName {get; set;}

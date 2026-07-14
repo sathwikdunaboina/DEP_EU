@@ -4,7 +4,7 @@
 * @description Controller for visuaforce page C3S_VFP08_EmailPDF
 * @group Visualforce
 */
-public class C3S_VFP08_EmailPDFController {
+public with sharing class C3S_VFP08_EmailPDFController {
 
     public EmailMessage email;
 
