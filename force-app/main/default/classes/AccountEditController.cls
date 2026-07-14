@@ -10,7 +10,7 @@ duplicates based on Duplicate rule in Org(Added in Duplicate Rule Metadata)
 * ------------------------------------------------------------------------------------------
 */
 
-public class AccountEditController {
+public with sharing class AccountEditController {
     public class DuplicateRuleResult {
         @AuraEnabled public Boolean isDuplicate; 
         @AuraEnabled public Boolean isBlock; 

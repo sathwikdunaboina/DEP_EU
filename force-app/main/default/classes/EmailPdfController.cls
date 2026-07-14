@@ -4,7 +4,7 @@
 * @description Use by EmailPDF
 * @group Lightning
 */
-public class EmailPdfController {
+public with sharing class EmailPdfController {
 
     /**
     * @author Hari

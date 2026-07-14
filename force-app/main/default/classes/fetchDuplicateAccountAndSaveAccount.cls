@@ -9,7 +9,7 @@
 duplicates based on Duplicate rule in Org(Added in Duplicate Rule Metadata)
 * ------------------------------------------------------------------------------------------
 */
-public class fetchDuplicateAccountAndSaveAccount {
+public with sharing class fetchDuplicateAccountAndSaveAccount {
     public class DuplicateRuleResult {
         @AuraEnabled public Boolean isDuplicate; 
         @AuraEnabled public Boolean isBlock; 
