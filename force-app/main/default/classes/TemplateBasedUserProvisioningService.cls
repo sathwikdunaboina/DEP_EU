@@ -1,4 +1,4 @@
-public virtual class TemplateBasedUserProvisioningService extends UserProvisioningService{
+public inherited sharing virtual class TemplateBasedUserProvisioningService extends UserProvisioningService{
     
     private Map<string,User> mapOfTemplateUsersByUserName;
     private Map<Id,user> mapOfTemplateUsersById;

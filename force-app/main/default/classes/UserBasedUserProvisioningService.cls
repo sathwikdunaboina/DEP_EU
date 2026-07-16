@@ -1,4 +1,4 @@
-public virtual class UserBasedUserProvisioningService extends UserProvisioningService{
+public inherited sharing virtual class UserBasedUserProvisioningService extends UserProvisioningService{
     
     private Map<string,User> mapOfReferenceUsersByUserName;
     private Map<Id,user> mapOfReferenceUsersById;
