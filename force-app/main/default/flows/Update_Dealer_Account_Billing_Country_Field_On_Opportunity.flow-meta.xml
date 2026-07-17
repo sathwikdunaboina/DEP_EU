@@ -2,6 +2,31 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>67.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_the_Lead_Source</name>
+        <label>Check the Lead Source</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Dealer_Country</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Lead_Source_is_FO</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Factory Order</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Brand_and_Dealer_Country_FIeld</targetReference>
+            </connector>
+            <label>If Lead Source is FO</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>Update Dealer Account Billing Country Field On Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Dealer Account Billing Country Field On Opportunity</label>
@@ -43,12 +68,26 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_Dealer_Country</name>
+        <label>Update Dealer Country</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Dealer_Account_Billing_Country__c</field>
+            <value>
+                <elementReference>$Record.Account.BillingCountry</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Update_Brand_and_Dealer_Country_FIeld</targetReference>
+            <targetReference>Check_the_Lead_Source</targetReference>
         </connector>
+        <filterFormula>{!$Record.RecordType.Name} = &apos;Finance&apos;</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
