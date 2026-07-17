@@ -1,4 +1,4 @@
-public class ContractDetailController {
+public with sharing class ContractDetailController {
     @AuraEnabled
     public static void getContractDetail(Id recordId){
         Object isAlreadyFetchedInCurrentSession = CXPCacheManager.getFromSession(recordId);
