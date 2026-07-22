@@ -5,6 +5,10 @@ public with sharing class AccountUtility {
             return 'UNKNOWN';
         }
 
+        if (acc.Name.startsWith('VIP')) {
+            return 'PREMIUM';
+        }
+
         return 'STANDARD';
     }
 }
