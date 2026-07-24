@@ -8,7 +8,7 @@
 * ----------------------------------------------------------------------------------------------------------------------
 */
 
-public class DashboardRefreshQueueable implements Queueable, Database.AllowsCallouts {
+public without sharing class DashboardRefreshQueueable implements Queueable, Database.AllowsCallouts {
    @TestVisible
    private String dashboardId;
     
