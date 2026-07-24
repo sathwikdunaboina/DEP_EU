@@ -8,7 +8,7 @@
 * ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
-global class DashboardRefreshJob implements Schedulable {
+global without sharing class DashboardRefreshJob implements Schedulable {
         public String dashboardId;
 
     

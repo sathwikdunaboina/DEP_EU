@@ -1,4 +1,4 @@
-public class UserProvisionRequest{
+public inherited sharing class UserProvisionRequest{
     public string firstName; // testing
     public string lastName; //abc
     public string email; //abc@testing.com
