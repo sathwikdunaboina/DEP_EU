@@ -576,10 +576,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>FoUKIEDeleteSchedulerClass</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>ForgotPasswordController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -692,7 +688,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>UK_IE_Fos_Delete_TestClass</apexClass>
+        <apexClass>UpdCseOriginandBrandFldsOnCseCreate_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -1265,10 +1261,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>setCaseType_Test</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>uK_IE_FOs_Delete</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
@@ -2625,16 +2617,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.Country__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Data_Quality_Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Data_Quality_Score__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8203,6 +8185,10 @@
     <layoutAssignments>
         <layout>Case-Case Layout</layout>
         <recordType>Case.VFS_Customer</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Case-VFS Dealer Case Layout</layout>
+        <recordType>Case.VFS_Dealer</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CaseClose-Close Case Layout</layout>
