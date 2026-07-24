@@ -1,4 +1,4 @@
-global class getPermissionSetForUsers implements Schedulable
+global without sharing class getPermissionSetForUsers implements Schedulable
 {
 global void execute(SchedulableContext SC) 
 {

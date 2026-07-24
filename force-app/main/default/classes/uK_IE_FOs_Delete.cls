@@ -1,4 +1,4 @@
-public class uK_IE_FOs_Delete {
+public without sharing class uK_IE_FOs_Delete {
 
      public void  getData(){
      List <Factory_Order__c> foList= [SELECT Id,Main_Dealer_Name__c FROM Factory_Order__c WHERE (Main_Dealer_Name__c LIKE '%Thomas Hardie Commercials Ltd%' or Main_Dealer_Name__c LIKE '%Dennison Commercials Ltd%' )AND Order_Status_Description__c NOT IN ('Firm Planned','FirmPlanned', 'InvoicedFirstLevel', 'Confirmed', 'Produced')  and Country__c='GB'];   
