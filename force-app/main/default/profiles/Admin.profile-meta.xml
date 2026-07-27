@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Profile xmlns="http://soap.sforce.com/2006/04/metadata"
-      xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
     <applicationVisibilities>
         <application>Admin_App</application>
         <default>false</default>
@@ -653,10 +652,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>OpportunityInlineAmountUpdateTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>PageInfo</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -8643,7 +8638,7 @@
         <uiLoginFlowType>VisualWorkflow</uiLoginFlowType>
         <useLightningRuntime>true</useLightningRuntime>
     </loginFlows>
-    <loginHours n1:nil="true" />
+    <loginHours n1:nil="true"></loginHours>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
