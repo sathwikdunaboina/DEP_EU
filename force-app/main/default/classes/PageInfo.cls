@@ -1,4 +1,4 @@
-public class PageInfo {
+public inherited sharing class PageInfo {
  	@AuraEnabled
     public Integer currentPageNumber {get;set;}
     @AuraEnabled
