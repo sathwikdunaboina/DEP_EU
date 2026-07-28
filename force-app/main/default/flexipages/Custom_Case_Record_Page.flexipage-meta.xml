@@ -111,6 +111,16 @@
                 <identifier>RecordData_Quality_Description_cField2</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Source_System__c</fieldItem>
+                <identifier>RecordSource_System__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-efd7d5cb-bb70-4a32-8179-c1355011e7ad</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -139,23 +149,10 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>readonly</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Read_All_Customer_Comments__c</fieldItem>
-                <identifier>RecordRead_All_Customer_Comments__cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Origin}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Web</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>customerportal@integration.volvo.com</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <fieldItem>Record.Source_System__c</fieldItem>
+                <identifier>RecordSource_System_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-d80b3d34-83b6-4e1d-9636-4ff847fec100</name>

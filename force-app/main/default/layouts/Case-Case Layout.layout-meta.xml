@@ -16,6 +16,7 @@
         </primaryTabComponents>
     </customConsoleComponents>
     <emailDefault>true</emailDefault>
+    <excludeButtons>SmartFillEnrich</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -48,8 +49,8 @@
                 <field>Data_Quality_Description__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Read_All_Customer_Comments__c</field>
+                <behavior>Readonly</behavior>
+                <field>Source_System__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
