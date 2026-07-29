@@ -3,6 +3,6 @@ private class MergeTestTest {
 
     @IsTest
     static void testGetMessage() {
-        System.assertEquals('Feature A', MergeTest.getMessage());
+        System.assertEquals('Feature B', MergeTest.getMessage());
     }
 }
