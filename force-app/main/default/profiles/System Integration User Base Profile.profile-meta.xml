@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Profile xmlns="http://soap.sforce.com/2006/04/metadata"
-      xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
     <applicationVisibilities>
         <application>Admin_App</application>
         <default>false</default>
@@ -1285,7 +1284,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
-    <description>This is the base profile to be used by integration users. And this is cloned from &apos; Minimum Access - API Only Integrations&apos; standard profile</description>
+    <description>This is the base profile to be used by integration users. And this is cloned from ' Minimum Access - API Only Integrations' standard profile</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>APIC_Auth_Provider__mdt.Access_Token_URL__c</field>
@@ -3853,11 +3852,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Country_Key_Users__mdt.Key_User_Email__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Customer.CustomerStatusType</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5764,11 +5758,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>MessagingSession.OpportunityId</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Monthly_User_Deactivation_Report_Name__mdt.Report_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8229,7 +8218,7 @@
     <layoutAssignments>
         <layout>VFS_Country_Setting__mdt-VFS Country Setting Layout</layout>
     </layoutAssignments>
-    <loginHours n1:nil="true" />
+    <loginHours n1:nil="true"></loginHours>
     <pageAccesses>
         <apexPage>BandwidthExceeded</apexPage>
         <enabled>false</enabled>
