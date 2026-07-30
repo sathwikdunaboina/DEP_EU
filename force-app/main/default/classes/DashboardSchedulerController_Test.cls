@@ -139,6 +139,7 @@ global class DashboardSchedulerController_Test {
         System.assertEquals(1, [SELECT COUNT() FROM AsyncApexJob WHERE JobType = 'Queueable']); 
         System.assertEquals(dashboardId, queueable.dashboardId);
     }
+   
         
     global class MockHttpResponseGenerator implements HttpCalloutMock {
         private HttpResponse response;
