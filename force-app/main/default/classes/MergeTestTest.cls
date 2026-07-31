@@ -2,7 +2,8 @@
 private class MergeTestTest {
 
     @IsTest
-    static void testGetMessage() {
-        System.assertEquals('Feature A', MergeTest.getMessage());
+    static void testMessages() {
+        System.assertEquals('Feature A', MergeTest.getFeatureA());
+       
     }
 }
