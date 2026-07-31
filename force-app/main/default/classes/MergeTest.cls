@@ -1,6 +1,6 @@
 public class MergeTest {
 
-    public static String getMessage2() {
+    public static String getFeatureB() {
         return 'Feature B';
     }
 }
