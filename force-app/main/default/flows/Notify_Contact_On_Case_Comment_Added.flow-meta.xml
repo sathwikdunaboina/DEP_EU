@@ -61,9 +61,9 @@
         </connector>
     </assignments>
     <decisions>
-        <description>This is to check whether the case is created is by customer portal integration user or not.</description>
-        <name>If_Case_is_created_by_Customer_Portal_Integration_User</name>
-        <label>If Case is created by Customer Portal Integration User</label>
+        <description>This is to check whether the Case Source system is Customer Portal or Not</description>
+        <name>Check_if_Case_Source_System_is_Customer_Portal</name>
+        <label>Check if Case Source System is Customer Portal</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
@@ -71,10 +71,17 @@
             <name>Yes</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>CaseCreatedbyUser</leftValueReference>
+                <leftValueReference>$Record.Parent.Source_System__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Customer Portal Integration User</stringValue>
+                    <stringValue>Customer Portal</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Portal</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -139,7 +146,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>If_Case_is_created_by_Customer_Portal_Integration_User</targetReference>
+            <targetReference>Check_if_Case_Source_System_is_Customer_Portal</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>

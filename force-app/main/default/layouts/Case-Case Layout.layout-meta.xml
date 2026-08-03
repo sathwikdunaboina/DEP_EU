@@ -16,6 +16,7 @@
         </primaryTabComponents>
     </customConsoleComponents>
     <emailDefault>true</emailDefault>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -46,6 +47,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Data_Quality_Description__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Source_System__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
