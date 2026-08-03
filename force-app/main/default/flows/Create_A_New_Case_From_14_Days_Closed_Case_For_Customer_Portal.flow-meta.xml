@@ -350,7 +350,11 @@
         <connector>
             <targetReference>If_a_Case_closed_More_than_14_days_or_not</targetReference>
         </connector>
-        <filterFormula>AND(BEGINS({!$Record__Prior.CreatedBy.Username}, &quot;customerportal@integration&quot;), ISPICKVAL(PRIORVALUE({!$Record.Origin}), &quot;Web&quot;),ISPICKVAL(PRIORVALUE({!$Record.Status}), &quot;Closed&quot;))</filterFormula>
+        <filterFormula>AND(
+    ISPICKVAL({!$Record__Prior.Source_System__c},&quot;Customer Portal&quot;),
+    ISPICKVAL({!$Record__Prior.Origin}, &quot;Portal&quot;),
+    ISPICKVAL({!$Record__Prior.Status}, &quot;Closed&quot;)
+)</filterFormula>
         <object>Case</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
