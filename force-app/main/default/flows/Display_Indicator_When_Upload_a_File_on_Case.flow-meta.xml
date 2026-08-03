@@ -15,14 +15,14 @@
                 <leftValueReference>Get_Case_Record.Origin</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Web</stringValue>
+                    <stringValue>Portal</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>CaseCreatedbyUser</leftValueReference>
+                <leftValueReference>Get_Case_Record.Source_System__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Customer Portal Integration User</stringValue>
+                    <stringValue>Customer Portal</stringValue>
                 </rightValue>
             </conditions>
             <connector>
