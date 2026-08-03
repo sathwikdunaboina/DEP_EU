@@ -77,6 +77,13 @@
                     <stringValue>Customer Portal</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Portal</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>EmailMessage_Record_Variable</targetReference>
             </connector>
