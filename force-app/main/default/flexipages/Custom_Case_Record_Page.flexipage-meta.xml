@@ -647,12 +647,12 @@
                     <criteria>
                         <leftValue>{!Record.Origin}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Web</rightValue>
+                        <rightValue>Portal</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>customerportal@integration.volvo.com</rightValue>
+                        <leftValue>{!Record.Source_System__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Customer Portal</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
