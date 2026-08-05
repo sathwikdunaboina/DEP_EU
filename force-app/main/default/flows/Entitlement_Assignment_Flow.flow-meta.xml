@@ -3,6 +3,16 @@
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <customErrors>
+        <name>DE_Entitlement_error</name>
+        <label>DE Entitlement error</label>
+        <locationX>1898</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>There is no entitlement record present for DE, please ask your administrator to create an entitlement record for DE</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
         <name>FR_Entitlement_error</name>
         <label>FR Entitlement error</label>
         <locationX>1106</locationX>
@@ -25,7 +35,7 @@
     <decisions>
         <name>Check_Country</name>
         <label>Check Country</label>
-        <locationX>974</locationX>
+        <locationX>1370</locationX>
         <locationY>287</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -65,6 +75,21 @@
             </connector>
             <label>France</label>
         </rules>
+        <rules>
+            <name>Germany</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Country__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Germany</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_DE_entitlement_record</targetReference>
+            </connector>
+            <label>Germany</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_French_Entitlement_record</name>
@@ -101,6 +126,43 @@
                 <targetReference>FR_Entitlement_error</targetReference>
             </connector>
             <label>FR Entitlement record not found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Germany_Entitlement_record</name>
+        <label>Check Germany Entitlement record</label>
+        <locationX>1898</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>DE_Entitlement_Record_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_DE_entitlement_record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_case_with_DE_entitlement_record</targetReference>
+            </connector>
+            <label>DE Entitlement Record found</label>
+        </rules>
+        <rules>
+            <name>DE_Entitlement_Record_not_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_DE_entitlement_record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DE_Entitlement_error</targetReference>
+            </connector>
+            <label>DE Entitlement Record not found</label>
         </rules>
     </decisions>
     <decisions>
@@ -164,6 +226,28 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <description>User Story 1485377: SCTASK104108227 SLA 48 h (which is 6 working days)</description>
+        <name>Get_DE_entitlement_record</name>
+        <label>Get DE entitlement record</label>
+        <locationX>1898</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Germany_Entitlement_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case Support Process For DE</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Entitlement</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_FR_entitlement_record</name>
         <label>Get FR entitlement record</label>
         <locationX>1106</locationX>
@@ -206,6 +290,19 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Update_case_with_DE_entitlement_record</name>
+        <label>Update case with DE entitlement record</label>
+        <locationX>1634</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>EntitlementId</field>
+            <value>
+                <elementReference>Get_DE_entitlement_record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_case_with_UK_IE_entitlement_record</name>
         <label>Update case with UK/IE entitlement record</label>
         <locationX>50</locationX>
@@ -232,7 +329,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>848</locationX>
+        <locationX>1244</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Country</targetReference>

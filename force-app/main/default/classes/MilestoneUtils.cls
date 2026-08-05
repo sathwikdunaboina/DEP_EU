@@ -8,6 +8,7 @@
 S.No.    Date                    Developer Name         Azure Item Number
 (1)      13th Feb 2024           Infosys                User Story-7640: Second Milestone SCTASK102119711
 (2)      10th July 2026          Infosys                User Story 1485127: SCTASK104107612 Configuration change on milestones
+(3)      3rd AUG 2026            Infosys                User Story 1485377: SCTASK104108227 SLA 48 h (which is 6 working days)
 ***********************************************************************************************************/
 public class MilestoneUtils {
     
@@ -23,7 +24,18 @@ public class MilestoneUtils {
         'User Owner',
         'IE - CS Operations',
         'UK/IE - CS tech Tool',
-        'UK/IE - 2nd Checking'
+        'UK/IE - 2nd Checking',
+        'DE - Accounting',
+        'DE - Additional Services',
+        'DE - Contract Performance',
+        'DE - Credit',
+        'DE - Customer Portal',
+        'DE - End of Term',
+        'DE - Insurance',
+        'DE - New Business',
+        'DE - Sales Desk',
+        'DE-Repossession'
+            
     };
 
     public static void completeMilestone(List<Id> caseIds, 
