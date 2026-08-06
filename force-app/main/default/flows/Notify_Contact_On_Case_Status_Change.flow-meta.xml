@@ -61,9 +61,9 @@
         </connector>
     </assignments>
     <decisions>
-        <description>This is to check whether case is created by Customer Portal Integration user or not</description>
-        <name>Check_if_Case_is_created_by_Customer_Portal_Integration_user</name>
-        <label>Check if Case is created by Customer Portal Integration user</label>
+        <description>This is to check whether case contact Email Opt out true or false</description>
+        <name>Check_if_Case_Contact_Email_Opt_Out</name>
+        <label>Check if Case Contact Email Opt Out</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
@@ -75,13 +75,6 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CaseCreatedbyUser</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Customer Portal Integration User</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -146,7 +139,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_if_Case_is_created_by_Customer_Portal_Integration_user</targetReference>
+            <targetReference>Check_if_Case_Contact_Email_Opt_Out</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -160,7 +153,7 @@
             <field>Origin</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Web</stringValue>
+                <stringValue>Portal</stringValue>
             </value>
         </filters>
         <filters>
@@ -168,6 +161,13 @@
             <operator>IsNull</operator>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Source_System__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer Portal</stringValue>
             </value>
         </filters>
         <object>Case</object>
