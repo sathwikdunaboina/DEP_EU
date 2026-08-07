@@ -5,7 +5,7 @@
  * Makes writing test classses easier.
  * 
  * */
-public class CMSAPI_SettingsManager {
+public without sharing class CMSAPI_SettingsManager {
     private static CMSAPI__c cmsApiSettings;
     public static CMSAPI__c get(){
         if (cmsApiSettings == null) {
