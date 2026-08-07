@@ -3,7 +3,7 @@
  * Single point exit for HTTP Callouts
  * 
  * */
-public class HTTPCallout {
+public without sharing class HTTPCallout {
     
     public static HttpResponse send(String endpoint, String method){
         return send (endpoint, method, null, null);
