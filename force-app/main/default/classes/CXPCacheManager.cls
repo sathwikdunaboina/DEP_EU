@@ -3,7 +3,7 @@
  * Manages the platform cache 'CXPCache'
  * 
  * */
-public class CXPCacheManager {
+public without sharing class CXPCacheManager {
     public static final String PARTITION = 'CXPCache';
     public static Boolean enabled {get; set;}
 

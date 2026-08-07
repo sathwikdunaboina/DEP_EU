@@ -11,4 +11,5 @@ public inherited sharing class UserProvisionRequest{
     //public string division;      
     public string countryCode; 
     public string existingUserName; //username of an existing user
+    public UserProvisionRequest() {}
 }
