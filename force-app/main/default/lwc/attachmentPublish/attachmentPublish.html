@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Attachments" icon-name="standard:file">
+
+        <lightning-datatable
+            key-field="Id"
+            data={files}
+            columns={columns}
+            hide-checkbox-column
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+
+    </lightning-card>
+</template>
