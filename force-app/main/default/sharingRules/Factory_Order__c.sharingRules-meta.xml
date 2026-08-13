@@ -441,6 +441,66 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>FO_VB_ES</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VB_ES</label>
+        <sharedTo>
+            <group>Spain_VB</group>
+        </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>ES</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Spain,ES</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VB,Bus</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VB_PT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VB_PT</label>
+        <sharedTo>
+            <group>Portugal_VB</group>
+        </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>PT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Portugal,PT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VB,Bus</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>FO_VCE_DK</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Rule to share VCE Factory Orders of Denmark</description>
@@ -468,6 +528,36 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>VCE</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VCE_ES</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VCE_ES</label>
+        <sharedTo>
+            <group>Spain_VCE</group>
+        </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>ES</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Spain,ES</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VCE,Construction Equipment</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -530,6 +620,36 @@
             <field>Brand__c</field>
             <operation>equals</operation>
             <value>VCE</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FO_VCE_PT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FO_VCE_PT</label>
+        <sharedTo>
+            <group>Portugal_VCE</group>
+        </sharedTo>
+        <booleanFilter>(1 OR (2 AND 3)) AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>startsWith</operation>
+            <value>PT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Id__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Portugal,PT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Brand__c</field>
+            <operation>equals</operation>
+            <value>VCE,Construction Equipment</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
