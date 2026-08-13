@@ -4,7 +4,7 @@
 * unable to use named credentials, because of 'client_cred' headless flow.
 * 
 * */
-public class CMSAPI_oAuthHandler{
+public without sharing class CMSAPI_oAuthHandler{
     
     private static final String TOKEN_CACHE_KEY = 'cmsApiToken';
     

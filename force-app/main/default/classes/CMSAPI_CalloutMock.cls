@@ -1,4 +1,4 @@
-public class CMSAPI_CalloutMock implements HttpCalloutMock {
+public without sharing class CMSAPI_CalloutMock implements HttpCalloutMock {
     
 	public HTTPResponse respond(HTTPRequest req) {
         
