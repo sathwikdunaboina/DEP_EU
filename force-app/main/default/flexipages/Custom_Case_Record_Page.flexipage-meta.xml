@@ -135,6 +135,16 @@
                 <identifier>RecordFirst_Owner_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Source_System__c</fieldItem>
+                <identifier>RecordSource_System_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-d80b3d34-83b6-4e1d-9636-4ff847fec100</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -627,12 +637,12 @@
                     <criteria>
                         <leftValue>{!Record.Origin}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Web</rightValue>
+                        <rightValue>Portal</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>customerportal@integration.volvo.com</rightValue>
+                        <leftValue>{!Record.Source_System__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Customer Portal</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
