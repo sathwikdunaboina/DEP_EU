@@ -4,7 +4,7 @@
 * Fetching custom setting value from End_of_Term_Notification_Settings__c
 * Pass query to EndOfTermNotificationBatch Batch class to get all contracts whose end date is 90 days from today.
 * */
-global class EndOfTermNotificationSchedular implements Schedulable
+global without sharing class EndOfTermNotificationSchedular implements Schedulable
 {
     global void execute(SchedulableContext sc)
     {
