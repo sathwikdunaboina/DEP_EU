@@ -10,7 +10,7 @@
  * This is the Service Class for ContentDocumentLink object having operations which 
  * can be operated on the ContentDocumentLink object records
  **/
-public without sharing class ContentDocumentLinkServices {
+public inherited sharing class ContentDocumentLinkServices {
     
     public Map<Id,String> getLinkedEntityTypeName(List<ContentDocumentLink> listContentDocLinks){
         Map<Id,String> mapLinkedEntityTypeByContentDocLinkRecId = new Map<Id,String>();
