@@ -10,7 +10,7 @@
 * This is the Service Class for ContentDocument object having operations which 
 * can be operated on the ContentDocument object records
 **/
-public without sharing class ContentDocumentServices {
+public inherited sharing class ContentDocumentServices {
 
     private static Map<String,Set<Id>> linkedEntityIdsByEntityName = new Map<String,Set<Id>>();
     
