@@ -23,6 +23,8 @@ public with sharing class ActionPlanDetailController {
 	/**
 	 * The Action Plan
 	 */
+    public Id selectedTaskId { get; set; }
+public String selectedYesNo { get; set; }
 	private ActionPlan__c actionPlan;
 	/**
 	 * Does the org have Record Types enabled for Task SObject
@@ -30,6 +32,11 @@ public with sharing class ActionPlanDetailController {
 	 * @return `Boolean` Yes/No
 	 */
 	public Boolean hasRecordType { get; set; }
+    @TestVisible
+public static Boolean forceOneByOne;
+    @TestVisible
+public static Boolean forceShowYesNo;
+
 
 	/**
 	 * Does the user have reminders enabled? If not, do not shrae the reminder option
@@ -43,14 +50,39 @@ public with sharing class ActionPlanDetailController {
 	 * @param stdController `ActionPlan__c` Standard Controller
 	 */
 	public ActionPlanDetailController(ApexPages.StandardController stdController) {
-		if (!Test.isRunningTest()) {
-			stdController.addFields(ActionPlansUtilities.getCustomRelationshipFields());
-		}
-		actionPlan = (ActionPlan__c) stdController.getRecord();
-		hasRecordType = ActionPlansUtilities.taskUsesRecordTypes;
-		canDisplayReminder = ActionPlansUtilities.getCanDisplayReminder();
-	}
 
+    if (!Test.isRunningTest()) {
+        stdController.addFields(new List<String>{
+            'Case__c',
+            'Case__r.Country__c'
+        });
+
+        stdController.addFields(ActionPlansUtilities.getCustomRelationshipFields());
+    }
+
+    actionPlan = (ActionPlan__c) stdController.getRecord();
+
+    hasRecordType = ActionPlansUtilities.taskUsesRecordTypes;
+    canDisplayReminder = ActionPlansUtilities.getCanDisplayReminder();
+}
+
+public void saveSingleTask() {
+
+    if (selectedTaskId != null) {
+
+        APTask__c task = [
+            SELECT Id, Yes_No__c
+            FROM APTask__c
+            WHERE Id = :selectedTaskId
+            LIMIT 1
+        ];
+
+        task.Yes_No__c = selectedYesNo;
+
+        update task;
+        apTaskWrapperList = null;
+    }
+}
 	/**
 	 * Action on page load to ensure custom setting is created
 	 * @return `PageReference` null (required for page actions method)
@@ -58,6 +90,9 @@ public with sharing class ActionPlanDetailController {
 	 */
 	public PageReference onLoad() {
 		ActionPlansUtilities.onPageLoad();
+        
+    initMarketConfig();
+
 		return null;
 	}
 
@@ -123,17 +158,46 @@ public with sharing class ActionPlanDetailController {
 	 * Memoized TaskWrappers for display on the page
 	 */
 	private List<TaskWrapper> apTaskWrapperList;
+    
+   public Boolean showYesNoColumn {get; set;}
+
+    public void initMarketConfig() {
+     
+    showYesNoColumn = false;
+
+      if (actionPlan.Case__r == null || actionPlan.Case__r.Country__c == null){
+return; 
+      }
+
+List<Action_Plan_Market_Config__mdt> configs = [
+    SELECT Market__c, One_by_One__c
+    FROM Action_Plan_Market_Config__mdt
+    WHERE Market__c = :actionPlan.Case__r.Country__c
+    LIMIT 1
+];
+
+
+if (Test.isRunningTest() && forceShowYesNo != null) {
+    showYesNoColumn = forceShowYesNo;
+
+} else if (!configs.isEmpty()) {
+    showYesNoColumn = configs[0].One_by_One__c;
+}
+}
+    
 	/**
 	 * Collect and return all TaskWrappers
 	 * @return `List<TaskWrapper>` List of `TaskWrapper` for this Action Plan
 	 */
 	public List<TaskWrapper> getActionPlanTasks() {
-		if (apTaskWrapperList == null) {
-			apTaskWrapperList = new List<TaskWrapper>();
-			Map<Id, APTask__c> apTaskMap = new Map<Id, APTask__c>(
-				[
-					SELECT
+        
+    if (apTaskWrapperList == null) {
+        apTaskWrapperList = new List<TaskWrapper>();
+
+        List<APTask__c> tasks = [
+           SELECT
 						Action_Plan__c,
+                        Action_Plan__r.Case__r.Country__c,
 						ActivityDate__c,
 						Comments__c,
 						Controller__c,
@@ -149,6 +213,7 @@ public with sharing class ActionPlanDetailController {
 						SendEmail__c,
 						Status__c,
 						Subject__c,
+                        Yes_No__c,
 						Task_RecordTypeId__c,
 						TaskIndex__c,
 						Time_Reminder__c,
@@ -160,23 +225,77 @@ public with sharing class ActionPlanDetailController {
 					FROM APTask__c
 					WHERE Action_Plan__c = :actionPlan.Id
 					ORDER BY TaskIndex__c ASC
-				]
-			);
-			Map<Id, Task> taskTaskMap = new Map<Id, Task>();
-			for (Task t : [SELECT Id, TaskAPTask__c, OwnerId, Owner.Name FROM Task WHERE TaskAPTask__c IN :apTaskMap.keyset()]) {
-				taskTaskMap.put(t.TaskAPTask__c, t);
-			}
-			for (APTask__c at : apTaskMap.values()) {
-				TaskWrapper tw;
-				Task relatedTask = taskTaskMap.get(at.Id);
-				System.debug('RELATED TASK: ' + relatedTask);
-				tw = new TaskWrapper(at, relatedTask);
-				System.debug('WRAPPER: ' + tw);
-				apTaskWrapperList.add(tw);
-			}
-		}
-		return apTaskWrapperList;
-	}
+];
+
+
+String market;
+
+if (actionPlan.Case__r != null) {
+    market = actionPlan.Case__r.Country__c;
+}
+
+Boolean isOneByOne;
+
+if (Test.isRunningTest() && forceOneByOne != null) {
+    isOneByOne = forceOneByOne;
+} else {
+    Action_Plan_Market_Config__mdt config =
+        Action_Plan_Market_Config__mdt.getInstance(market);
+
+    isOneByOne = (config != null && config.One_By_One__c);
+}        
+        
+ //Fetch related Tasks
+        Map<Id, Task> taskMap = new Map<Id, Task>();
+        for (Task t : [
+            SELECT Id, TaskAPTask__c,OwnerId,owner.name
+            FROM Task
+            WHERE TaskAPTask__c IN :tasks
+        ]) {
+            taskMap.put(t.TaskAPTask__c, t);
+        }
+        
+if (!isOneByOne) {
+    //UK → show ALL tasks
+    for (APTask__c at : tasks) {
+        apTaskWrapperList.add(new TaskWrapper(at, taskMap.get(at.Id)));
+    }
+
+} else {
+
+     
+Boolean showNext = true;
+
+for (APTask__c at : tasks) {
+
+    Task relatedTask = taskMap.get(at.Id);
+
+    
+    if (at.IsClosed__c == true) {
+        apTaskWrapperList.add(new TaskWrapper(at, relatedTask));
+        continue;
+    }
+
+    //Show current task only if allowed
+    if (showNext) {
+        apTaskWrapperList.add(new TaskWrapper(at, relatedTask));
+
+        //Decide next task visibility based on Yes/No
+        if (at.Yes_No__c == 'Yes') {
+            showNext = true;   // allow next
+        } else {
+            showNext = false;  // stop chain
+        }
+
+    } else {
+        break; // stop showing further tasks
+    }
+}
+    }
+    }
+    return apTaskWrapperList;
+}
+
 
 	/**
 	 * Wrapper for Action Plan Task
