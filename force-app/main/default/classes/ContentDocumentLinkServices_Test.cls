@@ -23,8 +23,7 @@ private class ContentDocumentLinkServices_Test {
    
     @testSetup 
     private static void setUpData(){
-        
-        
+    
         
         Id accountRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Customer_Account').getRecordTypeId();
         
@@ -33,6 +32,14 @@ private class ContentDocumentLinkServices_Test {
         oAccount.BillingCountry = 'France';
         oAccount.RecordTypeId = accountRecordTypeId;
         insert oAccount; 
+        
+        Entitlement EntitlementRecord = new Entitlement();
+
+        EntitlementRecord.Name='Case Support Process For UK/IE';
+
+        EntitlementRecord.AccountId= oAccount.Id;             
+
+        insert EntitlementRecord;
         
         Contract__c oContract = new Contract__c();
         oContract.Account__c = oAccount.Id;
