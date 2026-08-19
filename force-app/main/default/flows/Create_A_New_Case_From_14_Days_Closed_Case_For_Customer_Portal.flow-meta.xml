@@ -1,62 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Email_Message_To_Be_Sent_To_Customer</name>
-        <label>Email Message To Be Sent To Customer</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <connector>
-            <targetReference>Create_a_Case_Comment</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>recipientAddresses</name>
-            <value>
-                <collectionElements>
-                    <elementReference>ReceipientAddress</elementReference>
-                </collectionElements>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>vfs.support.salesforce@volvo.com</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>composeEmailContent</name>
-            <value>
-                <stringValue>True</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-                <stringValue>Thanks for contacting support!</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <elementReference>EmailMessageBody</elementReference>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-        <versionString>3.0.1</versionString>
-    </actionCalls>
     <apiVersion>67.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
@@ -65,21 +8,6 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>More_than_14_days</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>DaysFromClosure</leftValueReference>
-                <operator>GreaterThanOrEqualTo</operator>
-                <rightValue>
-                    <numberValue>15.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_a_New_Case</targetReference>
-            </connector>
-            <label>More than 14 days</label>
-        </rules>
         <rules>
             <name>Less_than_14_days</name>
             <conditionLogic>and</conditionLogic>
@@ -99,33 +27,20 @@
     <description>This flow is used to create a new case if customer updates a 14 days closed case and it will reopen the same case if customer updates closed case within 14 days.</description>
     <environments>Default</environments>
     <formulas>
-        <name>CaseCommentBody</name>
-        <dataType>String</dataType>
-        <expression>&apos;New Case - &apos; +{!CaseNumberOfNewlyCreatedCase}+&apos; has been opened as the previous case &apos; +{!$Record__Prior.CaseNumber} +&apos; has been closed for more than 14 days.&apos;</expression>
-    </formulas>
-    <formulas>
         <name>CaseCommentbodyWhenReOpenCase</name>
         <dataType>String</dataType>
-        <expression>&apos;Closed Case &apos;+{!$Record__Prior.CaseNumber}+&apos; has been Reopened.&apos;</expression>
+        <expression>&apos;Closed Case &apos;+{!$Record.Parent.CaseNumber}+&apos; has been Reopened.&apos;</expression>
     </formulas>
     <formulas>
         <name>DaysFromClosure</name>
         <dataType>Number</dataType>
-        <expression>TODAY()-DATEVALUE({!$Record__Prior.ClosedDate})</expression>
+        <expression>TODAY()-DATEVALUE({!$Record.Parent.ClosedDate})</expression>
         <scale>2</scale>
-    </formulas>
-    <formulas>
-        <name>EmailMessageBody</name>
-        <dataType>String</dataType>
-        <expression>&apos;Hello Customer,&apos; &amp; BR() &amp;BR()&amp;
-
-&apos;Thank you for contacting our Customer Service Team at VFS Financial Services.&apos; &amp; BR() &amp;
-&apos;Your new case number is -  &apos; &amp;{!CaseNumberOfNewlyCreatedCase} &amp; &apos; related to your previous case -&apos; &amp;{!$Record__Prior.CaseNumber}&amp; BR()</expression>
     </formulas>
     <formulas>
         <name>ReceipientAddress</name>
         <dataType>String</dataType>
-        <expression>{!$Record__Prior.ContactEmail}</expression>
+        <expression>{!$Record.Parent.ContactEmail}</expression>
     </formulas>
     <interviewLabel>Create A New Case From 14 Days Closed Case For Customer Portal {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create A New Case From 14 Days Closed Case For Customer Portal</label>
@@ -149,124 +64,6 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>Create_a_Case_Comment</name>
-        <label>Create a Case Comment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Set_Status_To_Closed_for_Triggering_Case</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>CommentBody</field>
-            <value>
-                <elementReference>CaseCommentBody</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>IsPublished</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>$Record__Prior.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <object>CaseComment</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_a_New_Case</name>
-        <label>Create a New Case</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignRecordIdToReference>CaseIdvariable</assignRecordIdToReference>
-        <connector>
-            <targetReference>Get_Newly_Created_Case_Record_Details</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>AccountId</field>
-            <value>
-                <elementReference>$Record__Prior.AccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ContactId</field>
-            <value>
-                <elementReference>$Record__Prior.ContactId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Country__c</field>
-            <value>
-                <elementReference>$Record__Prior.Country__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>CurrencyIsoCode</field>
-            <value>
-                <elementReference>$Record__Prior.CurrencyIsoCode</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Description</field>
-            <value>
-                <elementReference>$Record__Prior.Description</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>EntitlementId</field>
-            <value>
-                <elementReference>$Record__Prior.EntitlementId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Origin</field>
-            <value>
-                <elementReference>$Record__Prior.Origin</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>OwnerId</field>
-            <value>
-                <elementReference>$Record__Prior.OwnerId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>$Record__Prior.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>RecordTypeId</field>
-            <value>
-                <elementReference>$Record__Prior.RecordTypeId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Status</field>
-            <value>
-                <stringValue>New</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Subject</field>
-            <value>
-                <elementReference>$Record__Prior.Subject</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SuppliedEmail</field>
-            <value>
-                <elementReference>$Record__Prior.SuppliedEmail</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Case</object>
-    </recordCreates>
-    <recordCreates>
         <name>Create_A_new_Case_comment</name>
         <label>Create A new Case comment</label>
         <locationX>0</locationX>
@@ -286,36 +83,14 @@
         <inputAssignments>
             <field>ParentId</field>
             <value>
-                <elementReference>$Record__Prior.Id</elementReference>
+                <elementReference>$Record.ParentId</elementReference>
             </value>
         </inputAssignments>
         <object>CaseComment</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
-    <recordLookups>
-        <name>Get_Newly_Created_Case_Record_Details</name>
-        <label>Get Newly Created Case Record Details</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Email_Message_To_Be_Sent_To_Customer</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>CaseIdvariable</elementReference>
-            </value>
-        </filters>
-        <object>Case</object>
-        <outputAssignments>
-            <assignToReference>CaseNumberOfNewlyCreatedCase</assignToReference>
-            <field>CaseNumber</field>
-        </outputAssignments>
-    </recordLookups>
     <recordUpdates>
+        <description>If case has been closed within 14 days it will reopen the case.</description>
         <name>Reopen_Case</name>
         <label>Reopen Case</label>
         <locationX>0</locationX>
@@ -323,26 +98,21 @@
         <connector>
             <targetReference>Create_A_new_Case_comment</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Status</field>
             <value>
                 <stringValue>New</stringValue>
             </value>
         </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Set_Status_To_Closed_for_Triggering_Case</name>
-        <label>Set Status To Closed for Triggering Case</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputAssignments>
-            <field>Status</field>
-            <value>
-                <stringValue>Closed</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
+        <object>Case</object>
     </recordUpdates>
     <start>
         <locationX>0</locationX>
@@ -351,12 +121,12 @@
             <targetReference>If_a_Case_closed_More_than_14_days_or_not</targetReference>
         </connector>
         <filterFormula>AND(
-    ISPICKVAL({!$Record__Prior.Source_System__c},&quot;Customer Portal&quot;),
-    ISPICKVAL({!$Record__Prior.Origin}, &quot;Portal&quot;),
-    ISPICKVAL({!$Record__Prior.Status}, &quot;Closed&quot;)
+    ISPICKVAL({!$Record.Parent.Source_System__c}, &quot;Customer Portal&quot;),
+    ISPICKVAL({!$Record.Parent.Status}, &quot;Closed&quot;),
+    ISPICKVAL({!$Record.Parent.Origin}, &quot;Portal&quot;)
 )</filterFormula>
-        <object>Case</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <object>CaseComment</object>
+        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
