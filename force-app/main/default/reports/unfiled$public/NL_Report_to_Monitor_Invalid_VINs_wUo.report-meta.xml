@@ -83,6 +83,13 @@
             <operator>startsWith</operator>
             <value>YV2</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Contract__c$Contract_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>CLOSED-FULLTERM,PREACTIVE-PREACTIVE</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
