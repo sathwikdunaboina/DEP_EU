@@ -25,6 +25,7 @@ public class MilestoneUtils {
         'IE - CS Operations',
         'UK/IE - CS tech Tool',
         'UK/IE - 2nd Checking',
+        'UK/IE - Commercial',
         'DE - Accounting',
         'DE - Additional Services',
         'DE - Contract Performance',
