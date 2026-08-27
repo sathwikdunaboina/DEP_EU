@@ -333,6 +333,7 @@ public with sharing class ActionPlanTemplateCreationController {
 			SELECT
 				Type__c,
 				Subject__c,
+                Yes_No__c,
 				Priority__c,
 				Dependent__c,
 				Name,

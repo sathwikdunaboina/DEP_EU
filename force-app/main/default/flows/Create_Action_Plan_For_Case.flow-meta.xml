@@ -156,7 +156,7 @@
         <connector>
             <targetReference>Get_Action_Plan_Template_Record</targetReference>
         </connector>
-        <filterLogic>(1 OR 2)  AND (3 OR 4)</filterLogic>
+        <filterLogic>(1 OR 2 OR 5)  AND (3 OR 4)</filterLogic>
         <filters>
             <field>Country__c</field>
             <operator>EqualTo</operator>
@@ -183,6 +183,13 @@
             <operator>IsChanged</operator>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Country__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Germany</stringValue>
             </value>
         </filters>
         <object>Case</object>

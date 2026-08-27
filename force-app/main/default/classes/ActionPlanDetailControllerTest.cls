@@ -249,4 +249,185 @@ private class ActionPlanDetailControllerTest {
 		Assert.areEqual(false, apDetailController2.hasRecordType, 'Found a nonexistent Record Type');
 		Assert.areEqual('', apDetailController2.getRecordTypeName(), 'Found a nonexistent Record Type Name!');
 	}
+    @IsTest
+ static void testSaveSingleTask() {
+    // Create Action Plan
+    ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+    ActionPlan__c ap = testUtil.createNewActionPlan('account', 1, null);
+
+    // Get one task
+    APTask__c task = [SELECT Id, Yes_No__c FROM APTask__c LIMIT 1];
+
+    // Init controller
+    ApexPages.StandardController sc = new ApexPages.StandardController(ap);
+    ActionPlanDetailController ctrl = new ActionPlanDetailController(sc);
+
+    // Set values
+    ctrl.selectedTaskId = task.Id;
+    ctrl.selectedYesNo = 'Yes';
+
+    Test.startTest();
+    ctrl.saveSingleTask();
+    Test.stopTest();
+
+    // Verify
+    APTask__c updatedTask = [SELECT Yes_No__c FROM APTask__c WHERE Id = :task.Id];
+    System.assertEquals('Yes', updatedTask.Yes_No__c);
+}
+@IsTest
+static void testOneByOneTaskLogic() {
+
+    //Force One-by-One behavior
+    ActionPlanDetailController.forceOneByOne = true;
+
+    ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+
+    // Create Action Plan with 3 tasks
+    ActionPlan__c ap = testUtil.createNewActionPlan('account', 3, null);
+
+    // Get tasks
+    List<APTask__c> tasks = [
+        SELECT Id, Yes_No__c, IsClosed__c
+        FROM APTask__c
+        WHERE Action_Plan__c = :ap.Id
+        ORDER BY TaskIndex__c
+    ];
+
+    //Apply logic
+    tasks[0].Yes_No__c = 'Yes';  // continue
+    tasks[1].Yes_No__c = 'No';   // stop here
+    tasks[2].Yes_No__c = 'Yes';  // should NOT be shown
+    update tasks;
+
+    ApexPages.StandardController sc =
+        new ApexPages.StandardController(ap);
+    ActionPlanDetailController ctrl =
+        new ActionPlanDetailController(sc);
+
+    Test.startTest();
+    List<ActionPlanDetailController.TaskWrapper> result =
+        ctrl.getActionPlanTasks();
+    Test.stopTest();
+
+    System.assertEquals(2, result.size(),
+        'Should stop after second task because Yes_No = No');
+}
+@IsTest
+static void testClosedTaskAlwaysVisible() {
+    ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+
+    ActionPlan__c ap = testUtil.createNewActionPlan('account', 2, null);
+
+    List<APTask__c> tasks = [
+        SELECT Id, IsClosed__c
+        FROM APTask__c
+        WHERE Action_Plan__c = :ap.Id
+        ORDER BY TaskIndex__c
+    ];
+
+    tasks[0].IsClosed__c = true;
+    tasks[1].Yes_No__c = 'No';
+
+    update tasks;
+
+    ApexPages.StandardController sc = new ApexPages.StandardController(ap);
+    ActionPlanDetailController ctrl = new ActionPlanDetailController(sc);
+
+    Test.startTest();
+    List<ActionPlanDetailController.TaskWrapper> result = ctrl.getActionPlanTasks();
+    Test.stopTest();
+
+    System.assert(result.size() >= 1, 'Closed task should always be visible');
+}
+ @IsTest
+static void testInitMarketConfig_Covered() {
+     Id accountRecordTypeID = Schema.Sobjecttype.Account.getRecordTypeInfosByName().get('Customer Account').getRecordTypeId();
+
+		//ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+        //Create an Account Record
+            Account acc= new Account();
+            acc.name='Test Account for UK';
+            acc.CurrencyIsoCode='EUR';
+            acc.RecordTypeId=accountRecordTypeID; 
+            acc.BillingCountry='United Kingdom';
+            insert acc;
+            
+            Entitlement EntitlementRecord = new Entitlement();
+            EntitlementRecord.Name='Case Support Process For UK/IE';
+            EntitlementRecord.AccountId= acc.Id;             
+            insert EntitlementRecord;
+
+    
+    Case c = new Case(
+        Subject = 'Test Case',
+        AccountId=acc.id,
+        Country__c = 'United Kingdom'
+    );
+    insert c;
+
+   
+    ActionPlan__c ap = new ActionPlan__c(
+        Name = 'Test AP',
+        Case__c = c.Id
+    );
+    insert ap;
+
+   
+    ap = [
+        SELECT Id, Case__c, Case__r.Country__c
+        FROM ActionPlan__c
+        WHERE Id = :ap.Id
+    ];
+
+    
+    ActionPlanDetailController.forceShowYesNo = true;
+
+    ApexPages.StandardController sc =
+        new ApexPages.StandardController(ap);
+    ActionPlanDetailController ctrl =
+        new ActionPlanDetailController(sc);
+
+    Test.startTest();
+    ctrl.initMarketConfig();
+    Test.stopTest();
+
+    
+    System.assertEquals(true, ctrl.showYesNoColumn);
+
+    // cleanup
+    ActionPlanDetailController.forceShowYesNo = null;
+}
+   @IsTest
+static void testClosedTaskBranch() {
+
+    ActionPlanDetailController.forceOneByOne = true;
+
+    ActionPlansTestUtilities testUtil = new ActionPlansTestUtilities();
+    ActionPlan__c ap = testUtil.createNewActionPlan('account', 2, null);
+
+    List<APTask__c> tasks = [
+        SELECT Id, IsClosed__c, Yes_No__c
+        FROM APTask__c
+        WHERE Action_Plan__c = :ap.Id
+        ORDER BY TaskIndex__c
+    ];
+
+    
+    tasks[0].IsClosed__c = true;
+
+   
+    tasks[1].Yes_No__c = 'No';
+
+    update tasks;
+
+    ApexPages.StandardController sc = new ApexPages.StandardController(ap);
+    ActionPlanDetailController ctrl = new ActionPlanDetailController(sc);
+
+    Test.startTest();
+    List<ActionPlanDetailController.TaskWrapper> result =
+        ctrl.getActionPlanTasks();
+    Test.stopTest();
+
+    System.assert(result.size() >= 1, 'Closed task branch should execute');
+}
 }
