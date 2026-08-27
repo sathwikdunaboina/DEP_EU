@@ -11,6 +11,19 @@
 @IsTest(SeeAllData=false)
 public class ContentDocumentServices_Test {
     @testSetup static void setupmethod(){
+         // Entitlement required by Case validation rule "Case Support Process For UK/IE"
+        Id accountRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Customer_Account').getRecordTypeId();
+        Account oAccount = new Account();
+        oAccount.Name = 'Test Account';
+        oAccount.BillingCountry = 'France';
+        oAccount.RecordTypeId = accountRecordTypeId;
+        insert oAccount;
+
+        Entitlement oEntitlement = new Entitlement();
+        oEntitlement.Name = 'Case Support Process For UK/IE';
+        oEntitlement.AccountId = oAccount.Id;
+        insert oEntitlement;
+        
         //Create a test Case and add an attachment
         Case testCaseWithAttachment = new Case();
         testCaseWithAttachment.Origin = 'Email';
