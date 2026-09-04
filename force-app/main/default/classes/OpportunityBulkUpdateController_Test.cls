@@ -108,4 +108,25 @@ public class OpportunityBulkUpdateController_Test {
         Map<String,Integer> result = OpportunityBulkUpdateController.getStageProbabilities();
         Test.stopTest();
 }
+    
+    
+ /* ------------------------------------------------------------------------------------------------------
+* @Method Name     testGetMetadataRecordsForOpp
+* @description     This method is used to test the method to get Opp Country metadata records
+* ------------------------------------------------------------------------------------------------------
+* @param          
+* @return          
+* ------------------------------------------------------------------------------------------------------ 
+*/  
+ @IsTest
+     static void testGetMetadataRecordsForOpp() {
+        
+        Test.startTest();
+        List<Opportunities_Next_Step_Date_Countries__mdt> result =
+            OpportunityBulkUpdateController.getMetadataRecords();
+        Test.stopTest();
+
+        System.assertNotEquals(null, result, 'Result should not be null');
+        
+    }
 }
