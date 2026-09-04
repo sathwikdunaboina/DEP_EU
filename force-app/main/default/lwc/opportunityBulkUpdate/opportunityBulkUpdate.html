@@ -1,11 +1,30 @@
 <template>
+
+    <!-- Loading Spinner -->
+    <template if:true={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium">
+            </lightning-spinner>
+
+            <div class="loading-message">
+                Please wait while we load the Opportunity details...
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Main Component -->
+    <template if:false={isLoading}>
+
     <!-- ERROR -->
     <template if:true={error}>
         <div class="error-message">
             {error}
         </div>
     </template>
-
+   
     <!-- MAIN -->
     <template if:true={showFields}>
         <lightning-record-edit-form object-api-name="Opportunity">
@@ -21,7 +40,7 @@ Opportunity Owner
 </label>
 
                             <div class="owner-container">
-                                <lightning-input type="search" variant="label-hidden" placeholder="Search Owner"
+                                <lightning-input type="search" variant="label-hidden" placeholder="Search Ownery"
                                     value={selectedOwnerName} onchange={handleOwnerSearch}>
                                 </lightning-input>
                                 <!-- DROPDOWN -->
@@ -43,28 +62,35 @@ Opportunity Owner
                             </lightning-input-field>
                         </div>
 
-                        <!-- LCV OPPORTUNITY -->
-                        <template if:true={isLCVOpportunity}>
-                            <div class="field-wrapper">
-                                <lightning-input-field field-name="Opportunity_Type__c" onchange={handleFieldChange}>
-                                </lightning-input-field>
-                            </div>
-                        </template>
-
-                        <!-- FINANCE -->
-                        <template if:true={isFinance}>
-                            <div class="field-wrapper">
-                                <lightning-input-field field-name="Type" onchange={handleFieldChange}>
-                                </lightning-input-field>
-                            </div>
-                        </template>
 
                         <!-- AMOUNT -->
                         <div class="field-wrapper">
                             <lightning-input-field field-name="Amount" onchange={handleFieldChange}>
                             </lightning-input-field>
                         </div>
+                        <!-- Next Step Date -->
+                        <template if:true={showNextStepField}>
+                        <div class="field-wrapper">
+                            <lightning-input-field field-name="Next_Step_Date__c" label="Next Step Date" onchange={handleFieldChange}>
+                            </lightning-input-field>
+                        </div>
+                        </template> 
+                         <lightning-messages></lightning-messages>
+                        
+                        <!-- Next Step -->
+                        <template if:true={showNextStepField}>
+                        <div class="field-wrapper">
+                            <lightning-input-field field-name="NextStep" onchange={handleFieldChange}>
+                            </lightning-input-field>
+                        </div>
+                       </template> 
+
+
+
+
                     </div>
+
+                    
 
                     <!-- RIGHT COLUMN -->
                     <div class="grid-column">
@@ -152,4 +178,7 @@ Opportunity Owner
             </c-custom-toast>
         </template>
     </template>
+</template>
+</template>
+
 </template>
