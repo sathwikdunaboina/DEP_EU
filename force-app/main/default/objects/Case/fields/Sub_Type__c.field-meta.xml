@@ -1302,6 +1302,51 @@
                 <default>false</default>
                 <label>Queries</label>
             </value>
+            <value>
+                <fullName>Troubleshooting</fullName>
+                <default>false</default>
+                <label>Troubleshooting</label>
+            </value>
+            <value>
+                <fullName>Request for Contract Information</fullName>
+                <default>false</default>
+                <label>Request for Contract Information</label>
+            </value>
+            <value>
+                <fullName>Sales invoice</fullName>
+                <default>false</default>
+                <label>Sales invoice</label>
+            </value>
+            <value>
+                <fullName>Customer requests - Payment information</fullName>
+                <default>false</default>
+                <label>Customer requests - Payment information</label>
+            </value>
+            <value>
+                <fullName>EOT - Purchase Others</fullName>
+                <default>false</default>
+                <label>EOT - Purchase Others</label>
+            </value>
+            <value>
+                <fullName>Transfer - Others</fullName>
+                <default>false</default>
+                <label>Transfer - Others</label>
+            </value>
+            <value>
+                <fullName>Requesting Documents</fullName>
+                <default>false</default>
+                <label>Requesting Documents</label>
+            </value>
+            <value>
+                <fullName>Clarifications (internal)</fullName>
+                <default>false</default>
+                <label>Clarifications (internal)</label>
+            </value>
+            <value>
+                <fullName>EOT - Extension offer</fullName>
+                <default>false</default>
+                <label>EOT - Extension offer</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>R&amp;M - EOT</controllingFieldValue>
@@ -1339,6 +1384,7 @@
             <controllingFieldValue>Collection - Payment Agreements</controllingFieldValue>
             <controllingFieldValue>Collection - Returned Direct Debits</controllingFieldValue>
             <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Deferral</controllingFieldValue>
             <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
             <controllingFieldValue>EOT - Early termination</controllingFieldValue>
             <controllingFieldValue>EOT - Purchase</controllingFieldValue>
@@ -1407,6 +1453,10 @@
             <controllingFieldValue>GAP</controllingFieldValue>
             <controllingFieldValue>Insurance</controllingFieldValue>
             <valueName>Accounting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maintenance</controllingFieldValue>
+            <valueName>Clarifications (internal)</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Balance Confirmations</controllingFieldValue>
@@ -1700,6 +1750,10 @@
             <valueName>Write-offs</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
+            <valueName>Troubleshooting</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Finance</controllingFieldValue>
             <valueName>Operating Lease</valueName>
         </valueSettings>
@@ -1719,6 +1773,20 @@
         <valueSettings>
             <controllingFieldValue>Finance</controllingFieldValue>
             <valueName>Queries</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>Payment Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Request for Contract Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Requesting Documents</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Service Third Party</controllingFieldValue>
@@ -1742,6 +1810,14 @@
             <controllingFieldValue>CLF – Purchase</controllingFieldValue>
             <controllingFieldValue>CLF – Relationship</controllingFieldValue>
             <valueName>SDLG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deferral</controllingFieldValue>
+            <valueName>EOT - Purchase Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deferral</controllingFieldValue>
+            <valueName>EOT - Extension offer</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change of details</controllingFieldValue>
@@ -2109,11 +2185,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>Payment Information</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <valueName>Payment Query</valueName>
         </valueSettings>
         <valueSettings>
@@ -2262,6 +2333,7 @@
             <valueName>Partial loss</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
             <controllingFieldValue>Insurance - Damage</controllingFieldValue>
             <valueName>Total Damage</valueName>
         </valueSettings>
