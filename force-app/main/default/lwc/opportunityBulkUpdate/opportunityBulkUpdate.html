@@ -64,7 +64,30 @@ Opportunity Owner
                             <lightning-input-field field-name="Amount" onchange={handleFieldChange}>
                             </lightning-input-field>
                         </div>
+
+
+<label class="slds-form-element__label">
+    VFS Connect Quote
+</label>
+
+<lightning-input-field
+    field-name="VFS_Connect_Quote_Ref__c"
+    variant="label-hidden"
+    disabled={disableQuoteField}
+    onchange={handleFieldChange}>
+</lightning-input-field>
+
+<template if:true={quoteFieldMessage}>
+    <div class="field-help-text">
+        {quoteFieldMessage}
+    </div>
+</template>
+
+
+                        <!----New Code - END---->
                     </div>
+
+                    
 
                     <!-- RIGHT COLUMN -->
                     <div class="grid-column">
@@ -125,18 +148,47 @@ Opportunity Owner
         </lightning-record-edit-form>
 
         <!-- OPPORTUNITY LIST -->
-        <lightning-card>
+        <!-- <lightning-card>
             <div class="opportunity-container">
                 <div class="list-header">
-                    OPPORTUNITY NAME
+                    OPPORTUNITY NAME | STAGE
                 </div>
                 <template for:each={opportunities} for:item="opportunity">
                     <div key={opportunity.Id} class="opportunity-row">
-                        {opportunity.Name}
+                        <span>{opportunity.Name}</span>
+                <span> - {opportunity.StageName}</span>
                     </div>
                 </template>
             </div>
-        </lightning-card>
+        </lightning-card> -->
+
+<lightning-card>
+    <div class="opportunity-container">
+
+        <!-- Header -->
+        <div class="slds-grid list-header">
+            <div class="slds-col slds-size_9-of-12">
+                <strong>OPPORTUNITY NAME</strong>
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <strong>STAGE</strong>
+            </div>
+        </div>
+
+        <!-- Data Rows -->
+        <template for:each={opportunities} for:item="opportunity">
+            <div key={opportunity.Id} class="slds-grid opportunity-row">
+                <div class="slds-col slds-size_9-of-12">
+                    {opportunity.Name}
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    {opportunity.StageName}
+                </div>
+            </div>
+        </template>
+
+    </div>
+</lightning-card>
 
         <!-- BUTTONS -->
         <div class="button-section">

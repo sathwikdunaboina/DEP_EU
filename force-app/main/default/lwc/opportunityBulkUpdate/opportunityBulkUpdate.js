@@ -64,6 +64,9 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     @track isReasonDisabled = true;
     @track isSubStageDisabled = true;
     @track isFinanceHouseDisabled = true;
+    @track disableQuoteField = false;
+    @track quoteFieldMessage = '';
+
 
     // =====================================================
     // SELECTED VALUES
@@ -169,6 +172,7 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
                 this.recordType = result[0].RecordType.Name;
                 this.isFinance = this.recordType === 'Finance';
                 this.isLCVOpportunity = this.recordType === 'LCV Opportunity';
+                this.evaluateQuoteFieldAccess();
                 this.showFields = true;
             })
             .catch(error => {
@@ -502,6 +506,54 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
             this.changedFields = updated;
         }
     }
+
+
+    evaluateQuoteFieldAccess() {
+
+    let messages = [];
+
+    // Quote already present
+    const hasQuoteLinked = this.opportunities.some(
+        opp => opp.Quote_Id__c
+    );
+
+    if (hasQuoteLinked) {
+        messages.push(
+            'Quote is already present for some Opportunity.'
+        );
+    }
+
+    // Closed Won / Closed Lost
+    const hasClosedStage = this.opportunities.some(
+        opp =>
+            opp.StageName === 'Closed Won' ||
+            opp.StageName === 'Closed Lost' ||
+            opp.StageName === 'Closed FO Cancelled'
+    );
+
+    if (hasClosedStage) {
+        messages.push(
+            'Some Opportunity Stage is Closed Won/Closed Lost/Closed FO Cancelled.'
+        );
+    }
+
+    // Factory Order missing
+    if (!this.isLCVOpportunity) {
+    const factoryOrderMissing = this.opportunities.some(
+        opp => !opp.Factory_Order__c
+    );
+
+    if (factoryOrderMissing) {
+        messages.push(
+            'Factory Order not present for some Opportunity.'
+        );
+    }
+    }
+
+    this.disableQuoteField = messages.length > 0;
+
+    this.quoteFieldMessage = messages.join(' ');
+}
 
     // =====================================================
     // SAVE
