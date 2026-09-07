@@ -7,12 +7,16 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>Opportunity.Link_Quotes</value>
+                            <value>Opportunity.UnlinkQuote</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2 AND 3</booleanFilter>
+                                <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Quote_Id__c}</leftValue>
-                                    <operator>EQUAL</operator>
+                                    <operator>NE</operator>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Quote_Url__c}</leftValue>
+                                    <operator>NE</operator>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.StageName}</leftValue>
@@ -27,15 +31,15 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
-                            <value>Opportunity.UnlinkQuote</value>
+                            <value>Opportunity.Create_Quotes</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Quote_Id__c}</leftValue>
-                                    <operator>NE</operator>
+                                    <operator>EQUAL</operator>
                                 </criteria>
                                 <criteria>
-                                    <leftValue>{!Record.Quote_Url__c}</leftValue>
+                                    <leftValue>{!Record.Factory_Order__r.Name}</leftValue>
                                     <operator>NE</operator>
                                 </criteria>
                                 <criteria>
@@ -163,6 +167,29 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Lead_Creation_Date__c</fieldItem>
+                <identifier>RecordLead_Creation_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.LeadSource</fieldItem>
                 <identifier>RecordLeadSourceField2</identifier>
             </fieldInstance>
@@ -175,6 +202,42 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Opportunity_Type__c</fieldItem>
                 <identifier>RecordOpportunity_Type_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Type</fieldItem>
+                <identifier>RecordTypeField2</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -203,8 +266,28 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Finance_Type__c</fieldItem>
-                <identifier>RecordFinance_Type_cField</identifier>
+                <fieldItem>Record.Order_Book_Status__c</fieldItem>
+                <identifier>RecordOrder_Status_cField2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>SMT</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Factory_Order__r.Order_Status_Description__c</fieldItem>
+                <identifier>RecordFactory_Order_rOrder_Status_Description_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-204cc5fb-20a3-4216-b556-0751235d1e6a</name>
@@ -219,16 +302,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.StageName</fieldItem>
                 <identifier>RecordStageNameField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Sub_Stage__c</fieldItem>
-                <identifier>RecordSub_Stage_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -279,6 +352,23 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Reason__c</fieldItem>
                 <identifier>RecordReason_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Closed Lost</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Finance_Houses__c</fieldItem>
+                <identifier>RecordFinance_Houses_cField</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.StageName}</leftValue>
@@ -357,23 +447,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Finance_Houses__c</fieldItem>
-                <identifier>RecordFinance_Houses_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.StageName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Closed Lost</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Additional_Details__c</fieldItem>
                 <identifier>RecordAdditional_Details_cField</identifier>
                 <visibilityRule>
@@ -401,8 +474,54 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.General_Description__c</fieldItem>
+                <identifier>RecordGeneral_Description_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Closed Lost</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.StageName}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Closed Won</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Next_Step_Date__c</fieldItem>
-                <identifier>RecordNext_Step_Date__cField</identifier>
+                <identifier>RecordNext_Step_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -413,6 +532,29 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.NextStep</fieldItem>
                 <identifier>RecordNextStepField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ef32438a-a804-4890-b12d-dc28026bd44f</name>
@@ -469,14 +611,100 @@
                 <identifier>RecordCountry_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Customer_Account__r.VATNumber__c</fieldItem>
+                <identifier>RecordCustomer_Account_rVATNumber_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-f4817694-2807-4415-b0e4-1a19c36177ba</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Customer_Account__r.VATNumber__c</fieldItem>
-                <identifier>RecordCustomer_Account_rVATNumber_cField</identifier>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Customer_Contact__c</fieldItem>
+                <identifier>RecordCustomer_Contact_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Credit_Rate__c</fieldItem>
+                <identifier>RecordCredit_Rate_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
+                <identifier>RecordCredit_Assessment_Date__cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Sales_Person_Name__c</fieldItem>
+                <identifier>RecordSales_Person_Name_cField2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-1c775d29-e199-43c2-8d3b-7a1b184b5df0</name>
@@ -513,8 +741,84 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.AccountId</fieldItem>
-                <identifier>RecordAccountIdField</identifier>
+                <fieldItem>Record.Lead_Dealer_Sales_Person__c</fieldItem>
+                <identifier>RecordLead_Dealer_Sales_Person_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dealer_Sales_Person__c</fieldItem>
+                <identifier>RecordDealer_Sales_Person_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dealer_Delivery_Date__c</fieldItem>
+                <identifier>RecordDealer_Delivery_Date_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dealer_DeliveryDate__c</fieldItem>
+                <identifier>RecordDealer_DeliveryDate_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>SMT</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-afee69dd-c04c-4577-8e94-e55c44fc41f6</name>
@@ -527,8 +831,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Dealer_Sales_Person__c</fieldItem>
-                <identifier>RecordDealer_Sales_Person_cField</identifier>
+                <fieldItem>Record.AccountId</fieldItem>
+                <identifier>RecordAccountIdField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-90a1f3d4-3fc1-4d5c-a7fa-ebbe5b5f7418</name>
@@ -565,8 +869,15 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Lead_Brand__c</fieldItem>
-                <identifier>RecordLead_Brand_cField</identifier>
+                <fieldItem>Record.Factory_Order__c</fieldItem>
+                <identifier>RecordFactory_Order_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -575,18 +886,284 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.General_Description__c</fieldItem>
-                <identifier>RecordGeneral_Description_cField</identifier>
+                <fieldItem>Record.Brand__c</fieldItem>
+                <identifier>RecordBrand_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CurrencyIsoCode</fieldItem>
-                <identifier>RecordCurrencyIsoCodeField</identifier>
+                <fieldItem>Record.Lead_Brand__c</fieldItem>
+                <identifier>RecordLead_Brand_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Model__c</fieldItem>
+                <identifier>RecordModel_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Lead_Model__c</fieldItem>
+                <identifier>RecordLead_Model_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Segment__c</fieldItem>
+                <identifier>RecordSegment_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>SMT</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Factory_Order__r.Axle_Arrangement__c</fieldItem>
+                <identifier>RecordFactory_Order_rAxle_Arrangement_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Lead_Axle_Arrangement__c</fieldItem>
+                <identifier>RecordLead_Axle_Arrangement_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Cab_Version__c</fieldItem>
+                <identifier>RecordCab_Version_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Factory_Order__r.Chassis_Type__c</fieldItem>
+                <identifier>RecordFactory_Order_rChassis_Type_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Lead_Chassis_Type__c</fieldItem>
+                <identifier>RecordLead_Chassis_Type_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Factory_Order__r.CAB_Version__c</fieldItem>
+                <identifier>RecordFactory_Order_rCAB_Version_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Superstructure_Type__c</fieldItem>
+                <identifier>RecordSuperstructure_Type_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Additional_Services__c</fieldItem>
+                <identifier>RecordAdditional_Services_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Financing_Specification__c</fieldItem>
+                <identifier>RecordFinancing_Specification__cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-83d915a2-4b43-443e-a296-794b31c7d972</name>
@@ -599,8 +1176,18 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Asset_Type__c</fieldItem>
-                <identifier>RecordAsset_Type_cField</identifier>
+                <fieldItem>Record.VIN_Number__c</fieldItem>
+                <identifier>RecordLead_VIN_Number_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CurrencyIsoCode</fieldItem>
+                <identifier>RecordCurrencyIsoCodeField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -608,29 +1195,101 @@
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
                     <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Number_of_Assets__c</fieldItem>
-                <identifier>RecordNumber_of_Assets_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Average_Value_Per_Asset__c</fieldItem>
-                <identifier>RecordAverage_Value_Per_Asset_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Amount</fieldItem>
                 <identifier>RecordAmountField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Registration_Date__c</fieldItem>
+                <identifier>RecordRegistration_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Registration_Number__c</fieldItem>
+                <identifier>RecordRegistration_Number_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Milage__c</fieldItem>
+                <identifier>RecordMilage_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Detailed_Specification__c</fieldItem>
+                <identifier>RecordDetailed_Specification_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.LeadSource}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Factory Order</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Lead_Brand__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>VCE</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-49390d3a-e81e-40ce-9dd2-7e3792f8fc58</name>
@@ -959,14 +1618,14 @@
                 <visibilityRule>
                     <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.Not_Needed__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
                         <leftValue>{!Record.Lost_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Pricing</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Not_Needed__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Reason__c}</leftValue>
@@ -1075,6 +1734,32 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>parentFieldApiName</name>
+                    <value>Opportunity.VFS_Connect_Quote_Ref__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Histories</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
                     <value>Opportunity.Id</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -1101,7 +1786,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>LCV Opportunity Record Page</masterLabel>
+    <masterLabel>Opportunity Record Page</masterLabel>
     <parentFlexiPage>sfa__Opportunity_rec_L</parentFlexiPage>
     <sobjectType>Opportunity</sobjectType>
     <template>
