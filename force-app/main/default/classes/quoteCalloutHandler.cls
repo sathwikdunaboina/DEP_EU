@@ -69,7 +69,10 @@ public with sharing class quoteCalloutHandler {
                 }
                 else{
                     String error = values.get('errorMessage');
-                    if (!error.contains('Error')) {
+                    if(error!=null && error.contains('No company is found for companycode')){
+                        error = 'Error: Opportunity dealer is not present or is inactive in VFS Connect. Kindly check this dealer status in VFS Connect.';
+                    }
+                    else if (!error.contains('Error')) {
                         error = 'Error: ' + error;
                     }
                     resultList.add(error);
@@ -90,8 +93,11 @@ public with sharing class quoteCalloutHandler {
                 Map<String, String> values = (Map<String, String>) JSON.deserialize(response.getBody(), Map<String, String>.class);
                 String Error = values.get('errorMessage');
                 Error += ('; ' + values.get('message') == null ? '' : values.get('message'));
-                //System.debug('This is the error Msg: ' + Error);     
-                if (!Error.contains('Error')) {
+                //System.debug('This is the error Msg: ' + Error);
+                if(Error != null && Error.contains('No company is found for companycode')) {
+                    Error = 'Error: Opportunity dealer is not present or is inactive in VFS Connect. Kindly check this dealer status in VFS Connect.';
+                }    
+                else if (!Error.contains('Error')) {
                     Error = 'Error: ' + Error;
                 }
                 resultList.add(Error); 
