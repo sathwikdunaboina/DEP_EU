@@ -13,9 +13,6 @@ import FinanceHouse from '@salesforce/schema/Opportunity.Finance_Houses__c';
 import getStageProbabilities from '@salesforce/apex/OpportunityBulkUpdateController.getStageProbabilities';
 import getMetadataRecords from '@salesforce/apex/OpportunityBulkUpdateController.getMetadataRecords';
 
-
-
-
 export default class BulkUpdateOpportunities extends NavigationMixin(LightningElement) {
     @api recordIds;
 
@@ -73,6 +70,9 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     @track isReasonDisabled = true;
     @track isSubStageDisabled = true;
     @track isFinanceHouseDisabled = true;
+    @track disableQuoteField = false;
+    @track quoteFieldMessage = '';
+
 
     // =====================================================
     // SELECTED VALUES
@@ -152,7 +152,7 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     // =====================================================
     // CONNECTED CALLBACK
     // =====================================================
-connectedCallback() {
+    connectedCallback() {
         this.initializeComponent();
     }
 
@@ -163,13 +163,14 @@ connectedCallback() {
 
         try {
 
-            // Validation: no record IDs passed
-            if (!this.recordIds || this.recordIds.length === 0) {
-                this.error = 'Please select an Opportunity.';
-                return;
-            }
 
-            // =====================================================
+        // Validation: no record IDs passed
+        if (!this.recordIds || this.recordIds.length === 0) {
+            this.error = 'Please select an Opportunity.';
+            return;
+        }
+
+        // =====================================================
             // 1. GET METADATA FIRST
             // =====================================================
 
@@ -188,47 +189,27 @@ connectedCallback() {
                 sSelectedOpportunityIds: this.recordIds
             });
 
-            console.log('Opportunity Records:', result);
+        // getOpportunities({ sSelectedOpportunityIds: this.recordIds })
+        //     .then(result => {
+                if (!result || result.length === 0) {
+                    this.error = 'Please select an Opportunity.';
+                    return;
+                }
 
-            if (!result || result.length === 0) {
-                this.error = 'Please select an Opportunity.';
-                return;
-            }
+                // SAME RECORD TYPE CHECK
+                const recordTypeIds = [...new Set(result.map(opp => opp.RecordTypeId))];
+                if (recordTypeIds.length > 1) {
+                    this.error = 'Please select same Record Type Opportunities';
+                    return;
+                }
 
-
-            // =====================================================
-            // SAME RECORD TYPE CHECK
-            // =====================================================
-
-            const recordTypeIds = [
-                ...new Set(result.map(opp => opp.RecordTypeId))
-            ];
-
-            if (recordTypeIds.length > 1) {
-                this.error =
-                    'Please select same Record Type Opportunities';
-                return;
-            }
-
-
-            // =====================================================
-            // SET OPPORTUNITY DATA
-            // =====================================================
-
-            this.opportunities = result;
-
-            this.selectedRecordTypeId = result[0].RecordTypeId;
-
-            this.recordType = result[0].RecordType.Name;
-
-            this.isFinance = this.recordType === 'Finance';
-
-            this.isLCVOpportunity =
-                this.recordType === 'LCV Opportunity';
-
-            this.showFields = true;
-
-
+                this.opportunities = result;
+                this.selectedRecordTypeId = result[0].RecordTypeId;
+                this.recordType = result[0].RecordType.Name;
+                this.isFinance = this.recordType === 'Finance';
+                this.isLCVOpportunity = this.recordType === 'LCV Opportunity';
+                this.evaluateQuoteFieldAccess();
+                this.showFields = true;
             // =====================================================
             // GET DEALER COUNTRY
             // =====================================================
@@ -288,7 +269,8 @@ connectedCallback() {
                 this.showNextStepField = true;
             }
 
-        } catch (error) {
+        }
+            catch (error) {
 
             console.error('Error:', error);
 
@@ -303,12 +285,8 @@ connectedCallback() {
             this.isLoading = false;
         }
     }
+    
 
-
-
-
-
-    //
     // Wire for Probability change when Stage changes
     @wire(getStageProbabilities)
     wiredStageProbabilities({ data, error }) {
@@ -361,13 +339,6 @@ connectedCallback() {
             console.error(error);
         }
     }
-    //=================================
-    //Wire Search for current user
-
-
-  
-    //==================================
-
 
     // =====================================================
     // OWNER SEARCH
@@ -642,6 +613,54 @@ connectedCallback() {
         }
     }
 
+
+    evaluateQuoteFieldAccess() {
+
+    let messages = [];
+
+    // Quote already present
+    const hasQuoteLinked = this.opportunities.some(
+        opp => opp.Quote_Id__c
+    );
+
+    if (hasQuoteLinked) {
+        messages.push(
+            'Quote is already present for some Opportunity.'
+        );
+    }
+
+    // Closed Won / Closed Lost
+    const hasClosedStage = this.opportunities.some(
+        opp =>
+            opp.StageName === 'Closed Won' ||
+            opp.StageName === 'Closed Lost' ||
+            opp.StageName === 'Closed FO Cancelled'
+    );
+
+    if (hasClosedStage) {
+        messages.push(
+            'Some Opportunity Stage is Closed Won/Closed Lost/Closed FO Cancelled.'
+        );
+    }
+
+    // Factory Order missing
+    if (!this.isLCVOpportunity) {
+    const factoryOrderMissing = this.opportunities.some(
+        opp => !opp.Factory_Order__c
+    );
+
+    if (factoryOrderMissing) {
+        messages.push(
+            'Factory Order not present for some Opportunity.'
+        );
+    }
+    }
+
+    this.disableQuoteField = messages.length > 0;
+
+    this.quoteFieldMessage = messages.join(' ');
+}
+
     // =====================================================
     // SAVE
     // =====================================================
@@ -696,7 +715,4 @@ connectedCallback() {
     handleCancel() {
         window.history.back();
     }
-
-
-   
 }

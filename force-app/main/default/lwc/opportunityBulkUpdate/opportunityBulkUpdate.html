@@ -1,5 +1,4 @@
 <template>
-
     <!-- Loading Spinner -->
     <template if:true={isLoading}>
         <div class="loading-container">
@@ -24,7 +23,7 @@
             {error}
         </div>
     </template>
-   
+
     <!-- MAIN -->
     <template if:true={showFields}>
         <lightning-record-edit-form object-api-name="Opportunity">
@@ -40,7 +39,7 @@ Opportunity Owner
 </label>
 
                             <div class="owner-container">
-                                <lightning-input type="search" variant="label-hidden" placeholder="Search Ownery"
+                                <lightning-input type="search" variant="label-hidden" placeholder="Search Owner"
                                     value={selectedOwnerName} onchange={handleOwnerSearch}>
                                 </lightning-input>
                                 <!-- DROPDOWN -->
@@ -62,12 +61,29 @@ Opportunity Owner
                             </lightning-input-field>
                         </div>
 
-
                         <!-- AMOUNT -->
                         <div class="field-wrapper">
                             <lightning-input-field field-name="Amount" onchange={handleFieldChange}>
                             </lightning-input-field>
                         </div>
+<div class="field-wrapper">
+                        <label class="slds-form-element__label">
+    VFS Connect Quote
+</label>
+
+<lightning-input-field
+    field-name="VFS_Connect_Quote_Ref__c"
+    variant="label-hidden"
+    disabled={disableQuoteField}
+    onchange={handleFieldChange}>
+</lightning-input-field>
+
+<template if:true={quoteFieldMessage}>
+    <div class="field-help-text">
+        {quoteFieldMessage}
+    </div>
+</template>
+</div>
                         <!-- Next Step Date -->
                         <template if:true={showNextStepField}>
                         <div class="field-wrapper">
@@ -84,11 +100,13 @@ Opportunity Owner
                             </lightning-input-field>
                         </div>
                        </template> 
+                        </div>
 
 
 
 
-                    </div>
+
+                        <!----New Code - END---->
 
                     
 
@@ -150,19 +168,34 @@ Opportunity Owner
             </lightning-card>
         </lightning-record-edit-form>
 
-        <!-- OPPORTUNITY LIST -->
-        <lightning-card>
-            <div class="opportunity-container">
-                <div class="list-header">
-                    OPPORTUNITY NAME
-                </div>
-                <template for:each={opportunities} for:item="opportunity">
-                    <div key={opportunity.Id} class="opportunity-row">
-                        {opportunity.Name}
-                    </div>
-                </template>
+
+<lightning-card>
+    <div class="opportunity-container">
+
+        <!-- Header -->
+        <div class="slds-grid list-header">
+            <div class="slds-col slds-size_9-of-12">
+                <strong>OPPORTUNITY NAME</strong>
             </div>
-        </lightning-card>
+            <div class="slds-col slds-size_3-of-12">
+                <strong>STAGE</strong>
+            </div>
+        </div>
+
+        <!-- Data Rows -->
+        <template for:each={opportunities} for:item="opportunity">
+            <div key={opportunity.Id} class="slds-grid opportunity-row">
+                <div class="slds-col slds-size_9-of-12">
+                    {opportunity.Name}
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    {opportunity.StageName}
+                </div>
+            </div>
+        </template>
+
+    </div>
+</lightning-card>
 
         <!-- BUTTONS -->
         <div class="button-section">
@@ -178,7 +211,4 @@ Opportunity Owner
             </c-custom-toast>
         </template>
     </template>
-</template>
-</template>
-
 </template>
