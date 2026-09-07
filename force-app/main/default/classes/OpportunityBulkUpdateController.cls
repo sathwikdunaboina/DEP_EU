@@ -151,29 +151,44 @@ public with sharing class OpportunityBulkUpdateController {
                                 }
                             }
                            
-                            if (dbOpp != null &&
-                                dbOpp.Customer_Account__r != null &&
-                                dbOpp.Customer_Account__r.CustomerID__c != null) {
-                                   
-                                    String customerId =
-                                        dbOpp.Customer_Account__r.CustomerID__c;
-                                   
-                                    // CH-456789 -> 456789
-                                    customerId =
-                                        customerId.replaceFirst('^[A-Za-z]{2}-?', '');
-                                   
-                                    String quoteCms =
-                                        String.valueOf(quoteRec.Account_CMS_Number__c);
-                                   
-                                    if (customerId != quoteCms) {
-                                       
-                                        
-                                        cmsMismatchOpps.add(
-                                            'Quote ' + quoteRec.Quote_Number__c + ' cannot be assigned to Opportunity' + dbOpp.Name +
-                                            ' since Quote CMS Number does not match with Customer ID'
-                                        );
-                                    }
-                                }
+                            if (dbOpp != null) {
+
+    String customerId =
+        dbOpp.Customer_Account__r != null
+        ? dbOpp.Customer_Account__r.CustomerID__c
+        : null;
+
+    String quoteCms =
+        quoteRec.Account_CMS_Number__c != null
+        ? String.valueOf(quoteRec.Account_CMS_Number__c)
+        : null;
+
+    // Customer ID missing
+    if (String.isBlank(customerId)) {
+        cmsMismatchOpps.add(
+            'Customer ID is missing for Opportunity ' + dbOpp.Name + ' Customer Account'
+        );
+        continue;
+    }
+
+    // Quote CMS Number missing
+    if (String.isBlank(quoteCms)) {
+        cmsMismatchOpps.add(
+            'Account CMS Number is missing for Quote ' + quoteRec.Quote_Number__c
+        );
+        continue;
+    }
+
+    // Existing logic
+    customerId = customerId.replaceFirst('^[A-Za-z]{2}-?', '');
+
+    if (customerId != quoteCms) {
+        cmsMismatchOpps.add(
+            'Quote ' + quoteRec.Quote_Number__c + ' cannot be assigned to Opportunity ' + dbOpp.Name +
+            ' since Quote CMS Number does not match with Customer ID'
+        );
+    }
+}
                         }
                 }
                
