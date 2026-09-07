@@ -1,4 +1,22 @@
 <template>
+    <!-- Loading Spinner -->
+    <template if:true={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium">
+            </lightning-spinner>
+
+            <div class="loading-message">
+                Please wait while we load the Opportunity details...
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Main Component -->
+    <template if:false={isLoading}>
+
     <!-- ERROR -->
     <template if:true={error}>
         <div class="error-message">
@@ -43,28 +61,54 @@ Opportunity Owner
                             </lightning-input-field>
                         </div>
 
-                        <!-- LCV OPPORTUNITY -->
-                        <template if:true={isLCVOpportunity}>
-                            <div class="field-wrapper">
-                                <lightning-input-field field-name="Opportunity_Type__c" onchange={handleFieldChange}>
-                                </lightning-input-field>
-                            </div>
-                        </template>
-
-                        <!-- FINANCE -->
-                        <template if:true={isFinance}>
-                            <div class="field-wrapper">
-                                <lightning-input-field field-name="Type" onchange={handleFieldChange}>
-                                </lightning-input-field>
-                            </div>
-                        </template>
-
                         <!-- AMOUNT -->
                         <div class="field-wrapper">
                             <lightning-input-field field-name="Amount" onchange={handleFieldChange}>
                             </lightning-input-field>
                         </div>
-                    </div>
+<div class="field-wrapper">
+                        <label class="slds-form-element__label">
+    VFS Connect Quote
+</label>
+
+<lightning-input-field
+    field-name="VFS_Connect_Quote_Ref__c"
+    variant="label-hidden"
+    disabled={disableQuoteField}
+    onchange={handleFieldChange}>
+</lightning-input-field>
+
+<template if:true={quoteFieldMessage}>
+    <div class="field-help-text">
+        {quoteFieldMessage}
+    </div>
+</template>
+</div>
+                        <!-- Next Step Date -->
+                        <template if:true={showNextStepField}>
+                        <div class="field-wrapper">
+                            <lightning-input-field field-name="Next_Step_Date__c" label="Next Step Date" onchange={handleFieldChange}>
+                            </lightning-input-field>
+                        </div>
+                        </template> 
+                         <lightning-messages></lightning-messages>
+                        
+                        <!-- Next Step -->
+                        <template if:true={showNextStepField}>
+                        <div class="field-wrapper">
+                            <lightning-input-field field-name="NextStep" onchange={handleFieldChange}>
+                            </lightning-input-field>
+                        </div>
+                       </template> 
+                        </div>
+
+
+
+
+
+                        <!----New Code - END---->
+
+                    
 
                     <!-- RIGHT COLUMN -->
                     <div class="grid-column">
@@ -124,19 +168,34 @@ Opportunity Owner
             </lightning-card>
         </lightning-record-edit-form>
 
-        <!-- OPPORTUNITY LIST -->
-        <lightning-card>
-            <div class="opportunity-container">
-                <div class="list-header">
-                    OPPORTUNITY NAME
-                </div>
-                <template for:each={opportunities} for:item="opportunity">
-                    <div key={opportunity.Id} class="opportunity-row">
-                        {opportunity.Name}
-                    </div>
-                </template>
+
+<lightning-card>
+    <div class="opportunity-container">
+
+        <!-- Header -->
+        <div class="slds-grid list-header">
+            <div class="slds-col slds-size_9-of-12">
+                <strong>OPPORTUNITY NAME</strong>
             </div>
-        </lightning-card>
+            <div class="slds-col slds-size_3-of-12">
+                <strong>STAGE</strong>
+            </div>
+        </div>
+
+        <!-- Data Rows -->
+        <template for:each={opportunities} for:item="opportunity">
+            <div key={opportunity.Id} class="slds-grid opportunity-row">
+                <div class="slds-col slds-size_9-of-12">
+                    {opportunity.Name}
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    {opportunity.StageName}
+                </div>
+            </div>
+        </template>
+
+    </div>
+</lightning-card>
 
         <!-- BUTTONS -->
         <div class="button-section">
