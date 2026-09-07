@@ -1,4 +1,22 @@
 <template>
+    <!-- Loading Spinner -->
+    <template if:true={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium">
+            </lightning-spinner>
+
+            <div class="loading-message">
+                Please wait while we load the Opportunity details...
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Main Component -->
+    <template if:false={isLoading}>
+
     <!-- ERROR -->
     <template if:true={error}>
         <div class="error-message">
@@ -43,30 +61,13 @@ Opportunity Owner
                             </lightning-input-field>
                         </div>
 
-                        <!-- LCV OPPORTUNITY -->
-                        <template if:true={isLCVOpportunity}>
-                            <div class="field-wrapper">
-                                <lightning-input-field field-name="Opportunity_Type__c" onchange={handleFieldChange}>
-                                </lightning-input-field>
-                            </div>
-                        </template>
-
-                        <!-- FINANCE -->
-                        <template if:true={isFinance}>
-                            <div class="field-wrapper">
-                                <lightning-input-field field-name="Type" onchange={handleFieldChange}>
-                                </lightning-input-field>
-                            </div>
-                        </template>
-
                         <!-- AMOUNT -->
                         <div class="field-wrapper">
                             <lightning-input-field field-name="Amount" onchange={handleFieldChange}>
                             </lightning-input-field>
                         </div>
-
-
-<label class="slds-form-element__label">
+<div class="field-wrapper">
+                        <label class="slds-form-element__label">
     VFS Connect Quote
 </label>
 
@@ -82,10 +83,30 @@ Opportunity Owner
         {quoteFieldMessage}
     </div>
 </template>
+</div>
+                        <!-- Next Step Date -->
+                        <template if:true={showNextStepField}>
+                        <div class="field-wrapper">
+                            <lightning-input-field field-name="Next_Step_Date__c" label="Next Step Date" onchange={handleFieldChange}>
+                            </lightning-input-field>
+                        </div>
+                        </template> 
+                         <lightning-messages></lightning-messages>
+                        
+                        <!-- Next Step -->
+                        <template if:true={showNextStepField}>
+                        <div class="field-wrapper">
+                            <lightning-input-field field-name="NextStep" onchange={handleFieldChange}>
+                            </lightning-input-field>
+                        </div>
+                       </template> 
+                        </div>
+
+
+
 
 
                         <!----New Code - END---->
-                    </div>
 
                     
 
@@ -147,20 +168,6 @@ Opportunity Owner
             </lightning-card>
         </lightning-record-edit-form>
 
-        <!-- OPPORTUNITY LIST -->
-        <!-- <lightning-card>
-            <div class="opportunity-container">
-                <div class="list-header">
-                    OPPORTUNITY NAME | STAGE
-                </div>
-                <template for:each={opportunities} for:item="opportunity">
-                    <div key={opportunity.Id} class="opportunity-row">
-                        <span>{opportunity.Name}</span>
-                <span> - {opportunity.StageName}</span>
-                    </div>
-                </template>
-            </div>
-        </lightning-card> -->
 
 <lightning-card>
     <div class="opportunity-container">
