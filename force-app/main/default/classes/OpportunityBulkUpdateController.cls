@@ -29,7 +29,7 @@ public with sharing class OpportunityBulkUpdateController {
             
             return [SELECT Id, Name, StageName, OwnerId, AccountId, RecordType.Name,
                     Lost_Reason__c, Opportunity_Type__c, Reason__c,Country__c,
-                    Amount, Probability, Sub_Stage__c,Finance_Houses__c,Additional_Details__c
+                    Amount, Probability, Sub_Stage__c,Finance_Houses__c,Additional_Details__c,VFS_Connect_Quote_Ref__c,	Quote_Id__c,Factory_Order__r.Name
                     FROM Opportunity
                     WHERE Id IN :listSelectedOpportunityIds];
         } catch (Exception e) {
@@ -45,18 +45,222 @@ public with sharing class OpportunityBulkUpdateController {
 * @param           List of selected Opportunities     
 * @return          Updates Opportunity Records   
 * ------------------------------------------------------------------------------------------------------ 
-*/ 
+*/     
     @AuraEnabled
     public static String updateOpportunities(List<Opportunity> opportunities) {
         try {
+            
             if (opportunities == null || opportunities.isEmpty()) {
                 return 'No updates were made.';
             }
             
+            // Check whether Quote Ref is being updated
+            Boolean quoteRefUpdated = false;
+            Set<Id> opportunityIds = new Set<Id>();
+            Set<Id> quoteRefIds = new Set<Id>();
+            
+            for (Opportunity opp : opportunities) {
+                
+                opportunityIds.add(opp.Id);
+                
+                if (opp.VFS_Connect_Quote_Ref__c != null) {
+                    quoteRefUpdated = true;
+                    quoteRefIds.add(opp.VFS_Connect_Quote_Ref__c);
+                }
+            }
+            
+            // Run validation only when Quote Ref is updated
+            if (quoteRefUpdated) {
+                
+                List<Opportunity> existingOpps = [
+                    SELECT Id,
+                    Name,
+                    Amount,
+                    StageName,
+                    Customer_Account__c,
+                    Customer_Account__r.CustomerID__c,
+                    Quote_Id__c,
+                    VFS_Connect_Quote_Ref__c
+                    FROM Opportunity
+                    WHERE Id IN :opportunityIds
+                ];
+                
+                /*List<String> quoteLinkedOpps = new List<String>();
+
+for (Opportunity opp : existingOpps) {
+
+if (opp.Quote_Id__c != null) {
+quoteLinkedOpps.add(opp.Name);
+}
+}
+
+if (!quoteLinkedOpps.isEmpty()) {
+throw new AuraHandledException(
+'Quote is already linked to this Opportunity: ' +
+String.join(quoteLinkedOpps, ', ')
+);
+}*/
+                
+                List<String> validationMessages = new List<String>();
+                
+                for (Opportunity opp : existingOpps) {
+                    
+                    List<String> missingFields = new List<String>();
+                    
+                    if (opp.Amount == null) {
+                        missingFields.add('Net Sales Price');
+                    }
+                    
+                    if (opp.Customer_Account__c == null) {
+                        missingFields.add('Customer Account');
+                    }
+                    
+                    if (!missingFields.isEmpty()) {
+                        validationMessages.add(
+                            opp.Name +
+                            ' - Missing: ' +
+                            String.join(missingFields, ', ')
+                        );
+                    }
+                }
+                
+                if (!validationMessages.isEmpty()) {
+                    throw new AuraHandledException(
+                        String.join(validationMessages, '\n')
+                    );
+                }
+                
+                // Get Quote Number(s)
+                CMSAPI1__c settings = CMSAPI1__c.getOrgDefaults();
+                
+                Map<Id, VFS_Connect_Quote__c> quoteMap =
+                    new Map<Id, VFS_Connect_Quote__c>(
+                        [
+                            SELECT Id,
+                            Quote_Number__c,
+                            Account_CMS_Number__c
+                            FROM VFS_Connect_Quote__c
+                            WHERE Id IN :quoteRefIds
+                        ]
+                    );
+                
+                // =============================
+                // CMS NUMBER VALIDATION
+                // =============================
+                List<String> cmsMismatchOpps = new List<String>();
+                
+                for (Opportunity opp : opportunities) {
+                    
+                    if (opp.VFS_Connect_Quote_Ref__c != null &&
+                        quoteMap.containsKey(opp.VFS_Connect_Quote_Ref__c)) {
+                            
+                            VFS_Connect_Quote__c quoteRec =
+                                quoteMap.get(opp.VFS_Connect_Quote_Ref__c);
+                            
+                            Opportunity dbOpp;
+                            
+                            for (Opportunity o : existingOpps) {
+                                if (o.Id == opp.Id) {
+                                    dbOpp = o;
+                                    break;
+                                }
+                            }
+                            
+                            if (dbOpp != null &&
+                                dbOpp.Customer_Account__r != null &&
+                                dbOpp.Customer_Account__r.CustomerID__c != null) {
+                                    
+                                    String customerId =
+                                        dbOpp.Customer_Account__r.CustomerID__c;
+                                    
+                                    // CH-456789 -> 456789
+                                    customerId =
+                                        customerId.replaceFirst('^[A-Za-z]{2}-?', '');
+                                    
+                                    String quoteCms =
+                                        String.valueOf(quoteRec.Account_CMS_Number__c);
+                                    
+                                    if (customerId != quoteCms) {
+                                        
+                                        /*cmsMismatchOpps.add(
+quoteRec.Quote_Number__c +
+' cannot be updated to Opportunity "' +
+dbOpp.Name +
+'" because the Quote Account CMS Number (' +
+quoteCms +
+') does not match the Customer Account Customer ID.'
+);*/
+                                        cmsMismatchOpps.add(
+                                            'Quote ' + quoteRec.Quote_Number__c + ' cannot be assigned to Opportunity' + dbOpp.Name +
+                                            ' since Quote CMS Number does not match with Customer ID'
+                                        );
+                                    }
+                                }
+                        }
+                }
+                
+                if (!cmsMismatchOpps.isEmpty()) {
+                    throw new AuraHandledException(
+                        String.join(cmsMismatchOpps, '\n')
+                    );
+                }
+                
+                // =============================
+                // POPULATE QUOTE FIELDS
+                // =============================
+                
+                for (Opportunity opp : opportunities) {
+                    
+                    if (opp.VFS_Connect_Quote_Ref__c != null &&
+                        quoteMap.containsKey(opp.VFS_Connect_Quote_Ref__c)) {
+                            
+                            VFS_Connect_Quote__c quoteRec =
+                                quoteMap.get(opp.VFS_Connect_Quote_Ref__c);
+                            
+                            opp.Quote_Id__c = quoteRec.Quote_Number__c;
+                            
+                            opp.Quote_Url__c =
+                                settings.SearchQuoteEndpoint__c +
+                                'QuotationId=' +
+                                quoteRec.Quote_Number__c +
+                                '&ExternalSystem=SalesConnect';
+                            
+                            // Move Stage to Quoted only when not already
+                            // Quoted, Closed Won, or Closed Lost
+                            
+                            Opportunity existingOpp = null;
+                            
+                            for (Opportunity o : existingOpps) {
+                                if (o.Id == opp.Id) {
+                                    existingOpp = o;
+                                    break;
+                                }
+                            }
+                            
+                            if (existingOpp != null &&
+                                existingOpp.StageName != 'Quoted' &&
+                                existingOpp.StageName != 'Closed Won' &&
+                                existingOpp.StageName != 'Closed Lost' &&
+                                existingOpp.StageName != 'Closed FO Cancelled') {
+                                    
+                                    opp.StageName = 'Quoted';
+                                }
+                        }
+                }
+            }
+            
             update opportunities;
+            
             return 'Records updated successfully.';
-        } catch (Exception e) {
-            throw new AuraHandledException('Error updating records: ' + e.getMessage());
+            
+        }
+        catch (AuraHandledException e) {
+            throw e;
+        }
+        catch (Exception e) {
+            throw new AuraHandledException(
+                'Error updating records: ' + e.getMessage()
+            );
         }
     }
     
