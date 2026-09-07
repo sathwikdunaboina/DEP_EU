@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_Step_Date_Validation</fullName>
+    <active>true</active>
+    <description>Only future date can be selected in next step date</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Next_Step_Date__c)),
+    Next_Step_Date__c &lt; TODAY(),
+
+    OR(
+        ISPICKVAL(
+            Dealer_Account_Billing_Country__c,
+            &quot;United Kingdom&quot;
+        ),
+
+        ISPICKVAL(
+            Dealer_Account_Billing_Country__c,
+            &quot;Ireland&quot;
+        ),
+
+        AND(
+            ISPICKVAL(
+                Dealer_Account_Billing_Country__c,
+                &quot;&quot;
+            ),
+
+            OR(
+                Owner.Country = &quot;United Kingdom&quot;,
+                Owner.Country = &quot;Ireland&quot;
+            )
+        )
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Next_Step_Date__c</errorDisplayField>
+    <errorMessage>The Next Step Date Can Not Be In Past</errorMessage>
+</ValidationRule>

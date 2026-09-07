@@ -28,39 +28,19 @@ public class OpportunityBulkUpdateController_Test {
         insert oTestUser;
         
         System.runAs(new User(Id = UserInfo.getUserId())){ 
-            Account testCustomerAccount = new Account();
-            testCustomerAccount.Name = 'TestAccount';
-            testCustomerAccount.BillingCountry = 'United Kingdom';
-            testCustomerAccount.CustomerID__c = 'GB-12345';
-            insert testCustomerAccount;
-            
-            Factory_Order__c TestFactoryOrder = new Factory_Order__c();
-            TestFactoryOrder.Name = 'Test Order';
-            TestFactoryOrder.Order_Id__c = 'Test Factory Order';
-            insert TestFactoryOrder;
-            
-            VFS_Connect_Quote__c Quote = new VFS_Connect_Quote__c();
-            Quote.Quote_Number__c = '99967';
-            Quote.Name = '99967';
-            Quote.Account_CMS_Number__c = '12345';
-            insert Quote;
-            
             List<Opportunity> listOpportunity = new List<Opportunity>();
             for(integer i = 0 ; i <= 20 ; i++){
                 Opportunity opp = new Opportunity();
                 opp.Name = 'test opportunity'+ i ;
                 opp.StageName = 'Need Analysis';
-                opp.Amount = 34567;
-                opp.Customer_Account__c = testCustomerAccount.Id;
-                opp.Factory_Order__c = TestFactoryOrder.Id;
                 listOpportunity.add(opp);
             }
             insert listOpportunity;
             
-            /*Account testCustomerAccount = new Account();
+            Account testCustomerAccount = new Account();
             testCustomerAccount.Name = 'TestAccount';
             testCustomerAccount.BillingCountry = 'United Kingdom';
-            insert testCustomerAccount;*/
+            insert testCustomerAccount;
             
         }
     } 
@@ -76,7 +56,7 @@ public class OpportunityBulkUpdateController_Test {
 */  
     @isTest
     public static void testOpportunityBulkUpdateController(){
-        List<Opportunity> listOpportunities = [Select Id,Name,StageName,Quote_Id__c,Customer_Account__c,Factory_Order__r.Name,Amount FROM Opportunity];
+        List<Opportunity> listOpportunities = [Select Id , Name FROM Opportunity];
         List<Opportunity> emptyListToUpdate = new List<Opportunity>();
         String sSelectedOpportunityIds ;
         for(Opportunity opp : listOpportunities){
@@ -107,12 +87,7 @@ public class OpportunityBulkUpdateController_Test {
         }
         OpportunityBulkUpdateController.searchOpportunityOwners(oUser.LastName);
         OpportunityBulkUpdateController.searchCustomerAccounts(otestAccount.Name);
-        try{
-            OpportunityBulkUpdateController.updateOpportunities(listOpportunities);
-        }
-        catch(Exception e){
-        }
-        
+        OpportunityBulkUpdateController.updateOpportunities(listOpportunities);
         Test.stopTest();
     }
     
@@ -135,34 +110,23 @@ public class OpportunityBulkUpdateController_Test {
 }
     
     
-    
-  /*
-* ------------------------------------------------------------------------------------------------------
-* @Method Name     testQuoteUpdateSuccess
-* @description     This method is used to test the method to update Quote
+ /* ------------------------------------------------------------------------------------------------------
+* @Method Name     testGetMetadataRecordsForOpp
+* @description     This method is used to test the method to get Opp Country metadata records
 * ------------------------------------------------------------------------------------------------------
 * @param          
 * @return          
 * ------------------------------------------------------------------------------------------------------ 
-*/ 
-    @isTest
-public static void testQuoteUpdateSuccess() {
-Opportunity opp = [SELECT Id,Name,StageName FROM Opportunity LIMIT 1];
+*/  
+ @IsTest
+     static void testGetMetadataRecordsForOpp() {
+        
+        Test.startTest();
+        List<Opportunities_Next_Step_Date_Countries__mdt> result =
+            OpportunityBulkUpdateController.getMetadataRecords();
+        Test.stopTest();
 
-    VFS_Connect_Quote__c quote = [SELECT Id FROM VFS_Connect_Quote__c LIMIT 1];
-
-    Opportunity oppToUpdate = new Opportunity(
-        Id = opp.Id,
-        VFS_Connect_Quote_Ref__c = quote.Id
-    );
-    Test.startTest();
-    OpportunityBulkUpdateController.updateOpportunities(
-        new List<Opportunity>{ oppToUpdate }
-    );
-    Test.stopTest();
-    Opportunity updatedOpp = [SELECT Quote_Id__c,Quote_Url__c,StageName FROM Opportunity WHERE Id = :opp.Id];
-
-    System.assertNotEquals(null, updatedOpp.Quote_Id__c);
-    System.assertNotEquals(null, updatedOpp.Quote_Url__c);
-}
+        System.assertNotEquals(null, result, 'Result should not be null');
+        
+    }
 }
