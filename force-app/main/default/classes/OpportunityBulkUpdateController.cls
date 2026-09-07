@@ -2,6 +2,8 @@
 * -----------------------------------------------------------------------------------------
 * Apex Class Name     OpportunityBulkUpdateController
 * @author             Sugapriya Vanjiyappan <sugapriya.vanjiyappan@consultant.volvo.com> 
+* Update              Hari Vyas
+* Update Date         03-09-2026
 * @Created Date       03-10-2025         
 * ------------------------------------------------------------------------------------------
 * @description        This class is used as controller for opportunityBulkUpdate LWC Component
@@ -29,7 +31,7 @@ public with sharing class OpportunityBulkUpdateController {
             
             return [SELECT Id, Name, StageName, OwnerId, AccountId, RecordType.Name,
                     Lost_Reason__c, Opportunity_Type__c, Reason__c,Country__c,
-                    Amount, Probability, Sub_Stage__c,Finance_Houses__c,Additional_Details__c
+                    Amount, Probability, Sub_Stage__c,Finance_Houses__c,Additional_Details__c,Dealer_Account_Billing_Country__c,Owner.Country
                     FROM Opportunity
                     WHERE Id IN :listSelectedOpportunityIds];
         } catch (Exception e) {
@@ -117,4 +119,18 @@ public with sharing class OpportunityBulkUpdateController {
         
         return probMap;
     }
+    
+    
+/*
+ * 
+* @Method Name - getMetadataRecords
+* @description -This method returns the custom metadata of country values for which the Next Step Date Should be visible
+* @return      -Metadata Records
+ */
+
+    @AuraEnabled(cacheable=true)
+    public static List<Opportunities_Next_Step_Date_Countries__mdt> getMetadataRecords() {
+        return [SELECT Country__c FROM Opportunities_Next_Step_Date_Countries__mdt];
+    
+}
 }

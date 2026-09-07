@@ -17,7 +17,6 @@
                                 <criteria>
                                     <leftValue>{!Record.Quote_Url__c}</leftValue>
                                     <operator>NE</operator>
-                                     <rightValue></rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.StageName}</leftValue>
@@ -98,6 +97,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
@@ -484,6 +487,72 @@
                         <leftValue>{!Record.StageName}</leftValue>
                         <operator>NE</operator>
                         <rightValue>Closed Won</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Next_Step_Date__c</fieldItem>
+                <identifier>RecordNext_Step_Date_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.NextStep</fieldItem>
+                <identifier>RecordNextStepField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Dealer_Account_Billing_Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>United Kingdom</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Owner.Country}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Ireland</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
