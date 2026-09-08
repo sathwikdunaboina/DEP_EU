@@ -61,6 +61,14 @@ Opportunity Owner
                             </lightning-input-field>
                         </div>
 
+                        <!-- Type -->
+                        <template if:true={isFinance}>
+                            <div class="field-wrapper">
+                                <lightning-input-field field-name="Type" onchange={handleFieldChange}>
+                                </lightning-input-field>
+                            </div>
+                        </template>
+
                         <!-- AMOUNT -->
                         <div class="field-wrapper">
                             <lightning-input-field field-name="Amount" onchange={handleFieldChange}>
