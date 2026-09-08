@@ -233,7 +233,7 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
                     'From else dealer country: ' +
                     this.dealerAccountBillingCountry
                 );
-    }
+            }
 
 
             // =====================================================
@@ -268,6 +268,12 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
             ) {
                 this.showNextStepField = true;
             }
+
+            if(this.dealerAccountBillingCountry=='United Kingdom'|| this.dealerAccountBillingCountry=='Ireland' 
+           || result[0].Owner.Country=='United Kingdom' || result[0].Owner.Country=='Ireland')
+           {
+            this.isFinance= false;
+           }
 
         }
             catch (error) {
