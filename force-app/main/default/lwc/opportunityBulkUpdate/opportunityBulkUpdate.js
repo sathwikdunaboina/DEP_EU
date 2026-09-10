@@ -11,6 +11,10 @@ import Reason from '@salesforce/schema/Opportunity.Reason__c';
 import SubStage from '@salesforce/schema/Opportunity.Sub_Stage__c';
 import FinanceHouse from '@salesforce/schema/Opportunity.Finance_Houses__c';
 import getStageProbabilities from '@salesforce/apex/OpportunityBulkUpdateController.getStageProbabilities';
+import getMetadataRecords from '@salesforce/apex/OpportunityBulkUpdateController.getMetadataRecords';
+
+
+
 
 export default class BulkUpdateOpportunities extends NavigationMixin(LightningElement) {
     @api recordIds;
@@ -24,6 +28,11 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     @track isFinance = false;
     @track isLCVOpportunity = false;
     @track recordType = '';
+    @track isNextStepDateOpportunity = false;
+    @track dealerAccountBillingCountry='';
+    @track showNextStepField= false;
+    @track metadataList=[];
+    @track isLoading =false;
 
     // =====================================================
     // CHANGED FIELDS — only fields user has set with a non-empty value
@@ -143,40 +152,163 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     // =====================================================
     // CONNECTED CALLBACK
     // =====================================================
-    connectedCallback() {
-        // Validation: no record IDs passed
-        if (!this.recordIds || this.recordIds.length === 0) {
-            this.error = 'Please select an Opportunity.';
-            return;
-        }
-
-        getOpportunities({ sSelectedOpportunityIds: this.recordIds })
-            .then(result => {
-                if (!result || result.length === 0) {
-                    this.error = 'Please select an Opportunity.';
-                    return;
-                }
-
-                // SAME RECORD TYPE CHECK
-                const recordTypeIds = [...new Set(result.map(opp => opp.RecordTypeId))];
-                if (recordTypeIds.length > 1) {
-                    this.error = 'Please select same Record Type Opportunities';
-                    return;
-                }
-
-                this.opportunities = result;
-                this.selectedRecordTypeId = result[0].RecordTypeId;
-                this.recordType = result[0].RecordType.Name;
-                this.isFinance = this.recordType === 'Finance';
-                this.isLCVOpportunity = this.recordType === 'LCV Opportunity';
-                this.showFields = true;
-            })
-            .catch(error => {
-                console.error(error);
-                this.error = JSON.stringify(error);
-            });
+connectedCallback() {
+        this.initializeComponent();
     }
 
+    async initializeComponent() {
+
+        // Start spinner
+        this.isLoading = true;
+
+        try {
+
+            // Validation: no record IDs passed
+            if (!this.recordIds || this.recordIds.length === 0) {
+                this.error = 'Please select an Opportunity.';
+                return;
+            }
+
+            // =====================================================
+            // 1. GET METADATA FIRST
+            // =====================================================
+
+            const metadataData = await getMetadataRecords();
+
+            console.log('Metadata Records:', metadataData);
+
+            this.metadataList = metadataData;
+
+
+            // =====================================================
+            // 2. GET OPPORTUNITIES AFTER METADATA IS COMPLETED
+            // =====================================================
+
+            const result = await getOpportunities({
+                sSelectedOpportunityIds: this.recordIds
+            });
+
+            console.log('Opportunity Records:', result);
+
+            if (!result || result.length === 0) {
+                this.error = 'Please select an Opportunity.';
+                return;
+            }
+
+
+            // =====================================================
+            // SAME RECORD TYPE CHECK
+            // =====================================================
+
+            const recordTypeIds = [
+                ...new Set(result.map(opp => opp.RecordTypeId))
+            ];
+
+            if (recordTypeIds.length > 1) {
+                this.error =
+                    'Please select same Record Type Opportunities';
+                return;
+            }
+
+
+            // =====================================================
+            // SET OPPORTUNITY DATA
+            // =====================================================
+
+            this.opportunities = result;
+
+            this.selectedRecordTypeId = result[0].RecordTypeId;
+
+            this.recordType = result[0].RecordType.Name;
+
+            this.isFinance = this.recordType === 'Finance';
+
+            this.isLCVOpportunity =
+                this.recordType === 'LCV Opportunity';
+
+            this.showFields = true;
+
+
+            // =====================================================
+            // GET DEALER COUNTRY
+            // =====================================================
+
+            if (result[0].Dealer_Account_Billing_Country__c?.trim()) {
+
+                this.dealerAccountBillingCountry =
+                    result[0].Dealer_Account_Billing_Country__c;
+
+                console.log(
+                    'From if dealer country: ' +
+                    this.dealerAccountBillingCountry
+                );
+
+            } else {
+
+                this.dealerAccountBillingCountry =
+                    result[0].Owner.Country;
+
+                console.log(
+                    'From else dealer country: ' +
+                    this.dealerAccountBillingCountry
+                );
+            }
+
+
+            // =====================================================
+            // CHECK COUNTRY AGAINST METADATA
+            // =====================================================
+
+            this.isNextStepDateOpportunity =
+                this.metadataList.some(
+                    metadata =>
+                        metadata.Country__c ===
+                        this.dealerAccountBillingCountry
+                );
+
+            console.log(
+                'Dealer Country: ' +
+                this.dealerAccountBillingCountry
+            );
+
+            console.log(
+                'Is Next Step Date Opportunity: ' +
+                this.isNextStepDateOpportunity
+            );
+
+
+            // =====================================================
+            // SHOW NEXT STEP FIELD
+            // =====================================================
+
+            if (
+                this.isLCVOpportunity ||
+                this.isNextStepDateOpportunity
+            ) {
+                this.showNextStepField = true;
+            }
+
+        } catch (error) {
+
+            console.error('Error:', error);
+
+            this.error =
+                error?.body?.message ||
+                error?.message ||
+                JSON.stringify(error);
+
+        } finally {
+
+            // Both functions are finished
+            this.isLoading = false;
+        }
+    }
+
+
+
+
+
+    //
     // Wire for Probability change when Stage changes
     @wire(getStageProbabilities)
     wiredStageProbabilities({ data, error }) {
@@ -229,6 +361,13 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
             console.error(error);
         }
     }
+    //=================================
+    //Wire Search for current user
+
+
+  
+    //==================================
+
 
     // =====================================================
     // OWNER SEARCH
@@ -557,4 +696,7 @@ export default class BulkUpdateOpportunities extends NavigationMixin(LightningEl
     handleCancel() {
         window.history.back();
     }
+
+
+   
 }
