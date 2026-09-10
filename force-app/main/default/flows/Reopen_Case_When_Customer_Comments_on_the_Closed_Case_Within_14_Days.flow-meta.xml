@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>This will check if case closed date less than or equals to 14 days</description>
+        <name>Check_if_Case_is_Closed_within_14_days_or_not</name>
+        <label>Check if Case is Closed within 14 days or not</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>With_in_14_days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DaysFromClosure</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>14.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reopen_Case</targetReference>
+            </connector>
+            <label>With in 14 days</label>
+        </rules>
+    </decisions>
+    <description>This Flow is used to Reopen the existing case when customer comments on the closed case within 14 days for Customer portal cases.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CaseCommentbodyWhenReOpenCase</name>
+        <dataType>String</dataType>
+        <expression>&apos;Closed Case &apos;+{!$Record.Parent.CaseNumber}+&apos; has been Reopened.&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>DaysFromClosure</name>
+        <dataType>Number</dataType>
+        <expression>TODAY()-DATEVALUE({!$Record.Parent.ClosedDate})</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>ReceipientAddress</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Parent.ContactEmail}</expression>
+    </formulas>
+    <interviewLabel>Reopen Case When Customer Comments on the Closed Case Within 14 Days {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reopen Case When Customer Comments on the Closed Case Within 14 Days</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>This will create a new case comment.</description>
+        <name>Create_A_new_Case_comment</name>
+        <label>Create A new Case comment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>CommentBody</field>
+            <value>
+                <elementReference>CaseCommentbodyWhenReOpenCase</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsPublished</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ParentId</field>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CaseComment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordUpdates>
+        <description>If case has been closed within 14 days it will reopen the case.</description>
+        <name>Reopen_Case</name>
+        <label>Reopen Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_A_new_Case_comment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_Case_is_Closed_within_14_days_or_not</targetReference>
+        </connector>
+        <filterFormula>AND(
+    ISPICKVAL({!$Record.Parent.Source_System__c}, &quot;Customer Portal&quot;),
+    ISPICKVAL({!$Record.Parent.Status}, &quot;Closed&quot;),
+    ISPICKVAL({!$Record.Parent.Origin}, &quot;Portal&quot;)
+)</filterFormula>
+        <object>CaseComment</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>CaseIdvariable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>CaseNumberOfNewlyCreatedCase</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>NewCaseRecordVariable</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
