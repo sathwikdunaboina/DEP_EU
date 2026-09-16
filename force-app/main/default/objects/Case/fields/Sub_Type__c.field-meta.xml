@@ -1342,6 +1342,116 @@
                 <default>false</default>
                 <label>EOT - Extension offer</label>
             </value>
+            <value>
+                <fullName>Customer not available</fullName>
+                <default>false</default>
+                <label>Customer not available</label>
+            </value>
+            <value>
+                <fullName>Left message</fullName>
+                <default>false</default>
+                <label>Left message</label>
+            </value>
+            <value>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+                <label>Follow-up</label>
+            </value>
+            <value>
+                <fullName>Waiting for response</fullName>
+                <default>false</default>
+                <label>Waiting for response</label>
+            </value>
+            <value>
+                <fullName>Formular A return</fullName>
+                <default>false</default>
+                <label>Formular A return</label>
+            </value>
+            <value>
+                <fullName>Request Document</fullName>
+                <default>false</default>
+                <label>Request Document</label>
+            </value>
+            <value>
+                <fullName>Sdocument return</fullName>
+                <default>false</default>
+                <label>Sdocument return</label>
+            </value>
+            <value>
+                <fullName>Sepa return</fullName>
+                <default>false</default>
+                <label>Sepa return</label>
+            </value>
+            <value>
+                <fullName>Authentication missing</fullName>
+                <default>false</default>
+                <label>Authentication missing</label>
+            </value>
+            <value>
+                <fullName>Authentication guarantor missing</fullName>
+                <default>false</default>
+                <label>Authentication guarantor missing</label>
+            </value>
+            <value>
+                <fullName>Incorrect signature</fullName>
+                <default>false</default>
+                <label>Incorrect signature</label>
+            </value>
+            <value>
+                <fullName>Securities original form missing</fullName>
+                <default>false</default>
+                <label>Securities original form missing</label>
+            </value>
+            <value>
+                <fullName>purchase order</fullName>
+                <default>false</default>
+                <label>purchase order</label>
+            </value>
+            <value>
+                <fullName>KYC Check guarantor</fullName>
+                <default>false</default>
+                <label>KYC Check guarantor</label>
+            </value>
+            <value>
+                <fullName>Incorrect formular A</fullName>
+                <default>false</default>
+                <label>Incorrect formular A</label>
+            </value>
+            <value>
+                <fullName>Missing signature</fullName>
+                <default>false</default>
+                <label>Missing signature</label>
+            </value>
+            <value>
+                <fullName>Missing Credit approval</fullName>
+                <default>false</default>
+                <label>Missing Credit approval</label>
+            </value>
+            <value>
+                <fullName>TM informed</fullName>
+                <default>false</default>
+                <label>TM informed</label>
+            </value>
+            <value>
+                <fullName>Approval request credit</fullName>
+                <default>false</default>
+                <label>Approval request credit</label>
+            </value>
+            <value>
+                <fullName>not intended for sales support</fullName>
+                <default>false</default>
+                <label>not intended for sales support</label>
+            </value>
+            <value>
+                <fullName>Nonky for information</fullName>
+                <default>false</default>
+                <label>Nonky for information</label>
+            </value>
+            <value>
+                <fullName>Other department in charge</fullName>
+                <default>false</default>
+                <label>Other department in charge</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>R&amp;M - EOT</controllingFieldValue>
@@ -1380,6 +1490,11 @@
             <controllingFieldValue>Collection - Returned Direct Debits</controllingFieldValue>
             <controllingFieldValue>Other</controllingFieldValue>
             <controllingFieldValue>Deferral</controllingFieldValue>
+            <controllingFieldValue>Sales Support - Welcome Call</controllingFieldValue>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support - KYC</controllingFieldValue>
+            <controllingFieldValue>Sales Support - No loan approval</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
             <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
             <controllingFieldValue>EOT - Early termination</controllingFieldValue>
             <controllingFieldValue>EOT - Purchase</controllingFieldValue>
@@ -1745,10 +1860,6 @@
             <valueName>Write-offs</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
-            <valueName>Troubleshooting</valueName>
-        </valueSettings>
-        <valueSettings>
             <controllingFieldValue>Finance</controllingFieldValue>
             <valueName>Operating Lease</valueName>
         </valueSettings>
@@ -1784,6 +1895,10 @@
             <valueName>Requesting Documents</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
+            <valueName>Troubleshooting</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Service Third Party</controllingFieldValue>
             <valueName>New Invoice</valueName>
         </valueSettings>
@@ -1813,6 +1928,122 @@
         <valueSettings>
             <controllingFieldValue>Deferral</controllingFieldValue>
             <valueName>EOT - Extension offer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Welcome Call</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Customer not available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Welcome Call</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Left message</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Welcome Call</controllingFieldValue>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Follow-up</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Welcome Call</controllingFieldValue>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Waiting for response</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Welcome Call</controllingFieldValue>
+            <controllingFieldValue>Sales Support - KYC</controllingFieldValue>
+            <valueName>Formular A return</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <controllingFieldValue>Change my details</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>Change Bank Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>Copy of documents</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Request Document</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Sdocument return</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Sepa return</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Authentication missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support - KYC</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Authentication guarantor missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <controllingFieldValue>Sales Support- DE51 Rental</controllingFieldValue>
+            <valueName>Incorrect signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <valueName>Securities original form missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Contract Documents</controllingFieldValue>
+            <valueName>purchase order</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - KYC</controllingFieldValue>
+            <valueName>KYC Check guarantor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - KYC</controllingFieldValue>
+            <valueName>Incorrect formular A</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - KYC</controllingFieldValue>
+            <valueName>Missing signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - No loan approval</controllingFieldValue>
+            <valueName>Missing Credit approval</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - No loan approval</controllingFieldValue>
+            <valueName>TM informed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - No loan approval</controllingFieldValue>
+            <valueName>Approval request credit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Misscalanous</controllingFieldValue>
+            <valueName>not intended for sales support</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Misscalanous</controllingFieldValue>
+            <valueName>Nonky for information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Support - Misscalanous</controllingFieldValue>
+            <valueName>Other department in charge</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change of details</controllingFieldValue>
@@ -1920,11 +2151,6 @@
         <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Change address / contact details</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Change my details</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>Change Bank Details</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
@@ -2202,11 +2428,6 @@
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <valueName>Multiheader</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>Copy of documents</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>EOT - Early termination</controllingFieldValue>
