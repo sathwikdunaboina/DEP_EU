@@ -274,7 +274,7 @@
                 <fieldItem>Record.Case_Reopen_Date__c</fieldItem>
                 <identifier>RecordCase_Reopen_Date_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+                    <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Status_Reason__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -289,6 +289,11 @@
                         <leftValue>{!Record.Country__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Ireland</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>France</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -751,7 +756,7 @@
                 <componentName>flowruntime:interview</componentName>
                 <identifier>flowruntime_interview3</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2 ) AND 3</booleanFilter>
+                    <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Country__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -761,6 +766,11 @@
                         <leftValue>{!Record.Country__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Ireland</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Country__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>France</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Status_Reason__c}</leftValue>
