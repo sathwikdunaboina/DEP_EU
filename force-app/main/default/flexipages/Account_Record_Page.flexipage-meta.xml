@@ -13,6 +13,9 @@
                             <value>Account.Runout_report</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>Account.Statement_of_Accounts</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Account.Edit_LWC</value>
                         </valueListItems>
                         <valueListItems>
@@ -40,6 +43,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
@@ -149,6 +156,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Credit_Assessment_Date__c</fieldItem>
                 <identifier>RecordCredit_Assessment_Date_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.IsPrivate__c</fieldItem>
+                <identifier>RecordIsPrivate_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e04e5585-7a2e-48ce-bd21-63372a603d33</name>
@@ -765,6 +782,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Check_on_dealer_sales_person__c</fieldItem>
                 <identifier>RecordCheck_on_dealer_sales_person_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.IsPrivate__c</fieldItem>
+                <identifier>RecordIsPrivate_cField2</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-b2ff167f-6c3c-474a-8c86-8a10db6938d8</name>
