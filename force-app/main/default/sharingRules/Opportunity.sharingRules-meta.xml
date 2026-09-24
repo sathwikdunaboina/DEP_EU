@@ -638,6 +638,25 @@
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Opportunity_SE_VCE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Opportunity SE - VCE</label>
+        <sharedTo>
+            <group>Sweden_VCE</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Lead_Brand__c</field>
+            <operation>equals</operation>
+            <value>,VCE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dealer_Account_Billing_Country__c</field>
+            <operation>equals</operation>
+            <value>Sweden</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Opportunity_SE_VT</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Opportunity SE - VT</label>
