@@ -3,6 +3,7 @@ import { NavigationMixin } from 'lightning/navigation';
 import { LightningElement, api, wire, track } from 'lwc';
 import { refreshApex } from '@salesforce/apex';
 import { sortBy } from './sortHelper';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 const headers = [
     { 
@@ -40,7 +41,21 @@ export default class AttachmentsOnCase extends NavigationMixin(LightningElement)
     selectedMinSize = '100';
     totalAttachments = 0;
     error;
+    selectedAttachments = [];
 
+ allAttachments = [];
+@wire(filterAttachmentsAdapter, {
+    caseId: '$recordId',
+    greaterThanKBs: '0'
+})
+wiredAttachments({ error, data }) {
+
+    if (data) {
+        this.allAttachments = data;
+    } else if (error) {
+        console.error(error);
+    }
+}
     @wire(filterAttachmentsAdapter, {caseId : '$recordId', greaterThanKBs : '$selectedMinSize'}) 
     wiredFilteredAttachments({error, data}){
         if (error) {
@@ -53,6 +68,7 @@ export default class AttachmentsOnCase extends NavigationMixin(LightningElement)
             this.filteredAttachments = undefined;
         } else {
             this.filteredAttachments = data;
+
         }
     }
 
@@ -69,7 +85,9 @@ export default class AttachmentsOnCase extends NavigationMixin(LightningElement)
             this.totalAttachments = data.length;
         }
     }
-    
+    handleRowSelection(event) {
+    this.selectedAttachments = event.detail.selectedRows;
+}
 
     handleRowAction(event){
         const fileRef =  event.detail.row.fileRef; 
@@ -87,7 +105,8 @@ export default class AttachmentsOnCase extends NavigationMixin(LightningElement)
             })
         } 
     }
-    onHandleSort(event) {
+    
+  onHandleSort(event) {
         const { fieldName: sortedBy, sortDirection } = event.detail;
         const cloneData = [...this.filteredAttachments];
 
@@ -97,10 +116,15 @@ export default class AttachmentsOnCase extends NavigationMixin(LightningElement)
         this.sortedBy = sortedBy;
     }
     onSizeChange(event){
-        console.log(event);
         this.selectedMinSize = event.detail.value;
         return refreshApex(this.filteredAttachments);
     }
+    get hasAttachments() {
+    return this.filteredAttachments && this.filteredAttachments.length > 0;
+}
+get hasAnyAttachments() {
+    return this.totalAttachments > 0;
+}
     get sizeOptions() {
         return [
             { label: 'All', value: '0' },
@@ -110,8 +134,19 @@ export default class AttachmentsOnCase extends NavigationMixin(LightningElement)
         ];
     }
     handleUploadFinished(event){
-        //temp to reload the page after upload
-        //next veersion will be to use refreshApex to trigger comoponent reload
         window.location.reload();
     }
+ handleViewAll() {
+
+   this[NavigationMixin.Navigate]({
+        type: 'standard__component',
+        attributes: {
+            componentName: 'c__viewAllAttachments'
+        },
+        state: {
+            c__recordId: this.recordId
+                    }
+    })
+
+}
 }
