@@ -1,0 +1,582 @@
+<template>
+
+    <lightning-card title="All Attachments">
+
+        <div class="slds-grid
+                    slds-grid_align-spread
+                    slds-grid_vertical-align-end
+                    slds-p-horizontal_small
+                    actionSection">
+
+    <lightning-button
+        label="Download"
+        variant="brand"
+        onclick={downloadSelectedAttachments}>
+    </lightning-button>
+
+            <lightning-file-upload
+                label="Upload Files"
+                name="fileUploader"
+                record-id={recordId}
+                multiple
+                onuploadfinished={handleUploadFinished}>
+            </lightning-file-upload>
+
+        </div>
+        <div class="slds-grid
+                    slds-grid_align-spread
+                    slds-grid_vertical-align-center
+                    slds-p-around_medium">
+
+            <div class="slds-text-body_small">
+                {attachmentCount} items
+                • Sorted by Last Modified
+            </div>
+            <div class="slds-grid slds-grid_vertical-align-center">
+
+                <lightning-button-menu
+                    icon-name="utility:settings"
+                    alternative-text="List View Controls"
+                    title="List View Controls"
+                    variant="border-filled"
+                    menu-alignment="right"
+                    onselect={handleListViewControl}
+                    class="slds-m-right_x-small">
+
+                    <lightning-menu-item
+                        value="resetWidths"
+                        label="Reset Column Widths"
+                        disabled={disableResetColumnWidths}>
+                    </lightning-menu-item>
+
+                </lightning-button-menu>
+
+
+                <lightning-button-icon
+                    icon-name="utility:refresh"
+                    alternative-text="Refresh"
+                    title="Refresh"
+                    onclick={handleRefresh}
+                    disabled={isRefreshing}
+                    class="slds-m-right_x-small">
+                </lightning-button-icon>
+
+
+                <lightning-button-icon
+                    icon-name="utility:filterList"
+                    alternative-text="Quick Filters"
+                    title="Quick Filters"
+                    variant="brand"
+                    onclick={toggleQuickFilter}>
+                </lightning-button-icon>
+
+            </div>
+
+        </div>
+        <div class="attachments-workspace">
+            <div class={tableContainerClass}>
+
+                <template if:true={showDatatable}>
+
+                    <div class="datatable-container">
+
+                        <lightning-datatable
+                            key-field="fileRef"
+                            data={allAttachments}
+                            columns={columns}
+                            sorted-by={sortedBy}
+                            sorted-direction={sortDirection}
+                            onsort={handleSort}
+                            onrowselection={handleRowSelection}
+                            onrowaction={handleRowAction}
+                            onresize={handleColumnResize}>
+                        </lightning-datatable>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+
+            <template if:true={showQuickFilter}>
+
+                <div class="quick-filter-panel">
+
+                    <div class="quick-filter-header">
+
+                        <span class="slds-text-heading_small">
+                            Quick Filters
+                        </span>
+
+                        <lightning-button-icon
+                            icon-name="utility:close"
+                            alternative-text="Close"
+                            title="Close"
+                            variant="bare"
+                            onclick={toggleQuickFilter}>
+                        </lightning-button-icon>
+
+                    </div>
+
+                    <div class="quick-filter-body">
+
+                        <!-- Title -->
+                        <lightning-input
+                            type="text"
+                            label="Title"
+                            value={filterTitle}
+                            onchange={handleFilterTitleChange}>
+                        </lightning-input>
+
+
+                        <!-- Type -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-input
+                                type="text"
+                                label="Type"
+                                value={filterType}
+                                onchange={handleFilterTypeChange}>
+                            </lightning-input>
+
+                        </div>
+
+
+                        <!-- Last Modified Start -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-input
+                                type="date"
+                                label="Last Modified Start Date"
+                                value={filterStartDate}
+                                onchange={handleStartDateChange}>
+                            </lightning-input>
+
+                        </div>
+
+
+                        <!-- Last Modified End -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-input
+                                type="date"
+                                label="Last Modified End Date"
+                                value={filterEndDate}
+                                onchange={handleEndDateChange}>
+                            </lightning-input>
+
+                        </div>
+
+
+                        <!-- Created By -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-input
+                                type="text"
+                                label="Created By"
+                                value={filterCreatedBy}
+                                onchange={handleCreatedByChange}>
+                            </lightning-input>
+
+                        </div>
+
+
+                        <!-- File Type -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-combobox
+                                label="File Type"
+                                value={filterFileType}
+                                options={fileTypeOptions}
+                                onchange={handleFileTypeChange}>
+                            </lightning-combobox>
+
+                        </div>
+
+
+                        <!-- File Extension -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-input
+                                type="text"
+                                label="File Extension"
+                                value={filterFileExtension}
+                                onchange={handleFileExtensionChange}>
+                            </lightning-input>
+
+                        </div>
+
+
+                        <!-- Source -->
+                        <div class="slds-m-top_small">
+
+                            <lightning-input
+                                type="text"
+                                label="External Data Source"
+                                value={filterSource}
+                                onchange={handleSourceChange}>
+                            </lightning-input>
+
+                        </div>
+                       <!-- Asset File Enabled -->
+<div class="slds-m-top_medium">
+
+    <div class="slds-form-element">
+
+        <label class="slds-form-element__label">
+            Asset File Enabled
+        </label>
+
+        <div class="slds-form-element__control">
+
+            <lightning-radio-group
+                name="assetFileEnabled"
+                options={assetFileOptions}
+                value={filterAssetFile}
+                type="radio"
+                onchange={handleAssetFileChange}>
+            </lightning-radio-group>
+
+        </div>
+
+    </div>
+
+</div>
+                    </div>
+
+
+                    <div class="quick-filter-footer">
+
+                        <lightning-button
+                            label="Clear All Filters"
+                            onclick={clearQuickFilter}>
+                        </lightning-button>
+
+                        <lightning-button
+                            label="Apply"
+                            variant="brand"
+                            onclick={applyQuickFilter}>
+                        </lightning-button>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+        </div>
+
+<template if:true={showEditFileModal}>
+
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        aria-labelledby="edit-file-details-heading"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <!-- HEADER -->
+            <header class="slds-modal__header">
+
+                <lightning-button-icon
+                    class="slds-modal__close"
+                    icon-name="utility:close"
+                    alternative-text="Close"
+                    title="Close"
+                    variant="bare-inverse"
+                    onclick={closeEditFileModal}>
+                </lightning-button-icon>
+
+                <h2
+                    id="edit-file-details-heading"
+                    class="slds-text-heading_medium">
+
+                    Edit {editOriginalFileTitle}
+
+                </h2>
+
+            </header>
+
+
+            <!-- BODY -->
+<div class="slds-modal__content slds-p-around_large">
+
+    <!-- Required Information -->
+    <div class="slds-grid slds-grid_align-end slds-m-bottom_medium">
+
+        <span class="slds-text-body_small">
+            <abbr
+                class="slds-required"
+                title="required">
+                *
+            </abbr>
+            = Required Information
+        </span>
+
+    </div>
+
+
+    <!-- TITLE -->
+    <lightning-input
+        type="text"
+        label="Title"
+        value={editFileTitle}
+        onchange={handleEditFileTitleChange}
+        required>
+    </lightning-input>
+
+
+    <!-- DESCRIPTION -->
+    <div class="slds-m-top_medium">
+
+        <lightning-textarea
+            label="Description"
+            value={editFileDescription}
+            onchange={handleEditDescriptionChange}>
+        </lightning-textarea>
+
+    </div>
+
+
+    <!-- CREATED -->
+    <div class="slds-grid slds-m-top_large">
+
+        <div class="slds-size_1-of-4 slds-text-color_weak">
+            Created
+        </div>
+
+        <div class="slds-size_3-of-4">
+
+            <lightning-formatted-date-time
+                value={editFileCreatedDate}
+                year="numeric"
+                month="2-digit"
+                day="2-digit"
+                hour="2-digit"
+                minute="2-digit"
+                hour12="false"
+                time-zone="Europe/Paris">
+            </lightning-formatted-date-time>
+
+        </div>
+
+    </div>
+
+
+    <!-- LAST MODIFIED -->
+    <div class="slds-grid slds-m-top_medium">
+
+        <div class="slds-size_1-of-4 slds-text-color_weak">
+            Last Modified Date
+        </div>
+
+        <div class="slds-size_3-of-4">
+
+            <lightning-formatted-date-time
+                value={editFileLastModifiedDate}
+                year="numeric"
+                month="2-digit"
+                day="2-digit"
+                hour="2-digit"
+                minute="2-digit"
+                hour12="false"
+                time-zone="Europe/Paris">
+            </lightning-formatted-date-time>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- FOOTER -->
+            <footer class="slds-modal__footer">
+
+                <lightning-button
+                    label="Cancel"
+                    onclick={closeEditFileModal}
+                    disabled={isSavingFileDetails}>
+                </lightning-button>
+
+                <lightning-button
+                    class="slds-m-left_small"
+                    label="Save"
+                    variant="brand"
+                    onclick={saveFileDetails}
+                    disabled={isSavingFileDetails}>
+                </lightning-button>
+
+            </footer>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACKDROP -->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+<!-- =====================================================
+     UPLOAD NEW VERSION MODAL
+     ===================================================== -->
+
+<template if:true={showUploadVersionModal}>
+
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        aria-labelledby="upload-version-heading"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <!-- HEADER -->
+            <header class="slds-modal__header">
+
+                <lightning-button-icon
+                    class="slds-modal__close"
+                    icon-name="utility:close"
+                    alternative-text="Close"
+                    title="Close"
+                    variant="bare-inverse"
+                    onclick={closeUploadVersionModal}>
+                </lightning-button-icon>
+
+                <h2
+                    id="upload-version-heading"
+                    class="slds-text-heading_medium">
+
+                    Upload New Version
+
+                </h2>
+
+            </header>
+
+
+            <!-- BODY -->
+            <div class="slds-modal__content slds-p-around_large">
+
+                <!-- Existing File -->
+                <div class="slds-m-bottom_medium">
+
+                    <span class="slds-text-title">
+                        File
+                    </span>
+
+                    <div class="slds-text-heading_small">
+                        {versionFileTitle}
+                    </div>
+
+                </div>
+
+
+                <!-- Select File -->
+                <div class="slds-form-element">
+
+                    <label class="slds-form-element__label">
+                        <abbr
+                            class="slds-required"
+                            title="required">
+                            *
+                        </abbr>
+                        Select New Version
+                    </label>
+
+                    <div class="slds-form-element__control">
+
+                        <input
+                            class="slds-file-selector__input slds-assistive-text"
+                            type="file"
+                            id="newVersionFile"
+                            onchange={handleVersionFileSelected}/>
+
+                        <label
+                            class="slds-file-selector__body"
+                            for="newVersionFile">
+
+                            <span
+                                class="slds-file-selector__button
+                                       slds-button
+                                       slds-button_neutral">
+
+                                <lightning-icon
+                                    icon-name="utility:upload"
+                                    size="x-small"
+                                    class="slds-m-right_x-small">
+                                </lightning-icon>
+
+                                Choose File
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+                <div class="slds-m-top_medium">
+
+                    <lightning-textarea
+                        label="Description / Reason for Change"
+                        value={versionDescription}
+                        onchange={handleVersionDescriptionChange}>
+                    </lightning-textarea>
+
+                </div>
+
+
+                <!-- Loading -->
+                <template if:true={isUploadingVersion}>
+
+                    <div class="slds-is-relative slds-p-around_large">
+
+                        <lightning-spinner
+                            alternative-text="Uploading New Version"
+                            size="small">
+                        </lightning-spinner>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="slds-modal__footer">
+
+                <lightning-button
+                    label="Cancel"
+                    onclick={closeUploadVersionModal}
+                    disabled={isUploadingVersion}>
+                </lightning-button>
+
+                <lightning-button
+                    class="slds-m-left_small"
+                    label="Upload"
+                    variant="brand"
+                    onclick={handleUploadNewVersion}
+                    disabled={isUploadingVersion}>
+                </lightning-button>
+
+            </footer>
+
+        </div>
+
+    </section>
+
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+    </lightning-card>
+
+</template>
