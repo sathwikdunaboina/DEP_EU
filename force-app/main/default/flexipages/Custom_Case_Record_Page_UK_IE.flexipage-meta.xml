@@ -204,34 +204,6 @@
                 <identifier>RecordPriorityField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Case_Reopen_Date__c</fieldItem>
-                <identifier>RecordCase_Reopen_Date_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Status_Reason__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Postponed Action</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Country__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>United Kingdom</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Country__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Ireland</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-4546ba00-a3c3-4505-a479-bf28ef79950d</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1105,7 +1077,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>updateQuickActionName</name>
-                    <value>Case.CaseSummary</value>
+                    <value>Case.Case_summery_UK_IE</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
                 <identifier>console_relatedRecord</identifier>
