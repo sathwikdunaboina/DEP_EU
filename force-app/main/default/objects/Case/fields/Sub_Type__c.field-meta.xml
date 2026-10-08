@@ -1333,14 +1333,124 @@
                 <label>Requesting Documents</label>
             </value>
             <value>
-                <fullName>Clarifications (internal)</fullName>
-                <default>false</default>
-                <label>Clarifications (internal)</label>
-            </value>
-            <value>
                 <fullName>EOT - Extension offer</fullName>
                 <default>false</default>
                 <label>EOT - Extension offer</label>
+            </value>
+            <value>
+                <fullName>Onboarding</fullName>
+                <default>false</default>
+                <label>Onboarding</label>
+            </value>
+            <value>
+                <fullName>General Query</fullName>
+                <default>false</default>
+                <label>General Query</label>
+            </value>
+            <value>
+                <fullName>Spam</fullName>
+                <default>false</default>
+                <label>Spam</label>
+            </value>
+            <value>
+                <fullName>Monitor</fullName>
+                <default>false</default>
+                <label>Monitor</label>
+            </value>
+            <value>
+                <fullName>Upload</fullName>
+                <default>false</default>
+                <label>Upload</label>
+            </value>
+            <value>
+                <fullName>Review</fullName>
+                <default>false</default>
+                <label>Review</label>
+            </value>
+            <value>
+                <fullName>Report</fullName>
+                <default>false</default>
+                <label>Report</label>
+            </value>
+            <value>
+                <fullName>Change of payment date</fullName>
+                <default>false</default>
+                <label>Change of payment date</label>
+            </value>
+            <value>
+                <fullName>Increase of Mileage</fullName>
+                <default>false</default>
+                <label>Increase of Mileage</label>
+            </value>
+            <value>
+                <fullName>Government grant</fullName>
+                <default>false</default>
+                <label>Government grant</label>
+            </value>
+            <value>
+                <fullName>Adding/Removal GAP Insurance</fullName>
+                <default>false</default>
+                <label>Adding/Removal GAP Insurance</label>
+            </value>
+            <value>
+                <fullName>Change of legal form</fullName>
+                <default>false</default>
+                <label>Change of legal form</label>
+            </value>
+            <value>
+                <fullName>Merge</fullName>
+                <default>false</default>
+                <label>Merge</label>
+            </value>
+            <value>
+                <fullName>Customers terminates its business</fullName>
+                <default>false</default>
+                <label>Customers terminates its business</label>
+            </value>
+            <value>
+                <fullName>Change Company details</fullName>
+                <default>false</default>
+                <label>Change Company details</label>
+            </value>
+            <value>
+                <fullName>Sending vehicle registration documents to registration office/dealer</fullName>
+                <default>false</default>
+                <label>Sending vehicle registration documents to registration office/dealer</label>
+            </value>
+            <value>
+                <fullName>Service Contract Information</fullName>
+                <default>false</default>
+                <label>Service Contract Information</label>
+            </value>
+            <value>
+                <fullName>Balance statement</fullName>
+                <default>false</default>
+                <label>Balance statement</label>
+            </value>
+            <value>
+                <fullName>Change of object</fullName>
+                <default>false</default>
+                <label>Change of object</label>
+            </value>
+            <value>
+                <fullName>Incorrect/Incomplete application for insurance certificate</fullName>
+                <default>false</default>
+                <label>Incorrect/Incomplete application for insurance certificate</label>
+            </value>
+            <value>
+                <fullName>Dealer copy of document request</fullName>
+                <default>false</default>
+                <label>Dealer copy of document request</label>
+            </value>
+            <value>
+                <fullName>Insurance request</fullName>
+                <default>false</default>
+                <label>Insurance request</label>
+            </value>
+            <value>
+                <fullName>Rental/DE51</fullName>
+                <default>false</default>
+                <label>Rental/DE51</label>
             </value>
         </valueSetDefinition>
         <valueSettings>
@@ -1379,7 +1489,11 @@
             <controllingFieldValue>Collection - Payment Agreements</controllingFieldValue>
             <controllingFieldValue>Collection - Returned Direct Debits</controllingFieldValue>
             <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
             <controllingFieldValue>Deferral</controllingFieldValue>
+            <controllingFieldValue>Reschedule/Restructuring</controllingFieldValue>
+            <controllingFieldValue>Novation</controllingFieldValue>
             <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
             <controllingFieldValue>EOT - Early termination</controllingFieldValue>
             <controllingFieldValue>EOT - Purchase</controllingFieldValue>
@@ -1389,10 +1503,13 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Insurance - Novation</controllingFieldValue>
+            <controllingFieldValue>Reschedule/Restructuring</controllingFieldValue>
+            <controllingFieldValue>Novation</controllingFieldValue>
             <valueName>Payment issues</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Insurance - Novation</controllingFieldValue>
+            <controllingFieldValue>Novation</controllingFieldValue>
             <valueName>Insolvency</valueName>
         </valueSettings>
         <valueSettings>
@@ -1405,6 +1522,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Insurance - Put through call</controllingFieldValue>
+            <controllingFieldValue>Put through call</controllingFieldValue>
             <controllingFieldValue>EOT - Put through call</controllingFieldValue>
             <valueName>Collections request</valueName>
         </valueSettings>
@@ -1448,10 +1566,6 @@
             <controllingFieldValue>GAP</controllingFieldValue>
             <controllingFieldValue>Insurance</controllingFieldValue>
             <valueName>Accounting</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Maintenance</controllingFieldValue>
-            <valueName>Clarifications (internal)</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Balance Confirmations</controllingFieldValue>
@@ -1632,6 +1746,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <controllingFieldValue>Put through call</controllingFieldValue>
             <valueName>End of Term Request</valueName>
         </valueSettings>
         <valueSettings>
@@ -1656,11 +1771,29 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <controllingFieldValue>Problems with Web Portal</controllingFieldValue>
+            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
+            <valueName>Problems with Web Portal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Request For Documentation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer Portal</controllingFieldValue>
             <valueName>Statement of Accounts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>Onboarding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>General Query</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Portal</controllingFieldValue>
+            <valueName>Spam</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Collection - Syndication</controllingFieldValue>
@@ -1708,11 +1841,6 @@
             <valueName>Renewals</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Problems with Web Portal</controllingFieldValue>
-            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
-            <valueName>Problems with Web Portal</valueName>
-        </valueSettings>
-        <valueSettings>
             <controllingFieldValue>Sales</controllingFieldValue>
             <valueName>Take down Credit Line (incl. VFS Select)</valueName>
         </valueSettings>
@@ -1745,10 +1873,6 @@
             <valueName>Write-offs</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
-            <valueName>Troubleshooting</valueName>
-        </valueSettings>
-        <valueSettings>
             <controllingFieldValue>Finance</controllingFieldValue>
             <valueName>Operating Lease</valueName>
         </valueSettings>
@@ -1771,9 +1895,41 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Change my details</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>Change Bank Details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Financial Contract query</controllingFieldValue>
+            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
+            <valueName>Contract Information Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>Explanation of Invoices</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>Overdue Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
             <valueName>Payment Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
+            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
+            <valueName>SEPA Problems</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Customer requests</controllingFieldValue>
@@ -1782,6 +1938,38 @@
         <valueSettings>
             <controllingFieldValue>Customer requests</controllingFieldValue>
             <valueName>Requesting Documents</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Change Company details</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Sending vehicle registration documents to registration office/dealer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Service Contract Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Balance statement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer requests</controllingFieldValue>
+            <valueName>Change of object</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
+            <valueName>Troubleshooting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
+            <valueName>Incorrect/Incomplete application for insurance certificate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dealer/Insurer/Internal</controllingFieldValue>
+            <valueName>Dealer copy of document request</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Service Third Party</controllingFieldValue>
@@ -1808,11 +1996,59 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Deferral</controllingFieldValue>
+            <valueName>Customer requests - Payment information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deferral</controllingFieldValue>
             <valueName>EOT - Purchase Others</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Deferral</controllingFieldValue>
+            <valueName>Transfer - Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deferral</controllingFieldValue>
             <valueName>EOT - Extension offer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational Activity</controllingFieldValue>
+            <valueName>Monitor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational Activity</controllingFieldValue>
+            <valueName>Upload</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational Activity</controllingFieldValue>
+            <valueName>Review</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operational Activity</controllingFieldValue>
+            <valueName>Report</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reschedule/Restructuring</controllingFieldValue>
+            <valueName>Change of payment date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reschedule/Restructuring</controllingFieldValue>
+            <valueName>Increase of Mileage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reschedule/Restructuring</controllingFieldValue>
+            <valueName>Government grant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reschedule/Restructuring</controllingFieldValue>
+            <valueName>Adding/Removal GAP Insurance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Put through call</controllingFieldValue>
+            <valueName>Insurance request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Put through call</controllingFieldValue>
+            <valueName>Rental/DE51</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change of details</controllingFieldValue>
@@ -1923,11 +2159,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Change my details</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>Change Bank Details</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Change my details</controllingFieldValue>
             <valueName>Change Business Name</valueName>
         </valueSettings>
         <valueSettings>
@@ -1961,6 +2192,18 @@
         <valueSettings>
             <controllingFieldValue>Novation</controllingFieldValue>
             <valueName>R&amp;M Novation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Novation</controllingFieldValue>
+            <valueName>Change of legal form</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Novation</controllingFieldValue>
+            <valueName>Merge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Novation</controllingFieldValue>
+            <valueName>Customers terminates its business</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Contact with Sales rep</controllingFieldValue>
@@ -2053,11 +2296,6 @@
         <valueSettings>
             <controllingFieldValue>Financial Contract query</controllingFieldValue>
             <valueName>Amendment Start date change</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Financial Contract query</controllingFieldValue>
-            <controllingFieldValue>General query / Miscellaneous</controllingFieldValue>
-            <valueName>Contract Information Required</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Financial Contract query</controllingFieldValue>
@@ -2164,28 +2402,11 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>Explanation of Invoices</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <valueName>Invoices to go onto Multiheader</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>EOT - Customer requests</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>Overdue Information</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
             <valueName>Payment Query</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
-            <controllingFieldValue>Insurance - Customer requests</controllingFieldValue>
-            <valueName>SEPA Problems</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Invoice or payment or tax query</controllingFieldValue>
